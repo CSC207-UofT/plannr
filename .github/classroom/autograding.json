@@ -1,0 +1,14 @@
+{
+  "tests": [
+    {
+      "name": "Autotesting Action",
+      "setup": "",
+      "run": "gradle test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": null
+    }
+  ]
+}
