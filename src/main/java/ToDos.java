@@ -30,7 +30,7 @@ public abstract class ToDos {
 
     /**
      * completeToDos is am abstract method that adds the list of tasks/events and whether they have been completed
-     * it returns true if all tasks have been completed
+     * it returns true if all tasks have been completed.
      * @param task   Event Object
      * @param done   This is true when the task/event is completed and false when the event/task is not completed
      */
