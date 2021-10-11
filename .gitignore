@@ -91,3 +91,5 @@ fabric.properties
 
 # ==== Added by us ====
 .idea/
+# Below is for macOS
+.DS_Store
