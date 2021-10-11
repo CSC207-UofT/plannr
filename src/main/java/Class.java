@@ -1,9 +1,8 @@
 import java.util.Date;
 
-public class Class extends Event {
+public class Class extends Work {
 
     private String course;
-    private String location;
     private String note;
 
     /**
@@ -21,15 +20,27 @@ public class Class extends Event {
      */
     public Class(String name, int priority, Date startDate, Date endDate,
                  String course, String location, String note) {
-        super(name, priority, startDate, endDate);
+        super(name, priority, startDate, endDate, location);
         this.course = course;
-        this.location = location;
         this.note = note;
     }
 
+    /**
+     * Gets the course of the Class event
+     * @return the course of the Class event as a String object
+     */
+    public String getCourse() { return this.course; }
 
+    /**
+     * Gets the notes of the Class event
+     * @return the note of the Class event as a String object
+     */
+    public String getNote() { return this.note; }
+
+    /**
+     * toString method
+     * @return a String that describes the Class event
+     */
     @Override
-    public String toString() {
-        return super.getName() + ": " + this.course;
-    }
+    public String toString() { return super.getName() + ": " + this.getCourse(); }
 }
