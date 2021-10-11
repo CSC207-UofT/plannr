@@ -22,33 +22,72 @@ public abstract class Event {
         this.endDate = endDate;
     }
 
+    /**
+     * Construct an Event, giving them the given name,
+     * priority, and end date.
+     *
+     * This constructor does not need startDate
+     *
+     * @param name      The Event's name
+     * @param priority  The Event's priority
+     * @param endDate   The Event's end date
+     */
     public Event(String name, int priority, Date endDate) {
         this.name = name;
         this.priority = priority;
         this.endDate = endDate;
     }
 
+    /**
+     * Construct an Event, giving them the given name and priority
+     *
+     * This constructor only needs name and endDate, and will assign
+     * a 0 as the default value of priority
+     *
+     * @param name      The Event's name
+     * @param endDate   The Event's end date
+     */
     public Event(String name, Date endDate) {
         this.name = name;
         this.priority = 0;
         this.endDate = endDate;
     }
 
+    /**
+     * toString method
+     * @return a String that describes the Event
+     */
     @Override
     public abstract String toString();
 
+    /**
+     * Gets the name of the Event
+     * @return the name of the Event as a String
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Gets the priority of event
+     * @return the priority of event as an int
+     */
     public int getPriority() {
         return priority;
     }
 
+    /**
+     * Gets the start date of event
+     * @return the start date of event as a Date object
+     */
     public Date getStartDate() {
         return startDate;
     }
 
+    /**
+     * Gets the end date of event
+     * @return the end date of event as a Date object
+     */
     public Date getEndDate() {
         return endDate;
     }
