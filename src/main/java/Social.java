@@ -47,8 +47,39 @@ public class Social extends Event{
         this.participants = new ArrayList<String>();
     }
 
+    /**
+     * Gets the duration of this Social event
+     * @return the duration of this Social event
+     */
+    public int getDuration() {
+        return this.duration;
+    }
+
+    /** ========== SUBJECT TO CHANGE ============
+     * toString method for Social, used for printing to screen
+     * @return a String that describes this Social event
+     */
     @Override
     public String toString() {
-        return "test";
+        String result = (
+                "The event "
+                + this.getName()
+                + " is scheduled to start on "
+                + this.getStartDate()
+                + " and end on "
+                + this.getEndDate()
+                + ". It would last "
+                + this.getDuration()
+                + " hours. \n The expected participants are: "
+        );
+
+        // Use a for loop to append the participatns into the result String
+        if (this.participants.size() > 0) {
+            for (String p:this.participants) {
+                result += p + "\n";
+            }
+        }
+
+        return result;
     }
 }
