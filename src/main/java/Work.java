@@ -14,14 +14,22 @@ public class Work extends Event {
      * @param endDate   The Work's end date
      * @param location  The Work's location
      */
-    public Work(String name, int priority, Date startDate, Date endDate,
-                 String course, String location, String note) {
+    public Work(String name, int priority, Date startDate, Date endDate, String location) {
         super(name, priority, startDate, endDate);
         this.location = location;
     }
 
+    /**
+     * Gets the location of the Work event
+     * @return the location of the Work event as a String object
+     */
+    public String getLocation() { return this.location; }
+
+
+    /**
+     * toString method
+     * @return a String that describes the Work event
+     */
     @Override
-    public String toString() {
-        return super.getName();
-    }
+    public String toString() { return super.getName(); }
 }
