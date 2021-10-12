@@ -1,6 +1,6 @@
 import java.util.Date;
 
-public abstract class Event {
+public class Event {
     private String name;
     private int priority;
     private Date startDate;

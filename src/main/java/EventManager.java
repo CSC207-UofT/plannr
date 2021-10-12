@@ -1,9 +1,27 @@
+import java.util.ArrayList;
 import java.util.Date;
 
 public class EventManager{
 
-//    public boolean addEvent(String name, int priority, Date startDate, Date endDate) {
-//        Event event = new
-//    }
+    /**
+     * Add an Event
+     *
+     * @param e    The Event
+     * @param user  The User
+     */
+    public void addEvent(Event e, User user){
+        user.getEventList().add(e);
+    }
+
+    /**
+     * Delete an Event
+     *
+     * @param e     The Event
+     * @param user  The User
+     */
+    public boolean deleteEvent(Event e, User user){
+        return user.getEventList().remove(e);
+    }
+
 
 }
