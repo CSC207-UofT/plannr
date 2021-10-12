@@ -5,6 +5,7 @@ public class Event {
     private int priority;
     private Date startDate;
     private Date endDate;
+    private boolean completed;
 
     /**
      * Construct an Event, giving them the given name,
@@ -14,12 +15,14 @@ public class Event {
      * @param priority  The Event's priority
      * @param startDate The Event's start date
      * @param endDate   The Event's end date
+     * @param completed The Event's completion status
      */
     public Event(String name, int priority, Date startDate, Date endDate) {
         this.name = name;
         this.priority = priority;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.completed = false;
     }
 
     /**
@@ -36,6 +39,7 @@ public class Event {
         this.name = name;
         this.priority = priority;
         this.endDate = endDate;
+        this.completed = false;
     }
 
     /**
@@ -51,6 +55,7 @@ public class Event {
         this.name = name;
         this.priority = 0;
         this.endDate = endDate;
+        this.completed = false;
     }
 
     /**
@@ -90,5 +95,9 @@ public class Event {
      */
     public Date getEndDate() {
         return endDate;
+    }
+
+    public boolean isCompleted() {
+        return completed;
     }
 }
