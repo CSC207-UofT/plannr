@@ -15,14 +15,13 @@ public class Event {
      * @param priority  The Event's priority
      * @param startDate The Event's start date
      * @param endDate   The Event's end date
-     * @param completed The Event's completion status
      */
     public Event(String name, int priority, Date startDate, Date endDate) {
         this.name = name;
         this.priority = priority;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.completed = false;
+        this.completed = false; // completion status is false by default
     }
 
     /**
@@ -58,12 +57,12 @@ public class Event {
         this.completed = false;
     }
 
-    /**
-     * toString method
-     * @return a String that describes the Event
-     */
-    @Override
-    public abstract String toString();
+//    /**
+//     * toString method
+//     * @return a String that describes the Event
+//     */
+//    @Override
+//    public abstract String toString();
 
     /**
      * Gets the name of the Event
@@ -97,6 +96,10 @@ public class Event {
         return endDate;
     }
 
+    /**
+     * Gets the completion status of event
+     * @return the event completion status as a boolean object
+     */
     public boolean isCompleted() {
         return completed;
     }
