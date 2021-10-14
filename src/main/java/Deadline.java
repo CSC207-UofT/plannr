@@ -16,7 +16,7 @@ public class Deadline extends Event {
      * @param endDate  This Deadline's due date
      * @param courseName  This Deadline's course which it's from
      */
-    public Deadline(String name, int priority, Date endDate, String courseName) {
+    public Deadline(String name, int priority, LocalDateTime endDate, String courseName) {
         super(name, priority, endDate);
         this.course = courseName;
     }

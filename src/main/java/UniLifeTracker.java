@@ -9,10 +9,9 @@ public class UniLifeTracker {
         //Setting things up
         Scanner in = new Scanner(System.in);
         Scanner scan = new Scanner(System.in);
-        UserManager userManager = new UserManager();
+
         //DeadlineManager deadlineManager = new DeadlineManager();
         DateTimeFormatter customFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm a");
-        //System.out.print(LocalDateTime.parse("15-10-2021 11:59 PM", customFormat).format(customFormat));
 
         // A little welcome
         System.out.println("Welcome to Uni Life Tracker! \nWe are here to help you track your disastrous life!");
@@ -35,7 +34,7 @@ public class UniLifeTracker {
         }
 
         //Create User object using UserManager
-        userManager.createUser(userName, userSchool, userCourses);
+        UserManager userManager = new UserManager(userName, userCourses, userSchool);
 
         System.out.println("-------------------------");
 
@@ -69,7 +68,7 @@ public class UniLifeTracker {
 
                 System.out.print("Enter the due date (format: 'dd-mm-yyyy hh:mm AM/PM') : ");
                 String eventEndDate = in.nextLine();
-                LocalDateTime deadline = LocalDateTime.parse(eventEndDate, customFormat);
+                LocalDateTime eventDeadline = LocalDateTime.parse(eventEndDate, customFormat);
 
                 //if date == date of an event in user's event list, print there's a conflict
 
@@ -79,12 +78,13 @@ public class UniLifeTracker {
                 System.out.print("Enter the name of the course this deadline is for: "); //replace with displaying user's courses and letting them pick
                 String eventCourse = in.nextLine();
 
-                //Create Deadline event object using EventManager
-                //deadlineManager.addDeadline(eventName, eventPriority, deadline, eventCourse);
-
-                //Add Deadline event object to User object's event list
+                //Create + add Deadline event object using UserManager
+                userManager.addDeadlineEvent(eventName, eventPriority, eventDeadline, eventCourse);
 
                 //Print that the event has been created with its details
+                for (Event e : userManager.viewEventList()) {
+                    System.out.println(e);
+                }
 
                 System.out.println("-------------------------");
 
