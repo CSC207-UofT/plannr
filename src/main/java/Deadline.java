@@ -1,6 +1,9 @@
 import java.util.Date;
 import java.time.LocalDateTime;
 
+/**
+ * Represents an event that is a deadline with a due date.
+ */
 public class Deadline extends Event {
     private String course; //course the deadline is from
 
@@ -28,7 +31,17 @@ public class Deadline extends Event {
      */
     @Override
     public String toString() {
-        return "Deadline: The assignment " + this.getName() + " from " + this.course + " is due on "
-                + this.getEndDate();
+        String strPriority;
+        if (this.getPriority() == 0) {
+            strPriority = "high";
+        }
+        else if (this.getPriority() == 1) {
+            strPriority = "mid";
+        }
+        else {
+            strPriority = "low";
+        }
+        return String.format("Deadline (%s priority): The assignment %s from %s is due on %s",
+                strPriority, this.getName(), this.getCourse(), this.getEndDate());
     }
 }
