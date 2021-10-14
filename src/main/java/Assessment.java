@@ -17,8 +17,10 @@ public class Assessment extends Event {
      */
     public Assessment(String name, int priority, Date startDate, Date endDate, String course) {
         super(name, priority, startDate, endDate);
+
         long tempDuration = endDate.getTime() - startDate.getTime();
         this.duration = TimeUnit.MILLISECONDS.toHours(tempDuration);
+
         this.course = course;
     }
 
