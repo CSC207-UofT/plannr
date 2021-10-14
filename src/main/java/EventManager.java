@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class EventManager{
+    private DeadlineManager deadlineManager;
 
     /**
      * Add an Event

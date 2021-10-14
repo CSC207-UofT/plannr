@@ -1,5 +1,4 @@
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.ArrayList;
 
 public class DeadlineManager {
@@ -9,7 +8,7 @@ public class DeadlineManager {
         deadlines = new ArrayList<>();
     }
 
-    public void addDeadline(String name, int priority, Date endDate, String courseName) {
-        Deadline newDeadline = new Deadline(name, priority, endDate, courseName);
+    public Deadline createDeadline(String name, int priority, LocalDateTime endDate, String courseName) {
+        return new Deadline(name, priority, endDate, courseName);
     }
 }
