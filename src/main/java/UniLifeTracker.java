@@ -1,4 +1,3 @@
-import java.time.chrono.ChronoLocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.time.LocalDateTime;
@@ -62,26 +61,36 @@ public class UniLifeTracker {
 
                 System.out.println();
 
-                //Prompt for details of event (name, end date, priority, course, etc.)
-                System.out.print("Enter the name of the deadline: ");
-                String eventName = in.nextLine();
+                if (eventType == 1) {
+                    //Prompt for details of event (name, end date, priority, course, etc.)
+                    System.out.print("Enter the name of the deadline: ");
+                    String eventName = in.nextLine();
 
-                System.out.print("Enter the due date (format: 'dd-mm-yyyy hh:mm AM/PM') : ");
-                String eventEndDate = in.nextLine();
-                LocalDateTime eventDeadline = LocalDateTime.parse(eventEndDate, customFormat);
+                    System.out.print("Enter the due date (format: 'dd-mm-yyyy hh:mm AM/PM') : ");
+                    String eventEndDate = in.nextLine();
+                    LocalDateTime eventDeadline = LocalDateTime.parse(eventEndDate, customFormat);
 
-                //if date == date of an event in user's event list, print there's a conflict
+                    //if date == date of an event in user's event list, print there's a conflict
 
-                System.out.print("Enter the priority of the deadline (0 = high, 1 = mid, 2 = low): ");
-                int eventPriority = scan.nextInt();
+                    System.out.print("Enter the priority of the deadline (0 = high, 1 = mid, 2 = low): ");
+                    int eventPriority = scan.nextInt();
 
-                System.out.print("Enter the name of the course this deadline is for: "); //replace with displaying user's courses and letting them pick
-                String eventCourse = in.nextLine();
+                    System.out.println("Your course list: ");
+                    for (int i = 1; i <= userManager.viewCourses().size(); i++) {
+                        System.out.printf("%d. %s\n", i, userManager.viewCourses().get(i-1));
+                    }
+                    System.out.print("Select the course this deadline is for (enter the corresponding number): ");
+                    int eventCourseNum = scan.nextInt();
+                    String eventCourseName = userManager.viewCourses().get(eventCourseNum - 1);
 
-                //Create + add Deadline event object using UserManager
-                userManager.addDeadlineEvent(eventName, eventPriority, eventDeadline, eventCourse);
+                    //Create + add Deadline event object using UserManager
+                    userManager.addDeadlineEvent(eventName, eventPriority, eventDeadline, eventCourseName);
+                }
+
+                System.out.println();
 
                 //Print that the event has been created with its details
+                System.out.println("Your current events and deadlines: ");
                 for (Event e : userManager.viewEventList()) {
                     System.out.println(e);
                 }

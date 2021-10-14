@@ -1,11 +1,14 @@
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Represents an event that is a deadline with a due date.
  */
 public class Deadline extends Event {
     private String course; //course the deadline is from
+    DateTimeFormatter customFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm a");
 
     /**
      * Construct Deadline event, giving them the given
@@ -42,6 +45,6 @@ public class Deadline extends Event {
             strPriority = "low";
         }
         return String.format("Deadline (%s priority): The assignment %s from %s is due on %s",
-                strPriority, this.getName(), this.getCourse(), this.getEndDate());
+                strPriority, this.getName(), this.getCourse(), this.getEndDate().format(customFormat));
     }
 }
