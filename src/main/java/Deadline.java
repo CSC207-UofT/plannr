@@ -1,4 +1,5 @@
 import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Deadline extends Event {
     private String course; //course the deadline is from
@@ -17,13 +18,17 @@ public class Deadline extends Event {
         this.course = courseName;
     }
 
+    public String getCourse() {
+        return this.course;
+    }
+
     /**
      * toString method
      * @return a String that describes this Deadline event.
      */
     @Override
     public String toString() {
-        String result = "This assignment from " + this.course + " is due on " + this.getEndDate();
-        return result;
+        return "Deadline: The assignment " + this.getName() + " from " + this.course + " is due on "
+                + this.getEndDate();
     }
 }
