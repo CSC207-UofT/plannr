@@ -1,3 +1,4 @@
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -11,6 +12,7 @@ public class UserManager {
     public User createUser(String name, ArrayList<String> courses, String school) {
         return new User(name, courses, school);
     }
+
 
     public void addDeadlineEvent(String eventName, int priority, LocalDateTime endDate, String courseName) {
         u.getEventList().add(new Deadline(eventName, priority, endDate, courseName));
@@ -28,4 +30,5 @@ public class UserManager {
     public String toString() {
         return "bob";
     }
+
 }
