@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class SystemInOut {
     private static final Scanner sc = new Scanner(System.in);
-    public static final DateTimeFormatter DATEFORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm a");
+    public static final DateTimeFormatter DATEFORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
     /**
      * This method will create the User
      * @return an UserManager object
@@ -95,14 +95,14 @@ public class SystemInOut {
      * @param userManager the manager of the current user
      */
     public static void run(UserManager userManager) {
-        // Prompt valid options
-        System.out.println("Actions:" +
-                "\n1. Add an event" +
-                "\n2. Exit program");
         // Default value for nextLine, used to detect user action and catch errors
         int nextLine = 0;
         // do while loop to get user action and run the program
         do {
+            // Prompt valid options
+            System.out.println("Actions:" +
+                    "\n1. Add an event" +
+                    "\n2. Exit program");
             System.out.println("Please type the number corresponding to the options to choose an action");
             try {
                 // Use nextInt to make sure the user only uses the number and nothing weird
