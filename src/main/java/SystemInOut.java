@@ -49,7 +49,7 @@ public class SystemInOut {
         // Get user's university
         String uni = "";
         do {
-            System.out.println("Hi " + name + "! What's name of the school you attend?");
+            System.out.println("Hi " + name + "! What's the name of the school you attend?");
             try {
                 uni = sc.nextLine();
                 // Catch empty strings
