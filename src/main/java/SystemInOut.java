@@ -5,7 +5,7 @@ public class SystemInOut {
     private static final Scanner sc = new Scanner(System.in);
 
     /* This method will create the User
-     * @return
+     * @return an UserManager object
      */
     public static UserManager userOnBoard() {
         // Welcome message
