@@ -12,7 +12,8 @@ public class SystemInOut {
      */
     public static UserManager onBoardUser() {
         // Welcome message
-        System.out.println("Welcome to Uni Life Tracker!\nWe are here to help you track your disastrous life!");
+        System.out.println("--- WELCOME TO UNI LIFE TRACKER! ---" +
+                "\nWe are here to help you track your disastrous life!");
         System.out.println("-------------------------");
         // Get user's info
         ArrayList<String> userInfo = getUserInfoDialog();
@@ -33,15 +34,15 @@ public class SystemInOut {
         // Get user's name
         String name = "";
         do {
-            System.out.println("What's your name?");
+            System.out.println("What's your name? ");
             try {
                 name = sc.nextLine();
                 // Catch empty strings
                 if (name.length() == 0) {
-                    System.out.println("Please enter a name.");
+                    System.out.println("Please enter a name. ");
                 }
             } catch (Exception e) { // Catch for invalid input
-                System.out.println("Invalid input, please try again.");
+                System.out.println("Invalid input, please try again. ");
             }
         } while (name.length() == 0);
         result.add(name);
@@ -53,10 +54,10 @@ public class SystemInOut {
                 uni = sc.nextLine();
                 // Catch empty strings
                 if (uni.length() == 0) {
-                    System.out.println("Please enter a name.");
+                    System.out.println("Please enter a name. ");
                 }
             } catch (Exception e) { // Catch for invalid input
-                System.out.println("Invalid input, please try again.");
+                System.out.println("Invalid input, please try again. ");
             }
         } while (uni.length() == 0);
         result.add(uni);
@@ -72,21 +73,20 @@ public class SystemInOut {
         ArrayList<String> courses = new ArrayList<>();
         // Prompt user
         System.out.print("What classes are you attending? If you don't have any courses at the moment, please " +
-                "type n.\n" + "Please enter the course id");
+                "type n.\n" + "Please enter the course ID: ");
         // Get the next line first
         String nextLine = sc.nextLine();
         // Loop for user input
         while (!nextLine.equals("n")) {
             try {
                 courses.add(nextLine);
-                System.out.println("Course \"" + nextLine + "\" added");
+                System.out.println("Course \"" + nextLine + "\" added!");
             } catch (Exception e) {
                 System.out.println("Invalid input, please try again.");
             }
-            System.out.println("Please enter the course id or type n to stop.");
+            System.out.println("Please enter the course ID or type n to stop.");
             nextLine = sc.nextLine();
         }
-
         return courses;
     }
 
@@ -100,10 +100,10 @@ public class SystemInOut {
         // do while loop to get user action and run the program
         do {
             // Prompt valid options
-            System.out.println("Actions:" +
+            System.out.println("ACTIONS:" +
                     "\n1. Add an event" +
                     "\n2. Exit program");
-            System.out.println("Please type the number corresponding to the options to choose an action");
+            System.out.println("Please type the number corresponding to the options to choose an action: ");
             try {
                 // Use nextInt to make sure the user only uses the number and nothing weird
                 nextLine = sc.nextInt();
@@ -146,7 +146,7 @@ public class SystemInOut {
                     String eventName = sc.nextLine();
 
                     // Get endDate of event
-                    System.out.println("Enter the due date (format: \"dd-mm-yyyy HH:mm\")");
+                    System.out.println("Enter the due date (format: \"dd-mm-yyyy HH:mm\"): ");
                     String eventDDL = sc.nextLine();
                     LocalDateTime eventEndDate = LocalDateTime.parse(eventDDL, DATEFORMAT);
                     // Get priority of event
@@ -159,7 +159,7 @@ public class SystemInOut {
                         for (int i = 0; i < userManager.viewCourses().size(); i++) {
                             System.out.println((i+1) + ". " + userManager.viewCourses().get(i));
                         }
-                        System.out.println("Select the course this deadline is for (enter the corresponding number");
+                        System.out.println("Select the course this deadline is for (enter the corresponding number):");
                         int ddlCourseNum = sc.nextInt();
                         // Get course name
                         String ddlCourseName = userManager.viewCourses().get(ddlCourseNum-1);
@@ -167,7 +167,7 @@ public class SystemInOut {
                         userManager.addDeadlineEvent(eventName, eventPriority, eventEndDate, ddlCourseName);
                     }
                     // Print all the user's events with their details
-                    System.out.println("Your current events and deadlines: ");
+                    System.out.println("--- YOUR CURRENT EVENTS AND DEADLINES: --- ");
                     for (Event e : userManager.viewEventList()) {
                         System.out.println(e);
                     }
