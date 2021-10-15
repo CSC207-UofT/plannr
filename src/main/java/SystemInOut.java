@@ -146,7 +146,7 @@ public class SystemInOut {
                     String eventName = sc.nextLine();
 
                     // Get endDate of event
-                    System.out.println("Enter the due date (format: \"dd-mm-yyyy HH:mm\"): ");
+                    System.out.println("Enter the due date (24-hour format: \"dd-mm-yyyy HH:mm\"): ");
                     String eventDDL = sc.nextLine();
                     LocalDateTime eventEndDate = LocalDateTime.parse(eventDDL, DATEFORMAT);
                     // Get priority of event

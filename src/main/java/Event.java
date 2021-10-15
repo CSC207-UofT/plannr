@@ -5,7 +5,7 @@ public class Event {
     private int priority;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
-    private boolean completed;
+//    private boolean completed; // NOTE: TO BE IMPLEMENTED LATER IN PHASE 1!!
 
     /**
      * Construct an Event, giving them the given name,
@@ -38,7 +38,7 @@ public class Event {
         this.name = name;
         this.priority = priority;
         this.endDate = endDate;
-        this.completed = false;
+//        this.completed = false; // NOTE: TO BE IMPLEMENTED LATER IN PHASE 1!!
     }
 
     /**
@@ -50,19 +50,12 @@ public class Event {
      * @param name      The Event's name
      * @param endDate   The Event's end date
      */
-    public Event(String name, LocalDateTime endDate) {
-        this.name = name;
-        this.priority = 0;
-        this.endDate = endDate;
-        this.completed = false;
-    }
-
-//    /**
-//     * toString method
-//     * @return a String that describes the Event
-//     */
-//    @Override
-//    public abstract String toString();
+//    public Event(String name, LocalDateTime endDate) {
+//        this.name = name;
+//        this.priority = 0;
+//        this.endDate = endDate;
+//        this.completed = false; // NOTE: TO BE IMPLEMENTED LATER IN PHASE 1!!
+//    }
 
     /**
      * Gets the name of the Event
