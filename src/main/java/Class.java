@@ -1,4 +1,7 @@
-//Change to local date
+/*
+NOTE: TO BE IMPLEMENTED LATER IN PHASE 1!!
+*/
+//Note for generic name: Change to LocalDate!
 //import java.util.Date;
 //
 //public class Class extends Work {

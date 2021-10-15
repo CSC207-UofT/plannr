@@ -1,5 +1,6 @@
-// TO BE IMPLEMENTED IN PHASE 1
-//
+/*
+NOTE: TO BE IMPLEMENTED LATER IN PHASE 1!!
+*/
 // public class ExpensesManager {
 //
 //
