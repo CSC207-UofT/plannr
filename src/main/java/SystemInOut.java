@@ -1,39 +1,35 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
 
 public class SystemInOut {
-    private final Scanner sc;
+    private static Scanner sc;
 
-    /* Constructor for the controller
-    This constructor takes no argument and creates a scanner within the controller
+    /* This method will create the User
+     * @return
      */
-    public SystemInOut() {
-        this.sc = new Scanner(System.in);
-    }
-
-    /* This method will take in user info to construct the user*/
-    public void userOnBoard() {
+    public static UserManager userOnBoard() {
         // Welcome message
         System.out.println("Welcome to Uni Life Tracker!\nWe are here to help you track your disastrous life!");
         System.out.println("-------------------------");
         // Get user's info
-        ArrayList<String> userInfo = this.getUserInfo();
+        ArrayList<String> userInfo = getUserInfo();
         // Get user's courses
-        ArrayList<String> userCourses = this.getUserCourses();
+        ArrayList<String> userCourses = getUserCourses();
+
+        System.out.println("-------------------------");
+
+        return new UserManager(userInfo.get(0), userCourses, userInfo.get(1));
     }
 
     /* This method will get the user's name, while catching for errors */
-    private ArrayList<String> getUserInfo() {
+    private static ArrayList<String> getUserInfo() {
         ArrayList<String> result = new ArrayList<>();
         // Get user's name
         String name = "";
         do {
             System.out.println("What's your name?");
             try {
-                name = this.sc.nextLine();
+                name = sc.nextLine();
                 // Catch empty strings
                 if (name.length() == 0) {
                     System.out.println("Please enter a name.");
@@ -48,7 +44,7 @@ public class SystemInOut {
         do {
             System.out.println("What's name of the school you attend?");
             try {
-                uni = this.sc.nextLine();
+                uni = sc.nextLine();
                 // Catch empty strings
                 if (uni.length() == 0) {
                     System.out.println("Please enter a name.");
@@ -63,13 +59,13 @@ public class SystemInOut {
     }
 
     /* This method will get user's courses and return an ArrayList */
-    private ArrayList<String> getUserCourses() {
+    private static ArrayList<String> getUserCourses() {
         ArrayList<String> courses = new ArrayList<>();
         // Prompt user
         System.out.print("What classes are you attending? If you don't have any courses at the moment, please " +
                 "type n.\n" + "Please enter the course id");
         // Get the next line first
-        String nextLine = this.sc.nextLine();
+        String nextLine = sc.nextLine();
         // Loop for user input
         while (!nextLine.equals("n")) {
             try {
@@ -79,7 +75,7 @@ public class SystemInOut {
                 System.out.println("Invalid input, please try again.");
             }
             System.out.println("Please enter the course id or type n to stop.");
-            nextLine = this.sc.nextLine();
+            nextLine = sc.nextLine();
         }
 
         return courses;
