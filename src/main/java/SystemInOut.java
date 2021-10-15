@@ -4,7 +4,8 @@ import java.util.Scanner;
 public class SystemInOut {
     private static final Scanner sc = new Scanner(System.in);
 
-    /* This method will create the User
+    /**
+     * This method will create the User
      * @return an UserManager object
      */
     public static UserManager userOnBoard() {
@@ -21,7 +22,10 @@ public class SystemInOut {
         return new UserManager(userInfo.get(0), userCourses, userInfo.get(1));
     }
 
-    /* This method will get the user's name, while catching for errors */
+    /**
+     * This method will get the user's name, while catching for errors
+     * helper of userOnBoard
+     */
     private static ArrayList<String> getUserInfo() {
         ArrayList<String> result = new ArrayList<>();
         // Get user's name
@@ -58,7 +62,10 @@ public class SystemInOut {
         return result;
     }
 
-    /* This method will get user's courses and return an ArrayList */
+    /**
+     * This method will get user's courses and return an ArrayList
+     * helper of userOnBoard
+     */
     private static ArrayList<String> getUserCourses() {
         ArrayList<String> courses = new ArrayList<>();
         // Prompt user
@@ -79,5 +86,44 @@ public class SystemInOut {
         }
 
         return courses;
+    }
+
+    /**
+     * This method will handle user input during runtime
+     * @param userManager the manager of the current user
+     */
+    public static void run(UserManager userManager) {
+        // Prompt valid options
+        System.out.println("Actions:" +
+                "\n1. Add an event" +
+                "\n2. Exit program");
+        // Default value for nextLine, used to detect user action and catch errors
+        int nextLine = 0;
+        // do while loop to get user action and run the program
+        do {
+            System.out.println("Please type the number corresponding to the options to choose an action");
+            try {
+                // Use nextInt to make sure the user only uses the number and nothing weird
+                nextLine = sc.nextInt();
+            } catch (Exception e) {
+                System.out.println("Invalid input, please try again.");
+            }
+
+            // User chose to create new event, calls helper and set nextLine back to 0 to continue the loop
+            // NOTE: Future actions will be dealt with here using the if statements
+            if (nextLine == 1) {
+                addEvent(userManager);
+                nextLine = 0; // this allows us to loop until the user chooses to exit, which sets it to 2
+            }
+
+        } while (nextLine == 0);
+    }
+
+    /**
+     * This deals with everything related to the inputs for creating events during runtime
+     * @param userManager the manager of the current user
+     */
+    private static void addEvent(UserManager userManager) {
+
     }
 }
