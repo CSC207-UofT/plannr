@@ -3,7 +3,7 @@ import java.time.LocalDateTime;
 public class Event {
     private String name;
     private int priority;
-    private LocalDateTime startDate;
+//    private LocalDateTime startDate;
     private LocalDateTime endDate;
 //    private boolean completed; // NOTE: TO BE IMPLEMENTED LATER IN PHASE 1!!
 
@@ -16,13 +16,13 @@ public class Event {
      * @param startDate The Event's start date
      * @param endDate   The Event's end date
      */
-    public Event(String name, int priority, LocalDateTime startDate, LocalDateTime endDate) {
-        this.name = name;
-        this.priority = priority;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.completed = false; // completion status is false by default
-    }
+//    public Event(String name, int priority, LocalDateTime startDate, LocalDateTime endDate) {
+//        this.name = name;
+//        this.priority = priority;
+//        this.startDate = startDate;
+//        this.endDate = endDate;
+//        this.completed = false; // completion status is false by default
+//    }
 
     /**
      * Construct an Event, giving them the given name,
