@@ -22,6 +22,7 @@ public class SystemInOut {
         // Get user's info
         ArrayList<String> userInfo = this.getUserInfo();
         // Get user's courses
+        ArrayList<String> userCourses = this.getUserCourses();
     }
 
     /* This method will get the user's name, while catching for errors */
@@ -61,4 +62,26 @@ public class SystemInOut {
         return result;
     }
 
+    /* This method will get user's courses and return an ArrayList */
+    private ArrayList<String> getUserCourses() {
+        ArrayList<String> courses = new ArrayList<>();
+        // Prompt user
+        System.out.print("What classes are you attending? If you don't have any courses at the moment, please " +
+                "type n.\n" + "Please enter the course id");
+        // Get the next line first
+        String nextLine = this.sc.nextLine();
+        // Loop for user input
+        while (!nextLine.equals("n")) {
+            try {
+                courses.add(nextLine);
+                System.out.println("Course \"" + nextLine + "\" added");
+            } catch (Exception e) {
+                System.out.println("Invalid input, please try again.");
+            }
+            System.out.println("Please enter the course id or type n to stop.");
+            nextLine = this.sc.nextLine();
+        }
+
+        return courses;
+    }
 }
