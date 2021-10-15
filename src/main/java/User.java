@@ -38,14 +38,6 @@ public class User {
     }
 
     /**
-     * getter method for school
-     * @return a String that describes the User's school
-     */
-    public String getSchool() {
-        return school;
-    }
-
-    /**
      * getter method for eventList
      * @return an ArrayList that describes all the user's events
      */

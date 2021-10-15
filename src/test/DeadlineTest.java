@@ -26,9 +26,6 @@ public class DeadlineTest {
                      deadline.getEndDate());
     }
 
-//    @Test(timeout = 50)
-//    public void TestIsCompleted() { assertEquals(false, deadline.isCompleted()); }
-
     @Test(timeout = 50)
     public void TestToString() {
         String deadlineString = "Deadline (high priority): " +
