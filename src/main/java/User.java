@@ -13,13 +13,12 @@ public class User {
      * @param name      The User's name
      * @param courses   The User's course list
      * @param school    The User's school
-     * @param eventList The User's list of all events
      */
     public User(String name, ArrayList<String> courses, String school) {
         this.name = name;
         this.courses = courses;
         this.school = school;
-        this.eventList = new ArrayList<Event>();
+        this.eventList = new ArrayList<>();
     }
 
     /**
