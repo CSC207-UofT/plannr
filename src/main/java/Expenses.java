@@ -1,5 +1,4 @@
-//import java.util.Date;
-//
+//WILL BE IMPLEMENTED IN PHASE 1
 //public class Expenses {
 //    private String name;
 //    private double value;
