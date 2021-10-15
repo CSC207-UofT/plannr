@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class UniLifeTracker {
+
     public static void main (String[] args) {
         //Setting things up
         Scanner in = new Scanner(System.in);
@@ -22,7 +23,7 @@ public class UniLifeTracker {
         System.out.print("What is the name of the school you attend? ");
         String userSchool = in.nextLine();
 
-        System.out.print("How many classes are you attending? "); //can be removed if we want to no longer implement it
+        System.out.print("How many classes are you attending? ");
         int userNumCourses = scan.nextInt();
         ArrayList<String> userCourses = new ArrayList<>();
         for (int i = 1; i <= userNumCourses; i++) {
