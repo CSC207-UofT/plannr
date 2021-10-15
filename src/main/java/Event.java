@@ -7,11 +7,11 @@ public class Event {
     private LocalDateTime endDate;
 //    private boolean completed; // NOTE: TO BE IMPLEMENTED LATER IN PHASE 1!!
 
-    /**
-     * Construct an Event, giving them the given name,
-     * priority, start date, and end date.
-     *
-     * @param name      The Event's name
+    /*
+      Construct an Event, giving them the given name,
+      priority, start date, and end date.
+
+      @param name      The Event's name
      * @param priority  The Event's priority
      * @param startDate The Event's start date
      * @param endDate   The Event's end date
@@ -41,13 +41,13 @@ public class Event {
 //        this.completed = false; // NOTE: TO BE IMPLEMENTED LATER IN PHASE 1!!
     }
 
-    /**
-     * Construct an Event, giving them the given name and priority
-     *
-     * This constructor only needs name and endDate, and will assign
-     * a 0 as the default value of priority
-     *
-     * @param name      The Event's name
+     /*
+      Construct an Event, giving them the given name and priority
+
+      This constructor only needs name and endDate, and will assign
+      a 0 as the default value of priority
+
+      @param name      The Event's name
      * @param endDate   The Event's end date
      */
 //    public Event(String name, LocalDateTime endDate) {
