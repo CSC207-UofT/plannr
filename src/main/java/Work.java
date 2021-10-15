@@ -1,4 +1,6 @@
-
+/*
+NOTE: TO BE IMPLEMENTED LATER IN PHASE 1!!
+*/
 //import java.util.Date;
 //
 //public class Work extends Event {
