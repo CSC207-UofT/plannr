@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter;
 
 
 public class SystemInOut {
-    Scanner sc;
+    private final Scanner sc;
 
     /* Constructor for the controller
     This constructor takes no argument and creates a scanner within the controller
@@ -20,7 +20,8 @@ public class SystemInOut {
         System.out.println("Welcome to Uni Life Tracker!\nWe are here to help you track your disastrous life!");
         System.out.println("-------------------------");
         // Get user's info
-        ArrayList<String> user_info = this.getUserInfo();
+        ArrayList<String> userInfo = this.getUserInfo();
+        // Get user's courses
     }
 
     /* This method will get the user's name, while catching for errors */
@@ -31,7 +32,7 @@ public class SystemInOut {
         do {
             System.out.println("What's your name?");
             try {
-                name = sc.nextLine();
+                name = this.sc.nextLine();
                 // Catch empty strings
                 if (name.length() == 0) {
                     System.out.println("Please enter a name.");
@@ -46,7 +47,7 @@ public class SystemInOut {
         do {
             System.out.println("What's name of the school you attend?");
             try {
-                uni = sc.nextLine();
+                uni = this.sc.nextLine();
                 // Catch empty strings
                 if (uni.length() == 0) {
                     System.out.println("Please enter a name.");
