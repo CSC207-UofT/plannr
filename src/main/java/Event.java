@@ -1,11 +1,11 @@
-import java.util.Date;
-import java.time.LocalDate;
+
+import java.time.LocalDateTime;
 
 public class Event {
     private String name;
     private int priority;
-    private Date startDate;
-    private Date endDate;
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
     private boolean completed;
 
     /**
@@ -17,7 +17,7 @@ public class Event {
      * @param startDate The Event's start date
      * @param endDate   The Event's end date
      */
-    public Event(String name, int priority, Date startDate, Date endDate) {
+    public Event(String name, int priority, LocalDateTime startDate, LocalDateTime endDate) {
         this.name = name;
         this.priority = priority;
         this.startDate = startDate;
@@ -35,7 +35,7 @@ public class Event {
      * @param priority  The Event's priority
      * @param endDate   The Event's end date
      */
-    public Event(String name, int priority, Date endDate) {
+    public Event(String name, int priority, LocalDateTime endDate) {
         this.name = name;
         this.priority = priority;
         this.endDate = endDate;
@@ -51,7 +51,7 @@ public class Event {
      * @param name      The Event's name
      * @param endDate   The Event's end date
      */
-    public Event(String name, Date endDate) {
+    public Event(String name, LocalDateTime endDate) {
         this.name = name;
         this.priority = 0;
         this.endDate = endDate;
@@ -85,7 +85,7 @@ public class Event {
      * Gets the start date of event
      * @return the start date of event as a Date object
      */
-    public Date getStartDate() {
+    public LocalDateTime getStartDate() {
         return startDate;
     }
 
@@ -93,7 +93,7 @@ public class Event {
      * Gets the end date of event
      * @return the end date of event as a Date object
      */
-    public Date getEndDate() {
+    public LocalDateTime getEndDate() {
         return endDate;
     }
 

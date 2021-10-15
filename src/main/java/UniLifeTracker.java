@@ -1,50 +1,108 @@
+
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class UniLifeTracker {
 
-    public static void main(String[] args) {
+    public static void main (String[] args) {
+        //Setting things up
         Scanner in = new Scanner(System.in);
-        // Prints welcome message
-        System.out.println("Welcome!");
+        Scanner scan = new Scanner(System.in);
+        DateTimeFormatter customFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm a");
 
-        // Asks for user's name
-        System.out.println("Let's get to know you a bit. What's your name? ");
+        // A little welcome
+        System.out.println("Welcome to Uni Life Tracker! \nWe are here to help you track your disastrous life!");
+
+        System.out.println("-------------------------");
+
+        // Prompt user for their name + university + courses they attend
+        System.out.print("What is your name? ");
         String userName = in.nextLine();
-        userName = userName.substring(0, 1).toUpperCase() + userName.substring(1).toLowerCase();
-        System.out.println("Which school do you attend? ");
+
+        System.out.print("What is the name of the school you attend? ");
         String userSchool = in.nextLine();
 
-        // Make a User object
-        User u = new User(userName, userSchool);
-        System.out.println(String.format("Welcome %s!", userName));
-
-        //Prompt user to add an event or exit program
-        boolean stay = true;
-        while(stay)
-        {
-            System.out.println("Which action do you want to do? (Enter a number) " + "\n");
-            System.out.println("1. Add an event" + "\n" + "2. Exit program");
-            int action = in.nextInt();
-            if (action == 1) {
-                System.out.println("TEST: Add event"); // remove this
-                stay = false;
-
-            }
-            else if (action == 2) {
-                System.out.println("TEST: Exit program"); // remove this
-                stay = false;
-            }
-            else {
-                System.out.println("Incorrect input. Please try again!");
-            }
+        System.out.print("How many classes are you attending? ");
+        int userNumCourses = scan.nextInt();
+        ArrayList<String> userCourses = new ArrayList<>();
+        for (int i = 1; i <= userNumCourses; i++) {
+            System.out.printf("Enter course #%d: ", i);
+            userCourses.add(in.nextLine());
         }
 
+        //Create User object using UserManager
+        UserManager userManager = new UserManager(userName, userCourses, userSchool);
 
-        //If "Add event" selected, prompt user for type of event they want to add
+        System.out.println("-------------------------");
 
-        //Prompt for details of the event (name, endDate, priority, course)
 
-        //
+        //while loop stops when user wants to exit program
+        boolean stay = true;
+        while (stay) {
 
+            // Prompt user to choose an action (add event or exit program)
+            System.out.println("Actions: " +
+                    "\n1. Add an event" +
+                    "\n2. Exit program");
+            System.out.print("Select an action (enter the corresponding number): ");
+            int userAction = scan.nextInt();
+
+            System.out.println();
+
+            if (userAction == 1) { //add event
+
+                //Prompt user for type of event they want to add
+                System.out.println("Types of events:" +
+                        "\n1. Deadline"); //only option for now
+                System.out.print("Select the type of event you want to add (enter the corresponding number): ");
+                int eventType = scan.nextInt();
+
+                System.out.println();
+
+                if (eventType == 1) {
+                    //Prompt for details of event (name, end date, priority, course, etc.)
+                    System.out.print("Enter the name of the deadline: ");
+                    String eventName = in.nextLine();
+
+                    System.out.print("Enter the due date (format: 'dd-mm-yyyy hh:mm AM/PM') : ");
+                    String eventEndDate = in.nextLine();
+                    LocalDateTime eventDeadline = LocalDateTime.parse(eventEndDate, customFormat);
+
+                    //if date == date of an event in user's event list, print there's a conflict
+
+                    System.out.print("Enter the priority of the deadline (0 = high, 1 = mid, 2 = low): ");
+                    int eventPriority = scan.nextInt();
+
+                    System.out.println("Your course list: ");
+                    for (int i = 1; i <= userManager.viewCourses().size(); i++) {
+                        System.out.printf("%d. %s\n", i, userManager.viewCourses().get(i-1));
+                    }
+                    System.out.print("Select the course this deadline is for (enter the corresponding number): ");
+                    int eventCourseNum = scan.nextInt();
+                    String eventCourseName = userManager.viewCourses().get(eventCourseNum - 1);
+
+                    //Create + add Deadline event object using UserManager
+                    userManager.addDeadlineEvent(eventName, eventPriority, eventDeadline, eventCourseName);
+                }
+
+                System.out.println();
+
+                //Print that the event has been created with its details
+                System.out.println("Your current events and deadlines: ");
+                for (Event e : userManager.viewEventList()) {
+                    System.out.println(e);
+                }
+
+                System.out.println("-------------------------");
+
+            }
+            else {
+                stay = false;
+            }
+        }
     }
 }
+
+

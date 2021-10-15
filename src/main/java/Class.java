@@ -1,6 +1,5 @@
-// TO BE IMPLEMENTED IN PHASE 1
-//
-// import java.time.LocalDate;
+//Change to local date
+//import java.util.Date;
 //
 //public class Class extends Work {
 //
