@@ -73,13 +73,13 @@ public class Event {
         return priority;
     }
 
-    /**
-     * Gets the start date of event
-     * @return the start date of event as a Date object
-     */
-    public LocalDateTime getStartDate() {
-        return startDate;
-    }
+//    /**
+//     * Gets the start date of event
+//     * @return the start date of event as a Date object
+//     */
+//    public LocalDateTime getStartDate() {
+//        return startDate;
+//    }
 
     /**
      * Gets the end date of event
@@ -89,11 +89,24 @@ public class Event {
         return endDate;
     }
 
-    /**
-     * Gets the completion status of event
-     * @return the event completion status as a boolean object
-     */
-    public boolean isCompleted() {
-        return completed;
+// NOTE: TO BE IMPLEMENTED LATER IN PHASE 1!!
+//    /**
+//     * Gets the completion status of event
+//     * @return the event completion status as a boolean object
+//     */
+//    public boolean isCompleted() {
+//        return completed;
+//    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
+    }
+
+    public void setEndDate(LocalDateTime endDate) {
+        this.endDate = endDate;
     }
 }
