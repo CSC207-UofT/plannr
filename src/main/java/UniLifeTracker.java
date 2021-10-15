@@ -10,7 +10,7 @@ public class UniLifeTracker {
         //Setting things up
         Scanner in = new Scanner(System.in);
         Scanner scan = new Scanner(System.in);
-        DateTimeFormatter customFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        DateTimeFormatter customFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm a");
 
         // Onboard user
         UserManager userManager = SystemInOut.onBoardUser();
