@@ -20,8 +20,11 @@ public class UserManager {
         return u.getEventList();
     }
 
+    public ArrayList<String> viewCourses() {
+        return u.getCourses();
+    }
 
-    @Override
+        @Override
     public String toString() {
         return "bob";
     }
