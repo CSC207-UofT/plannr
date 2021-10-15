@@ -8,8 +8,6 @@ public class UniLifeTracker {
         //Setting things up
         Scanner in = new Scanner(System.in);
         Scanner scan = new Scanner(System.in);
-
-        //DeadlineManager deadlineManager = new DeadlineManager();
         DateTimeFormatter customFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm a");
 
         // A little welcome
@@ -102,13 +100,6 @@ public class UniLifeTracker {
                 stay = false;
             }
         }
-
-
-
-
-
-
-
     }
 }
 
