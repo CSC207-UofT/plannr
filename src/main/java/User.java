@@ -22,20 +22,6 @@ public class User {
     }
 
     /**
-     * Construct a User, giving them the given name,
-     * courses, school, and setting an empty events list.
-     *
-     * @param name      The User's
-     * @param school    The User's school
-     * @param eventList The User's list of all events
-     */
-    public User (String name, String school) {
-        this.name = name;
-        this.school = school;
-        this.eventList = new ArrayList<Event>();
-    }
-
-    /**
      * getter method for name
      * @return a String that describes the User's name
      */
@@ -65,5 +51,13 @@ public class User {
      */
     public ArrayList<Event> getEventList() {
         return eventList;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSchool(String school) {
+        this.school = school;
     }
 }
