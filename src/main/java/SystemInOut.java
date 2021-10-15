@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class SystemInOut {
-    private static Scanner sc;
+    private static final Scanner sc = new Scanner(System.in);
 
     /* This method will create the User
      * @return
@@ -42,7 +42,7 @@ public class SystemInOut {
         // Get user's university
         String uni = "";
         do {
-            System.out.println("What's name of the school you attend?");
+            System.out.println("Hi " + name + "! What's name of the school you attend?");
             try {
                 uni = sc.nextLine();
                 // Catch empty strings
