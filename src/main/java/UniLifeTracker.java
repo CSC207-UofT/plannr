@@ -12,31 +12,8 @@ public class UniLifeTracker {
         Scanner scan = new Scanner(System.in);
         DateTimeFormatter customFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm a");
 
-        // A little welcome
-        System.out.println("Welcome to Uni Life Tracker! \nWe are here to help you track your disastrous life!");
-
-        System.out.println("-------------------------");
-
-        // Prompt user for their name + university + courses they attend
-        System.out.print("What is your name? ");
-        String userName = in.nextLine();
-
-        System.out.print("What is the name of the school you attend? ");
-        String userSchool = in.nextLine();
-
-        System.out.print("How many classes are you attending? ");
-        int userNumCourses = scan.nextInt();
-        ArrayList<String> userCourses = new ArrayList<>();
-        for (int i = 1; i <= userNumCourses; i++) {
-            System.out.printf("Enter course #%d: ", i);
-            userCourses.add(in.nextLine());
-        }
-
-        //Create User object using UserManager
-        UserManager userManager = new UserManager(userName, userCourses, userSchool);
-
-        System.out.println("-------------------------");
-
+        // Onboard user
+        UserManager userManager = SystemInOut.userOnBoard();
 
         //while loop stops when user wants to exit program
         boolean stay = true;
