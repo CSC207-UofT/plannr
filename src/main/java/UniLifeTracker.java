@@ -13,7 +13,7 @@ public class UniLifeTracker {
         DateTimeFormatter customFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm a");
 
         // Onboard user
-        UserManager userManager = SystemInOut.userOnBoard();
+        UserManager userManager = SystemInOut.onBoardUser();
 
         //while loop stops when user wants to exit program
         boolean stay = true;
