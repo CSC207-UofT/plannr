@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class SystemInOut {
     private static final Scanner sc = new Scanner(System.in);
-    public static final DateTimeFormatter DATEFORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+    public static final DateTimeFormatter DATEFORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm a");
     /**
      * This method will create the User
      * @return an UserManager object
