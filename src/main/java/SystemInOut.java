@@ -166,16 +166,16 @@ public class SystemInOut {
                         // Create and add deadline event object using UserManager
                         userManager.addDeadlineEvent(eventName, eventPriority, eventEndDate, ddlCourseName);
                     }
+                    // Print all the user's events with their details
+                    System.out.println("Your current events and deadlines: ");
+                    for (Event e : userManager.viewEventList()) {
+                        System.out.println(e);
+                    }
+                    System.out.println("-------------------------");
                 } else{ stay = false;}
             } catch (Exception e) {
                 System.out.println("Invalid input, please try again.");
             }
-            // Print all the user's events with their details
-            System.out.println("Your current events and deadlines: ");
-            for (Event e : userManager.viewEventList()) {
-                System.out.println(e);
-            }
-            System.out.println("-------------------------");
         } while (stay);
     }
 }
