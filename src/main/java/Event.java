@@ -39,6 +39,14 @@ public class Event {
     }
 
     /**
+     * Gets the start date of event
+     * @return the start date of event as a Date object
+     */
+    public LocalDateTime getStartDate() {
+        return startDate;
+    }
+    
+    /**
      * Gets the end date of event
      * @return the end date of event as a Date object
      */
