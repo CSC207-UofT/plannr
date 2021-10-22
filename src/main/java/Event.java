@@ -3,8 +3,15 @@ import java.time.LocalDateTime;
 public class Event {
     private String name;
     private int priority;
+    private LocalDateTime startDate;
     private LocalDateTime endDate;
 
+    public Event(String name, int priority, LocalDateTime startDate, LocalDateTime endDate) {
+        this.name = name;
+        this.priority = priority;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
 
     /**
      * Construct an Event, giving them the given name,
