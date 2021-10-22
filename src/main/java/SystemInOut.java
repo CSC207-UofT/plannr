@@ -125,6 +125,7 @@ public class SystemInOut {
      * This deals with everything related to the inputs for creating events during runtime
      * @param userManager the manager of the current user
      */
+    //TODO: fix the infinite loop bug here
     private static void addEventDialog(UserManager userManager) {
         // Condition for while loop
         boolean stay = true;
