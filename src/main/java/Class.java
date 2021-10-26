@@ -36,6 +36,12 @@ public class Class extends Event {
     public String getCourse() { return this.course; }
 
     /**
+     * Gets the location of the Class event
+     * @return the location of the Class event as a String object
+     */
+    public String getLocation() { return this.location; }
+
+    /**
      * toString method
      * @return a String that describes the Class event
      */
