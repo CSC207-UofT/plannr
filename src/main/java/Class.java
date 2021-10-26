@@ -9,7 +9,6 @@ public class Class extends Event {
 
     private String location;
     private String course;
-    private String note;
 
     /**
      * Construct a Class event, giving it the given name,
@@ -22,14 +21,12 @@ public class Class extends Event {
      * @param endDate   The Class's end date
      * @param course    The Class's course code
      * @param location  The Class's location
-     * @param note      The Class's note
      */
     public Class(String name, int priority, LocalDateTime startDate, LocalDateTime endDate,
-                 String course, String location, String note) {
+                 String course, String location) {
         super(name, priority, startDate, endDate);
         this.location = location;
         this.course = course;
-        this.note = note;
     }
 
     /**
