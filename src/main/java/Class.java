@@ -39,12 +39,6 @@ public class Class extends Event {
     public String getCourse() { return this.course; }
 
     /**
-     * Gets the notes of the Class event
-     * @return the note of the Class event as a String object
-     */
-    public String getNote() { return this.note; }
-
-    /**
      * toString method
      * @return a String that describes the Class event
      */
