@@ -1,3 +1,7 @@
+package Entities;
+
+import Entities.Event;
+
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
@@ -10,13 +14,13 @@ public class Deadline extends Event {
     DateTimeFormatter customFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm a");
 
     /**
-     * Construct Deadline event, giving them the given
+     * Construct Entities.Deadline event, giving them the given
      * name, priority, end date, and course name.
      *
-     * @param name   This Deadline's name
-     * @param priority  This Deadline's priority
-     * @param endDate  This Deadline's due date
-     * @param courseName  This Deadline's course which it's from
+     * @param name   This Entities.Deadline's name
+     * @param priority  This Entities.Deadline's priority
+     * @param endDate  This Entities.Deadline's due date
+     * @param courseName  This Entities.Deadline's course which it's from
      */
     public Deadline(String name, int priority, LocalDateTime endDate, String courseName) {
         super(name, priority, endDate);
@@ -29,7 +33,7 @@ public class Deadline extends Event {
 
     /**
      * toString method
-     * @return a String that describes this Deadline event.
+     * @return a String that describes this Entities.Deadline event.
      */
     @Override
     public String toString() {
@@ -43,7 +47,7 @@ public class Deadline extends Event {
         else {
             strPriority = "low";
         }
-        return String.format("Deadline (%s priority): The assignment %s from %s is due on %s",
+        return String.format("Entities.Deadline (%s priority): The assignment %s from %s is due on %s",
                 strPriority, this.getName(), this.getCourse(), this.getEndDate().format(customFormat));
     }
 }

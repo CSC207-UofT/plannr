@@ -1,3 +1,6 @@
+import Entities.Event;
+import UseCases.UserManager;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -7,8 +10,8 @@ public class SystemInOut {
     private static final Scanner sc = new Scanner(System.in);
     public static final DateTimeFormatter DATEFORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
     /**
-     * This method will create the User
-     * @return an UserManager object
+     * This method will create the Entities.User
+     * @return an UseCases.UserManager object
      */
     public static UserManager onBoardUser() {
         // Welcome message
@@ -111,7 +114,7 @@ public class SystemInOut {
                 System.out.println("Invalid input, please try again.");
             }
 
-            // User chose to create new event, calls helper and set nextLine back to 0 to continue the loop
+            // Entities.User chose to create new event, calls helper and set nextLine back to 0 to continue the loop
             // NOTE: Future actions will be dealt with here using the if statements
             if (nextLine == 1) {
                 addEventDialog(userManager);
@@ -134,7 +137,7 @@ public class SystemInOut {
             // Provide options
             System.out.println("Please choose the type of event you wish to create:");
             System.out.println("1. Return to main menu" +
-                    "\n2. Deadline");
+                    "\n2. Entities.Deadline");
             // Get user input and catch for errors
             try {
                 int nextLine = sc.nextInt();
@@ -164,7 +167,7 @@ public class SystemInOut {
                         int ddlCourseNum = sc.nextInt();
                         // Get course name
                         String ddlCourseName = userManager.viewCourses().get(ddlCourseNum-1);
-                        // Create and add deadline event object using UserManager
+                        // Create and add deadline event object using UseCases.UserManager
                         userManager.addDeadlineEvent(eventName, eventPriority, eventEndDate, ddlCourseName);
                     }
                     // Print all the user's events with their details

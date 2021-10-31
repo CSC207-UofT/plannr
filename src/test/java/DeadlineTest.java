@@ -1,4 +1,5 @@
 //import static org.junit.jupiter.api.Assertions.*;
+import Entities.Deadline;
 import org.junit.*;
 import static org.junit.Assert.*;
 
@@ -28,7 +29,7 @@ public class DeadlineTest {
 
     @Test(timeout = 50)
     public void TestToString() {
-        String deadlineString = "Deadline (high priority): " +
+        String deadlineString = "Entities.Deadline (high priority): " +
                 "The assignment Phase 0 from CSC207H1 is due on " +
                 "15-10-2021 11:59 p.m.";
         assertEquals(deadlineString, deadline.toString());

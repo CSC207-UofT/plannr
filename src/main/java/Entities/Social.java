@@ -1,16 +1,18 @@
-/*
+package Entities;/*
 NOTE: TO BE IMPLEMENTED LATER IN PHASE 1!!
 */
+import Entities.Event;
+
 import java.util.ArrayList;
 import java.time.LocalDateTime;
 
-public class Social extends Event{
+public class Social extends Event {
     private int duration;
     private String location;
     private ArrayList<String> participants;
 
     /**
-     * Social events class constructor, which calls its super class Event
+     * Entities.Social events class constructor, which calls its super class Entities.Event
      * This constructor LETS THE USER PROVIDE PARTICIPANTS
      * @param name          Name of event
      * @param priority      Priority of event
@@ -24,14 +26,14 @@ public class Social extends Event{
                   int duration, String location, ArrayList<String> participants) {
         // Calls the super method
         super(name, priority, startDate, endDate);
-        // Assigns instance variables unique to Social
+        // Assigns instance variables unique to Entities.Social
         this.duration = duration;
         this.location = location;
         this.participants = participants;
     }
 
     /**
-     * Social events class constructor, which calls its super class Event
+     * Entities.Social events class constructor, which calls its super class Entities.Event
      * This constructor DOES NOT REQUIRE USER TO INPUT LIST OF PARTICIPANTS
      * @param name          Name of event
      * @param priority      Priority of event
@@ -44,23 +46,23 @@ public class Social extends Event{
                   int duration, String location) {
         // Calls the super method
         super(name, priority, startDate, endDate);
-        // Assigns instance variables unique to Social
+        // Assigns instance variables unique to Entities.Social
         this.duration = duration;
         this.location = location;
         this.participants = new ArrayList<String>();
     }
 
     /**
-     * Gets the duration of this Social event
-     * @return the duration of this Social event
+     * Gets the duration of this Entities.Social event
+     * @return the duration of this Entities.Social event
      */
     public int getDuration() {
         return this.duration;
     }
 
     /** ========== SUBJECT TO CHANGE ============
-     * toString method for Social, used for printing to screen
-     * @return a String that describes this Social event
+     * toString method for Entities.Social, used for printing to screen
+     * @return a String that describes this Entities.Social event
      */
     @Override
     public String toString() {

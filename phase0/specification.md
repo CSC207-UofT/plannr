@@ -5,6 +5,6 @@
 
 + **Life:** As a user, I can add/edit/view/delete (use case) events (entity) covering four personal matters, including social events, work, and holidays.
 
-+ **Expenses:** As a user, I can budget my monthly expenses (entity) by updating my income monthly and inputting my monthly expenses to see how much I have left (use case), by adding up all the expenses and subtracting that by the monthly income. I will get notified when my monthly budget is about to run out (when I have only 3% of my monthly budget remaining).
++ **Entities.Expenses:** As a user, I can budget my monthly expenses (entity) by updating my income monthly and inputting my monthly expenses to see how much I have left (use case), by adding up all the expenses and subtracting that by the monthly income. I will get notified when my monthly budget is about to run out (when I have only 3% of my monthly budget remaining).
 
 Upon app launch, users see the today view, which covers all current responsibilities and events in a form of a to-do list, allowing users to check off completed tasks. This landing page also features a menu that allows the user to view one of the three categories (mentioned above) to alter/view events.

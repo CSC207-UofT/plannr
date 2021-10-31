@@ -1,3 +1,5 @@
+package Entities;
+
 import java.time.LocalDateTime;
 
 public class Event {
@@ -14,14 +16,14 @@ public class Event {
     }
 
     /**
-     * Construct an Event, giving them the given name,
+     * Construct an Entities.Event, giving them the given name,
      * priority, and end date.
      *
      * This constructor does not need startDate
      *
-     * @param name      The Event's name
-     * @param priority  The Event's priority
-     * @param endDate   The Event's end date
+     * @param name      The Entities.Event's name
+     * @param priority  The Entities.Event's priority
+     * @param endDate   The Entities.Event's end date
      */
     public Event(String name, int priority, LocalDateTime endDate) {
         this.name = name;
@@ -30,8 +32,8 @@ public class Event {
     }
 
     /**
-     * Gets the name of the Event
-     * @return the name of the Event as a String
+     * Gets the name of the Entities.Event
+     * @return the name of the Entities.Event as a String
      */
     public String getName() {
         return name;
