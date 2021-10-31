@@ -1,3 +1,7 @@
+package Entities;
+
+import Entities.Event;
+
 import java.util.ArrayList;
 
 public class User {
@@ -7,12 +11,12 @@ public class User {
     private ArrayList<Event> eventList;
 
     /**
-     * Construct a User, giving them the given name,
+     * Construct a Entities.User, giving them the given name,
      * courses, school, and setting an empty events list.
      *
-     * @param name      The User's name
-     * @param courses   The User's course list
-     * @param school    The User's school
+     * @param name      The Entities.User's name
+     * @param courses   The Entities.User's course list
+     * @param school    The Entities.User's school
      */
     public User(String name, ArrayList<String> courses, String school) {
         this.name = name;
@@ -23,7 +27,7 @@ public class User {
 
     /**
      * getter method for name
-     * @return a String that describes the User's name
+     * @return a String that describes the Entities.User's name
      */
     public String getName() {
         return name;
@@ -31,7 +35,7 @@ public class User {
 
     /**
      * getter method for courses
-     * @return an ArrayList that describes the User's current course list
+     * @return an ArrayList that describes the Entities.User's current course list
      */
     public ArrayList<String> getCourses() {
         return courses;

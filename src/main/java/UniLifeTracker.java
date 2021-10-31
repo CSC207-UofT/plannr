@@ -1,3 +1,5 @@
+import UseCases.UserManager;
+
 public class UniLifeTracker {
 
     public static void main (String[] args) {

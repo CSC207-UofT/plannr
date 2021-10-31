@@ -1,4 +1,4 @@
-/*
+package Entities;/*
 NOTE: TO BE IMPLEMENTED LATER IN PHASE 1!!
 */
 
@@ -10,14 +10,14 @@ public class Assessment extends Event {
     private String course; //course the assessment is from
 
     /**
-     * Constructs a Assessment event, giving it the given name, priority,
+     * Constructs a Entities.Assessment event, giving it the given name, priority,
      * start date, end date, and course
      *
-     * @param name  This Assessment's name
-     * @param priority  This Assessment's priority
-     * @param startDate  This Assessment's start date
-     * @param endDate  This Assessment's end date
-     * @param course  This Assessment's course from which its from.
+     * @param name  This Entities.Assessment's name
+     * @param priority  This Entities.Assessment's priority
+     * @param startDate  This Entities.Assessment's start date
+     * @param endDate  This Entities.Assessment's end date
+     * @param course  This Entities.Assessment's course from which its from.
      */
     public Assessment(String name, int priority, LocalDateTime startDate, LocalDateTime endDate, String course) {
         super(name, priority, startDate, endDate);
@@ -30,8 +30,8 @@ public class Assessment extends Event {
     }
 
     /**
-     * Get duration of this Assessment
-     * @return duration of this Assessment
+     * Get duration of this Entities.Assessment
+     * @return duration of this Entities.Assessment
      */
     public long getDuration() {
         return this.duration;
@@ -39,7 +39,7 @@ public class Assessment extends Event {
 
     /**
      * toString method
-     * @return a description of this Assessment event.
+     * @return a description of this Entities.Assessment event.
      */
     @Override
     public String toString() {

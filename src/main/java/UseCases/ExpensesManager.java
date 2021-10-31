@@ -1,3 +1,5 @@
+package UseCases;
+
 /*
 NOTE: TO BE IMPLEMENTED LATER IN PHASE 1!!
 */

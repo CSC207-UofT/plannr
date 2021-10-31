@@ -1,3 +1,8 @@
+package UseCases;
+
+import Entities.Deadline;
+import Entities.Event;
+import Entities.User;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

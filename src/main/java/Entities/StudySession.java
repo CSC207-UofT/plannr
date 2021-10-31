@@ -1,4 +1,4 @@
-/*
+package Entities;/*
 NOTE: TO BE IMPLEMENTED LATER IN PHASE 1!!
 */
 import java.util.ArrayList;
