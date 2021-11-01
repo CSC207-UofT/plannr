@@ -28,9 +28,10 @@ public class SystemOut {
             System.out.println("What's your name?");
             name = SystemIn.getStrInput();
             if (name.equals("Invalid")) {
-                System.out.println("Invalid input, please try again");
+                printErrorMessage();
             }
         }
+        System.out.println("Nice meeting you, " + name + "!");
         result.add(name);
 
         // Empty variable to store user's school information
@@ -40,7 +41,7 @@ public class SystemOut {
             System.out.println("What's the name of the school you are attending?");
             school = SystemIn.getStrInput();
             if (school.equals("Invalid")) {
-                System.out.println("Invalid input, please try again");
+                printErrorMessage();
             }
         }
         result.add(school);
@@ -58,24 +59,42 @@ public class SystemOut {
         // Empty String to store user's input
         String input = "";
         // Prompt user
-        System.out.print("What classes are you attending? If you don't have any courses at the moment, please " +
-                "type n.\n" + "Please enter the course ID: ");
+        System.out.print("What classes are you attending?");
+
         while (!input.equals("n")) {
+            System.out.println("Please enter the course ID or type n to stop.");
             // Get user's input
             input = SystemIn.getStrInput();
             // Check if String is invalid or empty
             if (input.equals("Invalid") || input.length() == 0) {
-                System.out.println("Invalid input, please try again.");
+                printErrorMessage();
             } else if (courses.contains(input)) { // check if course already added
                 System.out.println("Course already added, please try another one.");
-            } else {
+            } else if (!input.equals("n")){
                 courses.add(input);
                 System.out.println("Course \"" + input + "\" added!");
             }
-            System.out.println("Please enter the course ID or type n to stop.");
         }
 
         return courses;
     }
 
+    /**
+     * This method prints out the menu of the program
+     */
+    public static void printMenu() {
+        // Prompt valid options
+        System.out.println("ACTIONS:\n1. Add an event\n2. Exit program");
+    }
+
+    /**
+     * This method prints the prompt asking for user's input to choose menu item
+     */
+    public static void promptMenuInput() {
+        System.out.println("Please type the number corresponding to the options to choose an action: ");
+    }
+
+    public static void printErrorMessage() {
+        System.out.println("Invalid input, please try again");
+    }
 }

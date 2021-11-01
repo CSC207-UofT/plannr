@@ -1,23 +1,16 @@
 package Controllers;
 
 import Gateways.SystemOut;
-import UseCases.UserManager;
 
-import java.util.ArrayList;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class SystemIn {
     // Create a static scanner
     private static final Scanner sc = new Scanner(System.in);
-
-    public static UserManager onBoardUser() {
-        // Get user's information by invoking the getUserInfoDialog
-        ArrayList<String> info = SystemOut.getUserInfoDialog();
-        // Get user's courses by invoking the getUserCoursesDialog
-        ArrayList<String> courses = SystemOut.getUserCoursesDialog();
-
-        return new UserManager(info.get(0), courses, info.get(1));
-    }
+    // Date format for input
+    public static final DateTimeFormatter DATEFORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
 
     /**
      * This method will get String inputs from the user
@@ -37,9 +30,28 @@ public class SystemIn {
      */
     public static int getIntInput() {
         try {
-            return sc.nextInt();
+            int input = sc.nextInt();
+            sc.nextLine();
+            return input;
         } catch (Exception e) {
+            sc.nextLine();
             return -1;
         }
+    }
+
+    /**
+     * This method will get date from user
+     * @return a LocalDateTime object
+     */
+    public static LocalDateTime getDate() {
+        String dateInput = getStrInput();
+        LocalDateTime result = LocalDateTime.parse("01-01-1900 00:00", DATEFORMAT);
+        // Try parse it as a LocalDateTime
+        try {
+            result = LocalDateTime.parse(dateInput, DATEFORMAT);
+        } catch (Exception e) {
+            return result;
+        }
+        return result;
     }
 }
