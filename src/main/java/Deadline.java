@@ -43,6 +43,7 @@ public class Deadline extends Event {
         else {
             strPriority = "low";
         }
+
         return String.format("Deadline (%s priority): The assignment %s from %s is due on %s",
                 strPriority, this.getName(), this.getCourse(), this.getEndDate().format(customFormat));
     }
