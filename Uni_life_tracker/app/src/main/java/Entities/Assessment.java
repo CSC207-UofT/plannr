@@ -2,6 +2,9 @@ package Entities;/*
 NOTE: TO BE IMPLEMENTED LATER IN PHASE 1!!
 */
 
+
+import androidx.annotation.NonNull;
+
 import java.time.LocalDateTime;
 import java.util.concurrent.TimeUnit;
 
@@ -41,11 +44,10 @@ public class Assessment extends Event {
      * toString method
      * @return a description of this Entities.Assessment event.
      */
+    @NonNull
     @Override
     public String toString() {
-        String result =
-                "This assessment from " + this.course + " starts on " + this.getStartDate()
-                + " and ends on " + this.getEndDate() + " and lasts " + this.duration + " hours.";
-        return result;
+        return "This assessment from " + this.course + " starts on " + this.getStartDate()
+        + " and ends on " + this.getEndDate() + " and lasts " + this.duration + " hours.";
     }
 }

@@ -1,6 +1,7 @@
 package Entities;
 
 import Entities.Event;
+import androidx.annotation.NonNull;
 
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
@@ -35,6 +36,7 @@ public class Deadline extends Event {
      * toString method
      * @return a String that describes this Entities.Deadline event.
      */
+    @NonNull
     @Override
     public String toString() {
         String strPriority;
