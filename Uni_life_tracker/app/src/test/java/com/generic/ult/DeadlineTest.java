@@ -1,4 +1,4 @@
-//import static org.junit.jupiter.api.Assertions.*;
+package com.generic.ult;//import static org.junit.jupiter.api.Assertions.*;
 import Entities.Deadline;
 import org.junit.*;
 import static org.junit.Assert.*;
