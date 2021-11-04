@@ -4,6 +4,7 @@ NOTE: TO BE IMPLEMENTED LATER IN PHASE 1!!
 //Note for generic name: Change to LocalDate!
 
 import Entities.Event;
+import androidx.annotation.NonNull;
 
 import java.time.LocalDateTime;
 
@@ -47,6 +48,7 @@ public class Class extends Event {
      * toString method
      * @return a String that describes the Entities.Class event
      */
+    @NonNull
     @Override
     public String toString() { return super.getName() + ": " + this.getCourse(); }
 }

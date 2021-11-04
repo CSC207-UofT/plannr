@@ -2,6 +2,7 @@ package Entities;/*
 NOTE: TO BE IMPLEMENTED LATER IN PHASE 1!!
 */
 import Entities.Event;
+import androidx.annotation.NonNull;
 
 import java.time.LocalDateTime;
 
@@ -36,6 +37,7 @@ public class Work extends Event {
      * toString method
      * @return a String that describes the Entities.Work event
      */
+    @NonNull
     @Override
     public String toString() { return super.getName(); }
 }
