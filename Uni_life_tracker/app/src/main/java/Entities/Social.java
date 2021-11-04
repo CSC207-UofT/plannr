@@ -2,6 +2,7 @@ package Entities;/*
 NOTE: TO BE IMPLEMENTED LATER IN PHASE 1!!
 */
 import Entities.Event;
+import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.time.LocalDateTime;
@@ -49,7 +50,7 @@ public class Social extends Event {
         // Assigns instance variables unique to Entities.Social
         this.duration = duration;
         this.location = location;
-        this.participants = new ArrayList<String>();
+        this.participants = new ArrayList<>();
     }
 
     /**
@@ -64,6 +65,7 @@ public class Social extends Event {
      * toString method for Entities.Social, used for printing to screen
      * @return a String that describes this Entities.Social event
      */
+    @NonNull
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder((

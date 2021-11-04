@@ -3,6 +3,7 @@ package UseCases;
 import Entities.Deadline;
 import Entities.Event;
 import Entities.User;
+import androidx.annotation.NonNull;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -30,6 +31,7 @@ public class UserManager {
         return u.getCourses();
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "bob";
