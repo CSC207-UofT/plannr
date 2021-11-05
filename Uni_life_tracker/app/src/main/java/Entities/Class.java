@@ -17,8 +17,8 @@ public class Class extends Event {
 
     /**
      * Construct a Entities.Class event, giving it the given name,
-     * priority, start date, end date, the course code,
-     * the location, and a note.
+     * priority, start date, end date, the course code, and
+     * the location
      *
      * @param name      The Entities.Class's name
      * @param priority  The Entities.Class's priority
