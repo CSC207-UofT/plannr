@@ -5,4 +5,5 @@
     <string name="expensess">Expenses</string>
     <string name="go_to_expenses_view">Go to Expenses View</string>
     <string name="add_amount">Add Amount</string>
+    <string name="Expenses">Expenses</string>
 </resources>
