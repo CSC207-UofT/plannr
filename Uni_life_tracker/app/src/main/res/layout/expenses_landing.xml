@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical" android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+
+    <TextView
+            android:layout_width="193dp"
+            android:layout_height="96dp"
+            android:layout_marginTop="75dp"
+            android:layout_marginStart="65dp"
+            android:text="@string/expensess"
+            android:textSize="36sp"
+            android:textColor="#070707"
+            android:id="@+id/expenses_title"
+            android:fontFamily="@font/roboto_mono_bold"/>
+
+
+    <TextView
+            android:layout_width="270dp"
+            android:layout_height="96dp"
+            android:text="@string/welcome_please_add_your_monthly_income"
+            android:layout_marginTop="75dp"
+            android:layout_marginStart="65dp"
+            android:layout_marginBottom="384dp"
+            android:id="@+id/e_welcome_text"
+            android:fontFamily="@font/robotomono"
+            android:textColor="#070707"
+            android:textSize="18sp"
+            android:gravity="center"
+    />
+
+
+</LinearLayout>
