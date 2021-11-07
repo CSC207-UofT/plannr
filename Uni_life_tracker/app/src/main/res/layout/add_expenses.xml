@@ -10,6 +10,21 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:background="#070707"
-            app:layout_constraintHorizontal_bias="0.454" android:layout_marginBottom="664dp"/>
+            app:layout_constraintHorizontal_bias="0.454"
+            android:layout_marginBottom="664dp"/>
+    <TextView
+            android:layout_width="193dp"
+            android:layout_height="96dp"
+            android:text="@string/add_expenses"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.025"
+            app:layout_constraintHorizontal_bias="0.261"
+            android:fontFamily="@font/roboto_mono_bold"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:id="@+id/expenses_title"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

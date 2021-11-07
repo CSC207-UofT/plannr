@@ -35,23 +35,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:id="@+id/e_horizontal_line">
+            android:id="@+id/e_horizontal_line" tools:layout_editor_absoluteY="-16dp"
+            tools:layout_editor_absoluteX="153dp">
 
-        <View
-                android:layout_width="265dp"
-                android:layout_height="1dp"
-                android:background="#070707"
-                android:layout_marginTop="390dp"
-                android:layout_marginLeft="75dp"/>
-
-        <Button
-                android:layout_width="300dp"
-                android:layout_height="100dp"
-                android:layout_marginTop="170dp"
-                android:layout_marginLeft="65dp"
-                android:id="@+id/e_go_to_view_button"
-                android:text="@string/go_to_expenses_view"
-                android:backgroundTint="#070707"/>
         <TextView
                 android:layout_width="200dp"
                 android:layout_height="96dp"
@@ -59,7 +45,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                android:layout_marginTop="-335dp"
+                android:layout_marginTop="300dp"
                 android:layout_marginLeft="110dp"
                 android:fontFamily="@font/roboto_mono"
                 android:textColor="#B6ADAD"
@@ -68,8 +54,40 @@
                 tools:ignore="HardcodedText"
                 android:id="@+id/e_add_amount"/>
 
+        <View
+                android:layout_width="265dp"
+                android:layout_height="1dp"
+                android:background="#070707"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginTop="00dp"
+                android:layout_marginLeft="75dp"/>
 
-
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="56dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginTop="200dp"
+                android:layout_marginLeft="200dp"
+                android:src="@drawable/plus_button"
+                android:contentDescription="@string/submit"
+                android:layout_margin="20dp"/>
+        <Button
+                android:layout_width="300dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginLeft="65dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:id="@+id/e_go_to_view_button"
+                android:text="@string/go_to_expenses_view"
+                android:backgroundTint="#070707"/>
 
 
     </LinearLayout>
