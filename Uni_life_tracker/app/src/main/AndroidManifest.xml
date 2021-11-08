@@ -12,6 +12,11 @@
             android:theme="@style/Theme.Uni_life_tracker"
             tools:ignore="AllowBackup">
         <activity
+                android:name=".Add_expenses"
+                android:label="@string/title_activity_add_expenses"
+                android:theme="@style/Theme.Uni_life_tracker.NoActionBar">
+        </activity>
+        <activity
                 android:name=".expenses_landing"
                 android:label="@string/title_activity_expenses_landing"
                 android:theme="@style/Theme.Uni_life_tracker.NoActionBar">
