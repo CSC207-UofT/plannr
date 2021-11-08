@@ -11,4 +11,5 @@
     <string name="name">Name:</string>
     <string name="date">Date:</string>
     <string name="amount">Amount:</string>
+    <string name="dollar_sign">$</string>
 </resources>

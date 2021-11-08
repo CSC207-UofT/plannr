@@ -104,5 +104,20 @@
             android:background="@drawable/rectangle"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintVertical_bias="0.49"/>
+    <TextView
+            android:layout_width="193dp"
+            android:layout_height="96dp"
+            android:text="@string/dollar_sign"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.543"
+            app:layout_constraintHorizontal_bias="0.513"
+            android:fontFamily="@font/roboto_mono_bold"
+            android:textSize="18sp"
+            android:textColor="#070707"
+            android:id="@+id/expense_dollar"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
