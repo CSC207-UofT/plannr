@@ -41,5 +41,16 @@
             android:textSize="18sp"
             android:textColor="#070707"
             android:id="@+id/expense_name"/>
+    <View
+            android:id="@+id/myRectangleView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:background="@drawable/rectangle"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintVertical_bias="0.193"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
