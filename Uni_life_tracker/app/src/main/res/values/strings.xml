@@ -9,4 +9,5 @@
     <string name="add_expenses">Add Expenses</string>
     <string name="submit">submit</string>
     <string name="name">Name:</string>
+    <string name="date">Date:</string>
 </resources>

@@ -53,4 +53,31 @@
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintVertical_bias="0.193"/>
 
+    <TextView
+            android:layout_width="193dp"
+            android:layout_height="96dp"
+            android:text="@string/date"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.374"
+            app:layout_constraintHorizontal_bias="0.146"
+            android:fontFamily="@font/robotomono"
+            android:textSize="18sp"
+            android:textColor="#070707"
+            android:id="@+id/expense_date"/>
+
+    <View
+            android:id="@+id/myRectangleView1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:background="@drawable/rectangle"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintVertical_bias="0.334"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
