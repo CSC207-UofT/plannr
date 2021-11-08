@@ -9,6 +9,8 @@
             android:layout_width="193dp"
             android:layout_height="96dp"
             android:text="@string/Expenses"
+            android:layout_marginStart="90dp"
+            android:layout_marginBottom="-200dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -23,7 +25,7 @@
     <TextView
             android:layout_width="270dp"
             android:layout_height="96dp"
-            android:text="Welcome Please Add Your Monthly Income"
+            android:text="Welcome Please Add an Expense"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -44,18 +46,18 @@
         <TextView
                 android:layout_width="200dp"
                 android:layout_height="33dp"
-                android:text="Add Amount"
+                android:text="Add Name"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 android:layout_marginTop="360dp"
-                android:layout_marginLeft="110dp"
+                android:layout_marginStart="110dp"
                 android:fontFamily="@font/roboto_mono"
                 android:textColor="#B6ADAD"
                 android:textSize="15sp"
                 android:gravity="center"
                 tools:ignore="HardcodedText"
-                android:id="@+id/e_add_amount"/>
+                android:id="@+id/e_add_name"/>
         <View
                 android:layout_width="265dp"
                 android:layout_height="1dp"
@@ -64,27 +66,61 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 android:layout_marginTop="1dp"
-                android:layout_marginLeft="73dp"/>
-
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fab"
-                android:layout_width="56dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
+                android:layout_marginStart="73dp"/>
+        <View
+                android:layout_width="265dp"
+                android:layout_height="1dp"
+                android:background="#070707"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                android:layout_marginTop="200dp"
-                android:layout_marginLeft="200dp"
-                android:src="@drawable/plus_button"
-                android:contentDescription="@string/submit"
-                android:layout_margin="20dp"/>
+                android:layout_marginTop="70dp"
+                android:layout_marginStart="73dp"/>
+        <TextView
+                android:layout_width="200dp"
+                android:layout_height="33dp"
+                android:text="Add Amount"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginTop="-35dp"
+                android:layout_marginStart="110dp"
+                android:fontFamily="@font/roboto_mono"
+                android:textColor="#B6ADAD"
+                android:textSize="15sp"
+                android:gravity="center"
+                tools:ignore="HardcodedText"
+                android:id="@+id/e_add_amount"/>
+
+        <View
+                android:layout_width="265dp"
+                android:layout_height="1dp"
+                android:background="#070707"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginTop="70dp"
+                android:layout_marginStart="73dp"/>
+        <TextView
+                android:layout_width="200dp"
+                android:layout_height="33dp"
+                android:text="Add Date"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginTop="-35dp"
+                android:layout_marginStart="110dp"
+                android:fontFamily="@font/roboto_mono"
+                android:textColor="#B6ADAD"
+                android:textSize="15sp"
+                android:gravity="center"
+                tools:ignore="HardcodedText"
+                android:id="@+id/e_add_date"/>
         <Button
                 android:layout_width="300dp"
                 android:layout_height="100dp"
-                android:layout_marginTop="100dp"
-                android:layout_marginLeft="65dp"
+                android:layout_marginTop="70dp"
+                android:layout_marginStart="65dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
