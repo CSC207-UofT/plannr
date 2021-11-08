@@ -10,4 +10,5 @@
     <string name="submit">submit</string>
     <string name="name">Name:</string>
     <string name="date">Date:</string>
+    <string name="amount">Amount:</string>
 </resources>
