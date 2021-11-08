@@ -1,7 +1,5 @@
-package Entities;/*
-NOTE: TO BE IMPLEMENTED LATER IN PHASE 1!!
-*/
-import Entities.Event;
+package Entities;
+
 import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
@@ -13,7 +11,7 @@ public class Social extends Event {
     private ArrayList<String> participants;
 
     /**
-     * Entities.Social events class constructor, which calls its super class Entities.Event
+     * Social events class constructor, which calls its super class Event
      * This constructor LETS THE USER PROVIDE PARTICIPANTS
      * @param name          Name of event
      * @param priority      Priority of event
@@ -34,7 +32,7 @@ public class Social extends Event {
     }
 
     /**
-     * Entities.Social events class constructor, which calls its super class Entities.Event
+     * Social events class constructor, which calls its super class Event
      * This constructor DOES NOT REQUIRE USER TO INPUT LIST OF PARTICIPANTS
      * @param name          Name of event
      * @param priority      Priority of event
@@ -54,7 +52,7 @@ public class Social extends Event {
     }
 
     /**
-     * Gets the duration of this Entities.Social event
+     * Gets the duration of this Social event
      * @return the duration of this Entities.Social event
      */
     public int getDuration() {
@@ -62,8 +60,8 @@ public class Social extends Event {
     }
 
     /** ========== SUBJECT TO CHANGE ============
-     * toString method for Entities.Social, used for printing to screen
-     * @return a String that describes this Entities.Social event
+     * toString method for Social, used for printing to screen
+     * @return a String that describes this Social event
      */
     @NonNull
     @Override
