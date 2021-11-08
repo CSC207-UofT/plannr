@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 public class Social extends Event {
     private int duration;
     private String location;
-    private ArrayList<String> participants;
+    private final ArrayList<String> participants;
 
     /**
      * Social events class constructor, which calls its super class Event
