@@ -87,4 +87,36 @@ public class Social extends Event {
 
         return result.toString();
     }
+
+    /**
+     * Changes the duration of the social event
+     * @param duration the new duration of the event
+     */
+    public void changeDuration(int duration) {
+        this.duration = duration;
+    }
+
+    /**
+     * Changes the location of the social event
+     * @param location the new location of the event
+     */
+    public void changeLocation(String location) {
+        this.location = location;
+    }
+
+    /**
+     * This method adds one participant to the participants
+     * @param person the new participant the user wish to add
+     */
+    public void addParticipant(String person) {
+        this.participants.add(person);
+    }
+
+    /**
+     * This method adds one participant to the participants
+     * @param person the new participant the user wish to add
+     */
+    public void removeParticipant(String person) {
+        this.participants.remove(person);
+    }
 }
