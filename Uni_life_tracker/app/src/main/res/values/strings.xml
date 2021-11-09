@@ -29,4 +29,5 @@
     <string name="x">X</string>
     <string name="x_arrow">x_arrow</string>
     <string name="add_expense">Add Expense</string>
+    <string name="add_expense_button">add_expense_button</string>
 </resources>
