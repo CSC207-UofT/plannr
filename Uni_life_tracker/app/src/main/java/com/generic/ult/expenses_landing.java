@@ -1,34 +1,32 @@
 package com.generic.ult;
 
 import android.os.Bundle;
-import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
-import android.view.View;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import com.generic.ult.databinding.ActivityExpensesLandingBinding;
+import com.google.android.material.snackbar.Snackbar;
 
 public class expenses_landing extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
-    private ActivityExpensesLandingBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityExpensesLandingBinding.inflate(getLayoutInflater());
+        com.generic.ult.databinding.ActivityExpensesLandingBinding binding = ActivityExpensesLandingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        setSupportActionBar(binding.toolbar);
+        //setSupportActionBar(binding.toolbar);
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_expenses_landing);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
-        binding.fab.setOnClickListener((View.OnClickListener) view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+        binding.eGoToViewButton.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show());
     }
 
