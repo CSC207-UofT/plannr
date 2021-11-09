@@ -13,6 +13,24 @@
             app:layout_constraintHorizontal_bias="0.454"
             android:layout_marginBottom="664dp"/>
 
+    <ImageButton
+            android:id="@+id/arrow_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="50dp"
+            android:layout_height="58dp"
+            android:src="@drawable/left_arrow"
+            android:padding="2dp"
+            android:scaleType="fitCenter"
+            android:background="#0000ffff"
+            app:layout_constraintHorizontal_bias="0.049"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            android:contentDescription="@string/left_arrow"/>
+
 
 
 

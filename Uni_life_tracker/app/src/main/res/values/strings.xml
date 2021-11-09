@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Uni_life_tracker</string>
+    <string name="left_arrow">left_arrow</string>
 </resources>
