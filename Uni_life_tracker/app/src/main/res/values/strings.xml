@@ -28,4 +28,5 @@
     <string name="expense_name">- Expense Name:</string>
     <string name="x">X</string>
     <string name="x_arrow">x_arrow</string>
+    <string name="add_expense">Add Expense</string>
 </resources>
