@@ -1,7 +1,4 @@
-package Entities;/*
-NOTE: TO BE IMPLEMENTED LATER IN PHASE 1!!
-*/
-
+package Entities;
 
 import androidx.annotation.NonNull;
 
@@ -22,7 +19,8 @@ public class Assessment extends Event {
      * @param endDate  This Entities.Assessment's end date
      * @param course  This Entities.Assessment's course from which its from.
      */
-    public Assessment(String name, int priority, LocalDateTime startDate, LocalDateTime endDate, String course) {
+    public Assessment(String name, int priority, LocalDateTime startDate,
+                      LocalDateTime endDate, String course) {
         super(name, priority, startDate, endDate);
         
         //figure out duration
@@ -41,13 +39,37 @@ public class Assessment extends Event {
     }
 
     /**
+     * Get the course this assessment is for
+     * @return course of this Entities.Assessment event
+     */
+    public String getCourse() { return this.course; }
+
+    /**
+     * Changes the course of this assessment
+     * @param course is the new course name
+     */
+    public void setCourse(String course) { this.course = course; }
+
+    /**
      * toString method
      * @return a description of this Entities.Assessment event.
      */
     @NonNull
     @Override
     public String toString() {
-        return "This assessment from " + this.course + " starts on " + this.getStartDate()
-        + " and ends on " + this.getEndDate() + " and lasts " + this.duration + " hours.";
+        String strPriority;
+        if (this.getPriority() == 0) {
+            strPriority = "high";
+        }
+        else if (this.getPriority() == 1) {
+            strPriority = "mid";
+        }
+        else {
+            strPriority = "low";
+        }
+        return String.format("Assessment (%s priority): %s from %s starts " +
+                "on %s and ends on %s with a duration of %s",
+                strPriority, this.getName(), this.getCourse(), this.getStartDate(),
+                this.getEndDate(), this.getDuration());
     }
 }
