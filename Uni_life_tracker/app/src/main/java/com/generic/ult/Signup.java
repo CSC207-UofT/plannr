@@ -42,7 +42,6 @@ public class Signup extends AppCompatActivity {
             return false;
         } else if (textInput == textInputPassword && !PASSWORD_REQ.matcher(Input).matches()) {
             StringBuilder str = passwordReq(Input);
-            str.append(PASSWORD_REQ.matcher(Input).matches());
             textInput.setError(str.toString());
             return false;
         } else {
