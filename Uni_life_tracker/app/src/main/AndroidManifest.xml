@@ -13,7 +13,7 @@
         </activity>
             <activity android:name=".Signup">
         </activity>
-        <activity android:name=".MainActivity" tools:ignore="ExtraText">
+        <activity android:name=".MainActivity"
             android:theme="@style/Theme.Uni_life_tracker"
             tools:ignore="AllowBackup"
             android:exported="true">
