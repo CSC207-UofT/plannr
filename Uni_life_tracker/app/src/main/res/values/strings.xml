@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">Uni_life_tracker</string>
+    <string name="app_name">Uni Life Tracker</string>
     <string name="start">START!</string>
     <string name="email">Email</string>
     <string name="full_name">Full Name</string>
@@ -13,5 +13,11 @@
     <string name="minLength">.{6,}</string>
     <string name="sign_up_title">Sign Up</string>
     <string name="welcome_to">Welcome to</string>
-    <string name="uni_life_tracker">Uni Life Tracker</string>
+    <string name="my_to_dos">My To Dos</string>
+    <string name="sort">Sort by&#8230;</string>
+    <string name="school">School</string>
+    <string name="life">Life</string>
+    <string name="expenses">Expenses</string>
+    <string name="settings">Settings</string>
+    <string name="date">Date</string>
 </resources>
