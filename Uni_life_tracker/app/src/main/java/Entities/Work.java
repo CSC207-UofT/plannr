@@ -5,11 +5,13 @@ import Entities.Event;
 import androidx.annotation.NonNull;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Work extends Event {
 
 
     private String location;
+    DateTimeFormatter customFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm a");
 
     /**
      * Construct a Entities.Work event, giving it the given name,
@@ -39,5 +41,22 @@ public class Work extends Event {
      */
     @NonNull
     @Override
-    public String toString() { return super.getName(); }
+    public String toString() {
+        String strPriority;
+        if (this.getPriority() == 0) {
+            strPriority = "high";
+        }
+        else if (this.getPriority() == 1) {
+            strPriority = "mid";
+        }
+        else {
+            strPriority = "low";
+        }
+        return String.format("Work (%s priority): Work (%s) in %s starts at %s and ends at %s",
+                strPriority,
+                this.getName(),
+                this.getLocation(),
+                this.getStartDate().format(customFormat),
+                this.getEndDate().format(customFormat));
+    }
 }

@@ -7,16 +7,18 @@ import Entities.Event;
 import androidx.annotation.NonNull;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Class extends Event {
 
     private String location;
     private String course;
+    DateTimeFormatter customFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm a");
 
     /**
      * Construct a Entities.Class event, giving it the given name,
-     * priority, start date, end date, the course code,
-     * the location, and a note.
+     * priority, start date, end date, the course code, and
+     * the location
      *
      * @param name      The Entities.Class's name
      * @param priority  The Entities.Class's priority
@@ -50,5 +52,24 @@ public class Class extends Event {
      */
     @NonNull
     @Override
-    public String toString() { return super.getName() + ": " + this.getCourse(); }
+    public String toString() {
+        String strPriority;
+        if (this.getPriority() == 0) {
+            strPriority = "high";
+        }
+        else if (this.getPriority() == 1) {
+            strPriority = "mid";
+        }
+        else {
+            strPriority = "low";
+        }
+        return String.format("Class (%s priority): The class %s (%s) in %s starts at %s and ends at %s",
+                strPriority,
+                this.getName(),
+                this.getCourse(),
+                this.getLocation(),
+                this.getStartDate().format(customFormat),
+                this.getEndDate().format(customFormat));
+
+    }
 }
