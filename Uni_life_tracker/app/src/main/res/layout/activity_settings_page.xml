@@ -73,8 +73,25 @@
             app:layout_constraintHorizontal_bias="0.146"
             android:textSize="15sp"
             android:textColor="#070707"
-            android:id="@+id/expense_name"
+            android:id="@+id/profile_name"
             android:fontFamily="@font/roboto_mono_light"/>
+
+    <TextView
+            android:layout_width="193dp"
+            android:layout_height="96dp"
+            android:text="@string/university"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.338"
+            app:layout_constraintHorizontal_bias="0.146"
+            android:textSize="15sp"
+            android:textColor="#070707"
+            android:id="@+id/profile_uni"
+            android:fontFamily="@font/roboto_mono_light"/>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
