@@ -90,10 +90,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     null, null, null, null);
             if (cur != null && cur.moveToFirst()) {
                 do {
-                    LocalDateTime start = LocalDateTime.parse(cur.getString(cur.getColumnIndex("START_DATE")), DATEFORMAT);
-                    LocalDateTime end = LocalDateTime.parse(cur.getString(cur.getColumnIndex("END_DATE")), DATEFORMAT);
-                    Event event = new Event(cur.getString(cur.getColumnIndex("NAME")),
-                                            cur.getInt(cur.getColumnIndex("PRIORITY")),
+                    LocalDateTime start = LocalDateTime.parse(cur.getString(cur.getColumnIndexOrThrow("START_DATE")), DATEFORMAT);
+                    LocalDateTime end = LocalDateTime.parse(cur.getString(cur.getColumnIndexOrThrow("END_DATE")), DATEFORMAT);
+                    Event event = new Event(cur.getString(cur.getColumnIndexOrThrow("NAME")),
+                                            cur.getInt(cur.getColumnIndexOrThrow("PRIORITY")),
                                             start,
                                             end);
                     eventList.add(event);
