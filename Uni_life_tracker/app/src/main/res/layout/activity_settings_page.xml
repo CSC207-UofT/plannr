@@ -11,7 +11,8 @@
             app:layout_constraintRight_toRightOf="parent"
             android:background="#070707"
             app:layout_constraintHorizontal_bias="0.454"
-            android:layout_marginBottom="664dp"/>
+            android:layout_marginBottom="664dp"
+            android:id="@+id/settings_box"/>
 
     <ImageButton
             android:id="@+id/arrow_button"
