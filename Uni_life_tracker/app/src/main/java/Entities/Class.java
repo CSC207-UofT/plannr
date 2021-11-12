@@ -46,6 +46,18 @@ public class Class extends Event {
      */
     public String getLocation() { return this.location; }
 
+
+
+    /**
+     * Sets the course of the Entities.Class event
+     */
+    public void setCourse(String course) { this.course = course; }
+
+    /**
+     * Sets the location of the Entities.Class event
+     */
+    public void setLocation(String location) { this.location = location; }
+
     /**
      * toString method
      * @return a String that describes the Entities.Class event
