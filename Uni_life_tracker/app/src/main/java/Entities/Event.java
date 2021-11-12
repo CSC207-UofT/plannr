@@ -28,7 +28,7 @@ public class Event {
     }
 
     /**
-     * Gets the name of the Entities.Event
+     * Gets the name of the event
      * @return the name of the Entities.Event as a String
      */
     public String getName() {
