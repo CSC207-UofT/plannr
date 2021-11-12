@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">Uni_life_tracker</string>
     <string name="expenses">expenses</string>
-    <string name="welcome_please_add_your_monthly_income">Welcome Please Add Your Monthly Income</string>
+    <string name="welcome_please_add_an_expense">Welcome Please Add an Expense</string>
+    <string name="add_name">Add Name</string>
+    <string name="add_date">Add Date</string>
     <string name="expensess">Expenses</string>
     <string name="go_to_expenses_view">Go to Expenses View</string>
     <string name="add_amount">Add Amount</string>
