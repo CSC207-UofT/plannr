@@ -1,6 +1,7 @@
 package Entities;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Represents an event with a start and end date and priority.
@@ -10,6 +11,7 @@ public class Event {
     private int priority;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
+    private static final DateTimeFormatter DATEFORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
 
     /**
      * Construct an Entities.Event giving them the given
