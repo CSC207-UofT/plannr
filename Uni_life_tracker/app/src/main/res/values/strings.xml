@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Uni_life_tracker</string>
     <string name="expenses">expenses</string>
     <string name="welcome_please_add_your_monthly_income">Welcome Please Add Your Monthly Income</string>
@@ -30,4 +30,17 @@
     <string name="x_arrow">x_arrow</string>
     <string name="add_expense">Add Expense</string>
     <string name="add_expense_button">add_expense_button</string>
+    <string name="start">START!</string>
+    <string name="email">Email</string>
+    <string name="full_name">Full Name</string>
+    <string name="university_name">University Name</string>
+    <string name="password">Password</string>
+    <string name="sign_up">Sign Up!</string>
+    <string name="uppercase">(?=.*[A-Z])</string>
+    <string name="lowercase">(?=.*[a-z])</string>
+    <string name="number" tools:ignore="TypographyDashes">(?=.*[0-9])</string>
+    <string name="specialChar"><![CDATA[(?=.*[@#!$%^&+=])]]></string>
+    <string name="minLength">.{6,}</string>
+    <string name="sign_up_title">Sign Up</string>
+    <string name="welcome_to">Welcome to</string>
 </resources>

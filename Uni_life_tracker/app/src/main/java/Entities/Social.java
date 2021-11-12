@@ -1,7 +1,5 @@
-package Entities;/*
-NOTE: TO BE IMPLEMENTED LATER IN PHASE 1!!
-*/
-import Entities.Event;
+package Entities;
+
 import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
@@ -10,10 +8,10 @@ import java.time.LocalDateTime;
 public class Social extends Event {
     private int duration;
     private String location;
-    private ArrayList<String> participants;
+    private final ArrayList<String> participants;
 
     /**
-     * Entities.Social events class constructor, which calls its super class Entities.Event
+     * Social events class constructor, which calls its super class Event
      * This constructor LETS THE USER PROVIDE PARTICIPANTS
      * @param name          Name of event
      * @param priority      Priority of event
@@ -34,7 +32,7 @@ public class Social extends Event {
     }
 
     /**
-     * Entities.Social events class constructor, which calls its super class Entities.Event
+     * Social events class constructor, which calls its super class Event
      * This constructor DOES NOT REQUIRE USER TO INPUT LIST OF PARTICIPANTS
      * @param name          Name of event
      * @param priority      Priority of event
@@ -54,7 +52,7 @@ public class Social extends Event {
     }
 
     /**
-     * Gets the duration of this Entities.Social event
+     * Gets the duration of this Social event
      * @return the duration of this Entities.Social event
      */
     public int getDuration() {
@@ -62,8 +60,8 @@ public class Social extends Event {
     }
 
     /** ========== SUBJECT TO CHANGE ============
-     * toString method for Entities.Social, used for printing to screen
-     * @return a String that describes this Entities.Social event
+     * toString method for Social, used for printing to screen
+     * @return a String that describes this Social event
      */
     @NonNull
     @Override
@@ -88,5 +86,37 @@ public class Social extends Event {
         }
 
         return result.toString();
+    }
+
+    /**
+     * Changes the duration of the social event
+     * @param duration the new duration of the event
+     */
+    public void changeDuration(int duration) {
+        this.duration = duration;
+    }
+
+    /**
+     * Changes the location of the social event
+     * @param location the new location of the event
+     */
+    public void changeLocation(String location) {
+        this.location = location;
+    }
+
+    /**
+     * This method adds one participant to the participants
+     * @param person the new participant the user wish to add
+     */
+    public void addParticipant(String person) {
+        this.participants.add(person);
+    }
+
+    /**
+     * This method adds one participant to the participants
+     * @param person the new participant the user wish to add
+     */
+    public void removeParticipant(String person) {
+        this.participants.remove(person);
     }
 }

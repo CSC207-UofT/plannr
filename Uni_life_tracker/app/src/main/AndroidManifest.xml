@@ -13,6 +13,8 @@
             tools:ignore="AllowBackup">
         <activity android:name=".Expenses_list">
         </activity>
+        <activity android:name=".Signup">
+        </activity>
         <activity
                 android:name=".Add_expenses"
                 android:label="@string/title_activity_add_expenses"
@@ -25,13 +27,20 @@
         </activity>
         <activity
                 android:name=".MainActivity"
+                android:theme="@style/Theme.Uni_life_tracker"
+                tools:ignore="AllowBackup"
                 android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN"/>
+
+            <category android:name="android.intent.category.LAUNCHER"/>
+
+        </intent-filter>
+
         </activity>
+
 
         <meta-data
                 android:name="preloaded_fonts"
