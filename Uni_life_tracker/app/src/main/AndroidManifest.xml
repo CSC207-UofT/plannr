@@ -9,8 +9,7 @@
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            android:theme="@style/Theme.Uni_life_tracker"
-            tools:ignore="AllowBackup">
+            android:theme="@style/Theme.Uni_life_tracker" tools:ignore="AllowBackup">
         <activity
                 android:name=".Add_expenses"
                 android:label="@string/title_activity_add_expenses"
@@ -21,9 +20,10 @@
                 android:label="@string/title_activity_expenses_landing"
                 android:theme="@style/Theme.Uni_life_tracker.NoActionBar">
         </activity>
-        <activity
-                android:name=".MainActivity"
-                android:exported="true">
+        <activity android:name=".Signup">
+        </activity>
+        <activity android:name=".MainActivity"
+						android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
