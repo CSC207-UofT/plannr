@@ -142,6 +142,7 @@
 
     <ImageButton
             android:id="@+id/add_expense_button"
+            android:onClick="addexpensebuttonInput"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
