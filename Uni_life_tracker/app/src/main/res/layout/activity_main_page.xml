@@ -21,8 +21,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/date"
-                android:textSize="20sp"
                 android:textColor="@color/black"
+                android:fontFamily="@font/roboto_mono_bold"
                 android:layout_marginStart="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -38,6 +38,7 @@
                 android:text="@string/my_to_dos"
                 android:textSize="25sp"
                 android:textColor="@color/black"
+                android:fontFamily="@font/roboto_mono_bold"
                 android:textStyle="bold"
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="20dp"/>
@@ -48,6 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="20dp"
+                android:fontFamily="@font/roboto_mono_bold"
                 android:text="@string/sort"/>
 
         <androidx.recyclerview.widget.RecyclerView
