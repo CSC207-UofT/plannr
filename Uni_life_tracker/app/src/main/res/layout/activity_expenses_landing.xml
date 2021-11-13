@@ -96,7 +96,7 @@
                 android:layout_marginStart="95dp"
                 android:layout_height="wrap_content"
                 android:hint="@string/add_date"
-                android:inputType="text"
+                android:inputType="datetime"
         />
 
         <Button
