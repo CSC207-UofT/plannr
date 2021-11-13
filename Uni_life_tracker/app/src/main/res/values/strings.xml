@@ -14,4 +14,7 @@
     <string name="sign_up_title">Sign Up</string>
     <string name="welcome_to">Welcome to</string>
     <string name="uni_life_tracker">Uni Life Tracker</string>
+    <string name="l_arrow"><![CDATA[<-]]></string>
+    <string name="month">Feb 2021</string>
+    <string name="r_arrow"><![CDATA[->]]></string>
 </resources>
