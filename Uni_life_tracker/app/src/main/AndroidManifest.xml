@@ -14,7 +14,7 @@
         <activity android:name=".Signup">
         </activity>
         <activity
-                android:name=".main_page"
+                android:name=".MainPage"
                 android:exported="true">
         </activity>
         <activity android:name=".MainActivity"
