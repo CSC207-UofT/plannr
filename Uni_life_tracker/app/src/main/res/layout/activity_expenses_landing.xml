@@ -10,7 +10,7 @@
             android:layout_height="96dp"
             android:text="@string/Expenses"
             android:layout_marginStart="90dp"
-            android:layout_marginBottom="-200dp"
+            android:layout_marginBottom="200dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -29,7 +29,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginBottom="384dp"
+            android:layout_marginBottom="400dp"
             android:id="@+id/e_welcome_text"
             android:fontFamily="@font/robotomono"
             android:textColor="#070707" android:textSize="18sp"
@@ -56,7 +56,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="240dp"
-                android:layout_marginTop="300dp"
+                android:layout_marginTop="250dp"
                 android:layout_marginStart="95dp"
                 android:layout_height="wrap_content"
                 android:hint="@string/add_name"

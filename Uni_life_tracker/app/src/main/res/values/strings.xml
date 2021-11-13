@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Uni Life Tracker</string>
     <string name="expenses">expenses</string>
-    <string name="welcome_please_add_an_expense">Welcome Please Add an Expense</string>
+    <string name="welcome_please_add_an_expense">Welcome, Please Add an Expense</string>
     <string name="add_name">Add Name</string>
     <string name="add_date">Add Date</string>
     <string name="expensess">Expenses</string>
@@ -39,5 +39,5 @@
     <string name="minLength">.{6,}</string>
     <string name="sign_up_title">Sign Up</string>
     <string name="welcome_to">Welcome to</string>
-    <string name="add_name">Add Name</string>
+    <string name="dollar_amount">$ Add Amount</string>
 </resources>
