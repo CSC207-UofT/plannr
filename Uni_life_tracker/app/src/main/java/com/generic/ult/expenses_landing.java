@@ -1,6 +1,8 @@
 package com.generic.ult;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.ui.AppBarConfiguration;
 
@@ -15,4 +17,7 @@ public class expenses_landing extends AppCompatActivity {
         setContentView(R.layout.activity_expenses_landing);
 
     }
+
+
+
 }
