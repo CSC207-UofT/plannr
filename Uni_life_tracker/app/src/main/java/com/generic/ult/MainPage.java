@@ -107,7 +107,7 @@ public class MainPage extends AppCompatActivity {
 
     public void ClickSettings(View view) {
         // redirect activity to dashboard
-//        redirectActivity(this,);
+        redirectActivity(this, Settings_page.class);
     }
 
     public static void redirectActivity(Activity activity, Class aClass) {
