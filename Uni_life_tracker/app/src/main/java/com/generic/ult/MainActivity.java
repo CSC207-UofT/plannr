@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     }
     //https://www.youtube.com/watch?v=bgIUdb-7Rqo
    private void openSignup() {
-        Intent intent = new Intent(this, expenses_landing.class);
+        Intent intent = new Intent(this, Add_expenses.class);
         startActivity(intent);
    }
 }
