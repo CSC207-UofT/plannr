@@ -101,7 +101,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_height="wrap_content"
             android:hint="@string/dollar_sign"
-            android:inputType="text"
+            android:inputType="numberDecimal"
             app:layout_constraintHorizontal_bias="0.187" app:layout_constraintVertical_bias="0.583"/>
     <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/e_add_date"
