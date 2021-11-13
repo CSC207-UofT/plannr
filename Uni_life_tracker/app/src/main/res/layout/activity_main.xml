@@ -25,7 +25,7 @@
     <TextView
             android:layout_width="377dp"
             android:layout_height="200dp"
-            android:text="@string/uni_life_tracker"
+            android:text="@string/app_name"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
