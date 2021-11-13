@@ -78,7 +78,7 @@
                 android:layout_marginStart="95dp"
                 android:layout_height="wrap_content"
                 android:hint="@string/add_amount"
-                android:inputType="text"
+                android:inputType="numberDecimal"
         />
         <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/e_add_date"
