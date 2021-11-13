@@ -39,4 +39,5 @@
     <string name="minLength">.{6,}</string>
     <string name="sign_up_title">Sign Up</string>
     <string name="welcome_to">Welcome to</string>
+    <string name="add_name">Add Name</string>
 </resources>
