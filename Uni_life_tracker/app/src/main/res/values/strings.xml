@@ -18,4 +18,10 @@
     <string name="minLength">.{6,}</string>
     <string name="sign_up_title">Sign Up</string>
     <string name="welcome_to">Welcome to</string>
+    <string name="add_school_event">Add School Event</string>
+    <string name="back">Back</string>
+    <string name="assessment">Assessment</string>
+    <string name="deadline">Deadline</string>
+    <string name="class_time">Class</string>
+    <string name="study_session">Study Session</string>
 </resources>
