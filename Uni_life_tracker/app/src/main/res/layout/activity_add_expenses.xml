@@ -141,6 +141,17 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="16dp"
             android:contentDescription="@string/left_arrow"/>
+    <Button
+            android:layout_width="150dp"
+            android:layout_height="70dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:id="@+id/e_submit"
+            android:text="@string/submit"
+            android:backgroundTint="@color/black"
+            app:layout_constraintHorizontal_bias="0.467"
+            android:layout_marginBottom="100dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
