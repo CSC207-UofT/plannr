@@ -10,24 +10,28 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_event"
             android:contentDescription="@string/event"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             tools:ignore="MissingConstraints"/>
 
     <TextView
-            android:id="@+id/text_event"
+            android:id="@+id/text_event_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/event"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="10dp"
+            android:padding="20dp"
             app:layout_constraintLeft_toRightOf="@+id/event_icon"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
     <TextView
-            android:id="@+id/text_time"
+            android:id="@+id/text_event_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/time"
-            android:layout_marginEnd="15dp"
+            android:layout_marginEnd="10dp"
+            android:padding="20dp"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>

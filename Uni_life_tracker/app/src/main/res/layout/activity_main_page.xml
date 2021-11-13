@@ -23,7 +23,6 @@
                 android:text="@string/date"
                 android:textSize="20sp"
                 android:textColor="@color/black"
-                android:layout_marginTop="20dp"
                 android:layout_marginStart="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
