@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 public class StudySession extends Event {
     private String course;
     private String location;
-    private String notes;
     private ArrayList<String> participants;
 
     /**
@@ -24,17 +23,14 @@ public class StudySession extends Event {
      * @param endDate        The Entities.StudySession's end date
      * @param course         The Entities.StudySession's course
      * @param location       The Entities.StudySession's location
-     * @param notes          The Entities.StudySession's notes
      * @param participants   The Entities.StudySession's participants
      */
 
     public StudySession (String name, int priority, LocalDateTime startDate, LocalDateTime endDate,
-                        String course, String location, String notes,
-                        ArrayList<String> participants) {
+                        String course, String location, ArrayList<String> participants) {
         super(name, priority, startDate, endDate);
         this.course = course;
         this.location = location;
-        this.notes = notes;
         this.participants = participants;
     }
 
@@ -52,14 +48,6 @@ public class StudySession extends Event {
      */
     public String getLocation() {
         return this.location;
-    }
-
-    /**
-     * Gets the notes of the study session
-     * @return the snotes of the study session as a string
-     */
-    public String getNotes() {
-        return this.notes;
     }
 
     /**
@@ -81,12 +69,6 @@ public class StudySession extends Event {
      * @param location is the new location of the study session
      */
     public void setLocation(String location) { this.location = location; }
-
-    /**
-     * Changes the notes of the study session
-     * @param notes is the new notes of the study session
-     */
-    public void setNotes (String notes) { this.notes = notes; }
 
     /**
      * Changes the list of participants of the study session
@@ -116,12 +98,13 @@ public class StudySession extends Event {
 
         StringBuilder result = new StringBuilder(
                 String.format("Study session (%s priority): %s for %s starts on %s and " +
-                "ends at %s.\n\tThe expected participants are: ",
+                "ends at %s at %s.\n\tThe expected participants are: ",
                         strPriority,
                         this.getName(),
                         this.getCourse(),
                         this.getStartDate().format(DATEFORMAT),
-                        this.getEndDate().format(DATEFORMAT)));
+                        this.getEndDate().format(DATEFORMAT),
+                        this.getLocation()));
 
         // Use a for loop to append the participants into the result String
         if (this.participants.size() > 0) {
