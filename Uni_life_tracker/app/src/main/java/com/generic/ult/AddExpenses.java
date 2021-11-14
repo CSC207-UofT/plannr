@@ -15,7 +15,7 @@ public class AddExpenses extends AppCompatActivity {
 
     private TextInputLayout textInputName;
     private TextInputLayout textInputAmount;
-    private TextInputLayout textInputDate;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,6 @@ public class AddExpenses extends AppCompatActivity {
 
         textInputName = findViewById(R.id.add_e_name);
         textInputAmount = findViewById(R.id.add_e_amount);
-        textInputDate = findViewById(R.id.add_e_date);
 
 
     }
@@ -42,8 +41,7 @@ public class AddExpenses extends AppCompatActivity {
         }
     }
     public void signupInput(View v) {
-        if (!(validate(textInputName) | validate( textInputAmount) |
-                validate(textInputDate))) {
+        if (!(validate(textInputName) | validate( textInputAmount))) {
             // Here we can get all the info we need
             // For example to get the email you can do textInputEmail.getEditTest().getText().toString()
         }

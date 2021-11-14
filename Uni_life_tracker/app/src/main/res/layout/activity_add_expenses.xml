@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   android:layout_width="match_parent"
-                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                   android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_height="match_parent" android:orientation="vertical">
 
     <TextView
             android:layout_width="193dp"
@@ -16,6 +16,8 @@
             app:layout_constraintHorizontal_bias="0.376"
             android:fontFamily="@font/roboto_mono_bold"
             android:textSize="20sp"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="20dp"
             android:textColor="#070707"
             android:id="@+id/expenses_title"/>
 
@@ -24,6 +26,7 @@
             android:layout_width="193dp"
             android:layout_height="96dp"
             android:text="@string/name"
+            android:layout_marginStart="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -37,20 +40,6 @@
     <TextView
             android:layout_width="193dp"
             android:layout_height="96dp"
-            android:text="@string/date"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.426"
-            app:layout_constraintHorizontal_bias="0.146"
-            android:fontFamily="@font/robotomono"
-            android:textSize="18sp"
-            android:textColor="#070707"
-            android:id="@+id/expense_date"/>
-    <TextView
-            android:layout_width="193dp"
-            android:layout_height="96dp"
             android:text="@string/amount"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -60,6 +49,8 @@
             app:layout_constraintHorizontal_bias="0.16"
             android:fontFamily="@font/robotomono"
             android:textSize="18sp"
+
+            android:layout_marginStart="16dp"
             android:textColor="#070707"
             android:id="@+id/expense_amount"/>
     <com.google.android.material.textfield.TextInputLayout
@@ -79,9 +70,12 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="-200dp"
             android:hint="@string/add_name"
             android:inputType="text"
-            app:layout_constraintHorizontal_bias="0.187" app:layout_constraintVertical_bias="0.288"
+            app:layout_constraintHorizontal_bias="0.187"
+            app:layout_constraintVertical_bias="0.288"
             android:id="@+id/add_e_name"/>
     <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/e_add_amount"
@@ -105,6 +99,8 @@
             android:inputType="numberDecimal"
             app:layout_constraintHorizontal_bias="0.187"
             app:layout_constraintVertical_bias="0.583"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
             android:id="@+id/add_e_amount"/>
     <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/e_add_date"
@@ -117,17 +113,6 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
-    <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="240dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/add_date"
-            android:inputType="datetime"
-            app:layout_constraintHorizontal_bias="0.187"
-            app:layout_constraintVertical_bias="0.438" android:id="@+id/add_e_date"/>
     <ImageButton
             android:id="@+id/arrow_button"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -144,6 +129,7 @@
             app:layout_constraintVertical_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="-310dp"
             android:contentDescription="@string/left_arrow"/>
     <Button
             android:layout_width="150dp"
@@ -153,9 +139,10 @@
             app:layout_constraintRight_toRightOf="parent"
             android:id="@+id/e_submit"
             android:text="@string/submit"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="270dp"
             android:backgroundTint="@color/black"
             app:layout_constraintHorizontal_bias="0.467"
-            android:layout_marginBottom="100dp"/>
+            android:layout_marginBottom="300dp"/>
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
