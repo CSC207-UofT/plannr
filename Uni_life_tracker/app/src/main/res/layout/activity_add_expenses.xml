@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:layout_height="match_parent" android:orientation="vertical">
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
     <TextView
             android:layout_width="193dp"
@@ -17,7 +18,7 @@
             android:fontFamily="@font/roboto_mono_bold"
             android:textSize="20sp"
             android:layout_marginStart="70dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="35dp"
             android:textColor="#070707"
             android:id="@+id/expenses_title"/>
 
@@ -129,7 +130,7 @@
             app:layout_constraintVertical_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="-310dp"
+            android:layout_marginTop="-315dp"
             android:contentDescription="@string/left_arrow"/>
     <Button
             android:layout_width="150dp"
