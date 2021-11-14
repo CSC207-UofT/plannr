@@ -120,4 +120,10 @@ public class Social extends Event {
     public void removeParticipant(String person) {
         this.participants.remove(person);
     }
+
+    /**
+     * This method returns the Social event's location
+     * @return the location of the Social event
+     */
+    public String getLocation() {return this.location;}
 }
