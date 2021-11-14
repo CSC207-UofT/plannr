@@ -2,7 +2,6 @@ package com.generic.ult;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,7 +12,7 @@ import java.util.Locale;
 public class AddEventActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener{
     TextView tvDate, tvTime;
     RadioGroup radioGroup;
-    RadioGroup radioButton;
+//    RadioGroup radioButton;
     ImageView ivSave;
 
     int priority, hour, minute;
@@ -38,83 +37,44 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         radioGroup.setOnCheckedChangeListener(this);
 
 //       Courses List
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(AddEventActivity.this,
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<>(AddEventActivity.this,
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.courses));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         coursesList.setAdapter(myAdapter);
 
-        ivSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(AddEventActivity.this, priority, Toast.LENGTH_SHORT).show();
-            }
-        });
+        ivSave.setOnClickListener(view -> Toast.makeText(AddEventActivity.this, priority, Toast.LENGTH_SHORT).show());
 
 //        Date Selection
-        tvDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        AddEventActivity.this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        month = month + 1;
-                        String date = dayOfMonth + "/" + month + "/" + year;
+        tvDate.setOnClickListener(v -> {
+            DatePickerDialog datePickerDialog = new DatePickerDialog(
+                    AddEventActivity.this, (view, year1, month1, dayOfMonth) -> {
+                        month1 = month1 + 1;
+                        String date = dayOfMonth + "/" + month1 + "/" + year1;
                         tvDate.setText(date);
-                    }
-                }, year, month, day);
-                datePickerDialog.show();
-            }
+                    }, year, month, day);
+            datePickerDialog.show();
         });
 
 //        Time Selection
-        tvTime.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TimePickerDialog timePickerDialog = new TimePickerDialog(
-                        AddEventActivity.this, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker view, int selectedHour, int selectedMin) {
+        tvTime.setOnClickListener(v -> {
+            TimePickerDialog timePickerDialog = new TimePickerDialog(
+                    AddEventActivity.this, (view, selectedHour, selectedMin) -> {
                         hour = selectedHour;
                         minute = selectedMin;
                         tvTime.setText(String.format(Locale.getDefault(),"%02d:%02d", hour, minute));
-                    }
-                }, hour, minute, true);
-                timePickerDialog.show();
-            }
+                    }, hour, minute, true);
+            timePickerDialog.show();
         });
     }
 
-//    //        Time Selection
-//    public void popTimePicker(View view) {
-//        TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
-//            @Override
-//            public void onTimeSet(TimePicker view, int selectedHour, int selectedMin) {
-//                hour = selectedHour;
-//                minute = selectedMin;
-//                tvTime.setText(String.format(Locale.getDefault(),"%02d:%02d", hour, minute));
-//            }
-//        };
-//        TimePickerDialog timePickerDialog = new TimePickerDialog(this, onTimeSetListener, hour, minute, true);
-//
-////        timePickerDialog.setTitle("Select a Time");
-//        timePickerDialog.show();
-//    }
-
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
-        switch (checkedId) {
-            case R.id.high_priority:
-                priority = 1;
-                break;
-
-            case R.id.med_priority:
-                priority = 2;
-                break;
-
-            case R.id.low_priority:
-                priority = 3;
-                break;
+        if (checkedId == R.id.high_priority) {
+            priority = 1;
+        } else if (checkedId == R.id.med_priority) {
+            priority = 2;
+        } else if (checkedId == R.id.low_priority) {
+            priority = 3;
         }
     }
 }
