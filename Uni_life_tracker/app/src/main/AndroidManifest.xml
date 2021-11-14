@@ -10,16 +10,12 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.Uni_life_tracker">
-        <activity android:name=".SettingsActivity">
-        </activity>
-        <activity android:name=".SignUpActivity">
-        <activity android:name=".AddEvent">
-        </activity>
-        <activity android:name=".Settings_page">
-        </activity>
+        <activity android:name=".SettingsActivity"> </activity>
+        <activity android:name=".SignUpActivity"> </activity>
+        <activity android:name=".AddEventActivity"> </activity>
         <activity
                 android:name=".MainPageActivity"
-                android:exported="true">
+                android:exported="true"> </activity>
         <activity
                 android:name=".WelcomeActivity"
                 android:theme="@style/Theme.Uni_life_tracker"

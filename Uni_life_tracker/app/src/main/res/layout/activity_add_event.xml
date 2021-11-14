@@ -192,7 +192,33 @@
                          android:fontFamily="@font/roboto_mono_light"
                          android:layout_marginStart="10dp"/>
         </RadioGroup>
+    </LinearLayout>
 
+    <!-- Select Course -->
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="15dp">
+
+        <ImageView android:layout_width="24dp"
+                   android:layout_height="24dp"
+                   android:src="@drawable/ic_school"
+                   android:contentDescription="@string/select_date"/>
+
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/select_course"
+                android:fontFamily="@font/roboto_mono_light"
+                android:textSize="15sp"
+                android:padding="15dp"/>
+
+        <Spinner
+                android:id="@+id/courses"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
     </LinearLayout>
 
 </LinearLayout>
