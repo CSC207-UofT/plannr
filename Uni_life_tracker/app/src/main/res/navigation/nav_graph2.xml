@@ -6,6 +6,6 @@
 
     <activity android:id="@+id/mainActivity" android:name="com.generic.ult.MainActivity" android:label="activity_main"
               tools:layout="@layout/activity_main"/>
-    <activity android:id="@+id/expenses_landing" android:name="com.generic.ult.expenses_landing"
+    <activity android:id="@+id/expenses_landing" android:name="com.generic.ult.ExpensesLanding"
               android:label="expenses_landing"/>
 </navigation>

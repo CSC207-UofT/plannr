@@ -1,10 +1,7 @@
 package com.generic.ult;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Patterns;
 import android.view.View;
-import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.ui.AppBarConfiguration;
 import com.google.android.material.textfield.TextInputLayout;
@@ -12,7 +9,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.Objects;
 
 
-public class expenses_landing extends AppCompatActivity {
+public class AddExpenses extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
 
@@ -23,10 +20,11 @@ public class expenses_landing extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_expenses_landing);
-        textInputName = findViewById(R.id.e_add_name);
-        textInputAmount = findViewById(R.id.e_add_amount);
-        textInputDate = findViewById(R.id.e_add_date);
+        setContentView(R.layout.activity_add_expenses);
+
+        textInputName = findViewById(R.id.add_e_name);
+        textInputAmount = findViewById(R.id.add_e_amount);
+        textInputDate = findViewById(R.id.add_e_date);
 
 
     }
@@ -52,5 +50,7 @@ public class expenses_landing extends AppCompatActivity {
 
 
     }
+
+
 
 }

@@ -7,7 +7,7 @@
 
     <fragment
             android:id="@+id/FirstFragment"
-            android:name="com.generic.ult.expenses_landing"
+            android:name="com.generic.ult.ExpensesLanding"
             android:label="@string/first_fragment_label"
             tools:layout="@layout/activity_expenses_landing">
 
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
             android:id="@+id/SecondFragment"
-            android:name="com.generic.ult.Add_expenses"
+            android:name="com.generic.ult.AddExpenses"
             android:label="@string/second_fragment_label"
             tools:layout="@layout/activity_add_expenses">
 
