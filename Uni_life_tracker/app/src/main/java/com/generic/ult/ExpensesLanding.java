@@ -18,7 +18,6 @@ public class ExpensesLanding extends AppCompatActivity {
 
     private TextInputLayout textInputName;
     private TextInputLayout textInputAmount;
-    private TextInputLayout textInputDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +25,9 @@ public class ExpensesLanding extends AppCompatActivity {
         setContentView(R.layout.activity_expenses_landing);
         textInputName = findViewById(R.id.e_add_name);
         textInputAmount = findViewById(R.id.e_add_amount);
-        textInputDate = findViewById(R.id.e_add_date);
 
 
     }
-
 
     private boolean validate(TextInputLayout textInput) {
         String Input = Objects.requireNonNull(textInput.getEditText()).getText().toString().trim();
@@ -43,9 +40,8 @@ public class ExpensesLanding extends AppCompatActivity {
             return true;
         }
     }
-    public void signupInput(View v) {
-        if (!(validate(textInputName) | validate( textInputAmount) |
-                validate(textInputDate))) {
+    public void ExpensesViewInput(View v) {
+        if (!(validate(textInputName) | validate( textInputAmount))) {
             // Here we can get all the info we need
             // For example to get the email you can do textInputEmail.getEditTest().getText().toString()
         }

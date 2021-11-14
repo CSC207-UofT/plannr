@@ -104,7 +104,8 @@
                 app:layout_constraintRight_toRightOf="parent"
                 android:id="@+id/e_go_to_view_button"
                 android:text="@string/go_to_expenses_view"
-                android:backgroundTint="#070707"/>
+                android:backgroundTint="#070707"
+                android:onClick="ExpensesViewInput" />
 
 
     </LinearLayout>
