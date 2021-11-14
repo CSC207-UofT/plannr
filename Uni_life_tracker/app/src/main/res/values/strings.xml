@@ -5,7 +5,7 @@
     <string name="profile">Profile</string>
     <string name="name">Name</string>
     <string name="university">University</string>
-    <string name="start">START!</string>
+    <string name="start">Start!</string>
     <string name="email">Email</string>
     <string name="full_name">Full Name</string>
     <string name="university_name">University Name</string>
@@ -47,7 +47,7 @@
     <string name="high_priority">High</string>
     <string name="med_priority">Medium</string>
     <string name="low_priority">Low</string>
-    <string name="select_course">Select a Course</string>
+    <string name="select_course">Course</string>
 
     <!--  TEMPORARY: to display courses  -->
     <string-array name="courses">
