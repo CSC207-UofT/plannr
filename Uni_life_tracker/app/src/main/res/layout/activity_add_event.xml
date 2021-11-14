@@ -11,24 +11,35 @@
             android:layout_height="wrap_content"
             android:background="@color/black"
             android:orientation="horizontal"
+            android:padding="15dp"
             android:gravity="center_vertical">
 
         <ImageView
                 android:id="@+id/back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="ClickBack"
                 android:src="@drawable/ic_back_arrow"
-                android:contentDescription="@string/back"
-                android:layout_margin="15dp"/>
+                android:contentDescription="@string/back"/>
 
         <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="@string/add_school_event"
                 android:textSize="20sp"
                 android:textColor="@color/white"
-                android:fontFamily="@font/roboto_mono_bold"/>
+                android:fontFamily="@font/roboto_mono_bold"
+                android:layout_marginStart="15dp"
+                android:gravity="start"/>
 
+        <ImageView
+                android:id="@+id/save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="ClickSave"
+                android:src="@drawable/ic_done"
+                android:contentDescription="@string/save"/>
     </LinearLayout>
 
     <!-- Event Type Selection -->
@@ -88,5 +99,100 @@
                 android:padding="15dp"/>
     </LinearLayout>
 
+    <!-- Add Event Title -->
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextTextPersonName"
+            android:inputType="textPersonName"
+            android:hint="@string/add_event_title"
+            android:autofillHints="@string/add_event_title"
+            android:fontFamily="@font/roboto_mono_light"
+            android:textSize="20sp"
+            android:ems="10"
+            android:padding="15dp"/>
+
+    <!-- Add Event Date & Time -->
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="15dp">
+
+        <ImageView android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@drawable/ic_time"
+                   android:contentDescription="@string/select_date"/>
+
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/editTextDate"
+                android:hint="@string/select_date"
+                android:fontFamily="@font/roboto_mono_light"
+                android:textSize="15sp"
+                android:padding="15dp"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/editTextEndTime"
+                android:hint="@string/select_end_time"
+                android:fontFamily="@font/roboto_mono_light"
+                android:textSize="15sp"
+                android:textAlignment="textEnd"
+                android:padding="15dp"/>
+    </LinearLayout>
+
+    <!-- Add Event Priority -->
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="15dp">
+
+        <ImageView android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@drawable/ic_priority"
+                   android:contentDescription="@string/select_priority"/>
+
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/select_priority"
+                android:fontFamily="@font/roboto_mono_light"
+                android:textSize="15sp"
+                android:padding="15dp"/>
+
+        <RadioGroup android:id="@+id/priorities"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="15dp">
+
+            <RadioButton android:id="@+id/high_priority"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:text="@string/high_priority"
+                         android:fontFamily="@font/roboto_mono_light"/>
+
+            <RadioButton android:id="@+id/med_priority"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:text="@string/med_priority"
+                         android:fontFamily="@font/roboto_mono_light"
+                         android:layout_marginStart="10dp"/>
+
+            <RadioButton android:id="@+id/low_priority"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:text="@string/low_priority"
+                         android:fontFamily="@font/roboto_mono_light"
+                         android:layout_marginStart="10dp"/>
+        </RadioGroup>
+
+    </LinearLayout>
 
 </LinearLayout>
