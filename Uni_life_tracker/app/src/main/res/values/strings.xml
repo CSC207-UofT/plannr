@@ -30,4 +30,5 @@
     <string name="date">Date</string>
     <string name="event">Event</string>
     <string name="time">Time</string>
+    <string name="back">Back</string>
 </resources>
