@@ -29,6 +29,7 @@ public class Social extends Event {
         this.duration = duration;
         this.location = location;
         this.participants = participants;
+        this.location = location;
     }
 
     /**
