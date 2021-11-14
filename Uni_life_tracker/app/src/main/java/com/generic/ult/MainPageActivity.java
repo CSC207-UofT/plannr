@@ -92,8 +92,8 @@ public class MainPageActivity extends AppCompatActivity {
     }
 
     public void ClickSchool(View view) {
-        // recreate activity
-        recreate();
+        // redirect activity to dashboard
+//        redirectActivity(this,);
     }
 
     public void ClickLife(View view) {
