@@ -10,10 +10,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.MyViewHolder>{
+public class ListEvents extends RecyclerView.Adapter<ListEvents.MyViewHolder>{
     private ArrayList<Event> eventsList;
 
-    public recyclerAdapter(ArrayList<Event> eventsList){
+    public ListEvents(ArrayList<Event> eventsList){
         this.eventsList = eventsList;
     }
 
@@ -29,13 +29,13 @@ public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.MyView
 
     @NonNull
     @Override
-    public recyclerAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ListEvents.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_events, parent, false);
         return new MyViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull recyclerAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ListEvents.MyViewHolder holder, int position) {
         String eventName = eventsList.get(position).getName();
         String time = eventsList.get(position).getEndDate().getHour() + ":" +
                 eventsList.get(position).getEndDate().getMinute();

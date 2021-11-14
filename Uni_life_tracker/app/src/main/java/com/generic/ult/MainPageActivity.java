@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class MainPage extends AppCompatActivity {
+public class MainPageActivity extends AppCompatActivity {
     // initialize variable
     DrawerLayout drawerLayout;
 
@@ -48,7 +48,7 @@ public class MainPage extends AppCompatActivity {
     }
 
     private void setAdapter() {
-        recyclerAdapter adapter = new recyclerAdapter(eventsList);
+        ListEvents adapter = new ListEvents(eventsList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -97,7 +97,7 @@ public class MainPage extends AppCompatActivity {
 
     public void ClickLife(View view) {
         // redirect activity to dashboard
-        redirectActivity(this, Signup.class); // change this to life later
+        redirectActivity(this, SignUpActivity.class); // change this to life later
     }
 
     public void ClickExpenses(View view) {
@@ -107,7 +107,7 @@ public class MainPage extends AppCompatActivity {
 
     public void ClickSettings(View view) {
         // redirect activity to dashboard
-        redirectActivity(this, Settings_page.class);
+        redirectActivity(this, SettingsActivity.class);
     }
 
     public static void redirectActivity(Activity activity, Class aClass) {

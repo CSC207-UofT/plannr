@@ -10,7 +10,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
-public class Signup extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity {
     // At least one number, uppercase letter, lowercase letter and special char. Min of 6 characters
     private static final Pattern PASSWORD_REQ =
             Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#!$%^&+=]).{6,}$");
