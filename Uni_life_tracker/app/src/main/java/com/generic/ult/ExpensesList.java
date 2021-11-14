@@ -3,7 +3,7 @@ package com.generic.ult;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class Expenses_list extends AppCompatActivity {
+public class ExpensesList extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

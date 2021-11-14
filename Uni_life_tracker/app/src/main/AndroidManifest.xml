@@ -11,7 +11,7 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.Uni_life_tracker"
             tools:ignore="AllowBackup">
-        <activity android:name=".Expenses_list">
+        <activity android:name=".ExpensesList">
         </activity>
         <activity android:name=".Signup">
         </activity>
