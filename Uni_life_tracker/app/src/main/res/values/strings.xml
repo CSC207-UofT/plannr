@@ -17,4 +17,13 @@
     <string name="l_arrow"><![CDATA[<-]]></string>
     <string name="month">Feb 2021</string>
     <string name="r_arrow"><![CDATA[->]]></string>
+    <string name="monthYear">Feb 2021</string>
+    <string name="sunday">SUN</string>
+    <string name="monday">MON</string>
+    <string name="tuesday">TUE</string>
+    <string name="wednesday">WED</string>
+    <string name="thursday">THUR</string>
+    <string name="friday">FRI</string>
+    <string name="saturday">SAT</string>
+    <string name="date_placeholder">1</string>
 </resources>

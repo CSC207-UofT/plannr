@@ -29,6 +29,9 @@ public class Event {
         this.endDate = endDate;
     }
 
+    public Event(String name, int priority, LocalDateTime endDate) {
+    }
+
     /**
      * Gets the name of the event
      * @return the name of the Entities.Event as a String
