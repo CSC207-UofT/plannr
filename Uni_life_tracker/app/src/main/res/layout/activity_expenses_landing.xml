@@ -18,7 +18,8 @@
             app:layout_constraintVertical_bias="0.149"
             app:layout_constraintHorizontal_bias="0.172"
             android:fontFamily="@font/roboto_mono_bold"
-            android:textSize="36sp" android:textColor="#070707"
+            android:textSize="36sp"
+            android:textColor="#070707"
             android:id="@+id/expenses_title"/>
 
 
@@ -29,11 +30,12 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginBottom="410dp"
+            android:layout_marginBottom="460dp"
             android:id="@+id/e_welcome_text"
             android:fontFamily="@font/robotomono"
             android:textColor="#070707" android:textSize="18sp"
-            android:gravity="center" tools:ignore="HardcodedText"/>
+            android:gravity="center"
+            tools:ignore="HardcodedText"/>
 
     <LinearLayout
             android:layout_width="match_parent"
@@ -91,13 +93,6 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
-        <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="240dp"
-                android:layout_marginStart="95dp"
-                android:layout_height="wrap_content"
-                android:hint="@string/add_date"
-                android:inputType="datetime"
-        />
 
         <Button
                 android:layout_width="300dp"
