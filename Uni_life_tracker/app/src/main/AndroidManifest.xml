@@ -10,17 +10,22 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.Uni_life_tracker">
+        <activity android:name=".SettingsActivity">
+        </activity>
+        <activity android:name=".SignUpActivity">
         <activity android:name=".AddEvent">
         </activity>
         <activity android:name=".Settings_page">
         </activity>
-        <activity android:name=".Signup">
-        </activity>
         <activity
-                android:name=".MainActivity"
-                android:exported="true"
+                android:name=".MainPageActivity"
+                android:exported="true">
+        <activity
+                android:name=".WelcomeActivity"
                 android:theme="@style/Theme.Uni_life_tracker"
-                tools:ignore="AllowBackup">
+                tools:ignore="AllowBackup"
+                android:exported="true"
+        >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

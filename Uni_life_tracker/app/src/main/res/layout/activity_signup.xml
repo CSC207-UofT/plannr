@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="16dp"
-        tools:context=".Signup">
+        tools:context=".SignUpActivity">
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -77,6 +77,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
+            android:id="@+id/btn_sign_up"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/sign_up"
