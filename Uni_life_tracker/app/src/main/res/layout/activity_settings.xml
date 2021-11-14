@@ -17,6 +17,7 @@
                 android:id="@+id/back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="ClickBack"
                 android:src="@drawable/ic_back_arrow"
                 android:contentDescription="@string/back"/>
 
@@ -33,8 +34,8 @@
     </LinearLayout>
 
     <TextView
-            android:layout_width="193dp"
-            android:layout_height="96dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/profile"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -49,8 +50,8 @@
 
 
     <TextView
-            android:layout_width="193dp"
-            android:layout_height="96dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/name"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -62,9 +63,10 @@
             android:textColor="#070707"
             android:id="@+id/profile_name"
             android:fontFamily="@font/roboto_mono_light"/>
+
     <TextView
-            android:layout_width="193dp"
-            android:layout_height="96dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/university"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -76,9 +78,10 @@
             android:textColor="#070707"
             android:id="@+id/profile_uni"
             android:fontFamily="@font/roboto_mono_light"/>
+
     <com.google.android.material.textfield.TextInputEditText
             android:layout_width="170dp"
-            android:layout_height="52dp"
+            android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -88,9 +91,10 @@
             android:id="@+id/settings_uni"
             app:layout_constraintHorizontal_bias="0.871"
             app:layout_constraintVertical_bias="0.483"/>
+
     <com.google.android.material.textfield.TextInputEditText
             android:layout_width="170dp"
-            android:layout_height="52dp"
+            android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
