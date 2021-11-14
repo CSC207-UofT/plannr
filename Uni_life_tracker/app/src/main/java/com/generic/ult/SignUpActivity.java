@@ -1,7 +1,9 @@
 package com.generic.ult;
 
+import android.content.Intent;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,6 +31,14 @@ public class SignUpActivity extends AppCompatActivity {
         textInputUni = findViewById(R.id.text_university);
         textInputEmail = findViewById(R.id.text_input_email);
         textInputPassword = findViewById(R.id.text_password);
+
+        Button startBtn = findViewById(R.id.btn_sign_up);
+        startBtn.setOnClickListener(v -> openMain());
+    }
+
+    private void openMain() {
+        Intent intent = new Intent(this, MainPageActivity.class);
+        startActivity(intent);
     }
 
     private boolean validate(TextInputLayout textInput) {
