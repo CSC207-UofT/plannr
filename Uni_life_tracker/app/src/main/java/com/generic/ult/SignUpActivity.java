@@ -32,8 +32,8 @@ public class SignUpActivity extends AppCompatActivity {
         textInputEmail = findViewById(R.id.text_input_email);
         textInputPassword = findViewById(R.id.text_password);
 
-        Button startBtn = findViewById(R.id.btn_sign_up);
-        startBtn.setOnClickListener(v -> openMain());
+        Button signupButton = findViewById(R.id.btn_sign_up);
+        signupButton.setOnClickListener(v -> openMain());
     }
 
     private void openMain() {
@@ -96,6 +96,13 @@ public class SignUpActivity extends AppCompatActivity {
                 validate(textInputEmail) | validate(textInputPassword))) {
             // Here we can get all the info we need
             // For example to get the email you can do textInputEmail.getEditTest().getText().toString()
+
+            String name = Objects.requireNonNull(textInputName.getEditText()).getText().toString();
+            String uni = Objects.requireNonNull(textInputUni.getEditText()).getText().toString();
+            String email = Objects.requireNonNull(textInputEmail.getEditText()).getText().toString();
+            String password = Objects.requireNonNull(textInputPassword.getEditText()).getText().toString();
+
+
         }
 
 
