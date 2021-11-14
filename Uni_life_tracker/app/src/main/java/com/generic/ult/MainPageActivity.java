@@ -55,6 +55,7 @@ public class MainPageActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
+//    TEMPORARY: generates events to display FOR NOW
     private void setEventInfo() {
         eventsList.add(new Event("Event 1", 1, LocalDateTime.of(2019, 3, 28, 14, 33, 48)));
         eventsList.add(new Event("Assignment 2", 2, LocalDateTime.of(2021, 12, 13, 12, 20, 48)));

@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <!--  Navigation Menu  -->
     <ImageView
             android:layout_width="match_parent"
             android:layout_height="120dp"
@@ -34,6 +35,7 @@
 <!--            android:background="@color/lavender"-->
 <!--    />-->
 
+    <!--  School  -->
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -47,19 +49,21 @@
             android:onClick="ClickSchool"
             app:drawableTopCompat="@drawable/ic_school"/>
 
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/life"
-            android:fontFamily="@font/roboto_mono_bold"
-            android:textStyle="bold"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:padding="5dp"
-            android:layout_marginVertical="10dp"
-            android:onClick="ClickLife"
-            app:drawableTopCompat="@drawable/ic_home"/>
+<!--    &lt;!&ndash;  Life  &ndash;&gt;-->
+<!--    <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/life"-->
+<!--            android:fontFamily="@font/roboto_mono_bold"-->
+<!--            android:textStyle="bold"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:padding="5dp"-->
+<!--            android:layout_marginVertical="10dp"-->
+<!--            android:onClick="ClickLife"-->
+<!--            app:drawableTopCompat="@drawable/ic_home"/>-->
 
+    <!--  Expenses  -->
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -73,6 +77,7 @@
             android:onClick="ClickExpenses"
             app:drawableTopCompat="@drawable/ic_expenses"/>
 
+    <!--  Settings  -->
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
