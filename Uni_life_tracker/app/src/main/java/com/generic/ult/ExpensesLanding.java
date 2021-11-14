@@ -16,37 +16,37 @@ public class ExpensesLanding extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
 
-    private TextInputLayout textInputName;
-    private TextInputLayout textInputAmount;
+//    private TextInputLayout textInputName;
+//    private TextInputLayout textInputAmount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expenses_landing);
-        textInputName = findViewById(R.id.e_add_name);
-        textInputAmount = findViewById(R.id.e_add_amount);
+//        textInputName = findViewById(R.id.expense_name);
+//        textInputAmount = findViewById(R.id.expense_amount);
 
 
     }
 
-    private boolean validate(TextInputLayout textInput) {
-        String Input = Objects.requireNonNull(textInput.getEditText()).getText().toString().trim();
-
-        if (Input.isEmpty()) {
-            textInput.setError("Field cannot be empty");
-            return false;
-        } else {
-            textInput.setError(null);
-            return true;
-        }
-    }
-    public void ExpensesViewInput(View v) {
-        if (!(validate(textInputName) | validate( textInputAmount))) {
-            // Here we can get all the info we need
-            // For example to get the email you can do textInputEmail.getEditTest().getText().toString()
-        }
-
-
-    }
+//    private boolean validate(TextInputLayout textInput) {
+//        String Input = Objects.requireNonNull(textInput.getEditText()).getText().toString().trim();
+//
+//        if (Input.isEmpty()) {
+//            textInput.setError("Field cannot be empty");
+//            return false;
+//        } else {
+//            textInput.setError(null);
+//            return true;
+//        }
+//    }
+//    public void ExpensesViewInput(View v) {
+//        if (!(validate(textInputName) | validate( textInputAmount))) {
+//            // Here we can get all the info we need
+//            // For example to get the email you can do textInputEmail.getEditTest().getText().toString()
+//        }
+//
+//
+//    }
 
 }

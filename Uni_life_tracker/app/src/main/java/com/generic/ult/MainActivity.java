@@ -14,10 +14,18 @@ public class MainActivity extends AppCompatActivity {
 
         Button startBtn = findViewById(R.id.startBtn);
         startBtn.setOnClickListener(v -> openSignup());
+
+        Button e_go_to_view_button = findViewById(R.id.e_go_to_view_button);
+        e_go_to_view_button.setOnClickListener(v -> openExpensesView());
     }
     //https://www.youtube.com/watch?v=bgIUdb-7Rqo
    private void openSignup() {
         Intent intent = new Intent(this, ExpensesLanding.class);
         startActivity(intent);
    }
+
+    private void openExpensesView() {
+        Intent intent = new Intent(this, ExpensesLanding.class);
+        startActivity(intent);
+    }
 }

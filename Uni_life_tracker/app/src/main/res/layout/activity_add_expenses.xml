@@ -37,7 +37,7 @@
             android:fontFamily="@font/robotomono"
             android:textSize="18sp"
             android:textColor="#070707"
-            android:id="@+id/expense_name"/>
+            android:id="@+id/expense_amount"/>
     <TextView
             android:layout_width="193dp"
             android:layout_height="96dp"

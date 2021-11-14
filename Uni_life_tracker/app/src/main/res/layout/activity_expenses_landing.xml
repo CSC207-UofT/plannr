@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/add_name"
                 android:inputType="text"
-        />
+                android:id="@+id/expense_name"/>
         <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/e_add_amount"
                 android:layout_width="match_parent"
@@ -81,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/add_amount"
                 android:inputType="numberDecimal"
-        />
+                android:id="@+id/expense_amount"/>
         <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/e_add_date"
                 android:layout_width="match_parent"
