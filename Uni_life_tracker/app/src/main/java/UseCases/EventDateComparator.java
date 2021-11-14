@@ -7,7 +7,7 @@ import java.util.Comparator;
 import Entities.Event;
 
 /**
- * A comparator to compare events by their priority
+ * A comparator to compare events by their date
  */
 public class EventDateComparator implements Comparator<Event> {
     /**
