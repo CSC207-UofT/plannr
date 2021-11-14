@@ -11,7 +11,7 @@ public class Event {
     private int priority;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
-    private static final DateTimeFormatter DATEFORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+    public static final DateTimeFormatter DATEFORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
 
     /**
      * Construct an Entities.Event giving them the given
