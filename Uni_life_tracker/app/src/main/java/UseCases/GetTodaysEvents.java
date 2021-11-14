@@ -13,14 +13,13 @@ import Entities.User;
  */
 public class GetTodaysEvents {
 
-    private final ArrayList<Event> todaysEvents = new ArrayList<>();
-
     /**
      * Gets a list of events of the current day from the user's list of events
      * @param user is the user who's list of events we're looking through
      * @return the list of today's events of the user
      */
     public ArrayList<Event> getTodaysEvents(@NonNull User user) {
+        ArrayList<Event> todaysEvents = new ArrayList<>();
         for (Event e: user.getEventList()) { //look through user's events
             //if the event's date is the current day, then add it to list of today's events
             if (e.getStartDate().toLocalDate().isEqual(LocalDate.now())) {
