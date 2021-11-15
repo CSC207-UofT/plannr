@@ -9,7 +9,7 @@ public class User {
     private ArrayList<String> courses;
     private String school;
     private ArrayList<Event> eventList;
-    private ArrayList<Expenses> expensesList;
+    private ArrayList<Expense> expenseList;
     private double income;
 
     /**
@@ -64,8 +64,8 @@ public class User {
      * Getter method for the user's expenses list
      * @return ArrayList of Expenses object
      */
-    public ArrayList<Expenses> getExpensesList() {
-        return this.expensesList;
+    public ArrayList<Expense> getExpenseList() {
+        return this.expenseList;
     }
 
     /**

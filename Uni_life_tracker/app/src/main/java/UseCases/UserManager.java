@@ -2,11 +2,10 @@ package UseCases;
 
 import Entities.Deadline;
 import Entities.Event;
-import Entities.Expenses;
+import Entities.Expense;
 import Entities.User;
 import androidx.annotation.NonNull;
 
-import java.lang.reflect.Array;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -39,8 +38,8 @@ public class UserManager {
      * Gets the user's expenses
      * @return an ArrayList of Expenses objects
      */
-    public ArrayList<Expenses> getExpenses() {
-        return u.getExpensesList();
+    public ArrayList<Expense> getExpenses() {
+        return u.getExpenseList();
     }
 
     /**
@@ -50,7 +49,7 @@ public class UserManager {
     public double calculateBalance() {
         double balance = this.u.getIncome();
 
-        for (Expenses e : this.u.getExpensesList()) {
+        for (Expense e : this.u.getExpenseList()) {
             balance -= expManager.getValue(e);
         }
 
@@ -63,7 +62,7 @@ public class UserManager {
      * @param name name of the new expense
      */
     public void addExpense(double value, String name) {
-        u.getExpensesList().add(expManager.createExpense(name, value));
+        u.getExpenseList().add(expManager.createExpense(name, value));
     }
 
     @NonNull

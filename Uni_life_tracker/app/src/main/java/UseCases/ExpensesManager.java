@@ -1,6 +1,6 @@
 package UseCases;
 
-import Entities.Expenses;
+import Entities.Expense;
 
 public class ExpensesManager {
 
@@ -14,7 +14,7 @@ public class ExpensesManager {
      * @param e Expenses object
      * @param name new name for the Expenses object
      */
-    public void changeName(Expenses e, String name) {
+    public void changeName(Expense e, String name) {
         e.setName(name);
     }
 
@@ -23,7 +23,7 @@ public class ExpensesManager {
      * @param e Expenses object
      * @param value new value for the Expenses object
      */
-    public void changeValue(Expenses e, double value) {
+    public void changeValue(Expense e, double value) {
         e.setValue(value);
     }
 
@@ -32,7 +32,7 @@ public class ExpensesManager {
      * @param e the Expenses object
      * @return the value of the expense
      */
-    public double getValue(Expenses e) {
+    public double getValue(Expense e) {
         return e.getValue();
     }
 
@@ -42,8 +42,8 @@ public class ExpensesManager {
      * @param value the value of the Expenses object
      * @return the new Expenses object created based on the given parameters
      */
-    public Expenses createExpense(String name, double value) {
-        return new Expenses(name, value);
+    public Expense createExpense(String name, double value) {
+        return new Expense(name, value);
     }
 
 }

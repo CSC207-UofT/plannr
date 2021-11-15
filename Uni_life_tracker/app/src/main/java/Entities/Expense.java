@@ -1,6 +1,6 @@
 package Entities;
 
-public class Expenses {
+public class Expense {
     private String name;
     private double value;
 
@@ -11,7 +11,7 @@ public class Expenses {
    * @param name      The Expense's name
    * @param value     The Expense's expenditures
    */
-   public Expenses(String name, double value) {
+   public Expense(String name, double value) {
        this.name = name;
        this.value = value;
 
