@@ -18,7 +18,7 @@ public class GetTodaysEvents {
      * @param user is the user who's list of events we're looking through
      * @return the list of today's events of the user
      */
-    public ArrayList<Event> getTodaysEvents(@NonNull User user) {
+    public static ArrayList<Event> getTodaysEvents(@NonNull User user) {
         ArrayList<Event> todaysEvents = new ArrayList<>();
         for (Event e: user.getEventList()) { //look through user's events
             //if the event's date is the current day, then add it to list of today's events
