@@ -41,7 +41,7 @@
     <string name="deadline">Deadline</string>
     <string name="class_time">Class</string>
     <string name="study_session">Study Session</string>
-    <string name="event_title">Event Title</string>
+    <string name="event_name">Event Name</string>
     <string name="save">Save Event</string>
     <string name="select_date">Select a Date</string>
     <string name="select_start_date">Select a Start Date</string>

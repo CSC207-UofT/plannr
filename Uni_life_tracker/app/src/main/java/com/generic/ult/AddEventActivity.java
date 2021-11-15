@@ -18,12 +18,11 @@ import java.util.Locale;
 
 public class AddEventActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener{
 //    Initialize Variables
+    int startYear, startMonth, startDay, endYear, endMonth, endDay, startHour, startMinute, endHour, endMinute, priority;
     TextView tvStartDate, tvStartTime, tvEndDate, tvEndTime, tvAssessment, tvDeadline, tvClassTime, tvStudySession;
-    int startYear, startMonth, startDay, endYear, endMonth, endDay, startHour, startMinute, endHour, endMinute;
     RadioGroup radioGroup;
     ImageView ivBack, ivSave;
-
-    int priority, hour, minute;
+    EditText etEventName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +32,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
 //        Assign Variables
         ivBack = findViewById(R.id.iv_back);
         ivSave = findViewById(R.id.iv_save);
+        etEventName = findViewById(R.id.et_event_name);
         tvStartDate = findViewById(R.id.tv_start_date);
         tvStartTime = findViewById(R.id.tv_start_time);
         tvEndDate = findViewById(R.id.tv_end_date);
@@ -66,6 +66,11 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         tvDeadline.setOnClickListener(this::ClickDeadline);
         tvClassTime.setOnClickListener(this::ClickClassTime);
         tvStudySession.setOnClickListener(this::ClickStudySession);
+
+        ivSave.setOnClickListener(v -> {
+            String eventName = etEventName.getText().toString();
+            Toast.makeText(AddEventActivity.this, eventName, Toast.LENGTH_SHORT).show(); // TODO: remove
+        });
 
 //        Start Date Selection
         tvStartDate.setOnClickListener(v -> {
@@ -172,10 +177,6 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         } else if (checkedId == R.id.rb_low_priority) {
             priority = 3;
         }
-    }
-
-    //    Save Button
-    public void ClickSave(View view) {
     }
 
     public void ClickAssessment(View view) {

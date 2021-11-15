@@ -38,7 +38,6 @@
                 android:id="@+id/iv_save"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="ClickSave"
                 android:src="@drawable/ic_done"
                 android:contentDescription="@string/save"/>
     </LinearLayout>
@@ -105,14 +104,14 @@
                 android:onClick="ClickStudySession"/>
     </LinearLayout>
 
-    <!-- Add Event Title -->
+    <!-- Add Event Name -->
     <EditText
-            android:id="@+id/et_event_title"
+            android:id="@+id/et_event_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:hint="@string/event_title"
-            android:autofillHints="@string/event_title"
+            android:hint="@string/event_name"
+            android:autofillHints="@string/event_name"
             android:fontFamily="@font/roboto_mono_light"
             android:textSize="20sp"
             android:ems="10"
