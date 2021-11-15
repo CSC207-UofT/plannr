@@ -36,4 +36,14 @@ public class ExpensesManager {
         return e.getValue();
     }
 
+    /**
+     * This creates a new Expenses object
+     * @param name the name of the Expenses object
+     * @param value the value of the Expenses object
+     * @return the new Expenses object created based on the given parameters
+     */
+    public Expenses createExpense(String name, double value) {
+        return new Expenses(name, value);
+    }
+
 }
