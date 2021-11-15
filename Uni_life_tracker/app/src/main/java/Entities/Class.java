@@ -1,19 +1,16 @@
-package Entities;/*
-NOTE: TO BE IMPLEMENTED LATER IN PHASE 1!!
-*/
-//Note for generic name: Change to LocalDate!
+package Entities;
 
-import Entities.Event;
 import androidx.annotation.NonNull;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
+/**
+ * Represents a class (lecture/tutorial) with its course and location.
+ */
 public class Class extends Event {
 
     private String location;
     private String course;
-    DateTimeFormatter customFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm a");
 
     /**
      * Construct a Entities.Class event, giving it the given name,
@@ -46,6 +43,18 @@ public class Class extends Event {
      */
     public String getLocation() { return this.location; }
 
+
+
+    /**
+     * Sets the course of the Entities.Class event
+     */
+    public void setCourse(String course) { this.course = course; }
+
+    /**
+     * Sets the location of the Entities.Class event
+     */
+    public void setLocation(String location) { this.location = location; }
+
     /**
      * toString method
      * @return a String that describes the Entities.Class event
@@ -68,8 +77,8 @@ public class Class extends Event {
                 this.getName(),
                 this.getCourse(),
                 this.getLocation(),
-                this.getStartDate().format(customFormat),
-                this.getEndDate().format(customFormat));
+                this.getStartDate().format(DATEFORMAT),
+                this.getEndDate().format(DATEFORMAT));
 
     }
 }
