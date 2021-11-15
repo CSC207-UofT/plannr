@@ -1,7 +1,5 @@
 package Entities;
 
-import java.util.Date;
-
 public class Expenses {
     private String name;
     private double value;
