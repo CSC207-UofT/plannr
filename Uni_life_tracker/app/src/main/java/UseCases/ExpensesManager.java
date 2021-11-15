@@ -18,4 +18,13 @@ public class ExpensesManager {
         e.setName(name);
     }
 
+    /**
+     * Changes the value of the expenses
+     * @param e Expenses object
+     * @param value new value for the Expenses object
+     */
+    public void changeValue(Expenses e, double value) {
+        e.setValue(value);
+    }
+
 }
