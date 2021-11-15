@@ -38,6 +38,7 @@
             android:layout_width="193dp"
             android:layout_height="96dp"
             android:text="@string/list_of_expenses"
+            android:layout_marginStart="22dp"
             android:layout_marginTop="-70dp"
             android:layout_marginBottom="30dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -74,6 +75,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:contentDescription="@string/left_arrow"/>
 
+
     <ImageButton
             android:id="@+id/add_expense_button"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -89,7 +91,7 @@
             app:layout_constraintHorizontal_bias="0.049"
             app:layout_constraintVertical_bias="0.778"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="370dp"
+            android:layout_marginTop="500dp"
             android:layout_marginStart="130dp"
             android:contentDescription="@string/add_expense_button"/>
     <TextView
@@ -103,21 +105,23 @@
             app:layout_constraintVertical_bias="0.96"
             android:fontFamily="@font/roboto_mono_bold"
             android:textSize="12sp"
+            android:layout_marginTop="2dp"
             android:layout_marginStart="140dp"
             android:textColor="#070707"
             android:id="@+id/add_expense"
             app:layout_constraintHorizontal_bias="0.747"/>
 
+
+
+</LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:layout_marginTop="130dp"
             android:layout_marginStart="20dp"
             android:id="@+id/ExpensesrecyclerView"/>
-
-
-    </LinearLayout>
-
     <RelativeLayout
     android:layout_width="200dp"
     android:layout_height="match_parent"
