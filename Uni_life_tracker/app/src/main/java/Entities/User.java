@@ -75,4 +75,12 @@ public class User {
     public double getIncome() {
         return this.income;
     }
+
+    /**
+     * Setter method for user's income
+     * @param income the new income for the user
+     */
+    public void setIncome(double income) {
+        this.income = income;
+    }
 }
