@@ -16,6 +16,10 @@
                   tools:ignore="AllowBackup"> </activity>
         <activity
                 android:name=".AddExpenses"
+                android:label="title_activity_exoenses_list"
+                android:theme="@style/Theme.Uni_life_tracker.NoActionBar"> </activity>
+        <activity
+                android:name=".ExpensesList"
                 android:label="@string/title_activity_add_expenses"
                 android:theme="@style/Theme.Uni_life_tracker.NoActionBar"> </activity>
         <activity
