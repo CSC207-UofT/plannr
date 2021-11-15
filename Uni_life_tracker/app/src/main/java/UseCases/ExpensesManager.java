@@ -1,10 +1,12 @@
 package UseCases;
 
-/*
-NOTE: TO BE IMPLEMENTED LATER IN PHASE 1!!
-*/
+import Entities.Expenses;
+
 public class ExpensesManager {
 
-//   public double calculateBalance(){}
+    /**
+     * Constructor of ExpensesManager
+     */
+    public ExpensesManager() {}
 
 }
