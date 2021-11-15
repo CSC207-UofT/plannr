@@ -10,28 +10,24 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.Uni_life_tracker">
-        <activity android:name=".SettingsActivity">
-        </activity>
-            <activity android:name=".SignUpActivity">
-            android:theme="@style/Theme.Uni_life_tracker" tools:ignore="AllowBackup">
+        <activity android:name=".SettingsActivity"> </activity>
+        <activity android:name=".SignUpActivity"
+                  android:theme="@style/Theme.Uni_life_tracker"
+                  tools:ignore="AllowBackup"> </activity>
         <activity
                 android:name=".AddExpenses"
                 android:label="@string/title_activity_add_expenses"
-                android:theme="@style/Theme.Uni_life_tracker.NoActionBar">
-        </activity>
+                android:theme="@style/Theme.Uni_life_tracker.NoActionBar"> </activity>
         <activity
                 android:name=".ExpensesLanding"
                 android:label="@string/title_activity_expenses_landing"
-                android:theme="@style/Theme.Uni_life_tracker.NoActionBar">
-        </activity>
-        <activity
-                android:name=".MainPageActivity"
-                android:exported="true">
-        </activity>
-        <activity android:name=".MainActivity"
-            android:theme="@style/Theme.Uni_life_tracker"
-            tools:ignore="AllowBackup"
-            android:exported="true">
+                android:theme="@style/Theme.Uni_life_tracker.NoActionBar"> </activity>
+        <activity android:name=".MainPageActivity"
+                  android:exported="true"> </activity>
+        <activity android:name=".WelcomeActivity"
+                  android:theme="@style/Theme.Uni_life_tracker"
+                  tools:ignore="AllowBackup"
+                  android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
