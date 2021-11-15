@@ -1,20 +1,17 @@
-package Entities;/*
-NOTE: TO BE IMPLEMENTED LATER IN PHASE 1!!
-*/
-import Entities.Event;
+package Entities;
+
 import androidx.annotation.NonNull;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
+/**
+ * Represents a work event with a start date, end date and location.
+ */
 public class Work extends Event {
-
-
     private String location;
-    DateTimeFormatter customFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm a");
 
     /**
-     * Construct a Entities.Work event, giving it the given name,
+     * Constructs an Entities.Work event, giving it the given name,
      * priority, start date, end date and location.
      *
      * @param name      The Entities.Work's name
@@ -23,8 +20,9 @@ public class Work extends Event {
      * @param endDate   The Entities.Work's end date
      * @param location  The Entities.Work's location
      */
-    public Work(String name, int priority, LocalDateTime startDate, LocalDateTime endDate, String location) {
-        super(name, priority, startDate, endDate);
+    public Work(String name, int priority, LocalDateTime startDate,
+                LocalDateTime endDate, String location) {
+        super (name, priority, startDate, endDate);
         this.location = location;
     }
 
@@ -34,6 +32,11 @@ public class Work extends Event {
      */
     public String getLocation() { return this.location; }
 
+    /**
+     * Changes the location of the work event
+     * @param location is the new location of the work event
+     */
+    public void setLocation (String location) { this.location = location; }
 
     /**
      * toString method
@@ -52,11 +55,11 @@ public class Work extends Event {
         else {
             strPriority = "low";
         }
-        return String.format("Work (%s priority): Work (%s) in %s starts at %s and ends at %s",
+        return String.format("Work (%s priority): Work (%s) at %s starts at %s and ends at %s",
                 strPriority,
                 this.getName(),
                 this.getLocation(),
-                this.getStartDate().format(customFormat),
-                this.getEndDate().format(customFormat));
+                this.getStartDate().format(DATEFORMAT),
+                this.getEndDate().format(DATEFORMAT));
     }
 }
