@@ -61,7 +61,8 @@
                 android:textColor="@color/black"
                 android:fontFamily="@font/roboto_mono_bold"
                 android:textAlignment="center"
-                android:padding="15dp"/>
+                android:padding="15dp"
+                android:onClick="ClickAssessment"/>
 
         <!-- Deadline -->
         <TextView
@@ -73,7 +74,8 @@
                 android:textColor="@color/black"
                 android:fontFamily="@font/roboto_mono_bold"
                 android:textAlignment="center"
-                android:padding="15dp"/>
+                android:padding="15dp"
+                android:onClick="ClickDeadline"/>
 
         <!-- Class Time -->
         <TextView
@@ -85,7 +87,8 @@
                 android:textColor="@color/black"
                 android:fontFamily="@font/roboto_mono_bold"
                 android:textAlignment="center"
-                android:padding="15dp"/>
+                android:padding="15dp"
+                android:onClick="ClickClassTime"/>
 
         <!-- Study Session -->
         <TextView
@@ -97,7 +100,8 @@
                 android:textColor="@color/black"
                 android:fontFamily="@font/roboto_mono_bold"
                 android:textAlignment="center"
-                android:padding="15dp"/>
+                android:padding="15dp"
+                android:onClick="ClickStudySession"/>
     </LinearLayout>
 
     <!-- Add Event Title -->
@@ -211,20 +215,20 @@
                     android:orientation="horizontal"
                     android:paddingHorizontal="15dp">
 
-            <RadioButton android:id="@+id/high_priority"
+            <RadioButton android:id="@+id/rb_high_priority"
                          android:layout_width="wrap_content"
                          android:layout_height="wrap_content"
                          android:text="@string/high_priority"
                          android:fontFamily="@font/roboto_mono_light"/>
 
-            <RadioButton android:id="@+id/med_priority"
+            <RadioButton android:id="@+id/rb_med_priority"
                          android:layout_width="wrap_content"
                          android:layout_height="wrap_content"
                          android:text="@string/med_priority"
                          android:fontFamily="@font/roboto_mono_light"
                          android:layout_marginStart="10dp"/>
 
-            <RadioButton android:id="@+id/low_priority"
+            <RadioButton android:id="@+id/rb_low_priority"
                          android:layout_width="wrap_content"
                          android:layout_height="wrap_content"
                          android:text="@string/low_priority"
