@@ -57,6 +57,14 @@ public class UserManager {
         return balance;
     }
 
+    /**
+     * Adds a new expense to the user's expensesList
+     * @param value value of the new expense
+     * @param name name of the new expense
+     */
+    public void addExpense(double value, String name) {
+        u.getExpensesList().add(expManager.createExpense(name, value));
+    }
 
     @NonNull
     @Override
