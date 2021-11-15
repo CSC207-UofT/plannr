@@ -12,9 +12,11 @@ import java.util.ArrayList;
 
 public class UserManager {
     private final User u;
+    private final ExpensesManager expManager;
 
     public UserManager(String name, ArrayList<String> courses, String school) {
         u = createUser(name, courses, school);
+        this.expManager = new ExpensesManager();
     }
 
     public User createUser(String name, ArrayList<String> courses, String school) {
@@ -40,6 +42,21 @@ public class UserManager {
     public ArrayList<Expenses> getExpenses() {
         return u.getExpensesList();
     }
+
+    /**
+     * Calculates and returns the user's current balance
+     * @return the current balance of user
+     */
+    public double calculateBalance() {
+        double balance = this.u.getIncome();
+
+        for (Expenses e : this.u.getExpensesList()) {
+            balance -= expManager.getValue(e);
+        }
+
+        return balance;
+    }
+
 
     @NonNull
     @Override
