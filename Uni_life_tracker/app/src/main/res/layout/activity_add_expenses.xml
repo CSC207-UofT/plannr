@@ -17,8 +17,8 @@
             app:layout_constraintHorizontal_bias="0.376"
             android:fontFamily="@font/roboto_mono_bold"
             android:textSize="20sp"
-            android:layout_marginStart="70dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="38dp"
             android:textColor="#070707"
             android:id="@+id/expenses_title"/>
 

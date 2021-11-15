@@ -28,9 +28,6 @@ public class ExpensesLanding extends AppCompatActivity {
         Button e_go_to_view_button = findViewById(R.id.e_go_to_view_button);
         e_go_to_view_button.setOnClickListener(e -> openExpensesView());
 
-
-
-
     }
     // change ExpensesLanding to ExpensesList when merged
     private void openExpensesView() {
