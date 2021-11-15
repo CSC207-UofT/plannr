@@ -61,7 +61,6 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_width="50dp"
             android:layout_height="58dp"
-            android:src="@drawable/left_button_background"
             android:padding="2dp"
             android:scaleType="fitCenter"
             android:background="#0000ffff"
