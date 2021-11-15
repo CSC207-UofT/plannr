@@ -24,10 +24,10 @@ public class AddExpenses extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_expenses);
-        textInputName = findViewById(R.id.add_e_name);
-        textInputAmount = findViewById(R.id.add_e_amount);
+        textInputName = findViewById(R.id.add_expense_name);
+        textInputAmount = findViewById(R.id.add_expense_amount);
         Button e_submit = findViewById(R.id.e_submit);
-        e_submit.setOnClickListener(v -> openAddExpensesView());
+        e_submit.setOnClickListener(b -> openAddExpensesView());
 
     }
 
@@ -48,7 +48,7 @@ public class AddExpenses extends AppCompatActivity {
             return true;
         }
     }
-    public void AddExpensesInput(View v) {
+    public void AddExpensesInput(View b) {
         if (!(validate(textInputName) | validate( textInputAmount))) {
             // Here we can get all the info we need
             // For example to get the email you can do textInputEmail.getEditTest().getText().toString()
