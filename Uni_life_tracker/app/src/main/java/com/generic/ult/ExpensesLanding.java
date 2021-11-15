@@ -48,7 +48,7 @@ public class ExpensesLanding extends AppCompatActivity {
         }
     }
     public void ExpensesViewInput(View e) {
-        if (!(validate(textInputName) | validate( textInputAmount))) {
+        if (!(validate(textInputName) & validate( textInputAmount))) {
             // Here we can get all the info we need
             // For example to get the email you can do textInputEmail.getEditTest().getText().toString()
         }else {openExpensesView();}
