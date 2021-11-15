@@ -27,7 +27,7 @@ public class AddExpenses extends AppCompatActivity {
         textInputName = findViewById(R.id.add_expense_name);
         textInputAmount = findViewById(R.id.add_expense_amount);
         Button e_submit = findViewById(R.id.e_submit);
-        e_submit.setOnClickListener(b -> openAddExpensesView());
+        e_submit.setOnClickListener(this::AddExpensesInput);
 
     }
 
@@ -52,7 +52,7 @@ public class AddExpenses extends AppCompatActivity {
         if (!(validate(textInputName) | validate( textInputAmount))) {
             // Here we can get all the info we need
             // For example to get the email you can do textInputEmail.getEditTest().getText().toString()
-        }
+        }else{openAddExpensesView();}
 
 
 

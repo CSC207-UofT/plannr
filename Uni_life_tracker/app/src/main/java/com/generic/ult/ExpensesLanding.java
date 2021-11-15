@@ -26,7 +26,7 @@ public class ExpensesLanding extends AppCompatActivity {
         textInputName = findViewById(R.id.expense_name);
         textInputAmount = findViewById(R.id.expense_amount);
         Button e_go_to_view_button = findViewById(R.id.e_go_to_view_button);
-        e_go_to_view_button.setOnClickListener(e -> openExpensesView());
+        e_go_to_view_button.setOnClickListener(this::ExpensesViewInput);
 
     }
     // change ExpensesLanding to ExpensesList when merged
@@ -51,7 +51,7 @@ public class ExpensesLanding extends AppCompatActivity {
         if (!(validate(textInputName) | validate( textInputAmount))) {
             // Here we can get all the info we need
             // For example to get the email you can do textInputEmail.getEditTest().getText().toString()
-        }
+        }else {openExpensesView();}
 
 
     }
