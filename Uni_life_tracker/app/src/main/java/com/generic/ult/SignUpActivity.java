@@ -1,7 +1,9 @@
 package com.generic.ult;
 
+import android.content.Intent;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,7 +12,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
-public class Signup extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity {
     // At least one number, uppercase letter, lowercase letter and special char. Min of 6 characters
     private static final Pattern PASSWORD_REQ =
             Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#!$%^&+=]).{6,}$");
@@ -29,6 +31,14 @@ public class Signup extends AppCompatActivity {
         textInputUni = findViewById(R.id.text_university);
         textInputEmail = findViewById(R.id.text_input_email);
         textInputPassword = findViewById(R.id.text_password);
+
+        Button startBtn = findViewById(R.id.btn_sign_up);
+        startBtn.setOnClickListener(v -> openMain());
+    }
+
+    private void openMain() {
+        Intent intent = new Intent(this, MainPageActivity.class);
+        startActivity(intent);
     }
 
     private boolean validate(TextInputLayout textInput) {

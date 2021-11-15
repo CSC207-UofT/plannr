@@ -9,7 +9,7 @@ public class SystemOut {
      * This method will print the welcome message of this program
      */
     public static void welcomeMessage() {
-        // Welcome message
+        // WelcomeActivity message
         System.out.println("--- WELCOME TO UNI LIFE TRACKER! ---" +
                 "\nWe are here to help you track your disastrous life!");
         System.out.println("-------------------------");
