@@ -22,7 +22,6 @@
             android:textColor="#070707"
             android:id="@+id/expenses_title"/>
 
-
     <TextView
             android:layout_width="270dp"
             android:layout_height="96dp"
@@ -33,7 +32,8 @@
             android:layout_marginBottom="460dp"
             android:id="@+id/e_welcome_text"
             android:fontFamily="@font/robotomono"
-            android:textColor="#070707" android:textSize="18sp"
+            android:textColor="#070707"
+            android:textSize="18sp"
             android:gravity="center"
             tools:ignore="HardcodedText"/>
 
@@ -47,51 +47,33 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/e_add_name"
-                android:layout_width="match_parent"
+                android:id="@+id/expense_name"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginTop="300dp"
+                android:layout_marginStart="70dp"
                 app:errorEnabled="true">
+            <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/add_name"
+                    android:inputType="text"
+            />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="240dp"
-                android:layout_marginTop="250dp"
-                android:layout_marginStart="95dp"
-                android:layout_height="wrap_content"
-                android:hint="@string/add_name"
-                android:inputType="text"
-                android:id="@+id/expense_name"/>
         <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/e_add_amount"
-                android:layout_width="match_parent"
+                android:id="@+id/expense_amount"
+                android:layout_marginStart="70dp"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
                 app:errorEnabled="true">
+            <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/add_amount"
+                    android:inputType="numberDecimal"
+            />
         </com.google.android.material.textfield.TextInputLayout>
-
-
-        <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="240dp"
-                android:layout_marginStart="95dp"
-                android:layout_height="wrap_content"
-                android:hint="@string/add_amount"
-                android:inputType="numberDecimal"
-                android:id="@+id/expense_amount"/>
-        <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/e_add_date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:errorEnabled="true">
-        </com.google.android.material.textfield.TextInputLayout>
-
 
 
         <Button
@@ -105,7 +87,7 @@
                 android:id="@+id/e_go_to_view_button"
                 android:text="@string/go_to_expenses_view"
                 android:backgroundTint="#070707"
-                android:onClick="ExpensesViewInput" />
+                android:onClick="ExpensesViewInput"/>
 
 
     </LinearLayout>
