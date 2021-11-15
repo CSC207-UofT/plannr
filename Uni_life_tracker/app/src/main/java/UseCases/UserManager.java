@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class UserManager {
-    private User u;
+    private final User u;
 
     public UserManager(String name, ArrayList<String> courses, String school) {
         u = createUser(name, courses, school);
