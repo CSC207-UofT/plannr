@@ -9,6 +9,7 @@ public class User {
     private ArrayList<String> courses;
     private String school;
     private ArrayList<Event> eventList;
+    private ArrayList<Expenses> expensesList;
 
     /**
      * Construct a Entities.User, giving them the given name,
@@ -55,5 +56,13 @@ public class User {
 
     public void setSchool(String school) {
         this.school = school;
+    }
+
+    /**
+     * Getter method for the user's expenses list
+     * @return ArrayList of Expenses object
+     */
+    public ArrayList<Expenses> getExpensesList() {
+        return this.expensesList;
     }
 }
