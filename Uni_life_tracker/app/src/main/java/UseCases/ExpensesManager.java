@@ -27,4 +27,13 @@ public class ExpensesManager {
         e.setValue(value);
     }
 
+    /**
+     * Gets the value of the Expenses object
+     * @param e the Expenses object
+     * @return the value of the expense
+     */
+    public double getValue(Expenses e) {
+        return e.getValue();
+    }
+
 }
