@@ -2,9 +2,11 @@ package UseCases;
 
 import Entities.Deadline;
 import Entities.Event;
+import Entities.Expenses;
 import Entities.User;
 import androidx.annotation.NonNull;
 
+import java.lang.reflect.Array;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -29,6 +31,14 @@ public class UserManager {
 
     public ArrayList<String> viewCourses() {
         return u.getCourses();
+    }
+
+    /**
+     * Gets the user's expenses
+     * @return an ArrayList of Expenses objects
+     */
+    public ArrayList<Expenses> getExpenses() {
+        return u.getExpensesList();
     }
 
     @NonNull
