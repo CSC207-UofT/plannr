@@ -26,11 +26,27 @@ public class Expenses {
    public String getName() {return name;}
 
     /**
-     * getter method for value
+     * Getter method for value
      * @return a double that describes the Expense value
      */
     public double getValue() {
       return value;
+    }
+
+    /**
+     * Setter method for name
+     * @param name the new name of the expense
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * Setter method for value of expense
+     * @param value the new value of the expense
+     */
+    public void setValue(double value) {
+        this.value = value;
     }
 
 }
