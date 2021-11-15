@@ -10,6 +10,7 @@ public class User {
     private String school;
     private ArrayList<Event> eventList;
     private ArrayList<Expenses> expensesList;
+    private double income;
 
     /**
      * Construct a Entities.User, giving them the given name,
@@ -24,6 +25,7 @@ public class User {
         this.courses = courses;
         this.school = school;
         this.eventList = new ArrayList<>();
+        this.income = 0.0;
     }
 
     /**
@@ -64,5 +66,13 @@ public class User {
      */
     public ArrayList<Expenses> getExpensesList() {
         return this.expensesList;
+    }
+
+    /**
+     * Gets the user's income
+     * @return the user's income as a double object
+     */
+    public double getIncome() {
+        return this.income;
     }
 }
