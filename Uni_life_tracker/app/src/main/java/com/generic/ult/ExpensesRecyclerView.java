@@ -13,17 +13,19 @@ import java.util.ArrayList;
 public class ExpensesRecyclerView extends RecyclerView.Adapter<ExpensesRecyclerView.MyViewHolder> {
         private ArrayList<Expenses> expensesArrayList;
 
-        public void recyclerAdapter(ArrayList<Expenses> expensesArrayList){
+        public ExpensesRecyclerView (ArrayList<Expenses> expensesArrayList){
             this.expensesArrayList = expensesArrayList;
         }
 
         public class MyViewHolder extends RecyclerView.ViewHolder{
-            private TextView expenseTxt, amountTxt;
+            private TextView expenseTxt, amountTxt, addexpenseTxt,  addamountTxt;
 
             public MyViewHolder(final View view){
                 super(view);
-                expenseTxt = view.findViewById(R.id.expense);
+                expenseTxt = view.findViewById(R.id.expense_name);
                 amountTxt = view.findViewById(R.id.expense_amount);
+                addexpenseTxt = view.findViewById(R.id.add_expense_name);
+                addamountTxt = view.findViewById(R.id.add_expense_amount);
             }
         }
 
@@ -37,9 +39,11 @@ public class ExpensesRecyclerView extends RecyclerView.Adapter<ExpensesRecyclerV
         @Override
         public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
             String expenseName = expensesArrayList.get(position).getName();
-            Double amount = expensesArrayList.get(position).getValue();
+            String amount = "$" + expensesArrayList.get(position).getValue();
             holder.expenseTxt.setText(expenseName);
-            holder.amountTxt.setText(String.valueOf(amount));
+            holder.amountTxt.setText(amount);
+            holder.addexpenseTxt.setText(expenseName);
+            holder.addamountTxt.setText(amount);
         }
 
         @Override

@@ -1,24 +1,24 @@
 package com.generic.ult;
 
 import Entities.Expenses;
-
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
 import android.widget.TextView;
+import androidx.core.view.GravityCompat;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
+
 
 public class ExpensesList extends AppCompatActivity {
 
     private ArrayList<Expenses> expensesArrayList;
-    private RecyclerView recyclerView;
-
+    private RecyclerView  recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +26,7 @@ public class ExpensesList extends AppCompatActivity {
         setContentView(R.layout.activity_expenses_list);
 
         // expense list
-        recyclerView = findViewById(R.id.expense_name);
+        recyclerView = findViewById(R.id.ExpensesrecyclerView);
         expensesArrayList= new ArrayList<>();
         setExpenseInfo();
         setAdapter();
@@ -35,12 +35,13 @@ public class ExpensesList extends AppCompatActivity {
 
 
     private void setAdapter() {
-        ExpensesRecyclerView adapter = new ExpensesRecyclerView(expensesArrayList);
+        ExpensesRecyclerView adapter = new ExpensesRecyclerView (expensesArrayList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
     }
+
 
     private void setExpenseInfo() {
         expensesArrayList.add(new Expenses("Rent", 1500.50));
