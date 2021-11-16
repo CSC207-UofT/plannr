@@ -16,8 +16,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class AddEventActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener{
-//    Initialize Variables
+public class AddClassEventActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener{
+    //    Initialize Variables
     int startYear, startMonth, startDay, endYear, endMonth, endDay, startHour, startMinute, endHour, endMinute, priority;
     TextView tvStartDate, tvStartTime, tvEndDate, tvEndTime, tvAssessment, tvDeadline, tvClassTime, tvStudySession;
     RadioGroup radioGroup;
@@ -27,7 +27,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_event);
+        setContentView(R.layout.activity_add_class_event);
 
 //        Assign Variables
         ivBack = findViewById(R.id.iv_back);
@@ -62,26 +62,26 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
 
         radioGroup.setOnCheckedChangeListener(this);
         ivBack.setOnClickListener(this::ClickBack);
+        tvAssessment.setOnClickListener(this::ClickAssessment);
         tvDeadline.setOnClickListener(this::ClickDeadline);
-        tvClassTime.setOnClickListener(this::ClickClassTime);
         tvStudySession.setOnClickListener(this::ClickStudySession);
 
         ivSave.setOnClickListener(v -> {
             String eventName = etEventName.getText().toString();
-            Toast.makeText(AddEventActivity.this, eventName, Toast.LENGTH_SHORT).show(); // TODO: remove
+            Toast.makeText(AddClassEventActivity.this, eventName, Toast.LENGTH_SHORT).show(); // TODO: remove
         });
 
 //        Start Date Selection
         tvStartDate.setOnClickListener(v -> {
             DatePickerDialog datePickerDialog = new DatePickerDialog(
-                    AddEventActivity.this, (view, year, month, dayOfMonth) -> {
-                        startYear = year;
-                        startMonth = month;
-                        startDay = dayOfMonth;
+                    AddClassEventActivity.this, (view, year, month, dayOfMonth) -> {
+                startYear = year;
+                startMonth = month;
+                startDay = dayOfMonth;
 
-                        String startDate = startDay + "-" + (startMonth+1) + "-" + startYear;
-                        tvStartDate.setText(startDate);
-                    }, startYear, startMonth, startDay);
+                String startDate = startDay + "-" + (startMonth+1) + "-" + startYear;
+                tvStartDate.setText(startDate);
+            }, startYear, startMonth, startDay);
             datePickerDialog.updateDate(startYear, startMonth, startDay); // displays prev selected date
             datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis()); // disable past date selection
             datePickerDialog.show();
@@ -90,7 +90,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
 //        End Date Selection
         tvEndDate.setOnClickListener(v -> {
             DatePickerDialog datePickerDialog = new DatePickerDialog(
-                    AddEventActivity.this, (view, year, month, dayOfMonth) -> {
+                    AddClassEventActivity.this, (view, year, month, dayOfMonth) -> {
                 endYear = year;
                 endMonth = month + 1;
                 endDay = dayOfMonth;
@@ -116,57 +116,58 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
 //        Start Time Selection
         tvStartTime.setOnClickListener(v -> {
             TimePickerDialog timePickerDialog = new TimePickerDialog(
-                    AddEventActivity.this, (view, hourOfDay, minute) -> {
-                        startHour = hourOfDay;
-                        startMinute = minute;
+                    AddClassEventActivity.this, (view, hourOfDay, minute) -> {
+                startHour = hourOfDay;
+                startMinute = minute;
 
-                        Calendar calendar12 = Calendar.getInstance(); // initialize calendar
-                        String startDate = tvStartDate.getText().toString().trim();
-                        String[] strings = startDate.split("-");
-                        int sDay = Integer.parseInt(strings[0]);
-                        calendar12.set(Calendar.DAY_OF_MONTH, sDay);
-                        calendar12.set(Calendar.HOUR_OF_DAY, startHour);
-                        calendar12.set(Calendar.MINUTE, startMinute);
-                        tvStartTime.setText(DateFormat.format("hh:mm aa", calendar12));
-                    }, startHour, startMinute, false);
+                Calendar calendar12 = Calendar.getInstance(); // initialize calendar
+                String startDate = tvStartDate.getText().toString().trim();
+                String[] strings = startDate.split("-");
+                int sDay = Integer.parseInt(strings[0]);
+                calendar12.set(Calendar.DAY_OF_MONTH, sDay);
+                calendar12.set(Calendar.HOUR_OF_DAY, startHour);
+                calendar12.set(Calendar.MINUTE, startMinute);
+                tvStartTime.setText(DateFormat.format("hh:mm aa", calendar12));
+            }, startHour, startMinute, false);
             timePickerDialog.show();
         });
 
 //        End Time Selection
         tvEndTime.setOnClickListener(v -> {
             TimePickerDialog timePickerDialog = new TimePickerDialog(
-                    AddEventActivity.this, (view, hourOfDay, minute) -> {
-                        endHour = hourOfDay;
-                        endMinute = minute;
+                    AddClassEventActivity.this, (view, hourOfDay, minute) -> {
+                endHour = hourOfDay;
+                endMinute = minute;
 
-                        Calendar calendar1 = Calendar.getInstance(); // initialize calendar
-                        String endDate = tvEndDate.getText().toString().trim();
-                        String[] strings = endDate.split("-");
-                        int sDay = Integer.parseInt(strings[0]);
-                        calendar1.set(Calendar.DAY_OF_MONTH, sDay);
-                        calendar1.set(Calendar.HOUR_OF_DAY, endHour);
-                        calendar1.set(Calendar.MINUTE, endMinute);
-                        tvEndTime.setText(DateFormat.format("hh:mm aa", calendar1));
-                    }, endHour, endMinute, false);
+                Calendar calendar1 = Calendar.getInstance(); // initialize calendar
+                String endDate = tvEndDate.getText().toString().trim();
+                String[] strings = endDate.split("-");
+                int sDay = Integer.parseInt(strings[0]);
+                calendar1.set(Calendar.DAY_OF_MONTH, sDay);
+                calendar1.set(Calendar.HOUR_OF_DAY, endHour);
+                calendar1.set(Calendar.MINUTE, endMinute);
+                tvEndTime.setText(DateFormat.format("hh:mm aa", calendar1));
+            }, endHour, endMinute, false);
             timePickerDialog.show();
         });
 
 //        TO BE IMPLEMENTED IN PHASE 2: Courses List
-//        ArrayAdapter<String> myAdapter = new ArrayAdapter<>(AddEventActivity.this,
+//        ArrayAdapter<String> myAdapter = new ArrayAdapter<>(AddClassEventActivity.this,
 //                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.courses));
 //        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 //        coursesList.setAdapter(myAdapter);
 //
-//        ivSave.setOnClickListener(view -> Toast.makeText(AddEventActivity.this, priority, Toast.LENGTH_SHORT).show());
+//        ivSave.setOnClickListener(view -> Toast.makeText(AddClassEventActivity.this, priority, Toast.LENGTH_SHORT).show());
     }
 
-//    Back Button
+
+    //    Back Button
     public void ClickBack(View view) {
         Intent intent = new Intent(this, MainPageActivity.class); // TODO: direct to school/life page
         startActivity(intent);
     }
 
-//    Priority Selection
+    //    Priority Selection
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         if (checkedId == R.id.rb_high_priority) {
@@ -178,13 +179,13 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         }
     }
 
-    public void ClickDeadline(View view) {
-        Intent intent = new Intent(this, AddDeadlineEventActivity.class);
+    public void ClickAssessment(View view) {
+        Intent intent = new Intent(this, AddEventActivity.class); // TODO: direct to deadline page
         startActivity(intent);
     }
 
-    public void ClickClassTime(View view) {
-        Intent intent = new Intent(this, AddClassEventActivity.class);
+    public void ClickDeadline(View view) {
+        Intent intent = new Intent(this, AddDeadlineEventActivity.class); // TODO: direct to deadline page
         startActivity(intent);
     }
 

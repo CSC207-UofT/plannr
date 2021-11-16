@@ -1,6 +1,5 @@
 package com.generic.ult;
 
-import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
@@ -10,7 +9,6 @@ import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -137,7 +135,7 @@ public class AddDeadlineEventActivity extends AppCompatActivity implements Radio
     }
 
     public void ClickClassTime(View view) {
-        Intent intent = new Intent(this, MainPageActivity.class); // TODO: direct to class page
+        Intent intent = new Intent(this, AddClassEventActivity.class);
         startActivity(intent);
     }
 
