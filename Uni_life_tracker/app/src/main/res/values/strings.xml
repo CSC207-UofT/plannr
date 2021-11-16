@@ -16,6 +16,13 @@
     <string name="name">Name</string>
     <string name="university">University</string>
     <string name="start">Start!</string>
+    <string name="month">Month</string>
+    <string name="list_of_expenses">List of Expenses:</string>
+    <string name="expense_name">- Expense Name:</string>
+    <string name="x">X</string>
+    <string name="x_arrow">x_arrow</string>
+    <string name="add_expense">Add Expense</string>
+    <string name="add_expense_button">add_expense_button</string>
     <string name="email">Email</string>
     <string name="full_name">Full Name</string>
     <string name="university_name">University Name</string>
