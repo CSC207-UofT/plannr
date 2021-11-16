@@ -107,8 +107,8 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     public boolean signupInput() {
-        return validate(textInputName) && validate(textInputUni) &&
-                validate(textInputEmail) && validate(textInputPassword);
+        return validate(textInputName) & validate(textInputUni) &
+                validate(textInputEmail) & validate(textInputPassword);
     }
 
     private void saveName() {
