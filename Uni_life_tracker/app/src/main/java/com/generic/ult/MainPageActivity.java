@@ -96,10 +96,10 @@ public class MainPageActivity extends AppCompatActivity {
 //        redirectActivity(this,);
     }
 
-    public void ClickLife(View view) {
-        // redirect activity to dashboard
-        redirectActivity(this, SignUpActivity.class); // change this to life later
-    }
+//    public void ClickLife(View view) {
+//        // redirect activity to dashboard
+//        redirectActivity(this, SignUpActivity.class); // change this to life later
+//    }
 
     public void ClickExpenses(View view) {
         // redirect activity to dashboard
