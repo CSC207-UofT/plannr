@@ -3,6 +3,7 @@ package com.generic.ult.UseCaseTests;
 import org.junit.*;
 import static org.junit.Assert.*;
 
+import static UseCases.GetTodaysEvents.getTodaysEvents;
 import static UseCases.SortTodaysEvents.sortByDate;
 import static UseCases.SortTodaysEvents.sortByPriority;
 
@@ -13,6 +14,7 @@ import java.util.Arrays;
 
 import Entities.Event;
 import UseCases.EventDateComparator;
+import UseCases.GetTodaysEvents;
 import UseCases.UserManager;
 
 public class SortTodaysEventsTest {
@@ -34,20 +36,20 @@ public class SortTodaysEventsTest {
         e1 = new Event(
                 "test",
                 2,
-                LocalDateTime.of(2021, 1, 1, 1, 1, 1),
-                LocalDateTime.of(2021, 1, 1, 1, 1, 1)
+                LocalDateTime.of(2021, 11, 15, 1, 1, 1),
+                LocalDateTime.of(2021, 11, 15, 1, 1, 1)
         );
         e2 = new Event(
                 "test",
                 1,
-                LocalDateTime.of(2021, 1, 2, 1, 1, 1),
-                LocalDateTime.of(2021, 1, 2, 1, 1, 1)
+                LocalDateTime.of(2021, 11, 15, 1, 1, 2),
+                LocalDateTime.of(2021, 11, 15, 1, 1, 2)
         );
         e3 = new Event(
                 "test",
                 0,
-                LocalDateTime.of(2021, 1, 3, 1, 1, 1),
-                LocalDateTime.of(2021, 1, 3, 1, 1, 1)
+                LocalDateTime.of(2021, 11, 15, 1, 1, 3),
+                LocalDateTime.of(2021, 11, 15, 1, 1, 3)
         );
 
         user.addEventToUsersList(e1);
@@ -65,7 +67,7 @@ public class SortTodaysEventsTest {
     @Test(timeout = 50)
     public void TestSortByPriority() {
         ArrayList<Event> expected = new ArrayList<>(Arrays.asList(e3, e2, e1));
-        assertEquals(expected, sortByDate(user));
+        assertEquals(expected, sortByPriority(user));
     }
 
 }
