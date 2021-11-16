@@ -51,5 +51,8 @@ public class ExpensesList extends AppCompatActivity {
 
     }
 
-
+    public void ClickBack(View view) {
+        Intent intent = new Intent(this, MainPageActivity.class);
+        startActivity(intent);
+    }
 }
