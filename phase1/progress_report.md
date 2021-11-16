@@ -35,3 +35,4 @@ Sari is in the backend team. His main focus was looking into the different ways 
 
 ### Daniel
 Daniel is on the backend team and focused on correcting previous issues in phase 0 and helped to review all backend pull requests. Additionally, he also contributed to brainstorming the design patterns that can be used for this project and developed the majority the tests available on Github. For phase 2, Daniel hopes to continue to help review tests and implement a design pattern and make sure the program adheres to the design principles covered in this course.
+
