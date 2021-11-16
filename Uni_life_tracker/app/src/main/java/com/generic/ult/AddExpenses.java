@@ -8,13 +8,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.ui.AppBarConfiguration;
 import com.google.android.material.textfield.TextInputLayout;
 
-import java.text.DecimalFormat;
 import java.util.Objects;
 
 
 public class AddExpenses extends AppCompatActivity {
 
-    private AppBarConfiguration appBarConfiguration;
+//    private AppBarConfiguration appBarConfiguration;
 
     private TextInputLayout textInputName;
     private TextInputLayout textInputAmount;
@@ -33,7 +32,7 @@ public class AddExpenses extends AppCompatActivity {
 
     // change ExpensesLanding to ExpensesList when merged
     private void openAddExpensesView() {
-        Intent intent = new Intent(this, ExpensesLanding.class);
+        Intent intent = new Intent(this, ExpensesList.class);
         startActivity(intent);
     }
 
@@ -53,9 +52,10 @@ public class AddExpenses extends AppCompatActivity {
             // Here we can get all the info we need
             // For example to get the email you can do textInputEmail.getEditTest().getText().toString()
         }else{openAddExpensesView();}
-
-
-
     }
 
+    public void ClickBack(View view) {
+        Intent intent = new Intent(this, ExpensesList.class);
+        startActivity(intent);
+    }
 }

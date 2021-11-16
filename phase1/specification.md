@@ -11,3 +11,4 @@ Upon app launch, users see the today view, which covers all current responsibili
 + Settings page: Allows users to change their name and university they attend at any point in time
 + Sidebar menu: Allows users to navigate to different pages (e.g. School, Expenses, Settings)
 + Sort by button: Allows users to sort the To-Do list either by date or priority 
+

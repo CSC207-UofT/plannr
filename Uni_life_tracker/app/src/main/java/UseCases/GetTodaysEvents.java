@@ -6,7 +6,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import Entities.Event;
-import Entities.User;
 
 /**
  * Gets the list of events of the current day

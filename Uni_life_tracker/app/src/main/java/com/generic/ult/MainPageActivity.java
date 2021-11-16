@@ -103,7 +103,7 @@ public class MainPageActivity extends AppCompatActivity {
 
     public void ClickExpenses(View view) {
         // redirect activity to dashboard
-//        redirectActivity(this,);
+       redirectActivity(this,ExpensesList.class);
     }
 
     public void ClickSettings(View view) {

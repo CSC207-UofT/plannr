@@ -1,3 +1,8 @@
+
+# Design Document
+
+
+## SOLID Design Principles
 SOLID Design Principles
 SRP: Single Responsibility Principle
 Comply: In order to comply with SRP, we made sure that each class has one responsibility. For example, the use case class AddEvent is only responsible for adding a new event, GetTodaysEvents is only responsible for returning a list of events taking place today, SortTodaysEvents is only responsible for sorting and returning the list of today's events, and GetEventsOfDate is only responsible for returning a list of events for the selected date. 
@@ -12,12 +17,14 @@ Comply: We did not create any interfaces, and therefore we also complied with IS
 DIP: Dependency Inversion Principle
 Comply: To comply with DIP, we made sure that all high-level code was reusable and not affected by changes from low-level code which was done through abstraction.
 
+## Clean Architecture
 Clean Architecture
 For clean architecture, we believe we mostly satisfied the design principles. For this program, our entities from Phase 0 didn't change, which includes User, Event (and its subclasses), and Expense. We access these Entities through their UseCases, namely Event`
 Manager,serManager, and ExpenseManager. As these UseCases are within the same layer, and to pass information between each other, they may call each other's methods within themselves. For presenters, since we replaced our CLI program with the Android GUI application, it is now replaced by the Android layouts, and their corresponding java classes (under com.ult.generic). Our gateways are also replaced by the Android operating system, namely the UI of the app. It will serve the purpose to print information to user. 
 
 For controllers, there may be slight violations in that there are cases where our presenter also served the purpose of checking the validity of user input or are used to directly deal with storing user information. Because we were mainly focused on developing the GUI interface and learning Android, this was slightly overlooked and we will further investigate and fix this design violation in the future.
 
+## Design Patterns
 Design Patterns
 For our project, we thought about the Factory design pattern for creating Events. This is applicable because we have several different types of events, by creating a similar concrete class called EventFactory, we can then use the same logic for creating various types of events. This could reduce the amount of code we need to write each time we want to create an Event. Suppose the client wants to create a Deadline event, we can simply call EventFactory.getEvent(“Deadline”) to get a default instantiation of Deadline, then call the respective setter method for startDate, endDate, etc. But this may potentially come at a cost of needing to call the setter methods many times in order to set the events’ attributes, which needs to be discussed with the team. 
 
@@ -26,8 +33,10 @@ Additionally, we also thought about the decorator design patter. The Event super
 Use of GitHub Features
 Link for ClickUp: https://app.clickup.com/14148297/v/b/7-14148297-2
 
+## Major Design Decisions
 Major Design Decisions
 We reduced of the scope of phase 1, as we were having difficulties navigating android studio and realized there was a possibility of running out of time. Our other option was to attempt completing all elements of our app, including the more complex visual aspects and risk running out of time. 
 
+## Packaging Strategies
 Packaging Strategies
 Since phase 0, we decided to organize our project by packaging by layer because it is the most intuitive. But this is not definitive and based on how things evolve in the future, we may change it to something else.
