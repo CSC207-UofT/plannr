@@ -14,6 +14,9 @@ public class WelcomeActivity extends AppCompatActivity {
 
         Button startBtn = findViewById(R.id.startBtn);
         startBtn.setOnClickListener(v -> openSignup());
+
+
+
     }
     //https://www.youtube.com/watch?v=bgIUdb-7Rqo
    private void openSignup() {
