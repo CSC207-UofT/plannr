@@ -41,7 +41,7 @@ public class ExpensesRecyclerView extends RecyclerView.Adapter<ExpensesRecyclerV
     @Override
     public void onBindViewHolder(@NonNull ExpensesRecyclerView.MyViewHolder holder, int position) {
         String expenseName = expensesArrayList.get(position).getName();
-        //Double expenseAmount = expensesArrayList.get(position).getValue();
+        double expenseAmount = expensesArrayList.get(position).getValue();
         holder.expenseNameTxt.setText(expenseName);
         holder.expenseAmountTxt.setText("$" + expenseAmount);
     }
