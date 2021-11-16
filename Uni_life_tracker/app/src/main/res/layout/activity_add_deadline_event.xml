@@ -2,7 +2,7 @@
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
@@ -55,26 +55,26 @@
                 android:id="@+id/tv_assessment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:drawableTopCompat="@drawable/ic_assessment"
+                app:drawableTopCompat="@drawable/ic_assessment_line"
                 android:text="@string/assessment"
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:fontFamily="@font/roboto_mono_bold"
+                android:fontFamily="@font/roboto_mono_light"
                 android:textAlignment="center"
-                android:padding="15dp"/>
+                android:padding="15dp"
+                android:onClick="ClickAssessment"/>
 
         <!-- Deadline -->
         <TextView
                 android:id="@+id/tv_deadline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:drawableTopCompat="@drawable/ic_deadline_line"
+                app:drawableTopCompat="@drawable/ic_deadline"
                 android:text="@string/deadline"
                 android:textColor="@color/black"
-                android:fontFamily="@font/roboto_mono_light"
+                android:textStyle="bold"
+                android:fontFamily="@font/roboto_mono_bold"
                 android:textAlignment="center"
-                android:padding="15dp"
-                android:onClick="ClickDeadline"/>
+                android:padding="15dp"/>
 
         <!-- Class Time -->
         <TextView
@@ -128,63 +128,26 @@
                    android:src="@drawable/ic_time"
                    android:contentDescription="@string/select_date"/>
 
-        <!-- Event Start Date & Time -->
-        <LinearLayout
+        <TextView
+                android:id="@+id/tv_date"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center_vertical"
-                android:paddingHorizontal="15dp">
+                android:hint="@string/select_date"
+                android:fontFamily="@font/roboto_mono_light"
+                android:textSize="15sp"
+                android:padding="15dp"/>
 
-            <TextView
-                    android:id="@+id/tv_start_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/select_start_date"
-                    android:fontFamily="@font/roboto_mono_light"
-                    android:textSize="15sp"
-                    android:paddingBottom="15dp"/>
-
-            <TextView
-                    android:id="@+id/tv_end_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/select_end_date"
-                    android:fontFamily="@font/roboto_mono_light"
-                    android:textSize="15sp"/>
-        </LinearLayout>
-
-        <!-- Event End Date & Time -->
-        <LinearLayout
+        <TextView
+                android:id="@+id/tv_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="end">
+                android:hint="@string/time"
+                android:fontFamily="@font/roboto_mono_light"
+                android:textSize="15sp"
+                android:textAlignment="textEnd"
+                android:padding="15dp"/>
 
-            <TextView
-                    android:id="@+id/tv_start_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/start_time"
-                    android:fontFamily="@font/roboto_mono_light"
-                    android:textSize="15sp"
-                    android:textAlignment="textEnd"
-                    android:paddingEnd="15dp"
-                    android:paddingBottom="15dp"
-                    tools:ignore="RtlSymmetry"/>
-
-            <TextView
-                    android:id="@+id/tv_end_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/end_time"
-                    android:fontFamily="@font/roboto_mono_light"
-                    android:textSize="15sp"
-                    android:textAlignment="textEnd"
-                    android:paddingEnd="15dp"
-                    tools:ignore="RtlSymmetry"/>
-        </LinearLayout>
     </LinearLayout>
 
     <!-- Add Event Priority -->
@@ -262,4 +225,5 @@
 <!--                android:layout_width="wrap_content"-->
 <!--                android:layout_height="wrap_content"/>-->
 <!--    </LinearLayout>-->
+
 </LinearLayout>

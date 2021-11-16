@@ -43,7 +43,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         tvClassTime = findViewById(R.id.tv_class_time);
         tvStudySession = findViewById(R.id.tv_study_session);
 
-        Spinner coursesList = findViewById(R.id.spn_courses);
+//        Spinner coursesList = findViewById(R.id.spn_courses); // TO BE IMPLEMENTED IN PHASE 2
 
 //       Initialize Calendar
         Calendar calendar = Calendar.getInstance();
@@ -62,7 +62,6 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
 
         radioGroup.setOnCheckedChangeListener(this);
         ivBack.setOnClickListener(this::ClickBack);
-        tvAssessment.setOnClickListener(this::ClickAssessment);
         tvDeadline.setOnClickListener(this::ClickDeadline);
         tvClassTime.setOnClickListener(this::ClickClassTime);
         tvStudySession.setOnClickListener(this::ClickStudySession);
@@ -152,13 +151,13 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
             timePickerDialog.show();
         });
 
-//        Courses List
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<>(AddEventActivity.this,
-                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.courses));
-        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        coursesList.setAdapter(myAdapter);
-
-        ivSave.setOnClickListener(view -> Toast.makeText(AddEventActivity.this, priority, Toast.LENGTH_SHORT).show());
+//        TO BE IMPLEMENTED IN PHASE 2: Courses List
+//        ArrayAdapter<String> myAdapter = new ArrayAdapter<>(AddEventActivity.this,
+//                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.courses));
+//        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        coursesList.setAdapter(myAdapter);
+//
+//        ivSave.setOnClickListener(view -> Toast.makeText(AddEventActivity.this, priority, Toast.LENGTH_SHORT).show());
     }
 
 //    Back Button
@@ -179,13 +178,8 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         }
     }
 
-    public void ClickAssessment(View view) {
-        Intent intent = new Intent(this, MainPageActivity.class); // TODO: direct to assessment page
-        startActivity(intent);
-    }
-
     public void ClickDeadline(View view) {
-        Intent intent = new Intent(this, MainPageActivity.class); // TODO: direct to deadline page
+        Intent intent = new Intent(this, AddDeadlineEventActivity.class); // TODO: direct to deadline page
         startActivity(intent);
     }
 
