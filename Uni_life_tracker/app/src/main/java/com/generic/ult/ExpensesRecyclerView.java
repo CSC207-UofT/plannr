@@ -1,6 +1,6 @@
 package com.generic.ult;
 
-import Entities.Expenses;
+import Entities.Expense;
 import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,15 +8,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 
 public class ExpensesRecyclerView extends RecyclerView.Adapter<ExpensesRecyclerView.MyViewHolder>{
-    private ArrayList<Expenses> expensesArrayList;
+    private ArrayList<Expense> expensesArrayList;
 
-    public  ExpensesRecyclerView (ArrayList<Expenses> expensesArrayList){
+    public  ExpensesRecyclerView (ArrayList<Expense> expensesArrayList){
         this.expensesArrayList = expensesArrayList;
     }
 

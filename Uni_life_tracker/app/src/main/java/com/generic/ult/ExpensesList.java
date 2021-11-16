@@ -1,6 +1,6 @@
 package com.generic.ult;
 
-import Entities.Expenses;
+import Entities.Expense;
 import android.content.Intent;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class ExpensesList extends AppCompatActivity {
 
-    private ArrayList<Expenses> expensesArrayList;
+    private ArrayList<Expense> expensesArrayList;
     private RecyclerView  recyclerView;
 
     @Override
@@ -40,10 +40,10 @@ public class ExpensesList extends AppCompatActivity {
 
 
     private void setExpenseInfo() {
-        expensesArrayList.add(new Expenses("Rent", 1500.50));
-        expensesArrayList.add(new Expenses("Food", 134.23));
-        expensesArrayList.add(new Expenses("Dinner", 54.67));
-        expensesArrayList.add(new Expenses("Clothing", 45.96));
+        expensesArrayList.add(new Expense("Rent", 1500.50));
+        expensesArrayList.add(new Expense("Food", 134.23));
+        expensesArrayList.add(new Expense("Dinner", 54.67));
+        expensesArrayList.add(new Expense("Clothing", 45.96));
 
     }
 
