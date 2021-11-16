@@ -147,7 +147,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
                         calendar1.set(Calendar.DAY_OF_MONTH, sDay);
                         calendar1.set(Calendar.HOUR_OF_DAY, endHour);
                         calendar1.set(Calendar.MINUTE, endMinute);
-                        tvEndDate.setText(DateFormat.format("hh:mm aa", calendar1));
+                        tvEndTime.setText(DateFormat.format("hh:mm aa", calendar1));
                     }, endHour, endMinute, false);
             timePickerDialog.show();
         });
