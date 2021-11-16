@@ -1,10 +1,13 @@
 package com.generic.ult;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import androidx.preference.PreferenceManager;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.google.android.material.textfield.TextInputLayout;
@@ -33,10 +36,22 @@ public class SignUpActivity extends AppCompatActivity {
         textInputPassword = findViewById(R.id.text_password);
 
         Button signupButton = findViewById(R.id.btn_sign_up);
-        signupButton.setOnClickListener(v -> openMain());
+        signupButton.setOnClickListener(v -> {
+
+            // If all signup credentials are correct, store the credentials
+            // and go into the main page
+            if (signupInput()) {
+                saveCredentialsAndOpenMain();
+            }
+        });
     }
 
-    private void openMain() {
+
+    private void saveCredentialsAndOpenMain() {
+        saveName();
+        saveUni();
+        saveEmail();
+        savePassword();
         Intent intent = new Intent(this, MainPageActivity.class);
         startActivity(intent);
     }
@@ -91,21 +106,62 @@ public class SignUpActivity extends AppCompatActivity {
         return str;
     }
 
-    public void signupInput(View v) {
-        if (!(validate(textInputName) | validate(textInputUni) |
-                validate(textInputEmail) | validate(textInputPassword))) {
-            // Here we can get all the info we need
-            // For example to get the email you can do textInputEmail.getEditTest().getText().toString()
+    public boolean signupInput() {
+        return validate(textInputName) && validate(textInputUni) &&
+                validate(textInputEmail) && validate(textInputPassword);
+    }
 
-            String name = Objects.requireNonNull(textInputName.getEditText()).getText().toString();
-            String uni = Objects.requireNonNull(textInputUni.getEditText()).getText().toString();
-            String email = Objects.requireNonNull(textInputEmail.getEditText()).getText().toString();
-            String password = Objects.requireNonNull(textInputPassword.getEditText()).getText().toString();
+    private void saveName() {
+        String name = Objects.requireNonNull(textInputName.getEditText()).getText().toString();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        @SuppressLint("CommitPrefEdits") SharedPreferences.Editor prefsEditor = prefs.edit();
+        prefsEditor.putString("NAME", name);
+        prefsEditor.apply();
 
+    }
+    private void saveUni() {
+        String uni = Objects.requireNonNull(textInputUni.getEditText()).getText().toString();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        @SuppressLint("CommitPrefEdits") SharedPreferences.Editor prefsEditor = prefs.edit();
+        prefsEditor.putString("UNIVERSITY", uni);
+        prefsEditor.apply();
 
-        }
+    }
+    private void saveEmail() {
+        String email = Objects.requireNonNull(textInputEmail.getEditText()).getText().toString();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        @SuppressLint("CommitPrefEdits") SharedPreferences.Editor prefsEditor = prefs.edit();
+        prefsEditor.putString("EMAIL", email);
+        prefsEditor.apply();
 
+    }
+    private void savePassword() {
+        String password = Objects.requireNonNull(textInputPassword.getEditText()).getText().toString();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        @SuppressLint("CommitPrefEdits") SharedPreferences.Editor prefsEditor = prefs.edit();
+        prefsEditor.putString("PASSWORD", password);
+        prefsEditor.apply();
 
+    }
+
+    private String getName() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        return prefs.getString("NAME", null);
+    }
+
+    private String getUni() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        return prefs.getString("UNIVERSITY", null);
+    }
+
+    private String getEmail() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        return prefs.getString("EMAIL", null);
+    }
+
+    private String getPassword() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        return prefs.getString("PASSWORD", null);
     }
 
 }
