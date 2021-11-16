@@ -15,12 +15,12 @@ public class GetTodaysEvents {
 
     /**
      * Gets a list of events of the current day from the user's list of events
-     * @param user is the user who's list of events we're looking through
+     * @param userManager is the user manager of the user who's list of events we're looking through
      * @return the list of today's events of the user
      */
-    public ArrayList<Event> getTodaysEvents(@NonNull User user) {
+    public static ArrayList<Event> getTodaysEvents(@NonNull UserManager userManager) {
         ArrayList<Event> todaysEvents = new ArrayList<>();
-        for (Event e: user.getEventList()) { //look through user's events
+        for (Event e: userManager.viewEventList()) { //look through user's events
             //if the event's date is the current day, then add it to list of today's events
             if (e.getStartDate().toLocalDate().isEqual(LocalDate.now())) {
                 todaysEvents.add(e);
