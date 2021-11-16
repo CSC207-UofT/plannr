@@ -26,5 +26,4 @@ public class EventManager{
         return user.getEventList().remove(e);
     }
 
-
 }

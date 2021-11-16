@@ -1,5 +1,6 @@
 package Controllers;
 
+import Entities.Deadline;
 import Gateways.EventOutput;
 import Gateways.SystemOut;
 import UseCases.UserManager;
@@ -45,7 +46,7 @@ public class EventController {
                 // Get course name
                 String ddlCourseName = user.viewCourses().get(ddlCourseNum-1);
                 // Create and add deadline event object using UseCases.UserManager
-                user.addDeadlineEvent(eventName, eventPriority, endDate, ddlCourseName);
+                user.addEventToUsersList(new Deadline(eventName, eventPriority, endDate, ddlCourseName));
             }
             EventOutput.printUserEvents(user);
         }
