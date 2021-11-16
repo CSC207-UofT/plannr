@@ -1,14 +1,10 @@
 package com.generic.ult;
 
 import Entities.Expenses;
-import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
-import android.widget.TextView;
-import androidx.core.view.GravityCompat;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -53,6 +49,11 @@ public class ExpensesList extends AppCompatActivity {
 
     public void ClickBack(View view) {
         Intent intent = new Intent(this, MainPageActivity.class);
+        startActivity(intent);
+    }
+
+    public void ClickAddExpense(View view) {
+        Intent intent = new Intent(this, AddExpenses.class);
         startActivity(intent);
     }
 }
