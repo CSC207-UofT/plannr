@@ -189,7 +189,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
     }
 
     public void ClickStudySession(View view) {
-        Intent intent = new Intent(this, MainPageActivity.class); // TODO: direct to study session page
+        Intent intent = new Intent(this, AddStudySessionEventActivity.class);
         startActivity(intent);
     }
 }

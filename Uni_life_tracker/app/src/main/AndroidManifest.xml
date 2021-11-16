@@ -10,6 +10,8 @@
             android:roundIcon="@drawable/ic_plannr_p_black"
             android:supportsRtl="true"
             android:theme="@style/Theme.Plannr">
+        <activity android:name=".AddStudySessionEventActivity">
+        </activity>
         <activity android:name=".AddClassEventActivity">
         </activity>
         <activity android:name=".AddDeadlineEventActivity">

@@ -140,7 +140,7 @@ public class AddDeadlineEventActivity extends AppCompatActivity implements Radio
     }
 
     public void ClickStudySession(View view) {
-        Intent intent = new Intent(this, MainPageActivity.class); // TODO: direct to study session page
+        Intent intent = new Intent(this, AddStudySessionEventActivity.class);
         startActivity(intent);
     }
 }

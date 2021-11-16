@@ -16,7 +16,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class AddClassEventActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener{
+public class AddStudySessionEventActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener{
     //    Initialize Variables
     int startYear, startMonth, startDay, endYear, endMonth, endDay, startHour, startMinute, endHour, endMinute, priority;
     TextView tvStartDate, tvStartTime, tvEndDate, tvEndTime, tvAssessment, tvDeadline, tvClassTime, tvStudySession;
@@ -27,7 +27,7 @@ public class AddClassEventActivity extends AppCompatActivity implements RadioGro
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_class_event);
+        setContentView(R.layout.activity_add_study_session_event);
 
 //        Assign Variables
         ivBack = findViewById(R.id.iv_back);
@@ -64,17 +64,17 @@ public class AddClassEventActivity extends AppCompatActivity implements RadioGro
         ivBack.setOnClickListener(this::ClickBack);
         tvAssessment.setOnClickListener(this::ClickAssessment);
         tvDeadline.setOnClickListener(this::ClickDeadline);
-        tvStudySession.setOnClickListener(this::ClickStudySession);
+        tvClassTime.setOnClickListener(this::ClickClassTime);
 
         ivSave.setOnClickListener(v -> {
             String eventName = etEventName.getText().toString();
-            Toast.makeText(AddClassEventActivity.this, eventName, Toast.LENGTH_SHORT).show(); // TODO: remove
+            Toast.makeText(AddStudySessionEventActivity.this, eventName, Toast.LENGTH_SHORT).show(); // TODO: remove
         });
 
 //        Start Date Selection
         tvStartDate.setOnClickListener(v -> {
             DatePickerDialog datePickerDialog = new DatePickerDialog(
-                    AddClassEventActivity.this, (view, year, month, dayOfMonth) -> {
+                    AddStudySessionEventActivity.this, (view, year, month, dayOfMonth) -> {
                 startYear = year;
                 startMonth = month;
                 startDay = dayOfMonth;
@@ -90,7 +90,7 @@ public class AddClassEventActivity extends AppCompatActivity implements RadioGro
 //        End Date Selection
         tvEndDate.setOnClickListener(v -> {
             DatePickerDialog datePickerDialog = new DatePickerDialog(
-                    AddClassEventActivity.this, (view, year, month, dayOfMonth) -> {
+                    AddStudySessionEventActivity.this, (view, year, month, dayOfMonth) -> {
                 endYear = year;
                 endMonth = month + 1;
                 endDay = dayOfMonth;
@@ -116,7 +116,7 @@ public class AddClassEventActivity extends AppCompatActivity implements RadioGro
 //        Start Time Selection
         tvStartTime.setOnClickListener(v -> {
             TimePickerDialog timePickerDialog = new TimePickerDialog(
-                    AddClassEventActivity.this, (view, hourOfDay, minute) -> {
+                    AddStudySessionEventActivity.this, (view, hourOfDay, minute) -> {
                 startHour = hourOfDay;
                 startMinute = minute;
 
@@ -135,7 +135,7 @@ public class AddClassEventActivity extends AppCompatActivity implements RadioGro
 //        End Time Selection
         tvEndTime.setOnClickListener(v -> {
             TimePickerDialog timePickerDialog = new TimePickerDialog(
-                    AddClassEventActivity.this, (view, hourOfDay, minute) -> {
+                    AddStudySessionEventActivity.this, (view, hourOfDay, minute) -> {
                 endHour = hourOfDay;
                 endMinute = minute;
 
@@ -152,14 +152,13 @@ public class AddClassEventActivity extends AppCompatActivity implements RadioGro
         });
 
 //        TO BE IMPLEMENTED IN PHASE 2: Courses List
-//        ArrayAdapter<String> myAdapter = new ArrayAdapter<>(AddClassEventActivity.this,
+//        ArrayAdapter<String> myAdapter = new ArrayAdapter<>(AddStudySessionEventActivity.this,
 //                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.courses));
 //        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 //        coursesList.setAdapter(myAdapter);
 //
-//        ivSave.setOnClickListener(view -> Toast.makeText(AddClassEventActivity.this, priority, Toast.LENGTH_SHORT).show());
+//        ivSave.setOnClickListener(view -> Toast.makeText(AddStudySessionEventActivity.this, priority, Toast.LENGTH_SHORT).show());
     }
-
 
     //    Back Button
     public void ClickBack(View view) {
@@ -178,7 +177,6 @@ public class AddClassEventActivity extends AppCompatActivity implements RadioGro
             priority = 3;
         }
     }
-
     public void ClickAssessment(View view) {
         Intent intent = new Intent(this, AddEventActivity.class);
         startActivity(intent);
@@ -189,8 +187,8 @@ public class AddClassEventActivity extends AppCompatActivity implements RadioGro
         startActivity(intent);
     }
 
-    public void ClickStudySession(View view) {
-        Intent intent = new Intent(this, AddStudySessionEventActivity.class);
+    public void ClickClassTime(View view) {
+        Intent intent = new Intent(this, AddClassEventActivity.class);
         startActivity(intent);
     }
 }
