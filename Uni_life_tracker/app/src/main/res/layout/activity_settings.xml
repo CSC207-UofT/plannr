@@ -53,8 +53,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:paddingStart="20dp"
-                android:paddingEnd="25dp">
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="20dp">
 
             <TextView
                     android:id="@+id/profile_name"
@@ -86,9 +86,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:layout_marginTop="10dp"
-                android:paddingStart="20dp"
-                android:paddingEnd="25dp">
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="20dp">
 
             <TextView
                     android:id="@+id/profile_uni"
