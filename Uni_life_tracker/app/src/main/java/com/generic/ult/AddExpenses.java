@@ -3,9 +3,8 @@ package com.generic.ult;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.ui.AppBarConfiguration;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
@@ -15,8 +14,7 @@ public class AddExpenses extends AppCompatActivity {
 
 //    private AppBarConfiguration appBarConfiguration;
 
-    private TextInputLayout textInputName;
-    private TextInputLayout textInputAmount;
+    private TextInputLayout textInputName, textInputAmount;
 
 
     @Override
@@ -25,9 +23,6 @@ public class AddExpenses extends AppCompatActivity {
         setContentView(R.layout.activity_add_expenses);
         textInputName = findViewById(R.id.add_expense_name);
         textInputAmount = findViewById(R.id.add_expense_amount);
-        Button e_submit = findViewById(R.id.e_submit);
-        e_submit.setOnClickListener(this::AddExpensesInput);
-
     }
 
     // change ExpensesLanding to ExpensesList when merged
