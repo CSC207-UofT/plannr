@@ -35,7 +35,7 @@ public class ExpensesList extends AppCompatActivity {
     }
 
     private void setAdapter() {
-        ExpensesRecyclerView adapter = new ExpensesRecyclerView (expensesArrayList);
+        ListExpenses adapter = new ListExpenses(expensesArrayList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -56,7 +56,7 @@ public class ExpensesList extends AppCompatActivity {
     }
 
     public void ClickAddExpense(View view) {
-        Intent intent = new Intent(this, AddExpenses.class);
+        Intent intent = new Intent(this, AddExpensesActivity.class);
         startActivity(intent);
     }
 

@@ -2,7 +2,6 @@ package com.generic.ult;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,7 +30,7 @@ public class ExpensesLanding extends AppCompatActivity {
     }
     // change ExpensesLanding to ExpensesList when merged
     private void openExpensesView() {
-        Intent intent = new Intent(this, AddExpenses.class);
+        Intent intent = new Intent(this, AddExpensesActivity.class);
         startActivity(intent);
     }
 

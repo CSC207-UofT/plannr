@@ -33,6 +33,6 @@
             android:layout_height="wrap_content"
             android:text="@string/time"
             android:fontFamily="@font/roboto_mono_bold"
-            android:padding="20dp"/>
+            android:paddingVertical="20dp"/>
 
 </LinearLayout>

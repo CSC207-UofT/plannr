@@ -10,7 +10,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.Objects;
 
 
-public class AddExpenses extends AppCompatActivity {
+public class AddExpensesActivity extends AppCompatActivity {
 
 //    private AppBarConfiguration appBarConfiguration;
 
