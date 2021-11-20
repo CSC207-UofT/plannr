@@ -28,7 +28,7 @@ public class ExpensesLanding extends AppCompatActivity {
         e_go_to_view_button.setOnClickListener(this::ExpensesViewInput);
 
     }
-    // change ExpensesLanding to ExpensesList when merged
+    // change ExpensesLanding to ExpensesActivity when merged
     private void openExpensesView() {
         Intent intent = new Intent(this, AddExpensesActivity.class);
         startActivity(intent);

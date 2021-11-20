@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 
-public class ExpensesList extends AppCompatActivity {
+public class ExpensesActivity extends AppCompatActivity {
 
     private ArrayList<Expense> expensesArrayList;
     private RecyclerView  recyclerView;
@@ -22,7 +22,7 @@ public class ExpensesList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_expenses_list);
+        setContentView(R.layout.activity_expenses);
 
         // expense list
         recyclerView = findViewById(R.id.rv_expenses);
