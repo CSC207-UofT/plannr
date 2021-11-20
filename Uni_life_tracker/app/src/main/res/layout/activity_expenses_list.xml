@@ -1,72 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                   android:layout_height="match_parent"
-                                                   tools:context=".ExpensesList">
-
-    <LinearLayout
-            android:id="@+id/ll_expenses_bar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/black"
-            android:orientation="horizontal"
-            android:padding="15dp"
-            android:gravity="center_vertical"
-            tools:ignore="MissingConstraints">
-
-        <ImageView
-                android:id="@+id/back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="ClickBack"
-                android:src="@drawable/ic_back_arrow"
-                android:contentDescription="@string/back"/>
-
-        <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/expenses"
-                android:textSize="20sp"
-                android:textColor="@color/white"
-                android:fontFamily="@font/roboto_mono_bold"
-                android:layout_marginStart="15dp"
-                android:gravity="start"/>
-
-        <ImageView
-                android:id="@+id/add_expense"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:onClick="ClickAddExpense"
-                android:src="@drawable/ic_plus_white"
-                android:contentDescription="@string/back"/>
-    </LinearLayout>
+<androidx.drawerlayout.widget.DrawerLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/drawer_layout"
+        tools:context=".ExpensesList">
 
     <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="15dp"
-            app:layout_constraintTop_toBottomOf="@+id/ll_expenses_bar"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/list_of_expenses"
-                android:fontFamily="@font/roboto_mono_bold"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:paddingVertical="15dp"
-                android:id="@+id/expense_list"/>
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal"
+                      android:gravity="center_vertical">
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="ClickMenu"
+                    android:src="@drawable/ic_menu"
+                    android:contentDescription="@string/app_name"
+                    android:padding="20dp"/>
+
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/expenses"
+                    android:textSize="25sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/roboto_mono_bold"
+                    android:gravity="start"/>
+
+            <ImageView
+                    android:id="@+id/add_expense"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="ClickAddExpense"
+                    android:src="@drawable/ic_plus_black"
+                    android:contentDescription="@string/add_expense"
+                    android:padding="20dp"/>
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_expenses"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:id="@+id/ExpensesrecyclerView"/>
+                android:paddingHorizontal="20dp"/>
+
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@android:color/white">
+
+        <include
+                layout="@layout/main_nav"/>
+    </RelativeLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--                                                   xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"-->
+<!--                                                   xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--                                                   android:layout_height="match_parent"-->
+<!--                                                   tools:context=".ExpensesList">-->
+
+<!--    <LinearLayout-->
+<!--            android:id="@+id/ll_expenses_bar"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@color/black"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:padding="15dp"-->
+<!--            android:gravity="center_vertical"-->
+<!--            tools:ignore="MissingConstraints">-->
+
+<!--        <ImageView-->
+<!--                android:id="@+id/back"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:onClick="ClickBack"-->
+<!--                android:src="@drawable/ic_back_arrow"-->
+<!--                android:contentDescription="@string/back"/>-->
+
+<!--        <TextView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:text="@string/expenses"-->
+<!--                android:textSize="20sp"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:fontFamily="@font/roboto_mono_bold"-->
+<!--                android:layout_marginStart="15dp"-->
+<!--                android:gravity="start"/>-->
+
+<!--        <ImageView-->
+<!--                android:id="@+id/add_expense"-->
+<!--                android:layout_width="36dp"-->
+<!--                android:layout_height="36dp"-->
+<!--                android:onClick="ClickAddExpense"-->
+<!--                android:src="@drawable/ic_plus_white"-->
+<!--                android:contentDescription="@string/back"/>-->
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical"-->
+<!--            android:padding="15dp"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/ll_expenses_bar"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintRight_toRightOf="parent">-->
+
+<!--        <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/list_of_expenses"-->
+<!--                android:fontFamily="@font/roboto_mono_bold"-->
+<!--                android:textSize="20sp"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:paddingVertical="15dp"-->
+<!--                android:id="@+id/expense_list"/>-->
+
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="0dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:id="@+id/ExpensesrecyclerView"/>-->
+<!--    </LinearLayout>-->
+
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->

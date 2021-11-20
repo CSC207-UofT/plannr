@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +17,7 @@ public class ExpensesList extends AppCompatActivity {
 
     private ArrayList<Expense> expensesArrayList;
     private RecyclerView  recyclerView;
+    DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,13 +25,14 @@ public class ExpensesList extends AppCompatActivity {
         setContentView(R.layout.activity_expenses_list);
 
         // expense list
-        recyclerView = findViewById(R.id.ExpensesrecyclerView);
-        expensesArrayList= new ArrayList<>();
+        recyclerView = findViewById(R.id.rv_expenses);
+        expensesArrayList = new ArrayList<>();
+        drawerLayout = findViewById(R.id.drawer_layout);
+
         setExpenseInfo();
         setAdapter();
 
     }
-
 
     private void setAdapter() {
         ExpensesRecyclerView adapter = new ExpensesRecyclerView (expensesArrayList);
@@ -37,7 +41,6 @@ public class ExpensesList extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
     }
-
 
     private void setExpenseInfo() {
         expensesArrayList.add(new Expense("Rent", 1500.50));
@@ -55,5 +58,29 @@ public class ExpensesList extends AppCompatActivity {
     public void ClickAddExpense(View view) {
         Intent intent = new Intent(this, AddExpenses.class);
         startActivity(intent);
+    }
+
+    public void ClickMenu(View view){
+        // open drawer
+        openDrawer(drawerLayout);
+    }
+
+    private static void openDrawer(DrawerLayout drawerLayout) {
+        // open drawer layout
+        drawerLayout.openDrawer(GravityCompat.START);
+    }
+
+    public void ClickLogo(View view) {
+        // close drawer
+        closeDrawer(drawerLayout);
+    }
+
+    private static void closeDrawer(DrawerLayout drawerLayout) {
+        // close drawer layout
+
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            // when drawer is open, close drawer
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
     }
 }
