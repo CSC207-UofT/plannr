@@ -43,7 +43,6 @@
                 android:onClick="AddExpensesInput"/>
     </LinearLayout>
 
-
     <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/add_expense_name"
             android:layout_width="300dp"
@@ -74,17 +73,4 @@
                 android:inputType="numberDecimal"
         />
     </com.google.android.material.textfield.TextInputLayout>
-
-<!--    <Button-->
-<!--            android:layout_width="150dp"-->
-<!--            android:layout_height="70dp"-->
-<!--            android:id="@+id/e_submit"-->
-<!--            android:onClick="AddExpensesInput"-->
-<!--            android:text="@string/submit"-->
-<!--            android:layout_marginStart="130dp"-->
-<!--            android:layout_marginTop="100dp"-->
-<!--            android:backgroundTint="@color/black"-->
-<!--            app:layout_constraintHorizontal_bias="0.467"-->
-<!--            android:layout_marginBottom="200dp"/>-->
-
 </LinearLayout>
