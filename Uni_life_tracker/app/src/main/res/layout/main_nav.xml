@@ -38,19 +38,19 @@
             android:onClick="ClickSchool"
             app:drawableTopCompat="@drawable/ic_school"/>
 
-<!--    &lt;!&ndash;  Life  &ndash;&gt;-->
-<!--    <TextView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/life"-->
-<!--            android:fontFamily="@font/roboto_mono_bold"-->
-<!--            android:textStyle="bold"-->
-<!--            android:textAlignment="center"-->
-<!--            android:textColor="@color/black"-->
-<!--            android:padding="5dp"-->
-<!--            android:layout_marginVertical="10dp"-->
-<!--            android:onClick="ClickLife"-->
-<!--            app:drawableTopCompat="@drawable/ic_home"/>-->
+    <!--  Life  -->
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/life"
+            android:fontFamily="@font/roboto_mono_bold"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:padding="5dp"
+            android:layout_marginVertical="10dp"
+            android:onClick="ClickLife"
+            app:drawableTopCompat="@drawable/ic_home"/>
 
     <!--  Expenses  -->
     <TextView
