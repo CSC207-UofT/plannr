@@ -2,9 +2,9 @@
 <androidx.drawerlayout.widget.DrawerLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/drawer_layout"
         tools:context=".ExpensesActivity">
 
     <LinearLayout
@@ -20,9 +20,9 @@
             <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="ClickMenu"
                     android:src="@drawable/ic_menu"
                     android:contentDescription="@string/app_name"
+                    android:onClick="clickMenu"
                     android:padding="20dp"/>
 
             <TextView
@@ -37,10 +37,10 @@
                     android:gravity="start"/>
 
             <ImageView
-                    android:id="@+id/add_expense"
+                    android:id="@+id/iv_add_expense"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="ClickAddExpense"
+                    android:onClick="clickAddExpense"
                     android:src="@drawable/ic_plus_black"
                     android:contentDescription="@string/add_expense"
                     android:padding="20dp"/>

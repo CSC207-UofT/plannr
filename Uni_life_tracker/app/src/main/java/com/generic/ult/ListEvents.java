@@ -18,12 +18,12 @@ public class ListEvents extends RecyclerView.Adapter<ListEvents.MyViewHolder>{
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
-        private TextView eventTxt, timeTxt;
+        private TextView tvEventName, tvEventTime;
 
         public MyViewHolder(final View view){
             super(view);
-            eventTxt = view.findViewById(R.id.text_event_name);
-            timeTxt = view.findViewById(R.id.text_event_time);
+            tvEventName = view.findViewById(R.id.tv_event_name);
+            tvEventTime = view.findViewById(R.id.tv_event_time);
         }
     }
 
@@ -39,8 +39,8 @@ public class ListEvents extends RecyclerView.Adapter<ListEvents.MyViewHolder>{
         String eventName = eventsList.get(position).getName();
         String time = eventsList.get(position).getEndDate().getHour() + ":" +
                 eventsList.get(position).getEndDate().getMinute();
-        holder.eventTxt.setText(eventName);
-        holder.timeTxt.setText(time);
+        holder.tvEventName.setText(eventName);
+        holder.tvEventTime.setText(time);
     }
 
     @Override

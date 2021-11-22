@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class ExpensesActivity extends AppCompatActivity {
 
     private ArrayList<Expense> expensesArrayList;
-    private RecyclerView  recyclerView;
+    private RecyclerView  rvExpenses;
     DrawerLayout drawerLayout;
 
     @Override
@@ -25,7 +25,7 @@ public class ExpensesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_expenses);
 
         // expense list
-        recyclerView = findViewById(R.id.rv_expenses);
+        rvExpenses = findViewById(R.id.rv_expenses);
         expensesArrayList = new ArrayList<>();
         drawerLayout = findViewById(R.id.drawer_layout);
 
@@ -37,9 +37,9 @@ public class ExpensesActivity extends AppCompatActivity {
     private void setAdapter() {
         ListExpenses adapter = new ListExpenses(expensesArrayList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(adapter);
+        rvExpenses.setLayoutManager(layoutManager);
+        rvExpenses.setItemAnimator(new DefaultItemAnimator());
+        rvExpenses.setAdapter(adapter);
     }
 
     private void setExpenseInfo() {
@@ -50,17 +50,17 @@ public class ExpensesActivity extends AppCompatActivity {
 
     }
 
-    public void ClickBack(View view) {
+    public void clickBack(View view) {
         Intent intent = new Intent(this, MainPageActivity.class);
         startActivity(intent);
     }
 
-    public void ClickAddExpense(View view) {
+    public void clickAddExpense(View view) {
         Intent intent = new Intent(this, AddExpensesActivity.class);
         startActivity(intent);
     }
 
-    public void ClickMenu(View view){
+    public void clickMenu(View view){
         // open drawer
         openDrawer(drawerLayout);
     }
@@ -70,7 +70,7 @@ public class ExpensesActivity extends AppCompatActivity {
         drawerLayout.openDrawer(GravityCompat.START);
     }
 
-    public void ClickLogo(View view) {
+    public void clickLogo(View view) {
         // close drawer
         closeDrawer(drawerLayout);
     }
