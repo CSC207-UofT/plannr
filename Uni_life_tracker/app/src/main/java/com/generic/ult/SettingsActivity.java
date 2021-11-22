@@ -20,12 +20,7 @@ public class SettingsActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
     }
 
-//    public void ClickBack(View view) {
-//        Intent intent = new Intent(this, MainPageActivity.class);
-//        startActivity(intent);
-//    }
-
-    public void ClickMenu(View view){
+    public void clickMenu(View view){
         // open drawer
         openDrawer(drawerLayout);
     }
@@ -35,7 +30,7 @@ public class SettingsActivity extends AppCompatActivity {
         drawerLayout.openDrawer(GravityCompat.START);
     }
 
-    public void ClickLogo(View view) {
+    public void clickLogo(View view) {
         // close drawer
         closeDrawer(drawerLayout);
     }

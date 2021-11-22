@@ -20,7 +20,7 @@
             <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="ClickMenu"
+                    android:onClick="clickMenu"
                     android:src="@drawable/ic_menu"
                     android:contentDescription="@string/app_name"
                     android:padding="20dp"
@@ -41,7 +41,7 @@
                     android:id="@+id/iv_save"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="ClickMenu"
+                    android:onClick="clickMenu"
                     android:src="@drawable/ic_done_black"
                     android:contentDescription="@string/save"
                     android:padding="20dp"
@@ -57,7 +57,6 @@
                 android:paddingHorizontal="20dp">
 
             <TextView
-                    android:id="@+id/profile_name"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -68,7 +67,7 @@
                     android:layout_margin="5dp"/>
 
             <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/settings_name"
+                    android:id="@+id/ti_name"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content">
 
@@ -90,7 +89,6 @@
                 android:paddingHorizontal="20dp">
 
             <TextView
-                    android:id="@+id/profile_uni"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -101,7 +99,7 @@
                     android:layout_margin="5dp"/>
 
             <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/settings_uni"
+                    android:id="@+id/ti_university"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content">
                 <com.google.android.material.textfield.TextInputEditText

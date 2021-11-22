@@ -12,12 +12,10 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
-        Button startBtn = findViewById(R.id.startBtn);
-        startBtn.setOnClickListener(v -> openSignup());
-
-
-
+        Button btnStart = findViewById(R.id.btn_start);
+        btnStart.setOnClickListener(v -> openSignup());
     }
+
     //https://www.youtube.com/watch?v=bgIUdb-7Rqo
    private void openSignup() {
         Intent intent = new Intent(this, SignUpActivity.class);

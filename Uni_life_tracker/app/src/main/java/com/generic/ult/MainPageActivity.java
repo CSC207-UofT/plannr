@@ -23,7 +23,7 @@ public class MainPageActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
 
     private ArrayList<Event> eventsList;
-    private RecyclerView recyclerView;
+    private RecyclerView rvEvents;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,14 +34,14 @@ public class MainPageActivity extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
         String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
 
-        TextView textViewDate = findViewById(R.id.text_date);
-        textViewDate.setText(currentDate);
+        TextView tvViewDate = findViewById(R.id.tv_date);
+        tvViewDate.setText(currentDate);
 
         // side menu
         drawerLayout = findViewById(R.id.drawer_layout);
         
         // events list
-        recyclerView = findViewById(R.id.recyclerView);
+        rvEvents = findViewById(R.id.rv_events);
         eventsList = new ArrayList<>(); 
         setEventInfo();
         setAdapter();
@@ -50,9 +50,9 @@ public class MainPageActivity extends AppCompatActivity {
     private void setAdapter() {
         ListEvents adapter = new ListEvents(eventsList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(adapter);
+        rvEvents.setLayoutManager(layoutManager);
+        rvEvents.setItemAnimator(new DefaultItemAnimator());
+        rvEvents.setAdapter(adapter);
     }
 
 //    TEMPORARY: generates events to display FOR NOW
@@ -67,7 +67,7 @@ public class MainPageActivity extends AppCompatActivity {
         eventsList.add(new Event("Project 432", 2, LocalDateTime.of(2021, 11, 13, 12, 20, 48)));
     }
 //    public Event(String name, int priority, LocalDateTime startDate, LocalDateTime endDate) {
-    public void ClickMenu(View view){
+    public void clickMenu(View view){
         // open drawer
         openDrawer(drawerLayout);
     }
@@ -91,22 +91,22 @@ public class MainPageActivity extends AppCompatActivity {
         }
     }
 
-    public void ClickSchool(View view) {
+    public void clickSchool(View view) {
         // redirect activity to dashboard
 //        redirectActivity(this,);
     }
 
-    public void ClickLife(View view) {
+    public void clickLife(View view) {
         // redirect activity to dashboard
         redirectActivity(this, SignUpActivity.class); // change this to life later
     }
 
-    public void ClickExpenses(View view) {
+    public void clickExpenses(View view) {
         // redirect activity to dashboard
        redirectActivity(this, ExpensesActivity.class);
     }
 
-    public void ClickSettings(View view) {
+    public void clickSettings(View view) {
         // redirect activity to dashboard
         redirectActivity(this, SettingsActivity.class);
     }

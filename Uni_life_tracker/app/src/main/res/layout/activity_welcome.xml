@@ -9,7 +9,6 @@
         android:gravity="center"
         tools:context=".WelcomeActivity">
     <TextView
-            android:id="@+id/welcome_to"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/welcome_to"
@@ -27,7 +26,7 @@
             app:layout_constraintEnd_toEndOf="parent"/>
 
     <Button
-            android:id="@+id/startBtn"
+            android:id="@+id/btn_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/start"

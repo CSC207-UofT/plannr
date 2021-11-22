@@ -31,7 +31,6 @@ public class ExpensesActivity extends AppCompatActivity {
 
         setExpenseInfo();
         setAdapter();
-
     }
 
     private void setAdapter() {
@@ -48,11 +47,6 @@ public class ExpensesActivity extends AppCompatActivity {
         expensesArrayList.add(new Expense("Dinner", 54.67));
         expensesArrayList.add(new Expense("Clothing", 45.96));
 
-    }
-
-    public void clickBack(View view) {
-        Intent intent = new Intent(this, MainPageActivity.class);
-        startActivity(intent);
     }
 
     public void clickAddExpense(View view) {
