@@ -13,15 +13,15 @@ public class AddExpensesActivity extends AppCompatActivity {
 
 //    private AppBarConfiguration appBarConfiguration;
 
-    private TextInputLayout textInputName, textInputAmount;
+    private TextInputLayout tiExpenseName, tiExpenseAmount;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_expenses);
-        textInputName = findViewById(R.id.add_expense_name);
-        textInputAmount = findViewById(R.id.add_expense_amount);
+        tiExpenseName = findViewById(R.id.ti_expense_name);
+        tiExpenseAmount = findViewById(R.id.ti_expense_amount);
     }
 
     // change ExpensesLanding to ExpensesActivity when merged
@@ -41,14 +41,14 @@ public class AddExpensesActivity extends AppCompatActivity {
             return true;
         }
     }
-    public void AddExpensesInput(View b) {
-        if (!(validate(textInputName) & validate( textInputAmount))) {
+    public void addExpensesInput(View b) {
+        if (!(validate(tiExpenseName) & validate( tiExpenseAmount))) {
             // Here we can get all the info we need
             // For example to get the email you can do textInputEmail.getEditTest().getText().toString()
         }else{openAddExpensesView();}
     }
 
-    public void ClickBack(View view) {
+    public void clickBack(View view) {
         Intent intent = new Intent(this, ExpensesActivity.class);
         startActivity(intent);
     }

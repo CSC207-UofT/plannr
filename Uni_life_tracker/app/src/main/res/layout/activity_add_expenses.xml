@@ -18,7 +18,7 @@
                 android:id="@+id/iv_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="ClickBack"
+                android:onClick="clickBack"
                 android:src="@drawable/ic_back_arrow"
                 android:contentDescription="@string/back"/>
 
@@ -40,11 +40,11 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_done"
                 android:contentDescription="@string/save"
-                android:onClick="AddExpensesInput"/>
+                android:onClick="addExpensesInput"/>
     </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/add_expense_name"
+            android:id="@+id/ti_expense_name"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
@@ -52,7 +52,6 @@
             app:errorEnabled="true">
         <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:id="@+id/add_e_name"
                 android:layout_height="wrap_content"
                 android:hint="@string/add_name"
                 android:inputType="text"
@@ -60,7 +59,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/add_expense_amount"
+            android:id="@+id/ti_expense_amount"
             android:layout_marginStart="60dp"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -69,7 +68,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/add_amount"
-                android:id="@+id/add_e_amount"
                 android:inputType="numberDecimal"
         />
     </com.google.android.material.textfield.TextInputLayout>
