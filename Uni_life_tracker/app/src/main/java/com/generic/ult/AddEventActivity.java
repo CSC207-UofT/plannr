@@ -20,7 +20,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
 //    Initialize Variables
     int startYear, startMonth, startDay, endYear, endMonth, endDay, startHour, startMinute, endHour, endMinute, priority;
     TextView tvStartDate, tvStartTime, tvEndDate, tvEndTime, tvAssessment, tvDeadline, tvClassTime, tvStudySession;
-    RadioGroup rgPriorities;
+    RadioGroup radioGroup;
     ImageView ivBack, ivSave;
     EditText etEventName;
 
@@ -37,7 +37,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         tvStartTime = findViewById(R.id.tv_start_time);
         tvEndDate = findViewById(R.id.tv_end_date);
         tvEndTime = findViewById(R.id.tv_end_time);
-        rgPriorities = findViewById(R.id.rg_priorities);
+        radioGroup = findViewById(R.id.rg_priorities);
         tvAssessment = findViewById(R.id.tv_assessment);
         tvDeadline = findViewById(R.id.tv_deadline);
         tvClassTime = findViewById(R.id.tv_class_time);
@@ -60,7 +60,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         tvStartDate.setText(date);
         tvStartTime.setText(time);
 
-        rgPriorities.setOnCheckedChangeListener(this);
+        radioGroup.setOnCheckedChangeListener(this);
         ivBack.setOnClickListener(this::ClickBack);
         tvAssessment.setOnClickListener(this::ClickAssessment);
         tvDeadline.setOnClickListener(this::ClickDeadline);
