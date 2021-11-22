@@ -61,11 +61,11 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         tvStartTime.setText(time);
 
         rgPriorities.setOnCheckedChangeListener(this);
-        ivBack.setOnClickListener(this::clickBack);
-        tvAssessment.setOnClickListener(this::clickAssessment);
-        tvDeadline.setOnClickListener(this::clickDeadline);
-        tvClassTime.setOnClickListener(this::clickClassTime);
-        tvStudySession.setOnClickListener(this::clickStudySession);
+        ivBack.setOnClickListener(this::ClickBack);
+        tvAssessment.setOnClickListener(this::ClickAssessment);
+        tvDeadline.setOnClickListener(this::ClickDeadline);
+        tvClassTime.setOnClickListener(this::ClickClassTime);
+        tvStudySession.setOnClickListener(this::ClickStudySession);
 
         ivSave.setOnClickListener(v -> {
             String eventName = etEventName.getText().toString();
@@ -162,7 +162,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
     }
 
 //    Back Button
-    public void clickBack(View view) {
+    public void ClickBack(View view) {
         Intent intent = new Intent(this, MainPageActivity.class); // TODO: direct to school/life page
         startActivity(intent);
     }
@@ -179,22 +179,22 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         }
     }
 
-    public void clickAssessment(View view) {
+    public void ClickAssessment(View view) {
         Intent intent = new Intent(this, MainPageActivity.class); // TODO: direct to assessment page
         startActivity(intent);
     }
 
-    public void clickDeadline(View view) {
+    public void ClickDeadline(View view) {
         Intent intent = new Intent(this, MainPageActivity.class); // TODO: direct to deadline page
         startActivity(intent);
     }
 
-    public void clickClassTime(View view) {
+    public void ClickClassTime(View view) {
         Intent intent = new Intent(this, MainPageActivity.class); // TODO: direct to class page
         startActivity(intent);
     }
 
-    public void clickStudySession(View view) {
+    public void ClickStudySession(View view) {
         Intent intent = new Intent(this, MainPageActivity.class); // TODO: direct to study session page
         startActivity(intent);
     }

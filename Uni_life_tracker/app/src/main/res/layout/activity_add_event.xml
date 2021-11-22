@@ -20,7 +20,7 @@
                 android:id="@+id/iv_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="clickBack"
+                android:onClick="ClickBack"
                 android:src="@drawable/ic_back_arrow"
                 android:contentDescription="@string/back"/>
 
@@ -64,7 +64,7 @@
                 android:fontFamily="@font/roboto_mono_bold"
                 android:textAlignment="center"
                 android:padding="15dp"
-                android:onClick="clickAssessment"/>
+                android:onClick="ClickAssessment"/>
 
         <!-- Deadline -->
         <TextView
@@ -77,7 +77,7 @@
                 android:fontFamily="@font/roboto_mono_light"
                 android:textAlignment="center"
                 android:padding="15dp"
-                android:onClick="clickDeadline"/>
+                android:onClick="ClickDeadline"/>
 
         <!-- Class Time -->
         <TextView
@@ -90,7 +90,7 @@
                 android:fontFamily="@font/roboto_mono_light"
                 android:textAlignment="center"
                 android:padding="15dp"
-                android:onClick="clickClassTime"/>
+                android:onClick="ClickClassTime"/>
 
         <!-- Study Session -->
         <TextView
@@ -103,7 +103,7 @@
                 android:fontFamily="@font/roboto_mono_light"
                 android:textAlignment="center"
                 android:padding="15dp"
-                android:onClick="clickStudySession"/>
+                android:onClick="ClickStudySession"/>
     </LinearLayout>
 
     <!-- Add Event Name -->
