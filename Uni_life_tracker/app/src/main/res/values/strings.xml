@@ -38,9 +38,6 @@
     <!-- Calendar    -->
     <string name="specialChar"><![CDATA[(?=.*[@#!$%^&+=])]]></string>
     <string name="minLength">.{6,}</string>
-    <string name="sign_up_title">Sign Up</string>
-    <string name="welcome_to">Welcome to</string>
-    <string name="uni_life_tracker">Uni Life Tracker</string>
     <string name="monthYear">Feb 2021</string>
     <string name="sunday">SUN</string>
     <string name="monday">MON</string>
