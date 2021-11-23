@@ -17,7 +17,7 @@ public class WelcomeActivity extends AppCompatActivity {
     }
     //https://www.youtube.com/watch?v=bgIUdb-7Rqo
    private void openSignup() {
-        Intent intent = new Intent(this, SchoolMain.class);
+        Intent intent = new Intent(this, SignUpActivity.class);
         startActivity(intent);
    }
 }

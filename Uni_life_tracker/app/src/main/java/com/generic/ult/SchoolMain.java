@@ -1,4 +1,5 @@
 package com.generic.ult;
+import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -86,6 +87,16 @@ public class SchoolMain extends AppCompatActivity implements CalendarAdapter.OnI
     {
         selectedDate = selectedDate.plusMonths(1);
         setMonthView();
+    }
+
+    public void ClickBack(View view) {
+        Intent intent = new Intent(this, MainPageActivity.class);
+        startActivity(intent);
+    }
+
+    public void ClickAddEvent(View view) {
+        Intent intent = new Intent(this, AddEventActivity.class);
+        startActivity(intent);
     }
 
     @Override
