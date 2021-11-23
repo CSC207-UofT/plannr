@@ -8,7 +8,6 @@
         tools:context=".SchoolMain">
 
     <LinearLayout
-            android:id="@+id/schoolEvent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/black"
@@ -18,7 +17,7 @@
             tools:ignore="MissingConstraints">
 
         <ImageView
-                android:id="@+id/back"
+                android:id="@+id/iv_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="ClickBack"
@@ -62,7 +61,7 @@
                 android:textSize="20sp"/>
 
         <TextView
-                android:id="@+id/monthY"
+                android:id="@+id/tv_month_year"
                 android:layout_width="0dp"
                 android:layout_weight="2"
                 android:layout_height="wrap_content"
@@ -149,7 +148,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/calenderRecycle"
+            android:id="@+id/rv_calender_recycle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 

@@ -32,8 +32,8 @@ public class SchoolMain extends AppCompatActivity implements CalendarAdapter.OnI
 
     private void initWidgets()
     {
-        calendarRecyclerView = findViewById(R.id.calenderRecycle);
-        monthYearText = findViewById(R.id.monthY);
+        calendarRecyclerView = findViewById(R.id.rv_calender_recycle);
+        monthYearText = findViewById(R.id.tv_month_year);
     }
 
     private void setMonthView()
