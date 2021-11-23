@@ -28,6 +28,7 @@
     <string name="university_name">University Name</string>
     <string name="password">Password</string>
     <string name="sign_up">Sign Up!</string>
+    <string name="welcome_to">Welcome to</string>
 
     <!--  Password Regex -->
     <string name="uppercase">(?=.*[A-Z])</string>
