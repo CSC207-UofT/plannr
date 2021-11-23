@@ -12,6 +12,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.google.android.material.button.MaterialButtonToggleGroup;
 
 import java.text.DateFormat;
 import java.time.LocalDateTime;
@@ -38,13 +39,20 @@ public class MainPageActivity extends AppCompatActivity {
         textViewDate.setText(currentDate);
 
         // side menu
-        drawerLayout = findViewById(R.id.drawer_layout);
-        
+        drawerLayout = findViewById(R.id.drawer_layout); // side menu
+
         // events list
         recyclerView = findViewById(R.id.recyclerView);
         eventsList = new ArrayList<>(); 
         setEventInfo();
         setAdapter();
+
+        MaterialButtonToggleGroup tgSort = findViewById(R.id.tg_sort);
+//        tgSort.addOnButtonCheckedListener { tgSort, checkedId, isChecked ->
+//            if (isChecked) {
+//                when (checkedId)
+//            }
+//        }
     }
 
     private void setAdapter() {

@@ -49,14 +49,30 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="20dp"/>
 
-        <Button
-                android:id="@+id/btn_sort"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginStart="20dp"
-                android:fontFamily="@font/roboto_mono_bold"
-                android:text="@string/sort"/>
+        <com.google.android.material.button.MaterialButtonToggleGroup android:id="@+id/tg_sort"
+                                                                      android:layout_width="wrap_content"
+                                                                      android:layout_height="wrap_content"
+                                                                      android:layout_marginTop="5dp"
+                                                                      android:layout_marginStart="20dp"
+                                                                      app:singleSelection="true">
+
+            <Button
+                    android:id="@+id/btn_sort_time"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/time"
+                    android:fontFamily="@font/roboto_mono_bold"/>
+
+            <Button
+                    android:id="@+id/btn_sort_priority"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/priority"
+                    android:fontFamily="@font/roboto_mono_bold"/>
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
 
         <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
