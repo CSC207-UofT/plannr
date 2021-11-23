@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Uni_life_tracker" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.Plannr" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/lavender</item>
         <item name="colorPrimaryVariant">@color/periwinkle</item>
@@ -13,4 +13,10 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="Theme.Plannr.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.Plannr.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="Theme.Plannr.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 </resources>
