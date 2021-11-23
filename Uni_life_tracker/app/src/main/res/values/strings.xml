@@ -30,13 +30,13 @@
     <string name="sign_up">Sign Up!</string>
     <string name="welcome_to">Welcome to</string>
 
-    <!--  Password Regex -->
+    <!--  Password Regex  -->
     <string name="uppercase">(?=.*[A-Z])</string>
     <string name="lowercase">(?=.*[a-z])</string>
     <string name="number"
             tools:ignore="TypographyDashes">(?=.*[0-9])</string>
 
-    <!-- Calendar    -->
+    <!--  Calendar  -->
     <string name="specialChar"><![CDATA[(?=.*[@#!$%^&+=])]]></string>
     <string name="minLength">.{6,}</string>
     <string name="monthYear">Feb 2021</string>
@@ -63,7 +63,7 @@
     <string name="title_activity_expenses_landing">expenses_landing</string>
     <string name="dollar_amount">$ Add Amount</string>
 
-    <!-- Navigation Fragments -->
+    <!--  Navigation Fragments  -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
