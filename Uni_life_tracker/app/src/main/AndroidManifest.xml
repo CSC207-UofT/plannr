@@ -15,6 +15,7 @@
         <activity android:name=".AddEventActivity"> </activity>
         <activity android:name=".AddExpensesActivity"> </activity>
         <activity android:name=".ExpensesActivity"> </activity>
+        <activity android:name=".SchoolMain"> </activity>
         <activity
                 android:name=".MainPageActivity"
                 android:exported="true"> </activity>

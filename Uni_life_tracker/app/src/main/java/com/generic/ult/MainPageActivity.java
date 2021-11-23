@@ -93,7 +93,7 @@ public class MainPageActivity extends AppCompatActivity {
 
     public void clickSchool(View view) {
         // redirect activity to dashboard
-//        redirectActivity(this,);
+        redirectActivity(this, SchoolMain.class);
     }
 
     public void clickLife(View view) {
