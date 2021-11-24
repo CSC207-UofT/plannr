@@ -6,82 +6,88 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="16dp"
+        android:padding="30dp"
         tools:context=".SignUpActivity">
+
+    <!--  Logo  -->
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:src="@drawable/ic_plannr_blob"
+            android:contentDescription="@string/app_name"/>
+
+    <!--  Sign Up Text  -->
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/sign_up_title"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.149"
-            app:layout_constraintHorizontal_bias="0.172"
+            android:text="@string/sign_up"
             android:gravity="center"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="30dp"
-            android:textSize="36sp" android:textColor="#070707"/>
+            android:layout_marginBottom="20dp"
+            android:textSize="25sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
 
+    <!--  Name Input  -->
     <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/text_name"
+            android:id="@+id/ti_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:errorEnabled="true">
+
         <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/full_name"
-                android:inputType="text"
-        />
+                android:inputType="text"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!--  University Input  -->
     <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/text_university"
+            android:id="@+id/ti_university"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:errorEnabled="true">
+
         <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/university_name"
-                android:inputType="text"
-        />
+                android:inputType="text"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!--  Email Input  -->
     <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/text_input_email"
+            android:id="@+id/ti_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:errorEnabled="true">
+
         <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/email"
-                android:inputType="textEmailAddress"
-        />
+                android:inputType="textEmailAddress"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!--  Password Input  -->
     <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/text_password"
+            android:id="@+id/ti_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:errorEnabled="true"
             app:passwordToggleEnabled="true">
+
         <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/password"
-                android:inputType="textPassword"
-        />
+                android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!--  Sign Up Button  -->
     <Button
             android:id="@+id/btn_sign_up"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/sign_up"
-            android:onClick="signupInput"/>
-
-
+            android:text="@string/sign_up"/>
 </LinearLayout>

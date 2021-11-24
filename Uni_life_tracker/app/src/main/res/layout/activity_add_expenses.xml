@@ -5,6 +5,7 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
+    <!--  Action Bar  -->
     <LinearLayout
             android:id="@+id/ll_expenses_bar"
             android:layout_width="match_parent"
@@ -14,6 +15,7 @@
             android:padding="15dp"
             android:gravity="center_vertical">
 
+        <!--  Back Button  -->
         <ImageView
                 android:id="@+id/iv_back"
                 android:layout_width="wrap_content"
@@ -22,18 +24,28 @@
                 android:src="@drawable/ic_back_arrow"
                 android:contentDescription="@string/back"/>
 
+        <!--  Add Expense Text  -->
         <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/add_expenses"
-                android:textSize="20sp"
+                android:text="@string/add_expense"
+                android:textSize="25sp"
                 android:textColor="@color/white"
                 android:fontFamily="@font/roboto_mono_bold"
+                android:textStyle="bold"
                 android:layout_marginStart="15dp"
                 android:gravity="start"/>
-    </LinearLayout>
 
+        <!--  Save Button  -->
+        <ImageView
+                android:id="@+id/iv_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_done"
+                android:contentDescription="@string/save"
+                android:onClick="AddExpensesInput"/>
+    </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/add_expense_name"
@@ -65,17 +77,4 @@
                 android:inputType="numberDecimal"
         />
     </com.google.android.material.textfield.TextInputLayout>
-
-    <Button
-            android:layout_width="150dp"
-            android:layout_height="70dp"
-            android:id="@+id/e_submit"
-            android:onClick="AddExpensesInput"
-            android:text="@string/submit"
-            android:layout_marginStart="130dp"
-            android:layout_marginTop="100dp"
-            android:backgroundTint="@color/black"
-            app:layout_constraintHorizontal_bias="0.467"
-            android:layout_marginBottom="200dp"/>
-
 </LinearLayout>

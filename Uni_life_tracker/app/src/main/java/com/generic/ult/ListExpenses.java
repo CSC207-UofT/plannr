@@ -11,10 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class ExpensesRecyclerView extends RecyclerView.Adapter<ExpensesRecyclerView.MyViewHolder>{
+public class ListExpenses extends RecyclerView.Adapter<ListExpenses.MyViewHolder>{
     private ArrayList<Expense> expensesArrayList;
 
-    public  ExpensesRecyclerView (ArrayList<Expense> expensesArrayList){
+    public ListExpenses(ArrayList<Expense> expensesArrayList){
         this.expensesArrayList = expensesArrayList;
     }
 
@@ -32,14 +32,14 @@ public class ExpensesRecyclerView extends RecyclerView.Adapter<ExpensesRecyclerV
 
     @NonNull
     @Override
-    public ExpensesRecyclerView.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ListExpenses.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_expenses, parent, false);
         return new MyViewHolder(itemView);
     }
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(@NonNull ExpensesRecyclerView.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ListExpenses.MyViewHolder holder, int position) {
         String expenseName = expensesArrayList.get(position).getName();
         double expenseAmount = expensesArrayList.get(position).getValue();
         holder.expenseNameTxt.setText(expenseName);

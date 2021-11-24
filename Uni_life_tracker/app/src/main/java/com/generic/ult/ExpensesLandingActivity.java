@@ -11,30 +11,29 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.Objects;
 
 
-public class AddExpenses extends AppCompatActivity {
+public class ExpensesLandingActivity extends AppCompatActivity {
 
-//    private AppBarConfiguration appBarConfiguration;
+    private AppBarConfiguration appBarConfiguration;
 
     private TextInputLayout textInputName;
     private TextInputLayout textInputAmount;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_expenses);
-        textInputName = findViewById(R.id.add_expense_name);
-        textInputAmount = findViewById(R.id.add_expense_amount);
-        Button e_submit = findViewById(R.id.e_submit);
-        e_submit.setOnClickListener(this::AddExpensesInput);
+        setContentView(R.layout.activity_expenses_landing);
+        textInputName = findViewById(R.id.expense_name);
+        textInputAmount = findViewById(R.id.expense_amount);
+        Button e_go_to_view_button = findViewById(R.id.e_go_to_view_button);
+        e_go_to_view_button.setOnClickListener(this::ExpensesViewInput);
 
     }
-
-    // change ExpensesLanding to ExpensesList when merged
-    private void openAddExpensesView() {
-        Intent intent = new Intent(this, ExpensesList.class);
+    // change ExpensesLandingActivity to ExpensesActivity when merged
+    private void openExpensesView() {
+        Intent intent = new Intent(this, AddExpensesActivity.class);
         startActivity(intent);
     }
+
 
     private boolean validate(TextInputLayout textInput) {
         String Input = Objects.requireNonNull(textInput.getEditText()).getText().toString().trim();
@@ -47,15 +46,13 @@ public class AddExpenses extends AppCompatActivity {
             return true;
         }
     }
-    public void AddExpensesInput(View b) {
+    public void ExpensesViewInput(View e) {
         if (!(validate(textInputName) & validate( textInputAmount))) {
             // Here we can get all the info we need
             // For example to get the email you can do textInputEmail.getEditTest().getText().toString()
-        }else{openAddExpensesView();}
+        }else {openExpensesView();}
+
+
     }
 
-    public void ClickBack(View view) {
-        Intent intent = new Intent(this, ExpensesList.class);
-        startActivity(intent);
-    }
 }
