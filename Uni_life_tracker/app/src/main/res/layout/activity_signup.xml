@@ -9,12 +9,14 @@
         android:padding="30dp"
         tools:context=".SignUpActivity">
 
+    <!--  Logo  -->
     <ImageView
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:src="@drawable/ic_plannr_blob"
             android:contentDescription="@string/app_name"/>
 
+    <!--  Sign Up Text  -->
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -25,6 +27,7 @@
             android:textColor="@color/black"
             android:textStyle="bold"/>
 
+    <!--  Name Input  -->
     <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ti_name"
             android:layout_width="match_parent"
@@ -38,6 +41,7 @@
                 android:inputType="text"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!--  University Input  -->
     <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ti_university"
             android:layout_width="match_parent"
@@ -51,6 +55,7 @@
                 android:inputType="text"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!--  Email Input  -->
     <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ti_email"
             android:layout_width="match_parent"
@@ -64,6 +69,7 @@
                 android:inputType="textEmailAddress"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!--  Password Input  -->
     <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ti_password"
             android:layout_width="match_parent"
@@ -78,6 +84,7 @@
                 android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!--  Sign Up Button  -->
     <Button
             android:id="@+id/btn_sign_up"
             android:layout_width="match_parent"
