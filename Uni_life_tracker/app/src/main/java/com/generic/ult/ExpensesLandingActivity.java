@@ -11,7 +11,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.Objects;
 
 
-public class ExpensesLanding extends AppCompatActivity {
+public class ExpensesLandingActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
 
@@ -28,7 +28,7 @@ public class ExpensesLanding extends AppCompatActivity {
         e_go_to_view_button.setOnClickListener(this::ExpensesViewInput);
 
     }
-    // change ExpensesLanding to ExpensesActivity when merged
+    // change ExpensesLandingActivity to ExpensesActivity when merged
     private void openExpensesView() {
         Intent intent = new Intent(this, AddExpensesActivity.class);
         startActivity(intent);

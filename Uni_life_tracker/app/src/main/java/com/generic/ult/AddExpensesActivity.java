@@ -24,7 +24,7 @@ public class AddExpensesActivity extends AppCompatActivity {
         textInputAmount = findViewById(R.id.add_expense_amount);
     }
 
-    // change ExpensesLanding to ExpensesActivity when merged
+    // change ExpensesLandingActivity to ExpensesActivity when merged
     private void openAddExpensesView() {
         Intent intent = new Intent(this, ExpensesActivity.class);
         startActivity(intent);

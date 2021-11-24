@@ -15,7 +15,7 @@ import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-public class SchoolMain extends AppCompatActivity implements CalendarAdapter.OnItemListener
+public class SchoolActivity extends AppCompatActivity implements CalendarAdapter.OnItemListener
 {
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
@@ -26,7 +26,7 @@ public class SchoolMain extends AppCompatActivity implements CalendarAdapter.OnI
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_school_main);
+        setContentView(R.layout.activity_school);
         initWidgets();
         selectedDate = LocalDate.of(2021,11,13);
         setMonthView();

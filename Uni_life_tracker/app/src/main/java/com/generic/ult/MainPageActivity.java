@@ -82,7 +82,7 @@ public class MainPageActivity extends AppCompatActivity {
         }
     }
 
-    public void clickSchool(View view) { redirectActivity(this, SchoolMain.class); } // redirect activity to school
+    public void clickSchool(View view) { redirectActivity(this, SchoolActivity.class); } // redirect activity to school
 
     // TODO: change this to life later
     public void clickLife(View view) { redirectActivity(this, MainPageActivity.class); } // redirect activity to life

@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -58,7 +57,7 @@ public class ExpensesActivity extends AppCompatActivity {
 
     public void clickLogo(View view) { MainPageActivity.closeDrawer(drawerLayout); } // close drawer
 
-    public void clickSchool(View view) { MainPageActivity.redirectActivity(this, SchoolMain.class); } // redirect activity to school
+    public void clickSchool(View view) { MainPageActivity.redirectActivity(this, SchoolActivity.class); } // redirect activity to school
 
     // TODO: change this to life later
     public void clickLife(View view) { MainPageActivity.redirectActivity(this, MainPageActivity.class); } // redirect activity to life
