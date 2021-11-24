@@ -55,7 +55,7 @@ public class MainPageActivity extends AppCompatActivity {
         rvEvents.setAdapter(adapter);
     }
 
-//    TEMPORARY: generates events to display FOR NOW
+//    TODO: generates events to display FOR NOW
     private void setEventInfo() {
         eventsList.add(new Event("Event 1", 1, LocalDateTime.of(2019, 3, 28, 14, 33, 48)));
         eventsList.add(new Event("Assignment 2", 2, LocalDateTime.of(2021, 12, 13, 12, 20, 48)));
@@ -67,22 +67,13 @@ public class MainPageActivity extends AppCompatActivity {
         eventsList.add(new Event("Project 432", 2, LocalDateTime.of(2021, 11, 13, 12, 20, 48)));
     }
 //    public Event(String name, int priority, LocalDateTime startDate, LocalDateTime endDate) {
-    public void clickMenu(View view){
-        // open drawer
-        openDrawer(drawerLayout);
-    }
+    public void clickMenu(View view) { openDrawer(drawerLayout); } // open drawer
 
-    private static void openDrawer(DrawerLayout drawerLayout) {
-        // open drawer layout
-        drawerLayout.openDrawer(GravityCompat.START);
-    }
+    public static void openDrawer(DrawerLayout drawerLayout) { drawerLayout.openDrawer(GravityCompat.START); } // open drawer layout
 
-    public void ClickLogo(View view) {
-        // close drawer
-        closeDrawer(drawerLayout);
-    }
+    public void clickLogo(View view) { closeDrawer(drawerLayout); } // close drawer
 
-    private static void closeDrawer(DrawerLayout drawerLayout) {
+    public static void closeDrawer(DrawerLayout drawerLayout) {
         // close drawer layout
 
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -91,25 +82,14 @@ public class MainPageActivity extends AppCompatActivity {
         }
     }
 
-    public void clickSchool(View view) {
-        // redirect activity to dashboard
-        redirectActivity(this, SchoolMain.class);
-    }
+    public void clickSchool(View view) { redirectActivity(this, SchoolMain.class); } // redirect activity to school
 
-    public void clickLife(View view) {
-        // redirect activity to dashboard
-        redirectActivity(this, SignUpActivity.class); // change this to life later
-    }
+    // TODO: change this to life later
+    public void clickLife(View view) { redirectActivity(this, MainPageActivity.class); } // redirect activity to life
 
-    public void clickExpenses(View view) {
-        // redirect activity to dashboard
-       redirectActivity(this, ExpensesActivity.class);
-    }
+    public void clickExpenses(View view) { redirectActivity(this, ExpensesActivity.class); } // redirect activity to expenses
 
-    public void clickSettings(View view) {
-        // redirect activity to dashboard
-        redirectActivity(this, SettingsActivity.class);
-    }
+    public void clickSettings(View view) { redirectActivity(this, SettingsActivity.class); } // redirect activity to settings
 
     public static void redirectActivity(Activity activity, Class aClass) {
         // initialize intent
@@ -123,7 +103,6 @@ public class MainPageActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        // close drawer
-        closeDrawer(drawerLayout);
+        closeDrawer(drawerLayout); // close drawer
     }
 }

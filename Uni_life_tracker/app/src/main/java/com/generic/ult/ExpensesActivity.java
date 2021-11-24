@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
-
 public class ExpensesActivity extends AppCompatActivity {
 
     private ArrayList<Expense> expensesArrayList;
@@ -41,6 +40,7 @@ public class ExpensesActivity extends AppCompatActivity {
         rvExpenses.setAdapter(adapter);
     }
 
+//    TODO: generates expenses to display FOR NOW
     private void setExpenseInfo() {
         expensesArrayList.add(new Expense("Rent", 1500.50));
         expensesArrayList.add(new Expense("Food", 134.23));
@@ -54,27 +54,22 @@ public class ExpensesActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void clickMenu(View view){
-        // open drawer
-        openDrawer(drawerLayout);
-    }
+    public void clickMenu(View view){ MainPageActivity.openDrawer(drawerLayout); } // open drawer
 
-    private static void openDrawer(DrawerLayout drawerLayout) {
-        // open drawer layout
-        drawerLayout.openDrawer(GravityCompat.START);
-    }
+    public void clickLogo(View view) { MainPageActivity.closeDrawer(drawerLayout); } // close drawer
 
-    public void clickLogo(View view) {
-        // close drawer
-        closeDrawer(drawerLayout);
-    }
+    public void clickSchool(View view) { MainPageActivity.redirectActivity(this, SchoolMain.class); } // redirect activity to school
 
-    private static void closeDrawer(DrawerLayout drawerLayout) {
-        // close drawer layout
+    // TODO: change this to life later
+    public void clickLife(View view) { MainPageActivity.redirectActivity(this, MainPageActivity.class); } // redirect activity to life
 
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            // when drawer is open, close drawer
-            drawerLayout.closeDrawer(GravityCompat.START);
-        }
+    public void clickExpenses(View view) { recreate(); } // recreate activity
+
+    public void clickSettings(View view) { MainPageActivity.redirectActivity(this, SettingsActivity.class); } // redirect activity to settings
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MainPageActivity.closeDrawer(drawerLayout); // close drawer
     }
 }

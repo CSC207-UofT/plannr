@@ -15,15 +15,6 @@
             android:src="@drawable/ic_plannr_blob"
             android:contentDescription="@string/app_name"/>
 
-<!-- line divider -->
-<!--    <View-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="1dp"-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            android:layout_marginBottom="16dp"-->
-<!--            android:background="@color/lavender"-->
-<!--    />-->
-
     <!--  School  -->
     <TextView
             android:layout_width="match_parent"

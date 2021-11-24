@@ -12,11 +12,13 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+        <!--  Action Bar  -->
         <LinearLayout android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:orientation="horizontal"
                       android:gravity="center_vertical">
 
+            <!--  Menu Button  -->
             <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -26,6 +28,7 @@
                     android:padding="20dp"
             />
 
+            <!--  Settings Text  -->
             <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -37,6 +40,7 @@
                     android:fontFamily="@font/roboto_mono_bold"
                     android:gravity="start"/>
 
+            <!--  Save Button  -->
             <ImageView
                     android:id="@+id/iv_save"
                     android:layout_width="wrap_content"
@@ -48,6 +52,7 @@
             />
         </LinearLayout>
 
+        <!--  Name  -->
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -66,6 +71,7 @@
                     android:fontFamily="@font/roboto_mono_light"
                     android:layout_margin="5dp"/>
 
+            <!--  Name Input  -->
             <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/ti_name"
                     android:layout_width="200dp"
@@ -80,6 +86,7 @@
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
+        <!--  University  -->
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -98,6 +105,7 @@
                     android:fontFamily="@font/roboto_mono_light"
                     android:layout_margin="5dp"/>
 
+            <!--  University Input  -->
             <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/ti_university"
                     android:layout_width="200dp"
@@ -110,9 +118,9 @@
                 />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
-
     </LinearLayout>
 
+    <!--  Navigation Menu  -->
     <RelativeLayout
             android:layout_width="200dp"
             android:layout_height="match_parent"

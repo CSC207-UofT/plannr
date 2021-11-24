@@ -13,6 +13,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+        <!--  Menu Button  -->
         <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -22,6 +23,7 @@
                 android:padding="20dp"
         />
 
+        <!--  Today's Date  -->
         <TextView
                 android:id="@+id/tv_date"
                 android:layout_width="wrap_content"
@@ -37,6 +39,7 @@
                 app:layout_constraintVertical_bias="0.025"
                 app:layout_constraintHorizontal_bias="0.05"/>
 
+        <!--  My To Do's  -->
         <TextView
                 android:id="@+id/tv_to_dos"
                 android:layout_width="wrap_content"
@@ -49,6 +52,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="20dp"/>
 
+        <!--  Sort Button  -->
         <Button
                 android:id="@+id/btn_sort"
                 android:layout_width="wrap_content"
@@ -58,6 +62,7 @@
                 android:fontFamily="@font/roboto_mono_bold"
                 android:text="@string/sort"/>
 
+        <!--  Event List  -->
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_events"
                 android:layout_width="match_parent"
@@ -66,6 +71,7 @@
                 android:layout_marginHorizontal="20dp"/>
     </LinearLayout>
 
+    <!--  Navigation Menu  -->
     <RelativeLayout
             android:layout_width="200dp"
             android:layout_height="match_parent"
