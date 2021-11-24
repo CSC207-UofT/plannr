@@ -5,6 +5,7 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
+    <!--  Action Bar  -->
     <LinearLayout
             android:id="@+id/ll_expenses_bar"
             android:layout_width="match_parent"
@@ -14,6 +15,7 @@
             android:padding="15dp"
             android:gravity="center_vertical">
 
+        <!--  Back Button  -->
         <ImageView
                 android:id="@+id/iv_back"
                 android:layout_width="wrap_content"
@@ -22,18 +24,20 @@
                 android:src="@drawable/ic_back_arrow"
                 android:contentDescription="@string/back"/>
 
+        <!--  Add Expense Text  -->
         <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/add_expense"
-                android:textSize="20sp"
+                android:textSize="25sp"
                 android:textColor="@color/white"
                 android:fontFamily="@font/roboto_mono_bold"
                 android:textStyle="bold"
                 android:layout_marginStart="15dp"
                 android:gravity="start"/>
 
+        <!--  Save Button  -->
         <ImageView
                 android:id="@+id/iv_save"
                 android:layout_width="wrap_content"

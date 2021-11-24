@@ -6,7 +6,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-    <!--  Toolbar  -->
+    <!--  Action Bar  -->
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -15,25 +15,28 @@
             android:padding="15dp"
             android:gravity="center_vertical">
 
+        <!--  Back Button  -->
         <ImageView
                 android:id="@+id/iv_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="ClickBack"
+                android:onClick="clickBack"
                 android:src="@drawable/ic_back_arrow"
                 android:contentDescription="@string/back"/>
 
+        <!--  Add Event Text  -->
         <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/add_school_event"
-                android:textSize="20sp"
+                android:textSize="25sp"
                 android:textColor="@color/white"
                 android:fontFamily="@font/roboto_mono_bold"
                 android:layout_marginStart="15dp"
                 android:gravity="start"/>
 
+        <!--  Save Button  -->
         <ImageView
                 android:id="@+id/iv_save"
                 android:layout_width="wrap_content"
@@ -62,7 +65,7 @@
                 android:fontFamily="@font/roboto_mono_bold"
                 android:textAlignment="center"
                 android:padding="15dp"
-                android:onClick="ClickAssessment"/>
+                android:onClick="clickAssessment"/>
 
         <!-- Deadline -->
         <TextView
@@ -75,7 +78,7 @@
                 android:fontFamily="@font/roboto_mono_light"
                 android:textAlignment="center"
                 android:padding="15dp"
-                android:onClick="ClickDeadline"/>
+                android:onClick="clickDeadline"/>
 
         <!-- Class Time -->
         <TextView
@@ -88,7 +91,7 @@
                 android:fontFamily="@font/roboto_mono_light"
                 android:textAlignment="center"
                 android:padding="15dp"
-                android:onClick="ClickClassTime"/>
+                android:onClick="clickClassTime"/>
 
         <!-- Study Session -->
         <TextView
@@ -101,7 +104,7 @@
                 android:fontFamily="@font/roboto_mono_light"
                 android:textAlignment="center"
                 android:padding="15dp"
-                android:onClick="ClickStudySession"/>
+                android:onClick="clickStudySession"/>
     </LinearLayout>
 
     <!-- Add Event Name -->

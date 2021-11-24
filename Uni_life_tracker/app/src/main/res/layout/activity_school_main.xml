@@ -53,42 +53,48 @@
             />
         </LinearLayout>
 
+        <!--  Calendar  -->
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginHorizontal="20dp"
                 android:layout_marginBottom="20dp">
-            
-            <Button
-                    android:layout_width="0dp"
+
+            <!--  Previous Month Button  -->
+            <ImageButton
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawableEnd="@drawable/ic_back_arrow"
-                    android:background="@null"
-                    android:textStyle="bold"
+                    android:src="@drawable/ic_back_arrow"
+                    android:backgroundTint="@color/black"
                     android:onClick="previousMonthAction"
-                    android:textSize="20sp"/>
+                    android:contentDescription="@string/date">
+            </ImageButton>
 
             <!--  Current Month/Year View Text  -->
             <TextView
                     android:id="@+id/tv_month_year"
                     android:layout_width="0dp"
-                    android:layout_weight="2"
                     android:layout_height="wrap_content"
-                    android:text="@string/monthYear"
+                    android:layout_weight="2"
+                    android:text="@string/date"
                     android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/roboto_mono_bold"
+                    android:textStyle="bold"
                     android:textAlignment="center"/>
 
-            <Button
-                    android:layout_width="0dp"
+            <!--  Next Month Button  -->
+            <ImageButton
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:scaleX="-1"
-                    android:drawableEnd="@drawable/ic_back_arrow"
-                    android:background="@null"
-                    android:textStyle="bold"
+                    android:src="@drawable/ic_back_arrow"
+                    android:backgroundTint="@color/black"
                     android:onClick="nextMonthAction"
-                    android:textSize="20sp"/>
+                    android:contentDescription="@string/date">
+            </ImageButton>
 
         </LinearLayout>
 
