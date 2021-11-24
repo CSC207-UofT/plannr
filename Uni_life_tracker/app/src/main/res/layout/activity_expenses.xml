@@ -12,11 +12,13 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+        <!--  Action Bar  -->
         <LinearLayout android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:orientation="horizontal"
                       android:gravity="center_vertical">
 
+            <!--  Menu Button  -->
             <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -25,6 +27,7 @@
                     android:onClick="clickMenu"
                     android:padding="20dp"/>
 
+            <!--  Expenses Text  -->
             <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -36,6 +39,7 @@
                     android:fontFamily="@font/roboto_mono_bold"
                     android:gravity="start"/>
 
+            <!--  Add Expense Button  -->
             <ImageView
                     android:id="@+id/iv_add_expense"
                     android:layout_width="wrap_content"
@@ -46,15 +50,16 @@
                     android:padding="20dp"/>
         </LinearLayout>
 
+        <!--  Expense List  -->
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_expenses"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:paddingHorizontal="20dp"/>
-
+                android:layout_marginHorizontal="20dp"/>
     </LinearLayout>
 
+    <!--  Navigation Menu  -->
     <RelativeLayout
             android:layout_width="200dp"
             android:layout_height="match_parent"
