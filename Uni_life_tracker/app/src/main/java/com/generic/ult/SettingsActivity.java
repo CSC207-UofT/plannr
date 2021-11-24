@@ -15,9 +15,7 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-
-        // side menu
-        drawerLayout = findViewById(R.id.drawer_layout);
+        drawerLayout = findViewById(R.id.drawer_layout); // nav menu
     }
 
     public void clickMenu(View view) { MainPageActivity.openDrawer(drawerLayout); } // open drawer

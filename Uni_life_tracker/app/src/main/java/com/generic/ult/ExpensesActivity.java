@@ -26,7 +26,7 @@ public class ExpensesActivity extends AppCompatActivity {
         // expense list
         rvExpenses = findViewById(R.id.rv_expenses);
         expensesArrayList = new ArrayList<>();
-        drawerLayout = findViewById(R.id.drawer_layout);
+        drawerLayout = findViewById(R.id.drawer_layout); // nav menu
 
         setExpenseInfo();
         setAdapter();
