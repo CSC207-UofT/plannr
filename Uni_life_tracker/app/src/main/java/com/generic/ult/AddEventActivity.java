@@ -163,7 +163,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
 
 //    Back Button
     public void ClickBack(View view) {
-        Intent intent = new Intent(this, MainPageActivity.class); // TODO: direct to school/life page
+        Intent intent = new Intent(this, SchoolMain.class);
         startActivity(intent);
     }
 
