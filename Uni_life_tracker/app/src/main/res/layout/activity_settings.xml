@@ -95,6 +95,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/name"
                 android:inputType="text"
+                android:id="@+id/et_name"
         />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -113,6 +114,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/university"
                 android:inputType="numberDecimal"
+                android:id="@+id/et_uni"
         />
     </com.google.android.material.textfield.TextInputLayout>
 

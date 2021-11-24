@@ -3,13 +3,11 @@ package com.generic.ult;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import androidx.preference.PreferenceManager;
-import android.util.Patterns;
-import android.view.View;
-import android.widget.Button;
-
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Patterns;
+import android.widget.Button;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
@@ -144,22 +142,22 @@ public class SignUpActivity extends AppCompatActivity {
 
     }
 
-    private String getName() {
+    public String getName() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         return prefs.getString("NAME", null);
     }
 
-    private String getUni() {
+    public String getUni() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         return prefs.getString("UNIVERSITY", null);
     }
 
-    private String getEmail() {
+    public String getEmail() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         return prefs.getString("EMAIL", null);
     }
 
-    private String getPassword() {
+    public String getPassword() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         return prefs.getString("PASSWORD", null);
     }
