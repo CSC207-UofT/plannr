@@ -13,17 +13,19 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+        <!--  Menu Button  -->
         <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="ClickMenu"
+                android:onClick="clickMenu"
                 android:src="@drawable/ic_menu"
                 android:contentDescription="@string/app_name"
                 android:padding="20dp"
         />
 
+        <!--  Today's Date  -->
         <TextView
-                android:id="@+id/text_date"
+                android:id="@+id/tv_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/date"
@@ -37,8 +39,9 @@
                 app:layout_constraintVertical_bias="0.025"
                 app:layout_constraintHorizontal_bias="0.05"/>
 
+        <!--  My To Do's  -->
         <TextView
-                android:id="@+id/text_to_dos"
+                android:id="@+id/tv_to_dos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/my_to_dos"
@@ -49,41 +52,26 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="20dp"/>
 
-        <com.google.android.material.button.MaterialButtonToggleGroup
-                android:id="@+id/tg_sort"
+        <!--  Sort Button  -->
+        <Button
+                android:id="@+id/btn_sort"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="20dp"
-                app:singleSelection="true">
+                android:fontFamily="@font/roboto_mono_bold"
+                android:text="@string/sort"/>
 
-            <Button
-                    android:id="@+id/btn_sort_time"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/time"
-                    android:fontFamily="@font/roboto_mono_bold"/>
-
-            <Button
-                    android:id="@+id/btn_sort_priority"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/priority"
-                    android:fontFamily="@font/roboto_mono_bold"/>
-        </com.google.android.material.button.MaterialButtonToggleGroup>
-
-
+        <!--  Event List  -->
         <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_events"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:layout_marginStart="20dp"
-                android:id="@+id/recyclerView"/>
+                android:layout_marginHorizontal="20dp"/>
     </LinearLayout>
 
-
+    <!--  Navigation Menu  -->
     <RelativeLayout
             android:layout_width="200dp"
             android:layout_height="match_parent"

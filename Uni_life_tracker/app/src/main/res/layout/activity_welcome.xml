@@ -8,15 +8,17 @@
         android:orientation="vertical"
         android:gravity="center"
         tools:context=".WelcomeActivity">
-    <TextView
-            android:id="@+id/welcome_to"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/welcome_to"
-            android:gravity="center"
-            android:textSize="30sp"
-            android:textColor="#070707"/>
 
+<!--    &lt;!&ndash;  Welcome to Text  &ndash;&gt;-->
+<!--    <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/welcome_to"-->
+<!--            android:gravity="center"-->
+<!--            android:textSize="30sp"-->
+<!--            android:textColor="#070707"/>-->
+
+    <!--  Logo  -->
     <ImageView
             android:layout_width="250dp"
             android:layout_height="250dp"
@@ -25,12 +27,4 @@
             app:layout_constraintTop_toBottomOf="@+id/welcome_to"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
-
-    <Button
-            android:id="@+id/startBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/start"
-            android:layout_marginTop="50dp"/>
-
 </LinearLayout>

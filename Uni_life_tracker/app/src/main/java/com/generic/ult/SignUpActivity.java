@@ -20,23 +20,23 @@ public class SignUpActivity extends AppCompatActivity {
     private static final Pattern PASSWORD_REQ =
             Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#!$%^&+=]).{6,}$");
 
-    private TextInputLayout textInputName;
-    private TextInputLayout textInputUni;
-    private TextInputLayout textInputEmail;
-    private TextInputLayout textInputPassword;
+    private TextInputLayout tiName;
+    private TextInputLayout tiUniversity;
+    private TextInputLayout tiEmail;
+    private TextInputLayout tiPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        textInputName = findViewById(R.id.text_name);
-        textInputUni = findViewById(R.id.text_university);
-        textInputEmail = findViewById(R.id.text_input_email);
-        textInputPassword = findViewById(R.id.text_password);
+        tiName = findViewById(R.id.ti_name);
+        tiUniversity = findViewById(R.id.ti_university);
+        tiEmail = findViewById(R.id.ti_email);
+        tiPassword = findViewById(R.id.ti_password);
 
-        Button signupButton = findViewById(R.id.btn_sign_up);
-        signupButton.setOnClickListener(v -> {
+        Button btnSignUp = findViewById(R.id.btn_sign_up);
+        btnSignUp.setOnClickListener(v -> {
 
             // If all signup credentials are correct, store the credentials
             // and go into the main page
@@ -45,7 +45,6 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
     }
-
 
     private void saveCredentialsAndOpenMain() {
         saveName();
@@ -62,10 +61,10 @@ public class SignUpActivity extends AppCompatActivity {
         if (Input.isEmpty()) {
             textInput.setError("Field cannot be empty");
             return false;
-        } else if (textInput == textInputEmail && !Patterns.EMAIL_ADDRESS.matcher(Input).matches()) {
+        } else if (textInput == tiEmail && !Patterns.EMAIL_ADDRESS.matcher(Input).matches()) {
             textInput.setError("Please enter a valid email address");
             return false;
-        } else if (textInput == textInputPassword && !PASSWORD_REQ.matcher(Input).matches()) {
+        } else if (textInput == tiPassword && !PASSWORD_REQ.matcher(Input).matches()) {
             StringBuilder str = passwordReq(Input);
             textInput.setError(str.toString());
             return false;
@@ -107,12 +106,12 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     public boolean signupInput() {
-        return validate(textInputName) & validate(textInputUni) &
-                validate(textInputEmail) & validate(textInputPassword);
+        return validate(tiName) & validate(tiUniversity) &
+                validate(tiEmail) & validate(tiPassword);
     }
 
     private void saveName() {
-        String name = Objects.requireNonNull(textInputName.getEditText()).getText().toString();
+        String name = Objects.requireNonNull(tiName.getEditText()).getText().toString();
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         @SuppressLint("CommitPrefEdits") SharedPreferences.Editor prefsEditor = prefs.edit();
         prefsEditor.putString("NAME", name);
@@ -120,7 +119,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     }
     private void saveUni() {
-        String uni = Objects.requireNonNull(textInputUni.getEditText()).getText().toString();
+        String uni = Objects.requireNonNull(tiUniversity.getEditText()).getText().toString();
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         @SuppressLint("CommitPrefEdits") SharedPreferences.Editor prefsEditor = prefs.edit();
         prefsEditor.putString("UNIVERSITY", uni);
@@ -128,7 +127,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     }
     private void saveEmail() {
-        String email = Objects.requireNonNull(textInputEmail.getEditText()).getText().toString();
+        String email = Objects.requireNonNull(tiEmail.getEditText()).getText().toString();
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         @SuppressLint("CommitPrefEdits") SharedPreferences.Editor prefsEditor = prefs.edit();
         prefsEditor.putString("EMAIL", email);
@@ -136,7 +135,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     }
     private void savePassword() {
-        String password = Objects.requireNonNull(textInputPassword.getEditText()).getText().toString();
+        String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         @SuppressLint("CommitPrefEdits") SharedPreferences.Editor prefsEditor = prefs.edit();
         prefsEditor.putString("PASSWORD", password);
