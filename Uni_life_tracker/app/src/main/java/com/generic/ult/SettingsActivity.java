@@ -13,7 +13,7 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        ImageView backBtn = findViewById(R.id.back);
+        ImageView backBtn = findViewById(R.id.iv_back);
         backBtn.setOnClickListener(this::ClickBack);
     }
 

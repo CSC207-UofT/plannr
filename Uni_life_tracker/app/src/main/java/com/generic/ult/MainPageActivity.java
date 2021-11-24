@@ -101,7 +101,7 @@ public class MainPageActivity extends AppCompatActivity {
 
     public void ClickSchool(View view) {
         // redirect activity to dashboard
-//        redirectActivity(this,);
+        redirectActivity(this, SchoolMain.class);
     }
 
     public void ClickLife(View view) {
