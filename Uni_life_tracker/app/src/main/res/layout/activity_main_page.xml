@@ -53,14 +53,46 @@
                 android:layout_marginStart="20dp"/>
 
         <!--  Sort Button  -->
-        <Button
-                android:id="@+id/btn_sort"
+        <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/tg_sort"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="20dp"
-                android:fontFamily="@font/roboto_mono_bold"
-                android:text="@string/sort"/>
+                app:singleSelection="true">
+
+            <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:text="@string/time"
+                    android:fontFamily="@font/roboto_mono_bold">
+            </com.google.android.material.button.MaterialButton>
+
+            <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:text="@string/priority"
+                    android:fontFamily="@font/roboto_mono_bold">
+            </com.google.android.material.button.MaterialButton>
+
+            <!--            <Button-->
+            <!--                    android:id="@+id/btn_sort_time"-->
+            <!--                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:text="@string/time"-->
+            <!--                    android:fontFamily="@font/roboto_mono_bold"/>-->
+
+            <!--            <Button-->
+            <!--                    android:id="@+id/btn_sort_priority"-->
+            <!--                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:text="@string/priority"-->
+            <!--                    android:fontFamily="@font/roboto_mono_bold"/>-->
+        </com.google.android.material.button.MaterialButtonToggleGroup>
 
         <!--  Event List  -->
         <androidx.recyclerview.widget.RecyclerView

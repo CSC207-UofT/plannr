@@ -4,6 +4,7 @@ import Entities.Event;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,7 +23,7 @@ import java.util.Calendar;
 public class MainPageActivity extends AppCompatActivity {
     // initialize variable
     DrawerLayout drawerLayout;
-
+//    MaterialButtonToggleGroup tgSort;
     private ArrayList<Event> eventsList;
     private RecyclerView rvEvents;
 
@@ -47,12 +48,11 @@ public class MainPageActivity extends AppCompatActivity {
         setEventInfo();
         setAdapter();
 
-        MaterialButtonToggleGroup tgSort = findViewById(R.id.tg_sort);
-//        tgSort.addOnButtonCheckedListener { tgSort, checkedId, isChecked ->
-//            if (isChecked) {
-//                when (checkedId)
-//            }
-//        }
+//        MaterialButtonToggleGroup tgSort = findViewById(R.id.tg_sort);
+////        Button btnSortTime = findViewById(R.id.btn_sort_time);
+////        Button btnSortPriority = findViewById(R.id.btn_sort_priority);
+//
+//        tgSort.setOnClickListener((View.OnClickListener) this);
     }
 
     private void setAdapter() {
