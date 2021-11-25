@@ -1,6 +1,7 @@
 package com.generic.ult;
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,20 +15,22 @@ import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-public class SchoolMain extends AppCompatActivity implements CalendarAdapter.OnItemListener
+public class SchoolActivity extends AppCompatActivity implements CalendarAdapter.OnItemListener
 {
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
     private LocalDate selectedDate;
+    DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_school_main);
+        setContentView(R.layout.activity_school);
         initWidgets();
         selectedDate = LocalDate.of(2021,11,13);
         setMonthView();
+        drawerLayout = findViewById(R.id.drawer_layout);
     }
 
     private void initWidgets()
@@ -89,12 +92,12 @@ public class SchoolMain extends AppCompatActivity implements CalendarAdapter.OnI
         setMonthView();
     }
 
-    public void ClickBack(View view) {
+    public void clickBack(View view) {
         Intent intent = new Intent(this, MainPageActivity.class);
         startActivity(intent);
     }
 
-    public void ClickAddEvent(View view) {
+    public void clickAddEvent(View view) {
         Intent intent = new Intent(this, AddEventActivity.class);
         startActivity(intent);
     }
@@ -107,5 +110,24 @@ public class SchoolMain extends AppCompatActivity implements CalendarAdapter.OnI
             String message = "Selected Date " + dayText + " " + monthYearFromDate(selectedDate);
             Toast.makeText(this, message, Toast.LENGTH_LONG).show();
         }
+    }
+
+    public void clickMenu(View view) { MainPageActivity.openDrawer(drawerLayout); } // open drawer
+
+    public void clickLogo(View view) { MainPageActivity.closeDrawer(drawerLayout); } // close drawer
+
+    public void clickSchool(View view) { recreate(); } // recreate activity
+
+    // TODO: change this to life later
+    public void clickLife(View view) { MainPageActivity.redirectActivity(this, MainPageActivity.class); } // redirect activity to life
+
+    public void clickExpenses(View view) { MainPageActivity.redirectActivity(this, ExpensesActivity.class); } // redirect activity to expenses
+
+    public void clickSettings(View view) { MainPageActivity.redirectActivity(this, SettingsActivity.class); } // redirect activity to settings
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MainPageActivity.closeDrawer(drawerLayout); // close drawer
     }
 }

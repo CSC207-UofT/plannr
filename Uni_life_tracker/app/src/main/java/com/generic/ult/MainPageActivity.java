@@ -23,7 +23,7 @@ public class MainPageActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
 
     private ArrayList<Event> eventsList;
-    private RecyclerView recyclerView;
+    private RecyclerView rvEvents;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,14 +34,14 @@ public class MainPageActivity extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
         String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
 
-        TextView textViewDate = findViewById(R.id.text_date);
-        textViewDate.setText(currentDate);
+        TextView tvViewDate = findViewById(R.id.tv_date);
+        tvViewDate.setText(currentDate);
 
         // side menu
         drawerLayout = findViewById(R.id.drawer_layout);
         
         // events list
-        recyclerView = findViewById(R.id.recyclerView);
+        rvEvents = findViewById(R.id.rv_events);
         eventsList = new ArrayList<>(); 
         setEventInfo();
         setAdapter();
@@ -50,12 +50,12 @@ public class MainPageActivity extends AppCompatActivity {
     private void setAdapter() {
         ListEvents adapter = new ListEvents(eventsList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(adapter);
+        rvEvents.setLayoutManager(layoutManager);
+        rvEvents.setItemAnimator(new DefaultItemAnimator());
+        rvEvents.setAdapter(adapter);
     }
 
-//    TEMPORARY: generates events to display FOR NOW
+//    TODO: generates events to display FOR NOW
     private void setEventInfo() {
         eventsList.add(new Event("Event 1", 1, LocalDateTime.of(2019, 3, 28, 14, 33, 48)));
         eventsList.add(new Event("Assignment 2", 2, LocalDateTime.of(2021, 12, 13, 12, 20, 48)));
@@ -72,17 +72,11 @@ public class MainPageActivity extends AppCompatActivity {
         openDrawer(drawerLayout);
     }
 
-    private static void openDrawer(DrawerLayout drawerLayout) {
-        // open drawer layout
-        drawerLayout.openDrawer(GravityCompat.START);
-    }
+    public static void openDrawer(DrawerLayout drawerLayout) { drawerLayout.openDrawer(GravityCompat.START); } // open drawer layout
 
-    public void ClickLogo(View view) {
-        // close drawer
-        closeDrawer(drawerLayout);
-    }
+    public void clickLogo(View view) { closeDrawer(drawerLayout); } // close drawer
 
-    private static void closeDrawer(DrawerLayout drawerLayout) {
+    public static void closeDrawer(DrawerLayout drawerLayout) {
         // close drawer layout
 
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -91,25 +85,14 @@ public class MainPageActivity extends AppCompatActivity {
         }
     }
 
-    public void ClickSchool(View view) {
-        // redirect activity to dashboard
-        redirectActivity(this, SchoolMain.class);
-    }
+    public void clickSchool(View view) { redirectActivity(this, SchoolActivity.class); } // redirect activity to school
 
-//    public void ClickLife(View view) {
-//        // redirect activity to dashboard
-//        redirectActivity(this, SignUpActivity.class); // change this to life later
-//    }
+    // TODO: change this to life later
+    public void clickLife(View view) { redirectActivity(this, MainPageActivity.class); } // redirect activity to life
 
-    public void ClickExpenses(View view) {
-        // redirect activity to dashboard
-       redirectActivity(this,ExpensesList.class);
-    }
+    public void clickExpenses(View view) { redirectActivity(this, ExpensesActivity.class); } // redirect activity to expenses
 
-    public void ClickSettings(View view) {
-        // redirect activity to dashboard
-        redirectActivity(this, SettingsActivity.class);
-    }
+    public void clickSettings(View view) { redirectActivity(this, SettingsActivity.class); } // redirect activity to settings
 
     public static void redirectActivity(Activity activity, Class aClass) {
         // initialize intent
@@ -123,7 +106,6 @@ public class MainPageActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        // close drawer
-        closeDrawer(drawerLayout);
+        closeDrawer(drawerLayout); // close drawer
     }
 }

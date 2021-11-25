@@ -13,11 +13,12 @@
         <activity android:name=".SettingsActivity"> </activity>
         <activity android:name=".SignUpActivity"> </activity>
         <activity android:name=".AddEventActivity"> </activity>
-        <activity android:name=".AddExpenses"> </activity>
-        <activity android:name=".ExpensesList"> </activity>
-        <activity android:name=".SchoolMain"> </activity>
+        <activity android:name=".AddExpensesActivity"> </activity>
+        <activity android:name=".ExpensesActivity"> </activity>
+        <activity android:name=".SchoolActivity"> </activity>
         <activity
                 android:name=".MainPageActivity"
+                android:label="Main"
                 android:exported="true"> </activity>
         <activity
                 android:name=".WelcomeActivity"

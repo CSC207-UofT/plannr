@@ -20,7 +20,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
 //    Initialize Variables
     int startYear, startMonth, startDay, endYear, endMonth, endDay, startHour, startMinute, endHour, endMinute, priority;
     TextView tvStartDate, tvStartTime, tvEndDate, tvEndTime, tvAssessment, tvDeadline, tvClassTime, tvStudySession;
-    RadioGroup radioGroup;
+    RadioGroup rgPriorities;
     ImageView ivBack, ivSave;
     EditText etEventName;
 
@@ -37,7 +37,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         tvStartTime = findViewById(R.id.tv_start_time);
         tvEndDate = findViewById(R.id.tv_end_date);
         tvEndTime = findViewById(R.id.tv_end_time);
-        radioGroup = findViewById(R.id.rg_priorities);
+        rgPriorities = findViewById(R.id.rg_priorities);
         tvAssessment = findViewById(R.id.tv_assessment);
         tvDeadline = findViewById(R.id.tv_deadline);
         tvClassTime = findViewById(R.id.tv_class_time);
@@ -60,12 +60,12 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         tvStartDate.setText(date);
         tvStartTime.setText(time);
 
-        radioGroup.setOnCheckedChangeListener(this);
-        ivBack.setOnClickListener(this::ClickBack);
-        tvAssessment.setOnClickListener(this::ClickAssessment);
-        tvDeadline.setOnClickListener(this::ClickDeadline);
-        tvClassTime.setOnClickListener(this::ClickClassTime);
-        tvStudySession.setOnClickListener(this::ClickStudySession);
+        rgPriorities.setOnCheckedChangeListener(this);
+        ivBack.setOnClickListener(this::clickBack);
+        tvAssessment.setOnClickListener(this::clickAssessment);
+        tvDeadline.setOnClickListener(this::clickDeadline);
+        tvClassTime.setOnClickListener(this::clickClassTime);
+        tvStudySession.setOnClickListener(this::clickStudySession);
 
         ivSave.setOnClickListener(v -> {
             String eventName = etEventName.getText().toString();
@@ -162,8 +162,8 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
     }
 
 //    Back Button
-    public void ClickBack(View view) {
-        Intent intent = new Intent(this, SchoolMain.class);
+    public void clickBack(View view) {
+        Intent intent = new Intent(this, MainPageActivity.class); // TODO: direct to school/life page
         startActivity(intent);
     }
 
@@ -179,22 +179,22 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         }
     }
 
-    public void ClickAssessment(View view) {
+    public void clickAssessment(View view) {
         Intent intent = new Intent(this, MainPageActivity.class); // TODO: direct to assessment page
         startActivity(intent);
     }
 
-    public void ClickDeadline(View view) {
+    public void clickDeadline(View view) {
         Intent intent = new Intent(this, MainPageActivity.class); // TODO: direct to deadline page
         startActivity(intent);
     }
 
-    public void ClickClassTime(View view) {
+    public void clickClassTime(View view) {
         Intent intent = new Intent(this, MainPageActivity.class); // TODO: direct to class page
         startActivity(intent);
     }
 
-    public void ClickStudySession(View view) {
+    public void clickStudySession(View view) {
         Intent intent = new Intent(this, MainPageActivity.class); // TODO: direct to study session page
         startActivity(intent);
     }
