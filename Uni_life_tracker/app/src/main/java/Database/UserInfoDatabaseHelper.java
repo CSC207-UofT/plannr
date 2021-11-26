@@ -37,13 +37,6 @@ public class UserInfoDatabaseHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * Close the database
-     */
-    public void closeDatabase() {
-        db.close();
-    }
-
-    /**
      * Insert User Info into the database if initially empty
      *
      * @param name The user's name to be inserted
