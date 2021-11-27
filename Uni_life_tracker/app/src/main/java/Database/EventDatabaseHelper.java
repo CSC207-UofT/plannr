@@ -47,12 +47,7 @@ public class EventDatabaseHelper extends SQLiteOpenHelper {
         db = getWritableDatabase();
     }
 
-    /**
-     * Close the database
-     */
-    public void closeDatabase() {
-        db.close();
-    }
+
     /**
      * Insert an Event object into the database
      *

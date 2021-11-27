@@ -67,7 +67,10 @@ public class MainPageActivity extends AppCompatActivity {
         eventsList.add(new Event("Project 432", 2, LocalDateTime.of(2021, 11, 13, 12, 20, 48)));
     }
 //    public Event(String name, int priority, LocalDateTime startDate, LocalDateTime endDate) {
-    public void clickMenu(View view) { openDrawer(drawerLayout); } // open drawer
+    public void clickMenu(View view){
+        // open drawer
+        openDrawer(drawerLayout);
+    }
 
     public static void openDrawer(DrawerLayout drawerLayout) { drawerLayout.openDrawer(GravityCompat.START); } // open drawer layout
 
