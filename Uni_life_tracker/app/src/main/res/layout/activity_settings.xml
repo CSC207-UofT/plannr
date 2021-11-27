@@ -45,7 +45,7 @@
                     android:id="@+id/iv_save"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="clickMenu"
+                    android:onClick="clickSave"
                     android:src="@drawable/ic_done_black"
                     android:contentDescription="@string/save"
                     android:padding="20dp"
@@ -82,6 +82,7 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/name"
                         android:inputType="text"
+                        android:id="@+id/et_name"
                 />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
@@ -115,6 +116,7 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/university"
                         android:inputType="numberDecimal"
+                        android:id="@+id/et_uni"
                 />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
