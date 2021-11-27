@@ -1,26 +1,22 @@
 package com.generic.ult;
 
 import android.content.Intent;
+import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Button;
 
 public class WelcomeActivity extends AppCompatActivity {
+    Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-
-        Button startBtn = findViewById(R.id.startBtn);
-        startBtn.setOnClickListener(v -> openSignup());
-
-
-
+        
+        handler.postDelayed(() -> {
+            Intent intent = new Intent(WelcomeActivity.this, SignUpActivity.class);
+            startActivity(intent);
+            finish();
+        }, 2500);
     }
-    //https://www.youtube.com/watch?v=bgIUdb-7Rqo
-   private void openSignup() {
-        Intent intent = new Intent(this, SignUpActivity.class);
-        startActivity(intent);
-   }
 }

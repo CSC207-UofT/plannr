@@ -34,6 +34,6 @@
             android:text="@string/amount"
             android:textAlignment="textEnd"
             android:fontFamily="@font/roboto_mono_bold"
-            android:padding="20dp"/>
+            android:paddingVertical="20dp"/>
 
 </LinearLayout>

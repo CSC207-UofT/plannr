@@ -28,16 +28,25 @@
     <string name="university_name">University Name</string>
     <string name="password">Password</string>
     <string name="sign_up">Sign Up!</string>
-    <string name="sign_up_title">Sign Up</string>
     <string name="welcome_to">Welcome to</string>
 
-    <!--  Password Regex -->
+    <!--  Password Regex  -->
     <string name="uppercase">(?=.*[A-Z])</string>
     <string name="lowercase">(?=.*[a-z])</string>
     <string name="number"
             tools:ignore="TypographyDashes">(?=.*[0-9])</string>
     <string name="specialChar"><![CDATA[(?=.*[@#!$%^&+=])]]></string>
+
+    <!--  Calendar  -->
     <string name="minLength">.{6,}</string>
+    <string name="sunday">SUN</string>
+    <string name="monday">MON</string>
+    <string name="tuesday">TUE</string>
+    <string name="wednesday">WED</string>
+    <string name="thursday">THU</string>
+    <string name="friday">FRI</string>
+    <string name="saturday">SAT</string>
+    <string name="date_placeholder">1</string>
 
     <!--  Expenses  -->
     <string name="welcome_please_add_an_expense">Welcome! Please add an expense:</string>
@@ -53,7 +62,7 @@
     <string name="title_activity_expenses_landing">expenses_landing</string>
     <string name="dollar_amount">$ Add Amount</string>
 
-    <!-- Navigation Fragments -->
+    <!--  Navigation Fragments  -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>

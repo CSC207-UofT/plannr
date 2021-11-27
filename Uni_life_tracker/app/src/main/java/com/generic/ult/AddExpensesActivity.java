@@ -2,39 +2,33 @@ package com.generic.ult;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Patterns;
 import android.view.View;
-import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.ui.AppBarConfiguration;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
 
 
-public class ExpensesLanding extends AppCompatActivity {
+public class AddExpensesActivity extends AppCompatActivity {
 
-    private AppBarConfiguration appBarConfiguration;
+//    private AppBarConfiguration appBarConfiguration;
 
-    private TextInputLayout textInputName;
-    private TextInputLayout textInputAmount;
+    private TextInputLayout textInputName, textInputAmount;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_expenses_landing);
-        textInputName = findViewById(R.id.expense_name);
-        textInputAmount = findViewById(R.id.expense_amount);
-        Button e_go_to_view_button = findViewById(R.id.e_go_to_view_button);
-        e_go_to_view_button.setOnClickListener(this::ExpensesViewInput);
-
+        setContentView(R.layout.activity_add_expenses);
+        textInputName = findViewById(R.id.add_expense_name);
+        textInputAmount = findViewById(R.id.add_expense_amount);
     }
-    // change ExpensesLanding to ExpensesList when merged
-    private void openExpensesView() {
-        Intent intent = new Intent(this, AddExpenses.class);
+
+    // change ExpensesLandingActivity to ExpensesActivity when merged
+    private void openAddExpensesView() {
+        Intent intent = new Intent(this, ExpensesActivity.class);
         startActivity(intent);
     }
-
 
     private boolean validate(TextInputLayout textInput) {
         String Input = Objects.requireNonNull(textInput.getEditText()).getText().toString().trim();
@@ -47,13 +41,15 @@ public class ExpensesLanding extends AppCompatActivity {
             return true;
         }
     }
-    public void ExpensesViewInput(View e) {
+    public void AddExpensesInput(View b) {
         if (!(validate(textInputName) & validate( textInputAmount))) {
             // Here we can get all the info we need
             // For example to get the email you can do textInputEmail.getEditTest().getText().toString()
-        }else {openExpensesView();}
-
-
+        }else{openAddExpensesView();}
     }
 
+    public void ClickBack(View view) {
+        Intent intent = new Intent(this, ExpensesActivity.class);
+        startActivity(intent);
+    }
 }
