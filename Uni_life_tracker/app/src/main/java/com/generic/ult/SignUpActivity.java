@@ -14,6 +14,8 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
+import Database.UserInfoDatabaseHelper;
+
 public class SignUpActivity extends AppCompatActivity {
     // At least one number, uppercase letter, lowercase letter and special char. Min of 6 characters
     private static final Pattern PASSWORD_REQ =
@@ -23,6 +25,7 @@ public class SignUpActivity extends AppCompatActivity {
     private TextInputLayout tiUniversity;
     private TextInputLayout tiEmail;
     private TextInputLayout tiPassword;
+    UserInfoDatabaseHelper dbhelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,16 +43,22 @@ public class SignUpActivity extends AppCompatActivity {
             // If all signup credentials are correct, store the credentials
             // and go into the main page
             if (signupInput()) {
-                saveCredentialsAndOpenMain();
+                String name = Objects.requireNonNull(tiName.getEditText()).getText().toString();
+                String uni = Objects.requireNonNull(tiUniversity.getEditText()).getText().toString();
+                String email = Objects.requireNonNull(tiEmail.getEditText()).getText().toString();
+                String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();
+
+                dbhelper = new UserInfoDatabaseHelper(SignUpActivity.this);
+                dbhelper.openDatabase();
+                dbhelper.insertUserInfo(name, uni, email, password);
+
+                openMain();
             }
         });
     }
 
-    private void saveCredentialsAndOpenMain() {
-        saveName();
-        saveUni();
-        saveEmail();
-        savePassword();
+    private void openMain() {
+
         Intent intent = new Intent(this, MainPageActivity.class);
         startActivity(intent);
     }
@@ -107,59 +116,6 @@ public class SignUpActivity extends AppCompatActivity {
     public boolean signupInput() {
         return validate(tiName) & validate(tiUniversity) &
                 validate(tiEmail) & validate(tiPassword);
-    }
-
-    private void saveName() {
-        String name = Objects.requireNonNull(tiName.getEditText()).getText().toString();
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        @SuppressLint("CommitPrefEdits") SharedPreferences.Editor prefsEditor = prefs.edit();
-        prefsEditor.putString("NAME", name);
-        prefsEditor.apply();
-
-    }
-    private void saveUni() {
-        String uni = Objects.requireNonNull(tiUniversity.getEditText()).getText().toString();
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        @SuppressLint("CommitPrefEdits") SharedPreferences.Editor prefsEditor = prefs.edit();
-        prefsEditor.putString("UNIVERSITY", uni);
-        prefsEditor.apply();
-
-    }
-    private void saveEmail() {
-        String email = Objects.requireNonNull(tiEmail.getEditText()).getText().toString();
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        @SuppressLint("CommitPrefEdits") SharedPreferences.Editor prefsEditor = prefs.edit();
-        prefsEditor.putString("EMAIL", email);
-        prefsEditor.apply();
-
-    }
-    private void savePassword() {
-        String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        @SuppressLint("CommitPrefEdits") SharedPreferences.Editor prefsEditor = prefs.edit();
-        prefsEditor.putString("PASSWORD", password);
-        prefsEditor.apply();
-
-    }
-
-    private String getName() {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        return prefs.getString("NAME", null);
-    }
-
-    private String getUni() {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        return prefs.getString("UNIVERSITY", null);
-    }
-
-    private String getEmail() {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        return prefs.getString("EMAIL", null);
-    }
-
-    private String getPassword() {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        return prefs.getString("PASSWORD", null);
     }
 
 }
