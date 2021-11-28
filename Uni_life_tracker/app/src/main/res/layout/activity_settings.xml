@@ -120,6 +120,24 @@
                 />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
+
+        <!--  Edit User Info  -->
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="20dp">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/edit"
+                android:onClick="clickEdit"
+            />
+        </LinearLayout>
+
     </LinearLayout>
 
     <!--  Navigation Menu  -->

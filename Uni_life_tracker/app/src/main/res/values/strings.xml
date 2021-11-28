@@ -9,6 +9,7 @@
     <string name="date">Date</string>
     <string name="event">Event</string>
     <string name="time">Time</string>
+    <string name="edit">Edit</string>
 
     <!--  Sign Up  -->
     <string name="left_arrow">Left Arrow</string>

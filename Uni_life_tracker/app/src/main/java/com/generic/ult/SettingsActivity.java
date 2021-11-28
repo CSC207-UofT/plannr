@@ -49,4 +49,7 @@ public class SettingsActivity extends AppCompatActivity {
         super.onPause();
         MainPageActivity.closeDrawer(drawerLayout); // close drawer
     }
+
+    public void clickEdit(View view) {
+    }
 }
