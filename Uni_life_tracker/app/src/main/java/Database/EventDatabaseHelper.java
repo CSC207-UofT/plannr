@@ -108,12 +108,15 @@ public class EventDatabaseHelper extends SQLiteOpenHelper {
         return eventList;
     }
 
+
     /**
-     * Return a list of all events which start today currently in the database
+     * Return a list of all events which start at date currently in the database
      *
-     * @return returns the list of Event objects which start today
+     * @param date The given date
+     *
+     * @return returns the list of Event objects which start at date
      */
-    public List<Event> getTodaysEvents(){
+    public List<Event> getEventsByDate(LocalDate date) {
         List<Event> eventList = new ArrayList<>();
         Cursor cur = null;
         db.beginTransaction();
@@ -124,7 +127,7 @@ public class EventDatabaseHelper extends SQLiteOpenHelper {
                 if (cur.moveToFirst()) {
                     do {
                         LocalDateTime start = LocalDateTime.parse(cur.getString(cur.getColumnIndexOrThrow("START_DATE")), DATEFORMAT);
-                        if (!(start.toLocalDate().isEqual(LocalDate.now()))) {
+                        if (!(start.toLocalDate().isEqual(date))) {
                             continue;
                         }
                         LocalDateTime end = LocalDateTime.parse(cur.getString(cur.getColumnIndexOrThrow("END_DATE")), DATEFORMAT);
