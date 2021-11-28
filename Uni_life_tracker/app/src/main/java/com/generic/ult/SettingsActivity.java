@@ -3,6 +3,7 @@ package com.generic.ult;
 import Database.UserInfoDatabaseHelper;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.textfield.TextInputEditText;
@@ -18,20 +19,23 @@ public class SettingsActivity extends AppCompatActivity {
     private TextInputEditText etUni;
     private TextInputLayout tiName;
     private TextInputLayout tiUni;
+    private Button btnEdit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         drawerLayout = findViewById(R.id.drawer_layout); // nav menu
+
+        // accesses user info from text boxes
         etName = findViewById(R.id.et_name);
         etUni = findViewById(R.id.et_uni);
         tiName = findViewById(R.id.ti_name);
         tiUni = findViewById(R.id.ti_university);
 
+        // opens the database to retrieve user's name and uni
         UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(SettingsActivity.this);
         user.openDatabase();
-
         etName.setText(user.getName());
         etUni.setText(user.getUni());
     }
@@ -50,14 +54,18 @@ public class SettingsActivity extends AppCompatActivity {
     public void clickSettings(View view) { recreate(); } // recreate activity
 
     public void clickSave(View view) {
+        // gets user input from textbox
         String name = Objects.requireNonNull(tiName.getEditText()).getText().toString();
         String uni = Objects.requireNonNull(tiUni.getEditText()).getText().toString();
+        // opens database
         UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(SettingsActivity.this);
         user.openDatabase();
+        // replaces current data in database with user input
         user.updateName(name);
         user.updateUni(uni);
-        etName.setText(user.getName());
-        etUni.setText(user.getUni());
+        // disables textbox so it becomes read only
+        etName.setEnabled(false);
+        etUni.setEnabled(false);
     }
 
     @Override
@@ -67,6 +75,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void clickEdit(View view) {
+        // enabled textboxes so they can be editted
         etName.setEnabled(true);
         etUni.setEnabled(true);
     }
