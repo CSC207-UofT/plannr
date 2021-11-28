@@ -1,5 +1,6 @@
 package com.generic.ult;
 
+import Database.UserInfoDatabaseHelper;
 import android.os.Bundle;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,11 +37,11 @@ public class SettingsActivity extends AppCompatActivity {
     public void clickSettings(View view) { recreate(); } // recreate activity
 
     public void clickSave(View view) {
-        SignUpActivity userInfo = new SignUpActivity();
+        UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(SettingsActivity.this);
+        user.openDatabase();
 
-
-        textName.setText("userInfo.getName()");
-        textUni.setText("userInfo.getUni()");
+        textName.setText(user.getName());
+        textUni.setText(user.getUni());
     }
 
     @Override
