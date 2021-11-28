@@ -14,26 +14,26 @@ public class SettingsActivity extends AppCompatActivity {
     // initialize variable
     DrawerLayout drawerLayout;
 
-    private TextInputEditText textName;
-    private TextInputEditText textUni;
-    private TextInputLayout testName;
-    private TextInputLayout testUni;
+    private TextInputEditText etName;
+    private TextInputEditText etUni;
+    private TextInputLayout tiName;
+    private TextInputLayout tiUni;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         drawerLayout = findViewById(R.id.drawer_layout); // nav menu
-        textName = findViewById(R.id.et_name);
-        textUni = findViewById(R.id.et_uni);
-        testName = findViewById(R.id.ti_name);
-        testUni = findViewById(R.id.ti_university);
+        etName = findViewById(R.id.et_name);
+        etUni = findViewById(R.id.et_uni);
+        tiName = findViewById(R.id.ti_name);
+        tiUni = findViewById(R.id.ti_university);
 
         UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(SettingsActivity.this);
         user.openDatabase();
 
-        textName.setText(user.getName());
-        textUni.setText(user.getUni());
+        etName.setText(user.getName());
+        etUni.setText(user.getUni());
     }
 
     public void clickMenu(View view) { MainPageActivity.openDrawer(drawerLayout); } // open drawer
@@ -50,12 +50,14 @@ public class SettingsActivity extends AppCompatActivity {
     public void clickSettings(View view) { recreate(); } // recreate activity
 
     public void clickSave(View view) {
-        String name = Objects.requireNonNull(testName.getEditText()).getText().toString();
-        //String uni = Objects.requireNonNull(testUni.getEditText()).getText().toString();
+        String name = Objects.requireNonNull(tiName.getEditText()).getText().toString();
+        String uni = Objects.requireNonNull(tiUni.getEditText()).getText().toString();
         UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(SettingsActivity.this);
         user.openDatabase();
-        //user.updateName(name);
-        //user.updateUni(uni);
+        user.updateName(name);
+        user.updateUni(uni);
+        etName.setText(user.getName());
+        etUni.setText(user.getUni());
     }
 
     @Override
@@ -65,7 +67,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void clickEdit(View view) {
-        textName.setEnabled(true);
-        textUni.setEnabled(true);
+        etName.setEnabled(true);
+        etUni.setEnabled(true);
     }
 }

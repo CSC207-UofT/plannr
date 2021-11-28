@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class UserInfoDatabaseHelper extends SQLiteOpenHelper {
 
     private static final String createUserInfoTable = "CREATE TABLE userinfo(NAME TEXT, " +
-            "UNIVERSITY TEXT, EMAIL TEXT, PASSWORD TEXT)";
+            "UNIVERSITY TEXT, EMAIL TEXT, PASSWORD TEXT, LOGIN INTEGER)";
     private SQLiteDatabase db;
 
     public UserInfoDatabaseHelper(Context context) {
@@ -47,15 +47,14 @@ public class UserInfoDatabaseHelper extends SQLiteOpenHelper {
     public void insertUserInfo(String name, String uni, String email, String password){
         @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo",
                 null);
-        if (!cur.moveToFirst()) {
-            // if database is empty then add the User's info into the database
-            ContentValues cv = new ContentValues();
-            cv.put("NAME", name);
-            cv.put("UNIVERSITY", uni);
-            cv.put("EMAIL", email);
-            cv.put("PASSWORD", password);
-            db.insert("userinfo", null, cv);
-        }
+        db.execSQL("UPDATE userinfo SET LOGIN = 0");
+        ContentValues cv = new ContentValues();
+        cv.put("NAME", name);
+        cv.put("UNIVERSITY", uni);
+        cv.put("EMAIL", email);
+        cv.put("PASSWORD", password);
+        cv.put("LOGIN", 1);
+        db.insert("userinfo", null, cv);
     }
 
     /**
@@ -63,9 +62,11 @@ public class UserInfoDatabaseHelper extends SQLiteOpenHelper {
      *
      * @param name The user's name to be inserted
      */
+    @SuppressLint("Recycle")
     public void updateName(String name){
-        String nameA = this.getName();
-        db.execSQL("UPDATE userinfo SET NAME = " + name);
+        ContentValues cv = new ContentValues();
+        cv.put("NAME", name);
+        db.update("userinfo", cv, "LOGIN = 1", null);
     }
     //UPDATE userinfo SET NAME =" + name + " WHERE NAME = " + nameA
     /**
@@ -74,7 +75,9 @@ public class UserInfoDatabaseHelper extends SQLiteOpenHelper {
      * @param uni The user's university to be inserted
      */
     public void updateUni(String uni){
-        db.execSQL("UPDATE userinfo SET UNIVERISTY = " + uni);
+        ContentValues cv = new ContentValues();
+        cv.put("UNIVERSITY", uni);
+        db.update("userinfo", cv, "LOGIN = 1", null);
     }
 
     /**
@@ -83,7 +86,9 @@ public class UserInfoDatabaseHelper extends SQLiteOpenHelper {
      * @param email The user's email to be inserted
      */
     public void updateEmail(String email){
-        db.execSQL("UPDATE userinfo SET EMAIL = " + email);
+        ContentValues cv = new ContentValues();
+        cv.put("EMAIL", email);
+        db.update("userinfo", cv, "LOGIN = 1", null);
     }
 
     /**
@@ -92,7 +97,9 @@ public class UserInfoDatabaseHelper extends SQLiteOpenHelper {
      * @param password The user's password to be inserted
      */
     public void updatePassword(String password){
-        db.execSQL("UPDATE userinfo SET PASSWORD = " + password);
+        ContentValues cv = new ContentValues();
+        cv.put("PASSWORD", password);
+        db.update("userinfo", cv, "LOGIN = 1", null);
     }
 
     /**
@@ -101,7 +108,7 @@ public class UserInfoDatabaseHelper extends SQLiteOpenHelper {
      * @return the User's name in the database
      */
     public String getName(){
-        @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo",
+        @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE LOGIN = 1",
                 null);
         if (cur.moveToFirst()) {
             // if database is not empty then get the User's name
@@ -117,7 +124,7 @@ public class UserInfoDatabaseHelper extends SQLiteOpenHelper {
      * @return the User's university in the database
      */
     public String getUni(){
-        @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo",
+        @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE LOGIN = 1",
                 null);
         if (cur.moveToFirst()) {
             // if database is not empty then get the User's name
@@ -133,7 +140,7 @@ public class UserInfoDatabaseHelper extends SQLiteOpenHelper {
      * @return the User's email in the database
      */
     public String getEmail(){
-        @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo",
+        @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE LOGIN = 1",
                 null);
         if (cur.moveToFirst()) {
             // if database is not empty then get the User's name
@@ -149,7 +156,7 @@ public class UserInfoDatabaseHelper extends SQLiteOpenHelper {
      * @return the User's password in the database
      */
     public String getPassword(){
-        @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo",
+        @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE LOGIN = 1",
                 null);
         if (cur.moveToFirst()) {
             // if database is not empty then get the User's name

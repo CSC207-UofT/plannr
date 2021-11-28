@@ -1,20 +1,15 @@
 package com.generic.ult;
 
-import android.annotation.SuppressLint;
+import Database.UserInfoDatabaseHelper;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import androidx.preference.PreferenceManager;
+import android.os.Bundle;
 import android.util.Patterns;
 import android.widget.Button;
-
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
 import java.util.regex.Pattern;
-
-import Database.UserInfoDatabaseHelper;
 
 public class SignUpActivity extends AppCompatActivity {
     // At least one number, uppercase letter, lowercase letter and special char. Min of 6 characters
