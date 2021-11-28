@@ -6,6 +6,9 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
+
+import java.util.Objects;
 
 public class SettingsActivity extends AppCompatActivity {
     // initialize variable
@@ -13,6 +16,8 @@ public class SettingsActivity extends AppCompatActivity {
 
     private TextInputEditText textName;
     private TextInputEditText textUni;
+    private TextInputLayout testName;
+    private TextInputLayout testUni;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +26,14 @@ public class SettingsActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout); // nav menu
         textName = findViewById(R.id.et_name);
         textUni = findViewById(R.id.et_uni);
+        testName = findViewById(R.id.ti_name);
+        testUni = findViewById(R.id.ti_university);
+
+        UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(SettingsActivity.this);
+        user.openDatabase();
+
+        textName.setText(user.getName());
+        textUni.setText(user.getUni());
     }
 
     public void clickMenu(View view) { MainPageActivity.openDrawer(drawerLayout); } // open drawer
@@ -37,11 +50,12 @@ public class SettingsActivity extends AppCompatActivity {
     public void clickSettings(View view) { recreate(); } // recreate activity
 
     public void clickSave(View view) {
+        String name = Objects.requireNonNull(testName.getEditText()).getText().toString();
+        //String uni = Objects.requireNonNull(testUni.getEditText()).getText().toString();
         UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(SettingsActivity.this);
         user.openDatabase();
-
-        textName.setText(user.getName());
-        textUni.setText(user.getUni());
+        //user.updateName(name);
+        //user.updateUni(uni);
     }
 
     @Override
@@ -51,5 +65,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void clickEdit(View view) {
+        textName.setEnabled(true);
+        textUni.setEnabled(true);
     }
 }

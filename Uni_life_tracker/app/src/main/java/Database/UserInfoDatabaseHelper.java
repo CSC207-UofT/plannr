@@ -64,9 +64,10 @@ public class UserInfoDatabaseHelper extends SQLiteOpenHelper {
      * @param name The user's name to be inserted
      */
     public void updateName(String name){
+        String nameA = this.getName();
         db.execSQL("UPDATE userinfo SET NAME = " + name);
     }
-
+    //UPDATE userinfo SET NAME =" + name + " WHERE NAME = " + nameA
     /**
      * Update the User's university in the database
      *
