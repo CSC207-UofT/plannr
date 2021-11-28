@@ -68,7 +68,7 @@ public class UserInfoDatabaseHelper extends SQLiteOpenHelper {
         cv.put("NAME", name);
         db.update("userinfo", cv, "LOGIN = 1", null);
     }
-    //UPDATE userinfo SET NAME =" + name + " WHERE NAME = " + nameA
+
     /**
      * Update the User's university in the database
      *
