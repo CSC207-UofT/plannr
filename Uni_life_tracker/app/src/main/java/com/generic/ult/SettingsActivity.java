@@ -3,7 +3,6 @@ package com.generic.ult;
 import Database.UserInfoDatabaseHelper;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.textfield.TextInputEditText;
@@ -19,7 +18,6 @@ public class SettingsActivity extends AppCompatActivity {
     private TextInputEditText etUni;
     private TextInputLayout tiName;
     private TextInputLayout tiUni;
-    private Button btnEdit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +32,7 @@ public class SettingsActivity extends AppCompatActivity {
         tiUni = findViewById(R.id.ti_university);
 
         // opens the database to retrieve user's name and uni
-        UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(SettingsActivity.this);
-        user.openDatabase();
+        UserInfoDatabaseHelper user = createDatabase();
         etName.setText(user.getName());
         etUni.setText(user.getUni());
     }
@@ -58,14 +55,12 @@ public class SettingsActivity extends AppCompatActivity {
         String name = Objects.requireNonNull(tiName.getEditText()).getText().toString();
         String uni = Objects.requireNonNull(tiUni.getEditText()).getText().toString();
         // opens database
-        UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(SettingsActivity.this);
-        user.openDatabase();
+        UserInfoDatabaseHelper user = createDatabase();
         // replaces current data in database with user input
         user.updateName(name);
         user.updateUni(uni);
         // disables textbox so it becomes read only
-        etName.setEnabled(false);
-        etUni.setEnabled(false);
+        textboxEditability(false);
     }
 
     @Override
@@ -75,8 +70,20 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void clickEdit(View view) {
-        // enabled textboxes so they can be editted
-        etName.setEnabled(true);
-        etUni.setEnabled(true);
+        // enabled textboxes so they can be edited
+        textboxEditability(true);
     }
+
+    public UserInfoDatabaseHelper createDatabase() {
+        // creates an instance and opens database
+        UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(SettingsActivity.this);
+        user.openDatabase();
+        return user;
+    }
+
+    public void textboxEditability(boolean bool) {
+        etName.setEnabled(bool);
+        etUni.setEnabled(bool);
+    }
+
 }
