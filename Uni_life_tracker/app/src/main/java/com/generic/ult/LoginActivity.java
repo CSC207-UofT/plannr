@@ -63,7 +63,6 @@ public class LoginActivity  extends AppCompatActivity {
             textInput.setError("Incorrect Password");
             return false;
         }
-
         if (Input.isEmpty()) {
                 textInput.setError("Field cannot be empty");
                 return false;
