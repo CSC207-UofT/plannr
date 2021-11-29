@@ -49,16 +49,19 @@ public class EventDatabaseHelper extends SQLiteOpenHelper {
 
 
     /**
-     * Insert an Event object into the database
+     * Insert an Event object into the database for the user with the
+     * email userEmail
      *
      * @param event The Event to be inserted
+     * @param userEmail The user's email that has the Event <event>
      */
-    public void insertEvent(Event event){
+    public void insertEvent(Event event, String userEmail){
         ContentValues cv = new ContentValues();
         cv.put("NAME", event.getName());
         cv.put("PRIORITY", event.getPriority());
         cv.put("START_DATE", event.getStartDate().format(DATEFORMAT));
         cv.put("END_DATE", event.getEndDate().format(DATEFORMAT));
+        cv.put("USER_EMAIL", userEmail);
         db.insert("events", null, cv);
     }
 
