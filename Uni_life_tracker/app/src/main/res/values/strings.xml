@@ -93,6 +93,8 @@
     <string name="med_priority">Medium</string>
     <string name="low_priority">Low</string>
     <string name="course">Course</string>
+    <string name="login">Login</string>
+    <string name="Login">Login</string>
 
     <!--  TODO: to display courses for now (TEMPORARY) -->
     <string-array name="courses">
