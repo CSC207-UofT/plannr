@@ -18,7 +18,7 @@ public class EventDatabaseHelper extends SQLiteOpenHelper {
 
 
     private static final String createEventTable = "CREATE TABLE events(NAME TEXT, PRIORITY " +
-        "INTEGER, START_DATE TEXT, END_DATE TEXT)";
+        "INTEGER, START_DATE TEXT, END_DATE TEXT, USER_EMAIL TEXT)";
     private SQLiteDatabase db;
 
     public static final DateTimeFormatter DATEFORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
