@@ -35,14 +35,10 @@ public class LoginActivity  extends AppCompatActivity {
             // and go into the main page
             if (LoginInput()) {
 
-
-
-                // String email = Objects.requireNonNull(tiEmail.getEditText()).getText().toString();
-                // String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();
                 dbhelper = new UserInfoDatabaseHelper(LoginActivity.this);
                 dbhelper.openDatabase();
-
                 openMain();
+
             }
         });
     }
@@ -56,8 +52,19 @@ public class LoginActivity  extends AppCompatActivity {
 
     private boolean validate(TextInputLayout textInput) {
         String Input = Objects.requireNonNull(textInput.getEditText()).getText().toString().trim();
+        String email = Objects.requireNonNull(tiEmail.getEditText()).getText().toString();
+        String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();
 
-            if (Input.isEmpty()) {
+        if (!(email.equals(dbhelper.getEmail()))) {
+            textInput.setError("Incorrect Email");
+            return false;
+        }
+        if (!(email.equals(dbhelper.getPassword()))) {
+            textInput.setError("Incorrect Password");
+            return false;
+        }
+
+        if (Input.isEmpty()) {
                 textInput.setError("Field cannot be empty");
                 return false;
             } else if (textInput == tiEmail && !Patterns.EMAIL_ADDRESS.matcher(Input).matches()) {
