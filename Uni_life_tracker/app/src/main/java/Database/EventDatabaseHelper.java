@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ import java.util.List;
 
 import Entities.Event;
 
-public class DatabaseHelper extends SQLiteOpenHelper {
+public class EventDatabaseHelper extends SQLiteOpenHelper {
 
 
     private static final String createEventTable = "CREATE TABLE events(NAME TEXT, PRIORITY " +
@@ -22,7 +23,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final DateTimeFormatter DATEFORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
 
-    public DatabaseHelper(Context context) {
+    public EventDatabaseHelper(Context context) {
         super(context, "eventDatabase", null, 1);
     }
 
@@ -46,12 +47,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db = getWritableDatabase();
     }
 
-    /**
-     * Close the database
-     */
-    public void closeDatabase() {
-        db.close();
-    }
+
     /**
      * Insert an Event object into the database
      *
@@ -88,18 +84,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         try {
             cur = db.query("events", null, null, null,
                     null, null, null, null);
-            if (cur != null && cur.moveToFirst()) {
-                do {
-                    LocalDateTime start = LocalDateTime.parse(cur.getString(cur.getColumnIndexOrThrow("START_DATE")), DATEFORMAT);
-                    LocalDateTime end = LocalDateTime.parse(cur.getString(cur.getColumnIndexOrThrow("END_DATE")), DATEFORMAT);
-                    Event event = new Event(cur.getString(cur.getColumnIndexOrThrow("NAME")),
-                                            cur.getInt(cur.getColumnIndexOrThrow("PRIORITY")),
-                                            start,
-                                            end);
-                    eventList.add(event);
+            if (cur != null) {
+                if (cur.moveToFirst()) {
+                    do {
+                        LocalDateTime start = LocalDateTime.parse(cur.getString(cur.getColumnIndexOrThrow("START_DATE")), DATEFORMAT);
+                        LocalDateTime end = LocalDateTime.parse(cur.getString(cur.getColumnIndexOrThrow("END_DATE")), DATEFORMAT);
+                        Event event = new Event(cur.getString(cur.getColumnIndexOrThrow("NAME")),
+                                                cur.getInt(cur.getColumnIndexOrThrow("PRIORITY")),
+                                                start,
+                                                end);
+                        eventList.add(event);
 
-                } while (cur.moveToNext());
+                    } while (cur.moveToNext());
 
+                }
             }
         } finally {
             db.endTransaction();
@@ -109,4 +107,47 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return eventList;
     }
+
+
+    /**
+     * Return a list of all events which start at date currently in the database
+     *
+     * @param date The given date
+     *
+     * @return returns the list of Event objects which start at date
+     */
+    public List<Event> getEventsByDate(LocalDate date) {
+        List<Event> eventList = new ArrayList<>();
+        Cursor cur = null;
+        db.beginTransaction();
+        try {
+            cur = db.query("events", null, null, null,
+                    null, null, null, null);
+            if (cur != null) {
+                if (cur.moveToFirst()) {
+                    do {
+                        LocalDateTime start = LocalDateTime.parse(cur.getString(cur.getColumnIndexOrThrow("START_DATE")), DATEFORMAT);
+                        if (!(start.toLocalDate().isEqual(date))) {
+                            continue;
+                        }
+                        LocalDateTime end = LocalDateTime.parse(cur.getString(cur.getColumnIndexOrThrow("END_DATE")), DATEFORMAT);
+                        Event event = new Event(cur.getString(cur.getColumnIndexOrThrow("NAME")),
+                                cur.getInt(cur.getColumnIndexOrThrow("PRIORITY")),
+                                start,
+                                end);
+                        eventList.add(event);
+
+                    } while (cur.moveToNext());
+
+                }
+            }
+        } finally {
+            db.endTransaction();
+            assert cur != null;
+            cur.close();
+        }
+
+        return eventList;
+    }
+
 }
