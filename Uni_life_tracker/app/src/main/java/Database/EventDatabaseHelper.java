@@ -76,11 +76,14 @@ public class EventDatabaseHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * Return a list of all events currently in the database
+     * Return a list of all events currently in the database belonging to
+     * the user with email userEmail
+     *
+     * @param userEmail The user's email
      *
      * @return returns the list of Event objects
      */
-    public List<Event> getAllEvents(){
+    public List<Event> getAllEvents(String userEmail){
         List<Event> eventList = new ArrayList<>();
         Cursor cur = null;
         db.beginTransaction();
@@ -90,6 +93,9 @@ public class EventDatabaseHelper extends SQLiteOpenHelper {
             if (cur != null) {
                 if (cur.moveToFirst()) {
                     do {
+                        if (!userEmail.equals(cur.getString(cur.getColumnIndexOrThrow("USER_EMAIL")))) {
+                            continue;
+                        }
                         LocalDateTime start = LocalDateTime.parse(cur.getString(cur.getColumnIndexOrThrow("START_DATE")), DATEFORMAT);
                         LocalDateTime end = LocalDateTime.parse(cur.getString(cur.getColumnIndexOrThrow("END_DATE")), DATEFORMAT);
                         Event event = new Event(cur.getString(cur.getColumnIndexOrThrow("NAME")),
