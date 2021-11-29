@@ -35,14 +35,12 @@ public class LoginActivity  extends AppCompatActivity {
             // and go into the main page
             if (LoginInput()) {
 
-                String email = Objects.requireNonNull(tiEmail.getEditText()).getText().toString();
-                String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();
 
+
+                // String email = Objects.requireNonNull(tiEmail.getEditText()).getText().toString();
+                // String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();
                 dbhelper = new UserInfoDatabaseHelper(LoginActivity.this);
                 dbhelper.openDatabase();
-                //dbhelper.insertUserInfo(email, password);
-
-                //TODO: add lines that compare the user input to the sign up information in the database
 
                 openMain();
             }
@@ -55,24 +53,26 @@ public class LoginActivity  extends AppCompatActivity {
         startActivity(intent);
     }
 
+
     private boolean validate(TextInputLayout textInput) {
         String Input = Objects.requireNonNull(textInput.getEditText()).getText().toString().trim();
 
-        if (Input.isEmpty()) {
-            textInput.setError("Field cannot be empty");
-            return false;
-        } else if (textInput == tiEmail && !Patterns.EMAIL_ADDRESS.matcher(Input).matches()) {
-            textInput.setError("Please enter a valid email address");
-            return false;
-        } else if (textInput == tiPassword && !PASSWORD_REQ.matcher(Input).matches()) {
-            StringBuilder str = passwordReq(Input);
-            textInput.setError(str.toString());
-            return false;
-        } else {
-            textInput.setError(null);
-            return true;
+            if (Input.isEmpty()) {
+                textInput.setError("Field cannot be empty");
+                return false;
+            } else if (textInput == tiEmail && !Patterns.EMAIL_ADDRESS.matcher(Input).matches()) {
+                textInput.setError("Please enter a valid email address");
+                return false;
+            } else if (textInput == tiPassword && !PASSWORD_REQ.matcher(Input).matches()) {
+                StringBuilder str = passwordReq(Input);
+                textInput.setError(str.toString());
+                return false;
+            } else {
+                textInput.setError(null);
+                return true;
+            }
         }
-    }
+
 
     private StringBuilder passwordReq(String Input) {
         Pattern uppercase = Pattern.compile(getString(R.string.uppercase));
