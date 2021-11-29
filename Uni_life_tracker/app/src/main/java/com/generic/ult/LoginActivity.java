@@ -55,11 +55,11 @@ public class LoginActivity  extends AppCompatActivity {
         String email = Objects.requireNonNull(tiEmail.getEditText()).getText().toString();
         String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();
 
-        if (!(email.equals(dbhelper.getEmail()))) {
+        if (!(email.equals(dbhelper.getEmail())) && dbhelper.getEmail()!=null) {
             textInput.setError("Incorrect Email");
             return false;
         }
-        if (!(email.equals(dbhelper.getPassword()))) {
+        if (!(password.equals(dbhelper.getPassword())) && dbhelper.getPassword()!=null) {
             textInput.setError("Incorrect Password");
             return false;
         }
