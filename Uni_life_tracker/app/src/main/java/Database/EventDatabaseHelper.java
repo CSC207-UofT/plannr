@@ -137,12 +137,13 @@ public class EventDatabaseHelper extends SQLiteOpenHelper {
             if (cur != null) {
                 if (cur.moveToFirst()) {
                     do {
-                        LocalDateTime start = LocalDateTime.parse(cur.getString(cur.getColumnIndexOrThrow("START_DATE")), DATEFORMAT);
-                        if (!(start.toLocalDate().isEqual(date))) {
+                        if (!(userEmail.equals(cur.getString(cur.getColumnIndexOrThrow("USER_EMAIL"))))) {
                             continue;
                         }
 
-                        if (!(userEmail.equals(cur.getString(cur.getColumnIndexOrThrow("USER_EMAIL"))))) {
+                        LocalDateTime start = LocalDateTime.parse(cur.getString(cur.getColumnIndexOrThrow("START_DATE")), DATEFORMAT);
+
+                        if (!(start.toLocalDate().isEqual(date))) {
                             continue;
                         }
 
@@ -151,6 +152,7 @@ public class EventDatabaseHelper extends SQLiteOpenHelper {
                                 cur.getInt(cur.getColumnIndexOrThrow("PRIORITY")),
                                 start,
                                 end);
+
                         eventList.add(event);
 
                     } while (cur.moveToNext());
