@@ -45,14 +45,18 @@ public class ExpenseDatabaseHelper extends SQLiteOpenHelper {
 
 
     /**
-     * Insert an Expense object into the database
+     * Insert an Expense object into the database for the user with the
+     * email userEmail
      *
      * @param expense The Expense to be inserted
+     * @param userEmail The user's email that has the Expense <expense>
+     *
      */
-    public void insertExpense(Expense expense){
+    public void insertExpense(Expense expense, String userEmail){
         ContentValues cv = new ContentValues();
         cv.put("NAME", expense.getName());
         cv.put("VALUE", expense.getValue());
+        cv.put("USER_EMAIL", userEmail);
         db.insert("expenses", null, cv);
     }
 
