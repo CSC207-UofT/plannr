@@ -14,7 +14,8 @@ import Entities.Expense;
 public class ExpenseDatabaseHelper extends SQLiteOpenHelper {
 
 
-    private static final String createExpenseTable = "CREATE TABLE expenses(NAME TEXT, VALUE DOUBLE)";
+    private static final String createExpenseTable = "CREATE TABLE expenses(NAME TEXT, VALUE DOUBLE," +
+            " USER_EMAIL TEXT)";
     private SQLiteDatabase db;
 
 
