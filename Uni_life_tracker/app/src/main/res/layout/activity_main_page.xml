@@ -39,60 +39,41 @@
                 app:layout_constraintVertical_bias="0.025"
                 app:layout_constraintHorizontal_bias="0.05"/>
 
-        <!--  My To Do's  -->
-        <TextView
-                android:id="@+id/tv_to_dos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/my_to_dos"
-                android:textSize="25sp"
-                android:textColor="@color/black"
-                android:fontFamily="@font/roboto_mono_bold"
-                android:textStyle="bold"
-                android:layout_marginTop="5dp"
-                android:layout_marginStart="20dp"/>
 
-        <!--  Sort Button  -->
-        <com.google.android.material.button.MaterialButtonToggleGroup
-                android:id="@+id/tg_sort"
-                android:layout_width="wrap_content"
+        <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:layout_marginStart="20dp"
-                app:singleSelection="true">
+                android:layout_marginHorizontal="20dp"
+                android:gravity="center_vertical">
 
-            <com.google.android.material.button.MaterialButton
+            <!--  My To Do's  -->
+            <TextView
+                    android:id="@+id/tv_to_dos"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/my_to_dos"
+                    android:textSize="25sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/roboto_mono_bold"
+                    android:textStyle="bold"/>
+
+            <!--  Sort Button  -->
+            <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:text="@string/time"
-                    android:fontFamily="@font/roboto_mono_bold">
-            </com.google.android.material.button.MaterialButton>
+                    android:text="@string/sort"
+                    android:layout_marginEnd="10dp"/>
 
-            <com.google.android.material.button.MaterialButton
+            <ToggleButton
+                    android:id="@+id/tb_sort"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:text="@string/priority"
-                    android:fontFamily="@font/roboto_mono_bold">
-            </com.google.android.material.button.MaterialButton>
-
-            <!--            <Button-->
-            <!--                    android:id="@+id/btn_sort_time"-->
-            <!--                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:text="@string/time"-->
-            <!--                    android:fontFamily="@font/roboto_mono_bold"/>-->
-
-            <!--            <Button-->
-            <!--                    android:id="@+id/btn_sort_priority"-->
-            <!--                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:text="@string/priority"-->
-            <!--                    android:fontFamily="@font/roboto_mono_bold"/>-->
-        </com.google.android.material.button.MaterialButtonToggleGroup>
+                    android:textOff="@string/time"
+                    android:textOn="@string/priority"
+                    style="@style/Widget.AppCompat.Button"/>
+        </LinearLayout>
 
         <!--  Event List  -->
         <androidx.recyclerview.widget.RecyclerView
