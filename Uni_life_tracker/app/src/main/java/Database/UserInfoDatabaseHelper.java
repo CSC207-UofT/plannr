@@ -164,7 +164,7 @@ public class UserInfoDatabaseHelper extends SQLiteOpenHelper {
     /**
      * Searches through database for email to see if user had already signed up
      *
-     * @return whether the email is found in the database
+     * @return true if the email is not found in the database and false otherwise
      */
     @SuppressLint("Recycle")
     public boolean uniqueEmail(String input) {
