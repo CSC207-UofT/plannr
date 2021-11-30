@@ -1,16 +1,16 @@
 package com.generic.plannr.UseCaseTests;
 
-import org.junit.*;
-
-import static org.junit.Assert.*;
+import com.generic.plannr.Entities.Event;
+import com.generic.plannr.UseCases.UserManager;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import Entities.Event;
-import static UseCases.GetTodaysEvents.getTodaysEvents;
-import UseCases.UserManager;
+import static com.generic.plannr.UseCases.GetTodaysEvents.getTodaysEvents;
+import static org.junit.Assert.assertEquals;
 
 public class GetTodaysEventTest {
 

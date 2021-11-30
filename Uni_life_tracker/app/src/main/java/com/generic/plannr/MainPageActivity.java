@@ -1,6 +1,6 @@
 package com.generic.plannr;
 
-import Entities.Event;
+import com.generic.plannr.Entities.Event;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.View;

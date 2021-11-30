@@ -1,13 +1,13 @@
 package com.generic.plannr.UseCaseTests;
 
-import org.junit.*;
-
-import static org.junit.Assert.*;
+import com.generic.plannr.Entities.Event;
+import com.generic.plannr.UseCases.EventPriorityComparator;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.time.LocalDateTime;
 
-import Entities.Event;
-import UseCases.EventPriorityComparator;
+import static org.junit.Assert.assertEquals;
 
 public class EventPriorityComparatorTest {
 

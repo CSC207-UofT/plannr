@@ -1,6 +1,6 @@
 package com.generic.plannr;
 
-import Entities.Expense;
+import com.generic.plannr.Entities.Expense;
 import android.content.Intent;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;

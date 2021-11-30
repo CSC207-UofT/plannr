@@ -1,10 +1,12 @@
 package com.generic.plannr;//import static org.junit.jupiter.api.Assertions.*;
-import Entities.Deadline;
-import org.junit.*;
-import static org.junit.Assert.*;
+import com.generic.plannr.Entities.Deadline;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.time.LocalDateTime;
 import java.time.Month;
+
+import static org.junit.Assert.assertEquals;
 //import java.time.format.DateTimeFormatter;
 
 public class DeadlineTest {
@@ -29,7 +31,7 @@ public class DeadlineTest {
 
     @Test(timeout = 50)
     public void TestToString() {
-        String deadlineString = "Entities.Deadline (high priority): " +
+        String deadlineString = "com.generic.plannr.Entities.Deadline (high priority): " +
                 "The assignment Phase 0 from CSC207H1 is due on " +
                 "15-10-2021 11:59 p.m.";
         assertEquals(deadlineString, deadline.toString());

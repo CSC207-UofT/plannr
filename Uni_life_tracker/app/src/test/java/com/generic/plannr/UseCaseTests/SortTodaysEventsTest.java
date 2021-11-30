@@ -1,18 +1,18 @@
 package com.generic.plannr.UseCaseTests;
 
-import org.junit.*;
-import static org.junit.Assert.*;
-
-import static UseCases.SortTodaysEvents.sortByDate;
-import static UseCases.SortTodaysEvents.sortByPriority;
+import com.generic.plannr.Entities.Event;
+import com.generic.plannr.UseCases.EventDateComparator;
+import com.generic.plannr.UseCases.UserManager;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import Entities.Event;
-import UseCases.EventDateComparator;
-import UseCases.UserManager;
+import static com.generic.plannr.UseCases.SortTodaysEvents.sortByDate;
+import static com.generic.plannr.UseCases.SortTodaysEvents.sortByPriority;
+import static org.junit.Assert.assertEquals;
 
 public class SortTodaysEventsTest {
 

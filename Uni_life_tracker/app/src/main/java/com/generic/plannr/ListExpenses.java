@@ -1,6 +1,6 @@
 package com.generic.plannr;
 
-import Entities.Expense;
+import com.generic.plannr.Entities.Expense;
 import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;

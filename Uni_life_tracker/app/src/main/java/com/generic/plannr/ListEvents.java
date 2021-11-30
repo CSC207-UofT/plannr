@@ -1,6 +1,6 @@
 package com.generic.plannr;
 
-import Entities.Event;
+import com.generic.plannr.Entities.Event;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
