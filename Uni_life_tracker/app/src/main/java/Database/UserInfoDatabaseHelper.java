@@ -111,7 +111,6 @@ public class UserInfoDatabaseHelper extends SQLiteOpenHelper {
         @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE LOGGEDIN = 1",
                 null);
         if (cur.moveToFirst()) {
-            // if database is not empty then get the User's name
             return cur.getString(cur.getColumnIndexOrThrow("NAME"));
         }
 
@@ -127,7 +126,6 @@ public class UserInfoDatabaseHelper extends SQLiteOpenHelper {
         @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE LOGGEDIN = 1",
                 null);
         if (cur.moveToFirst()) {
-            // if database is not empty then get the User's name
             return cur.getString(cur.getColumnIndexOrThrow("UNIVERSITY"));
         }
 
@@ -143,7 +141,6 @@ public class UserInfoDatabaseHelper extends SQLiteOpenHelper {
         @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE LOGGEDIN = 1",
                 null);
         if (cur.moveToFirst()) {
-            // if database is not empty then get the User's name
             return cur.getString(cur.getColumnIndexOrThrow("EMAIL"));
         }
 
@@ -159,11 +156,17 @@ public class UserInfoDatabaseHelper extends SQLiteOpenHelper {
         @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE LOGGEDIN = 1",
                 null);
         if (cur.moveToFirst()) {
-            // if database is not empty then get the User's name
             return cur.getString(cur.getColumnIndexOrThrow("PASSWORD"));
         }
 
         return null;
+    }
+
+    @SuppressLint("Recycle")
+    public boolean uniqueEmail(String input) {
+        Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE EMAIL = " + '"' + input + '"', null);
+
+        return !cur.moveToFirst();
     }
 
 }
