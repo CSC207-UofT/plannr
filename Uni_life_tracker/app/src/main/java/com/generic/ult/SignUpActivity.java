@@ -4,14 +4,13 @@ import Database.UserInfoDatabaseHelper;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
+import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
 import java.util.regex.Pattern;
-
-import Database.UserInfoDatabaseHelper;
 
 public class SignUpActivity extends AppCompatActivity {
     // At least one number, uppercase letter, lowercase letter and special char. Min of 6 characters
@@ -46,9 +45,8 @@ public class SignUpActivity extends AppCompatActivity {
                 String email = Objects.requireNonNull(tiEmail.getEditText()).getText().toString();
                 String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();
 
-                dbhelper = new UserInfoDatabaseHelper(SignUpActivity.this);
-                dbhelper.openDatabase();
-                dbhelper.insertUserInfo(name, uni, email, password);
+                UserInfoDatabaseHelper user = createDatabase();
+                user.insertUserInfo(name, uni, email, password);
 
                 openMain();
             }
@@ -155,9 +153,8 @@ public class SignUpActivity extends AppCompatActivity {
             String email = Objects.requireNonNull(tiEmail.getEditText()).getText().toString();
             String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();
 
-            dbhelper = new UserInfoDatabaseHelper(SignUpActivity.this);
-            dbhelper.openDatabase();
-            dbhelper.insertUserInfo(name, uni, email, password);
+            UserInfoDatabaseHelper user = createDatabase();
+            user.insertUserInfo(name, uni, email, password);
 
             openMain();
         }
