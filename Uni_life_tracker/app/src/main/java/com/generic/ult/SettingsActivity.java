@@ -50,6 +50,8 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void clickSettings(View view) { recreate(); } // recreate activity
 
+    public void clickLogOut(View view) { MainPageActivity.logout(this); } // prompt logout
+
     public void clickSave(View view) {
         // gets user input from textbox
         String name = Objects.requireNonNull(tiName.getEditText()).getText().toString();

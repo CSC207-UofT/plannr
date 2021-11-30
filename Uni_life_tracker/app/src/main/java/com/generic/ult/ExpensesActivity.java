@@ -66,6 +66,8 @@ public class ExpensesActivity extends AppCompatActivity {
 
     public void clickSettings(View view) { MainPageActivity.redirectActivity(this, SettingsActivity.class); } // redirect activity to settings
 
+    public void clickLogOut(View view) { MainPageActivity.logout(this); } // prompt logout
+
     @Override
     protected void onPause() {
         super.onPause();
