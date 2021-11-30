@@ -161,7 +161,11 @@ public class UserInfoDatabaseHelper extends SQLiteOpenHelper {
 
         return null;
     }
-
+    /**
+     * Searches through database for email to see if user had already signed up
+     *
+     * @return whether the email is found in the database
+     */
     @SuppressLint("Recycle")
     public boolean uniqueEmail(String input) {
         Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE EMAIL = " + '"' + input + '"', null);
