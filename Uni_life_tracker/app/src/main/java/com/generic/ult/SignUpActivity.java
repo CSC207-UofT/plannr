@@ -59,16 +59,21 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private boolean validate(TextInputLayout textInput) {
-        String Input = Objects.requireNonNull(textInput.getEditText()).getText().toString().trim();
+        String input = Objects.requireNonNull(textInput.getEditText()).getText().toString().trim();
+        UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(SignUpActivity.this);
+        user.openDatabase();
 
-        if (Input.isEmpty()) {
+        if (input.isEmpty()) {
             textInput.setError("Field cannot be empty");
             return false;
-        } else if (textInput == tiEmail && !Patterns.EMAIL_ADDRESS.matcher(Input).matches()) {
+        } else if (textInput == tiEmail && !Patterns.EMAIL_ADDRESS.matcher(input).matches()) {
             textInput.setError("Please enter a valid email address");
             return false;
-        } else if (textInput == tiPassword && !PASSWORD_REQ.matcher(Input).matches()) {
-            StringBuilder str = passwordReq(Input);
+        } else if(textInput == tiEmail && user.uniqueEmail(input)){
+            textInput.setError("This email is already being used");
+            return false;
+        } else if (textInput == tiPassword && !PASSWORD_REQ.matcher(input).matches()) {
+            StringBuilder str = passwordReq(input);
             textInput.setError(str.toString());
             return false;
         } else {
