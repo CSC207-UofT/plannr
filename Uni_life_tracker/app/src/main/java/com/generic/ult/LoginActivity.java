@@ -33,7 +33,7 @@ public class LoginActivity  extends AppCompatActivity {
         Button btnLogin = findViewById(R.id.btn_login);
         btnLogin.setOnClickListener(v -> {
 
-            // If all signup credentials are correct, store the credentials
+            // If all login credentials are correct, store the credentials
             // and go into the main page
             if (LoginInput()) {
 
