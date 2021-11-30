@@ -45,8 +45,6 @@ public class UserInfoDatabaseHelper extends SQLiteOpenHelper {
      * @param password The user's password to be inserted
      */
     public void insertUserInfo(String name, String uni, String email, String password){
-        @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo",
-                null);
         db.execSQL("UPDATE userinfo SET LOGGEDIN = 0");
         ContentValues cv = new ContentValues();
         cv.put("NAME", name);
@@ -174,6 +172,17 @@ public class UserInfoDatabaseHelper extends SQLiteOpenHelper {
         Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE EMAIL = " + '"' + input + '"', null);
 
         return !cur.moveToFirst();
+    }
+
+    /**
+     * Set which account is currently logged in in the database
+     */
+    @SuppressLint("Recycle")
+    public void updateLoggedInUser(String input) {
+        db.execSQL("UPDATE userinfo SET LOGGEDIN = 0");
+        ContentValues cv = new ContentValues();
+        cv.put("LOGGEDIN", 1);
+        db.update("userinfo", cv, "EMAIL = " + "'" + input + "'", null);
     }
 
 }
