@@ -135,13 +135,14 @@ public class UserInfoDatabaseHelper extends SQLiteOpenHelper {
 
 
     /**
-     * Get the User's password currently stored in the database
+     * Get the password associated with email currently stored in the database if email
+     * is stored
      *
-     * @return the User's password in the database
+     * @return the user email's password from the database
      */
-    public String getPassword(){
-        @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE LOGGEDIN = 1",
-                null);
+    public String getPassword(String input){
+        @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE EMAIL = " + '"' + input + '"', null);
+
         if (cur.moveToFirst()) {
             return cur.getString(cur.getColumnIndexOrThrow("PASSWORD"));
         }
@@ -155,18 +156,6 @@ public class UserInfoDatabaseHelper extends SQLiteOpenHelper {
      */
     @SuppressLint("Recycle")
     public boolean uniqueEmail(String input) {
-        Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE EMAIL = " + '"' + input + '"', null);
-
-        return !cur.moveToFirst();
-    }
-
-    /**
-     * Searches through database for email to see if user had already signed up
-     *
-     * @return true if the email is not found in the database and false otherwise
-     */
-    @SuppressLint("Recycle")
-    public boolean uniqueEmal(String input) {
         Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE EMAIL = " + '"' + input + '"', null);
 
         return !cur.moveToFirst();
