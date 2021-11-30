@@ -1,4 +1,4 @@
-package com.generic.ult;
+package com.generic.plannr;
 
 import android.view.View;
 import android.widget.TextView;

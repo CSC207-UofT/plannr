@@ -1,4 +1,4 @@
-package com.generic.ult;
+package com.generic.plannr;
 
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;

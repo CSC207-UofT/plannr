@@ -1,9 +1,6 @@
-package com.generic.ult;
+package com.generic.plannr;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import androidx.preference.PreferenceManager;
 import android.util.Patterns;
 import android.widget.Button;
 

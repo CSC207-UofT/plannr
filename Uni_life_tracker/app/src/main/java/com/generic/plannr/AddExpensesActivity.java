@@ -1,4 +1,4 @@
-package com.generic.ult;
+package com.generic.plannr;
 
 import android.content.Intent;
 import android.os.Bundle;
