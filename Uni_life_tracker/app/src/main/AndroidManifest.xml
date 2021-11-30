@@ -16,6 +16,8 @@
         <activity android:name=".AddExpensesActivity"> </activity>
         <activity android:name=".ExpensesActivity"> </activity>
         <activity android:name=".SchoolActivity"> </activity>
+        <activity android:name=".WelcomeLoginSignupActivity"> </activity>
+        <activity android:name=".LoginActivity"> </activity>
         <activity
                 android:name=".MainPageActivity"
                 android:label="Main"
