@@ -114,7 +114,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/university"
-                        android:inputType="numberDecimal"
+                        android:inputType="text"
                 />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
