@@ -132,6 +132,21 @@ public class UserInfoDatabaseHelper extends SQLiteOpenHelper {
         return null;
     }
 
+    /**
+     * Get the current logged in user's email currently stored in the database
+     *
+     * @return the logged in user's email in the database
+     */
+    public String getLoggedInEmail(){
+        @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE LOGGEDIN = 1",
+                null);
+        if (cur.moveToFirst()) {
+            return cur.getString(cur.getColumnIndexOrThrow("EMAIL"));
+        }
+
+        return null;
+    }
+
 
 
     /**
