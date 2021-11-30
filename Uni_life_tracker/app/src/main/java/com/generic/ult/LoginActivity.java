@@ -33,8 +33,7 @@ public class LoginActivity  extends AppCompatActivity {
         Button btnLogin = findViewById(R.id.btn_login);
         btnLogin.setOnClickListener(v -> {
 
-            // If all login credentials are correct, store the credentials
-            // and go into the main page
+            // If all login credentials are correct, go into the main page
             if (LoginInput()) {
 
                 dbhelper = new UserInfoDatabaseHelper(LoginActivity.this);
