@@ -36,8 +36,6 @@ public class LoginActivity  extends AppCompatActivity {
             // If all login credentials are correct, go into the main page
             if (LoginInput()) {
 
-                dbhelper = new UserInfoDatabaseHelper(LoginActivity.this);
-                dbhelper.openDatabase();
                 openMain();
 
             }
@@ -70,23 +68,24 @@ public class LoginActivity  extends AppCompatActivity {
         String email = Objects.requireNonNull(tiEmail.getEditText()).getText().toString();
         String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();
 
-        if (!(email.equals(dbhelper.getEmail())) && dbhelper.getEmail() != null) {
-            textInput.setError("Incorrect Email");
-            return false;
-        }
-        if (!(password.equals(dbhelper.getPassword())) && dbhelper.getPassword() != null) {
-            textInput.setError("Incorrect Password");
-            return false;
-       }
+        dbhelper = new UserInfoDatabaseHelper(LoginActivity.this);
+        dbhelper.openDatabase();
+
             if (Input.isEmpty()) {
                 textInput.setError("Field cannot be empty");
                 return false;
             } else if (textInput == tiEmail && !Patterns.EMAIL_ADDRESS.matcher(Input).matches()) {
                 textInput.setError("Please enter a valid email address");
                 return false;
+            } else if (textInput == tiEmail && dbhelper.uniqueEmail(email)) {
+                textInput.setError("The email you entered does not belong to any account");
+                return false;
             } else if (textInput == tiPassword && !PASSWORD_REQ.matcher(Input).matches()) {
                 StringBuilder str = passwordReq(Input);
                 textInput.setError(str.toString());
+                return false;
+            } else if (textInput == tiPassword && !dbhelper.getPassword(email).equals(password)) {
+                textInput.setError("The password you entered is incorrect");
                 return false;
             } else {
                 textInput.setError(null);
