@@ -71,11 +71,14 @@ public class ExpenseDatabaseHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * Return a list of all expenses currently in the database
+     * Return a list of all expenses currently in the database belonging to
+     * the user with email userEmail
+     *
+     * @param userEmail The user's email
      *
      * @return returns the list of Expense objects
      */
-    public List<Expense> getAllExpenses() {
+    public List<Expense> getAllExpenses(String userEmail) {
         List<Expense> expenseList = new ArrayList<>();
         Cursor cur = null;
         db.beginTransaction();
@@ -85,6 +88,9 @@ public class ExpenseDatabaseHelper extends SQLiteOpenHelper {
             if (cur != null) {
                 if (cur.moveToFirst()) {
                     do {
+                        if (!userEmail.equals(cur.getString(cur.getColumnIndexOrThrow("USER_EMAIL")))) {
+                            continue;
+                        }
                         Expense expense = new Expense(cur.getString(cur.getColumnIndexOrThrow("NAME")),
                                 cur.getDouble(cur.getColumnIndexOrThrow("VALUE")));
                         expenseList.add(expense);
@@ -101,7 +107,5 @@ public class ExpenseDatabaseHelper extends SQLiteOpenHelper {
 
         return expenseList;
     }
-
-
 
 }
