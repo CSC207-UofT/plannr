@@ -24,6 +24,23 @@ public class AddExpensesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_expenses);
         textInputName = findViewById(R.id.add_expense_name);
         textInputAmount = findViewById(R.id.add_expense_amount);
+
+        btnSignUp.setOnClickListener(v -> {
+
+            // If all signup credentials are correct, store the credentials
+            // and go into the main page
+            if (signupInput()) {
+                String name = Objects.requireNonNull(textInputName.getEditText()).getText().toString();
+                String amount = Objects.requireNonNull(textInputAmount.getEditText()).getText().toString();
+
+
+                ExpenseDatabaseHelper user = createDatabase();
+                // Adds all the user's info into the database
+                user.insertExpense(name, amount);
+
+                openAddExpensesView();
+            }
+        });
     }
 
     // change ExpensesLandingActivity to ExpensesActivity when merged
