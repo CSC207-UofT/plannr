@@ -160,7 +160,7 @@ public class UserInfoDatabaseHelper extends SQLiteOpenHelper {
             return cur.getString(cur.getColumnIndexOrThrow("PASSWORD"));
         }
 
-        return null;
+        return "";
     }
     /**
      * Searches through database for email to see if user had already signed up
