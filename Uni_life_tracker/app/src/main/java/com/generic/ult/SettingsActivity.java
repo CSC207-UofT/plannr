@@ -33,8 +33,8 @@ public class SettingsActivity extends AppCompatActivity {
 
         // opens the database to retrieve user's name and uni
         UserInfoDatabaseHelper user = createDatabase();
-        etName.setText(user.getName());
-        etUni.setText(user.getUni());
+        etName.setText(user.getLoggedInName());
+        etUni.setText(user.getLoggedInUni());
     }
 
     public void clickMenu(View view) { MainPageActivity.openDrawer(drawerLayout); } // open drawer

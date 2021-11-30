@@ -103,11 +103,11 @@ public class UserInfoDatabaseHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * Get the User's name currently stored in the database
+     * Get the current logged in user's name currently stored in the database
      *
-     * @return the User's name in the database
+     * @return the logged in user's name in the database
      */
-    public String getName(){
+    public String getLoggedInName(){
         @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE LOGGEDIN = 1",
                 null);
         if (cur.moveToFirst()) {
@@ -118,11 +118,11 @@ public class UserInfoDatabaseHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * Get the User's university currently stored in the database
+     * Get the current logged in user's university currently stored in the database
      *
-     * @return the User's university in the database
+     * @return the logged in user's university in the database
      */
-    public String getUni(){
+    public String getLoggedInUni(){
         @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE LOGGEDIN = 1",
                 null);
         if (cur.moveToFirst()) {
@@ -168,6 +168,18 @@ public class UserInfoDatabaseHelper extends SQLiteOpenHelper {
      */
     @SuppressLint("Recycle")
     public boolean uniqueEmail(String input) {
+        Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE EMAIL = " + '"' + input + '"', null);
+
+        return !cur.moveToFirst();
+    }
+
+    /**
+     * Searches through database for email to see if user had already signed up
+     *
+     * @return true if the email is not found in the database and false otherwise
+     */
+    @SuppressLint("Recycle")
+    public boolean uniqueEmal(String input) {
         Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE EMAIL = " + '"' + input + '"', null);
 
         return !cur.moveToFirst();
