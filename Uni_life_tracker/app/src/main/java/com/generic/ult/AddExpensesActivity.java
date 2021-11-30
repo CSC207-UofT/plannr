@@ -1,5 +1,7 @@
 package com.generic.ult;
 
+import Database.ExpenseDatabaseHelper;
+import Database.UserInfoDatabaseHelper;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -41,6 +43,14 @@ public class AddExpensesActivity extends AppCompatActivity {
             return true;
         }
     }
+
+    public ExpenseDatabaseHelper createDatabase() {
+        // creates an instance and opens database
+        ExpenseDatabaseHelper user = new ExpenseDatabaseHelper(AddExpensesActivity.this);
+        user.openDatabase();
+        return user;
+    }
+
     public void AddExpensesInput(View b) {
         if (!(validate(textInputName) & validate( textInputAmount))) {
             // Here we can get all the info we need
