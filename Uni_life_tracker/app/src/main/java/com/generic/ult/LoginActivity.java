@@ -1,9 +1,11 @@
 package com.generic.ult;
 
 import Database.UserInfoDatabaseHelper;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
+import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputLayout;
@@ -43,6 +45,20 @@ public class LoginActivity  extends AppCompatActivity {
         });
     }
 
+    public void ClickLogin(View view) {
+        redirectActivity(this, MainPageActivity.class);
+    }
+
+    public static void redirectActivity(Activity activity, Class aClass) {
+        // initialize intent
+        Intent intent = new Intent(activity, aClass);
+        // set flag
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        // start activity
+        activity.startActivity(intent);
+    }
+
+
     private void openMain() {
 
         Intent intent = new Intent(this, MainPageActivity.class);
@@ -55,15 +71,15 @@ public class LoginActivity  extends AppCompatActivity {
         String email = Objects.requireNonNull(tiEmail.getEditText()).getText().toString();
         String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();
 
-        if (!(email.equals(dbhelper.getEmail())) && dbhelper.getEmail()!=null) {
+        if (!(email.equals(dbhelper.getEmail())) && dbhelper.getEmail() != null) {
             textInput.setError("Incorrect Email");
             return false;
         }
-        if (!(password.equals(dbhelper.getPassword())) && dbhelper.getPassword()!=null) {
+        if (!(password.equals(dbhelper.getPassword())) && dbhelper.getPassword() != null) {
             textInput.setError("Incorrect Password");
             return false;
-        }
-        if (Input.isEmpty()) {
+       }
+            if (Input.isEmpty()) {
                 textInput.setError("Field cannot be empty");
                 return false;
             } else if (textInput == tiEmail && !Patterns.EMAIL_ADDRESS.matcher(Input).matches()) {
@@ -80,40 +96,36 @@ public class LoginActivity  extends AppCompatActivity {
         }
 
 
-    private StringBuilder passwordReq(String Input) {
-        Pattern uppercase = Pattern.compile(getString(R.string.uppercase));
-        Pattern lowercase = Pattern.compile(getString(R.string.lowercase));
-        Pattern number = Pattern.compile(getString(R.string.number));
-        Pattern specialChar = Pattern.compile(getString(R.string.specialChar));
-        Pattern minChar = Pattern.compile(getString(R.string.minLength));
-        StringBuilder str = new StringBuilder();
-        str.append("Your password requires: \n");
-        if (!minChar.matcher(Input).find())
-        {
-            str.append("- A length of at least 6 characters \n");
+        private StringBuilder passwordReq (String Input){
+            Pattern uppercase = Pattern.compile(getString(R.string.uppercase));
+            Pattern lowercase = Pattern.compile(getString(R.string.lowercase));
+            Pattern number = Pattern.compile(getString(R.string.number));
+            Pattern specialChar = Pattern.compile(getString(R.string.specialChar));
+            Pattern minChar = Pattern.compile(getString(R.string.minLength));
+            StringBuilder str = new StringBuilder();
+            str.append("Your password requires: \n");
+            if (!minChar.matcher(Input).find()) {
+                str.append("- A length of at least 6 characters \n");
+            }
+            if (!uppercase.matcher(Input).find()) {
+                str.append("- At least 1 uppercase character \n");
+            }
+            if (!lowercase.matcher(Input).find()) {
+                str.append("- At least 1 lowercase character \n");
+            }
+            if (!number.matcher(Input).find()) {
+                str.append("- At least 1 number \n");
+            }
+            if (!specialChar.matcher(Input).find()) {
+                str.append("- At least 1 special character \n");
+            }
+            return str;
         }
-        if (!uppercase.matcher(Input).find())
-        {
-            str.append("- At least 1 uppercase character \n");
+
+        public boolean LoginInput () {
+            return validate(tiEmail) & validate(tiPassword);
         }
-        if (!lowercase.matcher(Input).find())
-        {
-            str.append("- At least 1 lowercase character \n");
-        }
-        if (!number.matcher(Input).find())
-        {
-            str.append("- At least 1 number \n");
-        }
-        if (!specialChar.matcher(Input).find())
-        {
-            str.append("- At least 1 special character \n");
-        }
-        return str;
+
     }
 
-    public boolean LoginInput() {
-        return validate(tiEmail) & validate(tiPassword);
-    }
-
-}
 

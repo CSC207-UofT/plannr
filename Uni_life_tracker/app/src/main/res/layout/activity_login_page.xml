@@ -57,10 +57,12 @@
                 android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!--  Sign Up Button  -->
+    <!--  Login Button  -->
     <Button
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/Login"/>
+            android:text="@string/Login"
+            android:onClick="ClickLogin"
+    />
 </LinearLayout>
