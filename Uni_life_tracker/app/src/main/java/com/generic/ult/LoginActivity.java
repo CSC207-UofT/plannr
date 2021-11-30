@@ -126,6 +126,9 @@ public class LoginActivity  extends AppCompatActivity {
             return validate(tiEmail) & validate(tiPassword);
         }
 
+    public void clickLogin(View view) {
+
     }
+}
 
 

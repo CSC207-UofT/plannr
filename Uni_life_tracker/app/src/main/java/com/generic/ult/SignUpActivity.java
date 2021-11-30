@@ -1,20 +1,15 @@
 package com.generic.ult;
 
-import android.annotation.SuppressLint;
+import Database.UserInfoDatabaseHelper;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import androidx.preference.PreferenceManager;
-import android.util.Patterns;
-import android.widget.Button;
-
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Patterns;
+import android.view.View;
+import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
 import java.util.regex.Pattern;
-
-import Database.UserInfoDatabaseHelper;
 
 public class SignUpActivity extends AppCompatActivity {
     // At least one number, uppercase letter, lowercase letter and special char. Min of 6 characters
@@ -36,25 +31,6 @@ public class SignUpActivity extends AppCompatActivity {
         tiUniversity = findViewById(R.id.ti_university);
         tiEmail = findViewById(R.id.ti_email);
         tiPassword = findViewById(R.id.ti_password);
-
-        Button btnSignUp = findViewById(R.id.btn_sign_up);
-        btnSignUp.setOnClickListener(v -> {
-
-            // If all signup credentials are correct, store the credentials
-            // and go into the main page
-            if (signupInput()) {
-                String name = Objects.requireNonNull(tiName.getEditText()).getText().toString();
-                String uni = Objects.requireNonNull(tiUniversity.getEditText()).getText().toString();
-                String email = Objects.requireNonNull(tiEmail.getEditText()).getText().toString();
-                String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();
-
-                dbhelper = new UserInfoDatabaseHelper(SignUpActivity.this);
-                dbhelper.openDatabase();
-                dbhelper.insertUserInfo(name, uni, email, password);
-
-                openMain();
-            }
-        });
     }
 
     private void openMain() {
@@ -118,4 +94,20 @@ public class SignUpActivity extends AppCompatActivity {
                 validate(tiEmail) & validate(tiPassword);
     }
 
+    public void clickSignup(View view) {
+        // If all signup credentials are correct, store the credentials
+        // and go into the main page
+        if (signupInput()) {
+            String name = Objects.requireNonNull(tiName.getEditText()).getText().toString();
+            String uni = Objects.requireNonNull(tiUniversity.getEditText()).getText().toString();
+            String email = Objects.requireNonNull(tiEmail.getEditText()).getText().toString();
+            String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();
+
+            dbhelper = new UserInfoDatabaseHelper(SignUpActivity.this);
+            dbhelper.openDatabase();
+            dbhelper.insertUserInfo(name, uni, email, password);
+
+            openMain();
+        }
+    }
 }

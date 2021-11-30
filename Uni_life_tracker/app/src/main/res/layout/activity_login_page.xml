@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="30dp"
-        tools:context=".SignUpActivity">
+        tools:context=".LoginActivity">
 
     <!--  Logo  -->
     <ImageView
@@ -63,6 +63,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/Login"
-            android:onClick="ClickLogin"
+            android:onClick="clickLogin"
     />
 </LinearLayout>
