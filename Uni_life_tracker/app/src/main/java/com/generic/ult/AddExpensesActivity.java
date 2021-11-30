@@ -1,10 +1,11 @@
 package com.generic.ult;
 
 import Database.ExpenseDatabaseHelper;
-import Database.UserInfoDatabaseHelper;
+import Entities.User;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -13,7 +14,7 @@ import java.util.Objects;
 
 public class AddExpensesActivity extends AppCompatActivity {
 
-//    private AppBarConfiguration appBarConfiguration;
+   // private AppBarConfiguration appBarConfiguration;
 
     private TextInputLayout textInputName, textInputAmount;
 
@@ -25,23 +26,24 @@ public class AddExpensesActivity extends AppCompatActivity {
         textInputName = findViewById(R.id.add_expense_name);
         textInputAmount = findViewById(R.id.add_expense_amount);
 
-        btnSignUp.setOnClickListener(v -> {
+
 
             // If all signup credentials are correct, store the credentials
             // and go into the main page
-            if (signupInput()) {
+           // if (AddExpensesInput()) {
                 String name = Objects.requireNonNull(textInputName.getEditText()).getText().toString();
                 String amount = Objects.requireNonNull(textInputAmount.getEditText()).getText().toString();
 
 
+
                 ExpenseDatabaseHelper user = createDatabase();
                 // Adds all the user's info into the database
-                user.insertExpense(name, amount);
+                //user.insertExpense(name, amount);
 
                 openAddExpensesView();
             }
-        });
-    }
+
+
 
     // change ExpensesLandingActivity to ExpensesActivity when merged
     private void openAddExpensesView() {
@@ -68,8 +70,8 @@ public class AddExpensesActivity extends AppCompatActivity {
         return user;
     }
 
-    public void AddExpensesInput(View b) {
-        if (!(validate(textInputName) & validate( textInputAmount))) {
+    public void AddExpensesInput(View v) {
+        if (!(validate(textInputName) & validate(textInputAmount))) {
             // Here we can get all the info we need
             // For example to get the email you can do textInputEmail.getEditTest().getText().toString()
         }else{openAddExpensesView();}
