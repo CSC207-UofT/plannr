@@ -76,7 +76,7 @@ public class SignUpActivity extends AppCompatActivity {
         } else if (textInput == tiEmail && !Patterns.EMAIL_ADDRESS.matcher(input).matches()) {
             textInput.setError("Please enter a valid email address");
             return false;
-        } else if(textInput == tiEmail && user.uniqueEmail(input)){
+        } else if(textInput == tiEmail && !user.uniqueEmail(input)){
             textInput.setError("This email is already being used");
             return false;
         } else if (textInput == tiPassword && !PASSWORD_REQ.matcher(input).matches()) {
