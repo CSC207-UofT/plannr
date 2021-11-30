@@ -45,8 +45,6 @@ public class UserInfoDatabaseHelper extends SQLiteOpenHelper {
      * @param password The user's password to be inserted
      */
     public void insertUserInfo(String name, String uni, String email, String password){
-        @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo",
-                null);
         db.execSQL("UPDATE userinfo SET LOGGEDIN = 0");
         ContentValues cv = new ContentValues();
         cv.put("NAME", name);
@@ -103,11 +101,11 @@ public class UserInfoDatabaseHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * Get the User's name currently stored in the database
+     * Get the current logged in user's name currently stored in the database
      *
-     * @return the User's name in the database
+     * @return the logged in user's name in the database
      */
-    public String getName(){
+    public String getLoggedInName(){
         @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE LOGGEDIN = 1",
                 null);
         if (cur.moveToFirst()) {
@@ -118,11 +116,11 @@ public class UserInfoDatabaseHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * Get the User's university currently stored in the database
+     * Get the current logged in user's university currently stored in the database
      *
-     * @return the User's university in the database
+     * @return the logged in user's university in the database
      */
-    public String getUni(){
+    public String getLoggedInUni(){
         @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE LOGGEDIN = 1",
                 null);
         if (cur.moveToFirst()) {
@@ -133,11 +131,11 @@ public class UserInfoDatabaseHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * Get the User's email currently stored in the database
+     * Get the current logged in user's email currently stored in the database
      *
-     * @return the User's email in the database
+     * @return the logged in user's email in the database
      */
-    public String getEmail(){
+    public String getLoggedInEmail(){
         @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE LOGGEDIN = 1",
                 null);
         if (cur.moveToFirst()) {
@@ -147,30 +145,44 @@ public class UserInfoDatabaseHelper extends SQLiteOpenHelper {
         return null;
     }
 
+
+
     /**
-     * Get the User's password currently stored in the database
+     * Get the password associated with email currently stored in the database if email
+     * is stored
      *
-     * @return the User's password in the database
+     * @return the user email's password from the database
      */
-    public String getPassword(){
-        @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE LOGGEDIN = 1",
-                null);
+    public String getPassword(String input){
+        @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE EMAIL = " + '"' + input + '"', null);
+
         if (cur.moveToFirst()) {
             return cur.getString(cur.getColumnIndexOrThrow("PASSWORD"));
         }
 
-        return null;
+        return "";
     }
     /**
      * Searches through database for email to see if user had already signed up
      *
-     * @return whether the email is found in the database
+     * @return true if the email is not found in the database and false otherwise
      */
     @SuppressLint("Recycle")
     public boolean uniqueEmail(String input) {
         Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE EMAIL = " + '"' + input + '"', null);
 
         return !cur.moveToFirst();
+    }
+
+    /**
+     * Set which account is currently logged in in the database
+     */
+    @SuppressLint("Recycle")
+    public void updateLoggedInUser(String input) {
+        db.execSQL("UPDATE userinfo SET LOGGEDIN = 0");
+        ContentValues cv = new ContentValues();
+        cv.put("LOGGEDIN", 1);
+        db.update("userinfo", cv, "EMAIL = " + "'" + input + "'", null);
     }
 
 }
