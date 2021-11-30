@@ -89,6 +89,7 @@ public class LoginActivity  extends AppCompatActivity {
                 return false;
             } else {
                 textInput.setError(null);
+                dbhelper.updateLoggedInUser(email);
                 return true;
             }
         }
