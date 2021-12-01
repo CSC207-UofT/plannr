@@ -7,8 +7,6 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputLayout;
 
-import java.util.Objects;
-
 public class LoginActivity  extends AppCompatActivity {
 
     private TextInputLayout tiEmail;
@@ -30,32 +28,14 @@ public class LoginActivity  extends AppCompatActivity {
     }
 
 
-    private boolean validate(TextInputLayout textInput) {
-        String Input = Objects.requireNonNull(textInput.getEditText()).getText().toString().trim();
-        String email = Objects.requireNonNull(tiEmail.getEditText()).getText().toString();
-        String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();
 
-        UserInfoDatabaseHelper user = createDatabase();
-
-        if (Input.isEmpty()) {
-            textInput.setError("Field cannot be empty");
-            return false;
-        } else if (textInput == tiEmail && user.uniqueEmail(email)) {
-            textInput.setError("The email you entered does not belong to any account");
-            return false;
-        } else if (textInput == tiPassword && !user.getPassword(email).equals(password) && !user.uniqueEmail(email)) {
-            textInput.setError("The password you entered is incorrect");
-            return false;
-        } else {
-            textInput.setError(null);
-            user.updateLoggedInUser(email);
-            return true;
-        }
-    }
 
     public boolean LoginInput () {
-            return validate(tiEmail) & validate(tiPassword);
-        }
+        Validator info = new Validator();
+        UserInfoDatabaseHelper user = createDatabase();
+            return info.validate(tiEmail, user, tiEmail, tiPassword, false) & info.validate(tiPassword, user, tiEmail, tiPassword, false);
+    }
+
     public UserInfoDatabaseHelper createDatabase() {
         // creates an instance and opens database
         UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(LoginActivity.this);

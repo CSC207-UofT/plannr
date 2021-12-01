@@ -16,8 +16,8 @@ public class SignUpActivity extends AppCompatActivity {
     // initialize variables
     private TextInputLayout tiName;
     private TextInputLayout tiUniversity;
-    private TextInputLayout tiEmail;
-    private TextInputLayout tiPassword;
+    public TextInputLayout tiEmail;
+    public TextInputLayout tiPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,9 +65,11 @@ public class SignUpActivity extends AppCompatActivity {
     public boolean signupInput() {
         UserInfoDatabaseHelper user = createDatabase();
 
-        ValidateString input = new ValidateString();
-        return input.validate(tiName, user, tiEmail, tiPassword) & input.validate(tiUniversity,  user, tiEmail, tiPassword) &
-                input.validate(tiEmail,  user, tiEmail, tiPassword) & input.validate(tiPassword, user, tiEmail, tiPassword);
+        Validator input = new Validator();
+        return input.validate(tiName, user, tiEmail, tiPassword, true) &
+                input.validate(tiUniversity,  user, tiEmail, tiPassword, true) &
+                input.validate(tiEmail,  user, tiEmail, tiPassword, true) &
+                input.validate(tiPassword, user, tiEmail, tiPassword, true);
     }
 
     public UserInfoDatabaseHelper createDatabase() {
