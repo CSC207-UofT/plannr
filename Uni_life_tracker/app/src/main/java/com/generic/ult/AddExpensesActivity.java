@@ -1,6 +1,8 @@
 package com.generic.ult;
 
 import Database.ExpenseDatabaseHelper;
+import Database.UserInfoDatabaseHelper;
+import Entities.Expense;
 import Entities.User;
 import android.content.Intent;
 import android.os.Bundle;
@@ -36,9 +38,10 @@ public class AddExpensesActivity extends AppCompatActivity {
 
 
 
-                ExpenseDatabaseHelper user = createDatabase();
+                ExpenseDatabaseHelper expense = createExpenseDatabase();
+                UserInfoDatabaseHelper user = createDatabase();
                 // Adds all the user's info into the database
-                //user.insertExpense(name, amount);
+                expense.insertExpense(new Expense(name, Double.parseDouble(amount)), user.getLoggedInEmail());
 
                 openAddExpensesView();
             }
@@ -63,9 +66,16 @@ public class AddExpensesActivity extends AppCompatActivity {
         }
     }
 
-    public ExpenseDatabaseHelper createDatabase() {
+    public ExpenseDatabaseHelper createExpenseDatabase() {
         // creates an instance and opens database
-        ExpenseDatabaseHelper user = new ExpenseDatabaseHelper(AddExpensesActivity.this);
+        ExpenseDatabaseHelper expense = new ExpenseDatabaseHelper(AddExpensesActivity.this);
+        expense.openDatabase();
+        return expense;
+    }
+
+    public UserInfoDatabaseHelper createDatabase() {
+        // creates an instance and opens database
+        UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(AddExpensesActivity.this);
         user.openDatabase();
         return user;
     }
