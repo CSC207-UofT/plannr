@@ -9,12 +9,16 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputLayout;
 
+
+
+
+
 import java.util.Objects;
 
 
 public class AddExpensesActivity extends AppCompatActivity {
 
-   // private AppBarConfiguration appBarConfiguration;
+    // private AppBarConfiguration appBarConfiguration;
 
     private TextInputLayout textInputName, textInputAmount;
 
@@ -26,19 +30,34 @@ public class AddExpensesActivity extends AppCompatActivity {
         textInputName = findViewById(R.id.add_expense_name);
         textInputAmount = findViewById(R.id.add_expense_amount);
 
-                String name = Objects.requireNonNull(textInputName.getEditText()).getText().toString();
-                String amount = Objects.requireNonNull(textInputAmount.getEditText()).getText().toString();
+
+        String name = Objects.requireNonNull(textInputName.getEditText()).getText().toString();
+        String stramount = Objects.requireNonNull(textInputAmount.getEditText()).getText().toString();
+        //double amount = Double.parseDouble(Objects.requireNonNull(textInputAmount.getEditText()).getText().toString());
+
+        if (AddExpensesInput()) {
+            ExpenseDatabaseHelper expense = createExpenseDatabase();
+            UserInfoDatabaseHelper user = createDatabase();
+            // Adds all the user's info into the database
+            // this only works when logged in not through sign up
+            //expense.insertExpense(new Expense(name, Double.parseDouble(stramount)), user.getLoggedInEmail());
+            expense.insertExpense(new Expense(name, Double.parseDouble(stramount)), user.getLoggedInEmail());
+
+            openAddExpensesView();
+        }
+    }
 
 
-
-                ExpenseDatabaseHelper expense = createExpenseDatabase();
-                UserInfoDatabaseHelper user = createDatabase();
-                // Adds all the user's info into the database
-                expense.insertExpense(new Expense(name, Double.parseDouble(amount)), user.getLoggedInEmail());
-
-                openAddExpensesView();
-            }
-
+//    double ParseDouble(String strNumber) {
+//        if (strNumber != null && strNumber.length() > 0) {
+//            try {
+//                return Double.parseDouble(strNumber);
+//            } catch(Exception e) {
+//                return -1;   // or some value to mark this field is wrong. or make a function validates field first ...
+//            }
+//        }
+//        else return 0;
+//    }
 
 
     // change ExpensesLandingActivity to ExpensesActivity when merged
@@ -74,15 +93,20 @@ public class AddExpensesActivity extends AppCompatActivity {
         return user;
     }
 
-    public void AddExpensesInput(View v) {
-        if (!(validate(textInputName) & validate(textInputAmount))) {
-            // Here we can get all the info we need
-            // For example to get the email you can do textInputEmail.getEditTest().getText().toString()
-        }else{openAddExpensesView();}
+//    public void AddExpensesInput(View v) {
+//        if (!(validate(textInputName) & validate(textInputAmount))) {
+//
+//        }else{openAddExpensesView();}
+//    }
+
+    public boolean AddExpensesInput() {
+        return validate(textInputName) & validate(textInputAmount);
     }
 
-    public void ClickBack(View view) {
-        Intent intent = new Intent(this, ExpensesActivity.class);
-        startActivity(intent);
+
+        public void ClickBack (View view){
+            Intent intent = new Intent(this, ExpensesActivity.class);
+            startActivity(intent);
+        }
     }
-}
+
