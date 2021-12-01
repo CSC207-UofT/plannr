@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 public class SignUpActivity extends AppCompatActivity {
     // At least one number, uppercase letter, lowercase letter and special char. Min of 6 characters
     private static final Pattern PASSWORD_REQ =
-            Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#!$%^&+=]).{6,}$");
+            Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#!$%^/*_&+=]).{6,}$");
 
     // initialize variables
     private TextInputLayout tiName;
@@ -122,7 +122,7 @@ public class SignUpActivity extends AppCompatActivity {
         }
         if (!specialChar.matcher(input).find())
         {
-            str.append("- At least 1 special character \n");
+            str.append("- At least 1 special character @#!$%^/*_&+=]\n");
         }
         return str;
     }
