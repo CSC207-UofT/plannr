@@ -3,11 +3,9 @@ package com.generic.ult;
 import Database.ExpenseDatabaseHelper;
 import Database.UserInfoDatabaseHelper;
 import Entities.Expense;
-import Entities.User;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -28,11 +26,6 @@ public class AddExpensesActivity extends AppCompatActivity {
         textInputName = findViewById(R.id.add_expense_name);
         textInputAmount = findViewById(R.id.add_expense_amount);
 
-
-
-            // If all signup credentials are correct, store the credentials
-            // and go into the main page
-           // if (AddExpensesInput()) {
                 String name = Objects.requireNonNull(textInputName.getEditText()).getText().toString();
                 String amount = Objects.requireNonNull(textInputAmount.getEditText()).getText().toString();
 
@@ -72,6 +65,7 @@ public class AddExpensesActivity extends AppCompatActivity {
         expense.openDatabase();
         return expense;
     }
+
 
     public UserInfoDatabaseHelper createDatabase() {
         // creates an instance and opens database
