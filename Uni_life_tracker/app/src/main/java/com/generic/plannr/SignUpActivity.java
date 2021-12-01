@@ -55,8 +55,6 @@ public class SignUpActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
-
     /**
      * Checks whether the information inputted matches the requirements
      *

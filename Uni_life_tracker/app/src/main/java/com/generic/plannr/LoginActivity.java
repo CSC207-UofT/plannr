@@ -1,12 +1,10 @@
 package com.generic.plannr;
 
-import com.generic.plannr.Database.UserInfoDatabaseHelper;
-import android.app.Activity;
-import Database.UserInfoDatabaseHelper;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
+import com.generic.plannr.Database.UserInfoDatabaseHelper;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class LoginActivity  extends AppCompatActivity {
@@ -28,9 +26,6 @@ public class LoginActivity  extends AppCompatActivity {
         Intent intent = new Intent(this, MainPageActivity.class);
         startActivity(intent);
     }
-
-
-
 
     public boolean LoginInput () {
         Validator info = new Validator();
