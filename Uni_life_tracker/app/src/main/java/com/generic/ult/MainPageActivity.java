@@ -47,6 +47,9 @@ public class MainPageActivity extends AppCompatActivity {
         setAdapter();
     }
 
+    /**
+     *
+     */
     private void setAdapter() {
         ListEvents adapter = new ListEvents(eventsList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
@@ -55,7 +58,10 @@ public class MainPageActivity extends AppCompatActivity {
         rvEvents.setAdapter(adapter);
     }
 
-//    TODO: generates events to display FOR NOW
+    /**
+     * TODO: remove later
+     * Generates events to display.
+     */
     private void setEventInfo() {
         eventsList.add(new Event("Event 1", 1, LocalDateTime.of(2019, 3, 28, 14, 33, 48)));
         eventsList.add(new Event("Assignment 2", 2, LocalDateTime.of(2021, 12, 13, 12, 20, 48)));
@@ -67,15 +73,36 @@ public class MainPageActivity extends AppCompatActivity {
         eventsList.add(new Event("Project 432", 2, LocalDateTime.of(2021, 11, 13, 12, 20, 48)));
     }
 //    public Event(String name, int priority, LocalDateTime startDate, LocalDateTime endDate) {
+
+    /**
+     * Opens navigation menu on menu icon click.
+     *
+     * @param view a View for the device screen.
+     */
     public void clickMenu(View view){
         // open drawer
         openDrawer(drawerLayout);
     }
 
+    /**
+     * Opens drawer layout (navigation menu) to view.
+     *
+     * @param drawerLayout a DrawerLayout for the navigation menu.
+     */
     public static void openDrawer(DrawerLayout drawerLayout) { drawerLayout.openDrawer(GravityCompat.START); } // open drawer layout
 
+    /**
+     * Opens navigation menu on logo click.
+     *
+     * @param view a View for the device screen.
+     */
     public void clickLogo(View view) { closeDrawer(drawerLayout); } // close drawer
 
+    /**
+     * Closes drawer layout (navigation menu) from view.
+     *
+     * @param drawerLayout a DrawerLayout for the navigation menu.
+     */
     public static void closeDrawer(DrawerLayout drawerLayout) {
         // close drawer layout
 
@@ -85,15 +112,42 @@ public class MainPageActivity extends AppCompatActivity {
         }
     }
 
-    public void clickSchool(View view) { redirectActivity(this, SchoolActivity.class); } // redirect activity to school
+    /**
+     * Directs activity to the School activity on school icon click.
+     *
+     * @param view a View for the device screen.
+     */
+    public void clickSchool(View view) { redirectActivity(this, SchoolActivity.class); }
 
-    // TODO: change this to life later
-    public void clickLife(View view) { redirectActivity(this, MainPageActivity.class); } // redirect activity to life
+    /**
+     * TODO: direct to life later!
+     * Directs activity to the Life activity on life icon click.
+     *
+     * @param view a View for the device screen.
+     */
+    public void clickLife(View view) { redirectActivity(this, MainPageActivity.class); }
 
-    public void clickExpenses(View view) { redirectActivity(this, ExpensesActivity.class); } // redirect activity to expenses
+    /**
+     * Directs activity to the Expenses activity on expenses icon click.
+     *
+     * @param view a View for the device screen.
+     */
+    public void clickExpenses(View view) { redirectActivity(this, ExpensesActivity.class); }
 
-    public void clickSettings(View view) { redirectActivity(this, SettingsActivity.class); } // redirect activity to settings
+    /**
+     * Directs activity to the Settings activity on settings icon click.
+     *
+     * @param view a View for the device screen.
+     */
+    public void clickSettings(View view) { redirectActivity(this, SettingsActivity.class); }
 
+    /**
+     * Directs current activity to a different activity.
+     * Generates an intent and starts the activity.
+     *
+     * @param activity a user's current activity.
+     * @param aClass a Class of the new activity to be started.
+     */
     public static void redirectActivity(Activity activity, Class aClass) {
         // initialize intent
         Intent intent = new Intent(activity,aClass);
