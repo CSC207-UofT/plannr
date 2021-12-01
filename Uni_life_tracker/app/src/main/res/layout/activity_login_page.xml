@@ -58,13 +58,14 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <!--  Login Button  -->
+
+    <!--  No account yet? Text  -->
     <Button
             android:id="@+id/btn_log_in"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/log_in"/>
-
-    <!--  No account yet? Text  -->
+            android:text="@string/log_in"
+            android:onClick="clickLogin"/>
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
