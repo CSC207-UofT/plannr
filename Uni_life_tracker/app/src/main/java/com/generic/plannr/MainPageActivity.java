@@ -107,7 +107,7 @@ public class MainPageActivity extends AppCompatActivity {
         builder.show();
     }
 
-    public static void redirectActivity(Activity activity, @SuppressWarnings("rawtypes") Class aClass) {
+    public void redirectActivity(Activity activity, @SuppressWarnings("rawtypes") Class aClass) {
         // initialize intent
         Intent intent = new Intent(activity,aClass);
         // set flag

@@ -25,8 +25,8 @@ public class LoginActivity  extends AppCompatActivity {
 
     private void openMain() {
         // Moves to the MainPageActivity
-        Intent intent = new Intent(this, MainPageActivity.class);
-        startActivity(intent);
+        MainPageActivity activity = new MainPageActivity();
+        activity.redirectActivity(this, MainPageActivity.class);
     }
 
     public boolean LoginInput () {
@@ -51,6 +51,12 @@ public class LoginActivity  extends AppCompatActivity {
         if (LoginInput()) {
             openMain();
         }
+    }
+
+    public void clickSignup(View view) {
+        // Moves to the MainPageActivity
+        Intent intent = new Intent(this, MainPageActivity.class);
+        startActivity(intent);
     }
 }
 
