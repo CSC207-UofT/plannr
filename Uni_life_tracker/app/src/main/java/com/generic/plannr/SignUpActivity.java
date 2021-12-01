@@ -3,6 +3,7 @@ package com.generic.plannr;
 import com.generic.plannr.Database.UserInfoDatabaseHelper;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,6 +34,7 @@ public class SignUpActivity extends AppCompatActivity {
         tiEmail = findViewById(R.id.ti_email);
         tiPassword = findViewById(R.id.ti_password);
         Button btnSignUp = findViewById(R.id.btn_sign_up);
+        Button btnLogIn = findViewById(R.id.btn_log_in);
 
         btnSignUp.setOnClickListener(v -> {
 
@@ -50,6 +52,11 @@ public class SignUpActivity extends AppCompatActivity {
 
                 openMain();
             }
+        });
+
+        btnLogIn.setOnClickListener(v -> {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
         });
     }
 

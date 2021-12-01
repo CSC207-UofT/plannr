@@ -23,7 +23,6 @@
             android:fontFamily="@font/roboto_mono_bold"
             android:textStyle="bold"
             android:textAlignment="center"
-            android:textColor="@color/black"
             android:padding="5dp"
             android:layout_marginVertical="15dp"
             android:onClick="clickSchool"
@@ -37,7 +36,6 @@
             android:fontFamily="@font/roboto_mono_bold"
             android:textStyle="bold"
             android:textAlignment="center"
-            android:textColor="@color/black"
             android:padding="5dp"
             android:layout_marginVertical="10dp"
             android:onClick="clickLife"
@@ -51,7 +49,6 @@
             android:fontFamily="@font/roboto_mono_bold"
             android:textStyle="bold"
             android:textAlignment="center"
-            android:textColor="@color/black"
             android:padding="5dp"
             android:layout_marginVertical="15dp"
             android:onClick="clickExpenses"
@@ -65,10 +62,22 @@
             android:fontFamily="@font/roboto_mono_bold"
             android:textStyle="bold"
             android:textAlignment="center"
-            android:textColor="@color/black"
             android:padding="5dp"
             android:layout_marginVertical="15dp"
             android:onClick="clickSettings"
             app:drawableTopCompat="@drawable/ic_settings"/>
+
+    <!--  Log Out  -->
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/log_out"
+            android:fontFamily="@font/roboto_mono_bold"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:padding="5dp"
+            android:layout_marginVertical="15dp"
+            android:onClick="clickLogOut"
+            app:drawableTopCompat="@drawable/ic_logout"/>
 
 </LinearLayout>

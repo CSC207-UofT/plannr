@@ -2,6 +2,7 @@ package com.generic.plannr;
 
 import com.generic.plannr.Entities.Event;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
@@ -93,6 +94,21 @@ public class MainPageActivity extends AppCompatActivity {
     public void clickExpenses(View view) { redirectActivity(this, ExpensesActivity.class); } // redirect activity to expenses
 
     public void clickSettings(View view) { redirectActivity(this, SettingsActivity.class); } // redirect activity to settings
+
+    public void clickLogOut(View view) { logout(this); } // redirect activity to settings
+
+    public static void logout(Activity activity) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        builder.setTitle("Log Out");
+        builder.setMessage("Are you sure you want to log out?");
+        builder.setPositiveButton("Yes", (dialog, which) -> {
+            activity.finishAffinity();
+            System.exit(0);
+        });
+
+        builder.setNegativeButton("No", (dialog, which) -> dialog.dismiss());
+        builder.show();
+    }
 
     public static void redirectActivity(Activity activity, Class aClass) {
         // initialize intent
