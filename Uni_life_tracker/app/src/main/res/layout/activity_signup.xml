@@ -94,11 +94,20 @@
                 android:layout_height="wrap_content"
                 android:text="@string/sign_up"/>
 
-        <!--  Login Button  -->
-        <Button
-                android:id="@+id/btn_login"
+        <!--  Have an existing account? Text  -->
+        <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/login"/>
+                android:text="@string/have_an_existing_account"
+                android:gravity="center"
+                android:textStyle="italic"
+                android:layout_marginTop="10dp"/>
+
+        <!--  Login Button  -->
+        <Button
+                android:id="@+id/btn_log_in"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/log_in"/>
     </LinearLayout>
 </ScrollView>

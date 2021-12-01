@@ -38,10 +38,10 @@
 
     <!--  Login Button  -->
     <Button
-            android:id="@+id/btn_login_main"
+            android:id="@+id/btn_log_in_main"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="@string/Login"
+            android:text="@string/log_in"
 
     />
 

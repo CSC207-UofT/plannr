@@ -34,7 +34,7 @@ public class SignUpActivity extends AppCompatActivity {
         tiEmail = findViewById(R.id.ti_email);
         tiPassword = findViewById(R.id.ti_password);
         Button btnSignUp = findViewById(R.id.btn_sign_up);
-        Button btnLogin = findViewById(R.id.btn_login);
+        Button btnLogIn = findViewById(R.id.btn_log_in);
 
         btnSignUp.setOnClickListener(v -> {
 
@@ -54,7 +54,7 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
-        btnLogin.setOnClickListener(v -> {
+        btnLogIn.setOnClickListener(v -> {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
         });
