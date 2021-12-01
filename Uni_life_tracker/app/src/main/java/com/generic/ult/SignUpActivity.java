@@ -3,19 +3,15 @@ package com.generic.ult;
 import Database.UserInfoDatabaseHelper;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
-import java.util.regex.Pattern;
 
 public class SignUpActivity extends AppCompatActivity {
-    // At least one number, uppercase letter, lowercase letter and special char. Min of 6 characters
-    private static final Pattern PASSWORD_REQ =
-            Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#!$%^/*_&+=]).{6,}$");
+
 
     // initialize variables
     private TextInputLayout tiName;
@@ -59,73 +55,7 @@ public class SignUpActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    /**
-     * Validates inputs and displays the different error messages for the user inpupts
-     *
-     * @param textInput The password that the user types into the textbox
-     * @return whether the user input is valid and sets a error message if needed
-     *
-     */
-    private boolean validate(TextInputLayout textInput) {
-        String input = Objects.requireNonNull(textInput.getEditText()).getText().toString().trim();
-        UserInfoDatabaseHelper user = createDatabase();
 
-        if (input.isEmpty()) {
-            textInput.setError("Field cannot be empty");
-            return false;
-        } else if (textInput == tiEmail && !Patterns.EMAIL_ADDRESS.matcher(input).matches()) {
-            textInput.setError("Please enter a valid email address");
-            return false;
-        } else if(textInput == tiEmail && !user.uniqueEmail(input)){
-            textInput.setError("This email is already being used");
-            return false;
-        } else if (textInput == tiPassword && !PASSWORD_REQ.matcher(input).matches()) {
-            StringBuilder str = passwordReq(input);
-            textInput.setError(str.toString());
-            return false;
-        } else {
-            textInput.setError(null);
-            return true;
-        }
-    }
-
-    /**
-     * Uses regex to make sure the password inputted is secure
-     *
-     * @param input The password that the user types into the textbox
-     * @return string that includes all the requirements that the password violates, if any
-     *
-     */
-    private StringBuilder passwordReq(String input) {
-        Pattern uppercase = Pattern.compile(getString(R.string.uppercase));
-        Pattern lowercase = Pattern.compile(getString(R.string.lowercase));
-        Pattern number = Pattern.compile(getString(R.string.number));
-        Pattern specialChar = Pattern.compile(getString(R.string.specialChar));
-        Pattern minChar = Pattern.compile(getString(R.string.minLength));
-        StringBuilder str = new StringBuilder();
-        str.append("Your password requires: \n");
-        if (!minChar.matcher(input).find())
-        {
-            str.append("- A length of at least 6 characters \n");
-        }
-        if (!uppercase.matcher(input).find())
-        {
-            str.append("- At least 1 uppercase character \n");
-        }
-        if (!lowercase.matcher(input).find())
-        {
-            str.append("- At least 1 lowercase character \n");
-        }
-        if (!number.matcher(input).find())
-        {
-            str.append("- At least 1 number \n");
-        }
-        if (!specialChar.matcher(input).find())
-        {
-            str.append("- At least 1 special character @#!$%^/*_&+=]\n");
-        }
-        return str;
-    }
 
     /**
      * Checks whether the information inputted matches the requirements
@@ -133,8 +63,11 @@ public class SignUpActivity extends AppCompatActivity {
      * @return whether all the information has been validated
      */
     public boolean signupInput() {
-        return validate(tiName) & validate(tiUniversity) &
-                validate(tiEmail) & validate(tiPassword);
+        UserInfoDatabaseHelper user = createDatabase();
+
+        ValidateString input = new ValidateString();
+        return input.validate(tiName, user, tiEmail, tiPassword) & input.validate(tiUniversity,  user, tiEmail, tiPassword) &
+                input.validate(tiEmail,  user, tiEmail, tiPassword) & input.validate(tiPassword, user, tiEmail, tiPassword);
     }
 
     public UserInfoDatabaseHelper createDatabase() {
