@@ -1,6 +1,5 @@
 package com.generic.plannr;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,13 +14,16 @@ public class SignUpActivity extends AppCompatActivity {
     // initialize variables
     private TextInputLayout tiName;
     private TextInputLayout tiUniversity;
-    public TextInputLayout tiEmail;
-    public TextInputLayout tiPassword;
+    private TextInputLayout tiEmail;
+    private TextInputLayout tiPassword;
+    private MainPageActivity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
+        activity = new MainPageActivity();
 
         // connecting variables to UI features in activities by their id
         tiName = findViewById(R.id.ti_name);
@@ -32,8 +34,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void openMain() {
         // Opens the main activity
-        Intent intent = new Intent(this, MainPageActivity.class);
-        startActivity(intent);
+        activity.redirectActivity(this, MainPageActivity.class);
     }
 
     /**
@@ -77,5 +78,9 @@ public class SignUpActivity extends AppCompatActivity {
 
             openMain();
         }
+    }
+
+    public void clickLogin(View view) {
+        activity.redirectActivity(this, LoginActivity.class);
     }
 }
