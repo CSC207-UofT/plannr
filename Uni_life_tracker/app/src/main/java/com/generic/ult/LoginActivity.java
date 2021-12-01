@@ -30,7 +30,7 @@ public class LoginActivity  extends AppCompatActivity {
         tiEmail = findViewById(R.id.ti_email_login);
         tiPassword = findViewById(R.id.ti_password_login);
 
-        Button btnLogin = findViewById(R.id.btn_login);
+        Button btnLogin = findViewById(R.id.btn_log_in);
         Button btnSignUp = findViewById(R.id.btn_sign_up);
 
         btnLogin.setOnClickListener(v -> {

@@ -20,7 +20,7 @@
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/login"
+            android:text="@string/log_in"
             android:gravity="center"
             android:layout_marginBottom="20dp"
             android:textSize="25sp"
@@ -33,6 +33,7 @@
             android:id="@+id/ti_email_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:boxBackgroundColor="@color/white"
             app:errorEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -47,6 +48,7 @@
             android:id="@+id/ti_password_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:boxBackgroundColor="@color/white"
             app:errorEnabled="true"
             app:passwordToggleEnabled="true">
 
@@ -59,10 +61,19 @@
 
     <!--  Login Button  -->
     <Button
-            android:id="@+id/btn_login"
+            android:id="@+id/btn_log_in"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/Login"/>
+            android:text="@string/log_in"/>
+
+    <!--  No account yet? Text  -->
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/no_account_yet"
+            android:gravity="center"
+            android:textStyle="italic"
+            android:layout_marginTop="10dp"/>
 
     <!--  Sign Up Button  -->
     <Button
