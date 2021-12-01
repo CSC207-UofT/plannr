@@ -1,10 +1,10 @@
-package UseCases;
+package com.generic.plannr.UseCases;
 
 import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 
-import Entities.Event;
+import com.generic.plannr.Entities.Event;
 
 /**
  * Sorts the list of events taking place today by date or by priority.

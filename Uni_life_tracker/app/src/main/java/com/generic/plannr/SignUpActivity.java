@@ -1,6 +1,6 @@
 package com.generic.plannr;
 
-import Database.UserInfoDatabaseHelper;
+import com.generic.plannr.Database.UserInfoDatabaseHelper;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -120,7 +120,7 @@ public class SignUpActivity extends AppCompatActivity {
         {
             str.append("- At least 1 number \n");
         }
-        if (!specialChar.matcher(Input).find())
+        if (!specialChar.matcher(input).find())
         {
             str.append("- At least 1 special character \n");
         }

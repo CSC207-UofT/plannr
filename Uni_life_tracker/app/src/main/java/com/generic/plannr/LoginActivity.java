@@ -1,6 +1,6 @@
 package com.generic.plannr;
 
-import Database.UserInfoDatabaseHelper;
+import com.generic.plannr.Database.UserInfoDatabaseHelper;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

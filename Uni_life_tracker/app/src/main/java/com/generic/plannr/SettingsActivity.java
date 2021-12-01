@@ -1,6 +1,6 @@
 package com.generic.plannr;
 
-import Database.UserInfoDatabaseHelper;
+import com.generic.plannr.Database.UserInfoDatabaseHelper;
 import android.os.Bundle;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
