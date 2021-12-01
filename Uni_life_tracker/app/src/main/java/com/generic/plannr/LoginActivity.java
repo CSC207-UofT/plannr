@@ -9,6 +9,7 @@ import com.google.android.material.textfield.TextInputLayout;
 
 public class LoginActivity  extends AppCompatActivity {
 
+    // initialize variables
     private TextInputLayout tiEmail;
     private TextInputLayout tiPassword;
 
@@ -17,20 +18,25 @@ public class LoginActivity  extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
 
-
+        // connecting variables to UI features in activities by their id
         tiEmail = findViewById(R.id.ti_email_login);
         tiPassword = findViewById(R.id.ti_password_login);
     }
 
     private void openMain() {
+        // Moves to the MainPageActivity
         Intent intent = new Intent(this, MainPageActivity.class);
         startActivity(intent);
     }
 
     public boolean LoginInput () {
-        Validator info = new Validator();
+        // Creates an instance of validator to be able to access its methods
+        Validator input = new Validator();
+        // Opens the database, so it can be passed in since it needs an activity
         UserInfoDatabaseHelper user = createDatabase();
-            return info.validate(tiEmail, user, tiEmail, tiPassword, false) & info.validate(tiPassword, user, tiEmail, tiPassword, false);
+        // Returns whether the login info inputted is valid
+        return input.validate(tiEmail, user, tiEmail, tiPassword, false) &
+                input.validate(tiPassword, user, tiEmail, tiPassword, false);
     }
 
     public UserInfoDatabaseHelper createDatabase() {

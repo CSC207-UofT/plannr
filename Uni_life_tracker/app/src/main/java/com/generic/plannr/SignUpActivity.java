@@ -24,7 +24,7 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        // connecting variables to UI features in activities
+        // connecting variables to UI features in activities by their id
         tiName = findViewById(R.id.ti_name);
         tiUniversity = findViewById(R.id.ti_university);
         tiEmail = findViewById(R.id.ti_email);
