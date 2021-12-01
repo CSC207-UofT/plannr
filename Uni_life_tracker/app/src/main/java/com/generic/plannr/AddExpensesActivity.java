@@ -1,12 +1,12 @@
 package com.generic.plannr;
 
-import Database.ExpenseDatabaseHelper;
-import Database.UserInfoDatabaseHelper;
-import Entities.Expense;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
+import com.generic.plannr.Database.ExpenseDatabaseHelper;
+import com.generic.plannr.Database.UserInfoDatabaseHelper;
+import com.generic.plannr.Entities.Expense;
 import com.google.android.material.textfield.TextInputLayout;
 
 

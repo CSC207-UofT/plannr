@@ -1,9 +1,8 @@
 package com.generic.plannr;
 
+import com.generic.plannr.Database.ExpenseDatabaseHelper;
+import com.generic.plannr.Database.UserInfoDatabaseHelper;
 import com.generic.plannr.Entities.Expense;
-import Database.ExpenseDatabaseHelper;
-import Database.UserInfoDatabaseHelper;
-import Entities.Expense;
 import android.content.Intent;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
