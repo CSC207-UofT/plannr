@@ -114,7 +114,7 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
 
     public void clickMenu(View view) { MainPageActivity.openDrawer(drawerLayout); } // open drawer
 
-    public void clickLogo(View view) { MainPageActivity.closeDrawer(drawerLayout); } // close drawer
+    public void clickLogo(View view) { MainPageActivity.redirectActivity(this, MainPageActivity.class); } // close drawer
 
     public void clickSchool(View view) { recreate(); } // recreate activity
 
