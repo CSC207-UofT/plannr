@@ -16,6 +16,8 @@
         <activity android:name="com.generic.plannr.AddExpensesActivity"> </activity>
         <activity android:name="com.generic.plannr.ExpensesActivity"> </activity>
         <activity android:name="com.generic.plannr.SchoolActivity"> </activity>
+        <activity android:name="com.generic.plannr.WelcomeLoginSignupActivity"> </activity>
+        <activity android:name="com.generic.plannr.LoginActivity"> </activity>
         <activity
                 android:name="com.generic.plannr.MainPageActivity"
                 android:label="Main"

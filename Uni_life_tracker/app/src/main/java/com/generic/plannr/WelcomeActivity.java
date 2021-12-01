@@ -14,7 +14,7 @@ public class WelcomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_welcome);
         
         handler.postDelayed(() -> {
-            Intent intent = new Intent(WelcomeActivity.this, SignUpActivity.class);
+            Intent intent = new Intent(WelcomeActivity.this, WelcomeLoginSignupActivity.class);
             startActivity(intent);
             finish();
         }, 2500);
