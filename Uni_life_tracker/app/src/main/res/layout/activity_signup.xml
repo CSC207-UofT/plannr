@@ -94,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/sign_up"/>
 
-        <!--  Log In Button  -->
+        <!--  Login Button  -->
         <Button
                 android:id="@+id/btn_login"
                 android:layout_width="match_parent"

@@ -62,7 +62,12 @@
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/Login"
-            android:onClick="clickLogin"
-    />
+            android:text="@string/Login"/>
+
+    <!--  Sign Up Button  -->
+    <Button
+            android:id="@+id/btn_sign_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sign_up"/>
 </LinearLayout>

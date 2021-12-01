@@ -31,37 +31,25 @@ public class LoginActivity  extends AppCompatActivity {
         tiPassword = findViewById(R.id.ti_password_login);
 
         Button btnLogin = findViewById(R.id.btn_login);
-        btnLogin.setOnClickListener(v -> {
+        Button btnSignUp = findViewById(R.id.btn_sign_up);
 
+        btnLogin.setOnClickListener(v -> {
             // If all login credentials are correct, go into the main page
             if (LoginInput()) {
-
                 openMain();
-
             }
+        });
+
+        btnSignUp.setOnClickListener(v -> {
+            Intent intent = new Intent(this, SignUpActivity.class);
+            startActivity(intent);
         });
     }
 
-    public void ClickLogin(View view) {
-        redirectActivity(this, MainPageActivity.class);
-    }
-
-    public static void redirectActivity(Activity activity, Class aClass) {
-        // initialize intent
-        Intent intent = new Intent(activity, aClass);
-        // set flag
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        // start activity
-        activity.startActivity(intent);
-    }
-
-
     private void openMain() {
-
         Intent intent = new Intent(this, MainPageActivity.class);
         startActivity(intent);
     }
-
 
     private boolean validate(TextInputLayout textInput) {
         String Input = Objects.requireNonNull(textInput.getEditText()).getText().toString().trim();
@@ -93,7 +81,6 @@ public class LoginActivity  extends AppCompatActivity {
                 return true;
             }
         }
-
 
         private StringBuilder passwordReq (String Input){
             Pattern uppercase = Pattern.compile(getString(R.string.uppercase));
