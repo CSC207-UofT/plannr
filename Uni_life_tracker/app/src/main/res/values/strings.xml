@@ -95,8 +95,10 @@
     <string name="low_priority">Low</string>
     <string name="course">Course</string>
     <string name="welcome_to_title">Welcome To</string>
-    <string name="login">Login</string>
-    <string name="Login">Login</string>
+    <string name="log_in">Log In</string>
+    <string name="log_out">Log Out</string>
+    <string name="no_account_yet">No account yet?</string>
+    <string name="have_an_existing_account">Have an existing account?</string>
 
     <!--  TODO: to display courses for now (TEMPORARY) -->
     <string-array name="courses">

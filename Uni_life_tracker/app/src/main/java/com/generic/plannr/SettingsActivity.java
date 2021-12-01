@@ -39,7 +39,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void clickMenu(View view) { MainPageActivity.openDrawer(drawerLayout); } // open drawer
 
-    public void clickLogo(View view) { MainPageActivity.closeDrawer(drawerLayout); } // close drawer
+    public void clickLogo(View view) { MainPageActivity.redirectActivity(this, MainPageActivity.class); } // redirect activity to main
 
     public void clickSchool(View view) { MainPageActivity.redirectActivity(this, SchoolActivity.class); } // redirect activity to school
 
@@ -49,6 +49,8 @@ public class SettingsActivity extends AppCompatActivity {
     public void clickExpenses(View view) { MainPageActivity.redirectActivity(this, ExpensesActivity.class); } // redirect activity to expenses
 
     public void clickSettings(View view) { recreate(); } // recreate activity
+
+    public void clickLogOut(View view) { MainPageActivity.logout(this); } // prompt logout
 
     public void clickSave(View view) {
         // gets user input from textbox
