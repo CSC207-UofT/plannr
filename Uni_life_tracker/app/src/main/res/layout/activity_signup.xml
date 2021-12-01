@@ -35,6 +35,7 @@
                 android:id="@+id/ti_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:boxBackgroundColor="@color/white"
                 app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -49,6 +50,7 @@
                 android:id="@+id/ti_university"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:boxBackgroundColor="@color/white"
                 app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -63,6 +65,7 @@
                 android:id="@+id/ti_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:boxBackgroundColor="@color/white"
                 app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -78,6 +81,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:errorEnabled="true"
+                app:boxBackgroundColor="@color/white"
                 app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
