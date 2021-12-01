@@ -1,11 +1,10 @@
 package com.generic.plannr;
 
-import com.generic.plannr.Database.UserInfoDatabaseHelper;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
+import com.generic.plannr.Database.UserInfoDatabaseHelper;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
@@ -29,24 +28,6 @@ public class SignUpActivity extends AppCompatActivity {
         tiUniversity = findViewById(R.id.ti_university);
         tiEmail = findViewById(R.id.ti_email);
         tiPassword = findViewById(R.id.ti_password);
-
-        Button btnSignUp = findViewById(R.id.btn_sign_up);
-        btnSignUp.setOnClickListener(v -> {
-
-            // If all signup credentials are correct, store the credentials
-            // and go into the main page
-            if (signupInput()) {
-                String name = Objects.requireNonNull(tiName.getEditText()).getText().toString();
-                String uni = Objects.requireNonNull(tiUniversity.getEditText()).getText().toString();
-                String email = Objects.requireNonNull(tiEmail.getEditText()).getText().toString();
-                String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();
-
-                UserInfoDatabaseHelper user = createDatabase();
-                user.insertUserInfo(name, uni, email, password);
-
-                openMain();
-            }
-        });
     }
 
     private void openMain() {
@@ -61,9 +42,14 @@ public class SignUpActivity extends AppCompatActivity {
      * @return whether all the information has been validated
      */
     public boolean signupInput() {
+        // Opens the database and passes in all the info
         UserInfoDatabaseHelper user = createDatabase();
-
+        // Creates an instance of validator to access the methods
         Validator input = new Validator();
+        // Returns whether info is validator and any error messages if it isn't
+        // Need to pass in tiEmail and Password each time because cannot be accessed UI elements in Validator class
+        // If we pass in the string instead of the TextInputLayout then will not be able to set the error messages
+        // Although it is inconvenient to keep passing it in, there are android related errors that are stopping us
         return input.validate(tiName, user, tiEmail, tiPassword, true) &
                 input.validate(tiUniversity,  user, tiEmail, tiPassword, true) &
                 input.validate(tiEmail,  user, tiEmail, tiPassword, true) &
