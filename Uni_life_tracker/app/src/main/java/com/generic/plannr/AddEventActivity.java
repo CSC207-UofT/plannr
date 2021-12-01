@@ -24,7 +24,6 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
     ImageView ivBack, ivSave;
     EditText etEventName;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
