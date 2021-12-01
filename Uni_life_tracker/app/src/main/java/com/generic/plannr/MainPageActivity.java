@@ -73,11 +73,11 @@ public class MainPageActivity extends AppCompatActivity {
         openDrawer(drawerLayout);
     }
 
-    public static void openDrawer(DrawerLayout drawerLayout) { drawerLayout.openDrawer(GravityCompat.START); } // open drawer layout
+    public void openDrawer(DrawerLayout drawerLayout) { drawerLayout.openDrawer(GravityCompat.START); } // open drawer layout
 
     public void clickLogo(View view) { closeDrawer(drawerLayout); } // close drawer
 
-    public static void closeDrawer(DrawerLayout drawerLayout) {
+    public void closeDrawer(DrawerLayout drawerLayout) {
         // close drawer layout
 
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {

@@ -114,7 +114,7 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
         }
     }
 
-    public void clickMenu(View view) { MainPageActivity.openDrawer(drawerLayout); } // open drawer
+    public void clickMenu(View view) { activity.openDrawer(drawerLayout); } // open drawer
 
     public void clickLogo(View view) { activity.redirectActivity(this, MainPageActivity.class); } // redirect activity to main
 
@@ -134,6 +134,6 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
     @Override
     protected void onPause() {
         super.onPause();
-        MainPageActivity.closeDrawer(drawerLayout); // close drawer
+        activity.closeDrawer(drawerLayout); // close drawer
     }
 }
