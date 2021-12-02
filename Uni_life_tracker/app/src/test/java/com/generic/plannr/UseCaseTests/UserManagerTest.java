@@ -19,6 +19,12 @@ public class UserManagerTest {
     }
 
     @Test
+    public void TestConstructor() {
+        assertEquals(COURSES, user.viewCourses());
+        assertEquals(new ArrayList<>(), user.getExpenses());
+    }
+
+    @Test
     public void TestViewEventListEmpty() {
         assertEquals(new ArrayList<>(), user.viewEventList());
     }
@@ -28,7 +34,7 @@ public class UserManagerTest {
      */
     @Test
     public void TestAddEventToUserList() {
-        for (Event e: dayEventList) {
+        for (Event e : dayEventList) {
             user.addEventToUsersList(e);
         }
         assertEquals(dayEventList.size(), user.viewEventList().size());
