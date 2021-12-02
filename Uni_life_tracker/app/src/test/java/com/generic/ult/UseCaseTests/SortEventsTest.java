@@ -1,6 +1,7 @@
 package com.generic.ult.UseCaseTests;
 
 import org.junit.*;
+
 import static org.junit.Assert.*;
 
 import static UseCases.SortEvents.sortByDate;
@@ -49,7 +50,7 @@ public class SortEventsTest {
     @Test(timeout = 50)
     public void TestSortByDate() {
         ArrayList<Event> expected = new ArrayList<>(Arrays.asList(e1, e2, e3));
-        assertEquals(expected ,sortByDate(events));
+        assertEquals(expected, sortByDate(events));
     }
 
     @Test(timeout = 50)
