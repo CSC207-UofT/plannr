@@ -116,6 +116,14 @@ public class UserManager {
     }
 
     /**
+     * This method will return user's name
+     * @return a String variable containing user's name
+     */
+    public String getUsersName() {
+        return u.getName();
+    }
+
+    /**
      * Adds a new expense to the user's expensesList
      *
      * @param value value of the new expense
