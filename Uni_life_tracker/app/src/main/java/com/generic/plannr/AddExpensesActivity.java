@@ -28,24 +28,18 @@ public class AddExpensesActivity extends AppCompatActivity {
     }
 
 
-//    double ParseDouble(String strNumber) {
-//        if (strNumber != null && strNumber.length() > 0) {
-//            try {
-//                return Double.parseDouble(strNumber);
-//            } catch(Exception e) {
-//                return -1;   // or some value to mark this field is wrong. or make a function validates field first ...
-//            }
-//        }
-//        else return 0;
-//    }
-
-
-    // change ExpensesLandingActivity to ExpensesActivity when merged
     private void openAddExpensesView() {
         Intent intent = new Intent(this, ExpensesActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * Validates inputs and displays the different error messages for the user inputs
+     *
+     * @param textInput The password that the user types into the textbox
+     * @return whether the user input is valid and sets an error message if needed
+     *
+     */
     private boolean validate(TextInputLayout textInput) {
         String Input = Objects.requireNonNull(textInput.getEditText()).getText().toString().trim();
 
@@ -80,18 +74,12 @@ public class AddExpensesActivity extends AppCompatActivity {
             ExpenseDatabaseHelper expense = createExpenseDatabase();
             UserInfoDatabaseHelper user = createDatabase();
             // Adds all the user's info into the database
-            // this only works when logged in not through sign up
-            //expense.insertExpense(new Expense(name, Double.parseDouble(stramount)), user.getLoggedInEmail());
             expense.insertExpense(new Expense(name, Double.parseDouble(stramount)), user.getLoggedInEmail());
 
             openAddExpensesView();
 
         }
     }
-
-//    public boolean AddExpensesInput(View view) {
-//        return validate(textInputName) & validate(textInputAmount);
-//    }
 
 
         public void ClickBack (View view){
