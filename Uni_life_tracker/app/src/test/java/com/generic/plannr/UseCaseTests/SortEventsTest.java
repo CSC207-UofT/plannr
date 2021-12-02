@@ -28,8 +28,8 @@ public class SortEventsTest {
     public void TestSortByDate() {
         ArrayList<Event> sortedEvents = sortByDate(dayEventList);
         assertEquals(defaultDate, sortedEvents.get(0).getStartDate());
-        assertEquals(defaultDate.plusDays(2), sortedEvents.get(1).getStartDate());
-        assertEquals(defaultDate.plusDays(3), sortedEvents.get(2).getStartDate());
+        assertEquals(defaultDate.plusDays(1), sortedEvents.get(1).getStartDate());
+        assertEquals(defaultDate.plusDays(2), sortedEvents.get(2).getStartDate());
     }
 
     @Test(timeout = 50)
