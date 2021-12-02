@@ -85,11 +85,11 @@ public class AddExpensesActivity extends AppCompatActivity {
     public void AddExpensesInput(View v) {
         if (validate(textInputName) & validate(textInputAmount)) {
             String name = Objects.requireNonNull(textInputName.getEditText()).getText().toString();
-            String stramount = Objects.requireNonNull(textInputAmount.getEditText()).getText().toString();
+            String amount = Objects.requireNonNull(textInputAmount.getEditText()).getText().toString();
             ExpenseDatabaseHelper expense = createExpenseDatabase();
             UserInfoDatabaseHelper user = createDatabase();
             // Adds all the user's info into the database
-            expense.insertExpense(new Expense(name, Double.parseDouble(stramount)), user.getLoggedInEmail());
+            expense.insertExpense(new Expense(name, Double.parseDouble(amount)), user.getLoggedInEmail());
 
             openAddExpensesView();
 
