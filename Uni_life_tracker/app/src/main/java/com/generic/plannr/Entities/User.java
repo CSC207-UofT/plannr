@@ -31,7 +31,7 @@ public class User {
      * @return a String that describes the com.generic.plannr.Entities.User's name
      */
     public String getName() {
-        return name;
+        return this.name;
     }
 
     /**
@@ -47,7 +47,7 @@ public class User {
      * @return an ArrayList that describes the com.generic.plannr.Entities.User's current course list
      */
     public ArrayList<String> getCourses() {
-        return courses;
+        return this.courses;
     }
 
     /**
@@ -55,7 +55,7 @@ public class User {
      * @return an ArrayList that describes all the user's events
      */
     public ArrayList<Event> getEventList() {
-        return eventList;
+        return this.eventList;
     }
 
     public void setName(String name) {
