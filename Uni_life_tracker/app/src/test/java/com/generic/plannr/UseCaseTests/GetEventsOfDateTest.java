@@ -3,6 +3,7 @@ package com.generic.plannr.UseCaseTests;
 import org.junit.*;
 
 import static org.junit.Assert.*;
+import static com.generic.plannr.StaticTestVariables.defaultDate;
 import static com.generic.plannr.UseCases.GetEventsOfDate.getEventsOfDate;
 
 import java.time.LocalDateTime;
@@ -12,13 +13,13 @@ import java.util.Random;
 import com.generic.plannr.Entities.Event;
 
 public class GetEventsOfDateTest {
-    LocalDateTime date_;
     Random rand;
+
     @Before
     public void setUp() {
-        date_ = LocalDateTime.of(2021, 1, 1, 1, 1, 1, 1);
         rand = new Random();
     }
+
     /**
      * This tests the basic functionality of the UseCase GetEventsOfDate
      */
@@ -26,14 +27,14 @@ public class GetEventsOfDateTest {
     public void TestBasicFunctions() {
         // Empty arraylist to store events for testing
         ArrayList<Event> events = new ArrayList<>();
-        for (int i = 0; i < 10;  i++) {
-            events.add(new Event("test", 1, date_, date_));
+        for (int i = 0; i < 10; i++) {
+            events.add(new Event("test", 1, defaultDate, defaultDate));
         }
         // Add an event that is 1 day later
-        events.add(new Event("test", 1, date_.plusDays(1), date_));
+        events.add(new Event("test", 1, defaultDate.plusDays(1), defaultDate));
 
-       // Assert Equals
-        assertEquals(10, getEventsOfDate(events, date_.toLocalDate()).size());
+        // Assert Equals
+        assertEquals(10, getEventsOfDate(events, defaultDate.toLocalDate()).size());
     }
 
     /**
@@ -46,7 +47,7 @@ public class GetEventsOfDateTest {
 
         while (iter > 0) {
             // The target date
-            LocalDateTime target = date_.plusDays(rand.nextInt(3));
+            LocalDateTime target = defaultDate.plusDays(rand.nextInt(3));
             // Counter to count how many times we added events of the same date
             int counter = 0;
             // Creates a list to store the events
@@ -55,7 +56,7 @@ public class GetEventsOfDateTest {
             // Add events to the list
             for (int i = 0; i < 15; i++) {
                 // To store the randomly generated date
-                LocalDateTime startDate = date_.plusDays(rand.nextInt(3));
+                LocalDateTime startDate = defaultDate.plusDays(rand.nextInt(3));
                 if (startDate.compareTo(target) == 0) {
                     counter += 1;
                 }
@@ -63,7 +64,7 @@ public class GetEventsOfDateTest {
                         "test",
                         1,
                         startDate,
-                        date_.plusDays(rand.nextInt(100))
+                        defaultDate.plusDays(rand.nextInt(100))
                 ));
             }
 
