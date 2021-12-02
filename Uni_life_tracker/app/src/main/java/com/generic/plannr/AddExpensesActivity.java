@@ -55,7 +55,7 @@ public class AddExpensesActivity extends AppCompatActivity {
     }
 
     /**
-     * Creates a expense database and opens it
+     * Creates an expense database and opens it
      * @return expense an instance of expense database
      */
     public ExpenseDatabaseHelper createExpenseDatabase() {
