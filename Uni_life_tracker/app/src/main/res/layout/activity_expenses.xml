@@ -34,7 +34,6 @@
                     android:layout_weight="1"
                     android:text="@string/expenses"
                     android:textSize="25sp"
-                    android:textColor="@color/black"
                     android:textStyle="bold"
                     android:fontFamily="@font/roboto_mono_bold"
                     android:gravity="start"/>
