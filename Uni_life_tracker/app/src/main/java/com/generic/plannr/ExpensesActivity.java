@@ -32,7 +32,9 @@ public class ExpensesActivity extends AppCompatActivity {
         setExpenseInfo();
         setAdapter();
     }
-
+    /**
+     * Sets up the recycler view  for expenses list
+     */
     private void setAdapter() {
         ListExpenses adapter = new ListExpenses(expensesList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
@@ -40,14 +42,20 @@ public class ExpensesActivity extends AppCompatActivity {
         rvExpenses.setItemAnimator(new DefaultItemAnimator());
         rvExpenses.setAdapter(adapter);
     }
-
+    /**
+     * Creates an instance of expense database and an instance of userinfo database
+     * and adds all expenses to expense list
+     */
     private void setExpenseInfo() {
         ExpenseDatabaseHelper expense = createExpenseDatabase();
         UserInfoDatabaseHelper user = createDatabase();
         expensesList.addAll(expense.getAllExpenses(user.getLoggedInEmail()));
 
     }
-
+    /**
+     * Creates an expense database and opens it
+     * @return expense an instance of expense database
+     */
     public ExpenseDatabaseHelper createExpenseDatabase() {
         // creates an instance and opens database
         ExpenseDatabaseHelper expense = new ExpenseDatabaseHelper(ExpensesActivity.this);
@@ -55,6 +63,10 @@ public class ExpensesActivity extends AppCompatActivity {
         return expense;
     }
 
+    /**
+     * Creates a userinfo database and opens it
+     * @return user an instance of userinfo database
+     */
     public UserInfoDatabaseHelper createDatabase() {
         // creates an instance and opens database
         UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(ExpensesActivity.this);
@@ -63,6 +75,7 @@ public class ExpensesActivity extends AppCompatActivity {
     }
 
     public void clickAddExpense(View view) {
+        // clicking the check in order to add expense
         Intent intent = new Intent(this, AddExpensesActivity.class);
         startActivity(intent);
     }
