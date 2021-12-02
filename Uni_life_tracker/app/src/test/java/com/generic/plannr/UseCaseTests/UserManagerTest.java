@@ -22,4 +22,16 @@ public class UserManagerTest {
     public void TestViewEventListEmpty() {
         assertEquals(new ArrayList<>(), user.viewEventList());
     }
+
+    /**
+     * This tests both the addEventToUserList and viewEventList methods
+     */
+    @Test
+    public void TestAddEventToUserList() {
+        for (Event e: dayEventList) {
+            user.addEventToUsersList(e);
+        }
+        assertEquals(dayEventList.size(), user.viewEventList().size());
+        assertEquals(dayEventList, user.viewEventList());
+    }
 }
