@@ -1,5 +1,6 @@
 package com.generic.plannr.Database;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -79,29 +80,18 @@ public class ExpenseDatabaseHelper extends SQLiteOpenHelper {
      */
     public List<Expense> getAllExpenses(String userEmail) {
         List<Expense> expenseList = new ArrayList<>();
-        Cursor cur = null;
-        db.beginTransaction();
-        try {
-            cur = db.query("expenses", null, null, null,
-                    null, null, null, null);
-            if (cur != null) {
-                if (cur.moveToFirst()) {
-                    do {
-                        if (!userEmail.equals(cur.getString(cur.getColumnIndexOrThrow("USER_EMAIL")))) {
-                            continue;
-                        }
-                        Expense expense = new Expense(cur.getString(cur.getColumnIndexOrThrow("NAME")),
-                                cur.getDouble(cur.getColumnIndexOrThrow("VALUE")));
-                        expenseList.add(expense);
+        @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM expenses WHERE USER_EMAIL = " + "'" + userEmail + "'", null);
+        if (cur != null) {
+            if (cur.moveToFirst()) {
+                do {
 
-                    } while (cur.moveToNext());
+                    Expense expense = new Expense(cur.getString(cur.getColumnIndexOrThrow("NAME")),
+                            cur.getDouble(cur.getColumnIndexOrThrow("VALUE")));
+                    expenseList.add(expense);
 
-                }
+                } while (cur.moveToNext());
+
             }
-        } finally {
-            db.endTransaction();
-            assert cur != null;
-            cur.close();
         }
 
         return expenseList;
