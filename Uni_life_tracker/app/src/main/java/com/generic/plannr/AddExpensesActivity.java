@@ -29,22 +29,8 @@ public class AddExpensesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_expenses);
         textInputName = findViewById(R.id.add_expense_name);
         textInputAmount = findViewById(R.id.add_expense_amount);
-
-
-        String name = Objects.requireNonNull(textInputName.getEditText()).getText().toString();
-        String stramount = Objects.requireNonNull(textInputAmount.getEditText()).getText().toString();
         //double amount = Double.parseDouble(Objects.requireNonNull(textInputAmount.getEditText()).getText().toString());
 
-        if (AddExpensesInput()) {
-            ExpenseDatabaseHelper expense = createExpenseDatabase();
-            UserInfoDatabaseHelper user = createDatabase();
-            // Adds all the user's info into the database
-            // this only works when logged in not through sign up
-            //expense.insertExpense(new Expense(name, Double.parseDouble(stramount)), user.getLoggedInEmail());
-            expense.insertExpense(new Expense(name, Double.parseDouble(stramount)), user.getLoggedInEmail());
-
-            openAddExpensesView();
-        }
     }
 
 
@@ -93,15 +79,25 @@ public class AddExpensesActivity extends AppCompatActivity {
         return user;
     }
 
-//    public void AddExpensesInput(View v) {
-//        if (!(validate(textInputName) & validate(textInputAmount))) {
-//
-//        }else{openAddExpensesView();}
-//    }
+    public void AddExpensesInput(View v) {
+        if (validate(textInputName) & validate(textInputAmount)) {
+            String name = Objects.requireNonNull(textInputName.getEditText()).getText().toString();
+            String stramount = Objects.requireNonNull(textInputAmount.getEditText()).getText().toString();
+            ExpenseDatabaseHelper expense = createExpenseDatabase();
+            UserInfoDatabaseHelper user = createDatabase();
+            // Adds all the user's info into the database
+            // this only works when logged in not through sign up
+            //expense.insertExpense(new Expense(name, Double.parseDouble(stramount)), user.getLoggedInEmail());
+            expense.insertExpense(new Expense(name, Double.parseDouble(stramount)), user.getLoggedInEmail());
 
-    public boolean AddExpensesInput() {
-        return validate(textInputName) & validate(textInputAmount);
+            openAddExpensesView();
+
+        }
     }
+
+//    public boolean AddExpensesInput(View view) {
+//        return validate(textInputName) & validate(textInputAmount);
+//    }
 
 
         public void ClickBack (View view){
