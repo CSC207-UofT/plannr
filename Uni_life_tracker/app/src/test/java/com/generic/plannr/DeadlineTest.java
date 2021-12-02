@@ -31,9 +31,9 @@ public class DeadlineTest {
 
     @Test(timeout = 50)
     public void TestToString() {
-        String deadlineString = "com.generic.plannr.Entities.Deadline (high priority): " +
+        String deadlineString = "Deadline (high priority): " +
                 "The assignment Phase 0 from CSC207H1 is due on " +
-                "15-10-2021 11:59 p.m.";
+                "15-10-2021 23:59";
         assertEquals(deadlineString, deadline.toString());
     }
 
