@@ -3,6 +3,7 @@
     <style name="Theme.Plannr" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/lavender</item>
+        <item name="colorAccent">@color/lavender</item>
         <item name="colorPrimaryVariant">@color/periwinkle</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
@@ -11,7 +12,9 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        <!-- Default Text Colour -->
+        <item name="android:textColor">@color/black</item>
+
     </style>
     <style name="Theme.Plannr.NoActionBar">
         <item name="windowActionBar">false</item>

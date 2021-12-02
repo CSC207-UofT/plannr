@@ -35,7 +35,6 @@
                     android:layout_weight="1"
                     android:text="@string/settings"
                     android:textSize="25sp"
-                    android:textColor="@color/black"
                     android:textStyle="bold"
                     android:fontFamily="@font/roboto_mono_bold"
                     android:gravity="start"/>
@@ -67,7 +66,6 @@
                     android:layout_weight="1"
                     android:text="@string/name"
                     android:textSize="20sp"
-                    android:textColor="@color/black"
                     android:fontFamily="@font/roboto_mono_light"
                     android:layout_margin="5dp"/>
 
@@ -103,7 +101,6 @@
                     android:layout_weight="1"
                     android:text="@string/university"
                     android:textSize="20sp"
-                    android:textColor="@color/black"
                     android:fontFamily="@font/roboto_mono_light"
                     android:layout_margin="5dp"/>
 
