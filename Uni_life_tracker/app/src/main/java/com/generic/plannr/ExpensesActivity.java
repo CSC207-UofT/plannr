@@ -15,7 +15,8 @@ public class ExpensesActivity extends AppCompatActivity {
 
     private ArrayList<Expense> expensesArrayList;
     private RecyclerView  rvExpenses;
-    DrawerLayout drawerLayout;
+    private DrawerLayout drawerLayout;
+    private MainPageActivity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,7 @@ public class ExpensesActivity extends AppCompatActivity {
         rvExpenses = findViewById(R.id.rv_expenses);
         expensesArrayList = new ArrayList<>();
         drawerLayout = findViewById(R.id.drawer_layout); // nav menu
+        activity = new MainPageActivity();
 
         setExpenseInfo();
         setAdapter();
@@ -53,24 +55,26 @@ public class ExpensesActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void clickMenu(View view){ MainPageActivity.openDrawer(drawerLayout); } // open drawer
+    public void clickMenu(View view){ activity.openDrawer(drawerLayout); } // open drawer
 
-    public void clickLogo(View view) { MainPageActivity.redirectActivity(this, MainPageActivity.class);} // redirect activity to main
+    public void clickLogo(View view) { activity.redirectActivity(this, MainPageActivity.class);} // redirect activity to main
 
-    public void clickSchool(View view) { MainPageActivity.redirectActivity(this, SchoolActivity.class); } // redirect activity to school
+    public void clickSchool(View view) { activity.redirectActivity(this, SchoolActivity.class); } // redirect activity to school
 
     // TODO: change this to life later
-    public void clickLife(View view) { MainPageActivity.redirectActivity(this, MainPageActivity.class); } // redirect activity to life
+    public void clickLife(View view) { activity.redirectActivity(this, MainPageActivity.class); } // redirect activity to life
 
     public void clickExpenses(View view) { recreate(); } // recreate activity
 
-    public void clickSettings(View view) { MainPageActivity.redirectActivity(this, SettingsActivity.class); } // redirect activity to settings
+    public void clickSettings(View view) { activity.redirectActivity(this, SettingsActivity.class); } // redirect activity to settings
 
-    public void clickLogOut(View view) { MainPageActivity.logout(this); } // prompt logout
+    public void clickLogOut(View view) {
+        activity.logout(this);
+    } // prompt logout
 
     @Override
     protected void onPause() {
         super.onPause();
-        MainPageActivity.closeDrawer(drawerLayout); // close drawer
+        activity.closeDrawer(drawerLayout); // close drawer
     }
 }

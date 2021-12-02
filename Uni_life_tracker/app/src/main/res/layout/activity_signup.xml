@@ -82,11 +82,12 @@
                 app:boxBackgroundColor="@color/white"
                 app:passwordToggleEnabled="true">
 
-            <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/password"
-                    android:inputType="textPassword"/>
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/password"
+                android:inputType="textPassword"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <!--  Sign Up Button  -->
@@ -94,7 +95,8 @@
                 android:id="@+id/btn_sign_up"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/sign_up"/>
+                android:text="@string/sign_up"
+                android:onClick="clickSignup"/>
 
         <!--  Have an existing account? Text  -->
         <TextView
@@ -110,6 +112,7 @@
                 android:id="@+id/btn_log_in"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/log_in"/>
+                android:text="@string/log_in"
+                android:onClick="clickLogin"/>
     </LinearLayout>
 </ScrollView>

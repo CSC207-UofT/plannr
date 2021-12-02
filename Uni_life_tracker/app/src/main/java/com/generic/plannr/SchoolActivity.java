@@ -20,7 +20,8 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
     private LocalDate selectedDate;
-    DrawerLayout drawerLayout;
+    private DrawerLayout drawerLayout;
+    private MainPageActivity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -31,6 +32,7 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
         selectedDate = LocalDate.of(2021,11,13);
         setMonthView();
         drawerLayout = findViewById(R.id.drawer_layout);
+        activity = new MainPageActivity();
     }
 
     private void initWidgets()
@@ -112,24 +114,26 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
         }
     }
 
-    public void clickMenu(View view) { MainPageActivity.openDrawer(drawerLayout); } // open drawer
+    public void clickMenu(View view) { activity.openDrawer(drawerLayout); } // open drawer
 
-    public void clickLogo(View view) { MainPageActivity.redirectActivity(this, MainPageActivity.class); } // redirect activity to main
+    public void clickLogo(View view) { activity.redirectActivity(this, MainPageActivity.class); } // redirect activity to main
 
     public void clickSchool(View view) { recreate(); } // recreate activity
 
     // TODO: change this to life later
-    public void clickLife(View view) { MainPageActivity.redirectActivity(this, MainPageActivity.class); } // redirect activity to life
+    public void clickLife(View view) { activity.redirectActivity(this, MainPageActivity.class); } // redirect activity to life
 
-    public void clickExpenses(View view) { MainPageActivity.redirectActivity(this, ExpensesActivity.class); } // redirect activity to expenses
+    public void clickExpenses(View view) { activity.redirectActivity(this, ExpensesActivity.class); } // redirect activity to expenses
 
-    public void clickSettings(View view) { MainPageActivity.redirectActivity(this, SettingsActivity.class); } // redirect activity to settings
+    public void clickSettings(View view) { activity.redirectActivity(this, SettingsActivity.class); } // redirect activity to settings
 
-    public void clickLogOut(View view) { MainPageActivity.logout(this); } // prompt logout
+    public void clickLogOut(View view) {
+        MainPageActivity activity = new MainPageActivity();
+        activity.logout(this); } // prompt logout
 
     @Override
     protected void onPause() {
         super.onPause();
-        MainPageActivity.closeDrawer(drawerLayout); // close drawer
+        activity.closeDrawer(drawerLayout); // close drawer
     }
 }

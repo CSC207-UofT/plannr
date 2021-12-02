@@ -5,6 +5,7 @@
 
     <application
             android:allowBackup="true"
+            android:fullBackupContent="true"
             android:label="@string/app_name"
             android:icon="@drawable/ic_plannr_p_black"
             android:roundIcon="@drawable/ic_plannr_p_black"
@@ -16,7 +17,6 @@
         <activity android:name="com.generic.plannr.AddExpensesActivity"> </activity>
         <activity android:name="com.generic.plannr.ExpensesActivity"> </activity>
         <activity android:name="com.generic.plannr.SchoolActivity"> </activity>
-        <activity android:name="com.generic.plannr.WelcomeLoginSignupActivity"> </activity>
         <activity android:name="com.generic.plannr.LoginActivity"> </activity>
         <activity
                 android:name="com.generic.plannr.MainPageActivity"
