@@ -58,7 +58,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         startHour = calendar.get(Calendar.HOUR_OF_DAY);
         startMinute = calendar.get(Calendar.MINUTE);
 
-//       Start Date & Time Format
+//       Start Date & Time Format (Current Date & Time)
         String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
         String time = new SimpleDateFormat("hh:mm aa", Locale.getDefault()).format(new Date());
 
@@ -85,7 +85,8 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
                         startMonth = month;
                         startDay = dayOfMonth;
 
-                        String startDate = startDay + "-" + (startMonth+1) + "-" + startYear;
+                        @SuppressLint("DefaultLocale")
+                        String startDate = String.format("%02d-%02d-%d", startDay, (startMonth+1), startYear);
                         tvStartDate.setText(startDate);
                     }, startYear, startMonth, startDay);
             datePickerDialog.updateDate(startYear, startMonth, startDay); // displays prev selected date
@@ -98,9 +99,11 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
             DatePickerDialog datePickerDialog = new DatePickerDialog(
                     AddEventActivity.this, (view, year, month, dayOfMonth) -> {
                 endYear = year;
-                endMonth = month + 1;
+                endMonth = month;
                 endDay = dayOfMonth;
-                String endDate = endDay + "-" + endMonth + "-" + endYear;
+
+                @SuppressLint("DefaultLocale")
+                String endDate = String.format("%02d-%02d-%d", endDay, (endMonth+1), endYear);
                 tvEndDate.setText(endDate);
             }, endYear, endMonth, endDay);
 
