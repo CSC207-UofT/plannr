@@ -10,6 +10,7 @@ public class StaticTestVariables {
     public static LocalDateTime defaultDate = LocalDateTime.of(2021, 11, 15, 1, 1, 1);
     public static Event defaultEvent = new Event("Default Event", 0, defaultDate, defaultDate);
     public static LocalDateTime TODAY = LocalDateTime.now();
+    public static ArrayList<String> COURSES = new ArrayList<>(Arrays.asList("CSC207", "CSC148", "CSC165", "CSC311", "CSC236"));
 
     // This eventList differs only in priorities
     public static ArrayList<Event> priorityEventList = new ArrayList<>(Arrays.asList(
