@@ -101,7 +101,7 @@ public class MainPageActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle("Log Out");
         builder.setMessage("Are you sure you want to log out?");
-        builder.setPositiveButton("Yes", (dialog, which) -> redirectActivity(this, LoginActivity.class));
+        builder.setPositiveButton("Yes", (dialog, which) -> redirectActivity(activity, LoginActivity.class));
 
         builder.setNegativeButton("No", (dialog, which) -> dialog.dismiss());
         builder.show();
