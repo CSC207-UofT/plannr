@@ -4,6 +4,7 @@ import org.junit.*;
 
 import static org.junit.Assert.*;
 import static com.generic.plannr.UseCases.AddEvent.*;
+import static com.generic.plannr.StaticTestVariables.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -15,19 +16,17 @@ import com.generic.plannr.Entities.Class;
 import com.generic.plannr.UseCases.UserManager;
 
 public class AddEventTest {
-    ArrayList<String> courses;
     LocalDateTime startDate;
 
     @Before
     public void setUp() {
-        courses = new ArrayList<>(Arrays.asList("CSC207", "CSC148", "CSC165", "CSC311", "CSC236"));
         startDate = LocalDateTime.of(2021, 1,1,1,1,1);
     }
 
     @Test
     public void TestAddAssessment() {
         // Instantiate a new UserManager
-        UserManager user = new UserManager("Test User", courses, "U of T");
+        UserManager user = new UserManager("Test User", COURSES, "U of T");
 
         addAssessment(user, "Assessment 1", 1, startDate, startDate, "CSC207");
 
@@ -42,7 +41,7 @@ public class AddEventTest {
     @Test
     public void TestAddStudySession() {
         // Instantiate a new UserManager
-        UserManager user = new UserManager("Test User", courses, "U of T");
+        UserManager user = new UserManager("Test User", COURSES, "U of T");
         ArrayList<String> participants = new ArrayList<>(Arrays.asList("Kathy", "Dana", "Bolade", "Sari", "Evgenia", "Daniel"));
 
         addStudySession(user, "Study Session 1", 1, startDate, startDate, "CSC207", "Robarts", participants);
@@ -60,7 +59,7 @@ public class AddEventTest {
     @Test
     public void TestAddClass() {
         // Instantiate a new UserManager
-        UserManager user = new UserManager("Test User", courses, "U of T");
+        UserManager user = new UserManager("Test User", COURSES, "U of T");
 
         addClass(user, "Class 1", 1, startDate, startDate, "CSC207", "Bahen");
 
