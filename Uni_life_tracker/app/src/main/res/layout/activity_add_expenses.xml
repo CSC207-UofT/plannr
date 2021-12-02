@@ -48,6 +48,7 @@
 
     </LinearLayout>
 
+    <!--  Add Expense Name Textfield  -->
     <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/add_expense_name"
             android:layout_width="300dp"
@@ -64,6 +65,7 @@
         />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!--  Add Expense Amount Textfield  -->
     <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/add_expense_amount"
             android:layout_marginStart="60dp"
