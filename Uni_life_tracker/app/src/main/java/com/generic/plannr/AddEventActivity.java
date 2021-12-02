@@ -4,14 +4,19 @@ import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
+import com.generic.plannr.Database.EventDatabaseHelper;
+import com.generic.plannr.Database.UserInfoDatabaseHelper;
+import com.generic.plannr.Entities.Event;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -158,13 +163,39 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         coursesList.setAdapter(myAdapter);
 
-        ivSave.setOnClickListener(view -> Toast.makeText(AddEventActivity.this, priority, Toast.LENGTH_SHORT).show());
+        //ivSave.setOnClickListener(view -> Toast.makeText(AddEventActivity.this, priority, Toast.LENGTH_SHORT).show());
     }
 
 //    Back Button
     public void clickBack(View view) {
-        Intent intent = new Intent(this, MainPageActivity.class); // TODO: direct to school/life page
+        EventDatabaseHelper eventdb = new EventDatabaseHelper(AddEventActivity.this);
+        eventdb.openDatabase();
+
+        UserInfoDatabaseHelper userdb = new UserInfoDatabaseHelper(AddEventActivity.this);
+        userdb.openDatabase();
+
+        String eventName = etEventName.getText().toString();
+        String startDate = tvStartDate.getText().toString().trim();
+        String endDate = tvEndDate.getText().toString().trim();
+        String startTime = tvStartTime.getText().toString().trim();
+        String endTime = tvEndTime.getText().toString().trim();
+
+
+        DateTimeFormatter DATEFORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm a");
+
+        LocalDateTime start = LocalDateTime.parse(startDate + " " + startTime, DATEFORMAT);
+        LocalDateTime end = LocalDateTime.parse(endDate + " " + endTime, DATEFORMAT);
+
+        String email = userdb.getLoggedInEmail();
+
+        Event event = new Event(eventName, priority, start, end);
+
+        eventdb.insertEvent(event, email);
+
+        Intent intent = new Intent(this, MainPageActivity.class); // TODO: direct to study session page
         startActivity(intent);
+//        Intent intent = new Intent(this, MainPageActivity.class); // TODO: direct to school/life page
+//        startActivity(intent);
     }
 
 //    Priority Selection
@@ -197,5 +228,9 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
     public void clickStudySession(View view) {
         Intent intent = new Intent(this, MainPageActivity.class); // TODO: direct to study session page
         startActivity(intent);
+    }
+
+    public void clickTest(View view) {
+
     }
 }
