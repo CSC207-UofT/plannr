@@ -41,20 +41,9 @@ public class ExpensesActivity extends AppCompatActivity {
         rvExpenses.setAdapter(adapter);
     }
 
-////    TODO: generates expenses to display FOR NOW
-//    private void setExpenseInfo() {
-//        expensesArrayList.add(new Expense("Rent", 1500.50));
-//        expensesArrayList.add(new Expense("Food", 134.23));
-//        expensesArrayList.add(new Expense("Dinner", 54.67));
-//        expensesArrayList.add(new Expense("Clothing", 45.96));
-//
-//    }
-
-    //    TODO: generates expenses to display FOR NOW
     private void setExpenseInfo() {
         ExpenseDatabaseHelper expense = createExpenseDatabase();
         UserInfoDatabaseHelper user = createDatabase();
-        //expense.getAllExpenses(user.getLoggedInEmail());
         expensesList.addAll(expense.getAllExpenses(user.getLoggedInEmail()));
 
     }
