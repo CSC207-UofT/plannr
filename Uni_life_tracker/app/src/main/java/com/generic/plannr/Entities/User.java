@@ -35,6 +35,14 @@ public class User {
     }
 
     /**
+     * getter method for school
+     * @return a String that contains the user's name
+     */
+    public String getSchool() {
+        return this.school;
+    }
+
+    /**
      * getter method for courses
      * @return an ArrayList that describes the com.generic.plannr.Entities.User's current course list
      */
