@@ -112,7 +112,7 @@ public class EventDatabaseHelper extends SQLiteOpenHelper {
             assert cur != null;
             cur.close();
         }
-
+        // cur.close?
         return eventList;
     }
 
