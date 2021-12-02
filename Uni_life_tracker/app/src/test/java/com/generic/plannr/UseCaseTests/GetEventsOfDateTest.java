@@ -1,15 +1,15 @@
-package com.generic.ult.UseCaseTests;
+package com.generic.plannr.UseCaseTests;
 
 import org.junit.*;
 
 import static org.junit.Assert.*;
-import static UseCases.GetEventsOfDate.getEventsOfDate;
+import static com.generic.plannr.UseCases.GetEventsOfDate.getEventsOfDate;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Random;
 
-import Entities.Event;
+import com.generic.plannr.Entities.Event;
 
 public class GetEventsOfDateTest {
     LocalDateTime date_;

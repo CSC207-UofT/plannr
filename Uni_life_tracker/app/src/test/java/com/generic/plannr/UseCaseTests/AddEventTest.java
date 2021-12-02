@@ -1,18 +1,18 @@
-package com.generic.ult.UseCaseTests;
+package com.generic.plannr.UseCaseTests;
 
 import org.junit.*;
 
 import static org.junit.Assert.*;
-import static UseCases.AddEvent.*;
+import static com.generic.plannr.UseCases.AddEvent.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import Entities.Assessment;
-import Entities.StudySession;
-import Entities.Class;
-import UseCases.UserManager;
+import com.generic.plannr.Entities.Assessment;
+import com.generic.plannr.Entities.StudySession;
+import com.generic.plannr.Entities.Class;
+import com.generic.plannr.UseCases.UserManager;
 
 public class AddEventTest {
     ArrayList<String> courses;

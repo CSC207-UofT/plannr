@@ -1,4 +1,4 @@
-package com.generic.ult.UseCaseTests;
+package com.generic.plannr.UseCaseTests;
 
 public class UserManagerTest {
 }
