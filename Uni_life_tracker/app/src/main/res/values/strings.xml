@@ -36,7 +36,7 @@
     <string name="lowercase">(?=.*[a-z])</string>
     <string name="number"
             tools:ignore="TypographyDashes">(?=.*[0-9])</string>
-    <string name="specialChar"><![CDATA[(?=.*[@#!$%^&+=])]]></string>
+    <string name="specialChar"><![CDATA[(?=.*[@#!$%^/*_&+=])]]></string>
 
     <!--  Calendar  -->
     <string name="minLength">.{6,}</string>

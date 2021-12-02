@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="30dp"
-        tools:context=".SignUpActivity">
+        tools:context=".LoginActivity">
 
     <!--  Logo  -->
     <ImageView
@@ -58,13 +58,14 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <!--  Login Button  -->
+
+    <!--  No account yet? Text  -->
     <Button
             android:id="@+id/btn_log_in"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/log_in"/>
-
-    <!--  No account yet? Text  -->
+            android:text="@string/log_in"
+            android:onClick="clickLogin"/>
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -78,5 +79,6 @@
             android:id="@+id/btn_sign_up"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/sign_up"/>
+            android:text="@string/sign_up"
+            android:onClick="clickSignup"/>
 </LinearLayout>

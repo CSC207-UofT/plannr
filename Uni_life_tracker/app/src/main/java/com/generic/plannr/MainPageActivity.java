@@ -73,11 +73,11 @@ public class MainPageActivity extends AppCompatActivity {
         openDrawer(drawerLayout);
     }
 
-    public static void openDrawer(DrawerLayout drawerLayout) { drawerLayout.openDrawer(GravityCompat.START); } // open drawer layout
+    public void openDrawer(DrawerLayout drawerLayout) { drawerLayout.openDrawer(GravityCompat.START); } // open drawer layout
 
     public void clickLogo(View view) { closeDrawer(drawerLayout); } // close drawer
 
-    public static void closeDrawer(DrawerLayout drawerLayout) {
+    public void closeDrawer(DrawerLayout drawerLayout) {
         // close drawer layout
 
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -97,20 +97,17 @@ public class MainPageActivity extends AppCompatActivity {
 
     public void clickLogOut(View view) { logout(this); } // redirect activity to settings
 
-    public static void logout(Activity activity) {
+    public void logout(Activity activity) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle("Log Out");
         builder.setMessage("Are you sure you want to log out?");
-        builder.setPositiveButton("Yes", (dialog, which) -> {
-            activity.finishAffinity();
-            System.exit(0);
-        });
+        builder.setPositiveButton("Yes", (dialog, which) -> redirectActivity(activity, LoginActivity.class));
 
         builder.setNegativeButton("No", (dialog, which) -> dialog.dismiss());
         builder.show();
     }
 
-    public static void redirectActivity(Activity activity, Class aClass) {
+    public void redirectActivity(Activity activity, @SuppressWarnings("rawtypes") Class aClass) {
         // initialize intent
         Intent intent = new Intent(activity,aClass);
         // set flag
