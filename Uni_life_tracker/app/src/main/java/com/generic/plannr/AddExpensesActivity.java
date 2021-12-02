@@ -22,6 +22,7 @@ public class AddExpensesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_expenses);
+        // connecting variables to UI features in activities
         textInputName = findViewById(R.id.add_expense_name);
         textInputAmount = findViewById(R.id.add_expense_amount);
 
@@ -29,6 +30,7 @@ public class AddExpensesActivity extends AppCompatActivity {
 
 
     private void openAddExpensesView() {
+        // Opens the expense list activity (ExpensesActivity)
         Intent intent = new Intent(this, ExpensesActivity.class);
         startActivity(intent);
     }
@@ -52,6 +54,10 @@ public class AddExpensesActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Creates a expense database and opens it
+     * @return expense an instance of expense database
+     */
     public ExpenseDatabaseHelper createExpenseDatabase() {
         // creates an instance and opens database
         ExpenseDatabaseHelper expense = new ExpenseDatabaseHelper(AddExpensesActivity.this);
@@ -59,7 +65,10 @@ public class AddExpensesActivity extends AppCompatActivity {
         return expense;
     }
 
-
+    /**
+     * Creates a userinfo database and opens it
+     * @return user an instance of userinfo database
+     */
     public UserInfoDatabaseHelper createDatabase() {
         // creates an instance and opens database
         UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(AddExpensesActivity.this);
@@ -67,6 +76,12 @@ public class AddExpensesActivity extends AppCompatActivity {
         return user;
     }
 
+    /**
+     * Checks whether the information inputted matches the requirements and opens the expense and user info database
+     * in order to insert an expense into the database, then opens the expense list view
+     * @param v The current view
+     *
+     */
     public void AddExpensesInput(View v) {
         if (validate(textInputName) & validate(textInputAmount)) {
             String name = Objects.requireNonNull(textInputName.getEditText()).getText().toString();
@@ -81,8 +96,8 @@ public class AddExpensesActivity extends AppCompatActivity {
         }
     }
 
-
         public void ClickBack (View view){
+        // clicking the arrow back button
             Intent intent = new Intent(this, ExpensesActivity.class);
             startActivity(intent);
         }
