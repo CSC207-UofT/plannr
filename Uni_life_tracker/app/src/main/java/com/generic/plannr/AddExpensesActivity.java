@@ -10,15 +10,10 @@ import com.generic.plannr.Entities.Expense;
 import com.google.android.material.textfield.TextInputLayout;
 
 
-
-
-
 import java.util.Objects;
 
 
 public class AddExpensesActivity extends AppCompatActivity {
-
-    // private AppBarConfiguration appBarConfiguration;
 
     private TextInputLayout textInputName, textInputAmount;
 
@@ -29,7 +24,6 @@ public class AddExpensesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_expenses);
         textInputName = findViewById(R.id.add_expense_name);
         textInputAmount = findViewById(R.id.add_expense_amount);
-        //double amount = Double.parseDouble(Objects.requireNonNull(textInputAmount.getEditText()).getText().toString());
 
     }
 
