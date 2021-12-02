@@ -1,6 +1,5 @@
 package com.generic.plannr.UseCases;
 
-import com.generic.plannr.Entities.Deadline;
 import com.generic.plannr.Entities.Event;
 import com.generic.plannr.Entities.Expense;
 import com.generic.plannr.Entities.User;
@@ -16,9 +15,10 @@ public class UserManager {
 
     /**
      * Constructs a user manager and creates a new user
-     * @param name is the user's name
+     *
+     * @param name    is the user's name
      * @param courses is the user's list of courses
-     * @param school is the user's school
+     * @param school  is the user's school
      */
     public UserManager(String name, ArrayList<String> courses, String school) {
         u = createUser(name, courses, school);
@@ -27,9 +27,10 @@ public class UserManager {
 
     /**
      * Creates a user
-     * @param name is the user's name
+     *
+     * @param name    is the user's name
      * @param courses is the user's list of courses
-     * @param school is the user's school's name
+     * @param school  is the user's school's name
      * @return the created user
      */
     public User createUser(String name, ArrayList<String> courses, String school) {
@@ -38,6 +39,7 @@ public class UserManager {
 
     /**
      * Gets the User's list of events
+     *
      * @return the user's list of events
      */
     public ArrayList<Event> viewEventList() {
@@ -46,6 +48,7 @@ public class UserManager {
 
     /**
      * Gets the User's list of courses
+     *
      * @return the User's list of courses
      */
     public ArrayList<String> viewCourses() {
@@ -54,6 +57,7 @@ public class UserManager {
 
     /**
      * Gets the user's expenses
+     *
      * @return an ArrayList of Expenses objects
      */
     public ArrayList<Expense> getExpenses() {
@@ -62,6 +66,7 @@ public class UserManager {
 
     /**
      * Changes the User's name
+     *
      * @param name is the new name of User
      */
     public void changeUsersName(String name) {
@@ -70,24 +75,34 @@ public class UserManager {
 
     /**
      * Changes the User's school
+     *
      * @param school is the new name of User's school
      */
-    public void changeUsersSchool(String school) { u.setSchool(school);}
+    public void changeUsersSchool(String school) {
+        u.setSchool(school);
+    }
 
     /**
      * Adds an event to User's event list
+     *
      * @param event is the event to be added to the user's list
      */
-    public void addEventToUsersList (Event event) { u.getEventList().add(event); }
+    public void addEventToUsersList(Event event) {
+        u.getEventList().add(event);
+    }
 
     /**
      * Adds a course to User's course list
+     *
      * @param course is the String of the course's name to be added to the user's list
      */
-    public void addCourseToUsersList (String course) { u.getCourses().add(course); }
+    public void addCourseToUsersList(String course) {
+        u.getCourses().add(course);
+    }
 
     /**
      * Calculates and returns the user's current balance
+     *
      * @return the current balance of user
      */
     public double calculateBalance() {
@@ -102,11 +117,11 @@ public class UserManager {
 
     /**
      * Adds a new expense to the user's expensesList
+     *
      * @param value value of the new expense
-     * @param name name of the new expense
+     * @param name  name of the new expense
      */
     public void addExpense(double value, String name) {
         u.getExpenseList().add(expManager.createExpense(name, value));
     }
-
 }
