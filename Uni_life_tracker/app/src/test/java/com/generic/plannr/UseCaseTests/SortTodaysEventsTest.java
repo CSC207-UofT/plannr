@@ -7,7 +7,6 @@ import com.generic.plannr.UseCases.UserManager;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -41,7 +40,6 @@ public class SortTodaysEventsTest {
     public void TestSortByDate() {
         ArrayList<Event> expected = new ArrayList<>(Arrays.asList(e1, e2, e3));
         assertEquals(expected, sortByDate(user));
-
     }
 
     @Test(timeout = 50)
