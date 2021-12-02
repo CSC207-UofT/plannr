@@ -8,9 +8,7 @@ import static com.generic.plannr.UseCases.SortEvents.sortByDate;
 import static com.generic.plannr.UseCases.SortEvents.sortByPriority;
 import static com.generic.plannr.StaticTestVariables.*;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import com.generic.plannr.Entities.Event;
 import com.generic.plannr.UseCases.EventDateComparator;
