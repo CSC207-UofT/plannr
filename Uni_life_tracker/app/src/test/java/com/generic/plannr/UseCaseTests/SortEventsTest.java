@@ -6,6 +6,7 @@ import static org.junit.Assert.*;
 
 import static com.generic.plannr.UseCases.SortEvents.sortByDate;
 import static com.generic.plannr.UseCases.SortEvents.sortByPriority;
+import static com.generic.plannr.StaticTestVariables.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -16,47 +17,29 @@ import com.generic.plannr.UseCases.EventDateComparator;
 
 public class SortEventsTest {
 
-    Event e1, e2, e3;
     ArrayList<String> COURSES;
     EventDateComparator EDC;
-    ArrayList<Event> events;
 
     @Before
     public void setUp() {
         COURSES = new ArrayList<>();
         EDC = new EventDateComparator();
-
-        e1 = new Event(
-                "test",
-                2,
-                LocalDateTime.of(2021, 11, 15, 1, 1, 1),
-                LocalDateTime.of(2021, 11, 15, 1, 1, 1)
-        );
-        e2 = new Event(
-                "test",
-                1,
-                LocalDateTime.of(2021, 11, 15, 1, 1, 2),
-                LocalDateTime.of(2021, 11, 15, 1, 1, 2)
-        );
-        e3 = new Event(
-                "test",
-                0,
-                LocalDateTime.of(2021, 11, 15, 1, 1, 3),
-                LocalDateTime.of(2021, 11, 15, 1, 1, 3)
-        );
-        events = new ArrayList<>(Arrays.asList(e1, e2, e3));
     }
 
     @Test(timeout = 50)
     public void TestSortByDate() {
-        ArrayList<Event> expected = new ArrayList<>(Arrays.asList(e1, e2, e3));
-        assertEquals(expected, sortByDate(events));
+        ArrayList<Event> sortedEvents = sortByDate(dayEventList);
+        assertEquals(defaultDate, sortedEvents.get(0).getStartDate());
+        assertEquals(defaultDate.plusDays(2), sortedEvents.get(1).getStartDate());
+        assertEquals(defaultDate.plusDays(3), sortedEvents.get(2).getStartDate());
     }
 
     @Test(timeout = 50)
     public void TestSortByPriority() {
-        ArrayList<Event> expected = new ArrayList<>(Arrays.asList(e3, e2, e1));
-        assertEquals(expected, sortByPriority(events));
+        ArrayList<Event> sortedEvents = sortByPriority(priorityEventList);
+        assertEquals(0, sortedEvents.get(0).getPriority());
+        assertEquals(1, sortedEvents.get(1).getPriority());
+        assertEquals(2, sortedEvents.get(2).getPriority());
     }
 
 }
