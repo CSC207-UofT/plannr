@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 public class Validator {
     // At least one number, uppercase letter, lowercase letter and special char. Min of 6 characters
     private static final Pattern PASSWORD_REQ =
-            Pattern.compile("[\\w\\d!@#$%^&*()\\[\\]\\\\/-_=+]{6,}");
+            Pattern.compile("[\\w\\d!@#$%^&*()-_\\\\/\\[\\]=+]{6,}");
 
     /**
      * Validates inputs and displays the different error messages for the user inpupts
