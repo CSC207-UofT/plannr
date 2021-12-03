@@ -60,7 +60,7 @@ public class UserManagerTest {
     @Test
     public void TestAddCourseToUsersList() {
         user.addCourseToUsersList("CSC999");
-        assertEquals(COURSES.size()+1, user.viewCourses().size());
+        assertEquals(COURSES.size() + 1, user.viewCourses().size());
         assertTrue(user.viewCourses().contains("CSC999"));
     }
 
