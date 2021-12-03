@@ -69,7 +69,7 @@
                 android:textSize="15sp"
                 android:fontFamily="@font/roboto_mono_light"
                 android:layout_marginTop="-20dp"
-                android:layout_marginStart="90dp"/>
+                android:layout_marginStart="87dp"/>
 
         <!--  Sort Button  -->
         <Button
@@ -80,17 +80,6 @@
                 android:layout_marginStart="20dp"
                 android:fontFamily="@font/roboto_mono_bold"
                 android:text="@string/sort"/>
-
-        <!--  Sort Button  -->
-        <Button
-                android:id="@+id/btn_update"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="-48dp"
-                android:layout_marginStart="160dp"
-                android:fontFamily="@font/roboto_mono_bold"
-                android:text="@string/update"
-                android:onClick="GetDataToTextView"/>
 
         <!--  Event List  -->
         <androidx.recyclerview.widget.RecyclerView

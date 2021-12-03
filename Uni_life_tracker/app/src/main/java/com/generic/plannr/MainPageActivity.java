@@ -32,6 +32,10 @@ public class MainPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
 
+        TextView tv1 = findViewById(R.id.tv_welcome_name);
+        UserInfoDatabaseHelper user = createDatabase();
+        tv1.setText(user.getLoggedInName());
+
         // show today's date
         Calendar calendar = Calendar.getInstance();
         String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
@@ -50,9 +54,7 @@ public class MainPageActivity extends AppCompatActivity {
     }
 
     public void GetDataToTextView(View v){
-        TextView tv1 = findViewById(R.id.tv_welcome_name);
-        UserInfoDatabaseHelper user = createDatabase();
-        tv1.setText(user.getLoggedInName());
+
     }
     /**
      * Creates a userinfo database and opens it
