@@ -66,7 +66,7 @@ public class GetTodaysEventsTest {
 
     @Test(timeout = 1000)
     public void TestMixedEvents() {
-        int iter = rand.nextInt(50)+30;
+        int iter = rand.nextInt(50) + 30;
 
         // Iterates by iter amount of times
         for (int i = 0; i < iter; i++) {
@@ -75,7 +75,7 @@ public class GetTodaysEventsTest {
             UserManager user = new UserManager("test user", COURSES, "U of Tears and Tuition");
 
             // Loop that creates and adds events that happens today
-            for (int j = 0; j < rand.nextInt(50)+1; j++) {
+            for (int j = 0; j < rand.nextInt(50) + 1; j++) {
                 Event e = new Event("test", rand.nextInt(2), TODAY, TODAY);
                 expected.add(e);
                 user.addEventToUsersList(e);
@@ -85,8 +85,8 @@ public class GetTodaysEventsTest {
                 Event e = new Event(
                         "test",
                         rand.nextInt(2),
-                        TODAY.plusMonths(rand.nextInt(5)+1),
-                        TODAY.plusMonths(rand.nextInt(5)+1)
+                        TODAY.plusMonths(rand.nextInt(5) + 1),
+                        TODAY.plusMonths(rand.nextInt(5) + 1)
                 );
                 user.addEventToUsersList(e);
             }
@@ -95,8 +95,8 @@ public class GetTodaysEventsTest {
                 Event e = new Event(
                         "test",
                         rand.nextInt(2),
-                        TODAY.minusMonths(rand.nextInt(5)+1),
-                        TODAY.minusMonths(rand.nextInt(5)+1)
+                        TODAY.minusMonths(rand.nextInt(5) + 1),
+                        TODAY.minusMonths(rand.nextInt(5) + 1)
                 );
                 user.addEventToUsersList(e);
             }
