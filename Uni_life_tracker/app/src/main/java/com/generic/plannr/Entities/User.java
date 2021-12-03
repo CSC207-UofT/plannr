@@ -24,6 +24,7 @@ public class User {
         this.school = school;
         this.eventList = new ArrayList<>();
         this.income = 0.0;
+        this.expenseList = new ArrayList<>();
     }
 
     /**
