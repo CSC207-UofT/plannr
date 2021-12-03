@@ -22,6 +22,8 @@ public class UserManagerTest {
     public void TestConstructor() {
         assertEquals(COURSES, user.viewCourses());
         assertEquals(new ArrayList<>(), user.getExpenses());
+        assertEquals("Test User", user.getUsersName());
+        assertEquals("U of T", user.getUsersSchool());
     }
 
     @Test
