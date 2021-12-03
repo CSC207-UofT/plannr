@@ -28,4 +28,11 @@ public class ExpensesManagerTest {
         expManager.changeValue(exp, 1.0);
         assertEquals(1, expManager.getValue(exp), 0.0);
     }
+
+    @Test
+    public void TestChangeName() {
+        Expense exp = expManager.createExpense("test", 100.0);
+        expManager.changeName(exp, "tears");
+        assertEquals("tears", expManager.getExpenseName(exp));
+    }
 }
