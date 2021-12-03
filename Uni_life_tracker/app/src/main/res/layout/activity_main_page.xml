@@ -49,13 +49,34 @@
                 android:textStyle="bold"
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="20dp"/>
+        <!--  Welcome  -->
+        <TextView
+                android:id="@+id/tv_welcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/welcome"
+                android:textSize="15sp"
+                android:fontFamily="@font/roboto_mono_light"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="20dp"/>
+
+        <!--  Welcome Name  -->
+        <TextView
+                android:id="@+id/tv_welcome_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name"
+                android:textSize="15sp"
+                android:fontFamily="@font/roboto_mono_light"
+                android:layout_marginTop="-20dp"
+                android:layout_marginStart="90dp"/>
 
         <!--  Sort Button  -->
         <Button
                 android:id="@+id/btn_sort"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginStart="20dp"
                 android:fontFamily="@font/roboto_mono_bold"
                 android:text="@string/sort"/>
