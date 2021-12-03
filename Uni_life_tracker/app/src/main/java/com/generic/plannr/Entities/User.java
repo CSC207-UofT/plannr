@@ -4,32 +4,34 @@ import java.util.ArrayList;
 
 public class User {
     private String name;
-    private ArrayList<String> courses;
+    private final ArrayList<String> courses;
     private String school;
-    private ArrayList<Event> eventList;
-    private ArrayList<Expense> expenseList;
+    private final ArrayList<Event> eventList;
+    private final ArrayList<Expense> expenseList;
     private double income;
 
     /**
-     * Construct a com.generic.plannr.Entities.User, giving them the given name,
+     * Construct a user, giving them the given name,
      * courses, school, and setting an empty events list.
      *
-     * @param name    The com.generic.plannr.Entities.User's name
-     * @param courses The com.generic.plannr.Entities.User's course list
-     * @param school  The com.generic.plannr.Entities.User's school
+     * @param name    The user's name
+     * @param courses The user's course list
+     * @param school  The user's school
      */
     public User(String name, ArrayList<String> courses, String school) {
         this.name = name;
-        this.courses = courses;
+        this.courses = new ArrayList<>();
+        this.courses.addAll(courses);
         this.school = school;
         this.eventList = new ArrayList<>();
         this.income = 0.0;
+        this.expenseList = new ArrayList<>();
     }
 
     /**
      * getter method for name
      *
-     * @return a String that describes the com.generic.plannr.Entities.User's name
+     * @return a String that describes the user's name
      */
     public String getName() {
         return this.name;
@@ -47,7 +49,7 @@ public class User {
     /**
      * getter method for courses
      *
-     * @return an ArrayList that describes the com.generic.plannr.Entities.User's current course list
+     * @return an ArrayList that describes the user's current course list
      */
     public ArrayList<String> getCourses() {
         return this.courses;

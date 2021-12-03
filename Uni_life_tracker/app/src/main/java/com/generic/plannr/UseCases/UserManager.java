@@ -117,10 +117,20 @@ public class UserManager {
 
     /**
      * This method will return user's name
+     *
      * @return a String variable containing user's name
      */
     public String getUsersName() {
         return u.getName();
+    }
+
+    /**
+     * getter method for user's school
+     *
+     * @return a String variable containing the user's school
+     */
+    public String getUsersSchool() {
+        return u.getSchool();
     }
 
     /**
