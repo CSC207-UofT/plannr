@@ -101,6 +101,7 @@
     <string name="have_an_existing_account">Have an existing account?</string>
     <string name="welcome">Welcome</string>
     <string name="name">Name</string>
+    <string name="update">Update</string>
 
     <!--  TODO: to display courses for now (TEMPORARY) -->
     <string-array name="courses">

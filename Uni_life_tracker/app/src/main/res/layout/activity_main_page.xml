@@ -11,7 +11,7 @@
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical" android:onClick="GetDataToTextView">
 
         <!--  Menu Button  -->
         <ImageView
@@ -80,6 +80,17 @@
                 android:layout_marginStart="20dp"
                 android:fontFamily="@font/roboto_mono_bold"
                 android:text="@string/sort"/>
+
+        <!--  Sort Button  -->
+        <Button
+                android:id="@+id/btn_update"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-48dp"
+                android:layout_marginStart="160dp"
+                android:fontFamily="@font/roboto_mono_bold"
+                android:text="@string/update"
+                android:onClick="GetDataToTextView"/>
 
         <!--  Event List  -->
         <androidx.recyclerview.widget.RecyclerView
