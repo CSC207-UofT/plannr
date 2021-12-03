@@ -149,8 +149,14 @@ public class MainPageActivity extends AppCompatActivity {
      * @param activity a user's current activity.
      * @param aClass a Class of the new activity to be started.
      */
-    public static void redirectActivity(Activity activity, Class aClass) {
-
+    public void redirectActivity(Activity activity, @SuppressWarnings("rawtypes") Class aClass) {
+        // initialize intent
+        Intent intent = new Intent(activity,aClass);
+        // set flag
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        // start activity
+        activity.startActivity(intent);
+    }
     public void clickLogOut(View view) { logout(this); } // redirect activity to settings
 
     public void logout(Activity activity) {
@@ -161,15 +167,6 @@ public class MainPageActivity extends AppCompatActivity {
 
         builder.setNegativeButton("No", (dialog, which) -> dialog.dismiss());
         builder.show();
-    }
-
-    public void redirectActivity(Activity activity, @SuppressWarnings("rawtypes") Class aClass) {
-        // initialize intent
-        Intent intent = new Intent(activity,aClass);
-        // set flag
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        // start activity
-        activity.startActivity(intent);
     }
 
     @Override
