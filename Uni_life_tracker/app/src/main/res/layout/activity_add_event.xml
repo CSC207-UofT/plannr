@@ -257,10 +257,13 @@
                 android:textSize="15sp"
                 android:padding="15dp"/>
 
+
+
         <Spinner
                 android:id="@+id/spn_courses"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
     </LinearLayout>
+
 
 </LinearLayout>

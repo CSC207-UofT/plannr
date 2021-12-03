@@ -14,7 +14,6 @@
     <!--  Sign Up  -->
     <string name="left_arrow">Left Arrow</string>
     <string name="profile">Profile</string>
-    <string name="name">Name</string>
     <string name="university">University</string>
     <string name="start">Start!</string>
     <string name="month">Month</string>
@@ -99,6 +98,9 @@
     <string name="log_out">Log Out</string>
     <string name="no_account_yet">No account yet?</string>
     <string name="have_an_existing_account">Have an existing account?</string>
+    <string name="welcome">Welcome</string>
+    <string name="name">Name</string>
+    <string name="update">Update</string>
 
     <!--  TODO: to display courses for now (TEMPORARY) -->
     <string-array name="courses">
