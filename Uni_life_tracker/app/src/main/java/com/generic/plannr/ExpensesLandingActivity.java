@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.ui.AppBarConfiguration;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
@@ -13,7 +12,6 @@ import java.util.Objects;
 
 public class ExpensesLandingActivity extends AppCompatActivity {
 
-    private AppBarConfiguration appBarConfiguration;
 
     private TextInputLayout textInputName;
     private TextInputLayout textInputAmount;

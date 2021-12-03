@@ -1,5 +1,7 @@
 package com.generic.plannr;
 
+import com.generic.plannr.Database.ExpenseDatabaseHelper;
+import com.generic.plannr.Database.UserInfoDatabaseHelper;
 import com.generic.plannr.Entities.Expense;
 import android.content.Intent;
 import android.view.View;
@@ -13,7 +15,7 @@ import java.util.ArrayList;
 
 public class ExpensesActivity extends AppCompatActivity {
 
-    private ArrayList<Expense> expensesArrayList;
+    private ArrayList<Expense> expensesList;
     private RecyclerView  rvExpenses;
     private DrawerLayout drawerLayout;
     private MainPageActivity activity;
@@ -25,32 +27,57 @@ public class ExpensesActivity extends AppCompatActivity {
 
         // expense list
         rvExpenses = findViewById(R.id.rv_expenses);
-        expensesArrayList = new ArrayList<>();
+        expensesList = new ArrayList<>();
         drawerLayout = findViewById(R.id.drawer_layout); // nav menu
         activity = new MainPageActivity();
 
         setExpenseInfo();
         setAdapter();
     }
-
+    /**
+     * Sets up the recycler view  for expenses list
+     */
     private void setAdapter() {
-        ListExpenses adapter = new ListExpenses(expensesArrayList);
+        ListExpenses adapter = new ListExpenses(expensesList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         rvExpenses.setLayoutManager(layoutManager);
         rvExpenses.setItemAnimator(new DefaultItemAnimator());
         rvExpenses.setAdapter(adapter);
     }
-
-//    TODO: generates expenses to display FOR NOW
+    /**
+     * Creates an instance of expense database and an instance of userinfo database
+     * and adds all expenses to expense list
+     */
     private void setExpenseInfo() {
-        expensesArrayList.add(new Expense("Rent", 1500.50));
-        expensesArrayList.add(new Expense("Food", 134.23));
-        expensesArrayList.add(new Expense("Dinner", 54.67));
-        expensesArrayList.add(new Expense("Clothing", 45.96));
+        ExpenseDatabaseHelper expense = createExpenseDatabase();
+        UserInfoDatabaseHelper user = createDatabase();
+        expensesList.addAll(expense.getAllExpenses(user.getLoggedInEmail()));
 
+    }
+    /**
+     * Creates an expense database and opens it
+     * @return expense an instance of expense database
+     */
+    public ExpenseDatabaseHelper createExpenseDatabase() {
+        // creates an instance and opens database
+        ExpenseDatabaseHelper expense = new ExpenseDatabaseHelper(ExpensesActivity.this);
+        expense.openDatabase();
+        return expense;
+    }
+
+    /**
+     * Creates a userinfo database and opens it
+     * @return user an instance of userinfo database
+     */
+    public UserInfoDatabaseHelper createDatabase() {
+        // creates an instance and opens database
+        UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(ExpensesActivity.this);
+        user.openDatabase();
+        return user;
     }
 
     public void clickAddExpense(View view) {
+        // clicking the check in order to add expense
         Intent intent = new Intent(this, AddExpensesActivity.class);
         startActivity(intent);
     }
