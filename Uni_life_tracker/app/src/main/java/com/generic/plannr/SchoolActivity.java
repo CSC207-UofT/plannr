@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.generic.plannr.Database.EventDatabaseHelper;
 import com.generic.plannr.Database.UserInfoDatabaseHelper;
 import com.generic.plannr.Entities.Event;
+import com.generic.plannr.UseCases.GetEventsOfDate;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
@@ -36,7 +37,7 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_school);
         initWidgets();
-        selectedDate = LocalDate.of(2021,11,13);
+        selectedDate = LocalDate.now();
         setMonthView();
         drawerLayout = findViewById(R.id.drawer_layout);
         activity = new MainPageActivity();
@@ -61,7 +62,9 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
         user.openDatabase();
         event.openDatabase();
         String email = user.getLoggedInEmail();
-        eventsList.addAll(event.getAllEvents(email));
+
+
+        eventsList.addAll(GetEventsOfDate.getEventsOfDate(event.getAllEvents(email), selectedDate));
     }
 
     private void initWidgets()

@@ -84,8 +84,8 @@ public class EventDatabaseHelper extends SQLiteOpenHelper {
      *
      * @return returns the list of Event objects
      */
-    public List<Event> getAllEvents(String userEmail){
-        List<Event> eventList = new ArrayList<>();
+    public ArrayList<Event> getAllEvents(String userEmail){
+        ArrayList<Event> eventList = new ArrayList<>();
         Cursor cur = db.rawQuery("SELECT * FROM events WHERE USER_EMAIL = " + "'" + userEmail + "'", null);
 
 
