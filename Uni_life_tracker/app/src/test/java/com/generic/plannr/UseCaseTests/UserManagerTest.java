@@ -1,6 +1,7 @@
 package com.generic.plannr.UseCaseTests;
 
 import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertTrue;
 import static com.generic.plannr.StaticTestVariables.*;
 
 import com.generic.plannr.Entities.Event;
@@ -53,5 +54,12 @@ public class UserManagerTest {
     public void TestChangeUsersSchool() {
         user.changeUsersSchool("U of Tears and Tuition");
         assertEquals("U of Tears and Tuition", user.getUsersSchool());
+    }
+
+    @Test
+    public void TestAddCourseToUsersList() {
+        user.addCourseToUsersList("CSC999");
+        assertEquals(COURSES.size()+1, user.viewCourses().size());
+        assertTrue(user.viewCourses().contains("CSC999"));
     }
 }
