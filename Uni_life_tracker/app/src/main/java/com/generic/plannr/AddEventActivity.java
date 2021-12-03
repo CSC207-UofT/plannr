@@ -30,10 +30,6 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_event);
 
-        TextView tv1 = findViewById(R.id.tv_uni_name);
-        UserInfoDatabaseHelper user = createDatabase();
-        tv1.setText(user.getLoggedInUni());
-
 
 //        Assign Variables
         ivBack = findViewById(R.id.iv_back);
@@ -167,16 +163,6 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         ivSave.setOnClickListener(view -> Toast.makeText(AddEventActivity.this, priority, Toast.LENGTH_SHORT).show());
     }
 
-    /**
-     * Creates a userinfo database and opens it
-     * @return user an instance of userinfo database
-     */
-    public UserInfoDatabaseHelper createDatabase() {
-        // creates an instance and opens database
-        UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(AddEventActivity.this);
-        user.openDatabase();
-        return user;
-    }
 
 //    Back Button
     public void clickBack(View view) {

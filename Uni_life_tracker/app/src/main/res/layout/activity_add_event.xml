@@ -265,26 +265,5 @@
                 android:layout_height="wrap_content"/>
     </LinearLayout>
 
-    <TextView
-            android:layout_width="90dp"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="55dp"
-            android:text="@string/university"
-            android:fontFamily="@font/roboto_mono_light"
-            android:textSize="15sp"
-    />
 
-    <TextView
-            android:id="@+id/tv_uni_name"
-            android:layout_width="90dp"
-            android:layout_height="0dp"
-            android:text="@string/name"
-            android:layout_weight="1"
-            android:textSize="15sp"
-            android:fontFamily="@font/roboto_mono_light"
-            android:layout_marginTop="-103dp"
-            android:layout_marginStart="280dp"
-           />
 </LinearLayout>
