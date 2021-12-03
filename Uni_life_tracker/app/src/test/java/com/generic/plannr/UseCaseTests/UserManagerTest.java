@@ -63,4 +63,10 @@ public class UserManagerTest {
         assertEquals(COURSES.size()+1, user.viewCourses().size());
         assertTrue(user.viewCourses().contains("CSC999"));
     }
+
+    @Test
+    public void TestAddExpense() {
+        user.addExpense(10.0, "test");
+        assertEquals(-10.0, user.calculateBalance());
+    }
 }
