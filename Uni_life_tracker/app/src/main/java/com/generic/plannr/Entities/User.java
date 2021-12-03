@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class User {
     private String name;
-    private ArrayList<String> courses;
+    private final ArrayList<String> courses;
     private String school;
-    private ArrayList<Event> eventList;
-    private ArrayList<Expense> expenseList;
+    private final ArrayList<Event> eventList;
+    private final ArrayList<Expense> expenseList;
     private double income;
 
     /**
