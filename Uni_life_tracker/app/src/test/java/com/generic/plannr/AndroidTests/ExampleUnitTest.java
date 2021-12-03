@@ -1,4 +1,4 @@
-package com.generic.plannr;
+package com.generic.plannr.AndroidTests;
 
 import org.junit.Test;
 

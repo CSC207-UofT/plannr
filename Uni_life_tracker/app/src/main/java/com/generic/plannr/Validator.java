@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 public class Validator {
     // At least one number, uppercase letter, lowercase letter and special char. Min of 6 characters
     private static final Pattern PASSWORD_REQ =
-            Pattern.compile("[\\w\\d!@#$%^&*()\\[\\]\\\\/-_=+]{6,}");
+            Pattern.compile("[\\w\\d!@#$%^&*()-_\\\\/\\[\\]=+]{6,}");
 
     /**
      * Validates inputs and displays the different error messages for the user inpupts
@@ -41,7 +41,8 @@ public class Validator {
         } else if (textInput == tiEmail && user.uniqueEmail(email) && !isSignup) {
             textInput.setError("The email you entered does not belong to any account");
             return false;
-        } else if (textInput == tiPassword && !user.getPassword(email).equals(password) && !isSignup) {
+        } else if (textInput == tiPassword && !user.getPassword(email).equals(password)
+                && ! user.uniqueEmail(email) && !isSignup) {
             textInput.setError("The password you entered is incorrect");
             return false;
         } else {
@@ -62,7 +63,7 @@ public class Validator {
         Pattern uppercase = Pattern.compile(".*[A-Z].*");
         Pattern lowercase = Pattern.compile(".*[a-z].*");
         Pattern number = Pattern.compile(".*[0-9].*");
-        Pattern specialChar = Pattern.compile(".*[!@#$%^&*()-_=+\\[\\]\\\\/].*");
+        Pattern specialChar = Pattern.compile(".*[!@#$%^&*()-_\\\\/\\[\\]=+].*");
         Pattern minChar = Pattern.compile(".{6,}");
         StringBuilder str = new StringBuilder();
         str.append("Your password requires: \n");

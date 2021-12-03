@@ -1,5 +1,6 @@
 package com.generic.plannr;
 
+import com.generic.plannr.Database.UserInfoDatabaseHelper;
 import com.generic.plannr.Entities.Event;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -31,6 +32,11 @@ public class MainPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
 
+        // sets the Welcome Name message to the user's name
+        TextView tv1 = findViewById(R.id.tv_welcome_name);
+        UserInfoDatabaseHelper user = createDatabase();
+        tv1.setText(user.getLoggedInName());
+
         // show today's date
         Calendar calendar = Calendar.getInstance();
         String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
@@ -46,6 +52,17 @@ public class MainPageActivity extends AppCompatActivity {
         eventsList = new ArrayList<>(); 
         setEventInfo();
         setAdapter();
+    }
+
+    /**
+     * Creates a userinfo database and opens it
+     * @return user an instance of userinfo database
+     */
+    public UserInfoDatabaseHelper createDatabase() {
+        // creates an instance and opens database
+        UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(MainPageActivity.this);
+        user.openDatabase();
+        return user;
     }
 
     /**
