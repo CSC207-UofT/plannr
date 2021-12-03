@@ -168,9 +168,18 @@
 
         <!--  Calendar Dates  -->
         <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_calender_recycle"
+                android:id="@+id/rv_calendar"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+        <!--  Event List  -->
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_events"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="20dp"/>
 
     </LinearLayout>
 

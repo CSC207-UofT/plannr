@@ -14,9 +14,9 @@ public class User {
      * Construct a com.generic.plannr.Entities.User, giving them the given name,
      * courses, school, and setting an empty events list.
      *
-     * @param name      The com.generic.plannr.Entities.User's name
-     * @param courses   The com.generic.plannr.Entities.User's course list
-     * @param school    The com.generic.plannr.Entities.User's school
+     * @param name    The com.generic.plannr.Entities.User's name
+     * @param courses The com.generic.plannr.Entities.User's course list
+     * @param school  The com.generic.plannr.Entities.User's school
      */
     public User(String name, ArrayList<String> courses, String school) {
         this.name = name;
@@ -28,26 +28,38 @@ public class User {
 
     /**
      * getter method for name
+     *
      * @return a String that describes the com.generic.plannr.Entities.User's name
      */
     public String getName() {
-        return name;
+        return this.name;
+    }
+
+    /**
+     * getter method for school
+     *
+     * @return a String that contains the user's name
+     */
+    public String getSchool() {
+        return this.school;
     }
 
     /**
      * getter method for courses
+     *
      * @return an ArrayList that describes the com.generic.plannr.Entities.User's current course list
      */
     public ArrayList<String> getCourses() {
-        return courses;
+        return this.courses;
     }
 
     /**
      * getter method for eventList
+     *
      * @return an ArrayList that describes all the user's events
      */
     public ArrayList<Event> getEventList() {
-        return eventList;
+        return this.eventList;
     }
 
     public void setName(String name) {
@@ -60,6 +72,7 @@ public class User {
 
     /**
      * Getter method for the user's expenses list
+     *
      * @return ArrayList of Expenses object
      */
     public ArrayList<Expense> getExpenseList() {
@@ -68,6 +81,7 @@ public class User {
 
     /**
      * Gets the user's income
+     *
      * @return the user's income as a double object
      */
     public double getIncome() {
@@ -76,6 +90,7 @@ public class User {
 
     /**
      * Setter method for user's income
+     *
      * @param income the new income for the user
      */
     public void setIncome(double income) {
