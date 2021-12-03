@@ -117,6 +117,7 @@ public class UserManager {
 
     /**
      * This method will return user's name
+     *
      * @return a String variable containing user's name
      */
     public String getUsersName() {
