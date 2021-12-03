@@ -124,6 +124,15 @@ public class UserManager {
     }
 
     /**
+     * getter method for user's school
+     *
+     * @return a String variable containing the user's school
+     */
+    public String getUsersSchool() {
+        return u.getSchool();
+    }
+
+    /**
      * Adds a new expense to the user's expensesList
      *
      * @param value value of the new expense
