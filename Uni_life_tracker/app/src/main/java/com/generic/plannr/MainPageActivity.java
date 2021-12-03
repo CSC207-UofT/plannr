@@ -1,5 +1,6 @@
 package com.generic.plannr;
 
+import com.generic.plannr.Database.UserInfoDatabaseHelper;
 import com.generic.plannr.Entities.Event;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -46,6 +47,22 @@ public class MainPageActivity extends AppCompatActivity {
         eventsList = new ArrayList<>(); 
         setEventInfo();
         setAdapter();
+    }
+
+    public void GetDataToTextView(View v){
+        TextView tv1 = findViewById(R.id.tv_welcome_name);
+        UserInfoDatabaseHelper user = createDatabase();
+        tv1.setText(user.getLoggedInName());
+    }
+    /**
+     * Creates a userinfo database and opens it
+     * @return user an instance of userinfo database
+     */
+    public UserInfoDatabaseHelper createDatabase() {
+        // creates an instance and opens database
+        UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(MainPageActivity.this);
+        user.openDatabase();
+        return user;
     }
 
     private void setAdapter() {
