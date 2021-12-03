@@ -19,6 +19,15 @@ public class ExpensesManager {
     }
 
     /**
+     * Returns the name of a given expense
+     * @param e Expenses object
+     * @return a String variable containing the name of the Expense
+     */
+    public String getExpenseName(Expense e) {
+        return e.getName();
+    }
+
+    /**
      * Changes the value of the expenses
      * @param e Expenses object
      * @param value new value for the Expenses object
