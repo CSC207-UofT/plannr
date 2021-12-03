@@ -25,6 +25,7 @@ public class UserManagerTest {
         assertEquals(new ArrayList<>(), user.getExpenses());
         assertEquals("Test User", user.getUsersName());
         assertEquals("U of T", user.getUsersSchool());
+        assertEquals(0.0, user.calculateBalance());
     }
 
     @Test
