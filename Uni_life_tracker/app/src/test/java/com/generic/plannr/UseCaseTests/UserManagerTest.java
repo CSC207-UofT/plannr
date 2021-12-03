@@ -42,4 +42,10 @@ public class UserManagerTest {
         assertEquals(dayEventList.size(), user.viewEventList().size());
         assertEquals(dayEventList, user.viewEventList());
     }
+
+    @Test
+    public void TestChangeUsersName() {
+        user.changeUsersName("Daniel");
+        assertEquals("Daniel", user.getUsersName());
+    }
 }
