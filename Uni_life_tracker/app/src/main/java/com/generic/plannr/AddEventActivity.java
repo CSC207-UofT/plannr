@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import com.generic.plannr.Database.UserInfoDatabaseHelper;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -28,6 +29,11 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_event);
+
+        TextView tv1 = findViewById(R.id.tv_uni_name);
+        UserInfoDatabaseHelper user = createDatabase();
+        tv1.setText(user.getLoggedInUni());
+
 
 //        Assign Variables
         ivBack = findViewById(R.id.iv_back);
@@ -159,6 +165,17 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         coursesList.setAdapter(myAdapter);
 
         ivSave.setOnClickListener(view -> Toast.makeText(AddEventActivity.this, priority, Toast.LENGTH_SHORT).show());
+    }
+
+    /**
+     * Creates a userinfo database and opens it
+     * @return user an instance of userinfo database
+     */
+    public UserInfoDatabaseHelper createDatabase() {
+        // creates an instance and opens database
+        UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(AddEventActivity.this);
+        user.openDatabase();
+        return user;
     }
 
 //    Back Button

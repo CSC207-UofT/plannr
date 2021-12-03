@@ -53,9 +53,6 @@ public class MainPageActivity extends AppCompatActivity {
         setAdapter();
     }
 
-    public void GetDataToTextView(View v){
-
-    }
     /**
      * Creates a userinfo database and opens it
      * @return user an instance of userinfo database
