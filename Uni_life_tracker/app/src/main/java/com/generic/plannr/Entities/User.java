@@ -20,7 +20,8 @@ public class User {
      */
     public User(String name, ArrayList<String> courses, String school) {
         this.name = name;
-        this.courses = courses;
+        this.courses = new ArrayList<>();
+        this.courses.addAll(courses);
         this.school = school;
         this.eventList = new ArrayList<>();
         this.income = 0.0;
