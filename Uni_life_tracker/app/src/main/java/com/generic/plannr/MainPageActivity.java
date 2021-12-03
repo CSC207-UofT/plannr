@@ -32,6 +32,7 @@ public class MainPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
 
+        // sets the Welcome Name message to the user's name
         TextView tv1 = findViewById(R.id.tv_welcome_name);
         UserInfoDatabaseHelper user = createDatabase();
         tv1.setText(user.getLoggedInName());
