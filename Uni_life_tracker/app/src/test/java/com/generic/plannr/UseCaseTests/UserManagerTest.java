@@ -48,4 +48,10 @@ public class UserManagerTest {
         user.changeUsersName("Daniel");
         assertEquals("Daniel", user.getUsersName());
     }
+
+    @Test
+    public void TestChangeUsersSchool() {
+        user.changeUsersSchool("U of Tears and Tuition");
+        assertEquals("U of Tears and Tuition", user.getUsersSchool());
+    }
 }
