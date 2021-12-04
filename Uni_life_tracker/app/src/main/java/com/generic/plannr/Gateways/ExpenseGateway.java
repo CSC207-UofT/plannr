@@ -47,7 +47,7 @@ public class ExpenseGateway {
      * @return the Event with id eventID
      */
     public Expense getByID(final int expenseID) {
-        @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM events WHERE " +
+        @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM expenses WHERE " +
                         "ID = " + expenseID,
                 null);
 
