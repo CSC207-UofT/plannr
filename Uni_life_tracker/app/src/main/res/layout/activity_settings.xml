@@ -78,6 +78,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@color/transparent"
+
                         android:hint="@string/name"
                         android:inputType="text"
                         android:id="@+id/et_name"
@@ -112,6 +114,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@color/transparent"
                         android:hint="@string/university"
                         android:inputType="text"
                         android:id="@+id/et_uni"
