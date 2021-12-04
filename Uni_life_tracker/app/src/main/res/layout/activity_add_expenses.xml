@@ -55,6 +55,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
             android:layout_marginStart="60dp"
+            app:boxBackgroundColor="@color/transparent"
+
             app:errorEnabled="true">
         <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -71,6 +73,7 @@
             android:layout_marginStart="60dp"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            app:boxBackgroundColor="@color/transparent"
             app:errorEnabled="true">
         <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
