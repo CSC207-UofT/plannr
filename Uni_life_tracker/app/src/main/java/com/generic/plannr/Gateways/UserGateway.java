@@ -89,6 +89,22 @@ public class UserGateway {
     }
 
     /**
+     * Get the user id that is currently logged into the app
+     *
+     *
+     * @return the logged in user id
+     */
+    public int getLoggedInUserID() {
+        @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE " +
+                        "LOGGEDIN = 1",
+                null);
+
+
+        return cur.getInt(cur.getColumnIndexOrThrow("ID"));
+
+    }
+
+    /**
      * Get the list of Users currently stored in the database
      *
      *
