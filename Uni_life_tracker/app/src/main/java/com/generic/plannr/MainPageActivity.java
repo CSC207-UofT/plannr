@@ -97,28 +97,11 @@ public class MainPageActivity extends AppCompatActivity implements CompoundButto
     }
 
     /**
-     * Opens navigation menu on menu icon click.
-     *
-     * @param view a View for the device screen.
-     */
-    public void clickMenu(View view){
-        // open drawer
-        openDrawer(drawerLayout);
-    }
-
-    /**
      * Opens drawer layout (navigation menu) to view.
      *
      * @param drawerLayout a DrawerLayout for the navigation menu.
      */
     public void openDrawer(DrawerLayout drawerLayout) { drawerLayout.openDrawer(GravityCompat.START); } // open drawer layout
-
-    /**
-     * Opens navigation menu on logo click.
-     *
-     * @param view a View for the device screen.
-     */
-    public void clickLogo(View view) { closeDrawer(drawerLayout); } // close drawer
 
     /**
      * Closes drawer layout (navigation menu) from view.
@@ -140,24 +123,25 @@ public class MainPageActivity extends AppCompatActivity implements CompoundButto
         closeDrawer(drawerLayout); // close drawer
     }
 
-    @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if (isChecked)
-            Toast.makeText(this, "Sorted by priority!", Toast.LENGTH_SHORT).show();
-        else
-            Toast.makeText(this, "Sorted by time!", Toast.LENGTH_SHORT).show();
-    }
 
-    @Override
-    public void onBackPressed() {
-        moveTaskToBack(true);
-    }
+     @Override
+     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+     if (isChecked)
+     Toast.makeText(this, "Sorted by priority!", Toast.LENGTH_SHORT).show();
+     else
+     Toast.makeText(this, "Sorted by time!", Toast.LENGTH_SHORT).show();
+     }
 
-    /**
-     * Directs current activity to a different activity.
-     * Generates an intent and starts the activity.
-     *
-     * @param activity a user's current activity.
+     @Override
+     public void onBackPressed() {
+     moveTaskToBack(true);
+     }
+
+     /**
+      * Directs current activity to a different activity.
+      * Generates an intent and starts the activity.
+      *
+      * @param activity a user's current activity.
      * @param aClass a Class of the new activity to be started.
      */
     public void redirectActivity(Activity activity, @SuppressWarnings("rawtypes") Class aClass) {
@@ -184,6 +168,23 @@ public class MainPageActivity extends AppCompatActivity implements CompoundButto
         builder.setNegativeButton("No", (dialog, which) -> dialog.dismiss());
         builder.show();
     }
+
+    /**
+     * Opens navigation menu on menu icon click.
+     *
+     * @param view a View for the device screen.
+     */
+    public void clickMenu(View view){
+        // open drawer
+        openDrawer(drawerLayout);
+    }
+
+    /**
+     * Opens navigation menu on logo click.
+     *
+     * @param view a View for the device screen.
+     */
+    public void clickLogo(View view) { closeDrawer(drawerLayout); } // close drawer
 
     /**
      * Directs activity to the School activity on school icon click.
