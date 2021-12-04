@@ -26,7 +26,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
     TextView tvStartDate, tvStartTime, tvEndDate, tvEndTime, tvAssessment, tvDeadline, tvClassTime, tvStudySession;
     RadioGroup rgPriorities;
     ImageView ivBack, ivSave;
-    EditText etEventName;
+    EditText etEventName, etCourse;
     private MainPageActivity activity;
 
     @Override
@@ -38,6 +38,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         ivBack = findViewById(R.id.iv_back);
         ivSave = findViewById(R.id.iv_save);
         etEventName = findViewById(R.id.et_event_name);
+        etCourse = findViewById(R.id.et_course);
         tvStartDate = findViewById(R.id.tv_start_date);
         tvStartTime = findViewById(R.id.tv_start_time);
         tvEndDate = findViewById(R.id.tv_end_date);
@@ -47,8 +48,6 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         tvDeadline = findViewById(R.id.tv_deadline);
         tvClassTime = findViewById(R.id.tv_class_time);
         tvStudySession = findViewById(R.id.tv_study_session);
-
-        Spinner coursesList = findViewById(R.id.spn_courses);
 
         activity = new MainPageActivity();
 
@@ -157,13 +156,6 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
                     }, endHour, endMinute, false);
             timePickerDialog.show();
         });
-
-//        Courses List
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<>(AddEventActivity.this,
-                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.courses));
-        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        coursesList.setAdapter(myAdapter);
-
     }
 
 //    Back Button
