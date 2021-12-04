@@ -29,8 +29,8 @@ public class ExpenseGateway implements ExpenseGatewayInterface {
     }
 
     public void saveToDatabase(final Expense expense) {
-        UserGateway ug = new UserGateway();
         openDatabase();
+        UserGateway ug = new UserGateway();
         ContentValues cv = new ContentValues();
         cv.put("NAME", expense.getName());
         cv.put("VALUE", expense.getValue());
@@ -47,6 +47,7 @@ public class ExpenseGateway implements ExpenseGatewayInterface {
      * @return the Event with id eventID
      */
     public Expense getByID(final int expenseID) {
+        openDatabase();
         @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM expenses WHERE " +
                         "ID = " + expenseID,
                 null);
@@ -72,6 +73,7 @@ public class ExpenseGateway implements ExpenseGatewayInterface {
      * @return a list of all expenses stored in the database for the user
      */
     public List<Expense> getAllExpenses(int userID) {
+        openDatabase();
         List<Expense> expensesList = new ArrayList<>();
         @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM expenses WHERE " +
                 "USER_ID = " + userID, null);

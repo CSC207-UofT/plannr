@@ -28,8 +28,8 @@ public class EventGateway implements EventGatewayInterface {
     }
 
     public void saveToDatabase(final Event event) {
-        UserGateway ug = new UserGateway();
         openDatabase();
+        UserGateway ug = new UserGateway();
         ContentValues cv = new ContentValues();
         cv.put("NAME", event.getName());
         cv.put("PRIORITY", event.getPriority());
@@ -48,6 +48,7 @@ public class EventGateway implements EventGatewayInterface {
      * @return the Event with id eventID
      */
     public Event getByID(final int eventID) {
+        openDatabase();
         @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM events WHERE " +
                         "ID = " + eventID,
                 null);
@@ -75,6 +76,7 @@ public class EventGateway implements EventGatewayInterface {
      * @return a list of all events stored in the database for the user
      */
     public List<Event> getAllEvents(int userID) {
+        openDatabase();
         List<Event> eventsList = new ArrayList<>();
         @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM events WHERE " +
                         "USER_ID = " + userID, null);
@@ -107,6 +109,7 @@ public class EventGateway implements EventGatewayInterface {
      * database for the user
      */
     public List<Event> getEventsByDate(LocalDate date, int userID) {
+        openDatabase();
         List<Event> eventsList = new ArrayList<>();
         @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM events WHERE " +
                 "USER_ID = " + userID, null);
