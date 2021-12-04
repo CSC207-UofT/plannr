@@ -104,6 +104,7 @@
     <string name="income">Income</string>
     <string name="add_income">Add Income</string>
     <string name="total">Total</string>
+    <string name="save_income">Save Income</string>
 
     <!--  TODO: to display courses for now (TEMPORARY) -->
     <string-array name="courses">
