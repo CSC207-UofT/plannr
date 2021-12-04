@@ -74,6 +74,10 @@
     <!--  Main Page  -->
     <string name="my_to_dos">My To Do\'s</string>
     <string name="sort">Sort by&#8230;</string>
+    <string-array name="sort_by">
+        <item>Time</item>
+        <item>Priority</item>
+    </string-array>
 
     <!--  Add Event  -->
     <string name="add_school_event">Add School Event</string>

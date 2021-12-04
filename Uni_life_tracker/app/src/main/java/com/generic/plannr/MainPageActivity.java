@@ -23,7 +23,6 @@ import java.util.Calendar;
 public class MainPageActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
     // initialize variable
     DrawerLayout drawerLayout;
-    ToggleButton tbSort;
     private ArrayList<Event> eventsList;
     private RecyclerView rvEvents;
 
@@ -54,8 +53,12 @@ public class MainPageActivity extends AppCompatActivity implements CompoundButto
         setEventInfo();
         setAdapter();
 
-        tbSort = findViewById(R.id.tb_sort);
-        tbSort.setOnCheckedChangeListener(this);
+        // sort dropdown
+        Spinner spnSort = findViewById(R.id.spn_sort);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(MainPageActivity.this,
+                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.sort_by));
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnSort.setAdapter(adapter);
     }
 
     /**
