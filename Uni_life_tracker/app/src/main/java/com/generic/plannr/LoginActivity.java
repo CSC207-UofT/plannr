@@ -28,6 +28,7 @@ public class LoginActivity  extends AppCompatActivity {
     private void openMain() {
         // Moves to the MainPageActivity
         activity.redirectActivity(this, MainPageActivity.class);
+        finish();
     }
 
     public boolean LoginInput () {
