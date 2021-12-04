@@ -40,6 +40,7 @@
 
             <!--  Add Expense Button  -->
             <ImageView
+                    android:id="@+id/iv_add_expense"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="clickAddExpense"

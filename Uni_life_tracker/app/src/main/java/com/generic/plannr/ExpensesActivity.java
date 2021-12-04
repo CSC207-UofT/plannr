@@ -1,5 +1,6 @@
 package com.generic.plannr;
 
+import android.widget.ImageView;
 import com.generic.plannr.Database.ExpenseDatabaseHelper;
 import com.generic.plannr.Database.UserInfoDatabaseHelper;
 import com.generic.plannr.Entities.Expense;
@@ -11,6 +12,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.getkeepsafe.taptargetview.TapTarget;
+import com.getkeepsafe.taptargetview.TapTargetView;
+
 import java.util.ArrayList;
 
 public class ExpensesActivity extends AppCompatActivity {
@@ -19,18 +23,33 @@ public class ExpensesActivity extends AppCompatActivity {
     private RecyclerView  rvExpenses;
     private DrawerLayout drawerLayout;
     private MainActivity activity;
+    ImageView ivAddExpense;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expenses);
 
-        // expense list
-        rvExpenses = findViewById(R.id.rv_expenses);
-        expensesList = new ArrayList<>();
-        drawerLayout = findViewById(R.id.drawer_layout); // nav menu
         activity = new MainActivity();
+        expensesList = new ArrayList<>();
+        rvExpenses = findViewById(R.id.rv_expenses); // expense list
+        drawerLayout = findViewById(R.id.drawer_layout); // nav menu
+        ivAddExpense = findViewById(R.id.iv_add_expense); // add expense button
 
+        TapTargetView.showFor(this, TapTarget.forView(
+                findViewById(R.id.iv_add_expense), "Add an Expense", "Add your expenses here!")
+                .outerCircleColor(R.color.lavender).targetCircleColor(R.color.white)
+                .titleTextColor(R.color.black).descriptionTextColor(R.color.black)
+                .tintTarget(false)
+                .cancelable(true),
+                new TapTargetView.Listener() {
+                    @Override
+                            public void onTargetClick(TapTargetView view) {
+                                super.onTargetClick(view);
+                                clickAddExpense(view);
+                    }
+                }
+        );
         setExpenseInfo();
         setAdapter();
     }
