@@ -6,7 +6,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.core.view.GravityCompat;
@@ -20,10 +20,10 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class MainPageActivity extends AppCompatActivity {
+public class MainPageActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
     // initialize variable
     DrawerLayout drawerLayout;
-
+    ToggleButton tbSort;
     private ArrayList<Event> eventsList;
     private RecyclerView rvEvents;
 
@@ -45,13 +45,16 @@ public class MainPageActivity extends AppCompatActivity {
         tvViewDate.setText(currentDate);
 
         // side menu
-        drawerLayout = findViewById(R.id.drawer_layout);
-        
+        drawerLayout = findViewById(R.id.drawer_layout); // side menu
+
         // events list
         rvEvents = findViewById(R.id.rv_events);
         eventsList = new ArrayList<>(); 
         setEventInfo();
         setAdapter();
+
+        tbSort = findViewById(R.id.tb_sort);
+        tbSort.setOnCheckedChangeListener(this);
     }
 
     /**
@@ -190,5 +193,13 @@ public class MainPageActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         closeDrawer(drawerLayout); // close drawer
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        if (isChecked)
+            Toast.makeText(this, "Sorted by priority!", Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(this, "Sorted by time!", Toast.LENGTH_SHORT).show();
     }
 }
