@@ -104,4 +104,9 @@ public class ExpensesActivity extends AppCompatActivity {
         super.onPause();
         activity.closeDrawer(drawerLayout); // close drawer
     }
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
 }

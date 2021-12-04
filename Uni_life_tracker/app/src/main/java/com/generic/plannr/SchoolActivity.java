@@ -168,4 +168,9 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
         super.onPause();
         activity.closeDrawer(drawerLayout); // close drawer
     }
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
 }

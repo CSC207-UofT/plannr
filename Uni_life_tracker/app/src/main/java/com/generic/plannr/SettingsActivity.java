@@ -74,6 +74,11 @@ public class SettingsActivity extends AppCompatActivity {
         activity.closeDrawer(drawerLayout); // close drawer
     }
 
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
+
     public void clickEdit(View view) {
         // enabled textboxes so they can be edited
         textboxEditability(true);
