@@ -107,9 +107,9 @@
                 android:text="@string/total"
                 android:textSize="20sp"
                 android:fontFamily="@font/roboto_mono_bold"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="60dp"
                 android:layout_marginBottom="-40dp"
-                android:layout_marginStart="20dp"/>
+                android:layout_marginStart="75dp"/>
 
         <!--  Total Sum Text  -->
         <TextView
@@ -120,8 +120,8 @@
                 android:textSize="20sp"
                 android:fontFamily="@font/roboto_mono_bold"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="200dp"
-                android:layout_marginStart="240dp"/>
+                android:layout_marginBottom="210dp"
+                android:layout_marginStart="260dp"/>
 
 
 
