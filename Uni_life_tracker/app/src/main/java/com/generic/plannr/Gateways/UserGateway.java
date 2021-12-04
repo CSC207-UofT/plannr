@@ -48,6 +48,7 @@ public class UserGateway implements UserGatewayInterface {
      */
     @SuppressLint("Recycle")
     public void updateName(String name){
+        openDatabase();
         ContentValues cv = new ContentValues();
         cv.put("NAME", name);
         db.update("userinfo", cv, "LOGGEDIN = 1", null);
@@ -59,6 +60,7 @@ public class UserGateway implements UserGatewayInterface {
      * @param uni The user's university to be inserted
      */
     public void updateUni(String uni){
+        openDatabase();
         ContentValues cv = new ContentValues();
         cv.put("UNIVERSITY", uni);
         db.update("userinfo", cv, "LOGGEDIN = 1", null);
@@ -73,6 +75,7 @@ public class UserGateway implements UserGatewayInterface {
      * @return the User with id userID
      */
     public User getByID(final int userID) {
+        openDatabase();
         @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE " +
                         "ID = " + userID,
                 null);
@@ -99,6 +102,7 @@ public class UserGateway implements UserGatewayInterface {
      * @return the User with email userEmail
      */
     public User getByEmail(final String userEmail) {
+        openDatabase();
         @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE " +
                         "EMAIL = " + "'" + userEmail + "'",
                 null);
@@ -122,6 +126,7 @@ public class UserGateway implements UserGatewayInterface {
      * @return the logged in user id
      */
     public Integer getLoggedInUserID() {
+        openDatabase();
         @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE " +
                         "LOGGEDIN = 1",
                 null);
@@ -139,6 +144,7 @@ public class UserGateway implements UserGatewayInterface {
      * @return the logged in user's name in the database
      */
     public String getLoggedInName(){
+        openDatabase();
         @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE " +
                         "LOGGEDIN = 1",
                 null);
@@ -155,6 +161,7 @@ public class UserGateway implements UserGatewayInterface {
      * @return the logged in user's university in the database
      */
     public String getLoggedInUni(){
+        openDatabase();
         @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE " +
                         "LOGGEDIN = 1",
                 null);
@@ -171,6 +178,7 @@ public class UserGateway implements UserGatewayInterface {
      * @return the logged in user's email in the database
      */
     public String getLoggedInEmail(){
+        openDatabase();
         @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE " +
                         "LOGGEDIN = 1",
                 null);
@@ -186,6 +194,7 @@ public class UserGateway implements UserGatewayInterface {
      * @return the userEmail's password from the database
      */
     public String getPassword(String userEmail){
+        openDatabase();
         @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE " +
                 "EMAIL = " + '"' + userEmail + '"', null);
 
@@ -198,6 +207,7 @@ public class UserGateway implements UserGatewayInterface {
      *
      */
     public void updateLoggedInUser(String userEmail) {
+        openDatabase();
         db.execSQL("UPDATE userinfo SET LOGGEDIN = 0");
         ContentValues cv = new ContentValues();
         cv.put("LOGGEDIN", 1);
@@ -212,6 +222,7 @@ public class UserGateway implements UserGatewayInterface {
      */
     @SuppressLint("Recycle")
     public boolean uniqueEmail(String userEmail) {
+        openDatabase();
         Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE EMAIL = " + '"' +
                 userEmail + '"', null);
 
@@ -225,6 +236,7 @@ public class UserGateway implements UserGatewayInterface {
      * @return a list of all users stored in the database
      */
     public List<User> getAllUsers() {
+        openDatabase();
         List<User> usersList = new ArrayList<>();
         @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo",
                 null);
