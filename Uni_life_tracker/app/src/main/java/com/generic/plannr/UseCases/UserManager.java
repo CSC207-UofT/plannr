@@ -16,25 +16,31 @@ public class UserManager {
     /**
      * Constructs a user manager and creates a new user
      *
-     * @param name    is the user's name
-     * @param courses is the user's list of courses
-     * @param school  is the user's school
+     * @param name      is the user's name
+     * @param email     is the user's email
+     * @param password  is the user's password
+     * @param courses   is the user's list of courses
+     * @param school    is the user's school
      */
-    public UserManager(String name, ArrayList<String> courses, String school) {
-        u = createUser(name, courses, school);
+    public UserManager(String name, String email, String password,
+                       ArrayList<String> courses, String school) {
+        u = createUser(name, email, password, courses, school);
         this.expManager = new ExpensesManager();
     }
 
     /**
      * Creates a user
      *
-     * @param name    is the user's name
-     * @param courses is the user's list of courses
-     * @param school  is the user's school's name
+     * @param name      is the user's name
+     * @param email     is the user's email
+     * @param password  is the user's password
+     * @param courses   is the user's list of courses
+     * @param school    is the user's school's name
      * @return the created user
      */
-    public User createUser(String name, ArrayList<String> courses, String school) {
-        return new User(name, courses, school);
+    public User createUser(String name, String email, String password,
+                           ArrayList<String> courses, String school) {
+        return new User(name, email, password, school);
     }
 
     /**
