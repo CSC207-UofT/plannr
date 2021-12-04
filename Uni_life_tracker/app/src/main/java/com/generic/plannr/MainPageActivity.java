@@ -53,12 +53,13 @@ public class MainPageActivity extends AppCompatActivity implements CompoundButto
         setEventInfo();
         setAdapter();
 
-        tbSort = findViewById(R.id.tb_sort);
-        tbSort.setOnCheckedChangeListener(this);
+//        TODO: enable after
+//        tbSort = findViewById(R.id.tb_sort);
+//        tbSort.setOnCheckedChangeListener(this);
     }
 
     /**
-     * Creates a userinfo database and opens it
+     * Creates an userinfo database and opens it
      * @return user an instance of userinfo database
      */
     public UserInfoDatabaseHelper createDatabase() {
@@ -93,7 +94,6 @@ public class MainPageActivity extends AppCompatActivity implements CompoundButto
         eventsList.add(new Event("Quiz 3", 2, LocalDateTime.of(2021, 11, 29, 12, 20, 48)));
         eventsList.add(new Event("Project 432", 2, LocalDateTime.of(2021, 11, 13, 12, 20, 48)));
     }
-//    public Event(String name, int priority, LocalDateTime startDate, LocalDateTime endDate) {
 
     /**
      * Opens navigation menu on menu icon click.
@@ -179,11 +179,19 @@ public class MainPageActivity extends AppCompatActivity implements CompoundButto
     }
     public void clickLogOut(View view) { logout(this); } // redirect activity to settings
 
+    /**
+     * Prompts dialog for user to log out. If user selects yes, direct current activity to log in activity.
+     *
+     * @param activity a user's current activity.
+     */
     public void logout(Activity activity) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle("Log Out");
         builder.setMessage("Are you sure you want to log out?");
-        builder.setPositiveButton("Yes", (dialog, which) -> redirectActivity(activity, LoginActivity.class));
+        builder.setPositiveButton("Yes", (dialog, which) -> {
+            redirectActivity(activity, LoginActivity.class);
+            finish();
+        });
 
         builder.setNegativeButton("No", (dialog, which) -> dialog.dismiss());
         builder.show();
