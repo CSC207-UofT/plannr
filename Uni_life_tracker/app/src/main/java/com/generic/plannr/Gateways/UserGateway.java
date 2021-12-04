@@ -25,6 +25,11 @@ public class UserGateway implements UserGatewayInterface {
         db = dbclient.getWritableDatabase();
     }
 
+    /**
+     * Insert user's info into the database
+     *
+     * @param user The User to be inserted
+     */
     public void saveToDatabase(final User user) {
         openDatabase();
         ContentValues cv = new ContentValues();
@@ -34,6 +39,29 @@ public class UserGateway implements UserGatewayInterface {
         cv.put("PASSWORD", user.getPassword());
         cv.put("LOGGEDIN", 1);
         db.insert("userinfo", null, cv);
+    }
+
+    /**
+     * Update the User's name in the database
+     *
+     * @param name The user's name to be inserted
+     */
+    @SuppressLint("Recycle")
+    public void updateName(String name){
+        ContentValues cv = new ContentValues();
+        cv.put("NAME", name);
+        db.update("userinfo", cv, "LOGGEDIN = 1", null);
+    }
+
+    /**
+     * Update the User's university in the database
+     *
+     * @param uni The user's university to be inserted
+     */
+    public void updateUni(String uni){
+        ContentValues cv = new ContentValues();
+        cv.put("UNIVERSITY", uni);
+        db.update("userinfo", cv, "LOGGEDIN = 1", null);
     }
 
     /**
@@ -91,17 +119,103 @@ public class UserGateway implements UserGatewayInterface {
     /**
      * Get the user id that is currently logged into the app
      *
-     *
      * @return the logged in user id
      */
-    public int getLoggedInUserID() {
+    public Integer getLoggedInUserID() {
+        @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE " +
+                        "LOGGEDIN = 1",
+                null);
+        if (cur.moveToFirst()) {
+            return cur.getInt(cur.getColumnIndexOrThrow("ID"));
+        }
+
+        return null;
+
+    }
+
+    /**
+     * Get the current logged in user's name currently stored in the database
+     *
+     * @return the logged in user's name in the database
+     */
+    public String getLoggedInName(){
+        @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE " +
+                        "LOGGEDIN = 1",
+                null);
+        if (cur.moveToFirst()) {
+            return cur.getString(cur.getColumnIndexOrThrow("NAME"));
+        }
+
+        return null;
+    }
+
+    /**
+     * Get the current logged in user's university currently stored in the database
+     *
+     * @return the logged in user's university in the database
+     */
+    public String getLoggedInUni(){
+        @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE " +
+                        "LOGGEDIN = 1",
+                null);
+        if (cur.moveToFirst()) {
+            return cur.getString(cur.getColumnIndexOrThrow("UNIVERSITY"));
+        }
+
+        return null;
+    }
+
+    /**
+     * Get the current logged in user's email currently stored in the database
+     *
+     * @return the logged in user's email in the database
+     */
+    public String getLoggedInEmail(){
         @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE " +
                         "LOGGEDIN = 1",
                 null);
 
+        return cur.getString(cur.getColumnIndexOrThrow("EMAIL"));
+    }
 
-        return cur.getInt(cur.getColumnIndexOrThrow("ID"));
+    /**
+     * Get the password associated with userEmail currently stored in the database
+     *
+     * @param userEmail the user's email
+     *
+     * @return the userEmail's password from the database
+     */
+    public String getPassword(String userEmail){
+        @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE " +
+                "EMAIL = " + '"' + userEmail + '"', null);
 
+        return cur.getString(cur.getColumnIndexOrThrow("PASSWORD"));
+    }
+
+    /**
+     *
+     * Set which account is currently logged in in the database
+     *
+     */
+    public void updateLoggedInUser(String userEmail) {
+        db.execSQL("UPDATE userinfo SET LOGGEDIN = 0");
+        ContentValues cv = new ContentValues();
+        cv.put("LOGGEDIN", 1);
+        db.update("userinfo", cv, "EMAIL = " + "'" + userEmail + "'", null);
+
+    }
+
+    /**
+     * Searches through database for email to see if user had already signed up
+     *
+     * @return true if the email is not found in the database and false otherwise
+     */
+    @SuppressLint("Recycle")
+    public boolean uniqueEmail(String userEmail) {
+        Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE EMAIL = " + '"' +
+                userEmail + '"', null);
+
+        return !cur.moveToFirst();
     }
 
     /**
