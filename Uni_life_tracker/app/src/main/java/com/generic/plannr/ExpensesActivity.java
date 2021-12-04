@@ -32,10 +32,6 @@ public class ExpensesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_expenses);
 
 
-
-
-
-
         // expense list
         rvExpenses = findViewById(R.id.rv_expenses);
         expensesList = new ArrayList<>();
@@ -98,22 +94,15 @@ public class ExpensesActivity extends AppCompatActivity {
 
 
     public void clickAddExpense(View view) {
-        String income = Objects.requireNonNull(textInputIncome.getEditText()).getText().toString();
-        double total_expenses = 100.0;
-        TextView total = findViewById(R.id.tv_total);
-        if (Double.parseDouble(income) > total_expenses) {
-            total.setTextColor(Color.GREEN);
-
-        }else if (Double.parseDouble(income) < total_expenses){
-            total.setTextColor(Color.RED);
-
-        }else{total.setTextColor(Color.YELLOW);}
-    }
-
-    public void clickSaveIncome(View view) {
         // clicking the check in order to add expense
         Intent intent = new Intent(this, AddExpensesActivity.class);
         startActivity(intent);
+
+    }
+
+    public void clickSaveIncome(View view) {
+
+
     }
 
     public void clickMenu(View view){ activity.openDrawer(drawerLayout); } // open drawer
@@ -122,8 +111,6 @@ public class ExpensesActivity extends AppCompatActivity {
 
     public void clickSchool(View view) { activity.redirectActivity(this, SchoolActivity.class); } // redirect activity to school
 
-    // TODO: change this to life later
-    public void clickLife(View view) { activity.redirectActivity(this, MainPageActivity.class); } // redirect activity to life
 
     public void clickExpenses(View view) { recreate(); } // recreate activity
 
