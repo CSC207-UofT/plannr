@@ -3,7 +3,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -16,7 +15,6 @@ import com.generic.plannr.Entities.Event;
 import com.generic.plannr.UseCases.GetEventsOfDate;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import static com.generic.plannr.CalendarUtil.daysInMonthArray;
@@ -62,7 +60,6 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
         user.openDatabase();
         event.openDatabase();
         String email = user.getLoggedInEmail();
-
 
         eventsList.addAll(GetEventsOfDate.getEventsOfDate(event.getAllEvents(email), CalendarUtil.selectedDate));
     }
@@ -110,11 +107,12 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
     @Override
     public void onItemClick(int position, LocalDate date)
     {
+        eventsList.clear();
+
         if (date != null) {
             CalendarUtil.selectedDate = date;
-            String dateString = date.format(DateTimeFormatter.ofPattern("dd LLLL yyyy"));
-            String message = String.format("Your selected date is %s!", dateString);
-            Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+            setEventInfo();
+            setAdapter();
             setMonthView();
         }
 
