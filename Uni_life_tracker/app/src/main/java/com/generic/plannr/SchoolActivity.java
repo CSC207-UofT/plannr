@@ -16,6 +16,7 @@ import com.generic.plannr.Entities.Event;
 import com.generic.plannr.UseCases.GetEventsOfDate;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import static com.generic.plannr.CalendarUtil.daysInMonthArray;
@@ -29,7 +30,6 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
     private MainPageActivity activity;
     private ArrayList<Event> eventsList;
     private RecyclerView rvEvents;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -108,13 +108,16 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
     }
 
     @Override
-    public void onItemClick(int position, String dayText)
+    public void onItemClick(int position, LocalDate date)
     {
-        if(!dayText.equals(""))
-        {
-            String message = "Selected Date " + dayText + " " + monthYearFromDate(CalendarUtil.selectedDate);
-            Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        if (date != null) {
+            CalendarUtil.selectedDate = date;
+            String dateString = date.format(DateTimeFormatter.ofPattern("dd LLLL yyyy"));
+            String message = String.format("Your selected date is %s!", dateString);
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+            setMonthView();
         }
+
     }
 
     public void clickMenu(View view) { activity.openDrawer(drawerLayout); } // open drawer

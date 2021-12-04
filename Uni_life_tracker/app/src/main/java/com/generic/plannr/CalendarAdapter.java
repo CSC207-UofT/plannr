@@ -29,7 +29,7 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
         View view = inflater.inflate(R.layout.calendar_cell, parent, false);
         ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
         layoutParams.height = (int) (parent.getHeight() * 0.175);
-        return new CalendarViewHolder(view, onItemListener);
+        return new CalendarViewHolder(view, onItemListener, days);
     }
 
     @Override
@@ -42,7 +42,7 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
         } else {
             holder.dayOfMonth.setText(String.valueOf(date.getDayOfMonth()));
             if(date.equals(CalendarUtil.selectedDate)) {
-                holder.parentView.setBackgroundColor(Color.LTGRAY);
+                holder.parentView.setBackgroundColor(Color.parseColor("#CDB8FF"));
             }
         }
     }
@@ -55,7 +55,7 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
 
     public interface  OnItemListener
     {
-        void onItemClick(int position, String dayText);
+        void onItemClick(int position, LocalDate date);
     }
 }
 

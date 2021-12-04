@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class CalendarUtil {
     public static LocalDate selectedDate;
+
     public static ArrayList<LocalDate> daysInMonthArray(LocalDate date)
     {
         ArrayList<LocalDate> daysInMonthArray = new ArrayList<>();
