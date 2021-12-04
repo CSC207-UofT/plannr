@@ -92,7 +92,6 @@
 
         <!--  Sign Up Button  -->
         <Button
-                android:id="@+id/btn_sign_up"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/sign_up"
@@ -109,7 +108,6 @@
 
         <!--  Login Button  -->
         <Button
-                android:id="@+id/btn_log_in"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/log_in"

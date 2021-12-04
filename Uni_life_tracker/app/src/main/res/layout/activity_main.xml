@@ -48,7 +48,6 @@
 
             <!--  My To Do's  -->
             <TextView
-                    android:id="@+id/tv_to_dos"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -61,7 +60,6 @@
 
         <!--  Welcome  -->
         <TextView
-                android:id="@+id/tv_welcome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/welcome"
@@ -83,7 +81,6 @@
 
         <!--  Sort Button  -->
         <Button
-                android:id="@+id/btn_sort"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
