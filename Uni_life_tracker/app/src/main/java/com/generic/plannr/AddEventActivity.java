@@ -3,6 +3,7 @@ package com.generic.plannr;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.View;
@@ -223,8 +224,29 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
 
     public boolean addEventInput() {
         Validator input = new Validator();
+
+        UserInfoDatabaseHelper userdb = new UserInfoDatabaseHelper(AddEventActivity.this);
+        userdb.openDatabase();
+
+        String startDate = tvStartDate.getText().toString().trim();
+        String endDate = tvEndDate.getText().toString().trim();
+        String startTime = tvStartTime.getText().toString().trim();
+        String endTime = tvEndTime.getText().toString().trim();
+
+
+        DateTimeFormatter DATEFORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm a");
+
+        LocalDateTime start = LocalDateTime.parse(startDate + " " + startTime, DATEFORMAT);
+        if (!endTime.isEmpty()) {
+            LocalDateTime end = LocalDateTime.parse(endDate + " " + endTime, DATEFORMAT);
+            if (!end.isAfter(start)){
+                Toast.makeText(this, "End date should be before start", Toast.LENGTH_LONG).show();
+                tvEndDate.setTextColor(Color.RED);
+                tvEndTime.setTextColor(Color.RED);
+            }
+
+        }
         return input.validateAddEvent(etEventName) & input.validateAddEvent(tvEndDate)
                 & input.validateAddEvent(tvEndTime) & input.validateAddEvent(etCourse);
     }
-
 }

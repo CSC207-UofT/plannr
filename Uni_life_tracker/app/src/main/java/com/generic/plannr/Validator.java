@@ -65,7 +65,7 @@ public class Validator {
      * @return swhether the user input is valid and sets an error message if needed
      */
     public boolean validateAddEvent(TextView userInput) {
-        if (userInput.getText().toString().matches(""))
+        if (userInput.getText().toString().matches("") || userInput.getText().toString().contains("-"))
         {
             userInput.setHintTextColor(Color.RED);
             return false;
