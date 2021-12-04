@@ -1,5 +1,6 @@
 package com.generic.plannr;
 
+import android.util.Log;
 import com.generic.plannr.Database.UserInfoDatabaseHelper;
 import com.generic.plannr.Entities.Event;
 import android.app.Activity;
@@ -59,7 +60,8 @@ public class MainPageActivity extends AppCompatActivity implements CompoundButto
     }
 
     /**
-     * Creates an userinfo database and opens it
+     * Creates an userinfo database and opens it.
+     *
      * @return user an instance of userinfo database
      */
     public UserInfoDatabaseHelper createDatabase() {
@@ -70,7 +72,7 @@ public class MainPageActivity extends AppCompatActivity implements CompoundButto
     }
 
     /**
-     *
+     * Sets adapter to display user's event list.
      */
     private void setAdapter() {
         ListEvents adapter = new ListEvents(eventsList);
@@ -133,6 +135,56 @@ public class MainPageActivity extends AppCompatActivity implements CompoundButto
         }
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        closeDrawer(drawerLayout); // close drawer
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        if (isChecked)
+            Toast.makeText(this, "Sorted by priority!", Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(this, "Sorted by time!", Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * Directs current activity to a different activity.
+     * Generates an intent and starts the activity.
+     *
+     * @param activity a user's current activity.
+     * @param aClass a Class of the new activity to be started.
+     */
+    public void redirectActivity(Activity activity, @SuppressWarnings("rawtypes") Class aClass) {
+        // initialize intent
+        Intent intent = new Intent(activity,aClass);
+        // set flag
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        // start activity
+        activity.startActivity(intent);
+        finish();
+    }
+
+    /**
+     * Prompts dialog for user to log out.
+     * If user selects yes, direct current activity to Log In activity.
+     *
+     * @param activity a user's current activity.
+     */
+    public void logout (Activity activity) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        builder.setTitle("Log Out");
+        builder.setMessage("Are you sure you want to log out?");
+        builder.setPositiveButton("Yes", (dialog, which) -> {
+            redirectActivity(activity, LoginActivity.class);
+            finish();
+        });
+
+        builder.setNegativeButton("No", (dialog, which) -> dialog.dismiss());
+        builder.show();
+    }
+
     /**
      * Directs activity to the School activity on school icon click.
      *
@@ -163,51 +215,11 @@ public class MainPageActivity extends AppCompatActivity implements CompoundButto
     public void clickSettings(View view) { redirectActivity(this, SettingsActivity.class); }
 
     /**
-     * Directs current activity to a different activity.
-     * Generates an intent and starts the activity.
+     * Prompts log out on a logout icon click.
      *
-     * @param activity a user's current activity.
-     * @param aClass a Class of the new activity to be started.
+     * @param view a View for the device screen.
      */
-    public void redirectActivity(Activity activity, @SuppressWarnings("rawtypes") Class aClass) {
-        // initialize intent
-        Intent intent = new Intent(activity,aClass);
-        // set flag
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        // start activity
-        activity.startActivity(intent);
-    }
-    public void clickLogOut(View view) { logout(this); } // redirect activity to settings
-
-    /**
-     * Prompts dialog for user to log out. If user selects yes, direct current activity to log in activity.
-     *
-     * @param activity a user's current activity.
-     */
-    public void logout(Activity activity) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-        builder.setTitle("Log Out");
-        builder.setMessage("Are you sure you want to log out?");
-        builder.setPositiveButton("Yes", (dialog, which) -> {
-            redirectActivity(activity, LoginActivity.class);
-            finish();
-        });
-
-        builder.setNegativeButton("No", (dialog, which) -> dialog.dismiss());
-        builder.show();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        closeDrawer(drawerLayout); // close drawer
-    }
-
-    @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if (isChecked)
-            Toast.makeText(this, "Sorted by priority!", Toast.LENGTH_SHORT).show();
-        else
-            Toast.makeText(this, "Sorted by time!", Toast.LENGTH_SHORT).show();
+    public void clickLogOut(View view) {
+        logout(this);
     }
 }
