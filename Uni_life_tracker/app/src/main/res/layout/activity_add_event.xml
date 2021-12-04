@@ -218,7 +218,8 @@
                          android:layout_width="wrap_content"
                          android:layout_height="wrap_content"
                          android:text="@string/high_priority"
-                         android:fontFamily="@font/roboto_mono_light"/>
+                         android:fontFamily="@font/roboto_mono_light"
+                         android:checked="true"/>
 
             <RadioButton android:id="@+id/rb_med_priority"
                          android:layout_width="wrap_content"
