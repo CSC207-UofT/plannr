@@ -35,6 +35,7 @@ public class SignUpActivity extends AppCompatActivity {
     private void openMain() {
         // Opens the main activity
         activity.redirectActivity(this, MainPageActivity.class);
+        finish();
     }
 
     /**

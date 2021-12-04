@@ -1,6 +1,5 @@
 package com.generic.plannr;
 
-import android.util.Log;
 import com.generic.plannr.Database.UserInfoDatabaseHelper;
 import com.generic.plannr.Entities.Event;
 import android.app.Activity;
@@ -149,6 +148,11 @@ public class MainPageActivity extends AppCompatActivity implements CompoundButto
             Toast.makeText(this, "Sorted by time!", Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
+
     /**
      * Directs current activity to a different activity.
      * Generates an intent and starts the activity.
@@ -176,11 +180,7 @@ public class MainPageActivity extends AppCompatActivity implements CompoundButto
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle("Log Out");
         builder.setMessage("Are you sure you want to log out?");
-        builder.setPositiveButton("Yes", (dialog, which) -> {
-            redirectActivity(activity, LoginActivity.class);
-            finish();
-        });
-
+        builder.setPositiveButton("Yes", (dialog, which) -> redirectActivity(activity, LoginActivity.class));
         builder.setNegativeButton("No", (dialog, which) -> dialog.dismiss());
         builder.show();
     }

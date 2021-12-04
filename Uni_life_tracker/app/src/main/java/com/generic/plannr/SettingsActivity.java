@@ -53,7 +53,6 @@ public class SettingsActivity extends AppCompatActivity {
     public void clickSettings(View view) { recreate(); } // recreate activity
 
     public void clickLogOut(View view) {
-        MainPageActivity activity = new MainPageActivity();
         activity.logout(this); } // prompt logout
 
     public void clickSave(View view) {
