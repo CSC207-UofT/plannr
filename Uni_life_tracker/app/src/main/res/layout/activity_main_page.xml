@@ -11,7 +11,7 @@
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical" >
 
         <!--  Menu Button  -->
         <ImageView
@@ -29,7 +29,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/date"
-                android:textColor="@color/black"
                 android:fontFamily="@font/roboto_mono_bold"
                 android:layout_marginStart="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -39,6 +38,39 @@
                 app:layout_constraintVertical_bias="0.025"
                 app:layout_constraintHorizontal_bias="0.05"/>
 
+        <!--  My To Do's  -->
+        <TextView
+                android:id="@+id/tv_to_dos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/my_to_dos"
+                android:textSize="25sp"
+                android:fontFamily="@font/roboto_mono_bold"
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="20dp"/>
+
+        <!--  Welcome  -->
+        <TextView
+                android:id="@+id/tv_welcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/welcome"
+                android:textSize="15sp"
+                android:fontFamily="@font/roboto_mono_light"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="20dp"/>
+
+        <!--  Welcome Name  -->
+        <TextView
+                android:id="@+id/tv_welcome_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name"
+                android:textSize="15sp"
+                android:fontFamily="@font/roboto_mono_light"
+                android:layout_marginTop="-20dp"
+                android:layout_marginStart="87dp"/>
 
         <LinearLayout
                 android:layout_width="match_parent"

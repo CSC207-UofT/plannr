@@ -35,7 +35,6 @@
                     android:layout_weight="1"
                     android:text="@string/settings"
                     android:textSize="25sp"
-                    android:textColor="@color/black"
                     android:textStyle="bold"
                     android:fontFamily="@font/roboto_mono_bold"
                     android:gravity="start"/>
@@ -45,7 +44,7 @@
                     android:id="@+id/iv_save"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="clickMenu"
+                    android:onClick="clickSave"
                     android:src="@drawable/ic_done_black"
                     android:contentDescription="@string/save"
                     android:padding="20dp"
@@ -67,7 +66,6 @@
                     android:layout_weight="1"
                     android:text="@string/name"
                     android:textSize="20sp"
-                    android:textColor="@color/black"
                     android:fontFamily="@font/roboto_mono_light"
                     android:layout_margin="5dp"/>
 
@@ -82,6 +80,8 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/name"
                         android:inputType="text"
+                        android:id="@+id/et_name"
+                        android:enabled="false"
                 />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
@@ -101,7 +101,6 @@
                     android:layout_weight="1"
                     android:text="@string/university"
                     android:textSize="20sp"
-                    android:textColor="@color/black"
                     android:fontFamily="@font/roboto_mono_light"
                     android:layout_margin="5dp"/>
 
@@ -114,10 +113,30 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/university"
-                        android:inputType="numberDecimal"
+                        android:inputType="text"
+                        android:id="@+id/et_uni"
+                        android:enabled="false"
                 />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
+
+        <!--  Edit User Info  -->
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="20dp">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/edit"
+                android:onClick="clickEdit"
+            />
+        </LinearLayout>
+
     </LinearLayout>
 
     <!--  Navigation Menu  -->
