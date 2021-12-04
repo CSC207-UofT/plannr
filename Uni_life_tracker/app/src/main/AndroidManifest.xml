@@ -19,7 +19,7 @@
         <activity android:name="com.generic.plannr.SchoolActivity"> </activity>
         <activity android:name="com.generic.plannr.LoginActivity"> </activity>
         <activity
-                android:name="com.generic.plannr.MainPageActivity"
+                android:name="com.generic.plannr.MainActivity"
                 android:label="Main"
                 android:exported="true"> </activity>
         <activity

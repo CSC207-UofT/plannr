@@ -16,14 +16,14 @@ public class SignUpActivity extends AppCompatActivity {
     private TextInputLayout tiUniversity;
     private TextInputLayout tiEmail;
     private TextInputLayout tiPassword;
-    private MainPageActivity activity;
+    private MainActivity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        activity = new MainPageActivity();
+        activity = new MainActivity();
 
         // connecting variables to UI features in activities by their id
         tiName = findViewById(R.id.ti_name);
@@ -34,7 +34,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void openMain() {
         // Opens the main activity
-        activity.redirectActivity(this, MainPageActivity.class);
+        activity.redirectActivity(this, MainActivity.class);
         finish();
     }
 

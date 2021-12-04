@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import com.generic.plannr.Database.UserInfoDatabaseHelper;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -166,7 +165,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
 
 //    Back Button
     public void clickBack(View view) {
-        Intent intent = new Intent(this, MainPageActivity.class); // TODO: direct to school/life page
+        Intent intent = new Intent(this, MainActivity.class); // TODO: direct to school/life page
         startActivity(intent);
     }
 
@@ -183,22 +182,22 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
     }
 
     public void clickAssessment(View view) {
-        Intent intent = new Intent(this, MainPageActivity.class); // TODO: direct to assessment page
+        Intent intent = new Intent(this, MainActivity.class); // TODO: direct to assessment page
         startActivity(intent);
     }
 
     public void clickDeadline(View view) {
-        Intent intent = new Intent(this, MainPageActivity.class); // TODO: direct to deadline page
+        Intent intent = new Intent(this, MainActivity.class); // TODO: direct to deadline page
         startActivity(intent);
     }
 
     public void clickClassTime(View view) {
-        Intent intent = new Intent(this, MainPageActivity.class); // TODO: direct to class page
+        Intent intent = new Intent(this, MainActivity.class); // TODO: direct to class page
         startActivity(intent);
     }
 
     public void clickStudySession(View view) {
-        Intent intent = new Intent(this, MainPageActivity.class); // TODO: direct to study session page
+        Intent intent = new Intent(this, MainActivity.class); // TODO: direct to study session page
         startActivity(intent);
     }
 }

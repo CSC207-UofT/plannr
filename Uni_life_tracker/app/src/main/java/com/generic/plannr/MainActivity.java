@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class MainPageActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
+public class MainActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
     // initialize variable
     DrawerLayout drawerLayout;
     ToggleButton tbSort;
@@ -30,7 +30,7 @@ public class MainPageActivity extends AppCompatActivity implements CompoundButto
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_page);
+        setContentView(R.layout.activity_main);
 
         // sets the Welcome Name message to the user's name
         TextView tv1 = findViewById(R.id.tv_welcome_name);
@@ -65,7 +65,7 @@ public class MainPageActivity extends AppCompatActivity implements CompoundButto
      */
     public UserInfoDatabaseHelper createDatabase() {
         // creates an instance and opens database
-        UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(MainPageActivity.this);
+        UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(MainActivity.this);
         user.openDatabase();
         return user;
     }
@@ -199,7 +199,7 @@ public class MainPageActivity extends AppCompatActivity implements CompoundButto
      *
      * @param view a View for the device screen.
      */
-    public void clickLife(View view) { redirectActivity(this, MainPageActivity.class); }
+    public void clickLife(View view) { redirectActivity(this, MainActivity.class); }
 
     /**
      * Directs activity to the Expenses activity on expenses icon click.

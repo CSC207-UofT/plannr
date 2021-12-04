@@ -25,7 +25,7 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
     private RecyclerView rvCalendar;
     private LocalDate selectedDate;
     private DrawerLayout drawerLayout;
-    private MainPageActivity activity;
+    private MainActivity activity;
     private ArrayList<Event> eventsList;
     private RecyclerView rvEvents;
 
@@ -39,7 +39,7 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
         selectedDate = LocalDate.of(2021,11,13);
         setMonthView();
         drawerLayout = findViewById(R.id.drawer_layout);
-        activity = new MainPageActivity();
+        activity = new MainActivity();
 
         rvEvents = findViewById(R.id.rv_events);
         eventsList = new ArrayList<>();
@@ -127,7 +127,7 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
     }
 
     public void clickBack(View view) {
-        Intent intent = new Intent(this, MainPageActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
@@ -148,12 +148,12 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
 
     public void clickMenu(View view) { activity.openDrawer(drawerLayout); } // open drawer
 
-    public void clickLogo(View view) { activity.redirectActivity(this, MainPageActivity.class); } // redirect activity to main
+    public void clickLogo(View view) { activity.redirectActivity(this, MainActivity.class); } // redirect activity to main
 
     public void clickSchool(View view) { recreate(); } // recreate activity
 
     // TODO: change this to life later
-    public void clickLife(View view) { activity.redirectActivity(this, MainPageActivity.class); } // redirect activity to life
+    public void clickLife(View view) { activity.redirectActivity(this, MainActivity.class); } // redirect activity to life
 
     public void clickExpenses(View view) { activity.redirectActivity(this, ExpensesActivity.class); } // redirect activity to expenses
 

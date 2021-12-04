@@ -18,14 +18,14 @@ public class SettingsActivity extends AppCompatActivity {
     private TextInputEditText etUni;
     private TextInputLayout tiName;
     private TextInputLayout tiUni;
-    private MainPageActivity activity;
+    private MainActivity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         drawerLayout = findViewById(R.id.drawer_layout); // nav menu
-        activity = new MainPageActivity();
+        activity = new MainActivity();
 
         // accesses user info from text boxes
         etName = findViewById(R.id.et_name);
@@ -41,12 +41,12 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void clickMenu(View view) { activity.openDrawer(drawerLayout); } // open drawer
 
-    public void clickLogo(View view) { activity.redirectActivity(this, MainPageActivity.class); } // redirect activity to main
+    public void clickLogo(View view) { activity.redirectActivity(this, MainActivity.class); } // redirect activity to main
 
     public void clickSchool(View view) { activity.redirectActivity(this, SchoolActivity.class); } // redirect activity to school
 
     // TODO: change this to life later
-    public void clickLife(View view) { activity.redirectActivity(this, MainPageActivity.class); } // redirect activity to life
+    public void clickLife(View view) { activity.redirectActivity(this, MainActivity.class); } // redirect activity to life
 
     public void clickExpenses(View view) { activity.redirectActivity(this, ExpensesActivity.class); } // redirect activity to expenses
 

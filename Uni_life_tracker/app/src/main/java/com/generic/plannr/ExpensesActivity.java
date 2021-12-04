@@ -18,7 +18,7 @@ public class ExpensesActivity extends AppCompatActivity {
     private ArrayList<Expense> expensesList;
     private RecyclerView  rvExpenses;
     private DrawerLayout drawerLayout;
-    private MainPageActivity activity;
+    private MainActivity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,7 @@ public class ExpensesActivity extends AppCompatActivity {
         rvExpenses = findViewById(R.id.rv_expenses);
         expensesList = new ArrayList<>();
         drawerLayout = findViewById(R.id.drawer_layout); // nav menu
-        activity = new MainPageActivity();
+        activity = new MainActivity();
 
         setExpenseInfo();
         setAdapter();
@@ -84,12 +84,12 @@ public class ExpensesActivity extends AppCompatActivity {
 
     public void clickMenu(View view){ activity.openDrawer(drawerLayout); } // open drawer
 
-    public void clickLogo(View view) { activity.redirectActivity(this, MainPageActivity.class);} // redirect activity to main
+    public void clickLogo(View view) { activity.redirectActivity(this, MainActivity.class);} // redirect activity to main
 
     public void clickSchool(View view) { activity.redirectActivity(this, SchoolActivity.class); } // redirect activity to school
 
     // TODO: change this to life later
-    public void clickLife(View view) { activity.redirectActivity(this, MainPageActivity.class); } // redirect activity to life
+    public void clickLife(View view) { activity.redirectActivity(this, MainActivity.class); } // redirect activity to life
 
     public void clickExpenses(View view) { recreate(); } // recreate activity
 
