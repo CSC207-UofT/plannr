@@ -15,7 +15,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExpenseGateway {
+public class ExpenseGateway implements ExpenseGatewayInterface {
 
     public SQLiteDatabase db;
     public DatabaseClient dbclient;

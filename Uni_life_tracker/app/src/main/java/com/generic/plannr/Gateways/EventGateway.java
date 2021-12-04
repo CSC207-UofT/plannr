@@ -14,7 +14,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EventGateway {
+public class EventGateway implements EventGatewayInterface {
 
     public SQLiteDatabase db;
     public DatabaseClient dbclient;

@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserGateway {
+public class UserGateway implements UserGatewayInterface {
 
     public SQLiteDatabase db;
     public DatabaseClient dbclient;
