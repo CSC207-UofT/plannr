@@ -72,7 +72,7 @@
     <string name="title_activity_add_expenses">Add_expenses</string>
 
     <!--  Main Page  -->
-    <string name="my_to_dos">My To Dos</string>
+    <string name="my_to_dos">My To Do\'s</string>
     <string name="sort">Sort by&#8230;</string>
 
     <!--  Add Event  -->
@@ -93,7 +93,6 @@
     <string name="med_priority">Medium</string>
     <string name="low_priority">Low</string>
     <string name="course">Course</string>
-    <string name="welcome_to_title">Welcome To</string>
     <string name="log_in">Log In</string>
     <string name="log_out">Log Out</string>
     <string name="no_account_yet">No account yet?</string>

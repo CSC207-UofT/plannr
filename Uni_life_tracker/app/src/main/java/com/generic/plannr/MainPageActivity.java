@@ -33,9 +33,10 @@ public class MainPageActivity extends AppCompatActivity implements CompoundButto
         setContentView(R.layout.activity_main_page);
 
         // sets the Welcome Name message to the user's name
-        TextView tv1 = findViewById(R.id.tv_welcome_name);
+        TextView tvWelcome = findViewById(R.id.tv_welcome);
         UserInfoDatabaseHelper user = createDatabase();
-        tv1.setText(user.getLoggedInName());
+        String welcome = "Welcome " + user.getLoggedInName() + "!";
+        tvWelcome.setText(welcome);
 
         // show today's date
         Calendar calendar = Calendar.getInstance();
