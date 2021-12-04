@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class ListExpenses extends RecyclerView.Adapter<ListExpenses.MyViewHolder>{
@@ -42,8 +43,10 @@ public class ListExpenses extends RecyclerView.Adapter<ListExpenses.MyViewHolder
     public void onBindViewHolder(@NonNull ListExpenses.MyViewHolder holder, int position) {
         String expenseName = expensesArrayList.get(position).getName();
         double expenseAmount = expensesArrayList.get(position).getValue();
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+
         holder.expenseNameTxt.setText(expenseName);
-        holder.expenseAmountTxt.setText("$" + expenseAmount);
+        holder.expenseAmountTxt.setText(formatter.format(expenseAmount));
     }
 
     @Override
