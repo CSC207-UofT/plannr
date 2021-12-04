@@ -87,6 +87,7 @@
                 android:layout_marginStart="150dp"
                 android:layout_marginTop="20dp"
                 android:text="@string/save_income"
+                android:onClick="clickSaveIncome"
 
         />
         <!--  Expense List -->
@@ -100,15 +101,30 @@
         />
         <!--  Total Text  -->
         <TextView
-                android:id="@+id/tv_total"
+                android:id="@+id/tv_total_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/total"
                 android:textSize="20sp"
                 android:fontFamily="@font/roboto_mono_bold"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="100dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="-40dp"
                 android:layout_marginStart="20dp"/>
+
+        <!--  Total Sum Text  -->
+        <TextView
+                android:id="@+id/tv_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/total_sum"
+                android:textSize="20sp"
+                android:fontFamily="@font/roboto_mono_bold"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="200dp"
+                android:layout_marginStart="240dp"/>
+
+
+
 
 
     </LinearLayout>

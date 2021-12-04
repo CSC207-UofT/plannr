@@ -1,5 +1,7 @@
 package com.generic.plannr;
 
+import android.graphics.Color;
+import android.widget.TextView;
 import com.generic.plannr.Database.ExpenseDatabaseHelper;
 import com.generic.plannr.Database.UserInfoDatabaseHelper;
 import com.generic.plannr.Entities.Expense;
@@ -11,7 +13,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.google.android.material.textfield.TextInputLayout;
+
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ExpensesActivity extends AppCompatActivity {
 
@@ -19,11 +24,17 @@ public class ExpensesActivity extends AppCompatActivity {
     private RecyclerView  rvExpenses;
     private DrawerLayout drawerLayout;
     private MainPageActivity activity;
+    private TextInputLayout textInputIncome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expenses);
+
+
+
+
+
 
         // expense list
         rvExpenses = findViewById(R.id.rv_expenses);
@@ -76,7 +87,30 @@ public class ExpensesActivity extends AppCompatActivity {
         return user;
     }
 
+
+    public void calculateExpense(){
+        UserInfoDatabaseHelper user = createDatabase();
+        ExpenseDatabaseHelper expense = createExpenseDatabase();
+        String income = Objects.requireNonNull(textInputIncome.getEditText()).getText().toString();
+
+        //double total_sum = Double.parseDouble(income) - the sum of expense values
+    }
+
+
     public void clickAddExpense(View view) {
+        String income = Objects.requireNonNull(textInputIncome.getEditText()).getText().toString();
+        double total_expenses = 100.0;
+        TextView total = findViewById(R.id.tv_total);
+        if (Double.parseDouble(income) > total_expenses) {
+            total.setTextColor(Color.GREEN);
+
+        }else if (Double.parseDouble(income) < total_expenses){
+            total.setTextColor(Color.RED);
+
+        }else{total.setTextColor(Color.YELLOW);}
+    }
+
+    public void clickSaveIncome(View view) {
         // clicking the check in order to add expense
         Intent intent = new Intent(this, AddExpensesActivity.class);
         startActivity(intent);
