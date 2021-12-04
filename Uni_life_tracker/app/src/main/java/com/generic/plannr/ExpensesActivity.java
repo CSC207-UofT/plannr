@@ -85,6 +85,7 @@ public class ExpensesActivity extends AppCompatActivity {
 
 
     public void calculateExpense(){
+        // TODO: CALCULATE TOTAL EXPENSES
         UserInfoDatabaseHelper user = createDatabase();
         ExpenseDatabaseHelper expense = createExpenseDatabase();
         String income = Objects.requireNonNull(textInputIncome.getEditText()).getText().toString();
@@ -101,6 +102,18 @@ public class ExpensesActivity extends AppCompatActivity {
     }
 
     public void clickSaveIncome(View view) {
+        // TODO: TO BE PLACED WITH THE INCOME AND EXPENSES FROM THE DATABASE
+        TextView total = findViewById(R.id.tv_total);
+        String income = Objects.requireNonNull(textInputIncome.getEditText()).getText().toString();
+        // FILLER
+        double total_expenses = 100.0;
+        if (Double.parseDouble(income) > total_expenses) {
+            total.setTextColor(Color.GREEN);
+
+        }else if (Double.parseDouble(income) < total_expenses){
+            total.setTextColor(Color.RED);
+
+        }else{total.setTextColor(Color.YELLOW);}
 
 
     }
