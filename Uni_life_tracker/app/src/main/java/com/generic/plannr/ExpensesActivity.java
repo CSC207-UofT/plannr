@@ -1,5 +1,6 @@
 package com.generic.plannr;
 
+import android.content.SharedPreferences;
 import android.widget.ImageView;
 import com.generic.plannr.Database.ExpenseDatabaseHelper;
 import com.generic.plannr.Database.UserInfoDatabaseHelper;
@@ -36,25 +37,19 @@ public class ExpensesActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout); // nav menu
         ivAddExpense = findViewById(R.id.iv_add_expense); // add expense button
 
-        TapTargetView.showFor(this, TapTarget.forView(
-                findViewById(R.id.iv_add_expense), "Add an Expense", "Add your expenses here!")
-                .outerCircleColor(R.color.lavender).targetCircleColor(R.color.white)
-                .titleTextColor(R.color.black).descriptionTextColor(R.color.black)
-                .tintTarget(false)
-                .cancelable(true),
-                new TapTargetView.Listener() {
-                    @Override
-                            public void onTargetClick(TapTargetView view) {
-                                super.onTargetClick(view);
-                                clickAddExpense(view);
-                    }
-                }
-        );
+        SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
+        boolean firstStart = preferences.getBoolean("firstStart", true);
+
+        if (firstStart) {
+            showTargetView();
+        }
+
         setExpenseInfo();
         setAdapter();
     }
+
     /**
-     * Sets up the recycler view  for expenses list
+     * Sets up the recycler view for expenses list.
      */
     private void setAdapter() {
         ListExpenses adapter = new ListExpenses(expensesList);
@@ -63,6 +58,31 @@ public class ExpensesActivity extends AppCompatActivity {
         rvExpenses.setItemAnimator(new DefaultItemAnimator());
         rvExpenses.setAdapter(adapter);
     }
+
+    /**
+     * Displays target view upon first launch. Target view prompts user to add expense.
+     */
+    private void showTargetView() {
+        TapTargetView.showFor(this, TapTarget.forView(
+            findViewById(R.id.iv_add_expense), "Add an Expense", "Add your expenses here!")
+            .outerCircleColor(R.color.lavender).targetCircleColor(R.color.white)
+            .titleTextColor(R.color.black).descriptionTextColor(R.color.black)
+            .tintTarget(false)
+            .cancelable(true),
+                new TapTargetView.Listener() {
+                    @Override
+                    public void onTargetClick(TapTargetView view) {
+                        super.onTargetClick(view);
+                        clickAddExpense(view);
+                    }
+                });
+
+        SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("firstStart", false);
+        editor.apply();
+    }
+
     /**
      * Creates an instance of expense database and an instance of userinfo database
      * and adds all expenses to expense list
@@ -74,8 +94,8 @@ public class ExpensesActivity extends AppCompatActivity {
 
     }
     /**
-     * Creates an expense database and opens it
-     * @return expense an instance of expense database
+     * Creates an expense database and opens it.
+     * @return expense an instance of expense database.
      */
     public ExpenseDatabaseHelper createExpenseDatabase() {
         // creates an instance and opens database
@@ -85,7 +105,7 @@ public class ExpensesActivity extends AppCompatActivity {
     }
 
     /**
-     * Creates a userinfo database and opens it
+     * Creates an userinfo database and opens it.
      * @return user an instance of userinfo database
      */
     public UserInfoDatabaseHelper createDatabase() {
