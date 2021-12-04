@@ -106,6 +106,7 @@
     </LinearLayout>
 
     <!-- Add Event Name -->
+
     <EditText
             android:id="@+id/et_event_name"
             android:layout_width="match_parent"
@@ -117,6 +118,7 @@
             android:textSize="20sp"
             android:ems="10"
             android:layout_margin="20dp"/>
+
 
     <!-- Add Event Date & Time -->
     <LinearLayout

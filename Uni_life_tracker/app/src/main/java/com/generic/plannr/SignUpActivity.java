@@ -51,10 +51,10 @@ public class SignUpActivity extends AppCompatActivity {
         // Need to pass in tiEmail and Password each time because cannot be accessed UI elements in Validator class
         // If we pass in the string instead of the TextInputLayout then will not be able to set the error messages
         // Although it is inconvenient to keep passing it in, there are android related errors that are stopping us
-        return input.validate(tiName, user, tiEmail, tiPassword, true) &
-                input.validate(tiUniversity,  user, tiEmail, tiPassword, true) &
-                input.validate(tiEmail,  user, tiEmail, tiPassword, true) &
-                input.validate(tiPassword, user, tiEmail, tiPassword, true);
+        return input.validateEntry(tiName, user, tiEmail, tiPassword, true) &
+                input.validateEntry(tiUniversity,  user, tiEmail, tiPassword, true) &
+                input.validateEntry(tiEmail,  user, tiEmail, tiPassword, true) &
+                input.validateEntry(tiPassword, user, tiEmail, tiPassword, true);
     }
 
     public UserInfoDatabaseHelper createDatabase() {

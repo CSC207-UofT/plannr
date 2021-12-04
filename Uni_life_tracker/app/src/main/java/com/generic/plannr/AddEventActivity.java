@@ -50,7 +50,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
 
         Spinner coursesList = findViewById(R.id.spn_courses);
 
-       activity = new MainPageActivity();
+        activity = new MainPageActivity();
 
 //       Initialize Calendar
         Calendar calendar = Calendar.getInstance();
@@ -200,30 +200,39 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
     }
 
     public void clickSaveEvent(View view) {
-        EventDatabaseHelper eventdb = new EventDatabaseHelper(AddEventActivity.this);
-        eventdb.openDatabase();
+        if (addEventInput()) {
+            EventDatabaseHelper eventdb = new EventDatabaseHelper(AddEventActivity.this);
+            eventdb.openDatabase();
 
-        UserInfoDatabaseHelper userdb = new UserInfoDatabaseHelper(AddEventActivity.this);
-        userdb.openDatabase();
+            UserInfoDatabaseHelper userdb = new UserInfoDatabaseHelper(AddEventActivity.this);
+            userdb.openDatabase();
 
-        String eventName = etEventName.getText().toString();
-        String startDate = tvStartDate.getText().toString().trim();
-        String endDate = tvEndDate.getText().toString().trim();
-        String startTime = tvStartTime.getText().toString().trim();
-        String endTime = tvEndTime.getText().toString().trim();
+            String eventName = etEventName.getText().toString();
+            String startDate = tvStartDate.getText().toString().trim();
+            String endDate = tvEndDate.getText().toString().trim();
+            String startTime = tvStartTime.getText().toString().trim();
+            String endTime = tvEndTime.getText().toString().trim();
 
 
-        DateTimeFormatter DATEFORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm a");
+            DateTimeFormatter DATEFORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm a");
 
-        LocalDateTime start = LocalDateTime.parse(startDate + " " + startTime, DATEFORMAT);
-        LocalDateTime end = LocalDateTime.parse(endDate + " " + endTime, DATEFORMAT);
+            LocalDateTime start = LocalDateTime.parse(startDate + " " + startTime, DATEFORMAT);
+            LocalDateTime end = LocalDateTime.parse(endDate + " " + endTime, DATEFORMAT);
 
-        String email = userdb.getLoggedInEmail();
+            String email = userdb.getLoggedInEmail();
 
-        Event event = new Event(eventName, priority, start, end);
+            Event event = new Event(eventName, priority, start, end);
 
-        eventdb.insertEvent(event, email);
+            eventdb.insertEvent(event, email);
 
-        activity.redirectActivity(this, SchoolActivity.class);
+            activity.redirectActivity(this, SchoolActivity.class);
+        }
     }
+
+    public boolean addEventInput() {
+        Validator input = new Validator();
+        return input.validateAddEvent(etEventName) & input.validateAddEvent(tvEndDate)
+                & input.validateAddEvent(tvEndTime);
+    }
+
 }
