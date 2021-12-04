@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class MainPageActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
+public class MainPageActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     // initialize variable
     DrawerLayout drawerLayout;
     private ArrayList<Event> eventsList;
@@ -55,10 +55,28 @@ public class MainPageActivity extends AppCompatActivity implements CompoundButto
 
         // sort dropdown
         Spinner spnSort = findViewById(R.id.spn_sort);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(MainPageActivity.this,
-                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.sort_by));
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.sort_by,
+                android.R.layout.simple_spinner_dropdown_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnSort.setAdapter(adapter);
+        spnSort.setOnItemSelectedListener(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        closeDrawer(drawerLayout); // close drawer
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String text = parent.getItemAtPosition(position).toString();
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 
     /**
@@ -138,19 +156,5 @@ public class MainPageActivity extends AppCompatActivity implements CompoundButto
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         // start activity
         activity.startActivity(intent);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        closeDrawer(drawerLayout); // close drawer
-    }
-
-    @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if (isChecked)
-            Toast.makeText(this, "Sorted by priority!", Toast.LENGTH_SHORT).show();
-        else
-            Toast.makeText(this, "Sorted by time!", Toast.LENGTH_SHORT).show();
     }
 }
