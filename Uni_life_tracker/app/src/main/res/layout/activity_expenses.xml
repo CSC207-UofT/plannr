@@ -95,6 +95,15 @@
                 android:text="@string/save"
 
         />
+        <!--  Expense List -->
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_expenses"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginStart="20dp"
+
+        />
 
         <TextView
                 android:id="@+id/tv_total"
@@ -103,21 +112,11 @@
                 android:text="@string/total"
                 android:textSize="20sp"
                 android:fontFamily="@font/roboto_mono_bold"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="100dp"
                 android:layout_marginStart="20dp"/>
 
-        <!--  Expense List
-        <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_expenses"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:layout_marginBottom="20dp"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginVertical="20dp"
-        />
 
-        -->
     </LinearLayout>
 
     <!--  Navigation Menu  -->
