@@ -89,7 +89,7 @@ public class ExpensesActivity extends AppCompatActivity {
     public void clickSchool(View view) { activity.redirectActivity(this, SchoolActivity.class); } // redirect activity to school
 
     // TODO: change this to life later
-    public void clickLife(View view) { activity.redirectActivity(this, MainActivity.class); } // redirect activity to life
+//    public void clickLife(View view) { activity.redirectActivity(this, MainActivity.class); } // redirect activity to life
 
     public void clickExpenses(View view) { recreate(); } // recreate activity
 

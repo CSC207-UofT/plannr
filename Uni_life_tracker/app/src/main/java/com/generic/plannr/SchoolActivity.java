@@ -114,13 +114,13 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
         return date.format(formatter);
     }
 
-    public void previousMonthAction(View view)
+    public void clickPreviousMonth(View view)
     {
         selectedDate = selectedDate.minusMonths(1);
         setMonthView();
     }
 
-    public void nextMonthAction(View view)
+    public void clickNextMonth(View view)
     {
         selectedDate = selectedDate.plusMonths(1);
         setMonthView();
@@ -153,7 +153,7 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
     public void clickSchool(View view) { recreate(); } // recreate activity
 
     // TODO: change this to life later
-    public void clickLife(View view) { activity.redirectActivity(this, MainActivity.class); } // redirect activity to life
+//    public void clickLife(View view) { activity.redirectActivity(this, MainActivity.class); } // redirect activity to life
 
     public void clickExpenses(View view) { activity.redirectActivity(this, ExpensesActivity.class); } // redirect activity to expenses
 

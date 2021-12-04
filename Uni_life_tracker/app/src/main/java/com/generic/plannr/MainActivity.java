@@ -193,13 +193,13 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
      */
     public void clickSchool(View view) { redirectActivity(this, SchoolActivity.class); }
 
-    /**
-     * TODO: direct to life later!
-     * Directs activity to the Life activity on life icon click.
-     *
-     * @param view a View for the device screen.
-     */
-    public void clickLife(View view) { redirectActivity(this, MainActivity.class); }
+//    /**
+//     * TODO: direct to life later!
+//     * Directs activity to the Life activity on life icon click.
+//     *
+//     * @param view a View for the device screen.
+//     */
+//    public void clickLife(View view) { redirectActivity(this, MainActivity.class); }
 
     /**
      * Directs activity to the Expenses activity on expenses icon click.
