@@ -224,7 +224,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
     public boolean addEventInput() {
         Validator input = new Validator();
         return input.validateAddEvent(etEventName) & input.validateAddEvent(tvEndDate)
-                & input.validateAddEvent(tvEndTime);
+                & input.validateAddEvent(tvEndTime) & input.validateAddEvent(etCourse);
     }
 
 }
