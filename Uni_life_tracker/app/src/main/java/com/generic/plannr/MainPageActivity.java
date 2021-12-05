@@ -1,11 +1,13 @@
 package com.generic.plannr;
 
+import com.generic.plannr.Database.UserInfoDatabaseHelper;
+import com.generic.plannr.Entities.Event;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -22,10 +24,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class MainPageActivity extends AppCompatActivity {
+public class MainPageActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     // initialize variable
     DrawerLayout drawerLayout;
-
     private ArrayList<Event> eventsList;
     private RecyclerView rvEvents;
 
@@ -33,6 +34,12 @@ public class MainPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
+
+        // sets the Welcome Name message to the user's name
+        TextView tvWelcome = findViewById(R.id.tv_welcome);
+        UserInfoDatabaseHelper user = createDatabase();
+        String welcome = "Welcome " + user.getLoggedInName() + "!";
+        tvWelcome.setText(welcome);
 
         // show today's date
         Calendar calendar = Calendar.getInstance();
@@ -42,14 +49,50 @@ public class MainPageActivity extends AppCompatActivity {
         tvViewDate.setText(currentDate);
 
         // side menu
-        drawerLayout = findViewById(R.id.drawer_layout);
-        
+        drawerLayout = findViewById(R.id.drawer_layout); // side menu
+
         // events list
         rvEvents = findViewById(R.id.rv_events);
 
         eventsList = new ArrayList<>();
         setEventInfo();
         setAdapter();
+
+        // sort dropdown
+        Spinner spnSort = findViewById(R.id.spn_sort);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.sort_by,
+                android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnSort.setAdapter(adapter);
+        spnSort.setOnItemSelectedListener(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        closeDrawer(drawerLayout); // close drawer
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String text = parent.getItemAtPosition(position).toString();
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+    /**
+     * Creates a userinfo database and opens it
+     * @return user an instance of userinfo database
+     */
+    public UserInfoDatabaseHelper createDatabase() {
+        // creates an instance and opens database
+        UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(MainPageActivity.this);
+        user.openDatabase();
+        return user;
     }
 
     private void setAdapter() {
@@ -91,9 +134,7 @@ public class MainPageActivity extends AppCompatActivity {
     public void clickSchool(View view) { redirectActivity(this, SchoolActivity.class); } // redirect activity to school
 
     // TODO: change this to life later
-    public void clickLife(View view) {
-        //redirectActivity(this, MainPageActivity.class);
-       } // redirect activity to life
+    public void clickLife(View view) { redirectActivity(this, MainPageActivity.class); } // redirect activity to life
 
     public void clickExpenses(View view) { redirectActivity(this, ExpensesActivity.class); } // redirect activity to expenses
 
@@ -118,11 +159,5 @@ public class MainPageActivity extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         // start activity
         activity.startActivity(intent);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        closeDrawer(drawerLayout); // close drawer
     }
 }

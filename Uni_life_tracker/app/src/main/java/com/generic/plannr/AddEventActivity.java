@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.generic.plannr.Database.EventDatabaseHelper;
 import com.generic.plannr.Database.UserInfoDatabaseHelper;
 import com.generic.plannr.Entities.Event;
+import android.os.Bundle;
+import com.generic.plannr.Database.UserInfoDatabaseHelper;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

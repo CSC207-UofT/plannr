@@ -1,25 +1,20 @@
 package com.generic.plannr.UseCaseTests;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
-import static com.generic.plannr.UseCases.SortTodaysEvents.sortByDate;
-import static com.generic.plannr.UseCases.SortTodaysEvents.sortByPriority;
+import static org.junit.Assert.*;
 
-import java.time.LocalDateTime;
+import static com.generic.plannr.UseCases.SortEvents.sortByDate;
+import static com.generic.plannr.UseCases.SortEvents.sortByPriority;
+import static com.generic.plannr.StaticTestVariables.*;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import com.generic.plannr.Entities.Event;
 import com.generic.plannr.UseCases.EventDateComparator;
-import com.generic.plannr.UseCases.UserManager;
-
-import static org.junit.Assert.assertEquals;
 
 public class SortEventsTest {
 
-    UserManager user;
-    Event e1, e2, e3;
     ArrayList<String> COURSES;
     EventDateComparator EDC;
 
@@ -27,46 +22,22 @@ public class SortEventsTest {
     public void setUp() {
         COURSES = new ArrayList<>();
         EDC = new EventDateComparator();
-        user = new UserManager(
-                "test",
-                COURSES,
-                 "school"
-        );
-        e1 = new Event(
-                "test",
-                2,
-                LocalDateTime.of(2021, 11, 15, 1, 1, 1),
-                LocalDateTime.of(2021, 11, 15, 1, 1, 1)
-        );
-        e2 = new Event(
-                "test",
-                1,
-                LocalDateTime.of(2021, 11, 15, 1, 1, 2),
-                LocalDateTime.of(2021, 11, 15, 1, 1, 2)
-        );
-        e3 = new Event(
-                "test",
-                0,
-                LocalDateTime.of(2021, 11, 15, 1, 1, 3),
-                LocalDateTime.of(2021, 11, 15, 1, 1, 3)
-        );
-
-        user.addEventToUsersList(e1);
-        user.addEventToUsersList(e3);
-        user.addEventToUsersList(e2);
     }
 
     @Test(timeout = 50)
     public void TestSortByDate() {
-        ArrayList<Event> expected = new ArrayList<>(Arrays.asList(e1, e2, e3));
-        //assertEquals(expected ,sortByDate(user));
-
+        ArrayList<Event> sortedEvents = sortByDate(dayEventList);
+        assertEquals(defaultDate, sortedEvents.get(0).getStartDate());
+        assertEquals(defaultDate.plusDays(1), sortedEvents.get(1).getStartDate());
+        assertEquals(defaultDate.plusDays(2), sortedEvents.get(2).getStartDate());
     }
 
     @Test(timeout = 50)
     public void TestSortByPriority() {
-        ArrayList<Event> expected = new ArrayList<>(Arrays.asList(e3, e2, e1));
-        //assertEquals(expected, sortByPriority(user));
+        ArrayList<Event> sortedEvents = sortByPriority(priorityEventList);
+        assertEquals(0, sortedEvents.get(0).getPriority());
+        assertEquals(1, sortedEvents.get(1).getPriority());
+        assertEquals(2, sortedEvents.get(2).getPriority());
     }
 
 }
