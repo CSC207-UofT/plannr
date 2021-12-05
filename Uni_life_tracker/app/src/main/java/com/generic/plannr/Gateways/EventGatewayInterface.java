@@ -15,7 +15,7 @@ public interface EventGatewayInterface {
     /**
      * Insert the given event into the database
      *
-     * @param event The Expense to be inserted
+     * @param event The Event to be inserted
      */
     void saveToDatabase(final Event event);
 
