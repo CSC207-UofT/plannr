@@ -1,34 +1,33 @@
 package com.generic.plannr;
 import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
+import com.generic.plannr.Database.EventDatabaseHelper;
+import com.generic.plannr.Database.UserInfoDatabaseHelper;
 import com.generic.plannr.Entities.Event;
+import com.generic.plannr.UseCases.GetEventsOfDate;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.YearMonth;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+
+import static com.generic.plannr.CalendarUtil.daysInMonthArray;
+import static com.generic.plannr.CalendarUtil.monthYearFromDate;
 
 public class SchoolActivity extends AppCompatActivity implements CalendarAdapter.OnItemListener
 {
     private TextView monthYearText;
     private RecyclerView rvCalendar;
-    private LocalDate selectedDate;
     private DrawerLayout drawerLayout;
     private MainActivity activity;
     private ArrayList<Event> eventsList;
     private RecyclerView rvEvents;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -36,7 +35,7 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_school);
         initWidgets();
-        selectedDate = LocalDate.of(2021,11,13);
+        CalendarUtil.selectedDate = LocalDate.now();
         setMonthView();
         drawerLayout = findViewById(R.id.drawer_layout);
         activity = new MainActivity();
@@ -55,16 +54,14 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
         rvEvents.setAdapter(adapter);
     }
 
-    //    TODO: generates events to display FOR NOW
     private void setEventInfo() {
-        eventsList.add(new Event("Event 1", 1, LocalDateTime.of(2019, 3, 28, 14, 33, 48)));
-        eventsList.add(new Event("Assignment 2", 2, LocalDateTime.of(2021, 12, 13, 12, 20, 48)));
-        eventsList.add(new Event("Project Phase 2", 0, LocalDateTime.of(2021, 12, 19, 12, 20, 48)));
-        eventsList.add(new Event("Exercise 100", 2, LocalDateTime.of(2021, 11, 19, 12, 20, 48)));
-        eventsList.add(new Event("Quiz 34", 2, LocalDateTime.of(2021, 11, 20, 12, 20, 48)));
-        eventsList.add(new Event("Test 2", 2, LocalDateTime.of(2021, 11, 16, 12, 20, 48)));
-        eventsList.add(new Event("Quiz 3", 2, LocalDateTime.of(2021, 11, 29, 12, 20, 48)));
-        eventsList.add(new Event("Project 432", 2, LocalDateTime.of(2021, 11, 13, 12, 20, 48)));
+        EventDatabaseHelper event = new EventDatabaseHelper(SchoolActivity.this);
+        UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(SchoolActivity.this);
+        user.openDatabase();
+        event.openDatabase();
+        String email = user.getLoggedInEmail();
+
+        eventsList.addAll(GetEventsOfDate.getEventsOfDate(event.getAllEvents(email), CalendarUtil.selectedDate));
     }
 
     private void initWidgets()
@@ -75,8 +72,8 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
 
     private void setMonthView()
     {
-        monthYearText.setText(monthYearFromDate(selectedDate));
-        ArrayList<String> daysInMonth = daysInMonthArray(selectedDate);
+        monthYearText.setText(monthYearFromDate(CalendarUtil.selectedDate));
+        ArrayList<LocalDate> daysInMonth = daysInMonthArray(CalendarUtil.selectedDate);
 
         CalendarAdapter calendarAdapter = new CalendarAdapter(daysInMonth, this);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 7);
@@ -84,45 +81,16 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
         rvCalendar.setAdapter(calendarAdapter);
     }
 
-    private ArrayList<String> daysInMonthArray(LocalDate date)
-    {
-        ArrayList<String> daysInMonthArray = new ArrayList<>();
-        YearMonth yearMonth = YearMonth.from(date);
-
-        int daysInMonth = yearMonth.lengthOfMonth();
-
-        LocalDate firstOfMonth = selectedDate.withDayOfMonth(1);
-        int dayOfWeek = firstOfMonth.getDayOfWeek().getValue();
-
-        for(int i = 1; i <= 42; i++)
-        {
-            if(i <= dayOfWeek || i > daysInMonth + dayOfWeek)
-            {
-                daysInMonthArray.add("");
-            }
-            else
-            {
-                daysInMonthArray.add(String.valueOf(i - dayOfWeek));
-            }
-        }
-        return  daysInMonthArray;
-    }
-
-    private String monthYearFromDate(LocalDate date)
-    {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM yyyy");
-        return date.format(formatter);
-    }
 
     public void clickPreviousMonth(View view)
     {
-        selectedDate = selectedDate.minusMonths(1);
+        CalendarUtil.selectedDate = CalendarUtil.selectedDate.minusMonths(1);
         setMonthView();
     }
 
     public void clickNextMonth(View view)
     {
-        selectedDate = selectedDate.plusMonths(1);
+        CalendarUtil.selectedDate = CalendarUtil.selectedDate.plusMonths(1);
         setMonthView();
     }
 
@@ -137,13 +105,17 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
     }
 
     @Override
-    public void onItemClick(int position, String dayText)
+    public void onItemClick(int position, LocalDate date)
     {
-        if(!dayText.equals(""))
-        {
-            String message = "Selected Date " + dayText + " " + monthYearFromDate(selectedDate);
-            Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        eventsList.clear();
+
+        if (date != null) {
+            CalendarUtil.selectedDate = date;
+            setEventInfo();
+            setAdapter();
+            setMonthView();
         }
+
     }
 
     public void clickMenu(View view) { activity.openDrawer(drawerLayout); } // open drawer

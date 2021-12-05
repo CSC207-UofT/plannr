@@ -1,5 +1,7 @@
 package com.generic.plannr;
 
+import android.graphics.Color;
+import android.widget.TextView;
 import android.content.SharedPreferences;
 import android.widget.ImageView;
 import com.generic.plannr.Database.ExpenseDatabaseHelper;
@@ -16,7 +18,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetView;
 
+import com.google.android.material.textfield.TextInputLayout;
+
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ExpensesActivity extends AppCompatActivity {
 
@@ -24,6 +29,7 @@ public class ExpensesActivity extends AppCompatActivity {
     private RecyclerView  rvExpenses;
     private DrawerLayout drawerLayout;
     private MainActivity activity;
+    private TextInputLayout textInputIncome;
     ImageView ivAddExpense;
 
     @Override
@@ -91,8 +97,8 @@ public class ExpensesActivity extends AppCompatActivity {
         ExpenseDatabaseHelper expense = createExpenseDatabase();
         UserInfoDatabaseHelper user = createDatabase();
         expensesList.addAll(expense.getAllExpenses(user.getLoggedInEmail()));
-
     }
+
     /**
      * Creates an expense database and opens it.
      * @return expense an instance of expense database.
@@ -115,10 +121,43 @@ public class ExpensesActivity extends AppCompatActivity {
         return user;
     }
 
+    /**
+     * Calculates the total expenses
+     *
+     */
+    public void calculateExpense(){
+        // TODO: CALCULATE TOTAL EXPENSES
+        UserInfoDatabaseHelper user = createDatabase();
+        ExpenseDatabaseHelper expense = createExpenseDatabase();
+        String income = Objects.requireNonNull(textInputIncome.getEditText()).getText().toString();
+
+        //double total_sum = Double.parseDouble(income) - the sum of expense values
+    }
+
     public void clickAddExpense(View view) {
         // clicking the check in order to add expense
         Intent intent = new Intent(this, AddExpensesActivity.class);
         startActivity(intent);
+    }
+
+    /**
+     * Checks if the income is greater or less than the total
+     * and changes colour of the text accordingly
+     *
+     */
+    public void clickSaveIncome(View view) {
+        // TODO: TO BE PLACED WITH THE INCOME AND EXPENSES FROM THE DATABASE
+        TextView total = findViewById(R.id.tv_total);
+        String income = Objects.requireNonNull(textInputIncome.getEditText()).getText().toString();
+        // FILLER
+        double total_expenses = 100.0;
+        if (Double.parseDouble(income) > total_expenses) {
+            total.setTextColor(Color.GREEN);
+
+        }else if (Double.parseDouble(income) < total_expenses){
+            total.setTextColor(Color.RED);
+
+        }else{total.setTextColor(Color.YELLOW);}
     }
 
     public void clickMenu(View view){ activity.openDrawer(drawerLayout); } // open drawer
