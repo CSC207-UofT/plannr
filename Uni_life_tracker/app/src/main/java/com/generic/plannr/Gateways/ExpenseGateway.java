@@ -56,7 +56,7 @@ public class ExpenseGateway implements ExpenseGatewayInterface {
      *
      * @param expenseID the id of the Expense we want to return
      *
-     * @return the Event with id eventID
+     * @return the Expense with id expenseID
      */
     public Expense getByID(final int expenseID) {
         openDatabase();
