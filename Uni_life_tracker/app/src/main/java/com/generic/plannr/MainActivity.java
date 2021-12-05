@@ -1,7 +1,3 @@
-/* Plannr by Generic Name
- *
- * This file contains methods for activity_main.xml.
- */
 package com.generic.plannr;
 
 import com.generic.plannr.Database.UserInfoDatabaseHelper;
@@ -24,7 +20,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class MainActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
+public class MainActivity extends AppCompatActivity implements  AdapterView.OnItemSelectedListener {
     // initialize variable
     DrawerLayout drawerLayout;
     private ArrayList<Event> eventsList;
@@ -37,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
         TextView tvViewDate = findViewById(R.id.tv_date); // Date
         TextView tvWelcome = findViewById(R.id.tv_welcome_name); // Welcome name
+        Spinner spnSort = findViewById(R.id.spn_sort);
         drawerLayout = findViewById(R.id.drawer_layout); // Side menu
         rvEvents = findViewById(R.id.rv_events); // Events list
 
@@ -47,31 +44,37 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
         // Sets welcome message with user's name
         UserInfoDatabaseHelper user = createDatabase();
-        tvWelcome.setText(user.getLoggedInName());
+        String welcome = "Welcome " + user.getLoggedInName() + "!";
+        tvWelcome.setText(welcome);
 
         // Shows events list
         eventsList = new ArrayList<>(); 
         setEventInfo();
         setAdapter();
+
+        // Sort dropdown
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.sort_by,
+                android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnSort.setAdapter(adapter);
+        spnSort.setOnItemSelectedListener(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        closeDrawer(drawerLayout); // Close drawer
+        closeDrawer(drawerLayout); // close drawer
     }
 
     @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if (isChecked)
-            Toast.makeText(this, "Sorted by priority!", Toast.LENGTH_SHORT).show();
-        else
-            Toast.makeText(this, "Sorted by time!", Toast.LENGTH_SHORT).show();
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String text = parent.getItemAtPosition(position).toString();
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void onBackPressed() {
-        moveTaskToBack(true);
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 
     /**
