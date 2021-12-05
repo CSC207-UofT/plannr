@@ -3,7 +3,9 @@ package com.generic.plannr;
 import android.os.Bundle;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
-import com.generic.plannr.Database.UserInfoDatabaseHelper;
+
+import com.generic.plannr.Entities.User;
+import com.generic.plannr.Gateways.UserGateway;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
@@ -17,6 +19,7 @@ public class SignUpActivity extends AppCompatActivity {
     private TextInputLayout tiEmail;
     private TextInputLayout tiPassword;
     private MainPageActivity activity;
+    UserGateway ug = new UserGateway(SignUpActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,25 +47,18 @@ public class SignUpActivity extends AppCompatActivity {
      */
     public boolean signupInput() {
         // Opens the database and passes in all the info
-        UserInfoDatabaseHelper user = createDatabase();
         // Creates an instance of validator to access the methods
         Validator input = new Validator();
         // Returns whether info is validator and any error messages if it isn't
         // Need to pass in tiEmail and Password each time because cannot be accessed UI elements in Validator class
         // If we pass in the string instead of the TextInputLayout then will not be able to set the error messages
         // Although it is inconvenient to keep passing it in, there are android related errors that are stopping us
-        return input.validate(tiName, user, tiEmail, tiPassword, true) &
-                input.validate(tiUniversity,  user, tiEmail, tiPassword, true) &
-                input.validate(tiEmail,  user, tiEmail, tiPassword, true) &
-                input.validate(tiPassword, user, tiEmail, tiPassword, true);
+        return input.validate(tiName, ug, tiEmail, tiPassword, true) &
+                input.validate(tiUniversity,  ug, tiEmail, tiPassword, true) &
+                input.validate(tiEmail,  ug, tiEmail, tiPassword, true) &
+                input.validate(tiPassword, ug, tiEmail, tiPassword, true);
     }
 
-    public UserInfoDatabaseHelper createDatabase() {
-        // creates an instance and opens database
-        UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(SignUpActivity.this);
-        user.openDatabase();
-        return user;
-    }
 
     public void clickSignup(View view) {
         // If all signup credentials are correct, store the credentials
@@ -73,8 +69,7 @@ public class SignUpActivity extends AppCompatActivity {
             String email = Objects.requireNonNull(tiEmail.getEditText()).getText().toString();
             String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();
 
-            UserInfoDatabaseHelper user = createDatabase();
-            user.insertUserInfo(name, uni, email, password);
+            ug.saveToDatabase(new User(name, email, password, uni));
 
             openMain();
         }

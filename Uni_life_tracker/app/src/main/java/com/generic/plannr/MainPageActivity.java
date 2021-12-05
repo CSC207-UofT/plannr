@@ -1,7 +1,8 @@
 package com.generic.plannr;
 
-import com.generic.plannr.Database.UserInfoDatabaseHelper;
 import com.generic.plannr.Entities.Event;
+import com.generic.plannr.Gateways.UserGateway;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -26,6 +27,7 @@ public class MainPageActivity extends AppCompatActivity {
 
     private ArrayList<Event> eventsList;
     private RecyclerView rvEvents;
+    UserGateway ug = new UserGateway(MainPageActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +36,8 @@ public class MainPageActivity extends AppCompatActivity {
 
         // sets the Welcome Name message to the user's name
         TextView tv1 = findViewById(R.id.tv_welcome_name);
-        UserInfoDatabaseHelper user = createDatabase();
-        tv1.setText(user.getLoggedInName());
+
+        tv1.setText(ug.getLoggedInName());
 
         // show today's date
         Calendar calendar = Calendar.getInstance();
@@ -54,16 +56,6 @@ public class MainPageActivity extends AppCompatActivity {
         setAdapter();
     }
 
-    /**
-     * Creates a userinfo database and opens it
-     * @return user an instance of userinfo database
-     */
-    public UserInfoDatabaseHelper createDatabase() {
-        // creates an instance and opens database
-        UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(MainPageActivity.this);
-        user.openDatabase();
-        return user;
-    }
 
     private void setAdapter() {
         ListEvents adapter = new ListEvents(eventsList);
