@@ -1,3 +1,7 @@
+/* Plannr by Generic Name
+ *
+ * This file contains methods for activity_main.xml.
+ */
 package com.generic.plannr;
 
 import com.generic.plannr.Database.UserInfoDatabaseHelper;
@@ -74,13 +78,12 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
     }
 
     /**
      * Returns an instance of UserInfo database, after being created and opened.
      *
-     * @return user     An instance of UserInfo database
+     * @return user An instance of UserInfo database
      */
     public UserInfoDatabaseHelper createDatabase() {
         UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(MainActivity.this); // Create instance
