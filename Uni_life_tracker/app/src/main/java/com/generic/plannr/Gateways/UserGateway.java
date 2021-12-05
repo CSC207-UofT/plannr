@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.generic.plannr.Database.DatabaseClient;
 import com.generic.plannr.Entities.Event;
 import com.generic.plannr.Entities.User;
+import com.generic.plannr.UseCases.UserManager;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -94,7 +95,9 @@ public class UserGateway implements UserGatewayInterface {
         String email = cur.getString(cur.getColumnIndexOrThrow("EMAIL"));
         String password = cur.getString(cur.getColumnIndexOrThrow("PASSWORD"));
 
-        return new User(name, email, password, uni);
+        UserManager um = new UserManager(name, email, password, uni);
+
+        return um.getUser();
 
     }
 
@@ -121,7 +124,9 @@ public class UserGateway implements UserGatewayInterface {
         String email = cur.getString(cur.getColumnIndexOrThrow("EMAIL"));
         String password = cur.getString(cur.getColumnIndexOrThrow("PASSWORD"));
 
-        return new User(name, email, password, uni);
+        UserManager um = new UserManager(name, email, password, uni);
+
+        return um.getUser();
 
     }
 
@@ -261,8 +266,9 @@ public class UserGateway implements UserGatewayInterface {
                     String uni = cur.getString(cur.getColumnIndexOrThrow("UNIVERSITY"));
                     String email = cur.getString(cur.getColumnIndexOrThrow("EMAIL"));
                     String password = cur.getString(cur.getColumnIndexOrThrow("PASSWORD"));
-                    User user = new User(name, email, password, uni);
-                    usersList.add(user);
+                    UserManager um = new UserManager(name, email, password, uni);
+
+                    usersList.add(um.getUser());
 
                 } while (cur.moveToNext());
             }
