@@ -1,33 +1,36 @@
 package com.generic.plannr;
 
-import com.generic.plannr.Entities.Event;
-import com.generic.plannr.Gateways.UserGateway;
 
+import com.generic.plannr.Entities.Event;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.view.View;
-import android.widget.TextView;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.*;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.generic.plannr.Entities.Event;
+import com.generic.plannr.Gateways.EventGateway;
+import com.generic.plannr.Gateways.UserGateway;
+import com.generic.plannr.UseCases.GetEventsOfDate;
 
 import java.text.DateFormat;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class MainPageActivity extends AppCompatActivity {
+public class MainPageActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     // initialize variable
     DrawerLayout drawerLayout;
-
     private ArrayList<Event> eventsList;
     private RecyclerView rvEvents;
     UserGateway ug = new UserGateway(MainPageActivity.this);
+    EventGateway eg = new EventGateway(MainPageActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +38,9 @@ public class MainPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_page);
 
         // sets the Welcome Name message to the user's name
-        TextView tv1 = findViewById(R.id.tv_welcome_name);
-
-        tv1.setText(ug.getLoggedInName());
+        TextView tvWelcome = findViewById(R.id.tv_welcome);
+        String welcome = "Welcome " + ug.getLoggedInName() + "!";
+        tvWelcome.setText(welcome);
 
         // show today's date
         Calendar calendar = Calendar.getInstance();
@@ -47,13 +50,39 @@ public class MainPageActivity extends AppCompatActivity {
         tvViewDate.setText(currentDate);
 
         // side menu
-        drawerLayout = findViewById(R.id.drawer_layout);
-        
+        drawerLayout = findViewById(R.id.drawer_layout); // side menu
+
         // events list
         rvEvents = findViewById(R.id.rv_events);
-        eventsList = new ArrayList<>(); 
+
+        eventsList = new ArrayList<>();
         setEventInfo();
         setAdapter();
+
+        // sort dropdown
+        Spinner spnSort = findViewById(R.id.spn_sort);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.sort_by,
+                android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnSort.setAdapter(adapter);
+        spnSort.setOnItemSelectedListener(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        closeDrawer(drawerLayout); // close drawer
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String text = parent.getItemAtPosition(position).toString();
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 
 
@@ -67,16 +96,11 @@ public class MainPageActivity extends AppCompatActivity {
 
 //    TODO: generates events to display FOR NOW
     private void setEventInfo() {
-        eventsList.add(new Event("Event 1", 1, LocalDateTime.of(2019, 3, 28, 14, 33, 48)));
-        eventsList.add(new Event("Assignment 2", 2, LocalDateTime.of(2021, 12, 13, 12, 20, 48)));
-        eventsList.add(new Event("Project Phase 2", 0, LocalDateTime.of(2021, 12, 19, 12, 20, 48)));
-        eventsList.add(new Event("Exercise 100", 2, LocalDateTime.of(2021, 11, 19, 12, 20, 48)));
-        eventsList.add(new Event("Quiz 34", 2, LocalDateTime.of(2021, 11, 20, 12, 20, 48)));
-        eventsList.add(new Event("Test 2", 2, LocalDateTime.of(2021, 11, 16, 12, 20, 48)));
-        eventsList.add(new Event("Quiz 3", 2, LocalDateTime.of(2021, 11, 29, 12, 20, 48)));
-        eventsList.add(new Event("Project 432", 2, LocalDateTime.of(2021, 11, 13, 12, 20, 48)));
+
+        int userID = ug.getLoggedInUserID();
+        eventsList.addAll(GetEventsOfDate.getEventsOfDate(eg.getAllEvents(userID), LocalDate.now()));
     }
-//    public Event(String name, int priority, LocalDateTime startDate, LocalDateTime endDate) {
+
     public void clickMenu(View view){
         // open drawer
         openDrawer(drawerLayout);
@@ -123,11 +147,5 @@ public class MainPageActivity extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         // start activity
         activity.startActivity(intent);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        closeDrawer(drawerLayout); // close drawer
     }
 }

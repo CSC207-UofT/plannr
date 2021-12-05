@@ -1,9 +1,9 @@
 package com.generic.plannr;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.generic.plannr.Gateways.UserGateway;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -35,14 +35,10 @@ public class LoginActivity  extends AppCompatActivity {
     public boolean LoginInput () {
         // Creates an instance of validator to be able to access its methods
         Validator input = new Validator();
-        // Opens the database, so it can be passed in since it needs an activity
-
         // Returns whether the login info inputted is valid
-        return input.validate(tiEmail, ug, tiEmail, tiPassword, false) &
-                input.validate(tiPassword, ug, tiEmail, tiPassword, false);
+        return input.validateEntry(tiEmail, ug, tiEmail, tiPassword, false) &
+                input.validateEntry(tiPassword, ug, tiEmail, tiPassword, false);
     }
-
-
 
     public void clickLogin(View view) {
         // If all login credentials are correct, go into the main page

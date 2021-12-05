@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.drawerlayout.widget.DrawerLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
@@ -48,14 +49,84 @@
                     android:contentDescription="@string/add_expense"
                     android:padding="20dp"/>
         </LinearLayout>
+        <!--  Income Text  -->
+        <TextView
+                android:id="@+id/tv_income"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/income"
+                android:textSize="20sp"
+                android:fontFamily="@font/roboto_mono_bold"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="20dp"
+                android:gravity="left"
+                tools:ignore="RtlHardcoded"/>
 
-        <!--  Expense List  -->
+        <!--  Add Income Textfield  -->
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/add_expense_amount"
+                android:layout_marginStart="150dp"
+                android:layout_marginTop="-40dp"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                app:errorEnabled="true">
+        <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/add_income"
+                android:id="@+id/add_e_amount"
+                android:inputType="numberDecimal"
+        />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <!--  Save Income Button  -->
+        <Button
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="150dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/save_income"
+                android:onClick="clickSaveIncome"
+
+        />
+        <!--  Expense List -->
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_expenses"
-                android:layout_width="match_parent"
+                android:layout_width="350dp"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:layout_marginHorizontal="20dp"/>
+                android:layout_marginStart="20dp"
+
+        />
+        <!--  Total Text  -->
+        <TextView
+                android:id="@+id/tv_total_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/total"
+                android:textSize="20sp"
+                android:fontFamily="@font/roboto_mono_bold"
+                android:layout_marginTop="60dp"
+                android:layout_marginBottom="-40dp"
+                android:layout_marginStart="75dp"/>
+
+        <!--  Total Sum Text  -->
+        <TextView
+                android:id="@+id/tv_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/total_sum"
+                android:textSize="20sp"
+                android:fontFamily="@font/roboto_mono_bold"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="210dp"
+                android:layout_marginStart="260dp"/>
+
+
+
+
+
     </LinearLayout>
 
     <!--  Navigation Menu  -->

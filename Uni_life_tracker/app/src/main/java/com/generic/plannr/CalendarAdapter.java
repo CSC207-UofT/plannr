@@ -1,22 +1,23 @@
 package com.generic.plannr;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
 {
-    private final ArrayList<String> daysOfMonth;
+    private final ArrayList<LocalDate> days;
     private final OnItemListener onItemListener;
 
-    public CalendarAdapter(ArrayList<String> daysOfMonth, OnItemListener onItemListener)
+    public CalendarAdapter(ArrayList<LocalDate> days, OnItemListener onItemListener)
     {
-        this.daysOfMonth = daysOfMonth;
+        this.days = days;
         this.onItemListener = onItemListener;
     }
 
@@ -28,24 +29,33 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
         View view = inflater.inflate(R.layout.calendar_cell, parent, false);
         ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
         layoutParams.height = (int) (parent.getHeight() * 0.175);
-        return new CalendarViewHolder(view, onItemListener);
+        return new CalendarViewHolder(view, onItemListener, days);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CalendarViewHolder holder, int position)
     {
-        holder.dayOfMonth.setText(daysOfMonth.get(position));
+        final LocalDate date = days.get(position);
+
+        if (date == null) {
+            holder.dayOfMonth.setText("");
+        } else {
+            holder.dayOfMonth.setText(String.valueOf(date.getDayOfMonth()));
+            if(date.equals(CalendarUtil.selectedDate)) {
+                holder.parentView.setBackgroundColor(Color.parseColor("#CDB8FF"));
+            }
+        }
     }
 
     @Override
     public int getItemCount()
     {
-        return daysOfMonth.size();
+        return days.size();
     }
 
     public interface  OnItemListener
     {
-        void onItemClick(int position, String dayText);
+        void onItemClick(int position, LocalDate date);
     }
 }
 
