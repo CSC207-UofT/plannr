@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.generic.plannr.Database.EventDatabaseHelper;
 import com.generic.plannr.Database.UserInfoDatabaseHelper;
 import com.generic.plannr.Entities.Event;
+import android.os.Bundle;
+import com.generic.plannr.Database.UserInfoDatabaseHelper;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -145,8 +147,9 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
                     AddEventActivity.this, (view, hourOfDay, minute) -> {
                         endHour = hourOfDay;
                         endMinute = minute;
-                        String endDate = tvEndDate.getText().toString().trim();
+
                         Calendar calendar1 = Calendar.getInstance(); // initialize calendar
+                        String endDate = tvEndDate.getText().toString().trim();
                         String[] strings = endDate.split("-");
                         int sDay = Integer.parseInt(strings[0]);
                         calendar1.set(Calendar.DAY_OF_MONTH, sDay);
@@ -229,10 +232,6 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
      */
     public boolean addEventInput() {
         Validator input = new Validator();
-
-        UserInfoDatabaseHelper userdb = new UserInfoDatabaseHelper(AddEventActivity.this);
-        userdb.openDatabase();
-
         String startDate = tvStartDate.getText().toString().trim();
         String endDate = tvEndDate.getText().toString().trim();
         String startTime = tvStartTime.getText().toString().trim();
@@ -256,9 +255,9 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
                 endTimeAfter = true;
             }
         }
+
         return input.validateAddEvent(etEventName) & input.validateAddEvent(tvEndDate)
-                & input.validateAddEvent(tvEndTime) & input.validateAddEvent(etCourse)
-                & endTimeAfter;
+                & input.validateAddEvent(tvEndTime) & input.validateAddEvent(etCourse) & endTimeAfter;
     }
     /**
      * Changes the color of the textview

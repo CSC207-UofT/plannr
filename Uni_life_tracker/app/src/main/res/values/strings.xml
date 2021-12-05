@@ -14,7 +14,6 @@
     <!--  Sign Up  -->
     <string name="left_arrow">Left Arrow</string>
     <string name="profile">Profile</string>
-    <string name="name">Name</string>
     <string name="university">University</string>
     <string name="start">Start!</string>
     <string name="month">Month</string>
@@ -73,8 +72,12 @@
     <string name="title_activity_add_expenses">Add_expenses</string>
 
     <!--  Main Page  -->
-    <string name="my_to_dos">My To Dos</string>
+    <string name="my_to_dos">My To Do\'s</string>
     <string name="sort">Sort by&#8230;</string>
+    <string-array name="sort_by">
+        <item>Time</item>
+        <item>Priority</item>
+    </string-array>
 
     <!--  Add Event  -->
     <string name="add_school_event">Add School Event</string>
@@ -94,11 +97,13 @@
     <string name="med_priority">Medium</string>
     <string name="low_priority">Low</string>
     <string name="course">Course</string>
-    <string name="welcome_to_title">Welcome To</string>
     <string name="log_in">Log In</string>
     <string name="log_out">Log Out</string>
     <string name="no_account_yet">No account yet?</string>
     <string name="have_an_existing_account">Have an existing account?</string>
+    <string name="welcome">Welcome</string>
+    <string name="name">Name</string>
+    <string name="update">Update</string>
 
     <!--  TODO: to display courses for now (TEMPORARY) -->
     <string-array name="courses">

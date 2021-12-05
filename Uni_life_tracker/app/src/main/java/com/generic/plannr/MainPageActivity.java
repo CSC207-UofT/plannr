@@ -1,11 +1,13 @@
 package com.generic.plannr;
 
+import com.generic.plannr.Database.UserInfoDatabaseHelper;
+import com.generic.plannr.Entities.Event;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -15,15 +17,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.generic.plannr.Database.EventDatabaseHelper;
 import com.generic.plannr.Database.UserInfoDatabaseHelper;
 import com.generic.plannr.Entities.Event;
+import com.generic.plannr.UseCases.GetEventsOfDate;
 
 import java.text.DateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class MainPageActivity extends AppCompatActivity {
+public class MainPageActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     // initialize variable
     DrawerLayout drawerLayout;
-
     private ArrayList<Event> eventsList;
     private RecyclerView rvEvents;
 
@@ -31,6 +34,12 @@ public class MainPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
+
+        // sets the Welcome Name message to the user's name
+        TextView tvWelcome = findViewById(R.id.tv_welcome);
+        UserInfoDatabaseHelper user = createDatabase();
+        String welcome = "Welcome " + user.getLoggedInName() + "!";
+        tvWelcome.setText(welcome);
 
         // show today's date
         Calendar calendar = Calendar.getInstance();
@@ -40,11 +49,50 @@ public class MainPageActivity extends AppCompatActivity {
         tvViewDate.setText(currentDate);
 
         // side menu
-        drawerLayout = findViewById(R.id.drawer_layout);
-        
+        drawerLayout = findViewById(R.id.drawer_layout); // side menu
+
         // events list
         rvEvents = findViewById(R.id.rv_events);
 
+        eventsList = new ArrayList<>();
+        setEventInfo();
+        setAdapter();
+
+        // sort dropdown
+        Spinner spnSort = findViewById(R.id.spn_sort);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.sort_by,
+                android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnSort.setAdapter(adapter);
+        spnSort.setOnItemSelectedListener(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        closeDrawer(drawerLayout); // close drawer
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String text = parent.getItemAtPosition(position).toString();
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+    /**
+     * Creates a userinfo database and opens it
+     * @return user an instance of userinfo database
+     */
+    public UserInfoDatabaseHelper createDatabase() {
+        // creates an instance and opens database
+        UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(MainPageActivity.this);
+        user.openDatabase();
+        return user;
     }
 
     private void setAdapter() {
@@ -62,18 +110,9 @@ public class MainPageActivity extends AppCompatActivity {
         user.openDatabase();
         event.openDatabase();
         String email = user.getLoggedInEmail();
-        eventsList.addAll(event.getAllEvents(email));
-//        eventsList.add(Event event.)
-//        eventsList.add(new Event("Event 1", 1, LocalDateTime.of(2019, 3, 28, 14, 33, 48)));
-//        eventsList.add(new Event("Assignment 2", 2, LocalDateTime.of(2021, 12, 13, 12, 20, 48)));
-//        eventsList.add(new Event("Project Phase 2", 0, LocalDateTime.of(2021, 12, 19, 12, 20, 48)));
-//        eventsList.add(new Event("Exercise 100", 2, LocalDateTime.of(2021, 11, 19, 12, 20, 48)));
-//        eventsList.add(new Event("Quiz 34", 2, LocalDateTime.of(2021, 11, 20, 12, 20, 48)));
-//        eventsList.add(new Event("Test 2", 2, LocalDateTime.of(2021, 11, 16, 12, 20, 48)));
-//        eventsList.add(new Event("Quiz 3", 2, LocalDateTime.of(2021, 11, 29, 12, 20, 48)));
-//        eventsList.add(new Event("Project 432", 2, LocalDateTime.of(2021, 11, 13, 12, 20, 48)));
+        eventsList.addAll(GetEventsOfDate.getEventsOfDate(event.getAllEvents(email), LocalDate.now()));
     }
-//    public Event(String name, int priority, LocalDateTime startDate, LocalDateTime endDate) {
+
     public void clickMenu(View view){
         // open drawer
         openDrawer(drawerLayout);
@@ -95,11 +134,7 @@ public class MainPageActivity extends AppCompatActivity {
     public void clickSchool(View view) { redirectActivity(this, SchoolActivity.class); } // redirect activity to school
 
     // TODO: change this to life later
-    public void clickLife(View view) {
-        //redirectActivity(this, MainPageActivity.class);
-        eventsList = new ArrayList<>();
-        setEventInfo();
-        setAdapter();} // redirect activity to life
+    public void clickLife(View view) { redirectActivity(this, MainPageActivity.class); } // redirect activity to life
 
     public void clickExpenses(View view) { redirectActivity(this, ExpensesActivity.class); } // redirect activity to expenses
 
@@ -124,11 +159,5 @@ public class MainPageActivity extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         // start activity
         activity.startActivity(intent);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        closeDrawer(drawerLayout); // close drawer
     }
 }
