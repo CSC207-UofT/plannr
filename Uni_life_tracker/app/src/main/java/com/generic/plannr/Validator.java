@@ -1,7 +1,8 @@
 package com.generic.plannr;
 
+import android.graphics.Color;
 import android.util.Patterns;
-
+import android.widget.TextView;
 import com.generic.plannr.Gateways.UserGateway;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -16,49 +17,69 @@ public class Validator {
     /**
      * Validates inputs and displays the different error messages for the user inpupts
      *
-     * @param textInput The password that the user types into the textbox
-     * @return whether the user input is valid and sets a error message if needed
+     * @param userInput the input from the main layout that will display the error
+     * @param ug the gateway connecting to the userinfo database
+     * @param tiEmail the user's email
+     * @param tiPassword the user's password
+     * @param isSignup whether validation is for signup or login
+     *
+     * @return whether the user input is valid and sets an error message if needed
      *
      */
-    public boolean validate(TextInputLayout textInput, UserGateway ug, TextInputLayout tiEmail,
-                            TextInputLayout tiPassword, boolean isSignup) {
-        String input = Objects.requireNonNull(textInput.getEditText()).getText().toString().trim();
+    public boolean validateEntry(TextInputLayout userInput, UserGateway ug, TextInputLayout tiEmail,
+                                 TextInputLayout tiPassword, boolean isSignup) {
+        String input = Objects.requireNonNull(userInput.getEditText()).getText().toString().trim();
         String email = Objects.requireNonNull(tiEmail.getEditText()).getText().toString();
         String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();
 
         if (input.isEmpty()) {
-            textInput.setError("Field cannot be empty");
+            userInput.setError("Field cannot be empty");
             return false;
-        } else if (isSignup && textInput == tiEmail && !Patterns.EMAIL_ADDRESS.matcher(input).matches()) {
-            textInput.setError("Please enter a valid email address");
+        } else if (isSignup && userInput == tiEmail && !Patterns.EMAIL_ADDRESS.matcher(input).matches()) {
+            userInput.setError("Please enter a valid email address");
             return false;
-        } else if(isSignup && textInput == tiEmail && !ug.uniqueEmail(input)){
-            textInput.setError("This email is already being used");
+        } else if(isSignup && userInput == tiEmail && !ug.uniqueEmail(input)){
+            userInput.setError("This email is already being used");
             return false;
-        } else if (isSignup && textInput == tiPassword && !PASSWORD_REQ.matcher(input).matches()) {
+        } else if (isSignup && userInput == tiPassword && !PASSWORD_REQ.matcher(input).matches()) {
             StringBuilder str = passwordReq(input);
-            textInput.setError(str.toString());
+            userInput.setError(str.toString());
             return false;
-        } else if (!isSignup && textInput == tiEmail && ug.uniqueEmail(email)) {
-            textInput.setError("The email you entered does not belong to any account");
+        } else if (!isSignup && userInput == tiEmail && ug.uniqueEmail(email)) {
+            userInput.setError("The email you entered does not belong to any account");
             return false;
-        } else if (!isSignup && textInput == tiPassword && !ug.getPassword(email).equals(password)
+        } else if (!isSignup && userInput == tiPassword && !ug.getPassword(email).equals(password)
                 && ! ug.uniqueEmail(email)) {
-            textInput.setError("The password you entered is incorrect");
+            userInput.setError("The password you entered is incorrect");
             return false;
         } else {
-            textInput.setError(null);
+            userInput.setError(null);
             ug.updateLoggedInUser(email);
             return true;
         }
     }
-
+    /**
+     * Validates inputs of events to make sure input is not empty
+     *
+     * @param userInput the input the user inputs into the textview
+     *
+     * @return          whether the user input is valid and sets an error message if needed
+     */
+    public boolean validateAddEvent(TextView userInput) {
+        if (userInput.getText().toString().matches(""))
+        {
+            userInput.setHintTextColor(Color.RED);
+            return false;
+        } else {
+            return true;
+        }
+    }
     /**
      * Uses regex to make sure the password inputted is secure
      *
      * @param input The password that the user types into the textbox
-     * @return string that includes all the requirements that the password violates, if any
      *
+     * @return      string that includes all the requirements that the password violates, if any
      */
     public StringBuilder passwordReq(String input) {
         Pattern uppercase = Pattern.compile(".*[A-Z].*");
