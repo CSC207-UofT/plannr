@@ -19,12 +19,10 @@ public class UserManager {
      * @param name      is the user's name
      * @param email     is the user's email
      * @param password  is the user's password
-     * @param courses   is the user's list of courses
      * @param school    is the user's school
      */
-    public UserManager(String name, String email, String password,
-                       ArrayList<String> courses, String school) {
-        u = createUser(name, email, password, courses, school);
+    public UserManager(String name, String email, String password, String school) {
+        u = createUser(name, email, password, school);
         this.expManager = new ExpensesManager();
     }
 
@@ -34,12 +32,10 @@ public class UserManager {
      * @param name      is the user's name
      * @param email     is the user's email
      * @param password  is the user's password
-     * @param courses   is the user's list of courses
      * @param school    is the user's school's name
      * @return the created user
      */
-    public User createUser(String name, String email, String password,
-                           ArrayList<String> courses, String school) {
+    public User createUser(String name, String email, String password, String school) {
         return new User(name, email, password, school);
     }
 
