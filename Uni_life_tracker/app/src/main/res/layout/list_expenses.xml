@@ -7,31 +7,35 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical">
 
+    <!--  Piggy bank ImageView  -->
     <ImageView
-            android:id="@+id/iv_event"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_event"
+            android:id="@+id/iv_expense"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_expenses"
             android:contentDescription="@string/event"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             tools:ignore="MissingConstraints"/>
 
+    <!-- Expenses Text  -->
     <TextView
-            android:id="@+id/tv_event_name"
+            android:id="@+id/tv_expense_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/event"
+            android:text="@string/expenses"
             android:fontFamily="@font/roboto_mono_bold"
             android:layout_marginStart="10dp"
             android:padding="20dp"/>
 
+    <!--  Amount Text  -->
     <TextView
-            android:id="@+id/tv_event_time"
+            android:id="@+id/tv_expense_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/time"
+            android:text="@string/amount"
+            android:textAlignment="textEnd"
             android:fontFamily="@font/roboto_mono_bold"
             android:paddingVertical="20dp"/>
 

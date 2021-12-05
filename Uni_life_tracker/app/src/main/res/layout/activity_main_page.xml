@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.drawerlayout.widget.DrawerLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -11,34 +10,30 @@
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical" >
 
+        <!--  Menu Button  -->
         <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="ClickMenu"
+                android:onClick="clickMenu"
                 android:src="@drawable/ic_menu"
                 android:contentDescription="@string/app_name"
                 android:padding="20dp"
         />
 
+        <!--  Today's Date  -->
         <TextView
-                android:id="@+id/text_date"
+                android:id="@+id/tv_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/date"
-                android:textColor="@color/black"
                 android:fontFamily="@font/roboto_mono_bold"
-                android:layout_marginStart="20dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.025"
-                app:layout_constraintHorizontal_bias="0.05"/>
+                android:layout_marginStart="20dp"/>
 
+        <!--  My To Do's  -->
         <TextView
-                android:id="@+id/text_to_dos"
+                android:id="@+id/tv_to_dos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/my_to_dos"
@@ -49,24 +44,46 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="20dp"/>
 
-        <Button
-                android:id="@+id/btn_sort"
-                android:layout_width="wrap_content"
+        <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="20dp"
-                android:fontFamily="@font/roboto_mono_bold"
-                android:text="@string/sort"/>
+                android:gravity="center_vertical">
 
+            <!--  Welcome!  -->
+            <TextView
+                    android:id="@+id/tv_welcome"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/welcome"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/roboto_mono"
+                    android:textStyle="italic"/>
+
+            <!--  Sort  -->
+            <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_sort"
+                    android:contentDescription="@string/sort"/>
+            <Spinner
+                    android:id="@+id/spn_sort"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <!--  Event List  -->
         <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_events"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:layout_marginStart="20dp"
-                android:id="@+id/recyclerView"/>
+                android:layout_marginHorizontal="20dp"/>
     </LinearLayout>
 
-
+    <!--  Navigation Menu  -->
     <RelativeLayout
             android:layout_width="200dp"
             android:layout_height="match_parent"

@@ -5,24 +5,50 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <TextView
-            android:layout_width="193dp"
-            android:layout_height="96dp"
-            android:text="@string/add_expenses"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.025"
-            app:layout_constraintHorizontal_bias="0.376"
-            android:fontFamily="@font/roboto_mono_bold"
-            android:textSize="20sp"
-            android:layout_marginStart="80dp"
-            android:layout_marginTop="38dp"
-            android:textColor="#070707"
-            android:id="@+id/expenses_title"/>
+    <!--  Action Bar  -->
+    <LinearLayout
+            android:id="@+id/ll_expenses_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black"
+            android:orientation="horizontal"
+            android:padding="15dp"
+            android:gravity="center_vertical">
 
+        <!--  Back Button  -->
+        <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="ClickBack"
+                android:src="@drawable/ic_back_arrow"
+                android:contentDescription="@string/back"/>
 
+        <!--  Add Expense Text  -->
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/add_expense"
+                android:textSize="25sp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/roboto_mono_bold"
+                android:textStyle="bold"
+                android:layout_marginStart="15dp"
+                android:gravity="start"/>
+
+        <!--  Save Button  -->
+        <ImageView
+                android:id="@+id/iv_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_done"
+                android:contentDescription="@string/save"
+                android:onClick="AddExpensesInput"/>
+
+    </LinearLayout>
+
+    <!--  Add Expense Name Textfield  -->
     <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/add_expense_name"
             android:layout_width="300dp"
@@ -32,12 +58,14 @@
             app:errorEnabled="true">
         <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
+                android:id="@+id/add_e_name"
                 android:layout_height="wrap_content"
                 android:hint="@string/add_name"
                 android:inputType="text"
         />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!--  Add Expense Amount Textfield  -->
     <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/add_expense_amount"
             android:layout_marginStart="60dp"
@@ -48,41 +76,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/add_amount"
+                android:id="@+id/add_e_amount"
                 android:inputType="numberDecimal"
         />
     </com.google.android.material.textfield.TextInputLayout>
-
-
-    <ImageButton
-            android:id="@+id/arrow_button"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_width="50dp"
-            android:layout_height="58dp"
-            android:padding="2dp"
-            android:scaleType="fitCenter"
-            android:background="#0000ffff"
-            app:layout_constraintHorizontal_bias="0.049"
-            app:layout_constraintVertical_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="-360dp"
-            android:contentDescription="@string/left_arrow"/>
-    <Button
-            android:layout_width="150dp"
-            android:layout_height="70dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:id="@+id/e_submit"
-            android:onClick="AddExpensesInput"
-            android:text="@string/submit"
-            android:layout_marginStart="130dp"
-            android:layout_marginTop="350dp"
-            android:backgroundTint="@color/black"
-            app:layout_constraintHorizontal_bias="0.467"
-            android:layout_marginBottom="200dp"/>
-
 </LinearLayout>
