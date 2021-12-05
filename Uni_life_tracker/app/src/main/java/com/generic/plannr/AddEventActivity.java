@@ -1,3 +1,7 @@
+/* Plannr by Generic Name
+ *
+ * This file contains methods for activity_add_event.xml.
+ */
 package com.generic.plannr;
 
 import android.annotation.SuppressLint;
@@ -28,7 +32,6 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_event);
-
 
 //        Assign Variables
         ivBack = findViewById(R.id.iv_back);

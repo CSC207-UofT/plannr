@@ -1,3 +1,7 @@
+/* Plannr by Generic Name
+ *
+ * This file contains methods for activity_main.xml.
+ */
 package com.generic.plannr;
 
 import com.generic.plannr.Database.UserInfoDatabaseHelper;
@@ -23,7 +27,6 @@ import java.util.Calendar;
 public class MainActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
     // initialize variable
     DrawerLayout drawerLayout;
-    ToggleButton tbSort;
     private ArrayList<Event> eventsList;
     private RecyclerView rvEvents;
 
@@ -32,41 +35,53 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // sets the Welcome Name message to the user's name
-        TextView tv1 = findViewById(R.id.tv_welcome_name);
-        UserInfoDatabaseHelper user = createDatabase();
-        tv1.setText(user.getLoggedInName());
+        TextView tvViewDate = findViewById(R.id.tv_date); // Date
+        TextView tvWelcome = findViewById(R.id.tv_welcome_name); // Welcome name
+        drawerLayout = findViewById(R.id.drawer_layout); // Side menu
+        rvEvents = findViewById(R.id.rv_events); // Events list
 
-        // show today's date
+        // Show today's date
         Calendar calendar = Calendar.getInstance();
         String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
-
-        TextView tvViewDate = findViewById(R.id.tv_date);
         tvViewDate.setText(currentDate);
 
-        // side menu
-        drawerLayout = findViewById(R.id.drawer_layout); // side menu
+        // Sets welcome message with user's name
+        UserInfoDatabaseHelper user = createDatabase();
+        tvWelcome.setText(user.getLoggedInName());
 
-        // events list
-        rvEvents = findViewById(R.id.rv_events);
+        // Shows events list
         eventsList = new ArrayList<>(); 
         setEventInfo();
         setAdapter();
+    }
 
-//        TODO: enable after
-//        tbSort = findViewById(R.id.tb_sort);
-//        tbSort.setOnCheckedChangeListener(this);
+    @Override
+    protected void onPause() {
+        super.onPause();
+        closeDrawer(drawerLayout); // Close drawer
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        if (isChecked)
+            Toast.makeText(this, "Sorted by priority!", Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(this, "Sorted by time!", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
     }
 
     /**
-     * Creates an userinfo database and opens it.
+     * Returns an instance of UserInfo database, after being created and opened.
      *
-     * @return user an instance of userinfo database
+     * @return user     An instance of UserInfo database
      */
     public UserInfoDatabaseHelper createDatabase() {
-        // creates an instance and opens database
-        UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(MainActivity.this);
-        user.openDatabase();
+        UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(MainActivity.this); // Create instance
+        user.openDatabase(); // Open database
         return user;
     }
 
@@ -83,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
     /**
      * TODO: remove later
-     * Generates events to display.
+     * Sets the events to be displayed.
      */
     private void setEventInfo() {
         eventsList.add(new Event("Event 1", 1, LocalDateTime.of(2019, 3, 28, 14, 33, 48)));
@@ -99,58 +114,32 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
     /**
      * Opens drawer layout (navigation menu) to view.
      *
-     * @param drawerLayout a DrawerLayout for the navigation menu.
+     * @param drawerLayout  A DrawerLayout for the navigation menu.
      */
-    public void openDrawer(DrawerLayout drawerLayout) { drawerLayout.openDrawer(GravityCompat.START); } // open drawer layout
+    public void openDrawer(DrawerLayout drawerLayout) { drawerLayout.openDrawer(GravityCompat.START); }
 
     /**
-     * Closes drawer layout (navigation menu) from view.
+     * Closes drawer layout (navigation menu) from view, if the drawer is open.
      *
-     * @param drawerLayout a DrawerLayout for the navigation menu.
+     * @param drawerLayout  A DrawerLayout for the navigation menu.
      */
     public void closeDrawer(DrawerLayout drawerLayout) {
-        // close drawer layout
-
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            // when drawer is open, close drawer
             drawerLayout.closeDrawer(GravityCompat.START);
         }
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        closeDrawer(drawerLayout); // close drawer
-    }
-
-
-     @Override
-     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-     if (isChecked)
-     Toast.makeText(this, "Sorted by priority!", Toast.LENGTH_SHORT).show();
-     else
-     Toast.makeText(this, "Sorted by time!", Toast.LENGTH_SHORT).show();
-     }
-
-     @Override
-     public void onBackPressed() {
-     moveTaskToBack(true);
-     }
-
-     /**
-      * Directs current activity to a different activity.
-      * Generates an intent and starts the activity.
-      *
-      * @param activity a user's current activity.
-     * @param aClass a Class of the new activity to be started.
+    /**
+     * Directs current activity to a different activity.
+     * Generates an intent and starts the activity.
+     *
+     * @param activity  A user's current activity.
+     * @param aClass    A Class of the new activity to be started.
      */
     public void redirectActivity(Activity activity, @SuppressWarnings("rawtypes") Class aClass) {
-        // initialize intent
-        Intent intent = new Intent(activity,aClass);
-        // set flag
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        // start activity
-        activity.startActivity(intent);
+        Intent intent = new Intent(activity,aClass); // Initialize intent
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // Set flag
+        activity.startActivity(intent); // Start activity
         finish();
     }
 
@@ -172,53 +161,51 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
     /**
      * Opens navigation menu on menu icon click.
      *
-     * @param view a View for the device screen.
+     * @param view  a View for the device screen.
      */
     public void clickMenu(View view){
-        // open drawer
         openDrawer(drawerLayout);
     }
 
     /**
-     * Opens navigation menu on logo click.
+     * Directs activity to the Main activity on logo click.
      *
-     * @param view a View for the device screen.
+     * @param view  a View for the device screen.
      */
-    public void clickLogo(View view) { closeDrawer(drawerLayout); } // close drawer
+    public void clickLogo(View view) { closeDrawer(drawerLayout); }
 
     /**
      * Directs activity to the School activity on school icon click.
      *
-     * @param view a View for the device screen.
+     * @param view  a View for the device screen.
      */
     public void clickSchool(View view) { redirectActivity(this, SchoolActivity.class); }
 
 //    /**
-//     * TODO: direct to life later!
 //     * Directs activity to the Life activity on life icon click.
 //     *
-//     * @param view a View for the device screen.
+//     * @param view  a View for the device screen.
 //     */
 //    public void clickLife(View view) { redirectActivity(this, MainActivity.class); }
 
     /**
      * Directs activity to the Expenses activity on expenses icon click.
      *
-     * @param view a View for the device screen.
+     * @param view  a View for the device screen.
      */
     public void clickExpenses(View view) { redirectActivity(this, ExpensesActivity.class); }
 
     /**
      * Directs activity to the Settings activity on settings icon click.
      *
-     * @param view a View for the device screen.
+     * @param view  a View for the device screen.
      */
     public void clickSettings(View view) { redirectActivity(this, SettingsActivity.class); }
 
     /**
      * Prompts log out on a logout icon click.
      *
-     * @param view a View for the device screen.
+     * @param view  a View for the device screen.
      */
     public void clickLogOut(View view) {
         logout(this);
