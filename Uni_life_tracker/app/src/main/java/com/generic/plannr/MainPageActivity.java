@@ -6,7 +6,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.core.view.GravityCompat;
@@ -20,10 +20,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class MainPageActivity extends AppCompatActivity {
+public class MainPageActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     // initialize variable
     DrawerLayout drawerLayout;
-
     private ArrayList<Event> eventsList;
     private RecyclerView rvEvents;
 
@@ -33,9 +32,10 @@ public class MainPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_page);
 
         // sets the Welcome Name message to the user's name
-        TextView tv1 = findViewById(R.id.tv_welcome_name);
+        TextView tvWelcome = findViewById(R.id.tv_welcome);
         UserInfoDatabaseHelper user = createDatabase();
-        tv1.setText(user.getLoggedInName());
+        String welcome = "Welcome " + user.getLoggedInName() + "!";
+        tvWelcome.setText(welcome);
 
         // show today's date
         Calendar calendar = Calendar.getInstance();
@@ -45,13 +45,38 @@ public class MainPageActivity extends AppCompatActivity {
         tvViewDate.setText(currentDate);
 
         // side menu
-        drawerLayout = findViewById(R.id.drawer_layout);
-        
+        drawerLayout = findViewById(R.id.drawer_layout); // side menu
+
         // events list
         rvEvents = findViewById(R.id.rv_events);
         eventsList = new ArrayList<>(); 
         setEventInfo();
         setAdapter();
+
+        // sort dropdown
+        Spinner spnSort = findViewById(R.id.spn_sort);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.sort_by,
+                android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnSort.setAdapter(adapter);
+        spnSort.setOnItemSelectedListener(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        closeDrawer(drawerLayout); // close drawer
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String text = parent.getItemAtPosition(position).toString();
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 
     /**
@@ -131,11 +156,5 @@ public class MainPageActivity extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         // start activity
         activity.startActivity(intent);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        closeDrawer(drawerLayout); // close drawer
     }
 }
