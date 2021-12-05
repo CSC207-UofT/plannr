@@ -21,6 +21,13 @@ public class DatabaseClient extends SQLiteOpenHelper {
 
     public SQLiteDatabase db;
 
+    /**
+     * Construct the official database for the application consisting
+     * of three separate tables for user info, events and expenses
+     *
+     * @param context the Context object which specifies the
+     * application environment that requires the database
+     */
 
     public DatabaseClient(Context context) {
         super(context, "PlannrDatabase", null, 1);
