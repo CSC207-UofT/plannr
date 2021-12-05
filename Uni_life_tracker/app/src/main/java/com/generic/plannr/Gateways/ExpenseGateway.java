@@ -2,9 +2,11 @@ package com.generic.plannr.Gateways;
 
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.generic.plannr.AddExpensesActivity;
 import com.generic.plannr.Database.DatabaseClient;
 import com.generic.plannr.Entities.Event;
 import com.generic.plannr.Entities.Expense;
@@ -21,6 +23,10 @@ public class ExpenseGateway implements ExpenseGatewayInterface {
     public DatabaseClient dbclient;
     public static final DateTimeFormatter DATEFORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
 
+    public ExpenseGateway(Context context) {
+        dbclient = new DatabaseClient(context);
+    }
+
     /**
      * Open the database for reading or writing
      */
@@ -30,7 +36,7 @@ public class ExpenseGateway implements ExpenseGatewayInterface {
 
     public void saveToDatabase(final Expense expense) {
         openDatabase();
-        UserGateway ug = new UserGateway();
+        UserGateway ug = new UserGateway(new AddExpensesActivity());
         ContentValues cv = new ContentValues();
         cv.put("NAME", expense.getName());
         cv.put("VALUE", expense.getValue());

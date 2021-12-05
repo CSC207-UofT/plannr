@@ -2,6 +2,7 @@ package com.generic.plannr.Gateways;
 
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -17,6 +18,10 @@ public class UserGateway implements UserGatewayInterface {
 
     public SQLiteDatabase db;
     public DatabaseClient dbclient;
+
+    public UserGateway(Context context) {
+        dbclient = new DatabaseClient(context);
+    }
 
     /**
      * Open the database for reading or writing

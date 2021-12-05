@@ -2,9 +2,11 @@ package com.generic.plannr.Gateways;
 
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.generic.plannr.AddEventActivity;
 import com.generic.plannr.Database.DatabaseClient;
 import com.generic.plannr.Entities.Event;
 
@@ -20,6 +22,10 @@ public class EventGateway implements EventGatewayInterface {
     public DatabaseClient dbclient;
     public static final DateTimeFormatter DATEFORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
 
+    public EventGateway(Context context) {
+        dbclient = new DatabaseClient(context);
+    }
+
     /**
      * Open the database for reading or writing
      */
@@ -29,7 +35,7 @@ public class EventGateway implements EventGatewayInterface {
 
     public void saveToDatabase(final Event event) {
         openDatabase();
-        UserGateway ug = new UserGateway();
+        UserGateway ug = new UserGateway(new AddEventActivity());
         ContentValues cv = new ContentValues();
         cv.put("NAME", event.getName());
         cv.put("PRIORITY", event.getPriority());
