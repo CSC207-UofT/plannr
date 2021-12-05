@@ -15,9 +15,9 @@ public class SettingsActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
 
     private TextInputEditText etName;
-    private TextInputEditText etUni;
+    private TextInputEditText etPassword;
     private TextInputLayout tiName;
-    private TextInputLayout tiUni;
+    private TextInputLayout tiPassword;
     private MainPageActivity activity;
 
     @Override
@@ -29,14 +29,14 @@ public class SettingsActivity extends AppCompatActivity {
 
         // accesses user info from text boxes
         etName = findViewById(R.id.et_name);
-        etUni = findViewById(R.id.et_uni);
+        etPassword = findViewById(R.id.et_password);
         tiName = findViewById(R.id.ti_name);
-        tiUni = findViewById(R.id.ti_university);
+        tiPassword = findViewById(R.id.ti_password);
 
-        // opens the database to retrieve user's name and uni
+        // opens the database to retrieve user's name and password
         UserInfoDatabaseHelper user = createDatabase();
         etName.setText(user.getLoggedInName());
-        etUni.setText(user.getLoggedInUni());
+        etPassword.setText(user.getPassword(user.getLoggedInEmail()));
     }
 
     public void clickMenu(View view) { activity.openDrawer(drawerLayout); } // open drawer
@@ -59,12 +59,12 @@ public class SettingsActivity extends AppCompatActivity {
     public void clickSave(View view) {
         // gets user input from textbox
         String name = Objects.requireNonNull(tiName.getEditText()).getText().toString();
-        String uni = Objects.requireNonNull(tiUni.getEditText()).getText().toString();
+        String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();
         // opens database
         UserInfoDatabaseHelper user = createDatabase();
         // replaces current data in database with user input
         user.updateName(name);
-        user.updateUni(uni);
+        user.updatePassword(password);
         // disables textbox so it becomes read only
         textboxEditability(false);
     }
@@ -89,7 +89,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void textboxEditability(boolean bool) {
         etName.setEnabled(bool);
-        etUni.setEnabled(bool);
+        etPassword.setEnabled(bool);
     }
 
 }

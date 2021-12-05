@@ -3,7 +3,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/drawer_layout"
         tools:context=".SettingsActivity">
 
@@ -86,7 +86,7 @@
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
-        <!--  University  -->
+        <!--  Password  -->
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -99,22 +99,23 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/university"
+                    android:text="@string/password"
                     android:textSize="20sp"
                     android:fontFamily="@font/roboto_mono_light"
                     android:layout_margin="5dp"/>
 
-            <!--  University Input  -->
+            <!--  Password Input  -->
             <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/ti_university"
+                    android:id="@+id/ti_password"
                     android:layout_width="200dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    app:passwordToggleEnabled="true">
                 <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/university"
-                        android:inputType="text"
-                        android:id="@+id/et_uni"
+                        android:hint="@string/password"
+                        android:inputType="textPassword"
+                        android:id="@+id/et_password"
                         android:enabled="false"
                 />
             </com.google.android.material.textfield.TextInputLayout>
