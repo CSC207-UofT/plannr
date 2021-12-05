@@ -145,9 +145,8 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
                     AddEventActivity.this, (view, hourOfDay, minute) -> {
                         endHour = hourOfDay;
                         endMinute = minute;
-
-                        Calendar calendar1 = Calendar.getInstance(); // initialize calendar
                         String endDate = tvEndDate.getText().toString().trim();
+                        Calendar calendar1 = Calendar.getInstance(); // initialize calendar
                         String[] strings = endDate.split("-");
                         int sDay = Integer.parseInt(strings[0]);
                         calendar1.set(Calendar.DAY_OF_MONTH, sDay);
@@ -191,7 +190,9 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
     public void clickStudySession(View view) {
         activity.redirectActivity(this, MainPageActivity.class);  // // TODO: direct to study session page
     }
-
+    /**
+     * Saves the event into the database
+     */
     public void clickSaveEvent(View view) {
         if (addEventInput()) {
             EventDatabaseHelper eventdb = new EventDatabaseHelper(AddEventActivity.this);
@@ -221,7 +222,11 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
             activity.redirectActivity(this, SchoolActivity.class);
         }
     }
-
+    /**
+     * Highlights any textview that is in empty or in an incorrect format
+     *
+     * @return whether the added event includes all it's needed attributes
+     */
     public boolean addEventInput() {
         Validator input = new Validator();
 
@@ -237,6 +242,8 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         DateTimeFormatter DATEFORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm a");
 
         LocalDateTime start = LocalDateTime.parse(startDate + " " + startTime, DATEFORMAT);
+
+        boolean endTimeAfter = false;
         if (!endTime.isEmpty()) {
             LocalDateTime end = LocalDateTime.parse(endDate + " " + endTime, DATEFORMAT);
             // Checks if end date is after start date with its date time format
@@ -248,7 +255,6 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
                 changeTextColor(0);
                 endTimeAfter = true;
             }
-
         }
         return input.validateAddEvent(etEventName) & input.validateAddEvent(tvEndDate)
                 & input.validateAddEvent(tvEndTime) & input.validateAddEvent(etCourse)
