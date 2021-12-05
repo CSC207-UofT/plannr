@@ -36,7 +36,7 @@ public class EventGateway implements EventGatewayInterface {
     /**
      * Insert the given event into the database
      *
-     * @param event The Expense to be inserted
+     * @param event The Event to be inserted
      */
     public void saveToDatabase(final Event event) {
         openDatabase();
