@@ -240,9 +240,9 @@ public class UserGateway implements UserGatewayInterface {
      *
      * @return a list of all users stored in the database
      */
-    public List<User> getAllUsers() {
+    public ArrayList<User> getAllUsers() {
         openDatabase();
-        List<User> usersList = new ArrayList<>();
+        ArrayList<User> usersList = new ArrayList<>();
         @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo",
                 null);
         if (cur != null) {

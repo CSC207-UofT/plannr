@@ -84,9 +84,9 @@ public class ExpenseGateway implements ExpenseGatewayInterface {
      *
      * @return a list of all expenses stored in the database for the user
      */
-    public List<Expense> getAllExpenses(int userID) {
+    public ArrayList<Expense> getAllExpenses(int userID) {
         openDatabase();
-        List<Expense> expensesList = new ArrayList<>();
+        ArrayList<Expense> expensesList = new ArrayList<>();
         @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM expenses WHERE " +
                 "USER_ID = " + userID, null);
         if (cur != null) {

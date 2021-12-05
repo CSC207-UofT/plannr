@@ -86,9 +86,9 @@ public class EventGateway implements EventGatewayInterface {
      *
      * @return a list of all events stored in the database for the user
      */
-    public List<Event> getAllEvents(int userID) {
+    public ArrayList<Event> getAllEvents(int userID) {
         openDatabase();
-        List<Event> eventsList = new ArrayList<>();
+        ArrayList<Event> eventsList = new ArrayList<>();
         @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM events WHERE " +
                         "USER_ID = " + userID, null);
         if (cur != null) {
