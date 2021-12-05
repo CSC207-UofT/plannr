@@ -72,8 +72,8 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        String text = parent.getItemAtPosition(position).toString();
-        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+        String sortType = parent.getItemAtPosition(position).toString(); // get sort type
+        Toast.makeText(this, sortType, Toast.LENGTH_SHORT).show(); // TODO: remove later
     }
 
     @Override
