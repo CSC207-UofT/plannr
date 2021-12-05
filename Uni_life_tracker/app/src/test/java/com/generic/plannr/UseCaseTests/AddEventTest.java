@@ -26,7 +26,7 @@ public class AddEventTest {
     @Test
     public void TestAddAssessment() {
         // Instantiate a new UserManager
-        UserManager user = new UserManager("Test User", COURSES, "U of T");
+        UserManager user = new UserManager("Test User", COURSES);
 
         addAssessment(user, "Assessment 1", 1, startDate, startDate, "CSC207");
 
@@ -41,7 +41,7 @@ public class AddEventTest {
     @Test
     public void TestAddStudySession() {
         // Instantiate a new UserManager
-        UserManager user = new UserManager("Test User", COURSES, "U of T");
+        UserManager user = new UserManager("Test User", COURSES);
         ArrayList<String> participants = new ArrayList<>(Arrays.asList("Kathy", "Dana", "Bolade", "Sari", "Evgenia", "Daniel"));
 
         addStudySession(user, "Study Session 1", 1, startDate, startDate, "CSC207", "Robarts", participants);
@@ -59,7 +59,7 @@ public class AddEventTest {
     @Test
     public void TestAddClass() {
         // Instantiate a new UserManager
-        UserManager user = new UserManager("Test User", COURSES, "U of T");
+        UserManager user = new UserManager("Test User", COURSES);
 
         addClass(user, "Class 1", 1, startDate, startDate, "CSC207", "Bahen");
 
