@@ -38,15 +38,14 @@ public class EventGateway implements EventGatewayInterface {
      *
      * @param event The Event to be inserted
      */
-    public void saveToDatabase(final Event event) {
+    public void saveToDatabase(final Event event, final int userID) {
         openDatabase();
-        UserGateway ug = new UserGateway(new AddEventActivity());
         ContentValues cv = new ContentValues();
         cv.put("NAME", event.getName());
         cv.put("PRIORITY", event.getPriority());
         cv.put("START_DATE", event.getStartDate().format(DATEFORMAT));
         cv.put("END_DATE", event.getEndDate().format(DATEFORMAT));
-        cv.put("USER_ID", ug.getLoggedInUserID());
+        cv.put("USER_ID", userID);
         db.insert("events", null, cv);
     }
 

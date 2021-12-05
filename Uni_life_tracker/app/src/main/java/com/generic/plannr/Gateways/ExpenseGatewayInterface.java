@@ -16,8 +16,9 @@ public interface ExpenseGatewayInterface {
      * Insert the given expense into the database
      *
      * @param expense The Expense to be inserted
+     * @param userID  The id of the User
      */
-    void saveToDatabase(final Expense expense);
+    void saveToDatabase(final Expense expense, final int userID);
 
     /**
      * Get the Expense associated with id expenseID currently stored

@@ -216,8 +216,9 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
             String email = ug.getLoggedInEmail();
 
             Event event = new Event(eventName, priority, start, end);
+            int userID = ug.getLoggedInUserID();
 
-            eg.saveToDatabase(event);
+            eg.saveToDatabase(event, userID);
 
             activity.redirectActivity(this, SchoolActivity.class);
         }

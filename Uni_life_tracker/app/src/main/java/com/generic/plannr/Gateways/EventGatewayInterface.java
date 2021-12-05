@@ -15,9 +15,10 @@ public interface EventGatewayInterface {
     /**
      * Insert the given event into the database
      *
-     * @param event The Event to be inserted
+     * @param event  The Event to be inserted
+     * @param userID The ID of the user
      */
-    void saveToDatabase(final Event event);
+    void saveToDatabase(final Event event, final int userID);
 
     /**
      * Get the Event associated with id eventID currently stored

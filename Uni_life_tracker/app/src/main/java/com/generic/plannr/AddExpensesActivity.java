@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.generic.plannr.Entities.Expense;
 import com.generic.plannr.Gateways.ExpenseGateway;
+import com.generic.plannr.Gateways.UserGateway;
 import com.google.android.material.textfield.TextInputLayout;
 
 
@@ -17,6 +18,7 @@ public class AddExpensesActivity extends AppCompatActivity {
 
     private TextInputLayout textInputName, textInputAmount;
     ExpenseGateway eg = new ExpenseGateway(AddExpensesActivity.this);
+    UserGateway ug = new UserGateway(AddExpensesActivity.this);
 
 
 
@@ -68,9 +70,10 @@ public class AddExpensesActivity extends AppCompatActivity {
         if (validate(textInputName) & validate(textInputAmount)) {
             String name = Objects.requireNonNull(textInputName.getEditText()).getText().toString();
             String amount = Objects.requireNonNull(textInputAmount.getEditText()).getText().toString();
+            int userID = ug.getLoggedInUserID();
 
             // Adds all the user's info into the database using the gateway
-            eg.saveToDatabase(new Expense(name, Double.parseDouble(amount)));
+            eg.saveToDatabase(new Expense(name, Double.parseDouble(amount)), userID);
             openAddExpensesView();
 
         }

@@ -39,14 +39,14 @@ public class ExpenseGateway implements ExpenseGatewayInterface {
      * Insert the given expense into the database
      *
      * @param expense The Expense to be inserted
+     * @param userID  The id of the User
      */
-    public void saveToDatabase(final Expense expense) {
+    public void saveToDatabase(final Expense expense, final int userID) {
         openDatabase();
-        UserGateway ug = new UserGateway(new AddExpensesActivity());
         ContentValues cv = new ContentValues();
         cv.put("NAME", expense.getName());
         cv.put("VALUE", expense.getValue());
-        cv.put("USER_ID", ug.getLoggedInUserID());
+        cv.put("USER_ID", userID);
         db.insert("expenses", null, cv);
     }
 
