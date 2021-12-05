@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class UserInfoDatabaseHelper extends SQLiteOpenHelper {
 
     private static final String createUserInfoTable = "CREATE TABLE userinfo(NAME TEXT, " +
-            "UNIVERSITY TEXT, EMAIL TEXT, PASSWORD TEXT, LOGGEDIN INTEGER)";
+            "EMAIL TEXT, PASSWORD TEXT, LOGGEDIN INTEGER)";
     private SQLiteDatabase db;
 
     public UserInfoDatabaseHelper(Context context) {
@@ -40,15 +40,13 @@ public class UserInfoDatabaseHelper extends SQLiteOpenHelper {
      * Insert User Info into the database if initially empty
      *
      * @param name The user's name to be inserted
-     * @param uni The user's university to be inserted
      * @param email The user's email to be inserted
      * @param password The user's password to be inserted
      */
-    public void insertUserInfo(String name, String uni, String email, String password){
+    public void insertUserInfo(String name, String email, String password){
         db.execSQL("UPDATE userinfo SET LOGGEDIN = 0");
         ContentValues cv = new ContentValues();
         cv.put("NAME", name);
-        cv.put("UNIVERSITY", uni);
         cv.put("EMAIL", email);
         cv.put("PASSWORD", password);
         cv.put("LOGGEDIN", 1);
@@ -64,17 +62,6 @@ public class UserInfoDatabaseHelper extends SQLiteOpenHelper {
     public void updateName(String name){
         ContentValues cv = new ContentValues();
         cv.put("NAME", name);
-        db.update("userinfo", cv, "LOGGEDIN = 1", null);
-    }
-
-    /**
-     * Update the User's university in the database
-     *
-     * @param uni The user's university to be inserted
-     */
-    public void updateUni(String uni){
-        ContentValues cv = new ContentValues();
-        cv.put("UNIVERSITY", uni);
         db.update("userinfo", cv, "LOGGEDIN = 1", null);
     }
 
@@ -110,21 +97,6 @@ public class UserInfoDatabaseHelper extends SQLiteOpenHelper {
                 null);
         if (cur.moveToFirst()) {
             return cur.getString(cur.getColumnIndexOrThrow("NAME"));
-        }
-
-        return null;
-    }
-
-    /**
-     * Get the current logged in user's university currently stored in the database
-     *
-     * @return the logged in user's university in the database
-     */
-    public String getLoggedInUni(){
-        @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE LOGGEDIN = 1",
-                null);
-        if (cur.moveToFirst()) {
-            return cur.getString(cur.getColumnIndexOrThrow("UNIVERSITY"));
         }
 
         return null;
