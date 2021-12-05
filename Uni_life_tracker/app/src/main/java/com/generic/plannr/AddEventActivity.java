@@ -239,14 +239,28 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         LocalDateTime start = LocalDateTime.parse(startDate + " " + startTime, DATEFORMAT);
         if (!endTime.isEmpty()) {
             LocalDateTime end = LocalDateTime.parse(endDate + " " + endTime, DATEFORMAT);
+            // Checks if end date is after start date with its date time format
             if (!end.isAfter(start)){
+                // Warns user that the format is incorrect
                 Toast.makeText(this, "End date should be before start", Toast.LENGTH_LONG).show();
-                tvEndDate.setTextColor(Color.RED);
-                tvEndTime.setTextColor(Color.RED);
+                changeTextColor(255);
+            } else {
+                changeTextColor(0);
+                endTimeAfter = true;
             }
 
         }
         return input.validateAddEvent(etEventName) & input.validateAddEvent(tvEndDate)
-                & input.validateAddEvent(tvEndTime) & input.validateAddEvent(etCourse);
+                & input.validateAddEvent(tvEndTime) & input.validateAddEvent(etCourse)
+                & endTimeAfter;
+    }
+    /**
+     * Changes the color of the textview
+     *
+     * @param color the r value for the rgb color\
+     */
+    public void changeTextColor(int color) {
+        tvEndDate.setTextColor(Color.rgb(color, 0, 0));
+        tvEndTime.setTextColor(Color.rgb(color, 0, 0));
     }
 }
