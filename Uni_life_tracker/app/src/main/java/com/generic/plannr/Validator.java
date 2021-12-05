@@ -63,10 +63,10 @@ public class Validator {
      *
      * @param userInput the input the user inputs into the textview
      *
-     * @return swhether the user input is valid and sets an error message if needed
+     * @return          whether the user input is valid and sets an error message if needed
      */
     public boolean validateAddEvent(TextView userInput) {
-        if (userInput.getText().toString().matches("") || userInput.getText().toString().contains("-"))
+        if (userInput.getText().toString().matches(""))
         {
             userInput.setHintTextColor(Color.RED);
             return false;
@@ -79,7 +79,7 @@ public class Validator {
      *
      * @param input The password that the user types into the textbox
      *
-     * @return string that includes all the requirements that the password violates, if any
+     * @return      string that includes all the requirements that the password violates, if any
      */
     public StringBuilder passwordReq(String input) {
         Pattern uppercase = Pattern.compile(".*[A-Z].*");
