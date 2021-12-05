@@ -42,7 +42,7 @@ public class UserGateway implements UserGatewayInterface {
         cv.put("UNIVERSITY", user.getSchool());
         cv.put("EMAIL", user.getEmail());
         cv.put("PASSWORD", user.getPassword());
-        cv.put("LOGGEDIN", 1);
+        cv.put("LOGGED_IN", 1);
         db.insert("userinfo", null, cv);
     }
 
@@ -56,7 +56,7 @@ public class UserGateway implements UserGatewayInterface {
         openDatabase();
         ContentValues cv = new ContentValues();
         cv.put("NAME", name);
-        db.update("userinfo", cv, "LOGGEDIN = 1", null);
+        db.update("userinfo", cv, "LOGGED_IN = 1", null);
     }
 
     /**
@@ -68,7 +68,7 @@ public class UserGateway implements UserGatewayInterface {
         openDatabase();
         ContentValues cv = new ContentValues();
         cv.put("UNIVERSITY", uni);
-        db.update("userinfo", cv, "LOGGEDIN = 1", null);
+        db.update("userinfo", cv, "LOGGED_IN = 1", null);
     }
 
     /**
@@ -133,7 +133,7 @@ public class UserGateway implements UserGatewayInterface {
     public Integer getLoggedInUserID() {
         openDatabase();
         @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE " +
-                        "LOGGEDIN = 1",
+                        "LOGGED_IN = 1",
                 null);
         if (cur.moveToFirst()) {
             return cur.getInt(cur.getColumnIndexOrThrow("ID"));
@@ -151,7 +151,7 @@ public class UserGateway implements UserGatewayInterface {
     public String getLoggedInName(){
         openDatabase();
         @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE " +
-                        "LOGGEDIN = 1",
+                        "LOGGED_IN = 1",
                 null);
         if (cur.moveToFirst()) {
             return cur.getString(cur.getColumnIndexOrThrow("NAME"));
@@ -168,7 +168,7 @@ public class UserGateway implements UserGatewayInterface {
     public String getLoggedInUni(){
         openDatabase();
         @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE " +
-                        "LOGGEDIN = 1",
+                        "LOGGED_IN = 1",
                 null);
         if (cur.moveToFirst()) {
             return cur.getString(cur.getColumnIndexOrThrow("UNIVERSITY"));
@@ -185,7 +185,7 @@ public class UserGateway implements UserGatewayInterface {
     public String getLoggedInEmail(){
         openDatabase();
         @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE " +
-                        "LOGGEDIN = 1",
+                        "LOGGED_IN = 1",
                 null);
 
         return cur.getString(cur.getColumnIndexOrThrow("EMAIL"));
@@ -213,9 +213,9 @@ public class UserGateway implements UserGatewayInterface {
      */
     public void updateLoggedInUser(String userEmail) {
         openDatabase();
-        db.execSQL("UPDATE userinfo SET LOGGEDIN = 0");
+        db.execSQL("UPDATE userinfo SET LOGGED_IN = 0");
         ContentValues cv = new ContentValues();
-        cv.put("LOGGEDIN", 1);
+        cv.put("LOGGED_IN", 1);
         db.update("userinfo", cv, "EMAIL = " + "'" + userEmail + "'", null);
 
     }

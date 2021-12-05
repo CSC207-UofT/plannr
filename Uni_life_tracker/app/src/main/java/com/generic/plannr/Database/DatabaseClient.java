@@ -10,7 +10,7 @@ public class DatabaseClient extends SQLiteOpenHelper {
 
     private static final String createUserInfoTable = "CREATE TABLE userinfo(ID INTEGER " +
             "PRIMARY KEY AUTOINCREMENT, NAME TEXT, UNIVERSITY TEXT, EMAIL TEXT, PASSWORD TEXT, " +
-            "LOGGEDIN INTEGER)";
+            "LOGGED_IN INTEGER)";
 
     private static final String createEventTable = "CREATE TABLE events(ID INTEGER PRIMARY KEY " +
             "AUTOINCREMENT, NAME TEXT, PRIORITY INTEGER, START_DATE TEXT, END_DATE TEXT, " +
