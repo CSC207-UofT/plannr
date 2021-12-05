@@ -5,24 +5,21 @@ import java.util.ArrayList;
 public class User {
     private String name;
     private final ArrayList<String> courses;
-    private String school;
     private final ArrayList<Event> eventList;
     private final ArrayList<Expense> expenseList;
     private double income;
 
     /**
      * Construct a user, giving them the given name,
-     * courses, school, and setting an empty events list.
+     * courses, and setting an empty events list.
      *
      * @param name    The user's name
      * @param courses The user's course list
-     * @param school  The user's school
      */
-    public User(String name, ArrayList<String> courses, String school) {
+    public User(String name, ArrayList<String> courses) {
         this.name = name;
         this.courses = new ArrayList<>();
         this.courses.addAll(courses);
-        this.school = school;
         this.eventList = new ArrayList<>();
         this.income = 0.0;
         this.expenseList = new ArrayList<>();
@@ -35,15 +32,6 @@ public class User {
      */
     public String getName() {
         return this.name;
-    }
-
-    /**
-     * getter method for school
-     *
-     * @return a String that contains the user's name
-     */
-    public String getSchool() {
-        return this.school;
     }
 
     /**
@@ -66,10 +54,6 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void setSchool(String school) {
-        this.school = school;
     }
 
     /**

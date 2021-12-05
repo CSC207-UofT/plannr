@@ -18,10 +18,9 @@ public class UserManager {
      *
      * @param name    is the user's name
      * @param courses is the user's list of courses
-     * @param school  is the user's school
      */
-    public UserManager(String name, ArrayList<String> courses, String school) {
-        u = createUser(name, courses, school);
+    public UserManager(String name, ArrayList<String> courses) {
+        u = createUser(name, courses);
         this.expManager = new ExpensesManager();
     }
 
@@ -30,11 +29,10 @@ public class UserManager {
      *
      * @param name    is the user's name
      * @param courses is the user's list of courses
-     * @param school  is the user's school's name
      * @return the created user
      */
-    public User createUser(String name, ArrayList<String> courses, String school) {
-        return new User(name, courses, school);
+    public User createUser(String name, ArrayList<String> courses) {
+        return new User(name, courses);
     }
 
     /**
@@ -73,14 +71,6 @@ public class UserManager {
         u.setName(name);
     }
 
-    /**
-     * Changes the User's school
-     *
-     * @param school is the new name of User's school
-     */
-    public void changeUsersSchool(String school) {
-        u.setSchool(school);
-    }
 
     /**
      * Adds an event to User's event list
@@ -122,15 +112,6 @@ public class UserManager {
      */
     public String getUsersName() {
         return u.getName();
-    }
-
-    /**
-     * getter method for user's school
-     *
-     * @return a String variable containing the user's school
-     */
-    public String getUsersSchool() {
-        return u.getSchool();
     }
 
     /**
