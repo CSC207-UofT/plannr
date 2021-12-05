@@ -118,6 +118,15 @@ public class UserManager {
     }
 
     /**
+     * This method will return the User
+     *
+     * @return the User object
+     */
+    public User getUser() {
+        return u;
+    }
+
+    /**
      * This method will return user's name
      *
      * @return a String variable containing user's name
