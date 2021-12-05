@@ -157,7 +157,7 @@ public class UserGateway implements UserGatewayInterface {
             return cur.getString(cur.getColumnIndexOrThrow("NAME"));
         }
 
-        return null;
+        return "";
     }
 
     /**
@@ -174,7 +174,7 @@ public class UserGateway implements UserGatewayInterface {
             return cur.getString(cur.getColumnIndexOrThrow("UNIVERSITY"));
         }
 
-        return null;
+        return "";
     }
 
     /**
@@ -188,7 +188,11 @@ public class UserGateway implements UserGatewayInterface {
                         "LOGGED_IN = 1",
                 null);
 
-        return cur.getString(cur.getColumnIndexOrThrow("EMAIL"));
+        if (cur.moveToFirst()) {
+            return cur.getString(cur.getColumnIndexOrThrow("EMAIL"));
+        }
+
+        return "";
     }
 
     /**
@@ -203,7 +207,11 @@ public class UserGateway implements UserGatewayInterface {
         @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE " +
                 "EMAIL = " + '"' + userEmail + '"', null);
 
-        return cur.getString(cur.getColumnIndexOrThrow("PASSWORD"));
+        if (cur.moveToFirst()) {
+            return cur.getString(cur.getColumnIndexOrThrow("PASSWORD"));
+        }
+
+        return "";
     }
 
     /**
