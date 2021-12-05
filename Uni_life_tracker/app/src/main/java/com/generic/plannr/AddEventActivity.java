@@ -3,6 +3,7 @@ package com.generic.plannr;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.View;
@@ -190,7 +191,9 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
     public void clickStudySession(View view) {
         activity.redirectActivity(this, MainPageActivity.class);  // // TODO: direct to study session page
     }
-
+    /**
+     * Saves the event into the database
+     */
     public void clickSaveEvent(View view) {
         if (addEventInput()) {
             EventDatabaseHelper eventdb = new EventDatabaseHelper(AddEventActivity.this);
@@ -220,11 +223,48 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
             activity.redirectActivity(this, SchoolActivity.class);
         }
     }
-
+    /**
+     * Highlights any textview that is in empty or in an incorrect format
+     *
+     * @return whether the added event includes all it's needed attributes
+     */
     public boolean addEventInput() {
         Validator input = new Validator();
+        String startDate = tvStartDate.getText().toString().trim();
+        String endDate = tvEndDate.getText().toString().trim();
+        String startTime = tvStartTime.getText().toString().trim();
+        String endTime = tvEndTime.getText().toString().trim();
+
+
+        DateTimeFormatter DATEFORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm a");
+
+        LocalDateTime start = LocalDateTime.parse(startDate + " " + startTime, DATEFORMAT);
+
+        boolean endTimeAfter = false;
+        if (!endTime.isEmpty()) {
+            LocalDateTime end = LocalDateTime.parse(endDate + " " + endTime, DATEFORMAT);
+            // Checks if end date is after start date with its date time format
+            if (!end.isAfter(start)){
+                // Warns user that the format is incorrect
+                Toast.makeText(this, "End date should be before start", Toast.LENGTH_LONG).show();
+                changeTextColor(255);
+            } else {
+                changeTextColor(0);
+                endTimeAfter = true;
+            }
+        }
+
         return input.validateAddEvent(etEventName) & input.validateAddEvent(tvEndDate)
-                & input.validateAddEvent(tvEndTime) & input.validateAddEvent(etCourse);
+                & input.validateAddEvent(tvEndTime) & input.validateAddEvent(etCourse) & endTimeAfter;
+    }
+    /**
+     * Changes the color of the textview
+     *
+     * @param color the r value for the rgb color\
+     */
+    public void changeTextColor(int color) {
+        tvEndDate.setTextColor(Color.rgb(color, 0, 0));
+        tvEndTime.setTextColor(Color.rgb(color, 0, 0));
     }
 
 }
