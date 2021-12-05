@@ -115,6 +115,7 @@ public class EventGateway implements EventGatewayInterface {
      * database for user with user id userID
      *
      * @param userID the user's id
+     * @param date the start date of the events to be returned
      *
      * @return a list of all events that start at date stored in the
      * database for the user
