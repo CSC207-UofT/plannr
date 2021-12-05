@@ -1,7 +1,7 @@
 package com.generic.plannr;
 
-import com.generic.plannr.Database.UserInfoDatabaseHelper;
 import android.util.Patterns;
+import com.generic.plannr.Database.UserInfoDatabaseHelper;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
@@ -20,7 +20,7 @@ public class Validator {
      *
      */
     public boolean validate(TextInputLayout textInput, UserInfoDatabaseHelper user, TextInputLayout tiEmail,
-                                  TextInputLayout tiPassword, boolean isSignup) {
+                            TextInputLayout tiPassword, boolean isSignup) {
         String input = Objects.requireNonNull(textInput.getEditText()).getText().toString().trim();
         String email = Objects.requireNonNull(tiEmail.getEditText()).getText().toString();
         String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();

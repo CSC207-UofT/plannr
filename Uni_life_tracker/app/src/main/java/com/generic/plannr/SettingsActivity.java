@@ -57,16 +57,21 @@ public class SettingsActivity extends AppCompatActivity {
         activity.logout(this); } // prompt logout
 
     public void clickSave(View view) {
-        // gets user input from textbox
-        String name = Objects.requireNonNull(tiName.getEditText()).getText().toString();
-        String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();
         // opens database
         UserInfoDatabaseHelper user = createDatabase();
-        // replaces current data in database with user input
-        user.updateName(name);
-        user.updatePassword(password);
-        // disables textbox so it becomes read only
-        textboxEditability(false);
+        // gets user input from textbox
+        Validator input = new Validator();
+        if (input.validate(tiPassword, user, tiName, tiPassword, true))
+        {
+            String name = Objects.requireNonNull(tiName.getEditText()).getText().toString();
+            String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();
+
+            // replaces current data in database with user input
+            user.updateName(name);
+            user.updatePassword(password);
+            // disables textbox so it becomes read only
+            textboxEditability(false);
+        }
     }
 
     @Override
