@@ -34,6 +34,12 @@ public class ExpenseGateway implements ExpenseGatewayInterface {
         db = dbclient.getWritableDatabase();
     }
 
+
+    /**
+     * Insert the given expense into the database
+     *
+     * @param expense The Expense to be inserted
+     */
     public void saveToDatabase(final Expense expense) {
         openDatabase();
         UserGateway ug = new UserGateway(new AddExpensesActivity());
