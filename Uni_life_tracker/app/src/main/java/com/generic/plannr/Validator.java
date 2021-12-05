@@ -1,7 +1,8 @@
 package com.generic.plannr;
 
-import com.generic.plannr.Database.UserInfoDatabaseHelper;
 import android.util.Patterns;
+
+import com.generic.plannr.Gateways.UserGateway;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
@@ -19,8 +20,8 @@ public class Validator {
      * @return whether the user input is valid and sets a error message if needed
      *
      */
-    public boolean validate(TextInputLayout textInput, UserInfoDatabaseHelper user, TextInputLayout tiEmail,
-                                  TextInputLayout tiPassword, boolean isSignup) {
+    public boolean validate(TextInputLayout textInput, UserGateway ug, TextInputLayout tiEmail,
+                            TextInputLayout tiPassword, boolean isSignup) {
         String input = Objects.requireNonNull(textInput.getEditText()).getText().toString().trim();
         String email = Objects.requireNonNull(tiEmail.getEditText()).getText().toString();
         String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();
@@ -28,26 +29,26 @@ public class Validator {
         if (input.isEmpty()) {
             textInput.setError("Field cannot be empty");
             return false;
-        } else if (textInput == tiEmail && !Patterns.EMAIL_ADDRESS.matcher(input).matches() && isSignup) {
+        } else if (isSignup && textInput == tiEmail && !Patterns.EMAIL_ADDRESS.matcher(input).matches()) {
             textInput.setError("Please enter a valid email address");
             return false;
-        } else if(textInput == tiEmail && !user.uniqueEmail(input) && isSignup){
+        } else if(isSignup && textInput == tiEmail && !ug.uniqueEmail(input)){
             textInput.setError("This email is already being used");
             return false;
-        } else if (textInput == tiPassword && !PASSWORD_REQ.matcher(input).matches() && isSignup) {
+        } else if (isSignup && textInput == tiPassword && !PASSWORD_REQ.matcher(input).matches()) {
             StringBuilder str = passwordReq(input);
             textInput.setError(str.toString());
             return false;
-        } else if (textInput == tiEmail && user.uniqueEmail(email) && !isSignup) {
+        } else if (!isSignup && textInput == tiEmail && ug.uniqueEmail(email)) {
             textInput.setError("The email you entered does not belong to any account");
             return false;
-        } else if (textInput == tiPassword && !user.getPassword(email).equals(password)
-                && ! user.uniqueEmail(email) && !isSignup) {
+        } else if (!isSignup && textInput == tiPassword && !ug.getPassword(email).equals(password)
+                && ! ug.uniqueEmail(email)) {
             textInput.setError("The password you entered is incorrect");
             return false;
         } else {
             textInput.setError(null);
-            user.updateLoggedInUser(email);
+            ug.updateLoggedInUser(email);
             return true;
         }
     }
