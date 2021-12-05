@@ -120,9 +120,9 @@ public class EventGateway implements EventGatewayInterface {
      * @return a list of all events that start at date stored in the
      * database for the user
      */
-    public List<Event> getEventsByDate(LocalDate date, int userID) {
+    public ArrayList<Event> getEventsByDate(LocalDate date, int userID) {
         openDatabase();
-        List<Event> eventsList = new ArrayList<>();
+        ArrayList<Event> eventsList = new ArrayList<>();
         @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM events WHERE " +
                 "USER_ID = " + userID, null);
         if (cur != null) {
