@@ -83,7 +83,10 @@ public class ExpensesActivity extends AppCompatActivity {
         return user;
     }
 
-
+    /**
+     * Calculates the total expenses
+     *
+     */
     public void calculateExpense(){
         // TODO: CALCULATE TOTAL EXPENSES
         UserInfoDatabaseHelper user = createDatabase();
@@ -100,7 +103,11 @@ public class ExpensesActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
-
+    /**
+     * Checks if the income is greater or less than the total
+     * and changes colour of the text accordingly
+     *
+     */
     public void clickSaveIncome(View view) {
         // TODO: TO BE PLACED WITH THE INCOME AND EXPENSES FROM THE DATABASE
         TextView total = findViewById(R.id.tv_total);
