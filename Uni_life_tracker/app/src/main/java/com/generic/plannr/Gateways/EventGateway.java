@@ -33,6 +33,11 @@ public class EventGateway implements EventGatewayInterface {
         db = dbclient.getWritableDatabase();
     }
 
+    /**
+     * Insert the given event into the database
+     *
+     * @param event The Expense to be inserted
+     */
     public void saveToDatabase(final Event event) {
         openDatabase();
         UserGateway ug = new UserGateway(new AddEventActivity());
