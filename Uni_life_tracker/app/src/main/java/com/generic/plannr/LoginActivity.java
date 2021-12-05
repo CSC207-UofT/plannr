@@ -36,8 +36,8 @@ public class LoginActivity  extends AppCompatActivity {
         // Opens the database, so it can be passed in since it needs an activity
         UserInfoDatabaseHelper user = createDatabase();
         // Returns whether the login info inputted is valid
-        return input.validate(tiEmail, user, tiEmail, tiPassword, false) &
-                input.validate(tiPassword, user, tiEmail, tiPassword, false);
+        return input.validateEntry(tiEmail, user, tiEmail, tiPassword, false) &
+                input.validateEntry(tiPassword, user, tiEmail, tiPassword, false);
     }
 
     public UserInfoDatabaseHelper createDatabase() {

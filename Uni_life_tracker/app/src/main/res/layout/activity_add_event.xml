@@ -4,7 +4,8 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:context=".AddEventActivity">
 
     <!--  Action Bar  -->
     <LinearLayout
@@ -42,7 +43,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_done"
-                android:contentDescription="@string/save"/>
+                android:contentDescription="@string/save"
+                android:onClick="clickSaveEvent"/>
     </LinearLayout>
 
     <!-- Event Type Selection -->
@@ -51,7 +53,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
-            android:padding="5dp">
+            android:padding="5dp"
+            android:layout_marginTop="10dp">
 
         <!-- Assessment -->
         <TextView
@@ -104,17 +107,29 @@
     </LinearLayout>
 
     <!-- Add Event Name -->
-    <EditText
-            android:id="@+id/et_event_name"
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:hint="@string/event_name"
-            android:autofillHints="@string/event_name"
-            android:fontFamily="@font/roboto_mono_light"
-            android:textSize="20sp"
-            android:ems="10"
-            android:layout_margin="20dp"/>
+            android:gravity="center_vertical"
+            android:padding="15dp">
+
+        <ImageView android:layout_width="30dp"
+                   android:layout_height="30dp"
+                   android:src="@drawable/ic_label"
+                   android:contentDescription="@string/select_date"/>
+
+        <EditText
+                android:id="@+id/et_event_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:hint="@string/event_name"
+                android:autofillHints="@string/event_name"
+                android:fontFamily="@font/roboto_mono_light"
+                android:textSize="20sp"
+                android:ems="10"
+                android:layout_marginHorizontal="10dp"/>
+    </LinearLayout>
 
     <!-- Add Event Date & Time -->
     <LinearLayout
@@ -123,8 +138,8 @@
             android:gravity="center_vertical"
             android:padding="15dp">
 
-        <ImageView android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
+        <ImageView android:layout_width="30dp"
+                   android:layout_height="30dp"
                    android:src="@drawable/ic_time"
                    android:contentDescription="@string/select_date"/>
 
@@ -144,7 +159,7 @@
                     android:hint="@string/select_start_date"
                     android:fontFamily="@font/roboto_mono_light"
                     android:textSize="15sp"
-                    android:paddingBottom="15dp"/>
+                    android:paddingBottom="25dp"/>
 
             <TextView
                     android:id="@+id/tv_end_date"
@@ -171,7 +186,7 @@
                     android:textSize="15sp"
                     android:textAlignment="textEnd"
                     android:paddingEnd="15dp"
-                    android:paddingBottom="15dp"
+                    android:paddingBottom="25dp"
                     tools:ignore="RtlSymmetry"/>
 
             <TextView
@@ -192,10 +207,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:paddingHorizontal="15dp">
+            android:padding="15dp">
 
-        <ImageView android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
+        <ImageView android:layout_width="30dp"
+                   android:layout_height="30dp"
                    android:src="@drawable/ic_priority"
                    android:contentDescription="@string/priority"/>
 
@@ -212,7 +227,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:paddingHorizontal="15dp">
+                    android:paddingEnd="15dp"
+                    tools:ignore="RtlSymmetry">
 
             <RadioButton android:id="@+id/rb_high_priority"
                          android:layout_width="wrap_content"
@@ -241,29 +257,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:paddingHorizontal="15dp">
+            android:padding="15dp">
 
-        <ImageView android:layout_width="24dp"
-                   android:layout_height="24dp"
+        <ImageView android:layout_width="30dp"
+                   android:layout_height="30dp"
                    android:src="@drawable/ic_school"
                    android:contentDescription="@string/select_date"/>
 
-        <TextView
-                android:layout_width="0dp"
+        <EditText
+                android:id="@+id/et_course"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/course"
-                android:fontFamily="@font/roboto_mono_light"
-                android:textSize="15sp"
-                android:padding="15dp"/>
-
-
-
-        <Spinner
-                android:id="@+id/spn_courses"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:inputType="textPersonName"
+                android:hint="@string/course"
+                android:autofillHints="@string/course"
+                android:ems="10"
+                android:layout_marginHorizontal="10dp"/>
     </LinearLayout>
-
 
 </LinearLayout>

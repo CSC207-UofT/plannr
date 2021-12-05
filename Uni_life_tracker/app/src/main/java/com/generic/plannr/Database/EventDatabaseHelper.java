@@ -1,5 +1,6 @@
 package com.generic.plannr.Database;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -20,7 +21,7 @@ public class EventDatabaseHelper extends SQLiteOpenHelper {
         "INTEGER, START_DATE TEXT, END_DATE TEXT, USER_EMAIL TEXT)";
     private SQLiteDatabase db;
 
-    public static final DateTimeFormatter DATEFORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+    public static final DateTimeFormatter DATEFORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm a");
 
     public EventDatabaseHelper(Context context) {
         super(context, "eventDatabase", null, 1);
@@ -61,6 +62,7 @@ public class EventDatabaseHelper extends SQLiteOpenHelper {
         cv.put("START_DATE", event.getStartDate().format(DATEFORMAT));
         cv.put("END_DATE", event.getEndDate().format(DATEFORMAT));
         cv.put("USER_EMAIL", userEmail);
+
         db.insert("events", null, cv);
     }
 
@@ -82,37 +84,27 @@ public class EventDatabaseHelper extends SQLiteOpenHelper {
      *
      * @return returns the list of Event objects
      */
-    public List<Event> getAllEvents(String userEmail){
-        List<Event> eventList = new ArrayList<>();
-        Cursor cur = null;
-        db.beginTransaction();
-        try {
-            cur = db.query("events", null, null, null,
-                    null, null, null, null);
-            if (cur != null) {
-                if (cur.moveToFirst()) {
-                    do {
-                        if (!userEmail.equals(cur.getString(cur.getColumnIndexOrThrow("USER_EMAIL")))) {
-                            continue;
-                        }
-                        LocalDateTime start = LocalDateTime.parse(cur.getString(cur.getColumnIndexOrThrow("START_DATE")), DATEFORMAT);
-                        LocalDateTime end = LocalDateTime.parse(cur.getString(cur.getColumnIndexOrThrow("END_DATE")), DATEFORMAT);
-                        Event event = new Event(cur.getString(cur.getColumnIndexOrThrow("NAME")),
-                                                cur.getInt(cur.getColumnIndexOrThrow("PRIORITY")),
-                                                start,
-                                                end);
-                        eventList.add(event);
+    public ArrayList<Event> getAllEvents(String userEmail){
+        ArrayList<Event> eventList = new ArrayList<>();
+        Cursor cur = db.rawQuery("SELECT * FROM events WHERE USER_EMAIL = " + "'" + userEmail + "'", null);
 
-                    } while (cur.moveToNext());
 
-                }
+        if (cur != null) {
+            if (cur.moveToFirst()) {
+                do {
+                    LocalDateTime start = LocalDateTime.parse(cur.getString(cur.getColumnIndexOrThrow("START_DATE")), DATEFORMAT);
+                    LocalDateTime end = LocalDateTime.parse(cur.getString(cur.getColumnIndexOrThrow("END_DATE")), DATEFORMAT);
+                    Event event = new Event(cur.getString(cur.getColumnIndexOrThrow("NAME")),
+                                            cur.getInt(cur.getColumnIndexOrThrow("PRIORITY")),
+                                            start,
+                                            end);
+                    eventList.add(event);
+
+                } while (cur.moveToNext());
+
             }
-        } finally {
-            db.endTransaction();
-            assert cur != null;
-            cur.close();
         }
-
+        // cur.close?
         return eventList;
     }
 
@@ -128,43 +120,34 @@ public class EventDatabaseHelper extends SQLiteOpenHelper {
      */
     public List<Event> getEventsByDate(LocalDate date, String userEmail) {
         List<Event> eventList = new ArrayList<>();
-        Cursor cur = null;
-        db.beginTransaction();
-        try {
-            cur = db.query("events", null, null, null,
-                    null, null, null, null);
-            if (cur != null) {
-                if (cur.moveToFirst()) {
-                    do {
-                        if (!(userEmail.equals(cur.getString(cur.getColumnIndexOrThrow("USER_EMAIL"))))) {
-                            continue;
-                        }
+        @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM events WHERE USER_EMAIL = " + "'" + userEmail + "'", null);
+        if (cur != null) {
+            if (cur.moveToFirst()) {
+                do {
 
-                        LocalDateTime start = LocalDateTime.parse(cur.getString(cur.getColumnIndexOrThrow("START_DATE")), DATEFORMAT);
+                    LocalDateTime start = LocalDateTime.parse(cur.getString(cur.getColumnIndexOrThrow("START_DATE")), DATEFORMAT);
 
-                        if (!(start.toLocalDate().isEqual(date))) {
-                            continue;
-                        }
+                    if (!(start.toLocalDate().isEqual(date))) {
+                        continue;
+                    }
 
-                        LocalDateTime end = LocalDateTime.parse(cur.getString(cur.getColumnIndexOrThrow("END_DATE")), DATEFORMAT);
-                        Event event = new Event(cur.getString(cur.getColumnIndexOrThrow("NAME")),
-                                cur.getInt(cur.getColumnIndexOrThrow("PRIORITY")),
-                                start,
-                                end);
+                    LocalDateTime end = LocalDateTime.parse(cur.getString(cur.getColumnIndexOrThrow("END_DATE")), DATEFORMAT);
+                    Event event = new Event(cur.getString(cur.getColumnIndexOrThrow("NAME")),
+                            cur.getInt(cur.getColumnIndexOrThrow("PRIORITY")),
+                            start,
+                            end);
 
-                        eventList.add(event);
+                    eventList.add(event);
 
-                    } while (cur.moveToNext());
+                } while (cur.moveToNext());
 
-                }
+
             }
-        } finally {
-            db.endTransaction();
-            assert cur != null;
-            cur.close();
+
         }
 
         return eventList;
+
     }
 
 }
