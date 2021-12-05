@@ -93,7 +93,7 @@ public class ExpenseGateway implements ExpenseGatewayInterface {
             if (cur.moveToFirst()) {
                 do {
                     String name = cur.getString(cur.getColumnIndexOrThrow("NAME"));
-                    double value = cur.getDouble(cur.getColumnIndexOrThrow("VALUE"));   LocalDateTime end = LocalDateTime.parse(cur.getString(cur.getColumnIndexOrThrow("END_DATE")), DATEFORMAT);
+                    double value = cur.getDouble(cur.getColumnIndexOrThrow("VALUE"));
                     Expense expense = new Expense(name, value);
                     expensesList.add(expense);
 
