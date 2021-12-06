@@ -57,14 +57,28 @@ public class UserGateway implements UserGatewayInterface {
         cv.put("NAME", name);
         db.update("userinfo", cv, "LOGGED_IN = 1", null);
     }
+
     /**
      * Update the User's password in the database
      *
      * @param password The user's password to be inserted
      */
     public void updatePassword(String password){
+        openDatabase();
         ContentValues cv = new ContentValues();
         cv.put("PASSWORD", password);
+        db.update("userinfo", cv, "LOGGED_IN = 1", null);
+    }
+
+    /**
+     * Update the User's income in the database
+     *
+     * @param income The user's income to be inserted
+     */
+    public void updateIncome(Double income){
+        openDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("INCOME", income);
         db.update("userinfo", cv, "LOGGED_IN = 1", null);
     }
 
@@ -172,6 +186,24 @@ public class UserGateway implements UserGatewayInterface {
 
         if (cur.moveToFirst()) {
             return cur.getString(cur.getColumnIndexOrThrow("EMAIL"));
+        }
+
+        return "";
+    }
+
+    /**
+     * Get the current logged in user's income currently stored in the database
+     *
+     * @return the logged in user's income in the database
+     */
+    public String getLoggedInIncome(){
+        openDatabase();
+        @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE " +
+                        "LOGGED_IN = 1",
+                null);
+
+        if (cur.moveToFirst()) {
+            return cur.getString(cur.getColumnIndexOrThrow("INCOME"));
         }
 
         return "";
