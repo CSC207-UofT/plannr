@@ -1,7 +1,9 @@
 package com.generic.plannr;
 
-import com.generic.plannr.Database.UserInfoDatabaseHelper;
+import android.graphics.Color;
 import android.util.Patterns;
+import android.widget.TextView;
+import com.generic.plannr.Gateways.UserGateway;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;

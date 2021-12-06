@@ -63,7 +63,7 @@ public class SignUpActivity extends AppCompatActivity {
             String email = Objects.requireNonNull(tiEmail.getEditText()).getText().toString();
             String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();
 
-            ug.saveToDatabase(new User(name, email, password, uni));
+            ug.saveToDatabase(new User(name, email, password));
 
             openMain();
         }

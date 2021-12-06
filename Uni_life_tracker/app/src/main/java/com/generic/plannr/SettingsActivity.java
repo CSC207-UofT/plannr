@@ -19,8 +19,6 @@ public class SettingsActivity extends AppCompatActivity {
     private TextInputEditText etPassword;
     private TextInputLayout tiName;
     private TextInputLayout tiPassword;
-    private MainPageActivity activity;
-    private TextInputLayout tiUni;
     private MainActivity activity;
     UserGateway ug = new UserGateway(SettingsActivity.this);
 
@@ -39,7 +37,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         // retrieve user's name and uni using gateway
         etName.setText(ug.getLoggedInName());
-        etUni.setText(ug.getLoggedInUni());
+        etPassword.setText(ug.getPassword(ug.getLoggedInEmail()));
     }
 
     public void clickMenu(View view) { activity.openDrawer(drawerLayout); } // open drawer

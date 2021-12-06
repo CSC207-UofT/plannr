@@ -20,7 +20,7 @@ public class UserManager {
      * @param email     is the user's email
      * @param password  is the user's password
      */
-    public UserManager(String name, String email, String password, String school) {
+    public UserManager(String name, String email, String password) {
         u = createUser(name, email, password);
         this.expManager = new ExpensesManager();
     }
@@ -33,7 +33,7 @@ public class UserManager {
      * @param password  is the user's password
      * @return the created user
      */
-    public User createUser(String name, String email, String password, String school) {
+    public User createUser(String name, String email, String password) {
         return new User(name, email, password);
     }
 
