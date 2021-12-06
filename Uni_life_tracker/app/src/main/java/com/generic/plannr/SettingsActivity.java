@@ -57,8 +57,8 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void clickSave(View view) {
         // gets user input from textbox
-        Validator input = new Validator();
-        if (input.validateEntry(tiPassword, ug, tiName, tiPassword, true))
+        PasswordValidator passwordValidator = new PasswordValidator();
+        if (passwordValidator.validateEntry(tiPassword, ug, tiName, tiPassword, true))
         {
             String name = Objects.requireNonNull(tiName.getEditText()).getText().toString();
             String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();
