@@ -33,7 +33,7 @@
                 android:id="@+id/ti_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:boxBackgroundColor="@color/white"
+                app:boxBackgroundColor="@color/transparent"
                 app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -48,7 +48,7 @@
                 android:id="@+id/ti_university"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:boxBackgroundColor="@color/white"
+                app:boxBackgroundColor="@color/transparent"
                 app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -63,7 +63,7 @@
                 android:id="@+id/ti_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:boxBackgroundColor="@color/white"
+                app:boxBackgroundColor="@color/transparent"
                 app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -79,7 +79,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:errorEnabled="true"
-                app:boxBackgroundColor="@color/white"
+                app:boxBackgroundColor="@color/transparent"
                 app:passwordToggleEnabled="true">
 
 
@@ -92,7 +92,6 @@
 
         <!--  Sign Up Button  -->
         <Button
-                android:id="@+id/btn_sign_up"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/sign_up"
@@ -109,7 +108,6 @@
 
         <!--  Login Button  -->
         <Button
-                android:id="@+id/btn_log_in"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/log_in"

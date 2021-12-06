@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class User {
     private String name;
+    private String email;
+    private String password;
     private final ArrayList<String> courses;
     private String school;
     private final ArrayList<Event> eventList;
@@ -11,17 +13,20 @@ public class User {
     private double income;
 
     /**
-     * Construct a user, giving them the given name,
-     * courses, school, and setting an empty events list.
+     * Construct a user, giving them the given name, email,
+     * password, courses, school, and setting an empty
+     * events list.
      *
-     * @param name    The user's name
-     * @param courses The user's course list
-     * @param school  The user's school
+     * @param name      The user's name
+     * @param email     The user's email
+     * @param password  The user's password
+     * @param school    The user's school
      */
-    public User(String name, ArrayList<String> courses, String school) {
+    public User(String name, String email, String password, String school) {
         this.name = name;
+        this.email = email;
+        this.password = password;
         this.courses = new ArrayList<>();
-        this.courses.addAll(courses);
         this.school = school;
         this.eventList = new ArrayList<>();
         this.income = 0.0;
@@ -36,6 +41,20 @@ public class User {
     public String getName() {
         return this.name;
     }
+
+    /**
+     * getter method for email
+     *
+     * @return a String that describes the user's email
+     */
+    public String getEmail() { return this.email; }
+
+    /**
+     * getter method for password
+     *
+     * @return a String that describes the user's password
+     */
+    public String getPassword() { return this.password; }
 
     /**
      * getter method for school

@@ -65,9 +65,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/name"
-                    android:textSize="20sp"
-                    android:fontFamily="@font/roboto_mono_light"
-                    android:layout_margin="5dp"/>
+                    android:textSize="20sp"/>
 
             <!--  Name Input  -->
             <com.google.android.material.textfield.TextInputLayout
@@ -78,6 +76,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@color/transparent"
+
                         android:hint="@string/name"
                         android:inputType="text"
                         android:id="@+id/et_name"
@@ -100,9 +100,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/university"
-                    android:textSize="20sp"
-                    android:fontFamily="@font/roboto_mono_light"
-                    android:layout_margin="5dp"/>
+                    android:textSize="20sp"/>
 
             <!--  University Input  -->
             <com.google.android.material.textfield.TextInputLayout
@@ -112,6 +110,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@color/transparent"
                         android:hint="@string/university"
                         android:inputType="text"
                         android:id="@+id/et_uni"

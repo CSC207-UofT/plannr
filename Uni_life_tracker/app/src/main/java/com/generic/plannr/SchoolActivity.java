@@ -1,5 +1,4 @@
 package com.generic.plannr;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -9,9 +8,9 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.generic.plannr.Database.EventDatabaseHelper;
-import com.generic.plannr.Database.UserInfoDatabaseHelper;
 import com.generic.plannr.Entities.Event;
+import com.generic.plannr.Gateways.EventGateway;
+import com.generic.plannr.Gateways.UserGateway;
 import com.generic.plannr.UseCases.GetEventsOfDate;
 
 import java.time.LocalDate;
@@ -25,9 +24,11 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
     private TextView monthYearText;
     private RecyclerView rvCalendar;
     private DrawerLayout drawerLayout;
-    private MainPageActivity activity;
+    private MainActivity activity;
     private ArrayList<Event> eventsList;
     private RecyclerView rvEvents;
+    UserGateway ug = new UserGateway(SchoolActivity.this);
+    EventGateway eg = new EventGateway(SchoolActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -38,7 +39,7 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
         CalendarUtil.selectedDate = LocalDate.now();
         setMonthView();
         drawerLayout = findViewById(R.id.drawer_layout);
-        activity = new MainPageActivity();
+        activity = new MainActivity();
 
         rvEvents = findViewById(R.id.rv_events);
         eventsList = new ArrayList<>();
@@ -55,13 +56,10 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
     }
 
     private void setEventInfo() {
-        EventDatabaseHelper event = new EventDatabaseHelper(SchoolActivity.this);
-        UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(SchoolActivity.this);
-        user.openDatabase();
-        event.openDatabase();
-        String email = user.getLoggedInEmail();
 
-        eventsList.addAll(GetEventsOfDate.getEventsOfDate(event.getAllEvents(email), CalendarUtil.selectedDate));
+        int userID = ug.getLoggedInUserID();
+
+        eventsList.addAll(GetEventsOfDate.getEventsOfDate(eg.getAllEvents(userID), CalendarUtil.selectedDate));
     }
 
     private void initWidgets()
@@ -82,26 +80,20 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
     }
 
 
-    public void previousMonthAction(View view)
+    public void clickPreviousMonth(View view)
     {
         CalendarUtil.selectedDate = CalendarUtil.selectedDate.minusMonths(1);
         setMonthView();
     }
 
-    public void nextMonthAction(View view)
+    public void clickNextMonth(View view)
     {
         CalendarUtil.selectedDate = CalendarUtil.selectedDate.plusMonths(1);
         setMonthView();
     }
 
-    public void clickBack(View view) {
-        Intent intent = new Intent(this, MainPageActivity.class);
-        startActivity(intent);
-    }
-
     public void clickAddEvent(View view) {
-        Intent intent = new Intent(this, AddEventActivity.class);
-        startActivity(intent);
+        activity.redirectActivity(this, AddEventActivity.class);
     }
 
     @Override
@@ -120,24 +112,29 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
 
     public void clickMenu(View view) { activity.openDrawer(drawerLayout); } // open drawer
 
-    public void clickLogo(View view) { activity.redirectActivity(this, MainPageActivity.class); } // redirect activity to main
+    public void clickLogo(View view) { activity.redirectActivity(this, MainActivity.class); } // redirect activity to main
 
     public void clickSchool(View view) { recreate(); } // recreate activity
 
     // TODO: change this to life later
-    public void clickLife(View view) { activity.redirectActivity(this, MainPageActivity.class); } // redirect activity to life
+//    public void clickLife(View view) { activity.redirectActivity(this, MainActivity.class); } // redirect activity to life
 
     public void clickExpenses(View view) { activity.redirectActivity(this, ExpensesActivity.class); } // redirect activity to expenses
 
     public void clickSettings(View view) { activity.redirectActivity(this, SettingsActivity.class); } // redirect activity to settings
 
     public void clickLogOut(View view) {
-        MainPageActivity activity = new MainPageActivity();
-        activity.logout(this); } // prompt logout
+        activity.logout(this);
+    } // prompt logout
 
     @Override
     protected void onPause() {
         super.onPause();
         activity.closeDrawer(drawerLayout); // close drawer
+    }
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
     }
 }

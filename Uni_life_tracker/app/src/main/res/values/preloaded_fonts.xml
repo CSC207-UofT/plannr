@@ -2,7 +2,7 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/roboto_mono_bold</item>
-        <item>@font/roboto_mono_light</item>
-        <item>@font/robotomono</item>
+        <item>@font/roboto_mono_italic</item>
+        <item>@font/roboto_mono_normal</item>
     </array>
 </resources>

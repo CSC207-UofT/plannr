@@ -1,9 +1,10 @@
 package com.generic.plannr;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
-import com.generic.plannr.Database.UserInfoDatabaseHelper;
+import com.generic.plannr.Gateways.UserGateway;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class LoginActivity  extends AppCompatActivity {
@@ -11,40 +12,33 @@ public class LoginActivity  extends AppCompatActivity {
     // initialize variables
     private TextInputLayout tiEmail;
     private TextInputLayout tiPassword;
-    private MainPageActivity activity;
+    private MainActivity activity;
+    UserGateway ug = new UserGateway(LoginActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_page);
+        setContentView(R.layout.activity_login);
 
         // connecting variables to UI features in activities by their id
         tiEmail = findViewById(R.id.ti_email_login);
         tiPassword = findViewById(R.id.ti_password_login);
 
-        activity = new MainPageActivity();
+        activity = new MainActivity();
     }
 
     private void openMain() {
-        // Moves to the MainPageActivity
-        activity.redirectActivity(this, MainPageActivity.class);
+        // Moves to the MainActivity
+        activity.redirectActivity(this, MainActivity.class);
+        finish();
     }
 
     public boolean LoginInput () {
         // Creates an instance of validator to be able to access its methods
         Validator input = new Validator();
-        // Opens the database, so it can be passed in since it needs an activity
-        UserInfoDatabaseHelper user = createDatabase();
         // Returns whether the login info inputted is valid
-        return input.validateEntry(tiEmail, user, tiEmail, tiPassword, false) &
-                input.validateEntry(tiPassword, user, tiEmail, tiPassword, false);
-    }
-
-    public UserInfoDatabaseHelper createDatabase() {
-        // creates an instance and opens database
-        UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(LoginActivity.this);
-        user.openDatabase();
-        return user;
+        return input.validateEntry(tiEmail, ug, tiEmail, tiPassword, false) &
+                input.validateEntry(tiPassword, ug, tiEmail, tiPassword, false);
     }
 
     public void clickLogin(View view) {
@@ -55,7 +49,7 @@ public class LoginActivity  extends AppCompatActivity {
     }
 
     public void clickSignup(View view) {
-        // Moves to the MainPageActivity
+        // Moves to the MainActivity
         activity.redirectActivity(this, SignUpActivity.class);
     }
 }
