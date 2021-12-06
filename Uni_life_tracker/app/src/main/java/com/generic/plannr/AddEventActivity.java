@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.generic.plannr.Entities.Event;
 import com.generic.plannr.Gateways.EventGateway;
 import com.generic.plannr.Gateways.UserGateway;
-import android.os.Bundle;
+
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
