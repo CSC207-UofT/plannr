@@ -5,6 +5,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import com.generic.plannr.Entities.User;
 import com.generic.plannr.Gateways.UserGateway;
+import com.generic.plannr.UseCases.UserManager;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
@@ -66,7 +67,8 @@ public class SignUpActivity extends AppCompatActivity {
             String email = Objects.requireNonNull(tiEmail.getEditText()).getText().toString();
             String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();
 
-            ug.saveToDatabase(new User(name, email, password));
+            UserManager um = new UserManager(name, email, password);
+            ug.saveToDatabase(um.getUser());
 
             openMain();
         }
