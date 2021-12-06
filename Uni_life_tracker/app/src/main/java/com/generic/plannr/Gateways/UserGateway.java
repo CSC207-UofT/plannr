@@ -54,6 +54,16 @@ public class UserGateway implements UserGatewayInterface {
         cv.put("NAME", name);
         db.update("userinfo", cv, "LOGGED_IN = 1", null);
     }
+    /**
+     * Update the User's password in the database
+     *
+     * @param password The user's password to be inserted
+     */
+    public void updatePassword(String password){
+        ContentValues cv = new ContentValues();
+        cv.put("PASSWORD", password);
+        db.update("userinfo", cv, "LOGGEDIN = 1", null);
+    }
 
     /**
      * Get the User associated with id userID currently stored
