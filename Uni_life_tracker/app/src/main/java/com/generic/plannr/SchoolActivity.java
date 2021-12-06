@@ -1,5 +1,4 @@
 package com.generic.plannr;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -94,14 +93,8 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
         setMonthView();
     }
 
-    public void clickBack(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
-
     public void clickAddEvent(View view) {
-        Intent intent = new Intent(this, AddEventActivity.class);
-        startActivity(intent);
+        activity.redirectActivity(this, AddEventActivity.class);
     }
 
     @Override
