@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetView;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
@@ -29,7 +30,8 @@ public class ExpensesActivity extends AppCompatActivity {
     private RecyclerView  rvExpenses;
     private DrawerLayout drawerLayout;
     private MainActivity activity;
-    private TextInputLayout textInputIncome;
+    private TextInputEditText etIncome;
+    private TextInputLayout tiIncome;
     ImageView ivAddExpense;
 
     @Override
@@ -129,7 +131,7 @@ public class ExpensesActivity extends AppCompatActivity {
         // TODO: CALCULATE TOTAL EXPENSES
         UserInfoDatabaseHelper user = createDatabase();
         ExpenseDatabaseHelper expense = createExpenseDatabase();
-        String income = Objects.requireNonNull(textInputIncome.getEditText()).getText().toString();
+        String income = Objects.requireNonNull(tiIncome.getEditText()).getText().toString();
 
         //double total_sum = Double.parseDouble(income) - the sum of expense values
     }
@@ -148,7 +150,7 @@ public class ExpensesActivity extends AppCompatActivity {
     public void clickSaveIncome(View view) {
         // TODO: TO BE PLACED WITH THE INCOME AND EXPENSES FROM THE DATABASE
         TextView total = findViewById(R.id.tv_total);
-        String income = Objects.requireNonNull(textInputIncome.getEditText()).getText().toString();
+        String income = Objects.requireNonNull(tiIncome.getEditText()).getText().toString();
         // FILLER
         double total_expenses = 100.0;
         if (Double.parseDouble(income) > total_expenses) {

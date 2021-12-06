@@ -65,8 +65,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/name"
-                    android:textSize="20sp"
-                    android:layout_margin="5dp"/>
+                    android:textSize="20sp"/>
 
             <!--  Name Input  -->
             <com.google.android.material.textfield.TextInputLayout
@@ -101,8 +100,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/university"
-                    android:textSize="20sp"
-                    android:layout_margin="5dp"/>
+                    android:textSize="20sp"/>
 
             <!--  University Input  -->
             <com.google.android.material.textfield.TextInputLayout
