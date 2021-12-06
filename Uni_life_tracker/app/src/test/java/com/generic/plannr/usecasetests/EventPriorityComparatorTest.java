@@ -1,4 +1,4 @@
-package com.generic.plannr.UseCaseTests;
+package com.generic.plannr.usecasetests;
 
 import com.generic.plannr.UseCases.EventPriorityComparator;
 

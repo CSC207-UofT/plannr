@@ -1,4 +1,4 @@
-package com.generic.plannr.UseCaseTests;
+package com.generic.plannr.usecasetests;
 
 import static org.junit.Assert.assertEquals;
 import static com.generic.plannr.UseCases.GetTodaysEvents.getTodaysEvents;

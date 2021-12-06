@@ -1,4 +1,4 @@
-package com.generic.plannr.UseCaseTests;
+package com.generic.plannr.usecasetests;
 
 import com.generic.plannr.Entities.Event;
 import com.generic.plannr.UseCases.UserManager;
@@ -7,7 +7,6 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-import static com.generic.plannr.StaticTestVariables.COURSES;
 import static com.generic.plannr.StaticTestVariables.dayEventList;
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;

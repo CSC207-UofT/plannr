@@ -1,10 +1,9 @@
-package com.generic.plannr.UseCaseTests;
+package com.generic.plannr.usecasetests;
 
 import org.junit.*;
 
 import static org.junit.Assert.*;
 import static com.generic.plannr.UseCases.AddEvent.*;
-import static com.generic.plannr.StaticTestVariables.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
