@@ -27,11 +27,14 @@ import java.util.Locale;
 public class AddEventActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener{
 //    Initialize Variables
     int yr, mth, day, hr, min, priority;
+    String startDate, endDate, startTime, endTime;
     TextView tvStartDate, tvStartTime, tvEndDate, tvEndTime, tvAssessment, tvDeadline, tvClassTime, tvStudySession;
     RadioGroup rgPriorities;
     ImageView ivBack, ivSave;
     EditText etEventName, etCourse;
     Calendar calendar;
+    DateTimeFormatter DATEFORMAT;
+    LocalDateTime start;
     private MainActivity activity;
     UserGateway ug = new UserGateway(AddEventActivity.this);
     EventGateway eg = new EventGateway(AddEventActivity.this);
@@ -90,14 +93,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
      */
     public boolean addEventInput() {
         Validator input = new Validator();
-        String startDate = tvStartDate.getText().toString().trim();
-        String endDate = tvEndDate.getText().toString().trim();
-        String startTime = tvStartTime.getText().toString().trim();
-        String endTime = tvEndTime.getText().toString().trim();
-
-        DateTimeFormatter DATEFORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm a");
-
-        LocalDateTime start = LocalDateTime.parse(startDate + " " + startTime, DATEFORMAT);
+        setDateTime();
 
         boolean endTimeAfter = false;
         if (!endTime.isEmpty()) {
@@ -127,6 +123,17 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         tvEndTime.setTextColor(Color.rgb(color, 0, 0));
     }
 
+    /**
+     * Initializes values for start & end date, start & end time, and date format.
+     */
+    public void setDateTime() {
+        startDate = tvStartDate.getText().toString().trim();
+        endDate = tvEndDate.getText().toString().trim();
+        startTime = tvStartTime.getText().toString().trim();
+        endTime = tvEndTime.getText().toString().trim();
+        DATEFORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm a");
+        start = LocalDateTime.parse(startDate + " " + startTime, DATEFORMAT);
+    }
     /**
      * Prompts user to select a date, and sets selected date in textView.
      * The date can only be from the current date, or after selected start date.
@@ -185,14 +192,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
     public void clickSaveEvent(View view) {
         if (addEventInput()) {
             String eventName = etEventName.getText().toString();
-            String startDate = tvStartDate.getText().toString().trim();
-            String endDate = tvEndDate.getText().toString().trim();
-            String startTime = tvStartTime.getText().toString().trim();
-            String endTime = tvEndTime.getText().toString().trim();
-
-            DateTimeFormatter DATEFORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm a");
-
-            LocalDateTime start = LocalDateTime.parse(startDate + " " + startTime, DATEFORMAT);
+            setDateTime();
             LocalDateTime end = LocalDateTime.parse(endDate + " " + endTime, DATEFORMAT);
 
             Event event = new Event(eventName, priority, start, end);
