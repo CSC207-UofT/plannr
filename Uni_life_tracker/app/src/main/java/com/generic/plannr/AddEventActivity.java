@@ -194,8 +194,6 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
             LocalDateTime start = LocalDateTime.parse(startDate + " " + startTime, DATEFORMAT);
             LocalDateTime end = LocalDateTime.parse(endDate + " " + endTime, DATEFORMAT);
 
-            String email = ug.getLoggedInEmail();
-
             Event event = new Event(eventName, priority, start, end);
             int userID = ug.getLoggedInUserID();
 
