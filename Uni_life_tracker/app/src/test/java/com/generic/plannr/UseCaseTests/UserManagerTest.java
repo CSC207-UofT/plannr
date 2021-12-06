@@ -1,30 +1,30 @@
 package com.generic.plannr.UseCaseTests;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertTrue;
-import static com.generic.plannr.StaticTestVariables.*;
-
 import com.generic.plannr.Entities.Event;
 import com.generic.plannr.UseCases.UserManager;
-
-import org.junit.*;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.ArrayList;
+
+import static com.generic.plannr.StaticTestVariables.COURSES;
+import static com.generic.plannr.StaticTestVariables.dayEventList;
+import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertTrue;
 
 public class UserManagerTest {
     UserManager user;
 
     @Before
     public void setUp() {
-        user = new UserManager("Test User", COURSES, "U of T");
+        user = new UserManager("Test User", "test@gmail.com", "TestUser@123");
     }
 
     @Test
     public void TestConstructor() {
-        assertEquals(COURSES, user.viewCourses());
+        assertEquals(0, user.viewCourses().size());
         assertEquals(new ArrayList<>(), user.getExpenses());
         assertEquals("Test User", user.getUsersName());
-        assertEquals("U of T", user.getUsersSchool());
         assertEquals(0.0, user.calculateBalance());
     }
 
@@ -52,15 +52,9 @@ public class UserManagerTest {
     }
 
     @Test
-    public void TestChangeUsersSchool() {
-        user.changeUsersSchool("U of Tears and Tuition");
-        assertEquals("U of Tears and Tuition", user.getUsersSchool());
-    }
-
-    @Test
     public void TestAddCourseToUsersList() {
         user.addCourseToUsersList("CSC999");
-        assertEquals(COURSES.size() + 1, user.viewCourses().size());
+        assertEquals(1, user.viewCourses().size());
         assertTrue(user.viewCourses().contains("CSC999"));
     }
 

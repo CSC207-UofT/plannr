@@ -43,21 +43,6 @@
                     android:inputType="text"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!--  University Input  -->
-        <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/ti_university"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:boxBackgroundColor="@color/transparent"
-                app:errorEnabled="true">
-
-            <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/university_name"
-                    android:inputType="text"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
         <!--  Email Input  -->
         <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/ti_email"

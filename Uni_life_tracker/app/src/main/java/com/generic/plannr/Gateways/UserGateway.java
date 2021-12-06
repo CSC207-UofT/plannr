@@ -5,15 +5,11 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-
 import com.generic.plannr.Database.DatabaseClient;
-import com.generic.plannr.Entities.Event;
 import com.generic.plannr.Entities.User;
 import com.generic.plannr.UseCases.UserManager;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.List;
 
 public class UserGateway implements UserGatewayInterface {
 
@@ -40,7 +36,6 @@ public class UserGateway implements UserGatewayInterface {
         openDatabase();
         ContentValues cv = new ContentValues();
         cv.put("NAME", user.getName());
-        cv.put("UNIVERSITY", user.getSchool());
         cv.put("EMAIL", user.getEmail());
         cv.put("PASSWORD", user.getPassword());
         cv.put("LOGGED_IN", 1);
@@ -59,16 +54,14 @@ public class UserGateway implements UserGatewayInterface {
         cv.put("NAME", name);
         db.update("userinfo", cv, "LOGGED_IN = 1", null);
     }
-
     /**
-     * Update the User's university in the database
+     * Update the User's password in the database
      *
-     * @param uni The user's university to be inserted
+     * @param password The user's password to be inserted
      */
-    public void updateUni(String uni){
-        openDatabase();
+    public void updatePassword(String password){
         ContentValues cv = new ContentValues();
-        cv.put("UNIVERSITY", uni);
+        cv.put("PASSWORD", password);
         db.update("userinfo", cv, "LOGGED_IN = 1", null);
     }
 
@@ -91,11 +84,10 @@ public class UserGateway implements UserGatewayInterface {
         }
 
         String name = cur.getString(cur.getColumnIndexOrThrow("NAME"));
-        String uni = cur.getString(cur.getColumnIndexOrThrow("UNIVERSITY"));
         String email = cur.getString(cur.getColumnIndexOrThrow("EMAIL"));
         String password = cur.getString(cur.getColumnIndexOrThrow("PASSWORD"));
 
-        UserManager um = new UserManager(name, email, password, uni);
+        UserManager um = new UserManager(name, email, password);
 
         return um.getUser();
 
@@ -120,11 +112,10 @@ public class UserGateway implements UserGatewayInterface {
         }
 
         String name = cur.getString(cur.getColumnIndexOrThrow("NAME"));
-        String uni = cur.getString(cur.getColumnIndexOrThrow("UNIVERSITY"));
         String email = cur.getString(cur.getColumnIndexOrThrow("EMAIL"));
         String password = cur.getString(cur.getColumnIndexOrThrow("PASSWORD"));
 
-        UserManager um = new UserManager(name, email, password, uni);
+        UserManager um = new UserManager(name, email, password);
 
         return um.getUser();
 
@@ -160,23 +151,6 @@ public class UserGateway implements UserGatewayInterface {
                 null);
         if (cur.moveToFirst()) {
             return cur.getString(cur.getColumnIndexOrThrow("NAME"));
-        }
-
-        return "";
-    }
-
-    /**
-     * Get the current logged in user's university currently stored in the database
-     *
-     * @return the logged in user's university in the database
-     */
-    public String getLoggedInUni(){
-        openDatabase();
-        @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE " +
-                        "LOGGED_IN = 1",
-                null);
-        if (cur.moveToFirst()) {
-            return cur.getString(cur.getColumnIndexOrThrow("UNIVERSITY"));
         }
 
         return "";
@@ -263,10 +237,9 @@ public class UserGateway implements UserGatewayInterface {
                 do {
 
                     String name = cur.getString(cur.getColumnIndexOrThrow("NAME"));
-                    String uni = cur.getString(cur.getColumnIndexOrThrow("UNIVERSITY"));
                     String email = cur.getString(cur.getColumnIndexOrThrow("EMAIL"));
                     String password = cur.getString(cur.getColumnIndexOrThrow("PASSWORD"));
-                    UserManager um = new UserManager(name, email, password, uni);
+                    UserManager um = new UserManager(name, email, password);
 
                     usersList.add(um.getUser());
 
