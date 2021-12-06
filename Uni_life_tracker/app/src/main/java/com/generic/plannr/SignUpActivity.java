@@ -14,7 +14,6 @@ public class SignUpActivity extends AppCompatActivity {
 
     // initialize variables
     private TextInputLayout tiName;
-    private TextInputLayout tiUniversity;
     private TextInputLayout tiEmail;
     private TextInputLayout tiPassword;
     private MainActivity activity;
@@ -29,7 +28,6 @@ public class SignUpActivity extends AppCompatActivity {
 
         // connecting variables to UI features in activities by their id
         tiName = findViewById(R.id.ti_name);
-        tiUniversity = findViewById(R.id.ti_university);
         tiEmail = findViewById(R.id.ti_email);
         tiPassword = findViewById(R.id.ti_password);
     }
@@ -56,7 +54,6 @@ public class SignUpActivity extends AppCompatActivity {
         // If we pass in the string instead of the TextInputLayout then will not be able to set the error messages
         // Although it is inconvenient to keep passing it in, there are android related errors that are stopping us
         return inputTextValidator.validateEntry(tiName, ug, tiEmail, tiPassword, true) &
-                inputTextValidator.validateEntry(tiUniversity,  ug, tiEmail, tiPassword, true) &
                 emailValidator.validateEntry(tiEmail,  ug, tiEmail, tiPassword, true) &
                 passwordValidator.validateEntry(tiPassword, ug, tiEmail, tiPassword, true);
     }
@@ -66,11 +63,10 @@ public class SignUpActivity extends AppCompatActivity {
         // and go into the main page
         if (signupInput()) {
             String name = Objects.requireNonNull(tiName.getEditText()).getText().toString();
-            String uni = Objects.requireNonNull(tiUniversity.getEditText()).getText().toString();
             String email = Objects.requireNonNull(tiEmail.getEditText()).getText().toString();
             String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();
 
-            ug.saveToDatabase(new User(name, email, password, uni));
+            ug.saveToDatabase(new User(name, email, password));
 
             openMain();
         }
