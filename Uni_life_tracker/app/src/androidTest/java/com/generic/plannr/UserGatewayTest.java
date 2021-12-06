@@ -148,5 +148,11 @@ public class UserGatewayTest {
 
     @Test
     public void getAllUsers() {
+        ug.saveToDatabase(um.getUser());
+        ug.saveToDatabase(um.createUser("Test User 2", "test2@gmail.com", "TestUser@456"));
+
+        assertEquals(2, ug.getAllUsers().size());
+        assertEquals(um.getUser().getName(), ug.getAllUsers().get(0).getName());
+        assertEquals("Test User 2", ug.getAllUsers().get(1).getName());
     }
 }
