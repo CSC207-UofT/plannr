@@ -26,8 +26,8 @@ their password at any point in time.
 Plannr, previously titled Uni Life Tracker, started out as a command-line interface with the goal of the Android app,
 allowing users to track their events and deadlines to fit their personal needs. It was meant to focus on three
 categories: **Schoolwork, Life and Expenses**. While in phase 2, Plannr only focuses on school, work and expenses. In
-addition, the to do list does not have a check features so users cannot check off tasks but they can still view them.
-Some additions include a sign up, login and settings feature.
+addition, the to do list does not have a check features so users cannot check off tasks, but they can still view them.
+Some additions include a sign-up, login and settings feature.
 
 ## CRC Cards
 Please see the linked for the updated [CRC Cards](https://docs.google.com/document/d/1wAnKPMUv0o_FJ9qT4U98Bf2eMEP8u2Y1_nC9lcLH76U/edit).
@@ -96,7 +96,7 @@ Please see the linked for the updated [CRC Cards](https://docs.google.com/docume
       simply use `Event e` as a parameter, instead of explicitly specifying which type of event we want (i.e. instead
       of `Deadline e` )
 * <u>Violation:</u>
-    * It may be a violation as our `Event` superclass is not an interface so it doesn't utilize abstraction. However it
+    * It may be a violation as our `Event` superclass is not an interface, so it doesn't utilize abstraction. However, it
       does achieve the same goal as DIP.
 * <u>Potential Fix:</u>
     * We can fix this by implementing an `Event` interface, and change the existing Event superclass to `GeneralEvent`
@@ -108,7 +108,7 @@ Please see the linked for the updated [CRC Cards](https://docs.google.com/docume
 Our program is consistent with Clean Architecture because as we can see with the general UML diagram given above, we
 made sure that the Entities were unaware of the Use Cases, the Use Cases are unaware of the
 Controllers/Presenters/Gateways and the Controllers/Presenters are unaware of the Activities. If we wanted to violate
-Clean Architecture, such as a Use Case class like EventManager saving an entity to a databse, we used interfaces instead
+Clean Architecture, such as a Use Case class like EventManager saving an entity to a database, we used interfaces instead
 of directly calling the class implementation. For example, EventManager creates an event and wants to save it to the
 database, it would be a violation of clean architecture for EventManager to directly call EventGateway so instead, we
 made an interface called EventGatewayInterface which is what the EventManager uses to save to the database and pass a
@@ -116,7 +116,7 @@ EventGateway object to it through the controller. That way EventManager remains 
 Controller and the Gateway. The flow goes from the activities to the controller to the use case, through the boundary
 interfaces, to the entities back to the use cases, then presenter, then the activity and finally the UI.
 
-### Scenario Walkthrough that shows Clean Architecture
+### Scenario Walk-Through that shows Clean Architecture
 
 <u>Scenario:</u> The user arrives at the main page which displays their list of events taking place that day and have
 the option of sorting that displayed list by date-time or by priority. By default, it is first shown to be sorted by
@@ -134,7 +134,7 @@ result.
 ### Dependency Rule (w/ an example)
 
 As once stated above, each layer of Clean Architecture in our program is unaware of the outer layers. That is, the
-entities do not depend nor are aware of the uses cases, who are not aware of the controllers, presenters and gateways,
+entities do not depend on nor are aware of the uses cases, who are not aware of the controllers, presenters and gateways,
 who are not aware of the UI and SQLite database.
 
 For example, the use case class EventManager saves events to the database using not EventGateway, a gateway class, but
@@ -150,11 +150,11 @@ suggestions here and provide some supporting arguments.
 
 ### Strategy
 The Strategy pattern is useful for the user information validation. Upon attempting to sign up or log in, we
-  implemented a few conditionals to ensure a successful sign up and log in. For sign up, we implemented a number of
+  implemented a few conditionals to ensure a successful sign-up and log in. For sign up, we implemented a number of
   regex patterns that check for valid email and password inputs as well as a conditionals that check whether an email is
   already registered in the database upon signing up. For log in, we implemented conditionals that check whether log in
   inputs are valid by checking whether they match with one of the signed up users currently in the database. All in all,
-  utilizing this design pattern should allow the sign up/log in process to run smoothly.
+  utilizing this design pattern should allow the sign-up/log in process to run smoothly.
 
 ### Simple Factory
 We can use this in our controllers to check for errors, or use it to create default instantiations of events, see #4
@@ -244,8 +244,8 @@ work.
 ### Launch Instructions
 To launch our app, **please open our project in Android Studio, we don't guarantee correct function if launched with
 other IDEs**. Make sure that you open `Uni_Life_Tracker` as project, but not the root directory `course-generic-name-1`
-as project ([GIF walkthrough](https://imgur.com/a/e682DPB)). Ensure that Android SDK 31 is installed with build tools
-31.0.0. If you experience an issue where build tool 31.0.0 is corrupted, change the build tool to version 30.0.2 and you
+as project ([GIF walk-through](https://imgur.com/a/e682DPB)). Ensure that Android SDK 31 is installed with build tools
+31.0.0. If you experience an issue where build tool 31.0.0 is corrupted, change the build tool to version 30.0.2, and you
 should be able to launch our app. Additionally, you can also try to fix the corruption by following
 this [StackOverflow](https://stackoverflow.com/questions/68387270/android-studio-error-installed-build-tools-revision-31-0-0-is-corrupted)
 article or this question on [Piazza](https://piazza.com/class/kt4hlydpsym1bz?cid=10).
@@ -308,7 +308,6 @@ with
 5. Click the check mark at the top of the page to save
 
 #### How to Use Settings
-
 1. In the settings page, you will see two text fields, one representing name and the other representing university
 2. To edit, click on the edit button
 3. Make changes in the respective text fields
@@ -334,20 +333,17 @@ conjunction with CLEAN architecture layers.
   * e.g. `UseCases` hosts the use cases for our program, `Entities` host the entities of our program.
 
 ### Existing Problems
-
 * Packages are not all lowercase as specified by Oracle's java naming convention
 * `Database` should be in the `gateways` package (Should be solved after 's PR)
-* Activities needs to be properly categorized and moved to the respective packages
+* Activities need to be properly categorized and moved to the respective packages
 
 ## Design Document
 
-### Is all of the above discussed in an organized way?
-
+### Is all the above discussed in an organized way?
 We, the group members of Generic name can confirm that all elements of the design document are present in order and
 completed to the best of our ability.
 
 ### Does your design document convince your team that you deserve the grade you are hoping to earn?
-
 Our design document is detailed and clear while also containing extra features such as instructions on how to set up the
 app and how run certain features.
 
@@ -356,15 +352,13 @@ app and how run certain features.
 ### Universal Design Principles
 
 #### Principle 1: Equitable Use
-
 If released on the market, Plannr will be free to include users from different socioeconomic backgrounds. As well, our
-app does not have an additional features that require users to have a more advanced skill level so it does not create
+app does not have an additional features that require users to have a more advanced skill level, so it does not create
 segregation among users. It also offers the same password checking and account features for all users ensuring that
 users will have a password-protected account. Finally, Plannr's UI is simple and easy to user, with a nice design
 appealing to all users.
 
 #### Principle 2: Flexibility in Use
-
 The Sort feature in the main page gives users the flexibility and choice of how they would like to sort their events, as
 users can sort either by time or priority. In the future, an instructions page offering details on how to use the app
 can be added to Settings. Additionally, in the future, a more detailed setting page can be added to accommodate more
@@ -372,40 +366,34 @@ customizations. Preferences such as currency types (such as CAD or USD), the dis
 or dark mode are features that can be included in the future.
 
 #### Principle 3: Simple and Intuitive Use
-
-At first launch, Plannr prompts the user to sign up or log in in a straightforward manner, displaying large buttons with
+At first launch, Plannr prompts the user to sign up or log-in in a straightforward manner, displaying large buttons with
 clear text. When signing up, Plannr provides feedback for text fields, such as name, email and password. If they are
 left blank or have the incorrect type of input, it suggests change from the user. As well, it also prompts the user to
 enter a strong password that follows certain password requirements which are clearly printed after a failed attempt.
 Finally, the language and vocabulary within Plannr is simple and comprehensive.
 
 #### Principle 4: Perceptible Information
-
 Plannr makes use of large bold text for important headings that represent different functions within the app, such as
 Expenses, To Do's and adding school events. It also has large button with legible text that stands out. Plannr applies
 icons for the different types of school events to avoid cluttering the add event view with text. The colour scheme for
 the entire UI (black, white and purple) ensures there is high contrast and all features are visible.
 
 #### Principle 5: Tolerance for Error
-
-Plannr has fail safe features that stop the user from inputting an empty school event or any empty expense with error
+Plannr has fail-safe features that stop the user from inputting an empty school event or any empty expense with error
 messages. Most used elements such as the To Do's list are displayed as the main view while settings and other less use
 features have to be located using the navigation menu. In the future, Plannr should contain more detailed error checking
 for text inputs such as the user's name.
 
-#### Principle 6: Low Physical Effort 
-
+#### Principle 6: Low Physical Effort
 In the future, Plannr will allow users to add multiple expenses and events at once without being redirected to
 main view or the main expenses view to minimize repetitive action. As a mobile app, Plannr should not require excessive
 physical effort to use and does not have any advance graphic features that would drain battery life.
 
 #### Principle 7: Size and Space for Approach and Use
-
 This principle is not applicable for Plannr as it is a mobile app (software) and does not come with additional hardware
 elements that would need to accommodate a variety of users.
 
 ### Target Market
-
 The target market for Plannr would be students ranging from high school to university. Plannr offers an option for users
 to input school events such as deadlines which are most commonly associated with student life. Students often have
 difficulties balancing all their academic dates such as deadlines, tests or assignments so seeing all their events in
@@ -417,7 +405,6 @@ for students who are looking for an organizational platform that combines both t
 easy access.
 
 ### Least Likely Demographic
-
 People who are not students would not Plannr particularly useful. Specifically, younger students in elementary school or
 children would be less likely to user Planner. They would have no use for the expense features they are not
 managing their own finances. In addition, older adults who are retired or who are not students are less likely to use
