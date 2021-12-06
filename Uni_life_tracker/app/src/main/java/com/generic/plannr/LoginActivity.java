@@ -1,11 +1,12 @@
 package com.generic.plannr;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import com.generic.plannr.Gateways.UserGateway;
 import com.google.android.material.textfield.TextInputLayout;
+
+import java.util.Objects;
 
 public class LoginActivity  extends AppCompatActivity {
 
@@ -45,6 +46,7 @@ public class LoginActivity  extends AppCompatActivity {
         // If all login credentials are correct, go into the main page
         if (LoginInput()) {
             openMain();
+            ug.updateLoggedInUser(Objects.requireNonNull(tiEmail.getEditText()).getText().toString());
         }
     }
 

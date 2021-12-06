@@ -1,25 +1,24 @@
 package com.generic.plannr;
 
-import android.graphics.Color;
-import android.widget.TextView;
 import android.content.SharedPreferences;
-import android.widget.ImageView;
-import com.generic.plannr.Entities.Expense;
-import android.content.Intent;
-import android.view.View;
-import androidx.appcompat.app.AppCompatActivity;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.generic.plannr.Entities.Expense;
+import com.generic.plannr.Gateways.ExpenseGateway;
+import com.generic.plannr.Gateways.UserGateway;
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetView;
 import com.google.android.material.textfield.TextInputEditText;
-import com.generic.plannr.Gateways.ExpenseGateway;
-import com.generic.plannr.Gateways.UserGateway;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -31,7 +30,8 @@ public class ExpensesActivity extends AppCompatActivity {
     private MainActivity activity;
     private TextInputEditText etIncome;
     private TextInputLayout tiIncome;
-    ImageView ivAddExpense;
+    private TextView tvTotalExpenses, tvBalance;
+    private double totalExpenses, balance, income;
     UserGateway ug = new UserGateway(ExpensesActivity.this);
     ExpenseGateway eg = new ExpenseGateway(ExpensesActivity.this);
 
@@ -45,15 +45,25 @@ public class ExpensesActivity extends AppCompatActivity {
         expensesList = new ArrayList<>();
         rvExpenses = findViewById(R.id.rv_expenses); // expense list
         drawerLayout = findViewById(R.id.drawer_layout); // nav menu
-        ivAddExpense = findViewById(R.id.iv_add_expense); // add expense button
+        etIncome = findViewById(R.id.et_income);
+        tiIncome = findViewById(R.id.ti_income);
+        tvTotalExpenses = findViewById(R.id.tv_total_expenses);
+        tvBalance = findViewById(R.id.tv_balance);
 
         SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
         boolean firstStart = preferences.getBoolean("firstStart", true);
+
+        etIncome.setText(ug.getLoggedInIncome());
+        calculateExpense();
+
+        income = Double.parseDouble(Objects.requireNonNull(tiIncome.getEditText()).getText().toString());
+        updateBalance();
 
         if (firstStart) {
             showTargetView();
         }
 
+        // Uses the recycler view to display the event list
         setExpenseInfo();
         setAdapter();
     }
@@ -102,57 +112,98 @@ public class ExpensesActivity extends AppCompatActivity {
     }
 
     /**
-     * Calculates the total expenses
-     *
+     * Calculates the total expenses using the expense list
      */
     public void calculateExpense(){
-        // TODO: CALCULATE TOTAL EXPENSES
-        String income = Objects.requireNonNull(tiIncome.getEditText()).getText().toString();
-        //double total_sum = Double.parseDouble(income) - the sum of expense values
+        totalExpenses = 0.00;
+        for (Expense e: eg.getAllExpenses(ug.getLoggedInUserID()))
+                totalExpenses += e.getValue();
+
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        tvTotalExpenses.setText(formatter.format(totalExpenses));
+
     }
 
+    /**
+     * Prompts the Add Expense Activity on a plus icon click.
+     *
+     * @param view  a View for the device screen.
+     */
     public void clickAddExpense(View view) {
         // clicking the check in order to add expense
-        Intent intent = new Intent(this, AddExpensesActivity.class);
-        startActivity(intent);
+        activity.redirectActivity(this, AddExpensesActivity.class);
     }
 
     /**
      * Checks if the income is greater or less than the total
      * and changes colour of the text accordingly
-     *
      */
     public void clickSaveIncome(View view) {
-        // TODO: TO BE PLACED WITH THE INCOME AND EXPENSES FROM THE DATABASE
-        TextView total = findViewById(R.id.tv_total);
-        String income = Objects.requireNonNull(tiIncome.getEditText()).getText().toString();
-        // FILLER
-        double total_expenses = 100.0;
-        if (Double.parseDouble(income) > total_expenses) {
-            total.setTextColor(Color.GREEN);
-
-        }else if (Double.parseDouble(income) < total_expenses){
-            total.setTextColor(Color.RED);
-
-        }else{total.setTextColor(Color.YELLOW);}
+        income = Double.parseDouble(Objects.requireNonNull(tiIncome.getEditText()).getText().toString());
+        ug.updateIncome(income);
+        //ug.updateIncome(income);
+        updateBalance();
     }
 
+    public void updateBalance() {
+        balance = income - totalExpenses;
+        if (balance > 0) {
+            tvBalance.setTextColor(Color.GREEN);
+        } else if (balance < 0) {
+            tvBalance.setTextColor(Color.RED);
+        } else {
+            tvBalance.setTextColor(Color.BLACK);
+        }
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        tvBalance.setText(formatter.format(balance));
+    }
+
+    /**
+     * Opens navigation menu on menu icon click.
+     *
+     * @param view  a View for the device screen.
+     */
     public void clickMenu(View view){ activity.openDrawer(drawerLayout); } // open drawer
 
+    /**
+     * Directs activity to the Main activity on logo click.
+     *
+     * @param view  a View for the device screen.
+     */
     public void clickLogo(View view) { activity.redirectActivity(this, MainActivity.class);} // redirect activity to main
 
+    /**
+     * Directs activity to the School activity on school icon click.
+     *
+     * @param view  a View for the device screen.
+     */
     public void clickSchool(View view) { activity.redirectActivity(this, SchoolActivity.class); } // redirect activity to school
 
     // TODO: change this to life later
 //    public void clickLife(View view) { activity.redirectActivity(this, MainActivity.class); } // redirect activity to life
 
+    /**
+     * Directs activity to the Expenses activity on expenses icon click.
+     *
+     * @param view  a View for the device screen.
+     */
     public void clickExpenses(View view) { recreate(); } // recreate activity
 
+    /**
+     * Directs activity to the Settings activity on settings icon click.
+     *
+     * @param view  a View for the device screen.
+     */
     public void clickSettings(View view) { activity.redirectActivity(this, SettingsActivity.class); } // redirect activity to settings
 
+    /**
+     * Prompts log out on a logout icon click.
+     *
+     * @param view  a View for the device screen.
+     */
     public void clickLogOut(View view) {
         activity.logout(this);
-    } // prompt logout
+    }
 
     @Override
     protected void onPause() {

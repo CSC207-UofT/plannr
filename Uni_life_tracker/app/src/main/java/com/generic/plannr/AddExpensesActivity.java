@@ -20,8 +20,6 @@ public class AddExpensesActivity extends AppCompatActivity {
     ExpenseGateway eg = new ExpenseGateway(AddExpensesActivity.this);
     UserGateway ug = new UserGateway(AddExpensesActivity.this);
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +29,6 @@ public class AddExpensesActivity extends AppCompatActivity {
         textInputAmount = findViewById(R.id.add_expense_amount);
 
     }
-
 
     private void openAddExpensesView() {
         // Opens the expense list activity (ExpensesActivity)
@@ -57,8 +54,6 @@ public class AddExpensesActivity extends AppCompatActivity {
             return true;
         }
     }
-
-
 
     /**
      * Checks whether the information inputted matches the requirements and opens the expense and user info database
