@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import static com.generic.plannr.StaticTestVariables.TODAY;
-import static com.generic.plannr.UseCases.SortTodaysEvents.*;
+import static com.generic.plannr.UseCases.SortEvents.*;
 import static org.junit.Assert.assertEquals;
 
 public class SortTodaysEventsTest {
@@ -39,13 +39,13 @@ public class SortTodaysEventsTest {
     @Test(timeout = 50)
     public void TestSortByDate() {
         ArrayList<Event> expected = new ArrayList<>(Arrays.asList(e1, e2, e3));
-        assertEquals(expected, sortByDate(user));
+        assertEquals(expected, sortByDate(user.viewEventList()));
     }
 
     @Test(timeout = 50)
     public void TestSortByPriority() {
         ArrayList<Event> expected = new ArrayList<>(Arrays.asList(e3, e2, e1));
-        assertEquals(expected, sortByPriority(user));
+        assertEquals(expected, sortByPriority(user.viewEventList()));
     }
 
 }
