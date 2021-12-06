@@ -20,7 +20,7 @@ public class SettingsActivity extends AppCompatActivity {
     private TextInputEditText etUni;
     private TextInputLayout tiName;
     private TextInputLayout tiUni;
-    private MainPageActivity activity;
+    private MainActivity activity;
     UserGateway ug = new UserGateway(SettingsActivity.this);
 
     @Override
@@ -28,7 +28,7 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         drawerLayout = findViewById(R.id.drawer_layout); // nav menu
-        activity = new MainPageActivity();
+        activity = new MainActivity();
 
         // accesses user info from text boxes
         etName = findViewById(R.id.et_name);
@@ -43,19 +43,18 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void clickMenu(View view) { activity.openDrawer(drawerLayout); } // open drawer
 
-    public void clickLogo(View view) { activity.redirectActivity(this, MainPageActivity.class); } // redirect activity to main
+    public void clickLogo(View view) { activity.redirectActivity(this, MainActivity.class); } // redirect activity to main
 
     public void clickSchool(View view) { activity.redirectActivity(this, SchoolActivity.class); } // redirect activity to school
 
     // TODO: change this to life later
-    public void clickLife(View view) { activity.redirectActivity(this, MainPageActivity.class); } // redirect activity to life
+//    public void clickLife(View view) { activity.redirectActivity(this, MainActivity.class); } // redirect activity to life
 
     public void clickExpenses(View view) { activity.redirectActivity(this, ExpensesActivity.class); } // redirect activity to expenses
 
     public void clickSettings(View view) { recreate(); } // recreate activity
 
     public void clickLogOut(View view) {
-        MainPageActivity activity = new MainPageActivity();
         activity.logout(this); } // prompt logout
 
     public void clickSave(View view) {
@@ -76,12 +75,15 @@ public class SettingsActivity extends AppCompatActivity {
         activity.closeDrawer(drawerLayout); // close drawer
     }
 
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
+
     public void clickEdit(View view) {
         // enabled textboxes so they can be edited
         textboxEditability(true);
     }
-
-
 
     public void textboxEditability(boolean bool) {
         etName.setEnabled(bool);

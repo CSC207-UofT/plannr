@@ -11,24 +11,25 @@ public class LoginActivity  extends AppCompatActivity {
     // initialize variables
     private TextInputLayout tiEmail;
     private TextInputLayout tiPassword;
-    private MainPageActivity activity;
+    private MainActivity activity;
     UserGateway ug = new UserGateway(LoginActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_page);
+        setContentView(R.layout.activity_login);
 
         // connecting variables to UI features in activities by their id
         tiEmail = findViewById(R.id.ti_email_login);
         tiPassword = findViewById(R.id.ti_password_login);
 
-        activity = new MainPageActivity();
+        activity = new MainActivity();
     }
 
     private void openMain() {
-        // Moves to the MainPageActivity
-        activity.redirectActivity(this, MainPageActivity.class);
+        // Moves to the MainActivity
+        activity.redirectActivity(this, MainActivity.class);
+        finish();
     }
 
     public boolean LoginInput () {
@@ -49,7 +50,7 @@ public class LoginActivity  extends AppCompatActivity {
     }
 
     public void clickSignup(View view) {
-        // Moves to the MainPageActivity
+        // Moves to the MainActivity
         activity.redirectActivity(this, SignUpActivity.class);
     }
 }

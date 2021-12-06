@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.generic.plannr.Entities.Event;
 import com.generic.plannr.Gateways.EventGateway;
 import com.generic.plannr.Gateways.UserGateway;
+import android.os.Bundle;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -28,7 +29,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
     RadioGroup rgPriorities;
     ImageView ivBack, ivSave;
     EditText etEventName, etCourse;
-    private MainPageActivity activity;
+    private MainActivity activity;
     UserGateway ug = new UserGateway(AddEventActivity.this);
     EventGateway eg = new EventGateway(AddEventActivity.this);
 
@@ -52,7 +53,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         tvClassTime = findViewById(R.id.tv_class_time);
         tvStudySession = findViewById(R.id.tv_study_session);
 
-        activity = new MainPageActivity();
+        activity = new MainActivity();
 
 //       Initialize Calendar
         Calendar calendar = Calendar.getInstance();
@@ -75,7 +76,6 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         tvDeadline.setOnClickListener(this::clickDeadline);
         tvClassTime.setOnClickListener(this::clickClassTime);
         tvStudySession.setOnClickListener(this::clickStudySession);
-
 
 //        Start Date Selection
         tvStartDate.setOnClickListener(v -> {
@@ -179,20 +179,21 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
     }
 
     public void clickAssessment(View view) {
-        activity.redirectActivity(this, MainPageActivity.class);  // TODO: direct to assessment page
+        activity.redirectActivity(this, MainActivity.class);  // TODO: direct to assessment page
     }
 
     public void clickDeadline(View view) {
-        activity.redirectActivity(this, MainPageActivity.class);  //TODO: direct to deadline page
+        activity.redirectActivity(this, MainActivity.class);  //TODO: direct to deadline page
     }
 
     public void clickClassTime(View view) {
-        activity.redirectActivity(this, MainPageActivity.class);  // TODO: direct to class page
+        activity.redirectActivity(this, MainActivity.class);  // TODO: direct to class page
     }
 
     public void clickStudySession(View view) {
-        activity.redirectActivity(this, MainPageActivity.class);  // // TODO: direct to study session page
+        activity.redirectActivity(this, MainActivity.class);  // // TODO: direct to study session page
     }
+
     /**
      * Saves the event into the database
      */
@@ -211,6 +212,8 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
             LocalDateTime start = LocalDateTime.parse(startDate + " " + startTime, DATEFORMAT);
             LocalDateTime end = LocalDateTime.parse(endDate + " " + endTime, DATEFORMAT);
 
+            String email = ug.getLoggedInEmail();
+
             Event event = new Event(eventName, priority, start, end);
             int userID = ug.getLoggedInUserID();
 
@@ -225,7 +228,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
      * @return whether the added event includes all it's needed attributes
      */
     public boolean addEventInput() {
-        InputTextValidator validator = new InputTextValidator();
+        Validator input = new Validator();
         String startDate = tvStartDate.getText().toString().trim();
         String endDate = tvEndDate.getText().toString().trim();
         String startTime = tvStartTime.getText().toString().trim();
@@ -250,9 +253,8 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
             }
         }
 
-        return validator.validateAddEvent(etEventName) & validator.validateAddEvent(tvEndDate)
-                & validator.validateAddEvent(tvEndTime) & validator.validateAddEvent(etCourse)
-                & endTimeAfter;
+        return input.validateAddEvent(etEventName) & input.validateAddEvent(tvEndDate)
+                & input.validateAddEvent(tvEndTime) & input.validateAddEvent(etCourse) & endTimeAfter;
     }
     /**
      * Changes the color of the textview
