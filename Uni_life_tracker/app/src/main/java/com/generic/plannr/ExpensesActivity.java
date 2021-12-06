@@ -1,25 +1,26 @@
 package com.generic.plannr;
 
-import android.graphics.Color;
-import android.widget.TextView;
-import android.content.SharedPreferences;
-import android.widget.ImageView;
-import com.generic.plannr.Entities.Expense;
 import android.content.Intent;
-import android.view.View;
-import androidx.appcompat.app.AppCompatActivity;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.generic.plannr.Entities.Expense;
+import com.generic.plannr.Gateways.ExpenseGateway;
+import com.generic.plannr.Gateways.UserGateway;
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetView;
 import com.google.android.material.textfield.TextInputEditText;
-import com.generic.plannr.Gateways.ExpenseGateway;
-import com.generic.plannr.Gateways.UserGateway;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -31,7 +32,9 @@ public class ExpensesActivity extends AppCompatActivity {
     private MainActivity activity;
     private TextInputEditText etIncome;
     private TextInputLayout tiIncome;
-    ImageView ivAddExpense;
+    private TextView tvTotal;
+    private ImageView ivAddExpense;
+    private double totalExpenses;
     UserGateway ug = new UserGateway(ExpensesActivity.this);
     ExpenseGateway eg = new ExpenseGateway(ExpensesActivity.this);
 
@@ -48,9 +51,20 @@ public class ExpensesActivity extends AppCompatActivity {
         ivAddExpense = findViewById(R.id.iv_add_expense); // add expense button
         etIncome = findViewById(R.id.et_income);
         tiIncome = findViewById(R.id.ti_income);
+        tvTotal = findViewById(R.id.tv_total);
 
         SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
         boolean firstStart = preferences.getBoolean("firstStart", true);
+
+        if (eg.getAllExpenses(ug.getLoggedInUserID()).isEmpty()){
+            totalExpenses = 0.00;
+        } else {
+            for (Expense e: eg.getAllExpenses(ug.getLoggedInUserID())) {
+                totalExpenses += e.getValue();
+            }
+            NumberFormat formatter = NumberFormat.getCurrencyInstance();
+            tvTotal.setText(formatter.format(totalExpenses));
+        }
 
         if (firstStart) {
             showTargetView();
@@ -129,12 +143,12 @@ public class ExpensesActivity extends AppCompatActivity {
         TextView total = findViewById(R.id.tv_total);
         String income = Objects.requireNonNull(tiIncome.getEditText()).getText().toString();
         ug.updateIncome(Double.parseDouble(income));
+
         // FILLER
-        double total_expenses = 100.0;
-        if (Double.parseDouble(income) > total_expenses) {
+        if (Double.parseDouble(income) > totalExpenses) {
             total.setTextColor(Color.GREEN);
 
-        }else if (Double.parseDouble(income) < total_expenses){
+        }else if (Double.parseDouble(income) < totalExpenses){
             total.setTextColor(Color.RED);
 
         }else{total.setTextColor(Color.YELLOW);}
