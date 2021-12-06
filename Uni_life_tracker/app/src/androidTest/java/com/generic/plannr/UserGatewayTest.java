@@ -50,6 +50,10 @@ public class UserGatewayTest {
 
     @Test
     public void updateName() {
+        ug.saveToDatabase(um.getUser());
+        ug.updateName("Test User 2");
+        assertEquals("Test User 2", ug.getLoggedInName());
+        assertEquals("Test User 2", ug.getByID(ug.getLoggedInUserID()).getName());
     }
 
     @Test
