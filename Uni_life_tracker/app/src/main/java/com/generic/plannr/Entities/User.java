@@ -25,7 +25,6 @@ public class User {
         this.email = email;
         this.password = password;
         this.courses = new ArrayList<>();
-        this.courses.addAll(courses);
         this.eventList = new ArrayList<>();
         this.income = 0.0;
         this.expenseList = new ArrayList<>();
