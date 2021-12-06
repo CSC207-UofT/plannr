@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
-import com.generic.plannr.Entities.User;
 import com.generic.plannr.Gateways.UserGateway;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -58,14 +57,19 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void clickSave(View view) {
         // gets user input from textbox
-        String name = Objects.requireNonNull(tiName.getEditText()).getText().toString();
-        String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();
+        Validator input = new Validator();
+        if (input.validateEntry(tiPassword, ug, tiName, tiPassword, true))
+        {
+            String name = Objects.requireNonNull(tiName.getEditText()).getText().toString();
+            String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();
 
-        // replaces current data in database with user input
-        ug.updateName(name);
-        ug.updatePassword(password);
-        // disables textbox so it becomes read only
-        textboxEditability(false);
+            // replaces current data in database with user input
+            ug.updateName(name);
+            ug.updatePassword(password);
+            // disables textbox so it becomes read only
+            textboxEditability(false);
+        }
+
     }
 
     @Override

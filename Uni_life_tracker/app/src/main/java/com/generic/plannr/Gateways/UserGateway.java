@@ -62,7 +62,7 @@ public class UserGateway implements UserGatewayInterface {
     public void updatePassword(String password){
         ContentValues cv = new ContentValues();
         cv.put("PASSWORD", password);
-        db.update("userinfo", cv, "LOGGEDIN = 1", null);
+        db.update("userinfo", cv, "LOGGED_IN = 1", null);
     }
 
     /**
