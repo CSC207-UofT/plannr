@@ -230,7 +230,7 @@ public class UserGateway implements UserGatewayInterface {
 
     /**
      *
-     * Set which account is currently logged in in the database
+     * Set which account is currently logged in the database
      *
      */
     public void updateLoggedInUser(String userEmail) {
@@ -239,7 +239,6 @@ public class UserGateway implements UserGatewayInterface {
         ContentValues cv = new ContentValues();
         cv.put("LOGGED_IN", 1);
         db.update("userinfo", cv, "EMAIL = " + "'" + userEmail + "'", null);
-
     }
 
     /**

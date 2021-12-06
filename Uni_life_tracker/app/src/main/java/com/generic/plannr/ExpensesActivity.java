@@ -115,15 +115,13 @@ public class ExpensesActivity extends AppCompatActivity {
      * Calculates the total expenses using the expense list
      */
     public void calculateExpense(){
-        if (eg.getAllExpenses(ug.getLoggedInUserID()).isEmpty()){
-            totalExpenses = 0.00;
-        } else {
-            for (Expense e: eg.getAllExpenses(ug.getLoggedInUserID())) {
+        totalExpenses = 0.00;
+        for (Expense e: eg.getAllExpenses(ug.getLoggedInUserID()))
                 totalExpenses += e.getValue();
-            }
-            NumberFormat formatter = NumberFormat.getCurrencyInstance();
-            tvTotalExpenses.setText(formatter.format(totalExpenses));
-        }
+
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        tvTotalExpenses.setText(formatter.format(totalExpenses));
+
     }
 
     /**
