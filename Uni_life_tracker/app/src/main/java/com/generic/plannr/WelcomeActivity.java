@@ -1,3 +1,7 @@
+/* Plannr by Generic Name
+ *
+ * This file contains methods for activity_welcome.xml.
+ */
 package com.generic.plannr;
 
 import android.content.Intent;

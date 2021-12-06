@@ -3,16 +3,21 @@ package com.generic.plannr;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
+import com.generic.plannr.Entities.Event;
+import com.generic.plannr.Gateways.EventGateway;
+import com.generic.plannr.Gateways.UserGateway;
 import android.os.Bundle;
-import com.generic.plannr.Database.UserInfoDatabaseHelper;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -23,18 +28,21 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
     TextView tvStartDate, tvStartTime, tvEndDate, tvEndTime, tvAssessment, tvDeadline, tvClassTime, tvStudySession;
     RadioGroup rgPriorities;
     ImageView ivBack, ivSave;
-    EditText etEventName;
+    EditText etEventName, etCourse;
+    private MainActivity activity;
+    UserGateway ug = new UserGateway(AddEventActivity.this);
+    EventGateway eg = new EventGateway(AddEventActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_event);
 
-
 //        Assign Variables
         ivBack = findViewById(R.id.iv_back);
         ivSave = findViewById(R.id.iv_save);
         etEventName = findViewById(R.id.et_event_name);
+        etCourse = findViewById(R.id.et_course);
         tvStartDate = findViewById(R.id.tv_start_date);
         tvStartTime = findViewById(R.id.tv_start_time);
         tvEndDate = findViewById(R.id.tv_end_date);
@@ -45,7 +53,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         tvClassTime = findViewById(R.id.tv_class_time);
         tvStudySession = findViewById(R.id.tv_study_session);
 
-        Spinner coursesList = findViewById(R.id.spn_courses);
+        activity = new MainActivity();
 
 //       Initialize Calendar
         Calendar calendar = Calendar.getInstance();
@@ -55,7 +63,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         startHour = calendar.get(Calendar.HOUR_OF_DAY);
         startMinute = calendar.get(Calendar.MINUTE);
 
-//       Start Date & Time Format
+//       Start Date & Time Format (Current Date & Time)
         String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
         String time = new SimpleDateFormat("hh:mm aa", Locale.getDefault()).format(new Date());
 
@@ -69,11 +77,6 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         tvClassTime.setOnClickListener(this::clickClassTime);
         tvStudySession.setOnClickListener(this::clickStudySession);
 
-        ivSave.setOnClickListener(v -> {
-            String eventName = etEventName.getText().toString();
-            Toast.makeText(AddEventActivity.this, eventName, Toast.LENGTH_SHORT).show(); // TODO: remove
-        });
-
 //        Start Date Selection
         tvStartDate.setOnClickListener(v -> {
             DatePickerDialog datePickerDialog = new DatePickerDialog(
@@ -82,7 +85,8 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
                         startMonth = month;
                         startDay = dayOfMonth;
 
-                        String startDate = startDay + "-" + (startMonth+1) + "-" + startYear;
+                        @SuppressLint("DefaultLocale")
+                        String startDate = String.format("%02d-%02d-%d", startDay, (startMonth+1), startYear);
                         tvStartDate.setText(startDate);
                     }, startYear, startMonth, startDay);
             datePickerDialog.updateDate(startYear, startMonth, startDay); // displays prev selected date
@@ -95,9 +99,11 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
             DatePickerDialog datePickerDialog = new DatePickerDialog(
                     AddEventActivity.this, (view, year, month, dayOfMonth) -> {
                 endYear = year;
-                endMonth = month + 1;
+                endMonth = month;
                 endDay = dayOfMonth;
-                String endDate = endDay + "-" + endMonth + "-" + endYear;
+
+                @SuppressLint("DefaultLocale")
+                String endDate = String.format("%02d-%02d-%d", endDay, (endMonth+1), endYear);
                 tvEndDate.setText(endDate);
             }, endYear, endMonth, endDay);
 
@@ -153,21 +159,11 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
                     }, endHour, endMinute, false);
             timePickerDialog.show();
         });
-
-//        Courses List
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<>(AddEventActivity.this,
-                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.courses));
-        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        coursesList.setAdapter(myAdapter);
-
-        ivSave.setOnClickListener(view -> Toast.makeText(AddEventActivity.this, priority, Toast.LENGTH_SHORT).show());
     }
-
 
 //    Back Button
     public void clickBack(View view) {
-        Intent intent = new Intent(this, MainPageActivity.class); // TODO: direct to school/life page
-        startActivity(intent);
+        activity.redirectActivity(this, SchoolActivity.class);
     }
 
 //    Priority Selection
@@ -183,22 +179,90 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
     }
 
     public void clickAssessment(View view) {
-        Intent intent = new Intent(this, MainPageActivity.class); // TODO: direct to assessment page
-        startActivity(intent);
+        activity.redirectActivity(this, MainActivity.class);  // TODO: direct to assessment page
     }
 
     public void clickDeadline(View view) {
-        Intent intent = new Intent(this, MainPageActivity.class); // TODO: direct to deadline page
-        startActivity(intent);
+        activity.redirectActivity(this, MainActivity.class);  //TODO: direct to deadline page
     }
 
     public void clickClassTime(View view) {
-        Intent intent = new Intent(this, MainPageActivity.class); // TODO: direct to class page
-        startActivity(intent);
+        activity.redirectActivity(this, MainActivity.class);  // TODO: direct to class page
     }
 
     public void clickStudySession(View view) {
-        Intent intent = new Intent(this, MainPageActivity.class); // TODO: direct to study session page
-        startActivity(intent);
+        activity.redirectActivity(this, MainActivity.class);  // // TODO: direct to study session page
+    }
+
+    /**
+     * Saves the event into the database
+     */
+    public void clickSaveEvent(View view) {
+        if (addEventInput()) {
+
+            String eventName = etEventName.getText().toString();
+            String startDate = tvStartDate.getText().toString().trim();
+            String endDate = tvEndDate.getText().toString().trim();
+            String startTime = tvStartTime.getText().toString().trim();
+            String endTime = tvEndTime.getText().toString().trim();
+
+
+            DateTimeFormatter DATEFORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm a");
+
+            LocalDateTime start = LocalDateTime.parse(startDate + " " + startTime, DATEFORMAT);
+            LocalDateTime end = LocalDateTime.parse(endDate + " " + endTime, DATEFORMAT);
+
+            String email = ug.getLoggedInEmail();
+
+            Event event = new Event(eventName, priority, start, end);
+            int userID = ug.getLoggedInUserID();
+
+            eg.saveToDatabase(event, userID);
+
+            activity.redirectActivity(this, SchoolActivity.class);
+        }
+    }
+    /**
+     * Highlights any textview that is in empty or in an incorrect format
+     *
+     * @return whether the added event includes all it's needed attributes
+     */
+    public boolean addEventInput() {
+        Validator input = new Validator();
+        String startDate = tvStartDate.getText().toString().trim();
+        String endDate = tvEndDate.getText().toString().trim();
+        String startTime = tvStartTime.getText().toString().trim();
+        String endTime = tvEndTime.getText().toString().trim();
+
+
+        DateTimeFormatter DATEFORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm a");
+
+        LocalDateTime start = LocalDateTime.parse(startDate + " " + startTime, DATEFORMAT);
+
+        boolean endTimeAfter = false;
+        if (!endTime.isEmpty()) {
+            LocalDateTime end = LocalDateTime.parse(endDate + " " + endTime, DATEFORMAT);
+            // Checks if end date is after start date with its date time format
+            if (!end.isAfter(start)){
+                // Warns user that the format is incorrect
+                Toast.makeText(this, "End date should be before start", Toast.LENGTH_LONG).show();
+                changeTextColor(255);
+            } else {
+                changeTextColor(0);
+                endTimeAfter = true;
+            }
+        }
+
+        return input.validateAddEvent(etEventName) & input.validateAddEvent(tvEndDate)
+                & input.validateAddEvent(tvEndTime) & input.validateAddEvent(etCourse) & endTimeAfter;
+    }
+    /**
+     * Changes the color of the textview
+     *
+     * @param color the r value for the rgb color\
+     */
+    public void changeTextColor(int color) {
+        tvEndDate.setTextColor(Color.rgb(color, 0, 0));
+        tvEndTime.setTextColor(Color.rgb(color, 0, 0));
     }
 }

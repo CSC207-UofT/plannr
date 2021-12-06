@@ -16,23 +16,25 @@ public class UserManager {
     /**
      * Constructs a user manager and creates a new user
      *
-     * @param name    is the user's name
-     * @param courses is the user's list of courses
+     * @param name      is the user's name
+     * @param email     is the user's email
+     * @param password  is the user's password
      */
-    public UserManager(String name, ArrayList<String> courses) {
-        u = createUser(name, courses);
+    public UserManager(String name, String email, String password, String school) {
+        u = createUser(name, email, password);
         this.expManager = new ExpensesManager();
     }
 
     /**
      * Creates a user
      *
-     * @param name    is the user's name
-     * @param courses is the user's list of courses
+     * @param name      is the user's name
+     * @param email     is the user's email
+     * @param password  is the user's password
      * @return the created user
      */
-    public User createUser(String name, ArrayList<String> courses) {
-        return new User(name, courses);
+    public User createUser(String name, String email, String password, String school) {
+        return new User(name, email, password);
     }
 
     /**
@@ -71,7 +73,6 @@ public class UserManager {
         u.setName(name);
     }
 
-
     /**
      * Adds an event to User's event list
      *
@@ -103,6 +104,15 @@ public class UserManager {
         }
 
         return balance;
+    }
+
+    /**
+     * This method will return the User
+     *
+     * @return the User object
+     */
+    public User getUser() {
+        return u;
     }
 
     /**

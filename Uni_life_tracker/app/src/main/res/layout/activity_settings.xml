@@ -3,7 +3,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_height="match_parent"
         android:id="@+id/drawer_layout"
         tools:context=".SettingsActivity">
 
@@ -65,9 +65,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/name"
-                    android:textSize="20sp"
-                    android:fontFamily="@font/roboto_mono_light"
-                    android:layout_margin="5dp"/>
+                    android:textSize="20sp"/>
 
             <!--  Name Input  -->
             <com.google.android.material.textfield.TextInputLayout
@@ -78,6 +76,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@color/transparent"
                         android:hint="@string/name"
                         android:inputType="text"
                         android:id="@+id/et_name"
@@ -101,7 +100,6 @@
                     android:layout_weight="1"
                     android:text="@string/password"
                     android:textSize="20sp"
-                    android:fontFamily="@font/roboto_mono_light"
                     android:layout_margin="5dp"/>
 
             <!--  Password Input  -->
@@ -113,6 +111,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@color/transparent"
                         android:hint="@string/password"
                         android:inputType="textPassword"
                         android:id="@+id/et_password"

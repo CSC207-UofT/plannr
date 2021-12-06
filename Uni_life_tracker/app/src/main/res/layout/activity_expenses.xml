@@ -49,13 +49,96 @@
                     android:padding="20dp"/>
         </LinearLayout>
 
-        <!--  Expense List  -->
+        <!--  Name  -->
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="20dp">
+
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/income"
+                    android:textSize="20sp"/>
+
+            <!--  Income Input  -->
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/ti_add_income"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/transparent"
+                        android:hint="@string/add_income"
+                        android:inputType="numberDecimal"
+                        android:id="@+id/et_name"
+                        />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--  Save Button  -->
+            <ImageView
+                    android:id="@+id/iv_save_income"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="clickSaveIncome"
+                    android:src="@drawable/ic_done_black"
+                    android:layout_marginStart="15dp"
+                    android:contentDescription="@string/add_income"/>
+        </LinearLayout>
+
+        <!--  Expense List -->
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/expenses"
+                android:textSize="20sp"
+                android:layout_marginVertical="10dp"
+                android:layout_marginStart="20dp"/>
+
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_expenses"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:layout_marginHorizontal="20dp"/>
+                android:layout_marginHorizontal="20dp"
+        />
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingVertical="25dp"
+                android:paddingHorizontal="20dp">
+
+            <!--  Total Text  -->
+            <TextView
+                    android:id="@+id/tv_total_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/total"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/roboto_mono_bold"/>
+
+            <!--  Total Sum Text  -->
+            <TextView
+                    android:id="@+id/tv_total"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/total_sum"
+                    android:textSize="20sp"
+                    android:gravity="end"
+                    android:fontFamily="@font/roboto_mono_bold"/>
+        </LinearLayout>
+
     </LinearLayout>
 
     <!--  Navigation Menu  -->

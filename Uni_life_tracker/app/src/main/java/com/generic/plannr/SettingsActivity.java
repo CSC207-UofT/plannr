@@ -1,10 +1,11 @@
 package com.generic.plannr;
 
-import com.generic.plannr.Database.UserInfoDatabaseHelper;
 import android.os.Bundle;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import com.generic.plannr.Entities.User;
+import com.generic.plannr.Gateways.UserGateway;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -19,13 +20,16 @@ public class SettingsActivity extends AppCompatActivity {
     private TextInputLayout tiName;
     private TextInputLayout tiPassword;
     private MainPageActivity activity;
+    private TextInputLayout tiUni;
+    private MainActivity activity;
+    UserGateway ug = new UserGateway(SettingsActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         drawerLayout = findViewById(R.id.drawer_layout); // nav menu
-        activity = new MainPageActivity();
+        activity = new MainActivity();
 
         // accesses user info from text boxes
         etName = findViewById(R.id.et_name);
@@ -33,45 +37,37 @@ public class SettingsActivity extends AppCompatActivity {
         tiName = findViewById(R.id.ti_name);
         tiPassword = findViewById(R.id.ti_password);
 
-        // opens the database to retrieve user's name and password
-        UserInfoDatabaseHelper user = createDatabase();
-        etName.setText(user.getLoggedInName());
-        etPassword.setText(user.getPassword(user.getLoggedInEmail()));
+        // retrieve user's name and uni using gateway
+        etName.setText(ug.getLoggedInName());
+        etUni.setText(ug.getLoggedInUni());
     }
 
     public void clickMenu(View view) { activity.openDrawer(drawerLayout); } // open drawer
 
-    public void clickLogo(View view) { activity.redirectActivity(this, MainPageActivity.class); } // redirect activity to main
+    public void clickLogo(View view) { activity.redirectActivity(this, MainActivity.class); } // redirect activity to main
 
     public void clickSchool(View view) { activity.redirectActivity(this, SchoolActivity.class); } // redirect activity to school
 
     // TODO: change this to life later
-    public void clickLife(View view) { activity.redirectActivity(this, MainPageActivity.class); } // redirect activity to life
+//    public void clickLife(View view) { activity.redirectActivity(this, MainActivity.class); } // redirect activity to life
 
     public void clickExpenses(View view) { activity.redirectActivity(this, ExpensesActivity.class); } // redirect activity to expenses
 
     public void clickSettings(View view) { recreate(); } // recreate activity
 
     public void clickLogOut(View view) {
-        MainPageActivity activity = new MainPageActivity();
         activity.logout(this); } // prompt logout
 
     public void clickSave(View view) {
-        // opens database
-        UserInfoDatabaseHelper user = createDatabase();
         // gets user input from textbox
-        Validator input = new Validator();
-        if (input.validate(tiPassword, user, tiName, tiPassword, true))
-        {
-            String name = Objects.requireNonNull(tiName.getEditText()).getText().toString();
-            String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();
+        String name = Objects.requireNonNull(tiName.getEditText()).getText().toString();
+        String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();
 
-            // replaces current data in database with user input
-            user.updateName(name);
-            user.updatePassword(password);
-            // disables textbox so it becomes read only
-            textboxEditability(false);
-        }
+        // replaces current data in database with user input
+        ug.updateName(name);
+        ug.updatePassword(password);
+        // disables textbox so it becomes read only
+        textboxEditability(false);
     }
 
     @Override
@@ -80,16 +76,14 @@ public class SettingsActivity extends AppCompatActivity {
         activity.closeDrawer(drawerLayout); // close drawer
     }
 
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
+
     public void clickEdit(View view) {
         // enabled textboxes so they can be edited
         textboxEditability(true);
-    }
-
-    public UserInfoDatabaseHelper createDatabase() {
-        // creates an instance and opens database
-        UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(SettingsActivity.this);
-        user.openDatabase();
-        return user;
     }
 
     public void textboxEditability(boolean bool) {
