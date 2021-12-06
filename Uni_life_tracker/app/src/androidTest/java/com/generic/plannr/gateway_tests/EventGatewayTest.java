@@ -52,6 +52,21 @@ public class EventGatewayTest {
 
     @Test
     public void saveToDatabase() {
+        Event e = new Event(
+                "test event 1",
+                0,
+                time,
+                time
+        );
+        eventGateway.saveToDatabase(e, ug.getLoggedInUserID());
+        assertEquals(1, eventGateway.getAllEvents(ug.getLoggedInUserID()).size());
+        assertEquals(
+                "test event 1",
+                eventGateway.getEventsByDate(
+                        time.toLocalDate(),
+                        ug.getLoggedInUserID()
+                ).get(0).getName()
+        );
     }
 
     @Test
