@@ -45,6 +45,9 @@ public class ExpenseGatewayTest {
 
     @Test
     public void saveToDatabase() {
+        Expense e = new Expense("test expense", 100.0);
+        eg.saveToDatabase(e, ug.getLoggedInUserID());
+        assertEquals(e.getName(), eg.getAllExpenses(ug.getLoggedInUserID()).get(0).getName());
     }
 
     @Test
