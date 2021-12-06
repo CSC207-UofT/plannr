@@ -11,6 +11,8 @@ import com.generic.plannr.UseCases.UserManager;
 
 import java.util.ArrayList;
 
+import static java.sql.Types.NULL;
+
 public class UserGateway implements UserGatewayInterface {
 
     public SQLiteDatabase db;
@@ -39,6 +41,7 @@ public class UserGateway implements UserGatewayInterface {
         cv.put("EMAIL", user.getEmail());
         cv.put("PASSWORD", user.getPassword());
         cv.put("LOGGED_IN", 1);
+        cv.put("INCOME", NULL);
         db.insert("userinfo", null, cv);
     }
 
