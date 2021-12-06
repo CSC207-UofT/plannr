@@ -1,4 +1,4 @@
-package com.generic.plannr;
+package com.generic.plannr.Controllers;
 
 import android.util.Patterns;
 

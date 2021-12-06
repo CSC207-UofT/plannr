@@ -1,4 +1,4 @@
-package com.generic.plannr;
+package com.generic.plannr.Controllers;
 
 import com.generic.plannr.Gateways.UserGateway;
 import com.google.android.material.textfield.TextInputLayout;
@@ -16,6 +16,6 @@ public interface Validator {
      * @return whether the user input is valid and sets an error message if needed
      *
      */
-    public boolean validateEntry(TextInputLayout userInput, UserGateway ug, TextInputLayout tiEmail,
+     boolean validateEntry(TextInputLayout userInput, UserGateway ug, TextInputLayout tiEmail,
                                  TextInputLayout tiPassword, boolean isSignup);
 }

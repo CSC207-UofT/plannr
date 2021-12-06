@@ -1,4 +1,4 @@
-package com.generic.plannr;
+package com.generic.plannr.Controllers;
 
 import com.generic.plannr.Gateways.UserGateway;
 import com.google.android.material.textfield.TextInputLayout;
