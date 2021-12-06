@@ -3,6 +3,8 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@drawable/gradient_circle"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -26,7 +28,8 @@
                 android:text="@string/sign_up"
                 android:gravity="center"
                 android:textSize="25sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:layout_marginBottom="20dp"/>
 
         <!--  Name Input  -->
         <com.google.android.material.textfield.TextInputLayout
@@ -80,7 +83,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/sign_up"
-                android:onClick="clickSignup"/>
+                android:onClick="clickSignup"
+                android:backgroundTint="@color/periwinkle"/>
 
         <!--  Have an existing account? Text  -->
         <TextView
@@ -96,6 +100,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/log_in"
-                android:onClick="clickLogin"/>
+                android:onClick="clickLogin"
+                android:backgroundTint="@color/periwinkle"/>
     </LinearLayout>
 </ScrollView>
