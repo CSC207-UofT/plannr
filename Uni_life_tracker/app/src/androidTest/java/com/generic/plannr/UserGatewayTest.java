@@ -75,6 +75,10 @@ public class UserGatewayTest {
 
     @Test
     public void getByEmail() {
+        ug.saveToDatabase(um.getUser());
+        assertEquals("Test User", ug.getByEmail("test@gmail.com").getName());
+        assertEquals("TestUser@123", ug.getByEmail("test@gmail.com").getPassword());
+        assertEquals(0, ug.getByEmail("test@gmail.com").getCourses().size());
     }
 
     @Test
