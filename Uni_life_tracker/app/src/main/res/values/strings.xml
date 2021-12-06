@@ -13,11 +13,9 @@
     <string name="name">Name</string>
 
     <!--  Sign Up & Log In  -->
-    <string name="university">University</string>
     <string name="add_expense">Add Expense</string>
     <string name="email">Email</string>
     <string name="full_name">Full Name</string>
-    <string name="university_name">University Name</string>
     <string name="password">Password</string>
     <string name="sign_up">Sign Up!</string>
     <string name="log_in">Log In</string>
