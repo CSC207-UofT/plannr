@@ -58,6 +58,9 @@ public class UserGatewayTest {
 
     @Test
     public void updatePassword() {
+        ug.saveToDatabase(um.getUser());
+        ug.updatePassword("TestUser@456");
+        assertEquals("TestUser@456", ug.getPassword("test@gmail.com"));
     }
 
     @Test
