@@ -46,6 +46,8 @@ public class ExpensesActivity extends AppCompatActivity {
         rvExpenses = findViewById(R.id.rv_expenses); // expense list
         drawerLayout = findViewById(R.id.drawer_layout); // nav menu
         ivAddExpense = findViewById(R.id.iv_add_expense); // add expense button
+        etIncome = findViewById(R.id.et_income);
+        tiIncome = findViewById(R.id.ti_income);
 
         SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
         boolean firstStart = preferences.getBoolean("firstStart", true);
@@ -126,6 +128,7 @@ public class ExpensesActivity extends AppCompatActivity {
         // TODO: TO BE PLACED WITH THE INCOME AND EXPENSES FROM THE DATABASE
         TextView total = findViewById(R.id.tv_total);
         String income = Objects.requireNonNull(tiIncome.getEditText()).getText().toString();
+        ug.updateIncome(Double.parseDouble(income));
         // FILLER
         double total_expenses = 100.0;
         if (Double.parseDouble(income) > total_expenses) {

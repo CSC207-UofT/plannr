@@ -67,9 +67,10 @@
 
             <!--  Income Input  -->
             <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/ti_add_income"
+                    android:id="@+id/ti_income"
                     android:layout_width="200dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    >
 
                 <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
@@ -77,7 +78,7 @@
                         android:background="@color/transparent"
                         android:hint="@string/add_income"
                         android:inputType="numberDecimal"
-                        android:id="@+id/et_name"
+                        android:id="@+id/et_income"
                         />
             </com.google.android.material.textfield.TextInputLayout>
 
