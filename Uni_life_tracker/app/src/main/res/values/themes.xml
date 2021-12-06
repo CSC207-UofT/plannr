@@ -12,14 +12,8 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Default Text Colour -->
+        <!-- Default text colour & font. -->
         <item name="android:textColor">@color/black</item>
-
+        <item name="android:fontFamily">@font/roboto_mono</item>
     </style>
-    <style name="Theme.Plannr.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-    <style name="Theme.Plannr.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
-    <style name="Theme.Plannr.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 </resources>

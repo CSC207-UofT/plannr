@@ -17,7 +17,7 @@ public class SignUpActivity extends AppCompatActivity {
     private TextInputLayout tiUniversity;
     private TextInputLayout tiEmail;
     private TextInputLayout tiPassword;
-    private MainPageActivity activity;
+    private MainActivity activity;
     UserGateway ug = new UserGateway(SignUpActivity.this);
 
     @Override
@@ -25,7 +25,7 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        activity = new MainPageActivity();
+        activity = new MainActivity();
 
         // connecting variables to UI features in activities by their id
         tiName = findViewById(R.id.ti_name);
@@ -36,7 +36,8 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void openMain() {
         // Opens the main activity
-        activity.redirectActivity(this, MainPageActivity.class);
+        activity.redirectActivity(this, MainActivity.class);
+        finish();
     }
 
     /**
@@ -56,7 +57,6 @@ public class SignUpActivity extends AppCompatActivity {
                 input.validateEntry(tiEmail,  ug, tiEmail, tiPassword, true) &
                 input.validateEntry(tiPassword, ug, tiEmail, tiPassword, true);
     }
-
 
     public void clickSignup(View view) {
         // If all signup credentials are correct, store the credentials

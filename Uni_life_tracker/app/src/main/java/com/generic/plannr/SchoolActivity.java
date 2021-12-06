@@ -1,5 +1,4 @@
 package com.generic.plannr;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -25,7 +24,7 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
     private TextView monthYearText;
     private RecyclerView rvCalendar;
     private DrawerLayout drawerLayout;
-    private MainPageActivity activity;
+    private MainActivity activity;
     private ArrayList<Event> eventsList;
     private RecyclerView rvEvents;
     UserGateway ug = new UserGateway(SchoolActivity.this);
@@ -40,7 +39,7 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
         CalendarUtil.selectedDate = LocalDate.now();
         setMonthView();
         drawerLayout = findViewById(R.id.drawer_layout);
-        activity = new MainPageActivity();
+        activity = new MainActivity();
 
         rvEvents = findViewById(R.id.rv_events);
         eventsList = new ArrayList<>();
@@ -81,26 +80,20 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
     }
 
 
-    public void previousMonthAction(View view)
+    public void clickPreviousMonth(View view)
     {
         CalendarUtil.selectedDate = CalendarUtil.selectedDate.minusMonths(1);
         setMonthView();
     }
 
-    public void nextMonthAction(View view)
+    public void clickNextMonth(View view)
     {
         CalendarUtil.selectedDate = CalendarUtil.selectedDate.plusMonths(1);
         setMonthView();
     }
 
-    public void clickBack(View view) {
-        Intent intent = new Intent(this, MainPageActivity.class);
-        startActivity(intent);
-    }
-
     public void clickAddEvent(View view) {
-        Intent intent = new Intent(this, AddEventActivity.class);
-        startActivity(intent);
+        activity.redirectActivity(this, AddEventActivity.class);
     }
 
     @Override
@@ -119,24 +112,29 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
 
     public void clickMenu(View view) { activity.openDrawer(drawerLayout); } // open drawer
 
-    public void clickLogo(View view) { activity.redirectActivity(this, MainPageActivity.class); } // redirect activity to main
+    public void clickLogo(View view) { activity.redirectActivity(this, MainActivity.class); } // redirect activity to main
 
     public void clickSchool(View view) { recreate(); } // recreate activity
 
     // TODO: change this to life later
-    public void clickLife(View view) { activity.redirectActivity(this, MainPageActivity.class); } // redirect activity to life
+//    public void clickLife(View view) { activity.redirectActivity(this, MainActivity.class); } // redirect activity to life
 
     public void clickExpenses(View view) { activity.redirectActivity(this, ExpensesActivity.class); } // redirect activity to expenses
 
     public void clickSettings(View view) { activity.redirectActivity(this, SettingsActivity.class); } // redirect activity to settings
 
     public void clickLogOut(View view) {
-        MainPageActivity activity = new MainPageActivity();
-        activity.logout(this); } // prompt logout
+        activity.logout(this);
+    } // prompt logout
 
     @Override
     protected void onPause() {
         super.onPause();
         activity.closeDrawer(drawerLayout); // close drawer
+    }
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
     }
 }
