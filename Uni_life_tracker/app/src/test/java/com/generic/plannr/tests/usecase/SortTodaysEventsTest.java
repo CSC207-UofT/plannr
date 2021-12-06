@@ -1,4 +1,4 @@
-package com.generic.plannr.usecasetests;
+package com.generic.plannr.tests.usecase;
 
 import com.generic.plannr.Entities.Event;
 import com.generic.plannr.UseCases.EventDateComparator;
@@ -10,7 +10,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static com.generic.plannr.StaticTestVariables.TODAY;
+import static com.generic.plannr.tests.StaticTestVariables.TODAY;
 import static com.generic.plannr.UseCases.SortEvents.*;
 import static org.junit.Assert.assertEquals;
 

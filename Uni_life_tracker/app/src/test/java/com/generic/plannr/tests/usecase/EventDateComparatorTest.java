@@ -1,4 +1,4 @@
-package com.generic.plannr.usecasetests;
+package com.generic.plannr.tests.usecase;
 
 import com.generic.plannr.UseCases.EventDateComparator;
 
@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static com.generic.plannr.StaticTestVariables.*;
+import static com.generic.plannr.tests.StaticTestVariables.*;
 
 public class EventDateComparatorTest {
     EventDateComparator EDC;

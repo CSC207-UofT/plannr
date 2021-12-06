@@ -1,4 +1,4 @@
-package com.generic.plannr.usecasetests;
+package com.generic.plannr.tests.usecase;
 
 import org.junit.*;
 

@@ -1,4 +1,4 @@
-package com.generic.plannr.gateway_tests;
+package com.generic.plannr.tests.gateway;
 
 import static org.junit.Assert.assertEquals;
 

@@ -1,4 +1,4 @@
-package com.generic.plannr;//import static org.junit.jupiter.api.Assertions.*;
+package com.generic.plannr.tests;//import static org.junit.jupiter.api.Assertions.*;
 import com.generic.plannr.Entities.Deadline;
 import org.junit.Before;
 import org.junit.Test;
