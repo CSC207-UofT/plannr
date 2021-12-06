@@ -17,11 +17,15 @@ import org.junit.Test;
 public class UserGatewayTest {
     UserGateway ug;
     Context context;
+    UserManager um;
 
     @Before
     public void setUp() throws Exception {
         context = InstrumentationRegistry.getInstrumentation().getTargetContext();
         ug = new UserGateway(context);
+        um = new UserManager("Test User",
+                "test@gmail.com",
+                "TestUser@123");
     }
 
     @After
@@ -38,10 +42,7 @@ public class UserGatewayTest {
 
     @Test
     public void saveToDatabase() {
-        UserManager user = new UserManager("Test User",
-                "test@gmail.com",
-                "TestUser@123");
-        ug.saveToDatabase(user.getUser());
+        ug.saveToDatabase(um.getUser());
         assertEquals("test@gmail.com", ug.getLoggedInEmail());
         assertEquals("Test User", ug.getLoggedInName());
         assertEquals("TestUser@123", ug.getPassword("test@gmail.com"));
