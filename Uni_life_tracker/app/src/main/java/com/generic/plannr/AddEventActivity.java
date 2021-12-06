@@ -9,6 +9,8 @@ import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.generic.plannr.Controllers.InputTextValidator;
 import com.generic.plannr.Entities.Event;
 import com.generic.plannr.Gateways.EventGateway;
 import com.generic.plannr.Gateways.UserGateway;

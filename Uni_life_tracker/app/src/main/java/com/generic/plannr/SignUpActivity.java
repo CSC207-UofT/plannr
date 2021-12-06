@@ -3,7 +3,10 @@ package com.generic.plannr;
 import android.os.Bundle;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
-import com.generic.plannr.Entities.User;
+
+import com.generic.plannr.Controllers.EmailValidator;
+import com.generic.plannr.Controllers.InputTextValidator;
+import com.generic.plannr.Controllers.PasswordValidator;
 import com.generic.plannr.Gateways.UserGateway;
 import com.generic.plannr.UseCases.UserManager;
 import com.google.android.material.textfield.TextInputLayout;
