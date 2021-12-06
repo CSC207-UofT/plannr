@@ -31,7 +31,7 @@ public class ExpensesActivity extends AppCompatActivity {
     private TextInputEditText etIncome;
     private TextInputLayout tiIncome;
     private TextView tvTotalExpenses, tvBalance;
-    private double totalExpenses;
+    private double totalExpenses, balance, income;
     UserGateway ug = new UserGateway(ExpensesActivity.this);
     ExpenseGateway eg = new ExpenseGateway(ExpensesActivity.this);
 
@@ -54,6 +54,9 @@ public class ExpensesActivity extends AppCompatActivity {
 
         etIncome.setText(ug.getLoggedInIncome());
         calculateExpense();
+
+        income = Double.parseDouble(Objects.requireNonNull(tiIncome.getEditText()).getText().toString());
+        updateBalance();
 
         if (firstStart) {
             showTargetView();
@@ -129,7 +132,7 @@ public class ExpensesActivity extends AppCompatActivity {
      */
     public void clickAddExpense(View view) {
         // clicking the check in order to add expense
-        activity.redirectActivity(this, AddEventActivity.class);
+        activity.redirectActivity(this, AddExpensesActivity.class);
     }
 
     /**
@@ -137,19 +140,23 @@ public class ExpensesActivity extends AppCompatActivity {
      * and changes colour of the text accordingly
      */
     public void clickSaveIncome(View view) {
+        income = Double.parseDouble(Objects.requireNonNull(tiIncome.getEditText()).getText().toString());
+        ug.updateIncome(income);
+        //ug.updateIncome(income);
+        updateBalance();
+    }
 
-        String income = Objects.requireNonNull(tiIncome.getEditText()).getText().toString();
-        ug.updateIncome(Double.parseDouble(income));
-
-        // FILLER
-        if (Double.parseDouble(income) > totalExpenses) {
+    public void updateBalance() {
+        balance = income - totalExpenses;
+        if (balance > 0) {
             tvBalance.setTextColor(Color.GREEN);
-
-        }else if (Double.parseDouble(income) < totalExpenses){
+        } else if (balance < 0) {
             tvBalance.setTextColor(Color.RED);
-
-        }else{
-            tvBalance.setTextColor(Color.BLACK);}
+        } else {
+            tvBalance.setTextColor(Color.BLACK);
+        }
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        tvBalance.setText(formatter.format(balance));
     }
 
     /**
