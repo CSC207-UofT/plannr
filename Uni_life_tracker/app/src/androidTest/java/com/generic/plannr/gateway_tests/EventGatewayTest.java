@@ -2,10 +2,13 @@ package com.generic.plannr.gateway_tests;
 
 import static org.junit.Assert.*;
 
+import com.generic.plannr.Gateways.EventGateway;
+
 import org.junit.Before;
 import org.junit.Test;
 
 public class EventGatewayTest {
+    EventGateway eg;
 
     @Before
     public void setUp() throws Exception {
