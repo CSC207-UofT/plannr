@@ -132,9 +132,7 @@ public class UserGatewayTest {
     public void getPassword() {
     }
 
-    @Test
-    public void updateLoggedInUser() {
-    }
+    // updateLoggedInUser is not tested as it's tested by previous tests already
 
     @Test
     public void uniqueEmail() {
