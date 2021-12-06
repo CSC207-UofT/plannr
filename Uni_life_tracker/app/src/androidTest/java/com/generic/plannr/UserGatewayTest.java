@@ -10,6 +10,7 @@ import androidx.test.platform.app.InstrumentationRegistry;
 import com.generic.plannr.Gateways.UserGateway;
 import com.generic.plannr.UseCases.UserManager;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,6 +22,11 @@ public class UserGatewayTest {
     public void setUp() throws Exception {
         context = InstrumentationRegistry.getInstrumentation().getTargetContext();
         ug = new UserGateway(context);
+    }
+
+    @After
+    public void after() {
+        context.deleteDatabase("PlannrDatabase");
     }
 
     @Test
@@ -42,11 +48,11 @@ public class UserGatewayTest {
     }
 
     @Test
-    public void TestCUpdateName() {
+    public void updateName() {
     }
 
     @Test
-    public void TestDUpdatePassword() {
+    public void updatePassword() {
     }
 
     @Test
