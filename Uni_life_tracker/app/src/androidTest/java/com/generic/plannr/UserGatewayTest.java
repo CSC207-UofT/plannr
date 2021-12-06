@@ -116,6 +116,16 @@ public class UserGatewayTest {
 
     @Test
     public void getLoggedInEmail() {
+        ug.saveToDatabase(um.getUser());
+        ug.saveToDatabase(um.createUser("Test User 2", "test2@gmail.com", "TestUser@456"));
+
+        // Sets the Test User 1 as logged in
+        ug.updateLoggedInUser("test@gmail.com");
+        assertEquals("test@gmail.com", ug.getLoggedInEmail());
+
+        // Sets the Test User 2 as logged in
+        ug.updateLoggedInUser("test2@gmail.com");
+        assertEquals("test2@gmail.com", ug.getLoggedInEmail());
     }
 
     @Test
