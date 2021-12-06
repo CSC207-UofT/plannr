@@ -17,7 +17,6 @@ import com.generic.plannr.Entities.Event;
 import com.generic.plannr.Gateways.EventGateway;
 import com.generic.plannr.Gateways.UserGateway;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -27,11 +26,12 @@ import java.util.Locale;
 
 public class AddEventActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener{
 //    Initialize Variables
-    int yr, mth, day, startHour, startMinute, endHour, endMinute, priority;
+    int yr, mth, day, hr, min, priority;
     TextView tvStartDate, tvStartTime, tvEndDate, tvEndTime, tvAssessment, tvDeadline, tvClassTime, tvStudySession;
     RadioGroup rgPriorities;
     ImageView ivBack, ivSave;
     EditText etEventName, etCourse;
+    Calendar calendar;
     private MainActivity activity;
     UserGateway ug = new UserGateway(AddEventActivity.this);
     EventGateway eg = new EventGateway(AddEventActivity.this);
@@ -56,60 +56,20 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         tvClassTime = findViewById(R.id.tv_class_time);
         tvStudySession = findViewById(R.id.tv_study_session);
 
-//       Initialize Calendar
-        Calendar calendar = Calendar.getInstance();
+        calendar = Calendar.getInstance();
         yr = calendar.get(Calendar.YEAR);
         mth = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DAY_OF_MONTH);
-        startHour = calendar.get(Calendar.HOUR_OF_DAY);
-        startMinute = calendar.get(Calendar.MINUTE);
+        hr = calendar.get(Calendar.HOUR_OF_DAY);
+        min = calendar.get(Calendar.MINUTE);
 
-//      Start Date & Time Format (Current Date & Time)
+//        Set start date & time to current date & time
         String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
         String time = new SimpleDateFormat("hh:mm aa", Locale.getDefault()).format(new Date());
-
         tvStartDate.setText(date);
         tvStartTime.setText(time);
 
         rgPriorities.setOnCheckedChangeListener(this);
-
-//        Start Time Selection
-        tvStartTime.setOnClickListener(v -> {
-            TimePickerDialog timePickerDialog = new TimePickerDialog(
-                    AddEventActivity.this, (view, hourOfDay, minute) -> {
-                        startHour = hourOfDay;
-                        startMinute = minute;
-
-                        Calendar calendar12 = Calendar.getInstance(); // initialize calendar
-                        String startDate = tvStartDate.getText().toString().trim();
-                        String[] strings = startDate.split("-");
-                        int sDay = Integer.parseInt(strings[0]);
-                        calendar12.set(Calendar.DAY_OF_MONTH, sDay);
-                        calendar12.set(Calendar.HOUR_OF_DAY, startHour);
-                        calendar12.set(Calendar.MINUTE, startMinute);
-                        tvStartTime.setText(DateFormat.format("hh:mm aa", calendar12));
-                    }, startHour, startMinute, false);
-            timePickerDialog.show();
-        });
-
-//        End Time Selection
-        tvEndTime.setOnClickListener(v -> {
-            TimePickerDialog timePickerDialog = new TimePickerDialog(
-                    AddEventActivity.this, (view, hourOfDay, minute) -> {
-                        endHour = hourOfDay;
-                        endMinute = minute;
-
-                        Calendar calendar1 = Calendar.getInstance(); // initialize calendar
-                        String endDate = tvEndDate.getText().toString().trim();
-                        String[] strings = endDate.split("-");
-                        int sDay = Integer.parseInt(strings[0]);
-                        calendar1.set(Calendar.DAY_OF_MONTH, sDay);
-                        calendar1.set(Calendar.HOUR_OF_DAY, endHour);
-                        calendar1.set(Calendar.MINUTE, endMinute);
-                        tvEndTime.setText(DateFormat.format("hh:mm aa", calendar1));
-                    }, endHour, endMinute, false);
-            timePickerDialog.show();
-        });
     }
 
     @Override
@@ -165,6 +125,47 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
     public void changeTextColor(int color) {
         tvEndDate.setTextColor(Color.rgb(color, 0, 0));
         tvEndTime.setTextColor(Color.rgb(color, 0, 0));
+    }
+
+    /**
+     * Prompts user to select a date, and sets selected date in textView.
+     * The date can only be from the current date, or after selected start date.
+     *
+     * @param textView  a TextView of the date.
+     */
+    public void setDate(TextView textView) {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                AddEventActivity.this, (view, year, month, dayOfMonth) -> {
+            yr = year;
+            mth = month;
+            day = dayOfMonth;
+
+            @SuppressLint("DefaultLocale") String startDate = String.format("%02d-%02d-%d", day, (mth +1), yr);
+            textView.setText(startDate);
+        }, yr, mth, day);
+
+        datePickerDialog.updateDate(yr, mth, day); // displays prev selected date
+        datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis()); // disable past date selection
+        datePickerDialog.show();
+    }
+
+    /**
+     * Prompts user to select a time, and sets selected time in textView.
+     *
+     * @param textView  a TextView of the time.
+     */
+    public void setTime(TextView textView) {
+        TimePickerDialog timePickerDialog = new TimePickerDialog(
+                AddEventActivity.this, (view, hourOfDay, minute) -> {
+            hr = hourOfDay;
+            min = minute;
+
+            calendar.set(Calendar.DAY_OF_MONTH, day);
+            calendar.set(Calendar.HOUR_OF_DAY, hr);
+            calendar.set(Calendar.MINUTE, min);
+            textView.setText(DateFormat.format("hh:mm aa", calendar));
+        }, hr, min, false);
+        timePickerDialog.show();
     }
 
     /**
@@ -253,41 +254,25 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
      *
      * @param view  a View for the device screen.
      */
-    public void clickEndTime(View view) {
+    public void clickEndDate(View view) {
         setDate(tvEndDate);
     }
 
     /**
-     * Prompts user to select a date, and sets selected date in textView.
-     * The date can only be from the current date, or after selected start date.
+     * Opens dialog for user to select an end time.
      *
-     * @param textView  a TextView of the date.
+     * @param view  a View for the device screen.
      */
-    public void setDate(TextView textView) {
-        long minDate = System.currentTimeMillis();
-        DatePickerDialog datePickerDialog = new DatePickerDialog(
-                AddEventActivity.this, (view, year, month, dayOfMonth) -> {
-            yr = year;
-            mth = month;
-            day = dayOfMonth;
+    public void clickStartTime(View view) {
+        setTime(tvStartTime);
+    }
 
-            @SuppressLint("DefaultLocale") String startDate = String.format("%02d-%02d-%d", day, (mth +1), yr);
-            textView.setText(startDate);
-        }, yr, mth, day);
-
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-        if (textView == tvEndDate) {
-            Date eDate = null;
-            try {
-                eDate = formatter.parse(day + "-" + (mth +1) + "-" + yr);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            assert eDate != null;
-            minDate = eDate.getTime();
-        }
-        datePickerDialog.updateDate(yr, mth, day); // displays prev selected date
-        datePickerDialog.getDatePicker().setMinDate(minDate); // disable past date selection
-        datePickerDialog.show();
+    /**
+     * Opens dialog for user to select an end time.
+     *
+     * @param view  a View for the device screen.
+     */
+    public void clickEndTime(View view) {
+        setTime(tvEndTime);
     }
 }
