@@ -4,13 +4,15 @@
  */
 package com.generic.plannr;
 
-import com.generic.plannr.Entities.Event;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.*;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -21,6 +23,7 @@ import com.generic.plannr.Entities.Event;
 import com.generic.plannr.Gateways.EventGateway;
 import com.generic.plannr.Gateways.UserGateway;
 import com.generic.plannr.UseCases.GetEventsOfDate;
+import com.generic.plannr.UseCases.SortEvents;
 
 import java.text.DateFormat;
 import java.time.LocalDate;
@@ -80,7 +83,12 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String sortType = parent.getItemAtPosition(position).toString(); // get sort type
-        Toast.makeText(this, sortType, Toast.LENGTH_SHORT).show(); // TODO: remove later
+        if (sortType.matches("Priority")) {
+            SortEvents.sortByPriority(eventsList);
+        } else {
+            SortEvents.sortByDate(eventsList);
+        }
+        setAdapter();
     }
 
     @Override
