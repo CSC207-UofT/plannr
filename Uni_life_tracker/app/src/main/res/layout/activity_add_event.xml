@@ -139,7 +139,7 @@
                    android:src="@drawable/ic_time"
                    android:contentDescription="@string/select_date"/>
 
-        <!-- Event Start Date & Time -->
+        <!-- Event Start & End Date -->
         <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -154,17 +154,19 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/select_start_date"
                     android:textSize="15sp"
-                    android:paddingBottom="25dp"/>
+                    android:layout_marginBottom="25dp"
+                    android:onClick="clickStartDate"/>
 
             <TextView
                     android:id="@+id/tv_end_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="@string/select_end_date"
-                    android:textSize="15sp"/>
+                    android:textSize="15sp"
+                    android:onClick="clickEndDate"/>
         </LinearLayout>
 
-        <!-- Event End Date & Time -->
+        <!-- Event Start & End Time -->
         <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -178,9 +180,9 @@
                     android:hint="@string/start_time"
                     android:textSize="15sp"
                     android:textAlignment="textEnd"
-                    android:paddingEnd="15dp"
-                    android:paddingBottom="25dp"
-                    tools:ignore="RtlSymmetry"/>
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="25dp"
+                    android:onClick="clickStartTime"/>
 
             <TextView
                     android:id="@+id/tv_end_time"
@@ -189,8 +191,8 @@
                     android:hint="@string/end_time"
                     android:textSize="15sp"
                     android:textAlignment="textEnd"
-                    android:paddingEnd="15dp"
-                    tools:ignore="RtlSymmetry"/>
+                    android:layout_marginEnd="15dp"
+                    android:onClick="clickEndTime"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -212,7 +214,7 @@
                 android:layout_weight="1"
                 android:text="@string/priority"
                 android:textSize="15sp"
-                android:padding="15dp"/>
+                android:layout_margin="15dp"/>
 
         <RadioGroup android:id="@+id/rg_priorities"
                     android:layout_width="wrap_content"

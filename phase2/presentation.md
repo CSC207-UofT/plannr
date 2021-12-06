@@ -1,2 +1,2 @@
 # Presentation Slides
-Link to our presentation from Monday's (December 5th) tutorial:
+[Link to our presentation from Monday's (December 5th) tutorial](https://docs.google.com/presentation/d/1-3D6CG_EJeK_LDthDeuTqx_CYwxLXurcG7BVzwpMhw4/edit?usp=sharing)
