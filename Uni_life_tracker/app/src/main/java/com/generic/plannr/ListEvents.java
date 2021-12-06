@@ -13,6 +13,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class ListEvents extends RecyclerView.Adapter<ListEvents.MyViewHolder>{
@@ -51,11 +53,14 @@ public class ListEvents extends RecyclerView.Adapter<ListEvents.MyViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull ListEvents.MyViewHolder holder, int position) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm a");
         String eventName = eventsList.get(position).getName();
-        String time = eventsList.get(position).getEndDate().getHour() + ":" +
-                eventsList.get(position).getEndDate().getMinute();
+        LocalTime eventStartTime = eventsList.get(position).getStartDate().toLocalTime();
+        LocalTime eventEndTime = eventsList.get(position).getEndDate().toLocalTime();
+        String eventTime = formatter.format(eventStartTime) + " - " + formatter.format(eventEndTime);
+
         holder.tvEventName.setText(eventName);
-        holder.tvEventTime.setText(time);
+        holder.tvEventTime.setText(eventTime);
     }
 
     @Override
