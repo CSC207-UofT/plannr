@@ -154,14 +154,16 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/select_start_date"
                     android:textSize="15sp"
-                    android:layout_marginBottom="25dp"/>
+                    android:layout_marginBottom="25dp"
+                    android:onClick="clickStartDate"/>
 
             <TextView
                     android:id="@+id/tv_end_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="@string/select_end_date"
-                    android:textSize="15sp"/>
+                    android:textSize="15sp"
+                    android:onClick="clickEndTime"/>
         </LinearLayout>
 
         <!-- Event End Date & Time -->
@@ -189,8 +191,7 @@
                     android:hint="@string/end_time"
                     android:textSize="15sp"
                     android:textAlignment="textEnd"
-                    android:layout_marginEnd="15dp"
-                    tools:ignore="RtlSymmetry"/>
+                    android:layout_marginEnd="15dp"/>
         </LinearLayout>
     </LinearLayout>
 

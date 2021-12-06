@@ -27,7 +27,7 @@ import java.util.Locale;
 
 public class AddEventActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener{
 //    Initialize Variables
-    int startYear, startMonth, startDay, endYear, endMonth, endDay, startHour, startMinute, endHour, endMinute, priority;
+    int yr, mth, day, startHour, startMinute, endHour, endMinute, priority;
     TextView tvStartDate, tvStartTime, tvEndDate, tvEndTime, tvAssessment, tvDeadline, tvClassTime, tvStudySession;
     RadioGroup rgPriorities;
     ImageView ivBack, ivSave;
@@ -58,9 +58,9 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
 
 //       Initialize Calendar
         Calendar calendar = Calendar.getInstance();
-        startYear = calendar.get(Calendar.YEAR);
-        startMonth = calendar.get(Calendar.MONTH);
-        startDay = calendar.get(Calendar.DAY_OF_MONTH);
+        yr = calendar.get(Calendar.YEAR);
+        mth = calendar.get(Calendar.MONTH);
+        day = calendar.get(Calendar.DAY_OF_MONTH);
         startHour = calendar.get(Calendar.HOUR_OF_DAY);
         startMinute = calendar.get(Calendar.MINUTE);
 
@@ -72,51 +72,6 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         tvStartTime.setText(time);
 
         rgPriorities.setOnCheckedChangeListener(this);
-
-//        Start Date Selection
-        tvStartDate.setOnClickListener(v -> {
-            DatePickerDialog datePickerDialog = new DatePickerDialog(
-                    AddEventActivity.this, (view, year, month, dayOfMonth) -> {
-                        startYear = year;
-                        startMonth = month;
-                        startDay = dayOfMonth;
-
-                        @SuppressLint("DefaultLocale")
-                        String startDate = String.format("%02d-%02d-%d", startDay, (startMonth+1), startYear);
-                        tvStartDate.setText(startDate);
-                    }, startYear, startMonth, startDay);
-            datePickerDialog.updateDate(startYear, startMonth, startDay); // displays prev selected date
-            datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis()); // disable past date selection
-            datePickerDialog.show();
-        });
-
-//        End Date Selection
-        tvEndDate.setOnClickListener(v -> {
-            DatePickerDialog datePickerDialog = new DatePickerDialog(
-                    AddEventActivity.this, (view, year, month, dayOfMonth) -> {
-                endYear = year;
-                endMonth = month;
-                endDay = dayOfMonth;
-
-                @SuppressLint("DefaultLocale")
-                String endDate = String.format("%02d-%02d-%d", endDay, (endMonth+1), endYear);
-                tvEndDate.setText(endDate);
-            }, endYear, endMonth, endDay);
-
-            @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-            Date eDate = null;
-            try {
-                eDate = formatter.parse(startDay + "-" + (startMonth+1) + "-" + startYear);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            assert eDate != null;
-            long minDate = eDate.getTime();
-
-            datePickerDialog.updateDate(endYear, endMonth, endDay); // displays prev selected date
-            datePickerDialog.getDatePicker().setMinDate(minDate); // disable past date selection
-            datePickerDialog.show();
-        });
 
 //        Start Time Selection
         tvStartTime.setOnClickListener(v -> {
@@ -284,5 +239,57 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
      */
     public void clickStudySession(View view) {
         activity.redirectActivity(this, MainActivity.class);  // // TODO: direct to study session page
+    }
+
+    /**
+     * Opens dialog for user to select a start date.
+     *
+     * @param view  a View for the device screen.
+     */
+    public void clickStartDate(View view) {
+        setDate(tvStartDate);
+    }
+
+    /**
+     * Opens dialog for user to select an end date.
+     *
+     * @param view  a View for the device screen.
+     */
+    public void clickEndTime(View view) {
+        setDate(tvEndDate);
+    }
+
+    /**
+     * Prompts user to select a date, and sets selected date in textView.
+     * The date can only be from the current date, or after selected start date.
+     *
+     * @param textView  a TextView of the date.
+     */
+    public void setDate(TextView textView) {
+        long minDate = System.currentTimeMillis();
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                AddEventActivity.this, (view, year, month, dayOfMonth) -> {
+            yr = year;
+            mth = month;
+            day = dayOfMonth;
+
+            @SuppressLint("DefaultLocale") String startDate = String.format("%02d-%02d-%d", day, (mth +1), yr);
+            textView.setText(startDate);
+        }, yr, mth, day);
+
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        if (textView == tvEndDate) {
+            Date eDate = null;
+            try {
+                eDate = formatter.parse(day + "-" + (mth +1) + "-" + yr);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            assert eDate != null;
+            minDate = eDate.getTime();
+        }
+        datePickerDialog.updateDate(yr, mth, day); // displays prev selected date
+        datePickerDialog.getDatePicker().setMinDate(minDate); // disable past date selection
+        datePickerDialog.show();
     }
 }
