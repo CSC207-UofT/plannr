@@ -45,16 +45,19 @@ public class SignUpActivity extends AppCompatActivity {
      * @return whether all the information has been validated
      */
     public boolean signupInput() {
-        // Creates an instance of validator to access the methods
-        Validator input = new Validator();
+        // Creates instances of validators to access the methods
+        InputTextValidator inputTextValidator = new InputTextValidator();
+        EmailValidator emailValidator = new EmailValidator();
+        PasswordValidator passwordValidator = new PasswordValidator();
+
         // Returns whether info is validator and any error messages if it isn't
         // Need to pass in tiEmail and Password each time because cannot be accessed UI elements in Validator class
         // If we pass in the string instead of the TextInputLayout then will not be able to set the error messages
         // Although it is inconvenient to keep passing it in, there are android related errors that are stopping us
-        return input.validateEntry(tiName, ug, tiEmail, tiPassword, true) &
-                input.validateEntry(tiUniversity,  ug, tiEmail, tiPassword, true) &
-                input.validateEntry(tiEmail,  ug, tiEmail, tiPassword, true) &
-                input.validateEntry(tiPassword, ug, tiEmail, tiPassword, true);
+        return inputTextValidator.validateEntry(tiName, ug, tiEmail, tiPassword, true) &
+                inputTextValidator.validateEntry(tiUniversity,  ug, tiEmail, tiPassword, true) &
+                emailValidator.validateEntry(tiEmail,  ug, tiEmail, tiPassword, true) &
+                passwordValidator.validateEntry(tiPassword, ug, tiEmail, tiPassword, true);
     }
 
 

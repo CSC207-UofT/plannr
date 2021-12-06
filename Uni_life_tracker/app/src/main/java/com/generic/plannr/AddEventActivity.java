@@ -13,8 +13,6 @@ import com.generic.plannr.Entities.Event;
 import com.generic.plannr.Gateways.EventGateway;
 import com.generic.plannr.Gateways.UserGateway;
 
-import android.os.Bundle;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -213,8 +211,6 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
             LocalDateTime start = LocalDateTime.parse(startDate + " " + startTime, DATEFORMAT);
             LocalDateTime end = LocalDateTime.parse(endDate + " " + endTime, DATEFORMAT);
 
-            String email = ug.getLoggedInEmail();
-
             Event event = new Event(eventName, priority, start, end);
             int userID = ug.getLoggedInUserID();
 
@@ -229,7 +225,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
      * @return whether the added event includes all it's needed attributes
      */
     public boolean addEventInput() {
-        Validator input = new Validator();
+        InputTextValidator validator = new InputTextValidator();
         String startDate = tvStartDate.getText().toString().trim();
         String endDate = tvEndDate.getText().toString().trim();
         String startTime = tvStartTime.getText().toString().trim();
@@ -254,8 +250,9 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
             }
         }
 
-        return input.validateAddEvent(etEventName) & input.validateAddEvent(tvEndDate)
-                & input.validateAddEvent(tvEndTime) & input.validateAddEvent(etCourse) & endTimeAfter;
+        return validator.validateAddEvent(etEventName) & validator.validateAddEvent(tvEndDate)
+                & validator.validateAddEvent(tvEndTime) & validator.validateAddEvent(etCourse)
+                & endTimeAfter;
     }
     /**
      * Changes the color of the textview
