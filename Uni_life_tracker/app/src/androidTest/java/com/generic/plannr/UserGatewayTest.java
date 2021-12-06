@@ -1,6 +1,7 @@
 package com.generic.plannr;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNull;
 
 import android.content.Context;
@@ -83,6 +84,20 @@ public class UserGatewayTest {
 
     @Test
     public void getLoggedInUserID() {
+        ug.saveToDatabase(um.getUser());
+        Integer userID1 = ug.getLoggedInUserID();
+        ug.saveToDatabase(um.createUser("Test User 2", "test2@gmail.com", "TestUser@456"));
+
+        // Sets the Test User 1 as logged in
+        ug.updateLoggedInUser("test@gmail.com");
+        assertEquals(userID1, ug.getLoggedInUserID());
+
+        // Sets the Test User 2 as logged in
+        ug.updateLoggedInUser("test2@gmail.com");
+        Integer userID2 = ug.getLoggedInUserID();
+        assertEquals(userID2, ug.getLoggedInUserID());
+        // Makes sure that the two user IDs are different
+        assertNotEquals(userID1, userID2);
     }
 
     @Test
