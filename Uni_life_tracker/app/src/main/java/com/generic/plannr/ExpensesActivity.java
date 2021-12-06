@@ -187,7 +187,7 @@ public class ExpensesActivity extends AppCompatActivity {
      *
      * @param view  a View for the device screen.
      */
-    public void clickExpenses(View view) { recreate(); } // recreate activity
+    public void clickExpenses(View view) {} // recreate activity
 
     /**
      * Directs activity to the Settings activity on settings icon click.
