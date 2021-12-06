@@ -32,8 +32,8 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
     DrawerLayout drawerLayout;
     private ArrayList<Event> eventsList;
     private RecyclerView rvEvents;
-    UserGateway ug = new UserGateway(MainPageActivity.this);
-    EventGateway eg = new EventGateway(MainPageActivity.this);
+    UserGateway ug = new UserGateway(MainActivity.this);
+    EventGateway eg = new EventGateway(MainActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

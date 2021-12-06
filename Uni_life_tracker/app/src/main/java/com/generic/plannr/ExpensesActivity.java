@@ -4,8 +4,6 @@ import android.graphics.Color;
 import android.widget.TextView;
 import android.content.SharedPreferences;
 import android.widget.ImageView;
-import com.generic.plannr.Database.ExpenseDatabaseHelper;
-import com.generic.plannr.Database.UserInfoDatabaseHelper;
 import com.generic.plannr.Entities.Expense;
 import android.content.Intent;
 import android.view.View;
@@ -109,7 +107,7 @@ public class ExpensesActivity extends AppCompatActivity {
      */
     public void calculateExpense(){
         // TODO: CALCULATE TOTAL EXPENSES
-        String income = Objects.requireNonNull(textInputIncome.getEditText()).getText().toString();
+        String income = Objects.requireNonNull(tiIncome.getEditText()).getText().toString();
         //double total_sum = Double.parseDouble(income) - the sum of expense values
     }
 
