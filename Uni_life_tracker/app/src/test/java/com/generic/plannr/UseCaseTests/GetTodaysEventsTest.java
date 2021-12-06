@@ -28,7 +28,7 @@ public class GetTodaysEventsTest {
 
     @Test
     public void TestEmptyEventList() {
-        UserManager user = new UserManager("test user", COURSES);
+        UserManager user = new UserManager("Test User", "test@gmail.com", "TestUser@123");
         assertEquals(new ArrayList<>(), getTodaysEvents(user));
     }
 
@@ -37,7 +37,7 @@ public class GetTodaysEventsTest {
      */
     @Test
     public void Test1EventOfToday() {
-        UserManager user = new UserManager("test user", COURSES);
+        UserManager user = new UserManager("Test User", "test@gmail.com", "TestUser@123");
         Event eventToday = new Event("test", 0, TODAY, TODAY);
         user.addEventToUsersList(eventToday);
         ArrayList<Event> expected = new ArrayList<>(Collections.singletonList(eventToday));
@@ -51,7 +51,7 @@ public class GetTodaysEventsTest {
      */
     @Test
     public void Test2EventOfToday() {
-        UserManager user = new UserManager("test user", COURSES);
+        UserManager user = new UserManager("Test User", "test@gmail.com", "TestUser@123");
 
         Event eventToday1 = new Event("test", 0, TODAY, TODAY);
         Event eventToday2 = new Event("test", 0, TODAY, TODAY);
@@ -72,7 +72,7 @@ public class GetTodaysEventsTest {
         for (int i = 0; i < iter; i++) {
             // Instantiate variables for use by assertEquals
             ArrayList<Event> expected = new ArrayList<>();
-            UserManager user = new UserManager("test user", COURSES);
+            UserManager user = new UserManager("Test User", "test@gmail.com", "TestUser@123");
 
             // Loop that creates and adds events that happens today
             for (int j = 0; j < rand.nextInt(50) + 1; j++) {
