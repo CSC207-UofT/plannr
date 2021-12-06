@@ -65,6 +65,12 @@ public class UserGatewayTest {
 
     @Test
     public void getByID() {
+        ug.saveToDatabase(um.getUser());
+        Integer userID = ug.getLoggedInUserID();
+        assertEquals("Test User", ug.getByID(userID).getName());
+        assertEquals("TestUser@123", ug.getByID(userID).getPassword());
+        assertEquals("test@gmail.com", ug.getByID(userID).getEmail());
+        assertEquals(0, ug.getByID(userID).getCourses().size());
     }
 
     @Test
