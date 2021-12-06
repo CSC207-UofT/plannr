@@ -5,29 +5,29 @@ NOTE: *Some of this is implemented or some is to be implemented by Wednesday
 ## **SRP: Single Responsibility Principle**
 
 * <u>Comply:</u>
-  * In order to comply with the single responsibility principle, we made sure that each class was responsible for one
-    thing.
-  * Looking at the use cases, we have the `EventManager`, `UserManager`, and `ExpenseManager` which are each only
-    responsible for their respective entity. `EventManager` is only responsible for maintaining anything `Event`
-    related, `UserManager` is only responsible for maintaining anything `User` related, and `ExpenseManager` is only
-    responsible for maintaining anything Expense related. This avoids
-  * Similarly, for the gateways, we split the gateways for the three entities so that `EventGateway` is only
-    responsible for saving and reading Events from the database, `ExpenseGateway` is responsible for saving and
-    reading `Expenses` from the database and `UserGateway` is responsible for saving and reading Users from the
-    database.
-  * Now for the controllers and presenters and activities. Each view in android has its own android activity which
-    also has its own controller and presenter. For example, we have the `MainActivity` which is the activity related
-    to the main view of our app. The `MainActivity` has it's own controller for the user's inputs such as wanting
-    their events of the day to be sorted either by time or priority and it's own presenter for formatting the outputs
-    of the use cases in order to display in Android the sorted list of events.
+    * In order to comply with the single responsibility principle, we made sure that each class was responsible for one
+      thing.
+    * Looking at the use cases, we have the `EventManager`, `UserManager`, and `ExpenseManager` which are each only
+      responsible for their respective entity. `EventManager` is only responsible for maintaining anything `Event`
+      related, `UserManager` is only responsible for maintaining anything `User` related, and `ExpenseManager` is only
+      responsible for maintaining anything Expense related. This avoids
+    * Similarly, for the gateways, we split the gateways for the three entities so that `EventGateway` is only
+      responsible for saving and reading Events from the database, `ExpenseGateway` is responsible for saving and
+      reading `Expenses` from the database and `UserGateway` is responsible for saving and reading Users from the
+      database.
+    * Now for the controllers and presenters and activities. Each view in android has its own android activity which
+      also has its own controller and presenter. For example, we have the `MainActivity` which is the activity related
+      to the main view of our app. The `MainActivity` has it's own controller for the user's inputs such as wanting
+      their events of the day to be sorted either by time or priority and it's own presenter for formatting the outputs
+      of the use cases in order to display in Android the sorted list of events.
 * <u>Violations:</u>
-  * A possible violation of SRP is that each entity's manager, that is `EventManager`, `ExpenseManager`
-    and `UserManager`, could be thought to have too many responsibilities in the sense that for example, `UserManager`
-    is responsible for anything `User` related but within that responsibility, there are other sub-responsibilities
-    that could be their own class such as creating a user, editing any user information like name, finding that user
-    by either email or ID, etc. These could be separate classes but it depends on how we divide them up as it can lead
-    to complying to SRP at an extreme. So this situation could be considered a violation or it could not, depending on
-    the person.
+    * A possible violation of SRP is that each entity's manager, that is `EventManager`, `ExpenseManager`
+      and `UserManager`, could be thought to have too many responsibilities in the sense that for example, `UserManager`
+      is responsible for anything `User` related but within that responsibility, there are other sub-responsibilities
+      that could be their own class such as creating a user, editing any user information like name, finding that user
+      by either email or ID, etc. These could be separate classes but it depends on how we divide them up as it can lead
+      to complying to SRP at an extreme. So this situation could be considered a violation or it could not, depending on
+      the person.
 
 ## **OCP: Open-Closed Principle**
 
@@ -40,38 +40,38 @@ NOTE: *Some of this is implemented or some is to be implemented by Wednesday
 ## **LSP: Liskov Substitution Principle**
 
 * <u>Comply:</u>
-  * In order to comply with the LSP, we made sure that the Event superclass could be interchangeable by its
-    subclasses `Deadline`, `Assessment`, `StudySession` and `Class.` For example, a method involving getting
-    information on an Event is usable by all 4 subclasses and these subclasses cna be interchangeable for that method
-    without causing any problems. The basic behavior of an `Event` can be used and be applied to any of the four
-    subclasses. In addition, the use of interfaces* for the gateways is also a good example of LSP being used in our
-    program.
-  * There is the `EventGatewayInterface`, the `ExpenseGatewayInterface`, and the `UserGatewayInterface` which are to
-    be implemented by their respective gateway classes.
+    * In order to comply with the LSP, we made sure that the Event superclass could be interchangeable by its
+      subclasses `Deadline`, `Assessment`, `StudySession` and `Class.` For example, a method involving getting
+      information on an Event is usable by all 4 subclasses and these subclasses cna be interchangeable for that method
+      without causing any problems. The basic behavior of an `Event` can be used and be applied to any of the four
+      subclasses. In addition, the use of interfaces* for the gateways is also a good example of LSP being used in our
+      program.
+    * There is the `EventGatewayInterface`, the `ExpenseGatewayInterface`, and the `UserGatewayInterface` which are to
+      be implemented by their respective gateway classes.
 
 ## **ISP: Interface Segregation Principle**
 
 * <u>Comply:</u>
-  * In order to comply with ISP, we implemented several interfaces in our program. Instead of having one interface for
-    gateway classes, we implemented three different interfaces for each entity that we have: `Event`, `Expense`
-    and `User`. This allows our use cases to use gateway classes related to their entity instead of one general one
-    and to implement methods related to their entity database table. In addition, we also have interfaces for the
-    input boundary between the use cases and the interface layer. Having different input boundary interfaces for each
-    entity allows the use cases `EventManager`, `UserManager` and `ExpenseManager` to implement methods relevant to
-    their responsibilities instead of having to implement all the methods which they might not need.
+    * In order to comply with ISP, we implemented several interfaces in our program. Instead of having one interface for
+      gateway classes, we implemented three different interfaces for each entity that we have: `Event`, `Expense`
+      and `User`. This allows our use cases to use gateway classes related to their entity instead of one general one
+      and to implement methods related to their entity database table. In addition, we also have interfaces for the
+      input boundary between the use cases and the interface layer. Having different input boundary interfaces for each
+      entity allows the use cases `EventManager`, `UserManager` and `ExpenseManager` to implement methods relevant to
+      their responsibilities instead of having to implement all the methods which they might not need.
 
 ## **DIP: Dependency Inversion Principle**
 
 * <u>Comply:</u>
-  * Our program mostly complies with DIP. Using the OODesign example given in week 3 lecture, `Worker` is the `Event`
-    and `SuperWorker` is the subclasses of `Event` . When we need to make a reference to a type of event, we can
-    simply use `Event e` as a parameter, instead of explicitly specifying which type of event we want (i.e. instead
-    of `Deadline e` )
+    * Our program mostly complies with DIP. Using the OODesign example given in week 3 lecture, `Worker` is the `Event`
+      and `SuperWorker` is the subclasses of `Event` . When we need to make a reference to a type of event, we can
+      simply use `Event e` as a parameter, instead of explicitly specifying which type of event we want (i.e. instead
+      of `Deadline e` )
 * <u>Violation:</u>
-  * It may be a violation as our `Event` superclass is not an interface so it doesn't utilize abstraction. However it
-    does achieve the same goal as DIP.
+    * It may be a violation as our `Event` superclass is not an interface so it doesn't utilize abstraction. However it
+      does achieve the same goal as DIP.
 * <u>Potential Fix:</u>
-  * We can fix this by implementing an `Event` interface, and change the existing Event superclass to `GeneralEvent`
+    * We can fix this by implementing an `Event` interface, and change the existing Event superclass to `GeneralEvent`
 
 # **Clean Architecture**
 
@@ -139,19 +139,19 @@ in https://refactoring.guru/design-patterns/factory-comparison
 ## **Factory/Builder**
 
 * For creating events (not currently implemented, but may in the future)
-  * We think that neither builder nor factory would be appropriate, at least without adding unnecessary complexity to
-    our program.
-  * For builder, event is not a complex object that includes multiple objects, so implementing it would not be
-    appropriate and could make the program unnecessarily complex
-  * For factory, it is possible to implement but will add unnecessary complexity to our program. We would need an
-    interface as a framework and multiple creators to create different types of events, which is rather unnecessary
-    since each subclass of Event is explicitly instantiated the moment the client needs it, deferring instantiation
-    would mean that we need to create a default instantiation of an Event (or its subclass) and use getter and setter
-    methods to change its attributes -- quite extra and could make it too labour intensive to use.
+    * We think that neither builder nor factory would be appropriate, at least without adding unnecessary complexity to
+      our program.
+    * For builder, event is not a complex object that includes multiple objects, so implementing it would not be
+      appropriate and could make the program unnecessarily complex
+    * For factory, it is possible to implement but will add unnecessary complexity to our program. We would need an
+      interface as a framework and multiple creators to create different types of events, which is rather unnecessary
+      since each subclass of Event is explicitly instantiated the moment the client needs it, deferring instantiation
+      would mean that we need to create a default instantiation of an Event (or its subclass) and use getter and setter
+      methods to change its attributes -- quite extra and could make it too labour intensive to use.
 * In sign up user flow (may be implemented)
-  * Builder could be accomplished if we store a reference to the user's database inside the User class. This way,
-    during sign up flow, we can let a builder to first create a database for the user and then create a `User` object
-    by calling UserManager and then combine them into one by passing in the database
+    * Builder could be accomplished if we store a reference to the user's database inside the User class. This way,
+      during sign up flow, we can let a builder to first create a database for the user and then create a `User` object
+      by calling UserManager and then combine them into one by passing in the database
 
 ## **Singleton**
 
@@ -212,13 +212,13 @@ work.
 
 * Android SDK version 31
 * Android Gradle Plugin Version 4.2.2
-  * [Screenshot of Android SDK and Build tools configuration](https://imgur.com/a/4nw7WpB)
+    * [Screenshot of Android SDK and Build tools configuration](https://imgur.com/a/4nw7WpB)
 * Gradle Version 6.7.1
 * Android Build Tools version 31.0.0 or 30.0.2 (if 31.0.0 is corrupted)
-  * [Screenshot of Gradle and Gradle build tools configuration](https://imgur.com/a/4nw7WpB)
+    * [Screenshot of Gradle and Gradle build tools configuration](https://imgur.com/a/4nw7WpB)
 * Android Studio Arctic Fox | 2020.3.1 Patch 3
-  * Build #AI-203.7717.56.2031.7784292, built on September 30, 2021
-  * Screenshot of Android Studio Version
+    * Build #AI-203.7717.56.2031.7784292, built on September 30, 2021
+    * Screenshot of Android Studio Version
 
 ## **Emulator Settings**
 
@@ -251,17 +251,19 @@ page, you have launched successfully ([GIF example](https://imgur.com/a/HYjDbsf)
 ## **Instructions on how to run the tests**
 
 Once you have loaded our project into Android Studio, you should be able to see two test packages, all colored green.
-One labeled test, the other labeled AndroidTest. To run the tests, simply right-click on the subdirectory, beginning with
+One labeled test, the other labeled AndroidTest. To run the tests, simply right-click on the subdirectory, beginning
+with
 `com.` and choose "Run...". [Here is a quick GIF demonstration](https://imgur.com/a/HYjDbsf)
+
 * The java tests are written using JUnit 4, so the test behaviour would be the expected behaviour of any Java unit tests
 * The tests for `Gateways` are written using Android Instrumented test, so the behaviour is a little different. When you
-  click run, your emulator will launch, but the app will not actually launch in the emulator. The emulator only
-  provides contextual support to the tests, so it is an expected behaviour and is not a bug.
+  click run, your emulator will launch, but the app will not actually launch in the emulator. The emulator only provides
+  contextual support to the tests, so it is an expected behaviour and is not a bug.
 
 ### Test Coverage
 
-* Entities are not tested, this is because Use Case tests already use the great majority of the methods of the entities so specific tests for
-  entities would be redundant
+* Entities are not tested, this is because Use Case tests already use the great majority of the methods of the entities
+  so specific tests for entities would be redundant
 * Use Cases, Gateways are all tested with their respective tests in the program's Test Sources root directory
 
 ## **Instructions for Use of Features**
