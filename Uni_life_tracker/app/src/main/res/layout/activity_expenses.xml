@@ -110,35 +110,68 @@
                 android:layout_marginHorizontal="20dp"
         />
 
+        <!-- Total Expenses -->
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:paddingVertical="25dp"
+                android:paddingTop="25dp"
                 android:paddingHorizontal="20dp">
 
-            <!--  Total Text  -->
             <TextView
-                    android:id="@+id/tv_total_text"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/total"
+                    android:text="@string/total_expenses"
+                    android:textSize="20sp"/>
+
+            <TextView
+                    android:id="@+id/tv_total_expenses"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/balance"
+                    android:textSize="20sp"
+                    android:gravity="end"/>
+        </LinearLayout>
+
+        <!-- Line Divider -->
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginVertical="10dp"
+                android:layout_marginHorizontal="20dp"
+                android:background="@color/lavender"/>
+
+        <!-- Balance -->
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingBottom="25dp"
+                android:paddingHorizontal="20dp">
+
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/balance"
                     android:textSize="20sp"
                     android:fontFamily="@font/roboto_mono_bold"/>
 
-            <!--  Total Sum Text  -->
             <TextView
-                    android:id="@+id/tv_total"
+                    android:id="@+id/tv_balance"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/total_sum"
+                    android:text="@string/balance"
                     android:textSize="20sp"
                     android:gravity="end"
                     android:fontFamily="@font/roboto_mono_bold"/>
         </LinearLayout>
+
 
     </LinearLayout>
 

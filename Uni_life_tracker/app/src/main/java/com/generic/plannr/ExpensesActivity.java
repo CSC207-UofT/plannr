@@ -47,7 +47,8 @@ public class ExpensesActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout); // nav menu
         etIncome = findViewById(R.id.et_income);
         tiIncome = findViewById(R.id.ti_income);
-        tvTotal = findViewById(R.id.tv_total);
+        tvTotalExpenses = findViewById(R.id.tv_total_expenses);
+        tvBalance = findViewById(R.id.tv_balance);
 
         SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
         boolean firstStart = preferences.getBoolean("firstStart", true);
