@@ -47,37 +47,64 @@
 
     </LinearLayout>
 
-    <!--  Add Expense Name Textfield  -->
-    <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/add_expense_name"
-            android:layout_width="300dp"
+    <!-- Add Expense Name -->
+    <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:layout_marginStart="60dp"
-            app:boxBackgroundColor="@color/transparent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="50dp">
 
-            app:errorEnabled="true">
-        <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
+        <ImageView
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_label"
+                android:layout_marginEnd="20dp"
+                android:contentDescription="@string/name"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/add_expense_name"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/add_name"
-                android:inputType="text"
-        />
-    </com.google.android.material.textfield.TextInputLayout>
+                app:boxBackgroundColor="@color/transparent"
 
-    <!--  Add Expense Amount Textfield  -->
-    <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/add_expense_amount"
-            android:layout_marginStart="60dp"
-            android:layout_width="300dp"
+                app:errorEnabled="true">
+            <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/add_name"
+                    android:inputType="text"
+                    />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <!--  Add Expense Amount  -->
+    <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:boxBackgroundColor="@color/transparent"
-            app:errorEnabled="true">
-        <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="25dp">
+
+        <ImageView
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_money"
+                android:layout_marginEnd="20dp"
+                android:contentDescription="@string/name"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/add_expense_amount"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/add_amount"
-                android:inputType="numberDecimal"
-        />
-    </com.google.android.material.textfield.TextInputLayout>
+                app:boxBackgroundColor="@color/transparent"
+                app:errorEnabled="true">
+            <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/add_amount"
+                    android:inputType="numberDecimal"
+                    />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
 </LinearLayout>
