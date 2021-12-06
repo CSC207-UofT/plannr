@@ -7,6 +7,7 @@ package com.generic.plannr;
 import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import androidx.annotation.NonNull;
 import com.generic.plannr.Entities.Event;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -222,7 +223,7 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
         logout(this);
     }
 
-    public void clickTest(View view) {
+    public void viewEvent(View view) {
         dialog.setContentView(R.layout.popup_view_event);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
