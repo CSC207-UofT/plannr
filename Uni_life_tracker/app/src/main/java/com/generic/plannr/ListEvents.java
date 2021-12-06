@@ -1,3 +1,8 @@
+/* Plannr by Generic Name
+ *
+ * This file represents a ListEvents class which displays events in a
+ * RecyclerView, for activity_main.xml and activity_school.xml.
+ */
 package com.generic.plannr;
 
 import com.generic.plannr.Entities.Event;
@@ -8,18 +13,30 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class ListEvents extends RecyclerView.Adapter<ListEvents.MyViewHolder>{
-    private ArrayList<Event> eventsList;
+    ArrayList<Event> eventsList;
 
+    /**
+     * Construct a ListEvents, giving it an eventslist.
+     *
+     * @param eventsList    An ArrayList of Events to be displayed
+     */
     public ListEvents(ArrayList<Event> eventsList){
         this.eventsList = eventsList;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
-        private TextView tvEventName, tvEventTime;
+        TextView tvEventName, tvEventTime;
 
+        /**
+         * Finds and sets TextView to display event details.
+         *
+         * @param view  a View for the device screen.
+         */
         public MyViewHolder(final View view){
             super(view);
             tvEventName = view.findViewById(R.id.tv_event_name);
@@ -36,11 +53,14 @@ public class ListEvents extends RecyclerView.Adapter<ListEvents.MyViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull ListEvents.MyViewHolder holder, int position) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm a");
         String eventName = eventsList.get(position).getName();
-        String time = eventsList.get(position).getEndDate().getHour() + ":" +
-                eventsList.get(position).getEndDate().getMinute();
+        LocalTime eventStartTime = eventsList.get(position).getStartDate().toLocalTime();
+        LocalTime eventEndTime = eventsList.get(position).getEndDate().toLocalTime();
+        String eventTime = formatter.format(eventStartTime) + " - " + formatter.format(eventEndTime);
+
         holder.tvEventName.setText(eventName);
-        holder.tvEventTime.setText(time);
+        holder.tvEventTime.setText(eventTime);
     }
 
     @Override

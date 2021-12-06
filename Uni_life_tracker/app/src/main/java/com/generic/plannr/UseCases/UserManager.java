@@ -16,25 +16,25 @@ public class UserManager {
     /**
      * Constructs a user manager and creates a new user
      *
-     * @param name    is the user's name
-     * @param courses is the user's list of courses
-     * @param school  is the user's school
+     * @param name      is the user's name
+     * @param email     is the user's email
+     * @param password  is the user's password
      */
-    public UserManager(String name, ArrayList<String> courses, String school) {
-        u = createUser(name, courses, school);
+    public UserManager(String name, String email, String password) {
+        u = createUser(name, email, password);
         this.expManager = new ExpensesManager();
     }
 
     /**
      * Creates a user
      *
-     * @param name    is the user's name
-     * @param courses is the user's list of courses
-     * @param school  is the user's school's name
+     * @param name      is the user's name
+     * @param email     is the user's email
+     * @param password  is the user's password
      * @return the created user
      */
-    public User createUser(String name, ArrayList<String> courses, String school) {
-        return new User(name, courses, school);
+    public User createUser(String name, String email, String password) {
+        return new User(name, email, password);
     }
 
     /**
@@ -74,15 +74,6 @@ public class UserManager {
     }
 
     /**
-     * Changes the User's school
-     *
-     * @param school is the new name of User's school
-     */
-    public void changeUsersSchool(String school) {
-        u.setSchool(school);
-    }
-
-    /**
      * Adds an event to User's event list
      *
      * @param event is the event to be added to the user's list
@@ -116,21 +107,21 @@ public class UserManager {
     }
 
     /**
+     * This method will return the User
+     *
+     * @return the User object
+     */
+    public User getUser() {
+        return u;
+    }
+
+    /**
      * This method will return user's name
      *
      * @return a String variable containing user's name
      */
     public String getUsersName() {
         return u.getName();
-    }
-
-    /**
-     * getter method for user's school
-     *
-     * @return a String variable containing the user's school
-     */
-    public String getUsersSchool() {
-        return u.getSchool();
     }
 
     /**

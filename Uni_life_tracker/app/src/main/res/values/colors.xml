@@ -2,8 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="orange">#FE9E72</color>
-    <color name="coral">#EE6D71</color>
     <color name="lavender">#CDB8FF</color>
     <color name="periwinkle">#9ABBFE</color>
     <color name="blue">#8FDEFD</color>

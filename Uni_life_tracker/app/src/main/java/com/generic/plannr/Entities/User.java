@@ -4,25 +4,27 @@ import java.util.ArrayList;
 
 public class User {
     private String name;
+    private String email;
+    private String password;
     private final ArrayList<String> courses;
-    private String school;
     private final ArrayList<Event> eventList;
     private final ArrayList<Expense> expenseList;
     private double income;
 
     /**
-     * Construct a user, giving them the given name,
-     * courses, school, and setting an empty events list.
+     * Construct a user, giving them the given name, email,
+     * password, courses, and setting an empty
+     * events list.
      *
-     * @param name    The user's name
-     * @param courses The user's course list
-     * @param school  The user's school
+     * @param name      The user's name
+     * @param email     The user's email
+     * @param password  The user's password
      */
-    public User(String name, ArrayList<String> courses, String school) {
+    public User(String name, String email, String password) {
         this.name = name;
+        this.email = email;
+        this.password = password;
         this.courses = new ArrayList<>();
-        this.courses.addAll(courses);
-        this.school = school;
         this.eventList = new ArrayList<>();
         this.income = 0.0;
         this.expenseList = new ArrayList<>();
@@ -38,13 +40,18 @@ public class User {
     }
 
     /**
-     * getter method for school
+     * getter method for email
      *
-     * @return a String that contains the user's name
+     * @return a String that describes the user's email
      */
-    public String getSchool() {
-        return this.school;
-    }
+    public String getEmail() { return this.email; }
+
+    /**
+     * getter method for password
+     *
+     * @return a String that describes the user's password
+     */
+    public String getPassword() { return this.password; }
 
     /**
      * getter method for courses
@@ -66,10 +73,6 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void setSchool(String school) {
-        this.school = school;
     }
 
     /**

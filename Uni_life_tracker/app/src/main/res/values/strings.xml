@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!--  General  -->
     <string name="app_name">Plannr</string>
     <string name="school">School</string>
@@ -10,35 +10,21 @@
     <string name="event">Event</string>
     <string name="time">Time</string>
     <string name="edit">Edit</string>
+    <string name="name">Name</string>
 
-    <!--  Sign Up  -->
-    <string name="left_arrow">Left Arrow</string>
-    <string name="profile">Profile</string>
-    <string name="university">University</string>
-    <string name="start">Start!</string>
-    <string name="month">Month</string>
-    <string name="list_of_expenses">List of Expenses:</string>
-    <string name="expense_name">- Expense Name:</string>
-    <string name="x">X</string>
-    <string name="x_arrow">x_arrow</string>
+    <!--  Sign Up & Log In  -->
     <string name="add_expense">Add Expense</string>
-    <string name="add_expense_button">add_expense_button</string>
     <string name="email">Email</string>
     <string name="full_name">Full Name</string>
-    <string name="university_name">University Name</string>
     <string name="password">Password</string>
     <string name="sign_up">Sign Up!</string>
-    <string name="welcome_to">Welcome to</string>
-
-    <!--  Password Regex  -->
-    <string name="uppercase">(?=.*[A-Z])</string>
-    <string name="lowercase">(?=.*[a-z])</string>
-    <string name="number"
-            tools:ignore="TypographyDashes">(?=.*[0-9])</string>
-    <string name="specialChar"><![CDATA[(?=.*[@#!$%^/*_&+=])]]></string>
+    <string name="log_in">Log In</string>
+    <string name="log_out">Log Out</string>
+    <string name="no_account_yet">No account yet?</string>
+    <string name="have_an_existing_account">Have an existing account?</string>
+    <string name="welcome">Welcome</string>
 
     <!--  Calendar  -->
-    <string name="minLength">.{6,}</string>
     <string name="sunday">SUN</string>
     <string name="monday">MON</string>
     <string name="tuesday">TUE</string>
@@ -49,27 +35,14 @@
     <string name="date_placeholder">1</string>
 
     <!--  Expenses  -->
-    <string name="welcome_please_add_an_expense">Welcome! Please add an expense:</string>
     <string name="add_name">Add Name</string>
-    <string name="add_date">Add Date</string>
-    <string name="go_to_expenses_view">Go to Expenses View</string>
     <string name="add_amount">Add Amount</string>
-    <string name="Expenses">Expenses</string>
-    <string name="add_expenses">Add Expenses</string>
-    <string name="submit">submit</string>
     <string name="amount">Amount:</string>
-    <string name="dollar_sign">$</string>
-    <string name="title_activity_expenses_landing">expenses_landing</string>
-    <string name="dollar_amount">$ Add Amount</string>
-
-    <!--  Navigation Fragments  -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="title_activity_add_expenses">Add_expenses</string>
+    <string name="income">Income</string>
+    <string name="add_income">Add Income</string>
+    <string name="save_income">Save Income</string>
+    <string name="total_expenses">Total Expenses</string>
+    <string name="balance">Balance</string>
 
     <!--  Main Page  -->
     <string name="my_to_dos">My To Do\'s</string>
@@ -97,13 +70,9 @@
     <string name="med_priority">Medium</string>
     <string name="low_priority">Low</string>
     <string name="course">Course</string>
-    <string name="log_in">Log In</string>
-    <string name="log_out">Log Out</string>
-    <string name="no_account_yet">No account yet?</string>
-    <string name="have_an_existing_account">Have an existing account?</string>
-    <string name="welcome">Welcome</string>
-    <string name="name">Name</string>
-    <string name="update">Update</string>
+    <string name="start_date">Start Date</string>
+    <string name="end_date">End Date</string>
+
 
     <!--  TODO: to display courses for now (TEMPORARY) -->
     <string-array name="courses">

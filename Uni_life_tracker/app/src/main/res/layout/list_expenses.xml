@@ -9,7 +9,6 @@
 
     <!--  Piggy bank ImageView  -->
     <ImageView
-            android:id="@+id/iv_expense"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/ic_expenses"
@@ -25,7 +24,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/expenses"
-            android:fontFamily="@font/roboto_mono_bold"
             android:layout_marginStart="10dp"
             android:padding="20dp"/>
 
@@ -36,7 +34,6 @@
             android:layout_height="wrap_content"
             android:text="@string/amount"
             android:textAlignment="textEnd"
-            android:fontFamily="@font/roboto_mono_bold"
             android:paddingVertical="20dp"/>
 
 </LinearLayout>
