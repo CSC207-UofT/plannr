@@ -1,9 +1,10 @@
 package com.generic.plannr;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
-import com.generic.plannr.Database.UserInfoDatabaseHelper;
+import com.generic.plannr.Gateways.UserGateway;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class LoginActivity  extends AppCompatActivity {
@@ -12,6 +13,7 @@ public class LoginActivity  extends AppCompatActivity {
     private TextInputLayout tiEmail;
     private TextInputLayout tiPassword;
     private MainActivity activity;
+    UserGateway ug = new UserGateway(LoginActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,18 +36,9 @@ public class LoginActivity  extends AppCompatActivity {
     public boolean LoginInput () {
         // Creates an instance of validator to be able to access its methods
         Validator input = new Validator();
-        // Opens the database, so it can be passed in since it needs an activity
-        UserInfoDatabaseHelper user = createDatabase();
         // Returns whether the login info inputted is valid
-        return input.validateEntry(tiEmail, user, tiEmail, tiPassword, false) &
-                input.validateEntry(tiPassword, user, tiEmail, tiPassword, false);
-    }
-
-    public UserInfoDatabaseHelper createDatabase() {
-        // creates an instance and opens database
-        UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(LoginActivity.this);
-        user.openDatabase();
-        return user;
+        return input.validateEntry(tiEmail, ug, tiEmail, tiPassword, false) &
+                input.validateEntry(tiPassword, ug, tiEmail, tiPassword, false);
     }
 
     public void clickLogin(View view) {

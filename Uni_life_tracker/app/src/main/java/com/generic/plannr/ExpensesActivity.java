@@ -17,8 +17,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetView;
-
 import com.google.android.material.textfield.TextInputEditText;
+import com.generic.plannr.Gateways.ExpenseGateway;
+import com.generic.plannr.Gateways.UserGateway;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
@@ -33,6 +34,9 @@ public class ExpensesActivity extends AppCompatActivity {
     private TextInputEditText etIncome;
     private TextInputLayout tiIncome;
     ImageView ivAddExpense;
+    UserGateway ug = new UserGateway(ExpensesActivity.this);
+    ExpenseGateway eg = new ExpenseGateway(ExpensesActivity.this);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,31 +100,7 @@ public class ExpensesActivity extends AppCompatActivity {
      * and adds all expenses to expense list
      */
     private void setExpenseInfo() {
-        ExpenseDatabaseHelper expense = createExpenseDatabase();
-        UserInfoDatabaseHelper user = createDatabase();
-        expensesList.addAll(expense.getAllExpenses(user.getLoggedInEmail()));
-    }
-
-    /**
-     * Creates an expense database and opens it.
-     * @return expense an instance of expense database.
-     */
-    public ExpenseDatabaseHelper createExpenseDatabase() {
-        // creates an instance and opens database
-        ExpenseDatabaseHelper expense = new ExpenseDatabaseHelper(ExpensesActivity.this);
-        expense.openDatabase();
-        return expense;
-    }
-
-    /**
-     * Creates an userinfo database and opens it.
-     * @return user an instance of userinfo database
-     */
-    public UserInfoDatabaseHelper createDatabase() {
-        // creates an instance and opens database
-        UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(ExpensesActivity.this);
-        user.openDatabase();
-        return user;
+        expensesList.addAll(eg.getAllExpenses(ug.getLoggedInUserID()));
     }
 
     /**
@@ -129,10 +109,7 @@ public class ExpensesActivity extends AppCompatActivity {
      */
     public void calculateExpense(){
         // TODO: CALCULATE TOTAL EXPENSES
-        UserInfoDatabaseHelper user = createDatabase();
-        ExpenseDatabaseHelper expense = createExpenseDatabase();
-        String income = Objects.requireNonNull(tiIncome.getEditText()).getText().toString();
-
+        String income = Objects.requireNonNull(textInputIncome.getEditText()).getText().toString();
         //double total_sum = Double.parseDouble(income) - the sum of expense values
     }
 

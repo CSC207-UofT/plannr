@@ -4,7 +4,6 @@
  */
 package com.generic.plannr;
 
-import com.generic.plannr.Database.UserInfoDatabaseHelper;
 import com.generic.plannr.Entities.Event;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -18,9 +17,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.generic.plannr.Database.EventDatabaseHelper;
-import com.generic.plannr.Database.UserInfoDatabaseHelper;
 import com.generic.plannr.Entities.Event;
+import com.generic.plannr.Gateways.EventGateway;
+import com.generic.plannr.Gateways.UserGateway;
 import com.generic.plannr.UseCases.GetEventsOfDate;
 
 import java.text.DateFormat;
@@ -33,6 +32,8 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
     DrawerLayout drawerLayout;
     private ArrayList<Event> eventsList;
     private RecyclerView rvEvents;
+    UserGateway ug = new UserGateway(MainPageActivity.this);
+    EventGateway eg = new EventGateway(MainPageActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,18 +46,20 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
         drawerLayout = findViewById(R.id.drawer_layout); // Side menu
         rvEvents = findViewById(R.id.rv_events); // Events list
 
+        // sets the Welcome Name message to the user's name
+        String welcome = "Welcome " + ug.getLoggedInName() + "!";
+        tvWelcome.setText(welcome);
+
         // Show today's date
         Calendar calendar = Calendar.getInstance();
         String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
         tvViewDate.setText(currentDate);
 
-        // Sets welcome message with user's name
-        UserInfoDatabaseHelper user = createDatabase();
-        String welcome = "Welcome " + user.getLoggedInName() + "!";
-        tvWelcome.setText(welcome);
+        // side menu
+        drawerLayout = findViewById(R.id.drawer_layout); // side menu
 
         // Shows events list
-        eventsList = new ArrayList<>(); 
+        eventsList = new ArrayList<>();
         setEventInfo();
         setAdapter();
 
@@ -85,17 +88,6 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
     }
 
     /**
-     * Returns an instance of UserInfo database, after being created and opened.
-     *
-     * @return user An instance of UserInfo database
-     */
-    public UserInfoDatabaseHelper createDatabase() {
-        UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(MainActivity.this); // Create instance
-        user.openDatabase(); // Open database
-        return user;
-    }
-
-    /**
      * Sets adapter to display user's event list.
      */
     private void setAdapter() {
@@ -111,12 +103,8 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
      * Sets the events to be displayed.
      */
     private void setEventInfo() {
-        EventDatabaseHelper event = new EventDatabaseHelper(MainActivity.this);
-        UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(MainActivity.this);
-        user.openDatabase();
-        event.openDatabase();
-        String email = user.getLoggedInEmail();
-        eventsList.addAll(GetEventsOfDate.getEventsOfDate(event.getAllEvents(email), LocalDate.now()));
+        int userID = ug.getLoggedInUserID();
+        eventsList.addAll(GetEventsOfDate.getEventsOfDate(eg.getAllEvents(userID), LocalDate.now()));
     }
 
     /**

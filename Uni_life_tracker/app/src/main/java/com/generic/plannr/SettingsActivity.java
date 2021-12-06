@@ -1,10 +1,12 @@
 package com.generic.plannr;
 
-import com.generic.plannr.Database.UserInfoDatabaseHelper;
 import android.os.Bundle;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+
+import com.generic.plannr.Entities.User;
+import com.generic.plannr.Gateways.UserGateway;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -19,6 +21,7 @@ public class SettingsActivity extends AppCompatActivity {
     private TextInputLayout tiName;
     private TextInputLayout tiUni;
     private MainActivity activity;
+    UserGateway ug = new UserGateway(SettingsActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +36,9 @@ public class SettingsActivity extends AppCompatActivity {
         tiName = findViewById(R.id.ti_name);
         tiUni = findViewById(R.id.ti_university);
 
-        // opens the database to retrieve user's name and uni
-        UserInfoDatabaseHelper user = createDatabase();
-        etName.setText(user.getLoggedInName());
-        etUni.setText(user.getLoggedInUni());
+        // retrieve user's name and uni using gateway
+        etName.setText(ug.getLoggedInName());
+        etUni.setText(ug.getLoggedInUni());
     }
 
     public void clickMenu(View view) { activity.openDrawer(drawerLayout); } // open drawer
@@ -59,11 +61,10 @@ public class SettingsActivity extends AppCompatActivity {
         // gets user input from textbox
         String name = Objects.requireNonNull(tiName.getEditText()).getText().toString();
         String uni = Objects.requireNonNull(tiUni.getEditText()).getText().toString();
-        // opens database
-        UserInfoDatabaseHelper user = createDatabase();
+
         // replaces current data in database with user input
-        user.updateName(name);
-        user.updateUni(uni);
+        ug.updateName(name);
+        ug.updateUni(uni);
         // disables textbox so it becomes read only
         textboxEditability(false);
     }
@@ -82,13 +83,6 @@ public class SettingsActivity extends AppCompatActivity {
     public void clickEdit(View view) {
         // enabled textboxes so they can be edited
         textboxEditability(true);
-    }
-
-    public UserInfoDatabaseHelper createDatabase() {
-        // creates an instance and opens database
-        UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(SettingsActivity.this);
-        user.openDatabase();
-        return user;
     }
 
     public void textboxEditability(boolean bool) {
