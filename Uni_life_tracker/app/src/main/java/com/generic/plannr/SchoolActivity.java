@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.generic.plannr.Database.EventDatabaseHelper;
-import com.generic.plannr.Database.UserInfoDatabaseHelper;
 import com.generic.plannr.Entities.Event;
+import com.generic.plannr.Gateways.EventGateway;
+import com.generic.plannr.Gateways.UserGateway;
 import com.generic.plannr.UseCases.GetEventsOfDate;
 
 import java.time.LocalDate;
@@ -28,6 +28,8 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
     private MainPageActivity activity;
     private ArrayList<Event> eventsList;
     private RecyclerView rvEvents;
+    UserGateway ug = new UserGateway(SchoolActivity.this);
+    EventGateway eg = new EventGateway(SchoolActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -55,13 +57,10 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
     }
 
     private void setEventInfo() {
-        EventDatabaseHelper event = new EventDatabaseHelper(SchoolActivity.this);
-        UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(SchoolActivity.this);
-        user.openDatabase();
-        event.openDatabase();
-        String email = user.getLoggedInEmail();
 
-        eventsList.addAll(GetEventsOfDate.getEventsOfDate(event.getAllEvents(email), CalendarUtil.selectedDate));
+        int userID = ug.getLoggedInUserID();
+
+        eventsList.addAll(GetEventsOfDate.getEventsOfDate(eg.getAllEvents(userID), CalendarUtil.selectedDate));
     }
 
     private void initWidgets()

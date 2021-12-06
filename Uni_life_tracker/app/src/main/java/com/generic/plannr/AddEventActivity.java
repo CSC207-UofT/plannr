@@ -9,11 +9,11 @@ import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
-import com.generic.plannr.Database.EventDatabaseHelper;
-import com.generic.plannr.Database.UserInfoDatabaseHelper;
 import com.generic.plannr.Entities.Event;
+import com.generic.plannr.Gateways.EventGateway;
+import com.generic.plannr.Gateways.UserGateway;
+
 import android.os.Bundle;
-import com.generic.plannr.Database.UserInfoDatabaseHelper;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -31,6 +31,8 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
     ImageView ivBack, ivSave;
     EditText etEventName, etCourse;
     private MainPageActivity activity;
+    UserGateway ug = new UserGateway(AddEventActivity.this);
+    EventGateway eg = new EventGateway(AddEventActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -198,11 +200,6 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
      */
     public void clickSaveEvent(View view) {
         if (addEventInput()) {
-            EventDatabaseHelper eventdb = new EventDatabaseHelper(AddEventActivity.this);
-            eventdb.openDatabase();
-
-            UserInfoDatabaseHelper userdb = new UserInfoDatabaseHelper(AddEventActivity.this);
-            userdb.openDatabase();
 
             String eventName = etEventName.getText().toString();
             String startDate = tvStartDate.getText().toString().trim();
@@ -216,11 +213,12 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
             LocalDateTime start = LocalDateTime.parse(startDate + " " + startTime, DATEFORMAT);
             LocalDateTime end = LocalDateTime.parse(endDate + " " + endTime, DATEFORMAT);
 
-            String email = userdb.getLoggedInEmail();
+            String email = ug.getLoggedInEmail();
 
             Event event = new Event(eventName, priority, start, end);
+            int userID = ug.getLoggedInUserID();
 
-            eventdb.insertEvent(event, email);
+            eg.saveToDatabase(event, userID);
 
             activity.redirectActivity(this, SchoolActivity.class);
         }

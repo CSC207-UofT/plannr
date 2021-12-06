@@ -1,6 +1,6 @@
 package com.generic.plannr;
 
-import com.generic.plannr.Database.UserInfoDatabaseHelper;
+
 import com.generic.plannr.Entities.Event;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -14,9 +14,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.generic.plannr.Database.EventDatabaseHelper;
-import com.generic.plannr.Database.UserInfoDatabaseHelper;
 import com.generic.plannr.Entities.Event;
+import com.generic.plannr.Gateways.EventGateway;
+import com.generic.plannr.Gateways.UserGateway;
 import com.generic.plannr.UseCases.GetEventsOfDate;
 
 import java.text.DateFormat;
@@ -29,6 +29,8 @@ public class MainPageActivity extends AppCompatActivity implements AdapterView.O
     DrawerLayout drawerLayout;
     private ArrayList<Event> eventsList;
     private RecyclerView rvEvents;
+    UserGateway ug = new UserGateway(MainPageActivity.this);
+    EventGateway eg = new EventGateway(MainPageActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +39,7 @@ public class MainPageActivity extends AppCompatActivity implements AdapterView.O
 
         // sets the Welcome Name message to the user's name
         TextView tvWelcome = findViewById(R.id.tv_welcome);
-        UserInfoDatabaseHelper user = createDatabase();
-        String welcome = "Welcome " + user.getLoggedInName() + "!";
+        String welcome = "Welcome " + ug.getLoggedInName() + "!";
         tvWelcome.setText(welcome);
 
         // show today's date
@@ -84,16 +85,6 @@ public class MainPageActivity extends AppCompatActivity implements AdapterView.O
 
     }
 
-    /**
-     * Creates a userinfo database and opens it
-     * @return user an instance of userinfo database
-     */
-    public UserInfoDatabaseHelper createDatabase() {
-        // creates an instance and opens database
-        UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(MainPageActivity.this);
-        user.openDatabase();
-        return user;
-    }
 
     private void setAdapter() {
         ListEvents adapter = new ListEvents(eventsList);
@@ -105,12 +96,9 @@ public class MainPageActivity extends AppCompatActivity implements AdapterView.O
 
 //    TODO: generates events to display FOR NOW
     private void setEventInfo() {
-        EventDatabaseHelper event = new EventDatabaseHelper(MainPageActivity.this);
-        UserInfoDatabaseHelper user = new UserInfoDatabaseHelper(MainPageActivity.this);
-        user.openDatabase();
-        event.openDatabase();
-        String email = user.getLoggedInEmail();
-        eventsList.addAll(GetEventsOfDate.getEventsOfDate(event.getAllEvents(email), LocalDate.now()));
+
+        int userID = ug.getLoggedInUserID();
+        eventsList.addAll(GetEventsOfDate.getEventsOfDate(eg.getAllEvents(userID), LocalDate.now()));
     }
 
     public void clickMenu(View view){
