@@ -130,6 +130,11 @@ public class UserGatewayTest {
 
     @Test
     public void getPassword() {
+        ug.saveToDatabase(um.getUser());
+        ug.saveToDatabase(um.createUser("Test User 2", "test2@gmail.com", "TestUser@456"));
+
+        assertEquals("TestUser@123", ug.getPassword("test@gmail.com"));
+        assertEquals("TestUser@456", ug.getPassword("test2@gmail.com"));
     }
 
     // updateLoggedInUser is not tested as it's tested by previous tests already
