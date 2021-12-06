@@ -4,6 +4,9 @@
  */
 package com.generic.plannr;
 
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import com.generic.plannr.Entities.Event;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -34,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
     private RecyclerView rvEvents;
     UserGateway ug = new UserGateway(MainActivity.this);
     EventGateway eg = new EventGateway(MainActivity.this);
+    Dialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
         Spinner spnSort = findViewById(R.id.spn_sort);
         drawerLayout = findViewById(R.id.drawer_layout); // Side menu
         rvEvents = findViewById(R.id.rv_events); // Events list
+        dialog = new Dialog(this);
+
 
         // sets the Welcome Name message to the user's name
         String welcome = "Welcome " + ug.getLoggedInName() + "!";
@@ -69,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnSort.setAdapter(adapter);
         spnSort.setOnItemSelectedListener(this);
+
     }
 
     @Override
@@ -205,5 +212,11 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
      */
     public void clickLogOut(View view) {
         logout(this);
+    }
+
+    public void clickTest(View view) {
+        dialog.setContentView(R.layout.popup_view_event);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
     }
 }

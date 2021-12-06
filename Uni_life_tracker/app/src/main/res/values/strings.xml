@@ -70,7 +70,8 @@
     <string name="med_priority">Medium</string>
     <string name="low_priority">Low</string>
     <string name="course">Course</string>
-
+    <string name="start_date">Start Date</string>
+    <string name="end_date">End Date</string>
 
 
     <!--  TODO: to display courses for now (TEMPORARY) -->
