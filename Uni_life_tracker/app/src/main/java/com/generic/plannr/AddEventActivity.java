@@ -27,9 +27,7 @@ import java.util.Locale;
 
 public class AddEventActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener{
 //    Initialize Variables
-    int startYear, startMonth, startDay, endYear, endMonth, endDay, startHour, startMinute, endHour, endMinute;
-    int priority = 1;
-    String priorityText = "High";
+    int startYear, startMonth, startDay, endYear, endMonth, endDay, startHour, startMinute, endHour, endMinute, priority;
     TextView tvStartDate, tvStartTime, tvEndDate, tvEndTime, tvAssessment, tvDeadline, tvClassTime, tvStudySession;
     RadioGroup rgPriorities;
     ImageView ivBack, ivSave;
@@ -161,12 +159,12 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) { // Priority selection
-        RadioButton checkedRadioButton = findViewById(checkedId);
-        priorityText = checkedRadioButton.getText().toString();
-        switch (priorityText) {
-            case "High": priority = 1; break;
-            case "Medium": priority = 2; break;
-            case "Low": priority = 3; break;
+        if (checkedId == R.id.rb_high_priority) {
+            priority = 0;
+        } else if (checkedId == R.id.rb_med_priority) {
+            priority = 1;
+        } else if (checkedId == R.id.rb_low_priority) {
+            priority = 2;
         }
     }
 
@@ -192,7 +190,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
             // Checks if end date is after start date with its date time format
             if (!end.isAfter(start)){
                 // Warns user that the format is incorrect
-                Toast.makeText(this, "End date should be before start", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "End date should be before start!", Toast.LENGTH_LONG).show();
                 changeTextColor(255);
             } else {
                 changeTextColor(0);
