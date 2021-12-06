@@ -17,16 +17,16 @@ NOTE: *Some of this is implemented or some is to be implemented by Wednesday
       database.
     * Now for the controllers and presenters and activities. Each view in android has its own android activity which
       also has its own controller and presenter. For example, we have the `MainActivity` which is the activity related
-      to the main view of our app. The `MainActivity` has it's own controller for the user's inputs such as wanting
-      their events of the day to be sorted either by time or priority and it's own presenter for formatting the outputs
+      to the main view of our app. The `MainActivity` has its own controller for the user's inputs such as wanting
+      their events of the day to be sorted either by time or priority and its own presenter for formatting the outputs
       of the use cases in order to display in Android the sorted list of events.
 * <u>Violations:</u>
     * A possible violation of SRP is that each entity's manager, that is `EventManager`, `ExpenseManager`
       and `UserManager`, could be thought to have too many responsibilities in the sense that for example, `UserManager`
       is responsible for anything `User` related but within that responsibility, there are other sub-responsibilities
       that could be their own class such as creating a user, editing any user information like name, finding that user
-      by either email or ID, etc. These could be separate classes but it depends on how we divide them up as it can lead
-      to complying to SRP at an extreme. So this situation could be considered a violation or it could not, depending on
+      by either email or ID, etc. These could be separate classes, but it depends on how we divide them up as it can lead
+      to complying to SRP at an extreme. So this situation could be considered a violation, or it could not, depending on
       the person.
 
 ## **OCP: Open-Closed Principle**
@@ -92,7 +92,7 @@ interfaces, to the entities back to the use cases, then presenter, then the acti
 
 ## Scenario Walkthrough that shows Clean Architecture
 
-<u>Scenario:</u> The user arrives on the main page which displays their list of events taking place that day and have
+<u>Scenario:</u> The user arrives at the main page which displays their list of events taking place that day and have
 the option of sorting that displayed list by date-time or by priority. By default, it is first shown to be sorted by
 date.
 
@@ -147,8 +147,8 @@ in https://refactoring.guru/design-patterns/factory-comparison
       interface as a framework and multiple creators to create different types of events, which is rather unnecessary
       since each subclass of Event is explicitly instantiated the moment the client needs it, deferring instantiation
       would mean that we need to create a default instantiation of an Event (or its subclass) and use getter and setter
-      methods to change its attributes -- quite extra and could make it too labour intensive to use.
-* In sign up user flow (may be implemented)
+      methods to change its attributes -- quite extra and could make it too labour-intensive to use.
+* In sign up user flow (maybe implemented)
     * Builder could be accomplished if we store a reference to the user's database inside the User class. This way,
       during sign up flow, we can let a builder to first create a database for the user and then create a `User` object
       by calling UserManager and then combine them into one by passing in the database
@@ -282,7 +282,7 @@ with
 
 ### How to Use Expenses
 
-1. Click the expenses button on the side bar menu
+1. Click the expenses button on the sidebar menu
 2. Enter an expense by selecting the plus sign on the top right of the expenses list view
 3. Enter the name of the expense (a string) and the amount as a decimal (ex. 10.20), do not leave the fields blank
 5. Select the check mark to save the expense
@@ -293,7 +293,7 @@ with
 
 ### How to Use School
 
-1. Click the school button on the side bar menu
+1. Click the school button on the sidebar menu
 2. Enter a school event by selecting the plus sign on the top right of the calendar view
 3. Select the type of school event
 4. Based on the type of school event, enter the name of the event (a string), the start/end time, the priority and the
@@ -305,7 +305,7 @@ with
 1. In the settings page, you will see two text fields, one representing name and the other representing university
 2. To edit, click on the edit button
 3. Make changes in the respective text fields
-4. To save, click on the tick on the top right corner of the app, and all the changes will be saved
+4. To save, click on the tick in the top right corner of the app, and all the changes will be saved
 
 # **Refactoring and Code Smells**
 
@@ -340,11 +340,11 @@ conjunction with CLEAN architecture layers
 ## **Specification:**
 
 Plannr is an organizational platform in the form of an Android app that helps university students coordinate their
-everyday routine, including schoolwork and expenses. Users are first taken to the login page and prompted to login by
-entering their email and password If they do not have an account yet, they can click the sign up button. They sign up by
+everyday routine, including schoolwork and expenses. Users are first taken to the login page and prompted to log in by
+entering their email and password If they do not have an account yet, they can click the sign-up button. They sign up by
 entering their full name, email, and password. After signing up or logging in, users are taken to the main view which is
 a to do list that allows users see all school events that they created. Users can also create events by the means of a
-calendar that offers a monthly view and an add event feature. A user can also view school specific specific events in
+calendar that offers a monthly view and an add event feature. A user can also view school specific events in
 the form of a list underneath the calendar. Our platform currently focuses on two main categories:
 
 * **Schoolwork:** As a user, I can add (use case), four school-related events (entity), including assessments, due
@@ -394,7 +394,7 @@ app and how run certain features.
 If released on the market, Plannr will be free to include users from different socioeconomic backgrounds. As well, our
 app does not have an additional features that require users to have a more advanced skill level so it does not create
 segregation among users. It also offers the same password checking and account features for all users ensuring that
-users will have a password protected account. Finally, Plannr's UI is simple and easy to user, with a nice design
+users will have a password-protected account. Finally, Plannr's UI is simple and easy to user, with a nice design
 appealing to all users.
 
 ### **Flexibility in Use (Principle 2)**
@@ -429,8 +429,8 @@ for text inputs such as the user's name.
 
 ### **Plannr and Low Physical Effort (Principle 6)**
 
-In the future, Plannr will allow users to add multiple expenses and events at once without being being redirected to
-main view or the main expenses view to minimize repetitive action. As a mobile app, that r noPlannt require excessive
+In the future, Plannr will allow users to add multiple expenses and events at once without being redirected to
+main view or the main expenses view to minimize repetitive action. As a mobile app, Plannr should not require excessive
 physical effort to use and does not have any advance graphic features that would drain battery life.
 
 ### **Plannr and Size and Space for Approach and Use (Principle 7)**
@@ -443,7 +443,7 @@ elements that would need to accommodate a variety of users.
 The target market for Plannr would be students ranging from high school to university. Plannr offers an option for users
 to input school events such as deadlines which are most commonly associated with student life. Students often have
 difficulties balancing all their academic dates such as deadlines, tests or assignments so seeing all their events in
-the to do list will encourage them to stay on track. In addition many students are learning how to budget money
+the to do list will encourage them to stay on track. In addition, many students are learning how to budget money
 effectively for the fist time and being able to track their spending offers great visual support. When a user sees their
 list of expenses and the total at the bottom, it will encourage them to be more mindful about their spending. Overall,
 The Plannr UI targets a younger population with its playful design and colour scheme. Overall, it would be beneficial
@@ -453,8 +453,8 @@ easy access.
 ## **Least Likely Demographic**
 
 People who are not students would not Plannr particularly useful. Specifically, younger students in elementary school or
-children would be less likely to user Planner. They would have have no use for the expense features they are not
+children would be less likely to user Planner. They would have no use for the expense features they are not
 managing their own finances. In addition, older adults who are retired or who are not students are less likely to use
-the school work related features. Finally, middle aged adults will have no use for both the school work and the expenses
+the school work related features. Finally, middle-aged adults will have no use for both the school work and the expenses
 features. Many employed adults already be using more advanced banking apps which automatically display their
 expenditures. 
