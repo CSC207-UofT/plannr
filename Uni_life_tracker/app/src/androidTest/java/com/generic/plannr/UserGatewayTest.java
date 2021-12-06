@@ -5,9 +5,10 @@ import static org.junit.Assert.assertNull;
 
 import android.content.Context;
 
-import androidx.test.core.app.ApplicationProvider;
+import androidx.test.platform.app.InstrumentationRegistry;
 
 import com.generic.plannr.Gateways.UserGateway;
+import com.generic.plannr.UseCases.UserManager;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -18,7 +19,7 @@ public class UserGatewayTest {
 
     @Before
     public void setUp() throws Exception {
-        context = ApplicationProvider.getApplicationContext();
+        context = InstrumentationRegistry.getInstrumentation().getTargetContext();
         ug = new UserGateway(context);
     }
 
@@ -31,14 +32,21 @@ public class UserGatewayTest {
 
     @Test
     public void saveToDatabase() {
+        UserManager user = new UserManager("Test User",
+                "test@gmail.com",
+                "TestUser@123");
+        ug.saveToDatabase(user.getUser());
+        assertEquals("test@gmail.com", ug.getLoggedInEmail());
+        assertEquals("Test User", ug.getLoggedInName());
+        assertEquals("TestUser@123", ug.getPassword("test@gmail.com"));
     }
 
     @Test
-    public void updateName() {
+    public void TestCUpdateName() {
     }
 
     @Test
-    public void updatePassword() {
+    public void TestDUpdatePassword() {
     }
 
     @Test
