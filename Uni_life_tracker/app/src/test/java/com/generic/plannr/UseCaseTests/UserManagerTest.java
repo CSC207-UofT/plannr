@@ -17,12 +17,12 @@ public class UserManagerTest {
 
     @Before
     public void setUp() {
-        user = new UserManager("Test User", COURSES);
+        user = new UserManager("Test User", "test@gmail.com", "TestUser@123");
     }
 
     @Test
     public void TestConstructor() {
-        assertEquals(COURSES, user.viewCourses());
+        assertEquals(0, user.viewCourses().size());
         assertEquals(new ArrayList<>(), user.getExpenses());
         assertEquals("Test User", user.getUsersName());
         assertEquals(0.0, user.calculateBalance());
@@ -54,7 +54,7 @@ public class UserManagerTest {
     @Test
     public void TestAddCourseToUsersList() {
         user.addCourseToUsersList("CSC999");
-        assertEquals(COURSES.size() + 1, user.viewCourses().size());
+        assertEquals(1, user.viewCourses().size());
         assertTrue(user.viewCourses().contains("CSC999"));
     }
 
