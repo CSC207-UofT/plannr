@@ -19,10 +19,9 @@ public class UserManager {
      * @param name      is the user's name
      * @param email     is the user's email
      * @param password  is the user's password
-     * @param school    is the user's school
      */
-    public UserManager(String name, String email, String password, String school) {
-        u = createUser(name, email, password, school);
+    public UserManager(String name, String email, String password) {
+        u = createUser(name, email, password);
         this.expManager = new ExpensesManager();
     }
 
@@ -32,11 +31,10 @@ public class UserManager {
      * @param name      is the user's name
      * @param email     is the user's email
      * @param password  is the user's password
-     * @param school    is the user's school's name
      * @return the created user
      */
-    public User createUser(String name, String email, String password, String school) {
-        return new User(name, email, password, school);
+    public User createUser(String name, String email, String password) {
+        return new User(name, email, password);
     }
 
     /**
@@ -73,15 +71,6 @@ public class UserManager {
      */
     public void changeUsersName(String name) {
         u.setName(name);
-    }
-
-    /**
-     * Changes the User's school
-     *
-     * @param school is the new name of User's school
-     */
-    public void changeUsersSchool(String school) {
-        u.setSchool(school);
     }
 
     /**
@@ -133,15 +122,6 @@ public class UserManager {
      */
     public String getUsersName() {
         return u.getName();
-    }
-
-    /**
-     * getter method for user's school
-     *
-     * @return a String variable containing the user's school
-     */
-    public String getUsersSchool() {
-        return u.getSchool();
     }
 
     /**

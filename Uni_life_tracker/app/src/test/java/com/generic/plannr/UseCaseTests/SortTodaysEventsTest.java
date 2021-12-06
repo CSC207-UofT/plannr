@@ -25,7 +25,7 @@ public class SortTodaysEventsTest {
     public void setUp() {
         COURSES = new ArrayList<>();
         EDC = new EventDateComparator();
-        user = new UserManager("test", COURSES, "school");
+        user = new UserManager("Test User", "test@gmail.com", "TestUser@123");
 
         e1 = new Event("test", 2, TODAY, TODAY);
         e2 = new Event("test", 1, TODAY.plusSeconds(1), TODAY.plusSeconds(1));
