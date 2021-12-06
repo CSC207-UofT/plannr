@@ -72,12 +72,4 @@ public class EventGatewayTest {
     @Test
     public void getByID() {
     }
-
-    @Test
-    public void getAllEvents() {
-    }
-
-    @Test
-    public void getEventsByDate() {
-    }
 }
