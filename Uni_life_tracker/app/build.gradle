@@ -8,7 +8,7 @@ android {
     buildToolsVersion "31.0.0"
 
     defaultConfig {
-        applicationId "com.generic.ult"
+        applicationId "com.generic.plannr"
         minSdkVersion 28
         targetSdkVersion 31
         versionCode 1

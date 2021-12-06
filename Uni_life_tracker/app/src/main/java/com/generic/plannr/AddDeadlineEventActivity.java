@@ -1,4 +1,4 @@
-package com.generic.ult;
+package com.generic.plannr;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import com.generic.plannr.AddEventActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -21,6 +22,7 @@ public class AddDeadlineEventActivity extends AppCompatActivity implements Radio
     RadioGroup radioGroup;
     ImageView ivBack, ivSave;
     EditText etEventName;
+    private MainActivity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,8 +115,7 @@ public class AddDeadlineEventActivity extends AppCompatActivity implements Radio
 
     //    Back Button
     public void ClickBack(View view) {
-        Intent intent = new Intent(this, MainPageActivity.class); // TODO: direct to school/life page
-        startActivity(intent);
+        activity.redirectActivity(this, SchoolActivity.class);
     }
 
     //    Priority Selection
@@ -135,12 +136,12 @@ public class AddDeadlineEventActivity extends AppCompatActivity implements Radio
     }
 
     public void ClickClassTime(View view) {
-        Intent intent = new Intent(this, AddClassEventActivity.class);
+        Intent intent = new Intent(this, com.generic.plannr.AddClassEventActivity.class);
         startActivity(intent);
     }
 
     public void ClickStudySession(View view) {
-        Intent intent = new Intent(this, AddStudySessionEventActivity.class);
+        Intent intent = new Intent(this, com.generic.plannr.AddStudySessionEventActivity.class);
         startActivity(intent);
     }
 }

@@ -1,4 +1,4 @@
-package com.generic.ult;
+package com.generic.plannr;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
@@ -23,6 +23,7 @@ public class AddStudySessionEventActivity extends AppCompatActivity implements R
     RadioGroup radioGroup;
     ImageView ivBack, ivSave;
     EditText etEventName;
+    private MainActivity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -162,8 +163,7 @@ public class AddStudySessionEventActivity extends AppCompatActivity implements R
 
     //    Back Button
     public void ClickBack(View view) {
-        Intent intent = new Intent(this, MainPageActivity.class); // TODO: direct to school/life page
-        startActivity(intent);
+        activity.redirectActivity(this, SchoolActivity.class);
     }
 
     //    Priority Selection

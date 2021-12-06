@@ -210,7 +210,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
      * @param view  a View for the device screen.
      */
     public void clickAssessment(View view) {
-        activity.redirectActivity(this, MainActivity.class);  // TODO: direct to assessment page
+          // TODO: direct to assessment page
     }
 
     /**
@@ -219,7 +219,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
      * @param view  a View for the device screen.
      */
     public void clickDeadline(View view) {
-        activity.redirectActivity(this, MainActivity.class);  //TODO: direct to deadline page
+        activity.redirectActivity(this, AddDeadlineEventActivity.class);
     }
 
     /**
@@ -228,7 +228,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
      * @param view  a View for the device screen.
      */
     public void clickClassTime(View view) {
-        activity.redirectActivity(this, MainActivity.class);  // TODO: direct to class page
+        activity.redirectActivity(this, AddClassEventActivity.class);
     }
 
     /**
@@ -237,7 +237,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
      * @param view  a View for the device screen.
      */
     public void clickStudySession(View view) {
-        activity.redirectActivity(this, MainActivity.class);  // // TODO: direct to study session page
+        activity.redirectActivity(this, AddStudySessionEventActivity.class);
     }
 
     /**

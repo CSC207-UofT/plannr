@@ -58,7 +58,6 @@
                 app:drawableTopCompat="@drawable/ic_assessment_line"
                 android:text="@string/assessment"
                 android:textColor="@color/black"
-                android:fontFamily="@font/roboto_mono_light"
                 android:textAlignment="center"
                 android:padding="15dp"
                 android:onClick="ClickAssessment"/>
@@ -71,7 +70,6 @@
                 app:drawableTopCompat="@drawable/ic_deadline_line"
                 android:text="@string/deadline"
                 android:textColor="@color/black"
-                android:fontFamily="@font/roboto_mono_light"
                 android:textAlignment="center"
                 android:padding="15dp"
                 android:onClick="ClickDeadline"/>
@@ -85,7 +83,6 @@
                 android:text="@string/class_time"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                android:fontFamily="@font/roboto_mono_light"
                 android:textAlignment="center"
                 android:padding="15dp"/>
 
@@ -97,7 +94,6 @@
                 app:drawableTopCompat="@drawable/ic_study_session_line"
                 android:text="@string/study_session"
                 android:textColor="@color/black"
-                android:fontFamily="@font/roboto_mono_light"
                 android:textAlignment="center"
                 android:padding="15dp"
                 android:onClick="ClickStudySession"/>
@@ -111,7 +107,7 @@
             android:inputType="textPersonName"
             android:hint="@string/event_name"
             android:autofillHints="@string/event_name"
-            android:fontFamily="@font/roboto_mono_light"
+
             android:textSize="20sp"
             android:ems="10"
             android:layout_margin="20dp"/>
@@ -142,7 +138,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="@string/select_start_date"
-                    android:fontFamily="@font/roboto_mono_light"
+
                     android:textSize="15sp"
                     android:paddingBottom="15dp"/>
 
@@ -151,7 +147,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="@string/select_end_date"
-                    android:fontFamily="@font/roboto_mono_light"
+
                     android:textSize="15sp"/>
         </LinearLayout>
 
@@ -167,7 +163,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="@string/start_time"
-                    android:fontFamily="@font/roboto_mono_light"
+
                     android:textSize="15sp"
                     android:textAlignment="textEnd"
                     android:paddingEnd="15dp"
@@ -179,7 +175,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="@string/end_time"
-                    android:fontFamily="@font/roboto_mono_light"
+
                     android:textSize="15sp"
                     android:textAlignment="textEnd"
                     android:paddingEnd="15dp"
@@ -204,7 +200,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/priority"
-                android:fontFamily="@font/roboto_mono_light"
+
                 android:textSize="15sp"
                 android:padding="15dp"/>
 
@@ -218,20 +214,20 @@
                          android:layout_width="wrap_content"
                          android:layout_height="wrap_content"
                          android:text="@string/high_priority"
-                         android:fontFamily="@font/roboto_mono_light"/>
+                         />
 
             <RadioButton android:id="@+id/rb_med_priority"
                          android:layout_width="wrap_content"
                          android:layout_height="wrap_content"
                          android:text="@string/med_priority"
-                         android:fontFamily="@font/roboto_mono_light"
+
                          android:layout_marginStart="10dp"/>
 
             <RadioButton android:id="@+id/rb_low_priority"
                          android:layout_width="wrap_content"
                          android:layout_height="wrap_content"
                          android:text="@string/low_priority"
-                         android:fontFamily="@font/roboto_mono_light"
+
                          android:layout_marginStart="10dp"/>
         </RadioGroup>
     </LinearLayout>
@@ -253,7 +249,7 @@
     <!--                android:layout_height="wrap_content"-->
     <!--                android:layout_weight="1"-->
     <!--                android:text="@string/course"-->
-    <!--                android:fontFamily="@font/roboto_mono_light"-->
+    <!--                -->
     <!--                android:textSize="15sp"-->
     <!--                android:padding="15dp"/>-->
 
