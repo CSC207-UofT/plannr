@@ -1,6 +1,7 @@
 package com.generic.plannr;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNull;
 
@@ -141,6 +142,8 @@ public class UserGatewayTest {
 
     @Test
     public void uniqueEmail() {
+        ug.saveToDatabase(um.getUser());
+        assertFalse(ug.uniqueEmail("test@gmail.com"));
     }
 
     @Test
