@@ -23,7 +23,7 @@ import java.util.Date;
 import java.util.Locale;
 
 public class AddEventActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener{
-//    Initialize Variables
+    //    Initialize Variables
     int startYear, startMonth, startDay, endYear, endMonth, endDay, startHour, startMinute, endHour, endMinute, priority;
     TextView tvStartDate, tvStartTime, tvEndDate, tvEndTime, tvAssessment, tvDeadline, tvClassTime, tvStudySession;
     RadioGroup rgPriorities;
@@ -81,14 +81,14 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         tvStartDate.setOnClickListener(v -> {
             DatePickerDialog datePickerDialog = new DatePickerDialog(
                     AddEventActivity.this, (view, year, month, dayOfMonth) -> {
-                        startYear = year;
-                        startMonth = month;
-                        startDay = dayOfMonth;
+                startYear = year;
+                startMonth = month;
+                startDay = dayOfMonth;
 
-                        @SuppressLint("DefaultLocale")
-                        String startDate = String.format("%02d-%02d-%d", startDay, (startMonth+1), startYear);
-                        tvStartDate.setText(startDate);
-                    }, startYear, startMonth, startDay);
+                @SuppressLint("DefaultLocale")
+                String startDate = String.format("%02d-%02d-%d", startDay, (startMonth+1), startYear);
+                tvStartDate.setText(startDate);
+            }, startYear, startMonth, startDay);
             datePickerDialog.updateDate(startYear, startMonth, startDay); // displays prev selected date
             datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis()); // disable past date selection
             datePickerDialog.show();
@@ -126,18 +126,18 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         tvStartTime.setOnClickListener(v -> {
             TimePickerDialog timePickerDialog = new TimePickerDialog(
                     AddEventActivity.this, (view, hourOfDay, minute) -> {
-                        startHour = hourOfDay;
-                        startMinute = minute;
+                startHour = hourOfDay;
+                startMinute = minute;
 
-                        Calendar calendar12 = Calendar.getInstance(); // initialize calendar
-                        String startDate = tvStartDate.getText().toString().trim();
-                        String[] strings = startDate.split("-");
-                        int sDay = Integer.parseInt(strings[0]);
-                        calendar12.set(Calendar.DAY_OF_MONTH, sDay);
-                        calendar12.set(Calendar.HOUR_OF_DAY, startHour);
-                        calendar12.set(Calendar.MINUTE, startMinute);
-                        tvStartTime.setText(DateFormat.format("hh:mm aa", calendar12));
-                    }, startHour, startMinute, false);
+                Calendar calendar12 = Calendar.getInstance(); // initialize calendar
+                String startDate = tvStartDate.getText().toString().trim();
+                String[] strings = startDate.split("-");
+                int sDay = Integer.parseInt(strings[0]);
+                calendar12.set(Calendar.DAY_OF_MONTH, sDay);
+                calendar12.set(Calendar.HOUR_OF_DAY, startHour);
+                calendar12.set(Calendar.MINUTE, startMinute);
+                tvStartTime.setText(DateFormat.format("hh:mm aa", calendar12));
+            }, startHour, startMinute, false);
             timePickerDialog.show();
         });
 
@@ -145,28 +145,28 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         tvEndTime.setOnClickListener(v -> {
             TimePickerDialog timePickerDialog = new TimePickerDialog(
                     AddEventActivity.this, (view, hourOfDay, minute) -> {
-                        endHour = hourOfDay;
-                        endMinute = minute;
+                endHour = hourOfDay;
+                endMinute = minute;
 
-                        Calendar calendar1 = Calendar.getInstance(); // initialize calendar
-                        String endDate = tvEndDate.getText().toString().trim();
-                        String[] strings = endDate.split("-");
-                        int sDay = Integer.parseInt(strings[0]);
-                        calendar1.set(Calendar.DAY_OF_MONTH, sDay);
-                        calendar1.set(Calendar.HOUR_OF_DAY, endHour);
-                        calendar1.set(Calendar.MINUTE, endMinute);
-                        tvEndTime.setText(DateFormat.format("hh:mm aa", calendar1));
-                    }, endHour, endMinute, false);
+                Calendar calendar1 = Calendar.getInstance(); // initialize calendar
+                String endDate = tvEndDate.getText().toString().trim();
+                String[] strings = endDate.split("-");
+                int sDay = Integer.parseInt(strings[0]);
+                calendar1.set(Calendar.DAY_OF_MONTH, sDay);
+                calendar1.set(Calendar.HOUR_OF_DAY, endHour);
+                calendar1.set(Calendar.MINUTE, endMinute);
+                tvEndTime.setText(DateFormat.format("hh:mm aa", calendar1));
+            }, endHour, endMinute, false);
             timePickerDialog.show();
         });
     }
 
-//    Back Button
+    //    Back Button
     public void clickBack(View view) {
         activity.redirectActivity(this, SchoolActivity.class);
     }
 
-//    Priority Selection
+    //    Priority Selection
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         if (checkedId == R.id.rb_high_priority) {
@@ -228,7 +228,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
      * @return whether the added event includes all it's needed attributes
      */
     public boolean addEventInput() {
-        Validator input = new Validator();
+        InputTextValidator validator = new InputTextValidator();
         String startDate = tvStartDate.getText().toString().trim();
         String endDate = tvEndDate.getText().toString().trim();
         String startTime = tvStartTime.getText().toString().trim();
@@ -253,8 +253,9 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
             }
         }
 
-        return input.validateAddEvent(etEventName) & input.validateAddEvent(tvEndDate)
-                & input.validateAddEvent(tvEndTime) & input.validateAddEvent(etCourse) & endTimeAfter;
+        return validator.validateAddEvent(etEventName) & validator.validateAddEvent(tvEndDate)
+                & validator.validateAddEvent(tvEndTime) & validator.validateAddEvent(etCourse)
+                & endTimeAfter;
     }
     /**
      * Changes the color of the textview
