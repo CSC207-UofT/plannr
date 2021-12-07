@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".AddAssessmentFragment">
+
+    <!-- Add Event Name -->
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="15dp">
+
+        <ImageView android:layout_width="30dp"
+                   android:layout_height="30dp"
+                   android:src="@drawable/ic_label"
+                   android:contentDescription="@string/select_date"/>
+
+        <EditText
+                android:id="@+id/et_event_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:hint="@string/event_name"
+                android:autofillHints="@string/event_name"
+                android:textSize="20sp"
+                android:ems="10"
+                android:layout_marginHorizontal="10dp"/>
+    </LinearLayout>
+
+    <!-- Add Event Date & Time -->
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="15dp">
+
+        <ImageView android:layout_width="30dp"
+                   android:layout_height="30dp"
+                   android:src="@drawable/ic_time"
+                   android:contentDescription="@string/select_date"/>
+
+        <!-- Event Start & End Date -->
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="15dp">
+
+            <TextView
+                    android:id="@+id/tv_start_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/select_start_date"
+                    android:textSize="15sp"
+                    android:layout_marginBottom="25dp"/>
+<!--            android:onClick="clickStartDate"-->
+
+            <TextView
+                    android:id="@+id/tv_end_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/select_end_date"
+                    android:textSize="15sp"/>
+<!--            android:onClick="clickEndDate"-->
+        </LinearLayout>
+
+        <!-- Event Start & End Time -->
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="end">
+
+            <TextView
+                    android:id="@+id/tv_start_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/start_time"
+                    android:textSize="15sp"
+                    android:textAlignment="textEnd"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="25dp"/>
+<!--            android:onClick="clickStartTime"-->
+
+            <TextView
+                    android:id="@+id/tv_end_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/end_time"
+                    android:textSize="15sp"
+                    android:textAlignment="textEnd"
+                    android:layout_marginEnd="15dp"/>
+<!--            android:onClick="clickEndTime"-->
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Add Event Priority -->
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="15dp">
+
+        <ImageView android:layout_width="30dp"
+                   android:layout_height="30dp"
+                   android:src="@drawable/ic_priority"
+                   android:contentDescription="@string/priority"/>
+
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/priority"
+                android:textSize="15sp"
+                android:layout_margin="15dp"/>
+
+        <RadioGroup android:id="@+id/rg_priorities"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginEnd="15dp">
+
+            <RadioButton android:id="@+id/rb_high_priority"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:text="@string/high_priority"
+                         android:checked="true"/>
+
+            <RadioButton android:id="@+id/rb_med_priority"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:text="@string/med_priority"
+                         android:layout_marginStart="10dp"/>
+
+            <RadioButton android:id="@+id/rb_low_priority"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:text="@string/low_priority"
+                         android:layout_marginStart="10dp"/>
+        </RadioGroup>
+    </LinearLayout>
+
+    <!-- Select Course -->
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="15dp">
+
+        <ImageView android:layout_width="30dp"
+                   android:layout_height="30dp"
+                   android:src="@drawable/ic_school"
+                   android:contentDescription="@string/select_date"/>
+
+        <EditText
+                android:id="@+id/et_course"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/course"
+                android:inputType="textCapCharacters"
+                android:autofillHints="@string/course"
+                android:textSize="15sp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="10dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".EventActivity">
+
+    <!--  Action Bar  -->
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black"
+            android:orientation="horizontal"
+            android:padding="15dp"
+            android:gravity="center_vertical">
+
+        <!--  Back Button  -->
+        <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_back_arrow"
+                android:contentDescription="@string/back"
+                android:onClick="clickBack"/>
+
+        <!--  Add Event Text  -->
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/add_school_event"
+                android:textSize="25sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:fontFamily="@font/roboto_mono_bold"
+                android:layout_marginStart="15dp"
+                android:gravity="start"/>
+
+        <!--  Save Button  -->
+        <ImageView
+                android:id="@+id/iv_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_done"
+                android:contentDescription="@string/save"
+                android:onClick="clickSaveEvent"/>
+    </LinearLayout>
+
+    <!--  Select Event Type  -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/nav_events"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="10dp"
+            app:menu="@menu/event_navigation"
+            app:itemIconSize="35dp"
+            app:itemRippleColor="@color/lavender"
+            app:labelVisibilityMode="labeled"/>
+
+    <!--  Event Type Fragments  -->
+    <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+</LinearLayout>
