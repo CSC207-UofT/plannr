@@ -57,7 +57,7 @@ public class PasswordValidator implements Validator {
         Pattern uppercase = Pattern.compile(".*[A-Z].*");
         Pattern lowercase = Pattern.compile(".*[a-z].*");
         Pattern number = Pattern.compile(".*[0-9].*");
-        Pattern specialChar = Pattern.compile(".*[!@#$%^&*()-_\\\\/\\[\\]=+].*");
+        Pattern specialChar = Pattern.compile(".*[!@#&()–\\[\\]?/\\\\*_$^+=].*");
         Pattern minChar = Pattern.compile(".{6,}");
         StringBuilder str = new StringBuilder();
         str.append("Your password requires: \n");
