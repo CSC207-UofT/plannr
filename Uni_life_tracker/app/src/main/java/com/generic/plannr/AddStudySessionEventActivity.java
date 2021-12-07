@@ -19,7 +19,6 @@ import com.generic.plannr.Gateways.EventGateway;
 import com.generic.plannr.Gateways.UserGateway;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -61,7 +60,7 @@ public class AddStudySessionEventActivity extends AppCompatActivity implements R
 //        Event navigation bar
         BottomNavigationView navEvents = findViewById(R.id.nav_events);
         navEvents.setSelectedItemId(R.id.nav_study_session);
-        navEvents.setOnNavigationItemSelectedListener(item -> {
+        navEvents.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.nav_assessment:
                     startActivity(new Intent(getApplicationContext(), AddEventActivity.class));
