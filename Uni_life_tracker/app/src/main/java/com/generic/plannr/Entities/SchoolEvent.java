@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * Represents an event with a start and end date and priority.
+ * Represents a school event with a start and end date and priority.
  */
 public class SchoolEvent {
     private String eventType;
@@ -14,16 +14,21 @@ public class SchoolEvent {
     private LocalDateTime endDate;
     private String course;
     private String location;
-    public static final DateTimeFormatter DATEFORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+    public static final DateTimeFormatter DATEFORMAT =
+            DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
 
     /**
-     * Construct an com.generic.plannr.Entities.Event giving them the given
-     * name, priority, start and end date.
+     * Construct an com.generic.plannr.Entities.SchoolEvent event, giving them the given
+     * name, priority, start date, end date, course.
      *
-     * @param name This com.generic.plannr.Entities.Event's name
-     * @param priority This com.generic.plannr.Entities.Event's priority (0 = high, 1 = mid, 2 = low)
-     * @param startDate This com.generic.plannr.Entities.Event's start date
-     * @param endDate This com.generic.plannr.Entities.Event's end date
+     * @param eventType This com.generic.plannr.Entities.SchoolEvent's event type ("assessment",
+     *                  "deadline", "class", "study session")
+     * @param name This com.generic.plannr.Entities.SchoolEvent's name
+     * @param priority This com.generic.plannr.Entities.SchoolEvent's priority
+     *                 (0 = high, 1 = mid, 2 = low)
+     * @param startDate This com.generic.plannr.Entities.SchoolEvent's start date
+     * @param endDate This com.generic.plannr.Entities.SchoolEvent's end date
+     * @param course This com.generic.plannr.Entities.SchoolEvent's course
      */
     public SchoolEvent(String eventType, String name, int priority, LocalDateTime startDate,
                        LocalDateTime endDate, String course) {
@@ -33,12 +38,30 @@ public class SchoolEvent {
         this.endDate = endDate;
     }
 
+    /**
+     * Construct an com.generic.plannr.Entities.SchoolEvent event, giving them the given
+     * name, priority, start date, end date, course.
+     *
+     * @param eventType This com.generic.plannr.Entities.SchoolEvent's event type ("assessment",
+     *                  "deadline", "class", "study session")
+     * @param name This com.generic.plannr.Entities.SchoolEvent's name
+     * @param priority This com.generic.plannr.Entities.SchoolEvent's priority
+     *                 (0 = high, 1 = mid, 2 = low)
+     * @param startDate This com.generic.plannr.Entities.SchoolEvent's start date
+     * @param endDate This com.generic.plannr.Entities.SchoolEvent's end date
+     * @param course This com.generic.plannr.Entities.SchoolEvent's course
+     * @param location This com.generic.plannr.Entities.SchoolEvent's location
+     */
     public SchoolEvent(String eventType, String name, int priority, LocalDateTime startDate,
                        LocalDateTime endDate, String course, String location) {
         this (eventType, name, priority, startDate, endDate, course);
         this.location = location;
     }
 
+    /**
+     * Gets the event type of SchoolEvent ("assessment", "deadline", "class", "study session")
+     * @return the name of the event type of SchoolEvent
+     */
     public String getEventType() { return this.eventType; }
 
     /**
@@ -73,8 +96,16 @@ public class SchoolEvent {
         return this.endDate;
     }
 
+    /**
+     * Gets the course of SchoolEvent
+     * @return the name of the course of SchoolEvent
+     */
     public String getCourse() { return this.course; }
 
+    /**
+     * Gets the location of SchoolEvent
+     * @return the name of the location of SchoolEvent
+     */
     public String getLocation() { return this.location; }
 
 }
