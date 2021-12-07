@@ -1,4 +1,4 @@
-package com.generic.plannr;
+package com.generic.plannr.tests;
 
 import com.generic.plannr.Entities.Event;
 
