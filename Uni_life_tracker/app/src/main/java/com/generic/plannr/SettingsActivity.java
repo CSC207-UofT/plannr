@@ -1,3 +1,7 @@
+/* Plannr by Generic Name
+ *
+ * This file contains methods for activity_settings.xml.
+ */
 package com.generic.plannr;
 
 import android.os.Bundle;
@@ -11,9 +15,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.Objects;
 
 public class SettingsActivity extends AppCompatActivity {
-    // initialize variable
     DrawerLayout drawerLayout;
-
     private TextInputEditText etName;
     private TextInputEditText etPassword;
     private TextInputLayout tiName;
@@ -28,57 +30,13 @@ public class SettingsActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout); // nav menu
         activity = new MainActivity();
 
-        // accesses user info from text boxes
         etName = findViewById(R.id.et_name);
         etPassword = findViewById(R.id.et_password);
         tiName = findViewById(R.id.ti_name);
         tiPassword = findViewById(R.id.ti_password);
 
-        // retrieve user's name and uni using gateway
         etName.setText(ug.getLoggedInName());
         etPassword.setText(ug.getPassword(ug.getLoggedInEmail()));
-    }
-
-    public void clickMenu(View view) {
-        activity.openDrawer(drawerLayout);
-    } // open drawer
-
-    public void clickLogo(View view) {
-        activity.redirectActivity(this, MainActivity.class);
-    } // redirect activity to main
-
-    public void clickSchool(View view) {
-        activity.redirectActivity(this, SchoolActivity.class);
-    } // redirect activity to school
-
-    // TODO: change this to life later
-//    public void clickLife(View view) { activity.redirectActivity(this, MainActivity.class); } // redirect activity to life
-
-    public void clickExpenses(View view) {
-        activity.redirectActivity(this, ExpensesActivity.class);
-    } // redirect activity to expenses
-
-    public void clickSettings(View view) {
-    } // recreate activity
-
-    public void clickLogOut(View view) {
-        activity.logout(this);
-    } // prompt logout
-
-    public void clickSave(View view) {
-        // gets user input from textbox
-        Validator input = new Validator();
-        if (input.validateEntry(tiPassword, ug, tiName, tiPassword, true)) {
-            String name = Objects.requireNonNull(tiName.getEditText()).getText().toString();
-            String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();
-
-            // replaces current data in database with user input
-            ug.updateName(name);
-            ug.updatePassword(password);
-            // disables textbox so it becomes read only
-            textboxEditability(false);
-        }
-
     }
 
     @Override
@@ -92,14 +50,95 @@ public class SettingsActivity extends AppCompatActivity {
         moveTaskToBack(true);
     }
 
+    /**
+     * Enables EditText for text editing.
+     */
     public void clickEdit(View view) {
         // enabled textboxes so they can be edited
-        textboxEditability(true);
+        changeTextEdit(true);
     }
 
-    public void textboxEditability(boolean bool) {
+    /**
+     * Enables/disables EditText for text editing.
+     *
+     * @param bool Whether to disable (false) or enable (true) EditText.
+     */
+    public void changeTextEdit(boolean bool) {
         etName.setEnabled(bool);
         etPassword.setEnabled(bool);
     }
 
+    public void clickSave(View view) {
+        // gets user input from textbox
+        Validator input = new Validator();
+        if (input.validateEntry(tiPassword, ug, tiName, tiPassword, true)) {
+            String name = Objects.requireNonNull(tiName.getEditText()).getText().toString();
+            String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();
+
+            // replaces current data in database with user input
+            ug.updateName(name);
+            ug.updatePassword(password);
+            changeTextEdit(false); // Disables textbox so it becomes read only
+        }
+    }
+
+    /**
+     * Opens navigation menu on menu icon click.
+     *
+     * @param view a View for the device screen.
+     */
+    public void clickMenu(View view) {
+        activity.openDrawer(drawerLayout);
+    } // open drawer
+
+    /**
+     * Directs activity to the Main activity on logo click.
+     *
+     * @param view a View for the device screen.
+     */
+    public void clickLogo(View view) {
+        activity.redirectActivity(this, MainActivity.class);
+    } // redirect activity to main
+
+    /**
+     * Directs activity to the School activity on school icon click.
+     *
+     * @param view a View for the device screen.
+     */
+    public void clickSchool(View view) {
+        activity.redirectActivity(this, SchoolActivity.class);
+    } // redirect activity to school
+
+//    /**
+//     * Directs activity to the Life activity on life icon click.
+//     *
+//     * @param view  a View for the device screen.
+//     */
+//    public void clickLife(View view) { activity.redirectActivity(this, MainActivity.class); } // redirect activity to life
+
+    /**
+     * Directs activity to the Expenses activity on expenses icon click.
+     *
+     * @param view a View for the device screen.
+     */
+    public void clickExpenses(View view) {
+        activity.redirectActivity(this, ExpensesActivity.class);
+    }
+
+    /**
+     * Directs activity to the Settings activity on settings icon click.
+     *
+     * @param view a View for the device screen.
+     */
+    public void clickSettings(View view) {
+    } // recreate activity
+
+    /**
+     * Prompts log out on a logout icon click.
+     *
+     * @param view a View for the device screen.
+     */
+    public void clickLogOut(View view) {
+        activity.logout(this);
+    } // prompt logout
 }

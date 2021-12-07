@@ -1,3 +1,7 @@
+/* Plannr by Generic Name
+ *
+ * This file contains methods for activity_school.xml.
+ */
 package com.generic.plannr;
 
 import android.os.Bundle;
@@ -34,61 +38,30 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_school);
-        initWidgets();
+
+        activity = new MainActivity();
+        rvCalendar = findViewById(R.id.rv_calendar);
+        monthYearText = findViewById(R.id.tv_month_year);
+        drawerLayout = findViewById(R.id.drawer_layout);
+        rvEvents = findViewById(R.id.rv_events);
+
         CalendarUtil.selectedDate = LocalDate.now();
         setMonthView();
-        drawerLayout = findViewById(R.id.drawer_layout);
-        activity = new MainActivity();
 
-        rvEvents = findViewById(R.id.rv_events);
         eventsList = new ArrayList<>();
         setEventInfo();
         setAdapter();
     }
 
-    private void setAdapter() {
-        ListEvents adapter = new ListEvents(eventsList);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        rvEvents.setLayoutManager(layoutManager);
-        rvEvents.setItemAnimator(new DefaultItemAnimator());
-        rvEvents.setAdapter(adapter);
+    @Override
+    protected void onPause() {
+        super.onPause();
+        activity.closeDrawer(drawerLayout); // close drawer
     }
 
-    private void setEventInfo() {
-
-        int userID = ug.getLoggedInUserID();
-
-        eventsList.addAll(GetEventsOfDate.getEventsOfDate(eg.getAllEvents(userID), CalendarUtil.selectedDate));
-    }
-
-    private void initWidgets() {
-        rvCalendar = findViewById(R.id.rv_calendar);
-        monthYearText = findViewById(R.id.tv_month_year);
-    }
-
-    private void setMonthView() {
-        monthYearText.setText(monthYearFromDate(CalendarUtil.selectedDate));
-        ArrayList<LocalDate> daysInMonth = daysInMonthArray(CalendarUtil.selectedDate);
-
-        CalendarAdapter calendarAdapter = new CalendarAdapter(daysInMonth, this);
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 7);
-        rvCalendar.setLayoutManager(layoutManager);
-        rvCalendar.setAdapter(calendarAdapter);
-    }
-
-
-    public void clickPreviousMonth(View view) {
-        CalendarUtil.selectedDate = CalendarUtil.selectedDate.minusMonths(1);
-        setMonthView();
-    }
-
-    public void clickNextMonth(View view) {
-        CalendarUtil.selectedDate = CalendarUtil.selectedDate.plusMonths(1);
-        setMonthView();
-    }
-
-    public void clickAddEvent(View view) {
-        activity.redirectActivity(this, AddEventActivity.class);
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
     }
 
     @Override
@@ -101,43 +74,123 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
             setAdapter();
             setMonthView();
         }
-
     }
 
+    /**
+     * Sets adapter to display user's event list.
+     */
+    private void setAdapter() {
+        ListEvents adapter = new ListEvents(eventsList);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        rvEvents.setLayoutManager(layoutManager);
+        rvEvents.setItemAnimator(new DefaultItemAnimator());
+        rvEvents.setAdapter(adapter);
+    }
+
+    /**
+     * Sets the events to be displayed.
+     */
+    private void setEventInfo() {
+        int userID = ug.getLoggedInUserID();
+        eventsList.addAll(GetEventsOfDate.getEventsOfDate(eg.getAllEvents(userID), CalendarUtil.selectedDate));
+    }
+
+    /**
+     * Sets monthly calendar view.
+     */
+    private void setMonthView() {
+        monthYearText.setText(monthYearFromDate(CalendarUtil.selectedDate));
+        ArrayList<LocalDate> daysInMonth = daysInMonthArray(CalendarUtil.selectedDate);
+
+        CalendarAdapter calendarAdapter = new CalendarAdapter(daysInMonth, this);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 7);
+        rvCalendar.setLayoutManager(layoutManager);
+        rvCalendar.setAdapter(calendarAdapter);
+    }
+
+    /**
+     * Displays the previous month and sets month view.
+     */
+    public void clickPreviousMonth(View view) {
+        CalendarUtil.selectedDate = CalendarUtil.selectedDate.minusMonths(1);
+        setMonthView();
+    }
+
+    /**
+     * Displays the next month and sets month view.
+     */
+    public void clickNextMonth(View view) {
+        CalendarUtil.selectedDate = CalendarUtil.selectedDate.plusMonths(1);
+        setMonthView();
+    }
+
+    /**
+     * Directs activity to the Add Event activity on plus icon click.
+     *
+     * @param view a View for the device screen.
+     */
+    public void clickAddEvent(View view) {
+        activity.redirectActivity(this, AddEventActivity.class);
+    }
+
+    /**
+     * Opens navigation menu on menu icon click.
+     *
+     * @param view a View for the device screen.
+     */
     public void clickMenu(View view) {
         activity.openDrawer(drawerLayout);
-    } // open drawer
+    }
 
+    /**
+     * Directs activity to the Main activity on logo click.
+     *
+     * @param view a View for the device screen.
+     */
     public void clickLogo(View view) {
         activity.redirectActivity(this, MainActivity.class);
-    } // redirect activity to main
+    }
 
+    /**
+     * Directs activity to the School activity on school icon click.
+     *
+     * @param view a View for the device screen.
+     */
     public void clickSchool(View view) {
-    } // recreate activity
+    }
 
-    // TODO: change this to life later
+//    /**
+//     * Directs activity to the Life activity on life icon click.
+//     *
+//     * @param view  a View for the device screen.
+//     */
 //    public void clickLife(View view) { activity.redirectActivity(this, MainActivity.class); } // redirect activity to life
 
+    /**
+     * Directs activity to the Expenses activity on expenses icon click.
+     *
+     * @param view a View for the device screen.
+     */
     public void clickExpenses(View view) {
         activity.redirectActivity(this, ExpensesActivity.class);
-    } // redirect activity to expenses
+    }
 
+    /**
+     * Directs activity to the Settings activity on settings icon click.
+     *
+     * @param view a View for the device screen.
+     */
     public void clickSettings(View view) {
         activity.redirectActivity(this, SettingsActivity.class);
-    } // redirect activity to settings
+    }
 
+    /**
+     * Prompts log out on a logout icon click.
+     *
+     * @param view a View for the device screen.
+     */
     public void clickLogOut(View view) {
         activity.logout(this);
-    } // prompt logout
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        activity.closeDrawer(drawerLayout); // close drawer
     }
 
-    @Override
-    public void onBackPressed() {
-        moveTaskToBack(true);
-    }
 }

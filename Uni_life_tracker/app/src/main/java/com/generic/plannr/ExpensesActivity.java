@@ -1,3 +1,7 @@
+/* Plannr by Generic Name
+ *
+ * This file contains methods for activity_expenses.xml.
+ */
 package com.generic.plannr;
 
 import android.content.SharedPreferences;
@@ -35,7 +39,6 @@ public class ExpensesActivity extends AppCompatActivity {
     UserGateway ug = new UserGateway(ExpensesActivity.this);
     ExpenseGateway eg = new ExpenseGateway(ExpensesActivity.this);
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,9 +66,19 @@ public class ExpensesActivity extends AppCompatActivity {
             showTargetView();
         }
 
-        // Uses the recycler view to display the event list
         setExpenseInfo();
         setAdapter();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        activity.closeDrawer(drawerLayout); // close drawer
+    }
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
     }
 
     /**
@@ -112,7 +125,7 @@ public class ExpensesActivity extends AppCompatActivity {
     }
 
     /**
-     * Calculates the total expenses using the expense list
+     * Calculates the total expenses using the expense list.
      */
     public void calculateExpense() {
         totalExpenses = 0.00;
@@ -122,6 +135,24 @@ public class ExpensesActivity extends AppCompatActivity {
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
         tvTotalExpenses.setText(formatter.format(totalExpenses));
 
+    }
+
+    /**
+     * Calculates balance and changes balance text colour based on outcome.
+     * Text colour is red if income is less than total expenses,
+     * green if greater than, and black if equal.
+     */
+    public void updateBalance() {
+        balance = income - totalExpenses;
+        if (balance > 0) {
+            tvBalance.setTextColor(Color.GREEN);
+        } else if (balance < 0) {
+            tvBalance.setTextColor(Color.RED);
+        } else {
+            tvBalance.setTextColor(Color.BLACK);
+        }
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        tvBalance.setText(formatter.format(balance));
     }
 
     /**
@@ -143,19 +174,6 @@ public class ExpensesActivity extends AppCompatActivity {
         ug.updateIncome(income);
         //ug.updateIncome(income);
         updateBalance();
-    }
-
-    public void updateBalance() {
-        balance = income - totalExpenses;
-        if (balance > 0) {
-            tvBalance.setTextColor(Color.GREEN);
-        } else if (balance < 0) {
-            tvBalance.setTextColor(Color.RED);
-        } else {
-            tvBalance.setTextColor(Color.BLACK);
-        }
-        NumberFormat formatter = NumberFormat.getCurrencyInstance();
-        tvBalance.setText(formatter.format(balance));
     }
 
     /**
@@ -214,14 +232,4 @@ public class ExpensesActivity extends AppCompatActivity {
         activity.logout(this);
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        activity.closeDrawer(drawerLayout); // close drawer
-    }
-
-    @Override
-    public void onBackPressed() {
-        moveTaskToBack(true);
-    }
 }

@@ -34,7 +34,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    // initialize variable
     DrawerLayout drawerLayout;
     private ArrayList<Event> eventsList;
     private RecyclerView rvEvents;
@@ -55,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         dialog = new Dialog(this);
 
 
-        // sets the Welcome Name message to the user's name
+        // Sets the Welcome Name message to the user's name
         String welcome = "Welcome " + ug.getLoggedInName() + "!";
         tvWelcome.setText(welcome);
 
@@ -64,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
         tvViewDate.setText(currentDate);
 
-        // side menu
+        // Side menu
         drawerLayout = findViewById(R.id.drawer_layout); // side menu
 
         // Shows events list
@@ -113,7 +112,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     /**
-     * TODO: remove later
      * Sets the events to be displayed.
      */
     private void setEventInfo() {
