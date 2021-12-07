@@ -11,13 +11,17 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.generic.plannr.Entities.Event;
 import com.generic.plannr.Gateways.EventGateway;
 import com.generic.plannr.Gateways.UserGateway;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -60,8 +64,10 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
 //        Event navigation bar
         BottomNavigationView navEvents = findViewById(R.id.nav_events);
         navEvents.setSelectedItemId(R.id.nav_assessment);
-        navEvents.setOnNavigationItemSelectedListener(item -> {
-            switch (item.getItemId()) {
+        navEvents.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
                 case R.id.nav_assessment:
                     startActivity(new Intent(getApplicationContext(), AddEventActivity.class));
                     overridePendingTransition(0, 0);
@@ -84,6 +90,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
                     return true;
             }
             return false;
+            }
         });
 
         calendar = Calendar.getInstance();
