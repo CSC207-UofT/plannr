@@ -30,10 +30,12 @@ public class SchoolEvent {
      */
     public SchoolEvent(String eventType, String name, int priority, LocalDateTime startDate,
                        LocalDateTime endDate, String course) {
+        this.eventType = eventType;
         this.name = name;
         this.priority = priority;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.course = course;
     }
 
     /**
