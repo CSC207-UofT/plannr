@@ -52,7 +52,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void clickExpenses(View view) { activity.redirectActivity(this, ExpensesActivity.class); } // redirect activity to expenses
 
-    public void clickSettings(View view) { recreate(); } // recreate activity
+    public void clickSettings(View view) {} // recreate activity
 
     public void clickLogOut(View view) {
         activity.logout(this); } // prompt logout

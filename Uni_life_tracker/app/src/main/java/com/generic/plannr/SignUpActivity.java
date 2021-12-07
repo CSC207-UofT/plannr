@@ -74,6 +74,7 @@ public class SignUpActivity extends AppCompatActivity {
             ug.saveToDatabase(um.getUser());
 
             openMain();
+            ug.updateLoggedInUser(email);
         }
     }
 

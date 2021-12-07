@@ -1,6 +1,10 @@
 # Plannr
 Plannr is an organizational platform, in the form of an Android app, that helps university students coordinate their everyday routine, from schoolwork and expenses to their personal life. Users are able to track their events and deadlines to fit their personal needs, by the means of a calendar and a to-do list (displays events, for which the user can check to complete tasks).
 
+<p align="center">
+  <img src="https://github.com/CSC207-UofT/course-project-generic-name-1/blob/main/plannr_blob_lavender.png" alt="Plannr" width="300">
+</p>
+
 ## Authors
 * **Dana Al Shekerchi** - *Frontend Developer* - [dalshekerchi](https://github.com/dalshekerchi)
 * **Bolade Amoussou** - *Backend Developer* - [cdw18](https://github.com/cdw18)

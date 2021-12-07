@@ -9,6 +9,8 @@ import com.generic.plannr.Controllers.PasswordValidator;
 import com.generic.plannr.Gateways.UserGateway;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.Objects;
+
 public class LoginActivity  extends AppCompatActivity {
 
     // initialize variables
@@ -49,6 +51,7 @@ public class LoginActivity  extends AppCompatActivity {
         // If all login credentials are correct, go into the main page
         if (LoginInput()) {
             openMain();
+            ug.updateLoggedInUser(Objects.requireNonNull(tiEmail.getEditText()).getText().toString());
         }
     }
 

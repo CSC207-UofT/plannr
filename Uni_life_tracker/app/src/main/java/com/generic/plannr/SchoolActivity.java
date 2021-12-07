@@ -114,7 +114,7 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
 
     public void clickLogo(View view) { activity.redirectActivity(this, MainActivity.class); } // redirect activity to main
 
-    public void clickSchool(View view) { recreate(); } // recreate activity
+    public void clickSchool(View view) {} // recreate activity
 
     // TODO: change this to life later
 //    public void clickLife(View view) { activity.redirectActivity(this, MainActivity.class); } // redirect activity to life
