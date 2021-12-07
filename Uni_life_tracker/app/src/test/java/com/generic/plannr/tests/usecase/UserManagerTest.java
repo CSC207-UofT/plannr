@@ -1,7 +1,8 @@
 package com.generic.plannr.tests.usecase;
 
-import com.generic.plannr.Entities.Event;
+import com.generic.plannr.Entities.SchoolEvent;
 import com.generic.plannr.UseCases.UserManager;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -37,7 +38,7 @@ public class UserManagerTest {
      */
     @Test
     public void TestAddEventToUserList() {
-        for (Event e : dayEventList) {
+        for (SchoolEvent e : dayEventList) {
             user.addEventToUsersList(e);
         }
         assertEquals(dayEventList.size(), user.viewEventList().size());
