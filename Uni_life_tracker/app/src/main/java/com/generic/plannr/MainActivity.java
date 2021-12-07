@@ -8,12 +8,13 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.*;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -37,8 +38,6 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
     DrawerLayout drawerLayout;
     private ArrayList<Event> eventsList;
     private RecyclerView rvEvents;
-    private Button testing;
-    private TextView tvEventNamePop;
     private ListEvents.RecyclerViewClickLister listener;
     UserGateway ug = new UserGateway(MainActivity.this);
     EventGateway eg = new EventGateway(MainActivity.this);
@@ -52,10 +51,8 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
         TextView tvViewDate = findViewById(R.id.tv_date); // Date
         TextView tvWelcome = findViewById(R.id.tv_welcome_name); // Welcome name
         Spinner spnSort = findViewById(R.id.spn_sort);
-        tvEventNamePop = findViewById(R.id.tv_event_name_pop);// Name of Event in popup
         drawerLayout = findViewById(R.id.drawer_layout); // Side menu
         rvEvents = findViewById(R.id.rv_events); // Events list
-        testing = findViewById(R.id.testing);
         dialog = new Dialog(this);
 
 
@@ -148,8 +145,6 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
             builder.setView(dialogView);
             builder.setCancelable(true);
             builder.show();
-
-            testing.setText(eventsList.get(position).getName());
         };
     }
 
@@ -262,9 +257,9 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
         logout(this);
     }
 
-    public void viewEvent(View view) {
-        dialog.setContentView(R.layout.popup_view_event);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.show();
-    }
+//    public void viewEvent(View view) {
+//        dialog.setContentView(R.layout.popup_view_event);
+//        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//        dialog.show();
+//    }
 }
