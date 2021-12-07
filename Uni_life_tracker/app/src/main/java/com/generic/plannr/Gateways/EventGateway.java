@@ -34,7 +34,7 @@ public class EventGateway implements EventGatewayInterface {
     /**
      * Insert the given event into the database
      *
-     * @param event The Event to be inserted
+     * @param event The SchoolEvent to be inserted
      */
     public void saveToDatabase(final SchoolEvent event, final int userID) {
         openDatabase();
@@ -51,12 +51,12 @@ public class EventGateway implements EventGatewayInterface {
     }
 
     /**
-     * Get the Event associated with id eventID currently stored
+     * Get the SchoolEvent associated with id eventID currently stored
      * in the database
      *
-     * @param eventID the id of the Event we want to return
+     * @param eventID the id of the SchoolEvent we want to return
      *
-     * @return the Event with id eventID
+     * @return the SchoolEvent with id eventID
      */
     public SchoolEvent getByID(final int eventID) {
         openDatabase();
@@ -87,7 +87,7 @@ public class EventGateway implements EventGatewayInterface {
 
 
     /**
-     * Get the list of Events currently stored in the database for user with
+     * Get the list of SchoolEvents currently stored in the database for user with
      * user id userID
      *
      * @param userID the user's id
@@ -129,7 +129,7 @@ public class EventGateway implements EventGatewayInterface {
     }
 
     /**
-     * Get the list of Events that start at date currently stored in the
+     * Get the list of SchoolEvents that start at date currently stored in the
      * database for user with user id userID
      *
      * @param userID the user's id
