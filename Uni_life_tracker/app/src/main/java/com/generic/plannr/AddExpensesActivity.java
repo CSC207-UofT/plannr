@@ -1,3 +1,7 @@
+/* Plannr by Generic Name
+ *
+ * This file contains methods for activity_add_expenses.xml.
+ */
 package com.generic.plannr;
 
 import android.content.Intent;
@@ -13,7 +17,6 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
 
-
 public class AddExpensesActivity extends AppCompatActivity {
 
     private TextInputLayout textInputName, textInputAmount;
@@ -24,16 +27,8 @@ public class AddExpensesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_expenses);
-        // connecting variables to UI features in activities
         textInputName = findViewById(R.id.add_expense_name);
         textInputAmount = findViewById(R.id.add_expense_amount);
-
-    }
-
-    private void openAddExpensesView() {
-        // Opens the expense list activity (ExpensesActivity)
-        Intent intent = new Intent(this, ExpensesActivity.class);
-        startActivity(intent);
     }
 
     /**
@@ -55,12 +50,23 @@ public class AddExpensesActivity extends AppCompatActivity {
     }
 
     /**
+     * Directs activity to the Expenses activity on back arrow icon click.
+     *
+     * @param view a View for the device screen.
+     */
+    public void clickBack(View view) {
+        // clicking the arrow back button
+        Intent intent = new Intent(this, ExpensesActivity.class);
+        startActivity(intent);
+    }
+
+    /**
      * Checks whether the information inputted matches the requirements and opens the expense and user info database
      * in order to insert an expense into the database, then opens the expense list view
      *
      * @param v The current view
      */
-    public void AddExpensesInput(View v) {
+    public void clickSaveExpense(View v) {
         if (validate(textInputName) & validate(textInputAmount)) {
             String name = Objects.requireNonNull(textInputName.getEditText()).getText().toString();
             String amount = Objects.requireNonNull(textInputAmount.getEditText()).getText().toString();
@@ -68,15 +74,9 @@ public class AddExpensesActivity extends AppCompatActivity {
 
             // Adds all the user's info into the database using the gateway
             eg.saveToDatabase(new Expense(name, Double.parseDouble(amount)), userID);
-            openAddExpensesView();
-
+            Intent intent = new Intent(this, ExpensesActivity.class);
+            startActivity(intent);
         }
-    }
-
-    public void ClickBack(View view) {
-        // clicking the arrow back button
-        Intent intent = new Intent(this, ExpensesActivity.class);
-        startActivity(intent);
     }
 }
 

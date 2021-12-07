@@ -19,7 +19,7 @@
                 android:id="@+id/iv_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="ClickBack"
+                android:onClick="clickBack"
                 android:src="@drawable/ic_back_arrow"
                 android:contentDescription="@string/back"/>
 
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_done"
                 android:contentDescription="@string/save"
-                android:onClick="AddExpensesInput"/>
+                android:onClick="clickSaveExpense"/>
 
     </LinearLayout>
 
