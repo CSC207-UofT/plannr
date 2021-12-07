@@ -12,19 +12,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 
-public class ListExpenses extends RecyclerView.Adapter<ListExpenses.MyViewHolder>{
+public class ListExpenses extends RecyclerView.Adapter<ListExpenses.MyViewHolder> {
     private ArrayList<Expense> expensesArrayList;
 
-    public ListExpenses(ArrayList<Expense> expensesArrayList){
+    public ListExpenses(ArrayList<Expense> expensesArrayList) {
         this.expensesArrayList = expensesArrayList;
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
-       private TextView expenseNameTxt, expenseAmountTxt;
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        private TextView expenseNameTxt, expenseAmountTxt;
         //private TextInputLayout expenseNameTxt, expenseAmountTxt;
 
 
-        public MyViewHolder(final View view){
+        public MyViewHolder(final View view) {
             super(view);
             expenseNameTxt = view.findViewById(R.id.tv_expense_name);
             expenseAmountTxt = view.findViewById(R.id.tv_expense_amount);

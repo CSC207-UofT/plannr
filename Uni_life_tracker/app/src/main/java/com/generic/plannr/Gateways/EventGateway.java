@@ -54,7 +54,6 @@ public class EventGateway implements EventGatewayInterface {
      * in the database
      *
      * @param eventID the id of the Event we want to return
-     *
      * @return the Event with id eventID
      */
     public Event getByID(final int eventID) {
@@ -82,14 +81,13 @@ public class EventGateway implements EventGatewayInterface {
      * user id userID
      *
      * @param userID the user's id
-     *
      * @return a list of all events stored in the database for the user
      */
     public ArrayList<Event> getAllEvents(int userID) {
         openDatabase();
         ArrayList<Event> eventsList = new ArrayList<>();
         @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM events WHERE " +
-                        "USER_ID = " + userID, null);
+                "USER_ID = " + userID, null);
         if (cur != null) {
             if (cur.moveToFirst()) {
                 do {
@@ -114,8 +112,7 @@ public class EventGateway implements EventGatewayInterface {
      * database for user with user id userID
      *
      * @param userID the user's id
-     * @param date the start date of the events to be returned
-     *
+     * @param date   the start date of the events to be returned
      * @return a list of all events that start at date stored in the
      * database for the user
      */

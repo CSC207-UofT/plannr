@@ -16,9 +16,9 @@ public class UserManager {
     /**
      * Constructs a user manager and creates a new user
      *
-     * @param name      is the user's name
-     * @param email     is the user's email
-     * @param password  is the user's password
+     * @param name     is the user's name
+     * @param email    is the user's email
+     * @param password is the user's password
      */
     public UserManager(String name, String email, String password) {
         u = createUser(name, email, password);
@@ -28,9 +28,9 @@ public class UserManager {
     /**
      * Creates a user
      *
-     * @param name      is the user's name
-     * @param email     is the user's email
-     * @param password  is the user's password
+     * @param name     is the user's name
+     * @param email    is the user's email
+     * @param password is the user's password
      * @return the created user
      */
     public User createUser(String name, String email, String password) {

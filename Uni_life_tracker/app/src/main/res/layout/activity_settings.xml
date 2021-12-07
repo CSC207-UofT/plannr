@@ -14,10 +14,11 @@
             android:orientation="vertical">
 
         <!--  Action Bar  -->
-        <LinearLayout android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:orientation="horizontal"
-                      android:gravity="center_vertical">
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
 
             <!--  Menu Button  -->
             <ImageView
@@ -27,7 +28,7 @@
                     android:src="@drawable/ic_menu"
                     android:contentDescription="@string/app_name"
                     android:padding="20dp"
-            />
+                    />
 
             <!--  Settings Text  -->
             <TextView
@@ -49,7 +50,7 @@
                     android:src="@drawable/ic_done_black"
                     android:contentDescription="@string/save"
                     android:padding="20dp"
-            />
+                    />
         </LinearLayout>
 
         <!--  Name  -->
@@ -82,7 +83,7 @@
                         android:inputType="text"
                         android:id="@+id/et_name"
                         android:enabled="false"
-                />
+                        />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
@@ -108,6 +109,7 @@
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     app:passwordToggleEnabled="true">
+
                 <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -116,7 +118,7 @@
                         android:inputType="textPassword"
                         android:id="@+id/et_password"
                         android:enabled="false"
-                />
+                        />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
@@ -128,12 +130,13 @@
                 android:gravity="center_vertical"
                 android:paddingVertical="10dp"
                 android:paddingHorizontal="20dp">
+
             <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/edit"
-                android:onClick="clickEdit"
-            />
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/edit"
+                    android:onClick="clickEdit"
+                    />
         </LinearLayout>
 
     </LinearLayout>

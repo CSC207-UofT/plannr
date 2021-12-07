@@ -12,6 +12,7 @@ import com.generic.plannr.Entities.Event;
 public class EventDateComparator implements Comparator<Event> {
     /**
      * Compares two events by their date.
+     *
      * @param e1 represents an Event
      * @param e2 represents an other Event
      * @return -1 if e1 before after e2, 0 if e1 and e2 occur at the same date-time,

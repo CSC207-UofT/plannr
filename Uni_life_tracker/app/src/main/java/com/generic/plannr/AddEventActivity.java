@@ -24,8 +24,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class AddEventActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener{
-//    Initialize Variables
+public class AddEventActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
+    //    Initialize Variables
     int yr, mth, day, hr, min, priority;
     String startDate, endDate, startTime, endTime;
     TextView tvStartDate, tvStartTime, tvEndDate, tvEndTime, tvAssessment, tvDeadline, tvClassTime, tvStudySession;
@@ -89,7 +89,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
     /**
      * Highlights any TextView text that is in empty or in an incorrect format.
      *
-     * @return  whether the added event includes all its needed attributes
+     * @return whether the added event includes all its needed attributes
      */
     public boolean addEventInput() {
         Validator input = new Validator();
@@ -99,7 +99,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         if (!endTime.isEmpty()) {
             LocalDateTime end = LocalDateTime.parse(endDate + " " + endTime, DATEFORMAT);
             // Checks if end date is after start date with its date time format
-            if (!end.isAfter(start)){
+            if (!end.isAfter(start)) {
                 // Warns user that the format is incorrect
                 Toast.makeText(this, "End date should be before start!", Toast.LENGTH_LONG).show();
                 changeTextColor(255);
@@ -134,11 +134,12 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         DATEFORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm a");
         start = LocalDateTime.parse(startDate + " " + startTime, DATEFORMAT);
     }
+
     /**
      * Prompts user to select a date, and sets selected date in textView.
      * The date can only be from the current date, or after selected start date.
      *
-     * @param textView  a TextView of the date.
+     * @param textView a TextView of the date.
      */
     public void setDate(TextView textView) {
         DatePickerDialog datePickerDialog = new DatePickerDialog(
@@ -147,7 +148,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
             mth = month;
             day = dayOfMonth;
 
-            @SuppressLint("DefaultLocale") String startDate = String.format("%02d-%02d-%d", day, (mth +1), yr);
+            @SuppressLint("DefaultLocale") String startDate = String.format("%02d-%02d-%d", day, (mth + 1), yr);
             textView.setText(startDate);
         }, yr, mth, day);
 
@@ -159,7 +160,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
     /**
      * Prompts user to select a time, and sets selected time in textView.
      *
-     * @param textView  a TextView of the time.
+     * @param textView a TextView of the time.
      */
     public void setTime(TextView textView) {
         TimePickerDialog timePickerDialog = new TimePickerDialog(
@@ -178,7 +179,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
     /**
      * Directs activity to the School activity on back arrow icon click.
      *
-     * @param view  a View for the device screen.
+     * @param view a View for the device screen.
      */
     public void clickBack(View view) {
         activity.redirectActivity(this, SchoolActivity.class);
@@ -187,7 +188,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
     /**
      * Saves event into the database.
      *
-     * @param view  a View for the device screen.
+     * @param view a View for the device screen.
      */
     public void clickSaveEvent(View view) {
         if (addEventInput()) {
@@ -207,7 +208,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
     /**
      * Directs activity to the Add Assessment Event activity on assessment icon click.
      *
-     * @param view  a View for the device screen.
+     * @param view a View for the device screen.
      */
     public void clickAssessment(View view) {
         activity.redirectActivity(this, MainActivity.class);  // TODO: direct to assessment page
@@ -216,7 +217,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
     /**
      * Directs activity to the Add Deadline Event activity on deadline icon click.
      *
-     * @param view  a View for the device screen.
+     * @param view a View for the device screen.
      */
     public void clickDeadline(View view) {
         activity.redirectActivity(this, MainActivity.class);  //TODO: direct to deadline page
@@ -225,7 +226,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
     /**
      * Directs activity to the Add Class Event activity on class icon click.
      *
-     * @param view  a View for the device screen.
+     * @param view a View for the device screen.
      */
     public void clickClassTime(View view) {
         activity.redirectActivity(this, MainActivity.class);  // TODO: direct to class page
@@ -234,7 +235,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
     /**
      * Directs activity to the Add Study Session Event activity on study session icon click.
      *
-     * @param view  a View for the device screen.
+     * @param view a View for the device screen.
      */
     public void clickStudySession(View view) {
         activity.redirectActivity(this, MainActivity.class);  // // TODO: direct to study session page
@@ -243,7 +244,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
     /**
      * Opens dialog for user to select a start date.
      *
-     * @param view  a View for the device screen.
+     * @param view a View for the device screen.
      */
     public void clickStartDate(View view) {
         setDate(tvStartDate);
@@ -252,7 +253,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
     /**
      * Opens dialog for user to select an end date.
      *
-     * @param view  a View for the device screen.
+     * @param view a View for the device screen.
      */
     public void clickEndDate(View view) {
         setDate(tvEndDate);
@@ -261,7 +262,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
     /**
      * Opens dialog for user to select an end time.
      *
-     * @param view  a View for the device screen.
+     * @param view a View for the device screen.
      */
     public void clickStartTime(View view) {
         setTime(tvStartTime);
@@ -270,7 +271,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
     /**
      * Opens dialog for user to select an end time.
      *
-     * @param view  a View for the device screen.
+     * @param view a View for the device screen.
      */
     public void clickEndTime(View view) {
         setTime(tvEndTime);

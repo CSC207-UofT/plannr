@@ -19,10 +19,10 @@ public class Deadline extends Event {
      * Construct com.generic.plannr.Entities.Deadline event, giving them the given
      * name, priority, end date, and course name.
      *
-     * @param name   This com.generic.plannr.Entities.Deadline's name
-     * @param priority  This com.generic.plannr.Entities.Deadline's priority
-     * @param endDate  This com.generic.plannr.Entities.Deadline's due date
-     * @param courseName  This com.generic.plannr.Entities.Deadline's course which it's from
+     * @param name       This com.generic.plannr.Entities.Deadline's name
+     * @param priority   This com.generic.plannr.Entities.Deadline's priority
+     * @param endDate    This com.generic.plannr.Entities.Deadline's due date
+     * @param courseName This com.generic.plannr.Entities.Deadline's course which it's from
      */
     public Deadline(String name, int priority, LocalDateTime endDate, String courseName) {
         super(name, priority, endDate, endDate);
@@ -31,6 +31,7 @@ public class Deadline extends Event {
 
     /**
      * Gets the course this deadline is for
+     *
      * @return the course of this deadline event
      */
     public String getCourse() {
@@ -39,12 +40,16 @@ public class Deadline extends Event {
 
     /**
      * Changes the course name this deadline is for
+     *
      * @param course is the new name of the course for this deadline event
      */
-    public void setCourse (String course) { this.course = course; }
+    public void setCourse(String course) {
+        this.course = course;
+    }
 
     /**
      * toString method
+     *
      * @return a String that describes this com.generic.plannr.Entities.Deadline event.
      */
     @NonNull
@@ -53,11 +58,9 @@ public class Deadline extends Event {
         String strPriority;
         if (this.getPriority() == 0) {
             strPriority = "high";
-        }
-        else if (this.getPriority() == 1) {
+        } else if (this.getPriority() == 1) {
             strPriority = "mid";
-        }
-        else {
+        } else {
             strPriority = "low";
         }
 

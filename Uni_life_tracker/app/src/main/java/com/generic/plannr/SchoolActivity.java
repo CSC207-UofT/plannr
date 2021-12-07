@@ -1,4 +1,5 @@
 package com.generic.plannr;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -19,8 +20,7 @@ import java.util.ArrayList;
 import static com.generic.plannr.CalendarUtil.daysInMonthArray;
 import static com.generic.plannr.CalendarUtil.monthYearFromDate;
 
-public class SchoolActivity extends AppCompatActivity implements CalendarAdapter.OnItemListener
-{
+public class SchoolActivity extends AppCompatActivity implements CalendarAdapter.OnItemListener {
     private TextView monthYearText;
     private RecyclerView rvCalendar;
     private DrawerLayout drawerLayout;
@@ -31,8 +31,7 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
     EventGateway eg = new EventGateway(SchoolActivity.this);
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_school);
         initWidgets();
@@ -62,14 +61,12 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
         eventsList.addAll(GetEventsOfDate.getEventsOfDate(eg.getAllEvents(userID), CalendarUtil.selectedDate));
     }
 
-    private void initWidgets()
-    {
+    private void initWidgets() {
         rvCalendar = findViewById(R.id.rv_calendar);
         monthYearText = findViewById(R.id.tv_month_year);
     }
 
-    private void setMonthView()
-    {
+    private void setMonthView() {
         monthYearText.setText(monthYearFromDate(CalendarUtil.selectedDate));
         ArrayList<LocalDate> daysInMonth = daysInMonthArray(CalendarUtil.selectedDate);
 
@@ -80,14 +77,12 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
     }
 
 
-    public void clickPreviousMonth(View view)
-    {
+    public void clickPreviousMonth(View view) {
         CalendarUtil.selectedDate = CalendarUtil.selectedDate.minusMonths(1);
         setMonthView();
     }
 
-    public void clickNextMonth(View view)
-    {
+    public void clickNextMonth(View view) {
         CalendarUtil.selectedDate = CalendarUtil.selectedDate.plusMonths(1);
         setMonthView();
     }
@@ -97,8 +92,7 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
     }
 
     @Override
-    public void onItemClick(int position, LocalDate date)
-    {
+    public void onItemClick(int position, LocalDate date) {
         eventsList.clear();
 
         if (date != null) {
@@ -110,18 +104,27 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
 
     }
 
-    public void clickMenu(View view) { activity.openDrawer(drawerLayout); } // open drawer
+    public void clickMenu(View view) {
+        activity.openDrawer(drawerLayout);
+    } // open drawer
 
-    public void clickLogo(View view) { activity.redirectActivity(this, MainActivity.class); } // redirect activity to main
+    public void clickLogo(View view) {
+        activity.redirectActivity(this, MainActivity.class);
+    } // redirect activity to main
 
-    public void clickSchool(View view) {} // recreate activity
+    public void clickSchool(View view) {
+    } // recreate activity
 
     // TODO: change this to life later
 //    public void clickLife(View view) { activity.redirectActivity(this, MainActivity.class); } // redirect activity to life
 
-    public void clickExpenses(View view) { activity.redirectActivity(this, ExpensesActivity.class); } // redirect activity to expenses
+    public void clickExpenses(View view) {
+        activity.redirectActivity(this, ExpensesActivity.class);
+    } // redirect activity to expenses
 
-    public void clickSettings(View view) { activity.redirectActivity(this, SettingsActivity.class); } // redirect activity to settings
+    public void clickSettings(View view) {
+        activity.redirectActivity(this, SettingsActivity.class);
+    } // redirect activity to settings
 
     public void clickLogOut(View view) {
         activity.logout(this);

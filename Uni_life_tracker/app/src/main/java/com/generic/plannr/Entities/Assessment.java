@@ -18,11 +18,11 @@ public class Assessment extends Event {
      * Constructs a com.generic.plannr.Entities.Assessment event, giving it the given name, priority,
      * start date, end date, and course
      *
-     * @param name  This com.generic.plannr.Entities.Assessment's name
+     * @param name      This com.generic.plannr.Entities.Assessment's name
      * @param priority  This com.generic.plannr.Entities.Assessment's priority
-     * @param startDate  This com.generic.plannr.Entities.Assessment's start date
-     * @param endDate  This com.generic.plannr.Entities.Assessment's end date
-     * @param course  This com.generic.plannr.Entities.Assessment's course from which its from.
+     * @param startDate This com.generic.plannr.Entities.Assessment's start date
+     * @param endDate   This com.generic.plannr.Entities.Assessment's end date
+     * @param course    This com.generic.plannr.Entities.Assessment's course from which its from.
      */
     public Assessment(String name, int priority, LocalDateTime startDate,
                       LocalDateTime endDate, String course) {
@@ -36,6 +36,7 @@ public class Assessment extends Event {
 
     /**
      * Get duration of this com.generic.plannr.Entities.Assessment
+     *
      * @return duration of this com.generic.plannr.Entities.Assessment
      */
     public Duration getDuration() {
@@ -44,18 +45,25 @@ public class Assessment extends Event {
 
     /**
      * Get the course this assessment is for
+     *
      * @return course of this com.generic.plannr.Entities.Assessment event
      */
-    public String getCourse() { return this.course; }
+    public String getCourse() {
+        return this.course;
+    }
 
     /**
      * Changes the course of this assessment
+     *
      * @param course is the new course name
      */
-    public void setCourse(String course) { this.course = course; }
+    public void setCourse(String course) {
+        this.course = course;
+    }
 
     /**
      * Changes the start date, thus also changing the duration, of the assessment
+     *
      * @param startDate is the new start date of the assessment
      */
     @Override
@@ -66,6 +74,7 @@ public class Assessment extends Event {
 
     /**
      * Changes the end date, thus also changing the duration, of the assessment
+     *
      * @param endDate is the new end date of the assessment
      */
     @Override
@@ -76,6 +85,7 @@ public class Assessment extends Event {
 
     /**
      * toString method
+     *
      * @return a description of this com.generic.plannr.Entities.Assessment event.
      */
     @SuppressLint("DefaultLocale")
@@ -85,15 +95,13 @@ public class Assessment extends Event {
         String strPriority;
         if (this.getPriority() == 0) {
             strPriority = "high";
-        }
-        else if (this.getPriority() == 1) {
+        } else if (this.getPriority() == 1) {
             strPriority = "mid";
-        }
-        else {
+        } else {
             strPriority = "low";
         }
         return String.format("Assessment (%s priority): %s from %s starts " +
-                "on %s and ends on %s with a duration of %d hours and %d minutes",
+                        "on %s and ends on %s with a duration of %d hours and %d minutes",
                 strPriority,
                 this.getName(),
                 this.getCourse(),

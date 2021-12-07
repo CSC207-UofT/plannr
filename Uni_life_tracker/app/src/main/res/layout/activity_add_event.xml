@@ -2,7 +2,8 @@
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".AddEventActivity">
@@ -110,10 +111,11 @@
             android:gravity="center_vertical"
             android:padding="15dp">
 
-        <ImageView android:layout_width="30dp"
-                   android:layout_height="30dp"
-                   android:src="@drawable/ic_label"
-                   android:contentDescription="@string/select_date"/>
+        <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_label"
+                android:contentDescription="@string/select_date"/>
 
         <EditText
                 android:id="@+id/et_event_name"
@@ -134,10 +136,11 @@
             android:gravity="center_vertical"
             android:padding="15dp">
 
-        <ImageView android:layout_width="30dp"
-                   android:layout_height="30dp"
-                   android:src="@drawable/ic_time"
-                   android:contentDescription="@string/select_date"/>
+        <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_time"
+                android:contentDescription="@string/select_date"/>
 
         <!-- Event Start & End Date -->
         <LinearLayout
@@ -203,10 +206,11 @@
             android:gravity="center_vertical"
             android:padding="15dp">
 
-        <ImageView android:layout_width="30dp"
-                   android:layout_height="30dp"
-                   android:src="@drawable/ic_priority"
-                   android:contentDescription="@string/priority"/>
+        <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_priority"
+                android:contentDescription="@string/priority"/>
 
         <TextView
                 android:layout_width="0dp"
@@ -216,30 +220,34 @@
                 android:textSize="15sp"
                 android:layout_margin="15dp"/>
 
-        <RadioGroup android:id="@+id/rg_priorities"
+        <RadioGroup
+                android:id="@+id/rg_priorities"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingEnd="15dp"
+                tools:ignore="RtlSymmetry">
+
+            <RadioButton
+                    android:id="@+id/rb_high_priority"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingEnd="15dp"
-                    tools:ignore="RtlSymmetry">
+                    android:text="@string/high_priority"
+                    android:checked="true"/>
 
-            <RadioButton android:id="@+id/rb_high_priority"
-                         android:layout_width="wrap_content"
-                         android:layout_height="wrap_content"
-                         android:text="@string/high_priority"
-                         android:checked="true"/>
+            <RadioButton
+                    android:id="@+id/rb_med_priority"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/med_priority"
+                    android:layout_marginStart="10dp"/>
 
-            <RadioButton android:id="@+id/rb_med_priority"
-                         android:layout_width="wrap_content"
-                         android:layout_height="wrap_content"
-                         android:text="@string/med_priority"
-                         android:layout_marginStart="10dp"/>
-
-            <RadioButton android:id="@+id/rb_low_priority"
-                         android:layout_width="wrap_content"
-                         android:layout_height="wrap_content"
-                         android:text="@string/low_priority"
-                         android:layout_marginStart="10dp"/>
+            <RadioButton
+                    android:id="@+id/rb_low_priority"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/low_priority"
+                    android:layout_marginStart="10dp"/>
         </RadioGroup>
     </LinearLayout>
 
@@ -250,10 +258,11 @@
             android:gravity="center_vertical"
             android:padding="15dp">
 
-        <ImageView android:layout_width="30dp"
-                   android:layout_height="30dp"
-                   android:src="@drawable/ic_school"
-                   android:contentDescription="@string/select_date"/>
+        <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_school"
+                android:contentDescription="@string/select_date"/>
 
         <EditText
                 android:id="@+id/et_course"

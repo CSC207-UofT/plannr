@@ -17,27 +17,27 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-public class ListEvents extends RecyclerView.Adapter<ListEvents.MyViewHolder>{
+public class ListEvents extends RecyclerView.Adapter<ListEvents.MyViewHolder> {
     ArrayList<Event> eventsList;
 
     /**
      * Construct a ListEvents, giving it an eventslist.
      *
-     * @param eventsList    An ArrayList of Events to be displayed
+     * @param eventsList An ArrayList of Events to be displayed
      */
-    public ListEvents(ArrayList<Event> eventsList){
+    public ListEvents(ArrayList<Event> eventsList) {
         this.eventsList = eventsList;
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView tvEventName, tvEventTime;
 
         /**
          * Finds and sets TextView to display event details.
          *
-         * @param view  a View for the device screen.
+         * @param view a View for the device screen.
          */
-        public MyViewHolder(final View view){
+        public MyViewHolder(final View view) {
             super(view);
             tvEventName = view.findViewById(R.id.tv_event_name);
             tvEventTime = view.findViewById(R.id.tv_event_time);

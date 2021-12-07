@@ -17,10 +17,10 @@ public class Event {
      * Construct an com.generic.plannr.Entities.Event giving them the given
      * name, priority, start and end date.
      *
-     * @param name This com.generic.plannr.Entities.Event's name
-     * @param priority This com.generic.plannr.Entities.Event's priority (0 = high, 1 = mid, 2 = low)
+     * @param name      This com.generic.plannr.Entities.Event's name
+     * @param priority  This com.generic.plannr.Entities.Event's priority (0 = high, 1 = mid, 2 = low)
      * @param startDate This com.generic.plannr.Entities.Event's start date
-     * @param endDate This com.generic.plannr.Entities.Event's end date
+     * @param endDate   This com.generic.plannr.Entities.Event's end date
      */
     public Event(String name, int priority, LocalDateTime startDate, LocalDateTime endDate) {
         this.name = name;
@@ -37,6 +37,7 @@ public class Event {
 
     /**
      * Gets the name of the event
+     *
      * @return the name of the com.generic.plannr.Entities.Event as a String
      */
     public String getName() {
@@ -45,6 +46,7 @@ public class Event {
 
     /**
      * Gets the priority of event
+     *
      * @return the priority of event as an int
      */
     public int getPriority() {
@@ -53,14 +55,16 @@ public class Event {
 
     /**
      * Gets the start date of event
+     *
      * @return the start date of event as a Date object
      */
     public LocalDateTime getStartDate() {
         return this.startDate;
     }
-    
+
     /**
      * Gets the end date of event
+     *
      * @return the end date of event as a Date object
      */
     public LocalDateTime getEndDate() {
@@ -69,6 +73,7 @@ public class Event {
 
     /**
      * Changes the name of the event
+     *
      * @param name is the new name of the event
      */
     public void setName(String name) {
@@ -77,20 +82,29 @@ public class Event {
 
     /**
      * Changes the priority (0 = high, 1 = mid, 2 = low) of the event
+     *
      * @param priority is the new priority of the event
      */
-    public void setPriority(int priority) { this.priority = priority; }
+    public void setPriority(int priority) {
+        this.priority = priority;
+    }
 
     /**
      * Changes the start date of the event
+     *
      * @param startDate is the new start date of the event
      */
-    public void setStartDate(LocalDateTime startDate) { this.startDate = startDate; }
+    public void setStartDate(LocalDateTime startDate) {
+        this.startDate = startDate;
+    }
 
     /**
      * Changes the end date of the event
+     *
      * @param endDate is the new end date of the event
      */
-    public void setEndDate(LocalDateTime endDate) { this.endDate = endDate; }
+    public void setEndDate(LocalDateTime endDate) {
+        this.endDate = endDate;
+    }
 
 }

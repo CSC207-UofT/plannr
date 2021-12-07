@@ -16,9 +16,9 @@ public class User {
      * password, courses, and setting an empty
      * events list.
      *
-     * @param name      The user's name
-     * @param email     The user's email
-     * @param password  The user's password
+     * @param name     The user's name
+     * @param email    The user's email
+     * @param password The user's password
      */
     public User(String name, String email, String password) {
         this.name = name;
@@ -44,14 +44,18 @@ public class User {
      *
      * @return a String that describes the user's email
      */
-    public String getEmail() { return this.email; }
+    public String getEmail() {
+        return this.email;
+    }
 
     /**
      * getter method for password
      *
      * @return a String that describes the user's password
      */
-    public String getPassword() { return this.password; }
+    public String getPassword() {
+        return this.password;
+    }
 
     /**
      * getter method for courses

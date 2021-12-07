@@ -39,27 +39,36 @@ public class SettingsActivity extends AppCompatActivity {
         etPassword.setText(ug.getPassword(ug.getLoggedInEmail()));
     }
 
-    public void clickMenu(View view) { activity.openDrawer(drawerLayout); } // open drawer
+    public void clickMenu(View view) {
+        activity.openDrawer(drawerLayout);
+    } // open drawer
 
-    public void clickLogo(View view) { activity.redirectActivity(this, MainActivity.class); } // redirect activity to main
+    public void clickLogo(View view) {
+        activity.redirectActivity(this, MainActivity.class);
+    } // redirect activity to main
 
-    public void clickSchool(View view) { activity.redirectActivity(this, SchoolActivity.class); } // redirect activity to school
+    public void clickSchool(View view) {
+        activity.redirectActivity(this, SchoolActivity.class);
+    } // redirect activity to school
 
     // TODO: change this to life later
 //    public void clickLife(View view) { activity.redirectActivity(this, MainActivity.class); } // redirect activity to life
 
-    public void clickExpenses(View view) { activity.redirectActivity(this, ExpensesActivity.class); } // redirect activity to expenses
+    public void clickExpenses(View view) {
+        activity.redirectActivity(this, ExpensesActivity.class);
+    } // redirect activity to expenses
 
-    public void clickSettings(View view) {} // recreate activity
+    public void clickSettings(View view) {
+    } // recreate activity
 
     public void clickLogOut(View view) {
-        activity.logout(this); } // prompt logout
+        activity.logout(this);
+    } // prompt logout
 
     public void clickSave(View view) {
         // gets user input from textbox
         Validator input = new Validator();
-        if (input.validateEntry(tiPassword, ug, tiName, tiPassword, true))
-        {
+        if (input.validateEntry(tiPassword, ug, tiName, tiPassword, true)) {
             String name = Objects.requireNonNull(tiName.getEditText()).getText().toString();
             String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();
 

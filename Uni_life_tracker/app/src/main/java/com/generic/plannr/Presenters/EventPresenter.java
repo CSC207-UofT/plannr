@@ -13,5 +13,4 @@ public class EventPresenter {
 
         return result.toString();
     }
-
 }

@@ -25,7 +25,6 @@ public interface ExpenseGatewayInterface {
      * in the database
      *
      * @param expenseID the id of the Expense we want to return
-     *
      * @return the Expense with id expenseID
      */
     Expense getByID(final int expenseID);
@@ -35,7 +34,6 @@ public interface ExpenseGatewayInterface {
      * user id userID
      *
      * @param userID the user's id
-     *
      * @return a list of all expenses stored in the database for the user
      */
     List<Expense> getAllExpenses(int userID);

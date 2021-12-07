@@ -25,7 +25,6 @@ public interface EventGatewayInterface {
      * in the database
      *
      * @param eventID the id of the Event we want to return
-     *
      * @return the Event with id eventID
      */
     Event getByID(final int eventID);
@@ -35,7 +34,6 @@ public interface EventGatewayInterface {
      * user id userID
      *
      * @param userID the user's id
-     *
      * @return a list of all events stored in the database for the user
      */
     List<Event> getAllEvents(int userID);
@@ -45,8 +43,7 @@ public interface EventGatewayInterface {
      * database for user with user id userID
      *
      * @param userID the user's id
-     * @param date the start date of the events to be returned
-     *
+     * @param date   the start date of the events to be returned
      * @return a list of all events that start at date stored in the
      * database for the user
      */

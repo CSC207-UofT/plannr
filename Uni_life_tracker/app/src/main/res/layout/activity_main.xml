@@ -10,7 +10,7 @@
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
         <!--  Menu Button  -->
         <ImageView
@@ -20,7 +20,7 @@
                 android:src="@drawable/ic_menu"
                 android:contentDescription="@string/app_name"
                 android:padding="20dp"
-        />
+                />
 
         <!--  Today's Date  -->
         <TextView
@@ -68,6 +68,7 @@
                     android:layout_height="20dp"
                     android:src="@drawable/ic_sort"
                     android:contentDescription="@string/sort"/>
+
             <Spinner
                     android:id="@+id/spn_sort"
                     android:layout_width="wrap_content"
@@ -91,7 +92,7 @@
             android:background="@android:color/white">
 
         <include
-            layout="@layout/main_nav"/>
+                layout="@layout/main_nav"/>
     </RelativeLayout>
 
 </androidx.drawerlayout.widget.DrawerLayout>

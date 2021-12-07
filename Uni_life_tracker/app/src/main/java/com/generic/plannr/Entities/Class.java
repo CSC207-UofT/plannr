@@ -33,30 +33,40 @@ public class Class extends Event {
 
     /**
      * Gets the course of the com.generic.plannr.Entities.Class event
+     *
      * @return the course of the com.generic.plannr.Entities.Class event as a String object
      */
-    public String getCourse() { return this.course; }
+    public String getCourse() {
+        return this.course;
+    }
 
     /**
      * Gets the location of the com.generic.plannr.Entities.Class event
+     *
      * @return the location of the com.generic.plannr.Entities.Class event as a String object
      */
-    public String getLocation() { return this.location; }
-
+    public String getLocation() {
+        return this.location;
+    }
 
 
     /**
      * Sets the course of the com.generic.plannr.Entities.Class event
      */
-    public void setCourse(String course) { this.course = course; }
+    public void setCourse(String course) {
+        this.course = course;
+    }
 
     /**
      * Sets the location of the com.generic.plannr.Entities.Class event
      */
-    public void setLocation(String location) { this.location = location; }
+    public void setLocation(String location) {
+        this.location = location;
+    }
 
     /**
      * toString method
+     *
      * @return a String that describes the com.generic.plannr.Entities.Class event
      */
     @NonNull
@@ -65,11 +75,9 @@ public class Class extends Event {
         String strPriority;
         if (this.getPriority() == 0) {
             strPriority = "high";
-        }
-        else if (this.getPriority() == 1) {
+        } else if (this.getPriority() == 1) {
             strPriority = "mid";
-        }
-        else {
+        } else {
             strPriority = "low";
         }
         return String.format("Class (%s priority): The class %s (%s) in %s starts at %s and ends at %s",

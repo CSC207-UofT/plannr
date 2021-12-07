@@ -8,7 +8,7 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
 
-public class LoginActivity  extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     // initialize variables
     private TextInputLayout tiEmail;
@@ -34,7 +34,7 @@ public class LoginActivity  extends AppCompatActivity {
         finish();
     }
 
-    public boolean LoginInput () {
+    public boolean LoginInput() {
         // Creates an instance of validator to be able to access its methods
         Validator input = new Validator();
         // Returns whether the login info inputted is valid

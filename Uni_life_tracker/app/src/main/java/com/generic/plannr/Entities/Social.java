@@ -13,13 +13,14 @@ public class Social extends Event {
     /**
      * Social events class constructor, which calls its super class Event
      * This constructor LETS THE USER PROVIDE PARTICIPANTS
-     * @param name          Name of event
-     * @param priority      Priority of event
-     * @param startDate     Start date of event
-     * @param endDate       End date of event
-     * @param duration      Duration of event
-     * @param location      Location of event
-     * @param participants  Participants of event
+     *
+     * @param name         Name of event
+     * @param priority     Priority of event
+     * @param startDate    Start date of event
+     * @param endDate      End date of event
+     * @param duration     Duration of event
+     * @param location     Location of event
+     * @param participants Participants of event
      */
     public Social(String name, int priority, LocalDateTime startDate, LocalDateTime endDate,
                   int duration, String location, ArrayList<String> participants) {
@@ -34,12 +35,13 @@ public class Social extends Event {
     /**
      * Social events class constructor, which calls its super class Event
      * This constructor DOES NOT REQUIRE USER TO INPUT LIST OF PARTICIPANTS
-     * @param name          Name of event
-     * @param priority      Priority of event
-     * @param startDate     Start date of event
-     * @param endDate       End date of event
-     * @param duration      Duration of event
-     * @param location      Location of event
+     *
+     * @param name      Name of event
+     * @param priority  Priority of event
+     * @param startDate Start date of event
+     * @param endDate   End date of event
+     * @param duration  Duration of event
+     * @param location  Location of event
      */
     public Social(String name, int priority, LocalDateTime startDate, LocalDateTime endDate,
                   int duration, String location) {
@@ -53,14 +55,17 @@ public class Social extends Event {
 
     /**
      * Gets the duration of this Social event
+     *
      * @return the duration of this com.generic.plannr.Entities.Social event
      */
     public int getDuration() {
         return this.duration;
     }
 
-    /** ========== SUBJECT TO CHANGE ============
+    /**
+     * ========== SUBJECT TO CHANGE ============
      * toString method for Social, used for printing to screen
+     *
      * @return a String that describes this Social event
      */
     @NonNull
@@ -90,6 +95,7 @@ public class Social extends Event {
 
     /**
      * Changes the duration of the social event
+     *
      * @param duration the new duration of the event
      */
     public void changeDuration(int duration) {
@@ -98,6 +104,7 @@ public class Social extends Event {
 
     /**
      * Changes the location of the social event
+     *
      * @param location the new location of the event
      */
     public void changeLocation(String location) {
@@ -106,6 +113,7 @@ public class Social extends Event {
 
     /**
      * This method adds one participant to the participants
+     *
      * @param person the new participant the user wish to add
      */
     public void addParticipant(String person) {
@@ -114,6 +122,7 @@ public class Social extends Event {
 
     /**
      * This method adds one participant to the participants
+     *
      * @param person the new participant the user wish to add
      */
     public void removeParticipant(String person) {
@@ -122,7 +131,10 @@ public class Social extends Event {
 
     /**
      * This method returns the Social event's location
+     *
      * @return the location of the Social event
      */
-    public String getLocation() {return this.location;}
+    public String getLocation() {
+        return this.location;
+    }
 }

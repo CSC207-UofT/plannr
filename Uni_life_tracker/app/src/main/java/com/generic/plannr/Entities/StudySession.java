@@ -17,16 +17,16 @@ public class StudySession extends Event {
      * Constructs an com.generic.plannr.Entities.StudySession event, giving them the given name,
      * location, notes, and participants.
      *
-     * @param name           The com.generic.plannr.Entities.StudySession's name
-     * @param priority       The com.generic.plannr.Entities.StudySession's priority (0 = high, 1 = mid, 2 = low)
-     * @param startDate      The com.generic.plannr.Entities.StudySession's start date
-     * @param endDate        The com.generic.plannr.Entities.StudySession's end date
-     * @param course         The com.generic.plannr.Entities.StudySession's course
-     * @param location       The com.generic.plannr.Entities.StudySession's location
-     * @param participants   The com.generic.plannr.Entities.StudySession's participants
+     * @param name         The com.generic.plannr.Entities.StudySession's name
+     * @param priority     The com.generic.plannr.Entities.StudySession's priority (0 = high, 1 = mid, 2 = low)
+     * @param startDate    The com.generic.plannr.Entities.StudySession's start date
+     * @param endDate      The com.generic.plannr.Entities.StudySession's end date
+     * @param course       The com.generic.plannr.Entities.StudySession's course
+     * @param location     The com.generic.plannr.Entities.StudySession's location
+     * @param participants The com.generic.plannr.Entities.StudySession's participants
      */
 
-    public StudySession (String name, int priority, LocalDateTime startDate, LocalDateTime endDate,
+    public StudySession(String name, int priority, LocalDateTime startDate, LocalDateTime endDate,
                         String course, String location, ArrayList<String> participants) {
         super(name, priority, startDate, endDate);
         this.course = course;
@@ -36,6 +36,7 @@ public class StudySession extends Event {
 
     /**
      * Gets the course name of the Study Session
+     *
      * @return the name of the course as a String
      */
     public String getCourse() {
@@ -44,6 +45,7 @@ public class StudySession extends Event {
 
     /**
      * Gets the location of the study session
+     *
      * @return the location of the study session as a string
      */
     public String getLocation() {
@@ -52,6 +54,7 @@ public class StudySession extends Event {
 
     /**
      * Gets the participants of the study session
+     *
      * @return the participants of the study session as an Array List
      */
     public ArrayList<String> getParticipants() {
@@ -60,26 +63,34 @@ public class StudySession extends Event {
 
     /**
      * Changes the course of the study session
+     *
      * @param course is the new name of the course for this study session
      */
-    public void setCourse(String course) { this.course = course; }
+    public void setCourse(String course) {
+        this.course = course;
+    }
 
     /**
      * Changes the location of the study session
+     *
      * @param location is the new location of the study session
      */
-    public void setLocation(String location) { this.location = location; }
+    public void setLocation(String location) {
+        this.location = location;
+    }
 
     /**
      * Changes the list of participants of the study session
+     *
      * @param participants is the new list of participants
      */
-    public void setParticipants (ArrayList<String> participants) {
+    public void setParticipants(ArrayList<String> participants) {
         this.participants = participants;
     }
 
     /**
      * toString method
+     *
      * @return a string that represents the com.generic.plannr.Entities.StudySession event
      */
     @Override
@@ -88,17 +99,15 @@ public class StudySession extends Event {
         String strPriority;
         if (this.getPriority() == 0) {
             strPriority = "high";
-        }
-        else if (this.getPriority() == 1) {
+        } else if (this.getPriority() == 1) {
             strPriority = "mid";
-        }
-        else {
+        } else {
             strPriority = "low";
         }
 
         StringBuilder result = new StringBuilder(
                 String.format("Study session (%s priority): %s for %s starts on %s and " +
-                "ends at %s at %s.\n\tThe expected participants are: ",
+                                "ends at %s at %s.\n\tThe expected participants are: ",
                         strPriority,
                         this.getName(),
                         this.getCourse(),
