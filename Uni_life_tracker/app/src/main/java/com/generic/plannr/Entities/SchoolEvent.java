@@ -1,7 +1,6 @@
 package com.generic.plannr.Entities;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 /**
  * Represents a school event with a start and end date and priority.
