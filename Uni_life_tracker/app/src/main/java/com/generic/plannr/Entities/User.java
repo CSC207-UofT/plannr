@@ -7,7 +7,7 @@ public class User {
     private String email;
     private String password;
     private final ArrayList<String> courses;
-    private final ArrayList<Event> eventList;
+    private final ArrayList<SchoolEvent> eventList;
     private final ArrayList<Expense> expenseList;
     private double income;
 
@@ -67,7 +67,7 @@ public class User {
      *
      * @return an ArrayList that describes all the user's events
      */
-    public ArrayList<Event> getEventList() {
+    public ArrayList<SchoolEvent> getEventList() {
         return this.eventList;
     }
 

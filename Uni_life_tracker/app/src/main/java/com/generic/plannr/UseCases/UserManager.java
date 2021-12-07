@@ -1,7 +1,8 @@
 package com.generic.plannr.UseCases;
 
-import com.generic.plannr.Entities.Event;
+import com.generic.plannr.Entities.SchoolEvent;
 import com.generic.plannr.Entities.Expense;
+import com.generic.plannr.Entities.SchoolEvent;
 import com.generic.plannr.Entities.User;
 
 import java.util.ArrayList;
@@ -42,7 +43,7 @@ public class UserManager {
      *
      * @return the user's list of events
      */
-    public ArrayList<Event> viewEventList() {
+    public ArrayList<SchoolEvent> viewEventList() {
         return u.getEventList();
     }
 
@@ -78,7 +79,7 @@ public class UserManager {
      *
      * @param event is the event to be added to the user's list
      */
-    public void addEventToUsersList(Event event) {
+    public void addEventToUsersList(SchoolEvent event) {
         u.getEventList().add(event);
     }
 
