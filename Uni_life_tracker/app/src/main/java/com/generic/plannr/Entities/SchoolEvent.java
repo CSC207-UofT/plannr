@@ -14,8 +14,7 @@ public class SchoolEvent {
     private LocalDateTime endDate;
     private String course;
     private String location;
-    public static final DateTimeFormatter DATEFORMAT =
-            DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+
 
     /**
      * Construct an com.generic.plannr.Entities.SchoolEvent event, giving them the given
