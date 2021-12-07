@@ -7,7 +7,6 @@ package com.generic.plannr;
 import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import androidx.annotation.NonNull;
 import com.generic.plannr.Entities.Event;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -24,7 +23,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.generic.plannr.Entities.Event;
 import com.generic.plannr.Gateways.EventGateway;
 import com.generic.plannr.Gateways.UserGateway;
 import com.generic.plannr.UseCases.GetEventsOfDate;
@@ -35,7 +33,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class MainActivity extends AppCompatActivity implements  AdapterView.OnItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     // initialize variable
     DrawerLayout drawerLayout;
     private ArrayList<Event> eventsList;
@@ -126,14 +124,16 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
     /**
      * Opens drawer layout (navigation menu) to view.
      *
-     * @param drawerLayout  A DrawerLayout for the navigation menu.
+     * @param drawerLayout A DrawerLayout for the navigation menu.
      */
-    public void openDrawer(DrawerLayout drawerLayout) { drawerLayout.openDrawer(GravityCompat.START); }
+    public void openDrawer(DrawerLayout drawerLayout) {
+        drawerLayout.openDrawer(GravityCompat.START);
+    }
 
     /**
      * Closes drawer layout (navigation menu) from view, if the drawer is open.
      *
-     * @param drawerLayout  A DrawerLayout for the navigation menu.
+     * @param drawerLayout A DrawerLayout for the navigation menu.
      */
     public void closeDrawer(DrawerLayout drawerLayout) {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -145,11 +145,11 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
      * Directs current activity to a different activity.
      * Generates an intent and starts the activity.
      *
-     * @param activity  A user's current activity.
-     * @param aClass    A Class of the new activity to be started.
+     * @param activity A user's current activity.
+     * @param aClass   A Class of the new activity to be started.
      */
     public void redirectActivity(Activity activity, @SuppressWarnings("rawtypes") Class aClass) {
-        Intent intent = new Intent(activity,aClass); // Initialize intent
+        Intent intent = new Intent(activity, aClass); // Initialize intent
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // Set flag
         activity.startActivity(intent); // Start activity
         finish();
@@ -161,7 +161,7 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
      *
      * @param activity a user's current activity.
      */
-    public void logout (Activity activity) {
+    public void logout(Activity activity) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle("Log Out");
         builder.setMessage("Are you sure you want to log out?");
@@ -173,25 +173,29 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
     /**
      * Opens navigation menu on menu icon click.
      *
-     * @param view  a View for the device screen.
+     * @param view a View for the device screen.
      */
-    public void clickMenu(View view){
+    public void clickMenu(View view) {
         openDrawer(drawerLayout);
     }
 
     /**
      * Directs activity to the Main activity on logo click.
      *
-     * @param view  a View for the device screen.
+     * @param view a View for the device screen.
      */
-    public void clickLogo(View view) { closeDrawer(drawerLayout); }
+    public void clickLogo(View view) {
+        closeDrawer(drawerLayout);
+    }
 
     /**
      * Directs activity to the School activity on school icon click.
      *
-     * @param view  a View for the device screen.
+     * @param view a View for the device screen.
      */
-    public void clickSchool(View view) { redirectActivity(this, SchoolActivity.class); }
+    public void clickSchool(View view) {
+        redirectActivity(this, SchoolActivity.class);
+    }
 
 //    /**
 //     * Directs activity to the Life activity on life icon click.
@@ -203,21 +207,25 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
     /**
      * Directs activity to the Expenses activity on expenses icon click.
      *
-     * @param view  a View for the device screen.
+     * @param view a View for the device screen.
      */
-    public void clickExpenses(View view) { redirectActivity(this, ExpensesActivity.class); }
+    public void clickExpenses(View view) {
+        redirectActivity(this, ExpensesActivity.class);
+    }
 
     /**
      * Directs activity to the Settings activity on settings icon click.
      *
-     * @param view  a View for the device screen.
+     * @param view a View for the device screen.
      */
-    public void clickSettings(View view) { redirectActivity(this, SettingsActivity.class); }
+    public void clickSettings(View view) {
+        redirectActivity(this, SettingsActivity.class);
+    }
 
     /**
      * Prompts log out on a logout icon click.
      *
-     * @param view  a View for the device screen.
+     * @param view a View for the device screen.
      */
     public void clickLogOut(View view) {
         logout(this);
