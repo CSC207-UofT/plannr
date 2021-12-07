@@ -4,9 +4,7 @@ import android.view.View;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.generic.plannr.Entities.Event;
 import com.generic.plannr.Gateways.EventGateway;
@@ -48,11 +46,11 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
     }
 
     private void setAdapter() {
-        ListEvents adapter = new ListEvents(eventsList);
+       /* ListEvents adapter = new ListEvents(eventsList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         rvEvents.setLayoutManager(layoutManager);
         rvEvents.setItemAnimator(new DefaultItemAnimator());
-        rvEvents.setAdapter(adapter);
+        rvEvents.setAdapter(adapter);*/
     }
 
     private void setEventInfo() {

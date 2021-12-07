@@ -18,18 +18,20 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class ListEvents extends RecyclerView.Adapter<ListEvents.MyViewHolder>{
-    ArrayList<Event> eventsList;
+    private ArrayList<Event> eventsList;
+    private RecyclerViewClickLister listener;
 
     /**
      * Construct a ListEvents, giving it an eventslist.
      *
      * @param eventsList    An ArrayList of Events to be displayed
      */
-    public ListEvents(ArrayList<Event> eventsList){
+    public ListEvents(ArrayList<Event> eventsList, RecyclerViewClickLister listener){
         this.eventsList = eventsList;
+        this.listener = listener;
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView tvEventName, tvEventTime;
 
         /**
@@ -41,6 +43,12 @@ public class ListEvents extends RecyclerView.Adapter<ListEvents.MyViewHolder>{
             super(view);
             tvEventName = view.findViewById(R.id.tv_event_name);
             tvEventTime = view.findViewById(R.id.tv_event_time);
+            view.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            listener.onClick(view, getAdapterPosition());
         }
     }
 
@@ -66,5 +74,10 @@ public class ListEvents extends RecyclerView.Adapter<ListEvents.MyViewHolder>{
     @Override
     public int getItemCount() {
         return eventsList.size();
+    }
+
+    public interface RecyclerViewClickLister{
+        void onClick(View v, int position);
+
     }
 }

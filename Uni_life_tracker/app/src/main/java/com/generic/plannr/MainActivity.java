@@ -4,20 +4,15 @@
  */
 package com.generic.plannr;
 
-import android.app.Dialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import androidx.annotation.NonNull;
-import com.generic.plannr.Entities.Event;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-import android.widget.TextView;
+import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -40,6 +35,8 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
     DrawerLayout drawerLayout;
     private ArrayList<Event> eventsList;
     private RecyclerView rvEvents;
+    private Button testing;
+    private ListEvents.RecyclerViewClickLister listener;
     UserGateway ug = new UserGateway(MainActivity.this);
     EventGateway eg = new EventGateway(MainActivity.this);
     Dialog dialog;
@@ -54,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
         Spinner spnSort = findViewById(R.id.spn_sort);
         drawerLayout = findViewById(R.id.drawer_layout); // Side menu
         rvEvents = findViewById(R.id.rv_events); // Events list
+        testing = findViewById(R.id.testing);
         dialog = new Dialog(this);
 
 
@@ -107,11 +105,19 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
      * Sets adapter to display user's event list.
      */
     private void setAdapter() {
-        ListEvents adapter = new ListEvents(eventsList);
+        setOnClickListener();
+        ListEvents adapter = new ListEvents(eventsList, listener);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         rvEvents.setLayoutManager(layoutManager);
         rvEvents.setItemAnimator(new DefaultItemAnimator());
         rvEvents.setAdapter(adapter);
+    }
+
+    private void setOnClickListener() {
+        listener = (v, position) -> {
+            viewEvent(v);
+            testing.setText(eventsList.get(position).getName());
+        };
     }
 
     /**

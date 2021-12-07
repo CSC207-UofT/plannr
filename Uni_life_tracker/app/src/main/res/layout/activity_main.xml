@@ -21,6 +21,13 @@
                 android:contentDescription="@string/app_name"
                 android:padding="20dp"
         />
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="viewEvent"
+                android:text="View Event"
+                android:id="@+id/testing"
+        />
 
         <!--  Today's Date  -->
         <TextView
@@ -73,7 +80,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
         </LinearLayout>
-
         <!--  Event List  -->
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_events"
