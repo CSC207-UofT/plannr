@@ -220,8 +220,7 @@
                 android:inputType="textCapCharacters"
                 android:autofillHints="@string/course"
                 android:textSize="15sp"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="10dp"/>
+                android:layout_marginHorizontal="10dp"/>
 
     </LinearLayout>
 
@@ -246,8 +245,7 @@
                 android:inputType="text"
                 android:autofillHints="@string/location"
                 android:textSize="15sp"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="10dp"/>
+                android:layout_marginHorizontal="10dp"/>
 
     </LinearLayout>
 
