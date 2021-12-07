@@ -54,24 +54,35 @@
             android:layout_height="wrap_content"
             android:paddingVertical="10dp"
             app:menu="@menu/event_navigation"
-            app:itemIconSize="35dp"
+            app:itemIconSize="40dp"
             app:itemIconTint="@drawable/selector"
             app:itemTextColor="@drawable/selector"
             app:itemRippleColor="@color/lavender"
             app:labelVisibilityMode="labeled"/>
 
     <!-- Add Event Name -->
-    <EditText
-            android:id="@+id/et_event_name"
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:hint="@string/event_name"
-            android:autofillHints="@string/event_name"
+            android:gravity="center_vertical"
+            android:padding="15dp">
 
-            android:textSize="20sp"
-            android:ems="10"
-            android:layout_margin="20dp"/>
+        <ImageView android:layout_width="30dp"
+                   android:layout_height="30dp"
+                   android:src="@drawable/ic_label"
+                   android:contentDescription="@string/select_date"/>
+
+        <EditText
+                android:id="@+id/et_event_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:hint="@string/event_name"
+                android:autofillHints="@string/event_name"
+                android:textSize="20sp"
+                android:ems="10"
+                android:layout_marginHorizontal="10dp"/>
+    </LinearLayout>
 
     <!-- Add Event Date & Time -->
     <LinearLayout
@@ -80,30 +91,32 @@
             android:gravity="center_vertical"
             android:padding="15dp">
 
-        <ImageView android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
+        <ImageView android:layout_width="30dp"
+                   android:layout_height="30dp"
                    android:src="@drawable/ic_time"
                    android:contentDescription="@string/select_date"/>
 
+        <!-- Event Date -->
         <TextView
                 android:id="@+id/tv_date"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="@string/select_date"
-
                 android:textSize="15sp"
-                android:padding="15dp"/>
+                android:layout_marginStart="15dp"
+                android:onClick="clickStartDate"/>
 
+        <!-- Event Date -->
         <TextView
                 android:id="@+id/tv_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/time"
-
                 android:textSize="15sp"
                 android:textAlignment="textEnd"
-                android:padding="15dp"/>
+                android:layout_marginEnd="15dp"
+                android:onClick="clickStartTime"/>
 
     </LinearLayout>
 
@@ -112,10 +125,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:paddingHorizontal="15dp">
+            android:padding="15dp">
 
-        <ImageView android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
+        <ImageView android:layout_width="30dp"
+                   android:layout_height="30dp"
                    android:src="@drawable/ic_priority"
                    android:contentDescription="@string/priority"/>
 
@@ -124,27 +137,25 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/priority"
-
                 android:textSize="15sp"
-                android:padding="15dp"/>
+                android:layout_margin="15dp"/>
 
         <RadioGroup android:id="@+id/rg_priorities"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:paddingHorizontal="15dp">
+                    android:layout_marginEnd="15dp">
 
             <RadioButton android:id="@+id/rb_high_priority"
                          android:layout_width="wrap_content"
                          android:layout_height="wrap_content"
                          android:text="@string/high_priority"
-                         />
+                         android:checked="true"/>
 
             <RadioButton android:id="@+id/rb_med_priority"
                          android:layout_width="wrap_content"
                          android:layout_height="wrap_content"
                          android:text="@string/med_priority"
-
                          android:layout_marginStart="10dp"/>
 
             <RadioButton android:id="@+id/rb_low_priority"
@@ -155,31 +166,30 @@
         </RadioGroup>
     </LinearLayout>
 
-    <!-- TO BE IMPLEMENTED IN PHASE 2: Select Course -->
-<!--    <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:gravity="center_vertical"-->
-<!--            android:paddingHorizontal="15dp">-->
+    <!-- Select Course -->
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="15dp">
 
-<!--        <ImageView android:layout_width="24dp"-->
-<!--                   android:layout_height="24dp"-->
-<!--                   android:src="@drawable/ic_school"-->
-<!--                   android:contentDescription="@string/select_date"/>-->
+        <ImageView android:layout_width="30dp"
+                   android:layout_height="30dp"
+                   android:src="@drawable/ic_school"
+                   android:contentDescription="@string/select_date"/>
 
-<!--        <TextView-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_weight="1"-->
-<!--                android:text="@string/course"-->
-<!--                -->
-<!--                android:textSize="15sp"-->
-<!--                android:padding="15dp"/>-->
+        <EditText
+                android:id="@+id/et_course"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/course"
+                android:inputType="textCapCharacters"
+                android:autofillHints="@string/course"
+                android:textSize="15sp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="10dp"/>
 
-<!--        <Spinner-->
-<!--                android:id="@+id/spn_courses"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"/>-->
-<!--    </LinearLayout>-->
+    </LinearLayout>
 
 </LinearLayout>

@@ -55,12 +55,11 @@
             android:layout_height="wrap_content"
             android:paddingVertical="10dp"
             app:menu="@menu/event_navigation"
-            app:itemIconSize="35dp"
+            app:itemIconSize="40dp"
             app:itemIconTint="@drawable/selector"
             app:itemTextColor="@drawable/selector"
             app:itemRippleColor="@color/lavender"
             app:labelVisibilityMode="labeled"/>
-
 
     <!-- Add Event Name -->
     <LinearLayout
