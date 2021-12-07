@@ -10,7 +10,7 @@ import static com.generic.plannr.tests.StaticTestVariables.*;
 
 import java.util.ArrayList;
 
-import com.generic.plannr.Entities.Event;
+import com.generic.plannr.Entities.SchoolEvent;
 import com.generic.plannr.UseCases.EventDateComparator;
 
 public class SortEventsTest {
@@ -26,7 +26,7 @@ public class SortEventsTest {
 
     @Test(timeout = 50)
     public void TestSortByDate() {
-        ArrayList<Event> sortedEvents = sortByDate(dayEventList);
+        ArrayList<SchoolEvent> sortedEvents = sortByDate(dayEventList);
         assertEquals(defaultDate, sortedEvents.get(0).getStartDate());
         assertEquals(defaultDate.plusDays(1), sortedEvents.get(1).getStartDate());
         assertEquals(defaultDate.plusDays(2), sortedEvents.get(2).getStartDate());
@@ -34,7 +34,7 @@ public class SortEventsTest {
 
     @Test(timeout = 50)
     public void TestSortByPriority() {
-        ArrayList<Event> sortedEvents = sortByPriority(priorityEventList);
+        ArrayList<SchoolEvent> sortedEvents = sortByPriority(priorityEventList);
         assertEquals(0, sortedEvents.get(0).getPriority());
         assertEquals(1, sortedEvents.get(1).getPriority());
         assertEquals(2, sortedEvents.get(2).getPriority());
