@@ -1,4 +1,4 @@
-package com.generic.plannr.UseCaseTests;
+package com.generic.plannr.tests.usecase;
 
 import org.junit.*;
 
@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 
 import static com.generic.plannr.UseCases.SortEvents.sortByDate;
 import static com.generic.plannr.UseCases.SortEvents.sortByPriority;
-import static com.generic.plannr.StaticTestVariables.*;
+import static com.generic.plannr.tests.StaticTestVariables.*;
 
 import java.util.ArrayList;
 
