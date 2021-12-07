@@ -77,30 +77,4 @@ public class SchoolEvent {
 
     public String getLocation() { return this.location; }
 
-    /**
-     * Changes the name of the event
-     * @param name is the new name of the event
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * Changes the priority (0 = high, 1 = mid, 2 = low) of the event
-     * @param priority is the new priority of the event
-     */
-    public void setPriority(int priority) { this.priority = priority; }
-
-    /**
-     * Changes the start date of the event
-     * @param startDate is the new start date of the event
-     */
-    public void setStartDate(LocalDateTime startDate) { this.startDate = startDate; }
-
-    /**
-     * Changes the end date of the event
-     * @param endDate is the new end date of the event
-     */
-    public void setEndDate(LocalDateTime endDate) { this.endDate = endDate; }
-
 }
