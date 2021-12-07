@@ -1,7 +1,6 @@
 package com.generic.plannr.Gateways;
 
-import com.generic.plannr.Entities.Event;
-import com.generic.plannr.Entities.User;
+import com.generic.plannr.Entities.SchoolEvent;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -15,33 +14,33 @@ public interface EventGatewayInterface {
     /**
      * Insert the given event into the database
      *
-     * @param event  The Event to be inserted
+     * @param event  The SchoolEvent to be inserted
      * @param userID The ID of the user
      */
-    void saveToDatabase(final Event event, final int userID);
+    void saveToDatabase(final SchoolEvent event, final int userID);
 
     /**
-     * Get the Event associated with id eventID currently stored
+     * Get the SchoolEvent associated with id eventID currently stored
      * in the database
      *
-     * @param eventID the id of the Event we want to return
+     * @param eventID the id of the SchoolEvent we want to return
      *
-     * @return the Event with id eventID
+     * @return the SchoolEvent with id eventID
      */
-    Event getByID(final int eventID);
+    SchoolEvent getByID(final int eventID);
 
     /**
-     * Get the list of Events currently stored in the database for user with
+     * Get the list of SchoolEvents currently stored in the database for user with
      * user id userID
      *
      * @param userID the user's id
      *
      * @return a list of all events stored in the database for the user
      */
-    List<Event> getAllEvents(int userID);
+    List<SchoolEvent> getAllEvents(int userID);
 
     /**
-     * Get the list of Events that start at date currently stored in the
+     * Get the list of SchoolEvents that start at date currently stored in the
      * database for user with user id userID
      *
      * @param userID the user's id
@@ -50,5 +49,5 @@ public interface EventGatewayInterface {
      * @return a list of all events that start at date stored in the
      * database for the user
      */
-    List<Event> getEventsByDate(LocalDate date, int userID);
+    List<SchoolEvent> getEventsByDate(LocalDate date, int userID);
 }
