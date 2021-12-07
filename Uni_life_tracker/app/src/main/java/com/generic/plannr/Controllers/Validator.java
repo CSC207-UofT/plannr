@@ -5,7 +5,9 @@ import com.google.android.material.textfield.TextInputLayout;
 
 public interface Validator {
     /**
-     * Validates inputs and displays the different error messages for the user inpupts
+     * Validates inputs and displays the different error messages for the user inputs.
+     * This method varies based on the type of Validator needed which is an example
+     * usage of the Strategy Design Pattern
      *
      * @param userInput the input from the main layout that will display the error
      * @param ug the gateway connecting to the app database
