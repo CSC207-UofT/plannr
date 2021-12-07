@@ -28,6 +28,7 @@ import com.generic.plannr.UseCases.SortEvents;
 
 import java.text.DateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -122,11 +123,32 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
         listener = (v, position) -> {
             AlertDialog.Builder builder= new AlertDialog.Builder(v.getRootView().getContext());
             View dialogView = LayoutInflater.from(v.getRootView().getContext()).inflate(R.layout.popup_view_event, null);
+
             TextView dialogEventName = dialogView.findViewById(R.id.tv_event_name_pop);
+            TextView dialogEventCourse = dialogView.findViewById(R.id.tv_course);
+            TextView dialogEventStartD = dialogView.findViewById(R.id.tv_start_date);
+            TextView dialogEventStartT = dialogView.findViewById(R.id.tv_start_time);
+            TextView dialogEventEndD = dialogView.findViewById(R.id.tv_end_date);
+            TextView dialogEventEndT = dialogView.findViewById(R.id.tv_end_time);
+
+            DateTimeFormatter dayFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+            DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh:mm a");
+            String startDate = eventsList.get(position).getStartDate().toLocalDate().format(dayFormatter);
+            String startTime = eventsList.get(position).getStartDate().toLocalTime().format(timeFormatter);
+            String endDate = eventsList.get(position).getEndDate().toLocalDate().format(dayFormatter);
+            String endTime = eventsList.get(position).getEndDate().toLocalTime().format(timeFormatter);
+
             dialogEventName.setText(eventsList.get(position).getName());
+            //dialogEventCourse.setText(eventsList.get(position).Ass);
+            dialogEventStartD.setText(startDate);
+            dialogEventStartT.setText(startTime);
+            dialogEventEndD.setText(endDate);
+            dialogEventEndT.setText(endTime);
+
             builder.setView(dialogView);
             builder.setCancelable(true);
             builder.show();
+
             testing.setText(eventsList.get(position).getName());
         };
     }
