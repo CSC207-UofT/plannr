@@ -6,16 +6,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.generic.plannr.AddExpensesActivity;
 import com.generic.plannr.Database.DatabaseClient;
-import com.generic.plannr.Entities.Event;
 import com.generic.plannr.Entities.Expense;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.List;
 
 public class ExpenseGateway implements ExpenseGatewayInterface {
 
