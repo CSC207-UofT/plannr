@@ -65,18 +65,22 @@ public class AddClassEventActivity extends AppCompatActivity implements RadioGro
                 case R.id.nav_assessment:
                     startActivity(new Intent(getApplicationContext(), AddEventActivity.class));
                     overridePendingTransition(0, 0);
+                    finish();
                     return true;
                 case R.id.nav_class:
                     startActivity(new Intent(getApplicationContext(), AddClassEventActivity.class));
                     overridePendingTransition(0, 0);
+                    finish();
                     return true;
                 case R.id.nav_deadline:
                     startActivity(new Intent(getApplicationContext(), AddDeadlineEventActivity.class));
                     overridePendingTransition(0, 0);
+                    finish();
                     return true;
                 case R.id.nav_study_session:
                     startActivity(new Intent(getApplicationContext(), AddStudySessionEventActivity.class));
                     overridePendingTransition(0, 0);
+                    finish();
                     return true;
             }
             return false;
