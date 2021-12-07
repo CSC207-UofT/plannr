@@ -1,50 +1,32 @@
 # Design Document
 
 ## Table of Contents
-- [Specification](##specification)
-- [CRC Cards](##crc-cards)
-- [SOLID Principles](##solid-principles)
-- [Clean Architecture](##clean-architecture)
-- [Design Patterns](##design-patterns)
-- [Use of GitHub Features](##use-of-github-features)
-- [Code Style and Documentation](##code-style-and-documentation)
-- [Testing](##testing)
-- [Refactoring and Code Smells](##refactoring-and-code-smells)
-- [Code Organization](##code-organization)
-- [Design Document](##design-document)
-- [Accessibility Report](##accessibility-report)
-- [Progress Report](##progress-report)
+- [Specification](#specification)
+- [CRC Cards](#crc-cards)
+- [SOLID Principles](#solid-principles)
+- [Clean Architecture](#clean-architecture)
+- [Design Patterns](#design-patterns)
+- [Use of GitHub Features](#use-of-github-features)
+- [Code Style and Documentation](#code-style-and-documentation)
+- [Testing](#testing)
+- [Refactoring and Code Smells](#refactoring-and-code-smells)
+- [Code Organization](#code-organization)
+- [Design Document](#design-document)
+- [Accessibility Report](#accessibility-report)
+- [Progress Report](#progress-report)
 
 ***
 
 ## Specification
-Plannr is an organizational platform in the form of an Android app that helps university students coordinate their
-everyday routine, including schoolwork and expenses. Users are first taken to the login page and prompted to log in by
-entering their email and password If they do not have an account yet, they can click the sign-up button. They sign up by
-entering their full name, email, and password. After signing up or logging in, users are taken to the main view which is
-a to do list that allows users see all school events that they created. Users can also create events by the means of a
-calendar that offers a monthly view and an add event feature. A user can also view school specific events in
-the form of a list underneath the calendar. Our platform currently focuses on two main categories:
+Plannr is an organizational platform in the form of an Android app that helps university students coordinate their everyday routine, including schoolwork and expenses. Users are first taken to the login page and prompted to log in by entering their email and password If they do not have an account yet, they can click the sign-up button. They sign up by entering their full name, email, and password. After signing up or logging in, users are taken to the main view which is a to do list that allows users see all school events that they created. Users can also create events by the means of a calendar that offers a monthly view and an add event feature. A user can also view school specific events in the form of a list underneath the calendar. Our platform currently focuses on two main categories:
 
-* **Schoolwork:** As a user, I can add (use case), four school-related events (entity), including assessments, due
-  dates, class times, and study sessions. Once I inputted the school event I can view in the list of school events
-  underneath the calendar.
-* **Expenses:** As a user, I can view my all-time expenses (entity) in the form of list showing the name of the expense
-  and the amount of money spend. By going to the add expenses page and inputting the name of the expense and the amount
-  of dollars I can add (use case) an expense to the expense list. I can input my income and the total displayed at the
-  bottom is a difference between my income and total expenses. The text will be green if the total is less than my
-  income, red if it is greater than my income and yellow if it is the same amount.
+* **Schoolwork:** As a user, I can add (use case), four school-related events (entity), including assessments, due dates, class times, and study sessions. Once I inputted the school event I can view in the list of school events underneath the calendar.
+* **Expenses:** As a user, I can view my all-time expenses (entity) in the form of list showing the name of the expense and the amount of money spend. By going to the add expenses page and inputting the name of the expense and the amount of dollars I can add (use case) an expense to the expense list. I can input my income and the total displayed at the bottom is a difference between my income and total expenses. The text will be green if the total is less than my income, red if it is greater than my income and yellow if it is the same amount.
 
-Upon app launch, users see the today view and can toggle between different views such as schoolwork, expenses, and
-settings by the means of a side menu that pops out when clicked. The settings page allows users to change their name and
-their password at any point in time.
+Upon app launch, users see the today view and can toggle between different views such as schoolwork, expenses, and settings by the means of a side menu that pops out when clicked. The settings page allows users to change their name and their password at any point in time.
 
 ### Changes from Phase 0 Specification
-Plannr, previously titled Uni Life Tracker, started out as a command-line interface with the goal of the Android app,
-allowing users to track their events and deadlines to fit their personal needs. It was meant to focus on three
-categories: **Schoolwork, Life and Expenses**. While in phase 2, Plannr only focuses on school, work and expenses. In
-addition, the to do list does not have a check features so users cannot check off tasks, but they can still view them.
-Some additions include a sign-up, login and settings feature.
+Plannr, previously titled Uni Life Tracker, started out as a command-line interface with the goal of the Android app, allowing users to track their events and deadlines to fit their personal needs. It was meant to focus on three categories: **Schoolwork, Life and Expenses**. While in phase 2, Plannr only focuses on school, work and expenses. In addition, the to do list does not have a check features so users cannot check off tasks, but they can still view them. Some additions include a sign-up, login and settings feature.
 
 ## CRC Cards
 Please see the linked for the updated [CRC Cards](https://docs.google.com/document/d/1wAnKPMUv0o_FJ9qT4U98Bf2eMEP8u2Y1_nC9lcLH76U/edit).
@@ -54,12 +36,8 @@ Please see the linked for the updated [CRC Cards](https://docs.google.com/docume
 
 ### SRP: Single Responsibility Principle
 * <u>Comply:</u>
-    * In order to comply with the single responsibility principle, we made sure that each class was responsible for one
-      thing.
-    * Looking at the use cases, we have the `EventManager`, `UserManager`, and `ExpenseManager` which are each only
-      responsible for their respective entity. `EventManager` is only responsible for maintaining anything `Event`
-      related, `UserManager` is only responsible for maintaining anything `User` related, and `ExpenseManager` is only
-      responsible for maintaining anything Expense related. This avoids
+    * In order to comply with the single responsibility principle, we made sure that each class was responsible for one thing.
+    * Looking at the use cases, we have the `EventManager`, `UserManager`, and `ExpenseManager` which are each only responsible for their respective entity. `EventManager` is only responsible for maintaining anything `Event` related, `UserManager` is only responsible for maintaining anything `User` related, and `ExpenseManager` is only responsible for maintaining anything Expense related. This avoids
     * Similarly, for the gateways, we split the gateways for the three entities so that `EventGateway` is only
       responsible for saving and reading Events from the database, `ExpenseGateway` is responsible for saving and
       reading `Expenses` from the database and `UserGateway` is responsible for saving and reading Users from the
@@ -424,12 +402,7 @@ for students who are looking for an organizational platform that combines both t
 easy access.
 
 ### Least Likely Demographic
-People who are not students would not Plannr particularly useful. Specifically, younger students in elementary school or
-children would be less likely to user Planner. They would have no use for the expense features they are not
-managing their own finances. In addition, older adults who are retired or who are not students are less likely to use
-the school work related features. Finally, middle-aged adults will have no use for both the school work and the expenses
-features. Many employed adults already be using more advanced banking apps which automatically display their
-expenditures.
+People who are not students would not Plannr particularly useful. Specifically, younger students in elementary school or children would be less likely to user Planner. They would have no use for the expense features they are not managing their own finances. In addition, older adults who are retired or who are not students are less likely to use the school work related features. Finally, middle-aged adults will have no use for both the school work and the expenses features. Many employed adults already be using more advanced banking apps which automatically display their expenditures.
 
 ***
 
