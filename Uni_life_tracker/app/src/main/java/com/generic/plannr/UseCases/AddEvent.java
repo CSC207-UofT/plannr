@@ -5,11 +5,6 @@ import androidx.annotation.NonNull;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-import com.generic.plannr.Entities.Assessment;
-import com.generic.plannr.Entities.Deadline;
-import com.generic.plannr.Entities.StudySession;
-import com.generic.plannr.Entities.Class;
-
 /**
  * Adds an event to a user's event lists
  */

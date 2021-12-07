@@ -2,17 +2,12 @@ package com.generic.plannr.UseCaseTests;
 
 import org.junit.*;
 
-import static org.junit.Assert.*;
 import static com.generic.plannr.UseCases.AddEvent.*;
-import static com.generic.plannr.StaticTestVariables.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import com.generic.plannr.Entities.Assessment;
-import com.generic.plannr.Entities.StudySession;
-import com.generic.plannr.Entities.Class;
 import com.generic.plannr.UseCases.UserManager;
 
 public class AddEventTest {
