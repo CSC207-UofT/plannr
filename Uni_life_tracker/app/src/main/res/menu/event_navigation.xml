@@ -7,14 +7,14 @@
         android:title="@string/assessment"/>
 
     <item
-            android:id="@+id/nav_deadline"
-            android:icon="@drawable/ic_deadline"
-            android:title="@string/deadline"/>
-
-    <item
             android:id="@+id/nav_class"
             android:icon="@drawable/ic_class_time"
             android:title="@string/class_time"/>
+
+    <item
+            android:id="@+id/nav_deadline"
+            android:icon="@drawable/ic_deadline"
+            android:title="@string/deadline"/>
 
     <item
             android:id="@+id/nav_study_session"

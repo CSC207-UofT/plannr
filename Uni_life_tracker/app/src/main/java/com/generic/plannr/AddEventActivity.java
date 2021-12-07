@@ -11,13 +11,9 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.format.DateFormat;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import com.generic.plannr.Entities.Event;
 import com.generic.plannr.Gateways.EventGateway;
 import com.generic.plannr.Gateways.UserGateway;
@@ -31,7 +27,6 @@ import java.util.Date;
 import java.util.Locale;
 
 public class AddEventActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
-    //    Initialize Variables
     int yr, mth, day, hr, min, priority;
     String startDate, endDate, startTime, endTime;
     TextView tvStartDate, tvStartTime, tvEndDate, tvEndTime;
@@ -62,6 +57,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         tvEndTime = findViewById(R.id.tv_end_time);
         rgPriorities = findViewById(R.id.rg_priorities);
 
+//        Event navigation bar
         BottomNavigationView navEvents = findViewById(R.id.nav_events);
         navEvents.setSelectedItemId(R.id.nav_assessment);
         navEvents.setOnNavigationItemSelectedListener(item -> {
@@ -230,15 +226,6 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
 
             activity.redirectActivity(this, SchoolActivity.class);
         }
-    }
-
-    /**
-     * Directs activity to the Add Assessment Event activity on assessment icon click.
-     *
-     * @param view a View for the device screen.
-     */
-    public void clickAssessment(View view) {
-        // TODO: direct to assessment page
     }
 
     /**
