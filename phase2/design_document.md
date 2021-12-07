@@ -1,5 +1,22 @@
 # Design Document
 
+## Table of Contents
+- [Specification](##specification)
+- [CRC Cards](##crc-cards)
+- [SOLID Principles](##solid-principles)
+- [Clean Architecture](##clean-architecture)
+- [Design Patterns](##design-patterns)
+- [Use of GitHub Features](##use-of-github-features)
+- [Code Style and Documentation](##code-style-and-documentation)
+- [Testing](##testing)
+- [Refactoring and Code Smells](##refactoring-and-code-smells)
+- [Code Organization](##code-organization)
+- [Design Document](##design-document)
+- [Accessibility Report](##accessibility-report)
+- [Progress Report](##progress-report)
+
+***
+
 ## Specification
 Plannr is an organizational platform in the form of an Android app that helps university students coordinate their
 everyday routine, including schoolwork and expenses. Users are first taken to the login page and prompted to log in by
@@ -347,6 +364,8 @@ completed to the best of our ability.
 Our design document is detailed and clear while also containing extra features such as instructions on how to set up the
 app and how run certain features.
 
+***
+
 ## Accessibility Report
 
 ### Universal Design Principles
@@ -411,3 +430,29 @@ managing their own finances. In addition, older adults who are retired or who ar
 the school work related features. Finally, middle-aged adults will have no use for both the school work and the expenses
 features. Many employed adults already be using more advanced banking apps which automatically display their
 expenditures.
+
+***
+
+## Progress Report
+
+### Evgenia
+Throughout both phase 1 and 2 Evgenia was on the frontend team and focused on continuing to implement and enhance UI features added in phase 1 using Android Studio. Within the [Expenses backend connection](https://github.com/CSC207-UofT/course-project-generic-name-1/pull/70) ([Expenses backend connection by EvgeniaSila · Pull Request #70 · CSC207-UofT/course-project-generic-name-1 (github.com)](https://github.com/CSC207-UofT/course-project-generic-name-1/pull/70)) pull request she worked on connecting the add expenses page and the expenses list to the backend and database, ensuring the the user's inputted expense information could be stored in the database and then later retrieved for display. This pull request was essential for the overall functionality of Plannr as expenses are one of the key features for the app. She also added an income feature to enhance the overall functionality of expenses, allowing a user to see how much of their income they have left after calculating their total expenses. In addition, Evgenia worked on the initial design of the login page and made use of the user's name by creating a welcome message that greets that user with their name in the main page view. Evgenia also added to the design document by writing the specification, the accessibility report, the instructions for how to use features of Plannr, the GitHub feature section, refactoring section, the updated CRC cards and the progress report.
+
+### Kathy
+For phase 2 of the project, Kathy continued with her role as a frontend member of the team. As mentioned in the previous progress report, she continued to develop the UI, from implementing the logout button, to viewing and adding events, and ...
+With the [`reformat_and_documentation`](https://github.com/CSC207-UofT/course-project-generic-name-1/pull/82) pull request, she was responsible for ensuring that the overall UI was visually cohesive, and reformatted the activity layouts to reflect this consistency. Additionally in this branch, Kathy worked on code styling and cleanup, where she renamed some class names, added documentation, and discarded unused files. With regards to the design document, Kathy wrote for the Code Style and Documentation portion of the report.
+
+### Dana
+
+### Bolade
+For phase 2, Bolade continued with her implementation of Use Cases as a backend team member. She also worked on a "clean up" plan which was to be used to clean up any clean architecture or SOLID principle violations. This is involved making a dependency graph of the classes that were there or were to be implemented along with a sort of UML diagram that contained each class/interface with their variables and/or methods and parameters. This was her most difficult task and took most of her time as this required her to understand clean architecture and SOLID principles well enough as well as come up with any solution to a problem that may have come to be in phase 1 or in phase 2. Prior to working on the clean up plan, she also went through the phase 1 rubric and made a list of questions which her teammates added to that were to be asked to the TA in order figure out what needed to change or improve for phase 2. This helped a lot with the clean up plan. She also aided the frontend team when they needed help understanding a class or method that was implemented in the inner layers such as the use case classes or controllers/presenters. Lastly, she also wrote parts of SOLID and wrote the Clean Architecture section of the design document.
+
+### Sari
+During his role as a backend member of the team, Sari was mainly tasked during Phase 1 to implement a working database. Despite the difficult task, Sari was able to learn the basics of SQLite, a local database used for Java, and share his learning experience with the frontend team that needed to know how the database worked. Although the required database helpers were successfully implemented, it was difficult for him to implement the database into the app during Phase 1 due to time constraints and some setbacks which included some missing UI features at the time which lead to his under-contribution. Sari became motivated to work harder during Phase 2 and successfully integrated the database whilst also keeping under consideration the features of SOLID and Clean Architecture in general by adding the necessary gateways and their respective interfaces which use the database to send/receive information to the use cases. This is partially demonstrated by this pull request:
+[https://github.com/CSC207-UofT/course-project-generic-name-1/pull/80](https://github.com/CSC207-UofT/course-project-generic-name-1/pull/80)
+
+In addition, he used his knowledge on the SOLID, Clean Architecture and Design Patterns to help in brainstorming and identifying potential and applicable Design Patterns and different ways to incorporate SOLID in the project as demonstrated in the pull request above as well as the design document.
+
+### Daniel
+For both phase 1 and phase 2, Daniel is on the backend team working on the backbone of the program. For phase 2, Daniel shifted his main focus on testing, while also participating in implementing and discussing design patterns. In the pull request [UseCase\_Tests](https://github.com/CSC207-UofT/course-project-generic-name-1/pull/76), Daniel implemented all tests for the program's use cases and found several errors and discrepancies involving the class `User`, `UserManager`, and `EventDateComparator`. He also found a bug in the regex validator for signing up, which prevented the user to use `.` as a special character. In addition, in the pull request [Database\_Tests](https://github.com/CSC207-UofT/course-project-generic-name-1/pull/91), Daniel learnt and implemented Android instrumented tests to test SQLite databases (the gateway classes), and refactored test packages to increase interpretability.
+In terms of design document, Daniel wrote Code Organization and Testing. He made short GIFs detailing system setup and how to run the program, which was a major issue in phase 1 where Evan was having issue launching our program. He also helped wrote the Design Patterns section together with Sari which discusses various different strategies wth backend team brainstormed. As well, he helped to write and the SOLID principle section of the progress report with Bolade, who wrote the majority of the section.
