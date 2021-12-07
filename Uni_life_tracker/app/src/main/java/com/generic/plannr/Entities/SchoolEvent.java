@@ -7,10 +7,13 @@ import java.time.format.DateTimeFormatter;
  * Represents an event with a start and end date and priority.
  */
 public class SchoolEvent {
+    private String eventType;
     private String name;
     private int priority;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
+    private String course;
+    private String location;
     public static final DateTimeFormatter DATEFORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
 
     /**
@@ -22,18 +25,21 @@ public class SchoolEvent {
      * @param startDate This com.generic.plannr.Entities.Event's start date
      * @param endDate This com.generic.plannr.Entities.Event's end date
      */
-    public SchoolEvent(String name, int priority, LocalDateTime startDate, LocalDateTime endDate) {
+    public SchoolEvent(String eventType, String name, int priority, LocalDateTime startDate,
+                       LocalDateTime endDate, String course) {
         this.name = name;
         this.priority = priority;
         this.startDate = startDate;
         this.endDate = endDate;
     }
 
-    public SchoolEvent(String name, int priority, LocalDateTime endDate) {
-        this.name = name;
-        this.priority = priority;
-        this.endDate = endDate;
+    public SchoolEvent(String eventType, String name, int priority, LocalDateTime startDate,
+                       LocalDateTime endDate, String course, String location) {
+        this (eventType, name, priority, startDate, endDate, course);
+        this.location = location;
     }
+
+    public String getEventType() { return this.eventType; }
 
     /**
      * Gets the name of the event
@@ -66,6 +72,10 @@ public class SchoolEvent {
     public LocalDateTime getEndDate() {
         return this.endDate;
     }
+
+    public String getCourse() { return this.course; }
+
+    public String getLocation() { return this.location; }
 
     /**
      * Changes the name of the event
