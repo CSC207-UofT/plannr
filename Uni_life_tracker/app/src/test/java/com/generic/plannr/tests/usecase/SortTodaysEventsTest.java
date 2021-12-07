@@ -1,6 +1,6 @@
 package com.generic.plannr.tests.usecase;
 
-import com.generic.plannr.Entities.Event;
+import com.generic.plannr.Entities.SchoolEvent;
 import com.generic.plannr.UseCases.EventDateComparator;
 import com.generic.plannr.UseCases.UserManager;
 
@@ -17,7 +17,7 @@ import static org.junit.Assert.assertEquals;
 public class SortTodaysEventsTest {
 
     UserManager user;
-    Event e1, e2, e3;
+    SchoolEvent e1, e2, e3;
     ArrayList<String> COURSES;
     EventDateComparator EDC;
 
@@ -27,9 +27,9 @@ public class SortTodaysEventsTest {
         EDC = new EventDateComparator();
         user = new UserManager("Test User", "test@gmail.com", "TestUser@123");
 
-        e1 = new Event("test", 2, TODAY, TODAY);
-        e2 = new Event("test", 1, TODAY.plusSeconds(1), TODAY.plusSeconds(1));
-        e3 = new Event("test", 0, TODAY.plusSeconds(2), TODAY.plusSeconds(2));
+        e1 = new SchoolEvent("deadline", "test", 2, TODAY, TODAY, "CSC207");
+        e2 = new SchoolEvent("assessment", "test", 1, TODAY.plusSeconds(1), TODAY.plusSeconds(1), "CSC311");
+        e3 = new SchoolEvent("deadline", "test", 0, TODAY.plusSeconds(2), TODAY.plusSeconds(2), "ECO349");
 
         user.addEventToUsersList(e1);
         user.addEventToUsersList(e3);
@@ -38,13 +38,13 @@ public class SortTodaysEventsTest {
 
     @Test(timeout = 50)
     public void TestSortByDate() {
-        ArrayList<Event> expected = new ArrayList<>(Arrays.asList(e1, e2, e3));
+        ArrayList<SchoolEvent> expected = new ArrayList<>(Arrays.asList(e1, e2, e3));
         assertEquals(expected, sortByDate(user.viewEventList()));
     }
 
     @Test(timeout = 50)
     public void TestSortByPriority() {
-        ArrayList<Event> expected = new ArrayList<>(Arrays.asList(e3, e2, e1));
+        ArrayList<SchoolEvent> expected = new ArrayList<>(Arrays.asList(e3, e2, e1));
         assertEquals(expected, sortByPriority(user.viewEventList()));
     }
 
