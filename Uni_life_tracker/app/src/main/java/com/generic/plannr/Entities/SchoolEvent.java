@@ -106,6 +106,13 @@ public class SchoolEvent {
      * Gets the location of SchoolEvent
      * @return the name of the location of SchoolEvent
      */
-    public String getLocation() { return this.location; }
+    public String getLocation() {
+        if (this.location == null) {
+            return "N/A";
+        } else {
+            return this.location;
+        }
+
+    }
 
 }
