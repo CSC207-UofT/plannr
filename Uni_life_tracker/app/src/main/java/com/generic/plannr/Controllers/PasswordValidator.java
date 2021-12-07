@@ -10,18 +10,17 @@ public class PasswordValidator implements Validator {
 
     // At least one number, uppercase letter, lowercase letter and special char. Min of 6 characters
     private static final Pattern PASSWORD_REQ =
-            Pattern.compile("[\\w\\d!@#$%^&*()-_\\\\/\\[\\]=+]{6,}");
+            Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–\\[\\]?/\\\\*_$^+=]).{6,}$");
 
     /**
      * Validates inputs and displays the different error messages for the user inpupts
      *
-     * @param userInput the input from the main layout that will display the error
-     * @param ug the gateway connecting to the userinfo database
-
-     * @param isSignup whether validation is for signup or login
-     *
+     * @param userInput  the input from the main layout that will display the error
+     * @param ug         the gateway connecting to the userinfo database
+     * @param tiEmail    the user's email
+     * @param tiPassword the user's password
+     * @param isSignup   whether validation is for signup or login
      * @return whether the user input is valid and sets an error message if needed
-     *
      */
     public boolean validateEntry(TextInputLayout userInput, UserGateway ug, TextInputLayout tiEmail,
                                  TextInputLayout tiPassword, boolean isSignup) {
@@ -39,7 +38,7 @@ public class PasswordValidator implements Validator {
             return false;
 
         } else if (!isSignup && userInput == tiPassword && !ug.getPassword(email).equals(password)
-                && ! ug.uniqueEmail(email)) {
+                && !ug.uniqueEmail(email)) {
             userInput.setError("The password you entered is incorrect");
             return false;
         } else {
@@ -52,7 +51,6 @@ public class PasswordValidator implements Validator {
      * Uses regex to make sure the password inputted is secure
      *
      * @param input The password that the user types into the textbox
-     *
      * @return a string that includes all the requirements that the password violates, if any
      */
     public StringBuilder passwordReq(String input) {
@@ -63,24 +61,19 @@ public class PasswordValidator implements Validator {
         Pattern minChar = Pattern.compile(".{6,}");
         StringBuilder str = new StringBuilder();
         str.append("Your password requires: \n");
-        if (!minChar.matcher(input).find())
-        {
+        if (!minChar.matcher(input).find()) {
             str.append("- A length of at least 6 characters \n");
         }
-        if (!uppercase.matcher(input).find())
-        {
+        if (!uppercase.matcher(input).find()) {
             str.append("- At least 1 uppercase character \n");
         }
-        if (!lowercase.matcher(input).find())
-        {
+        if (!lowercase.matcher(input).find()) {
             str.append("- At least 1 lowercase character \n");
         }
-        if (!number.matcher(input).find())
-        {
+        if (!number.matcher(input).find()) {
             str.append("- At least 1 number \n");
         }
-        if (!specialChar.matcher(input).find())
-        {
+        if (!specialChar.matcher(input).find()) {
             str.append("- At least 1 special character !@#$%^&*()-_=+/[]\\ \n");
         }
         return str;
