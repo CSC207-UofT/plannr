@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
 import com.generic.plannr.Database.DatabaseClient;
 import com.generic.plannr.Entities.User;
 import com.generic.plannr.UseCases.UserManager;
@@ -51,7 +52,7 @@ public class UserGateway implements UserGatewayInterface {
      * @param name The user's name to be inserted
      */
     @SuppressLint("Recycle")
-    public void updateName(String name){
+    public void updateName(String name) {
         openDatabase();
         ContentValues cv = new ContentValues();
         cv.put("NAME", name);
@@ -63,7 +64,7 @@ public class UserGateway implements UserGatewayInterface {
      *
      * @param password The user's password to be inserted
      */
-    public void updatePassword(String password){
+    public void updatePassword(String password) {
         openDatabase();
         ContentValues cv = new ContentValues();
         cv.put("PASSWORD", password);
@@ -75,7 +76,7 @@ public class UserGateway implements UserGatewayInterface {
      *
      * @param income The user's income to be inserted
      */
-    public void updateIncome(Double income){
+    public void updateIncome(Double income) {
         openDatabase();
         ContentValues cv = new ContentValues();
         cv.put("INCOME", income);
@@ -87,7 +88,6 @@ public class UserGateway implements UserGatewayInterface {
      * in the database
      *
      * @param userID the id of the User we want to return
-     *
      * @return the User with id userID
      */
     public User getByID(final int userID) {
@@ -115,7 +115,6 @@ public class UserGateway implements UserGatewayInterface {
      * in the database
      *
      * @param userEmail the email of the User we want to return
-     *
      * @return the User with email userEmail
      */
     public User getByEmail(final String userEmail) {
@@ -161,7 +160,7 @@ public class UserGateway implements UserGatewayInterface {
      *
      * @return the logged in user's name in the database
      */
-    public String getLoggedInName(){
+    public String getLoggedInName() {
         openDatabase();
         @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE " +
                         "LOGGED_IN = 1",
@@ -178,7 +177,7 @@ public class UserGateway implements UserGatewayInterface {
      *
      * @return the logged in user's email in the database
      */
-    public String getLoggedInEmail(){
+    public String getLoggedInEmail() {
         openDatabase();
         @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE " +
                         "LOGGED_IN = 1",
@@ -196,7 +195,7 @@ public class UserGateway implements UserGatewayInterface {
      *
      * @return the logged in user's income in the database
      */
-    public String getLoggedInIncome(){
+    public String getLoggedInIncome() {
         openDatabase();
         @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE " +
                         "LOGGED_IN = 1",
@@ -213,10 +212,9 @@ public class UserGateway implements UserGatewayInterface {
      * Get the password associated with userEmail currently stored in the database
      *
      * @param userEmail the user's email
-     *
      * @return the userEmail's password from the database
      */
-    public String getPassword(String userEmail){
+    public String getPassword(String userEmail) {
         openDatabase();
         @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE " +
                 "EMAIL = " + '"' + userEmail + '"', null);
@@ -229,9 +227,7 @@ public class UserGateway implements UserGatewayInterface {
     }
 
     /**
-     *
      * Set which account is currently logged in the database
-     *
      */
     public void updateLoggedInUser(String userEmail) {
         openDatabase();
@@ -257,7 +253,6 @@ public class UserGateway implements UserGatewayInterface {
 
     /**
      * Get the list of Users currently stored in the database
-     *
      *
      * @return a list of all users stored in the database
      */
