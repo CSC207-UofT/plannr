@@ -61,7 +61,7 @@ public class AddClassEventActivity extends AppCompatActivity implements RadioGro
 //        Event navigation bar
         BottomNavigationView navEvents = findViewById(R.id.nav_events);
         navEvents.setSelectedItemId(R.id.nav_class);
-        navEvents.setOnNavigationItemSelectedListener(item -> {
+        navEvents.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.nav_assessment:
                     startActivity(new Intent(getApplicationContext(), AddEventActivity.class));
