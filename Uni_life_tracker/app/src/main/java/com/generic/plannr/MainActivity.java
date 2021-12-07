@@ -127,6 +127,7 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
             TextView dialogEventStartT = dialogView.findViewById(R.id.tv_start_time);
             TextView dialogEventEndD = dialogView.findViewById(R.id.tv_end_date);
             TextView dialogEventEndT = dialogView.findViewById(R.id.tv_end_time);
+            TextView dialogEventPriority = dialogView.findViewById(R.id.tv_priority);
 
             DateTimeFormatter dayFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh:mm a");
@@ -134,6 +135,20 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
             String startTime = eventsList.get(position).getStartDate().toLocalTime().format(timeFormatter);
             String endDate = eventsList.get(position).getEndDate().toLocalDate().format(dayFormatter);
             String endTime = eventsList.get(position).getEndDate().toLocalTime().format(timeFormatter);
+            int priority = eventsList.get(position).getPriority();
+            String priorityS = "";
+            switch (priority) {
+                case 0:
+                    priorityS = "High";
+                    break;
+                case 1:
+                    priorityS = "Medium";
+                    break;
+                case 2:
+                    priorityS = "Low";
+                    break;
+            }
+
 
             dialogEventName.setText(eventsList.get(position).getName());
             //dialogEventCourse.setText(eventsList.get(position).Ass);
@@ -141,6 +156,7 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
             dialogEventStartT.setText(startTime);
             dialogEventEndD.setText(endDate);
             dialogEventEndT.setText(endTime);
+            dialogEventPriority.setText(priorityS);
 
             builder.setView(dialogView);
             builder.setCancelable(true);
