@@ -11,8 +11,6 @@
             android:roundIcon="@drawable/ic_plannr_p_black"
             android:supportsRtl="true"
             android:theme="@style/Theme.Plannr">
-        <activity android:name=".EventActivity">
-        </activity>
         <activity android:name=".SettingsActivity">
         </activity>
         <activity android:name=".SignUpActivity">
