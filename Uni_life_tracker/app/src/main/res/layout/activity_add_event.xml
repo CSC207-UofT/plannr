@@ -48,61 +48,19 @@
                 android:onClick="clickSaveEvent"/>
     </LinearLayout>
 
-    <!-- Event Type Selection -->
-    <LinearLayout
+    <!--  Select Event Type  -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/nav_events"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:padding="5dp"
-            android:layout_marginTop="10dp">
+            android:paddingVertical="10dp"
+            app:menu="@menu/event_navigation"
+            app:itemIconSize="35dp"
+            app:itemIconTint="@drawable/selector"
+            app:itemTextColor="@drawable/selector"
+            app:itemRippleColor="@color/lavender"
+            app:labelVisibilityMode="labeled"/>
 
-        <!-- Assessment -->
-        <TextView
-                android:id="@+id/tv_assessment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:drawableTopCompat="@drawable/ic_assessment"
-                android:text="@string/assessment"
-                android:textStyle="bold"
-                android:fontFamily="@font/roboto_mono_bold"
-                android:textAlignment="center"
-                android:padding="15dp"
-                android:onClick="clickAssessment"/>
-
-        <!-- Deadline -->
-        <TextView
-                android:id="@+id/tv_deadline"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:drawableTopCompat="@drawable/ic_deadline_line"
-                android:text="@string/deadline"
-                android:textAlignment="center"
-                android:padding="15dp"
-                android:onClick="clickDeadline"/>
-
-        <!-- Class Time -->
-        <TextView
-                android:id="@+id/tv_class_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:drawableTopCompat="@drawable/ic_class_time_line"
-                android:text="@string/class_time"
-                android:textAlignment="center"
-                android:padding="15dp"
-                android:onClick="clickClassTime"/>
-
-        <!-- Study Session -->
-        <TextView
-                android:id="@+id/tv_study_session"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:drawableTopCompat="@drawable/ic_study_session_line"
-                android:text="@string/study_session"
-                android:textAlignment="center"
-                android:padding="15dp"
-                android:onClick="clickStudySession"/>
-    </LinearLayout>
 
     <!-- Add Event Name -->
     <LinearLayout

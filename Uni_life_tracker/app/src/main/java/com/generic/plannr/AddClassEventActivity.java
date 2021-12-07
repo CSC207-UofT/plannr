@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -19,7 +20,7 @@ import java.util.Locale;
 public class AddClassEventActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener{
     //    Initialize Variables
     int startYear, startMonth, startDay, endYear, endMonth, endDay, startHour, startMinute, endHour, endMinute, priority;
-    TextView tvStartDate, tvStartTime, tvEndDate, tvEndTime, tvAssessment, tvDeadline, tvClassTime, tvStudySession;
+    TextView tvStartDate, tvStartTime, tvEndDate, tvEndTime;
     RadioGroup radioGroup;
     ImageView ivBack, ivSave;
     EditText etEventName;
@@ -39,10 +40,30 @@ public class AddClassEventActivity extends AppCompatActivity implements RadioGro
         tvEndDate = findViewById(R.id.tv_end_date);
         tvEndTime = findViewById(R.id.tv_end_time);
         radioGroup = findViewById(R.id.rg_priorities);
-        tvAssessment = findViewById(R.id.tv_assessment);
-        tvDeadline = findViewById(R.id.tv_deadline);
-        tvClassTime = findViewById(R.id.tv_class_time);
-        tvStudySession = findViewById(R.id.tv_study_session);
+
+        BottomNavigationView navEvents = findViewById(R.id.nav_events);
+        navEvents.setSelectedItemId(R.id.nav_class);
+        navEvents.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.nav_assessment:
+                    startActivity(new Intent(getApplicationContext(), AddEventActivity.class));
+                    overridePendingTransition(0, 0);
+                    return true;
+                case R.id.nav_class:
+                    startActivity(new Intent(getApplicationContext(), AddClassEventActivity.class));
+                    overridePendingTransition(0, 0);
+                    return true;
+                case R.id.nav_deadline:
+                    startActivity(new Intent(getApplicationContext(), AddDeadlineEventActivity.class));
+                    overridePendingTransition(0, 0);
+                    return true;
+                case R.id.nav_study_session:
+                    startActivity(new Intent(getApplicationContext(), AddStudySessionEventActivity.class));
+                    overridePendingTransition(0, 0);
+                    return true;
+            }
+            return false;
+        });
 
 //        Spinner coursesList = findViewById(R.id.spn_courses); // TO BE IMPLEMENTED IN PHASE 2
 
@@ -63,9 +84,6 @@ public class AddClassEventActivity extends AppCompatActivity implements RadioGro
 
         radioGroup.setOnCheckedChangeListener(this);
         ivBack.setOnClickListener(this::ClickBack);
-        tvAssessment.setOnClickListener(this::ClickAssessment);
-        tvDeadline.setOnClickListener(this::ClickDeadline);
-        tvStudySession.setOnClickListener(this::ClickStudySession);
 
         ivSave.setOnClickListener(v -> {
             String eventName = etEventName.getText().toString();
@@ -177,20 +195,5 @@ public class AddClassEventActivity extends AppCompatActivity implements RadioGro
         } else if (checkedId == R.id.rb_low_priority) {
             priority = 3;
         }
-    }
-
-    public void ClickAssessment(View view) {
-        Intent intent = new Intent(this, AddEventActivity.class);
-        startActivity(intent);
-    }
-
-    public void ClickDeadline(View view) {
-        Intent intent = new Intent(this, AddDeadlineEventActivity.class);
-        startActivity(intent);
-    }
-
-    public void ClickStudySession(View view) {
-        Intent intent = new Intent(this, AddStudySessionEventActivity.class);
-        startActivity(intent);
     }
 }

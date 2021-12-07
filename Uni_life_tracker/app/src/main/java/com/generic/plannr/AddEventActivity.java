@@ -7,17 +7,21 @@ package com.generic.plannr;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import com.generic.plannr.Entities.Event;
 import com.generic.plannr.Gateways.EventGateway;
 import com.generic.plannr.Gateways.UserGateway;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -30,7 +34,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
     //    Initialize Variables
     int yr, mth, day, hr, min, priority;
     String startDate, endDate, startTime, endTime;
-    TextView tvStartDate, tvStartTime, tvEndDate, tvEndTime, tvAssessment, tvDeadline, tvClassTime, tvStudySession;
+    TextView tvStartDate, tvStartTime, tvEndDate, tvEndTime;
     RadioGroup rgPriorities;
     ImageView ivBack, ivSave;
     EditText etEventName, etCourse;
@@ -41,6 +45,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
     UserGateway ug = new UserGateway(AddEventActivity.this);
     EventGateway eg = new EventGateway(AddEventActivity.this);
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,10 +61,30 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         tvEndDate = findViewById(R.id.tv_end_date);
         tvEndTime = findViewById(R.id.tv_end_time);
         rgPriorities = findViewById(R.id.rg_priorities);
-        tvAssessment = findViewById(R.id.tv_assessment);
-        tvDeadline = findViewById(R.id.tv_deadline);
-        tvClassTime = findViewById(R.id.tv_class_time);
-        tvStudySession = findViewById(R.id.tv_study_session);
+
+        BottomNavigationView navEvents = findViewById(R.id.nav_events);
+        navEvents.setSelectedItemId(R.id.nav_assessment);
+        navEvents.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.nav_assessment:
+                    startActivity(new Intent(getApplicationContext(), AddEventActivity.class));
+                    overridePendingTransition(0, 0);
+                    return true;
+                case R.id.nav_class:
+                    startActivity(new Intent(getApplicationContext(), AddClassEventActivity.class));
+                    overridePendingTransition(0, 0);
+                    return true;
+                case R.id.nav_deadline:
+                    startActivity(new Intent(getApplicationContext(), AddDeadlineEventActivity.class));
+                    overridePendingTransition(0, 0);
+                    return true;
+                case R.id.nav_study_session:
+                    startActivity(new Intent(getApplicationContext(), AddStudySessionEventActivity.class));
+                    overridePendingTransition(0, 0);
+                    return true;
+            }
+            return false;
+        });
 
         calendar = Calendar.getInstance();
         yr = calendar.get(Calendar.YEAR);
@@ -214,33 +239,6 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
      */
     public void clickAssessment(View view) {
         // TODO: direct to assessment page
-    }
-
-    /**
-     * Directs activity to the Add Deadline Event activity on deadline icon click.
-     *
-     * @param view a View for the device screen.
-     */
-    public void clickDeadline(View view) {
-        activity.redirectActivity(this, AddDeadlineEventActivity.class);
-    }
-
-    /**
-     * Directs activity to the Add Class Event activity on class icon click.
-     *
-     * @param view a View for the device screen.
-     */
-    public void clickClassTime(View view) {
-        activity.redirectActivity(this, AddClassEventActivity.class);
-    }
-
-    /**
-     * Directs activity to the Add Study Session Event activity on study session icon click.
-     *
-     * @param view a View for the device screen.
-     */
-    public void clickStudySession(View view) {
-        activity.redirectActivity(this, AddStudySessionEventActivity.class);
     }
 
     /**

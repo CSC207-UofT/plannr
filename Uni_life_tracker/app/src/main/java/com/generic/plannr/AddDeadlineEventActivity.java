@@ -9,6 +9,7 @@ import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.generic.plannr.AddEventActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -18,7 +19,7 @@ import java.util.Locale;
 public class AddDeadlineEventActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener{
     //    Initialize Variables
     int eventYear, eventMonth, eventDay, eventHour, eventMinute, priority;
-    TextView tvDate, tvTime, tvAssessment, tvDeadline, tvClassTime, tvStudySession;
+    TextView tvDate, tvTime;
     RadioGroup radioGroup;
     ImageView ivBack, ivSave;
     EditText etEventName;
@@ -36,12 +37,30 @@ public class AddDeadlineEventActivity extends AppCompatActivity implements Radio
         tvDate = findViewById(R.id.tv_date);
         tvTime = findViewById(R.id.tv_time);
         radioGroup = findViewById(R.id.rg_priorities);
-        tvAssessment = findViewById(R.id.tv_assessment);
-        tvDeadline = findViewById(R.id.tv_deadline);
-        tvClassTime = findViewById(R.id.tv_class_time);
-        tvStudySession = findViewById(R.id.tv_study_session);
 
-//        Spinner coursesList = findViewById(R.id.spn_courses); // TO BE IMPLEMENTED IN PHASE 2
+        BottomNavigationView navEvents = findViewById(R.id.nav_events);
+        navEvents.setSelectedItemId(R.id.nav_deadline);
+        navEvents.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.nav_assessment:
+                    startActivity(new Intent(getApplicationContext(), AddEventActivity.class));
+                    overridePendingTransition(0, 0);
+                    return true;
+                case R.id.nav_class:
+                    startActivity(new Intent(getApplicationContext(), AddClassEventActivity.class));
+                    overridePendingTransition(0, 0);
+                    return true;
+                case R.id.nav_deadline:
+                    startActivity(new Intent(getApplicationContext(), AddDeadlineEventActivity.class));
+                    overridePendingTransition(0, 0);
+                    return true;
+                case R.id.nav_study_session:
+                    startActivity(new Intent(getApplicationContext(), AddStudySessionEventActivity.class));
+                    overridePendingTransition(0, 0);
+                    return true;
+            }
+            return false;
+        });
 
 //       Initialize Calendar
         Calendar calendar = Calendar.getInstance();
@@ -60,9 +79,6 @@ public class AddDeadlineEventActivity extends AppCompatActivity implements Radio
 
         radioGroup.setOnCheckedChangeListener(this);
         ivBack.setOnClickListener(this::ClickBack);
-        tvAssessment.setOnClickListener(this::ClickAssessment);
-        tvClassTime.setOnClickListener(this::ClickClassTime);
-        tvStudySession.setOnClickListener(this::ClickStudySession);
 
         ivSave.setOnClickListener(v -> {
             String eventName = etEventName.getText().toString();
@@ -103,14 +119,6 @@ public class AddDeadlineEventActivity extends AppCompatActivity implements Radio
             }, eventHour, eventMinute, false);
             timePickerDialog.show();
         });
-
-//        TO BE IMPLEMENTED IN PHASE 2: Courses List
-//        ArrayAdapter<String> myAdapter = new ArrayAdapter<>(AddDeadlineEventActivity.this,
-//                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.courses));
-//        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        coursesList.setAdapter(myAdapter);
-//
-//        ivSave.setOnClickListener(view -> Toast.makeText(AddDeadlineEventActivity.this, priority, Toast.LENGTH_SHORT).show());
     }
 
     //    Back Button
@@ -128,20 +136,5 @@ public class AddDeadlineEventActivity extends AppCompatActivity implements Radio
         } else if (checkedId == R.id.rb_low_priority) {
             priority = 3;
         }
-    }
-
-    public void ClickAssessment(View view) {
-        Intent intent = new Intent(this, AddEventActivity.class);
-        startActivity(intent);
-    }
-
-    public void ClickClassTime(View view) {
-        Intent intent = new Intent(this, com.generic.plannr.AddClassEventActivity.class);
-        startActivity(intent);
-    }
-
-    public void ClickStudySession(View view) {
-        Intent intent = new Intent(this, com.generic.plannr.AddStudySessionEventActivity.class);
-        startActivity(intent);
     }
 }

@@ -6,7 +6,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-    <!--  Toolbar  -->
+    <!--  Action Bar  -->
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -15,89 +15,50 @@
             android:padding="15dp"
             android:gravity="center_vertical">
 
+        <!--  Back Button  -->
         <ImageView
                 android:id="@+id/iv_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="ClickBack"
+                android:onClick="clickBack"
                 android:src="@drawable/ic_back_arrow"
                 android:contentDescription="@string/back"/>
 
+        <!--  Add Event Text  -->
         <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/add_school_event"
-                android:textSize="20sp"
+                android:textSize="25sp"
                 android:textColor="@color/white"
+                android:textStyle="bold"
                 android:fontFamily="@font/roboto_mono_bold"
                 android:layout_marginStart="15dp"
                 android:gravity="start"/>
 
+        <!--  Save Button  -->
         <ImageView
                 android:id="@+id/iv_save"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_done"
-                android:contentDescription="@string/save"/>
+                android:contentDescription="@string/save"
+                android:onClick="clickSaveEvent"/>
     </LinearLayout>
 
-    <!-- Event Type Selection -->
-    <LinearLayout
+    <!--  Select Event Type  -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/nav_events"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:padding="5dp">
-
-        <!-- Assessment -->
-        <TextView
-                android:id="@+id/tv_assessment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:drawableTopCompat="@drawable/ic_assessment_line"
-                android:text="@string/assessment"
-                android:textColor="@color/black"
-                android:textAlignment="center"
-                android:padding="15dp"
-                android:onClick="ClickAssessment"/>
-
-        <!-- Deadline -->
-        <TextView
-                android:id="@+id/tv_deadline"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:drawableTopCompat="@drawable/ic_deadline_line"
-                android:text="@string/deadline"
-                android:textColor="@color/black"
-                android:textAlignment="center"
-                android:padding="15dp"
-                android:onClick="ClickDeadline"/>
-
-        <!-- Class Time -->
-        <TextView
-                android:id="@+id/tv_class_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:drawableTopCompat="@drawable/ic_class_time"
-                android:text="@string/class_time"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textAlignment="center"
-                android:padding="15dp"/>
-
-        <!-- Study Session -->
-        <TextView
-                android:id="@+id/tv_study_session"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:drawableTopCompat="@drawable/ic_study_session_line"
-                android:text="@string/study_session"
-                android:textColor="@color/black"
-                android:textAlignment="center"
-                android:padding="15dp"
-                android:onClick="ClickStudySession"/>
-    </LinearLayout>
+            android:paddingVertical="10dp"
+            app:menu="@menu/event_navigation"
+            app:itemIconSize="35dp"
+            app:itemIconTint="@drawable/selector"
+            app:itemTextColor="@drawable/selector"
+            app:itemRippleColor="@color/lavender"
+            app:labelVisibilityMode="labeled"/>
 
     <!-- Add Event Name -->
     <EditText
