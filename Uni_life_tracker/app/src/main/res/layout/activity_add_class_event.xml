@@ -225,4 +225,30 @@
 
     </LinearLayout>
 
+    <!-- Select Location -->
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="15dp">
+
+        <ImageView android:layout_width="30dp"
+                   android:layout_height="30dp"
+                   android:src="@drawable/ic_location"
+                   android:contentDescription="@string/select_date"/>
+
+        <EditText
+                android:id="@+id/et_location"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/location"
+                android:inputType="text"
+                android:autofillHints="@string/location"
+                android:textSize="15sp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="10dp"/>
+
+    </LinearLayout>
+
 </LinearLayout>

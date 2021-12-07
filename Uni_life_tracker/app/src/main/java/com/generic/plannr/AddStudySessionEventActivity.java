@@ -33,7 +33,7 @@ public class AddStudySessionEventActivity extends AppCompatActivity implements R
     TextView tvStartDate, tvStartTime, tvEndDate, tvEndTime;
     RadioGroup rgPriorities;
     ImageView ivBack, ivSave;
-    EditText etEventName, etCourse;
+    EditText etEventName, etCourse, etLocation;
     Calendar calendar;
     DateTimeFormatter DATEFORMAT;
     LocalDateTime start;
@@ -51,6 +51,7 @@ public class AddStudySessionEventActivity extends AppCompatActivity implements R
         ivSave = findViewById(R.id.iv_save);
         etEventName = findViewById(R.id.et_event_name);
         etCourse = findViewById(R.id.et_course);
+        etLocation = findViewById(R.id.et_location);
         tvStartDate = findViewById(R.id.tv_start_date);
         tvStartTime = findViewById(R.id.tv_start_time);
         tvEndDate = findViewById(R.id.tv_end_date);
@@ -137,7 +138,7 @@ public class AddStudySessionEventActivity extends AppCompatActivity implements R
         }
 
         return input.validateAddEvent(etEventName) & input.validateAddEvent(tvEndDate)
-                & input.validateAddEvent(tvEndTime) & input.validateAddEvent(etCourse) & endTimeAfter;
+                & input.validateAddEvent(tvEndTime) & input.validateAddEvent(etCourse) & input.validateAddEvent(etLocation) & endTimeAfter;
     }
 
     /**
