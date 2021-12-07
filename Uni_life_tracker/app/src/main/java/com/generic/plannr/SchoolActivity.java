@@ -1,10 +1,13 @@
 package com.generic.plannr;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.generic.plannr.Entities.Event;
 import com.generic.plannr.Gateways.EventGateway;
@@ -24,6 +27,7 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
     private DrawerLayout drawerLayout;
     private MainActivity activity;
     private ArrayList<Event> eventsList;
+    private ListEvents.RecyclerViewClickLister listener;
     private RecyclerView rvEvents;
     UserGateway ug = new UserGateway(SchoolActivity.this);
     EventGateway eg = new EventGateway(SchoolActivity.this);
@@ -46,11 +50,19 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
     }
 
     private void setAdapter() {
-       /* ListEvents adapter = new ListEvents(eventsList);
+        setOnClickListener();
+        ListEvents adapter = new ListEvents(eventsList, listener);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         rvEvents.setLayoutManager(layoutManager);
         rvEvents.setItemAnimator(new DefaultItemAnimator());
-        rvEvents.setAdapter(adapter);*/
+        rvEvents.setAdapter(adapter);
+    }
+
+    private void setOnClickListener() {
+//        listener = (v, position) -> {
+//            viewEvent(v);
+//            testing.setText(eventsList.get(position).getName());
+//        };
     }
 
     private void setEventInfo() {

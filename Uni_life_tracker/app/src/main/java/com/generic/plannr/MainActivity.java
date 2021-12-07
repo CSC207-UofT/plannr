@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
     private ArrayList<Event> eventsList;
     private RecyclerView rvEvents;
     private Button testing;
+    private TextView tvEventNamePop;
     private ListEvents.RecyclerViewClickLister listener;
     UserGateway ug = new UserGateway(MainActivity.this);
     EventGateway eg = new EventGateway(MainActivity.this);
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
         TextView tvViewDate = findViewById(R.id.tv_date); // Date
         TextView tvWelcome = findViewById(R.id.tv_welcome_name); // Welcome name
         Spinner spnSort = findViewById(R.id.spn_sort);
+        tvEventNamePop = findViewById(R.id.tv_event_name_pop);// Name of Event in popup
         drawerLayout = findViewById(R.id.drawer_layout); // Side menu
         rvEvents = findViewById(R.id.rv_events); // Events list
         testing = findViewById(R.id.testing);
@@ -112,10 +115,18 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
         rvEvents.setItemAnimator(new DefaultItemAnimator());
         rvEvents.setAdapter(adapter);
     }
-
+    /**
+     * Sets the onclick listener and gets information from position
+     */
     private void setOnClickListener() {
         listener = (v, position) -> {
-            viewEvent(v);
+            AlertDialog.Builder builder= new AlertDialog.Builder(v.getRootView().getContext());
+            View dialogView = LayoutInflater.from(v.getRootView().getContext()).inflate(R.layout.popup_view_event, null);
+            TextView dialogEventName = dialogView.findViewById(R.id.tv_event_name_pop);
+            dialogEventName.setText(eventsList.get(position).getName());
+            builder.setView(dialogView);
+            builder.setCancelable(true);
+            builder.show();
             testing.setText(eventsList.get(position).getName());
         };
     }
