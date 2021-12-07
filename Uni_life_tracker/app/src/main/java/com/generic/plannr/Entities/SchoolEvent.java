@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter;
 /**
  * Represents an event with a start and end date and priority.
  */
-public class Event {
+public class SchoolEvent {
     private String name;
     private int priority;
     private LocalDateTime startDate;
@@ -22,14 +22,14 @@ public class Event {
      * @param startDate This com.generic.plannr.Entities.Event's start date
      * @param endDate This com.generic.plannr.Entities.Event's end date
      */
-    public Event(String name, int priority, LocalDateTime startDate, LocalDateTime endDate) {
+    public SchoolEvent(String name, int priority, LocalDateTime startDate, LocalDateTime endDate) {
         this.name = name;
         this.priority = priority;
         this.startDate = startDate;
         this.endDate = endDate;
     }
 
-    public Event(String name, int priority, LocalDateTime endDate) {
+    public SchoolEvent(String name, int priority, LocalDateTime endDate) {
         this.name = name;
         this.priority = priority;
         this.endDate = endDate;
