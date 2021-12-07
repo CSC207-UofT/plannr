@@ -2,7 +2,6 @@ package com.generic.plannr.UseCases;
 
 import com.generic.plannr.Entities.SchoolEvent;
 import com.generic.plannr.Entities.Expense;
-import com.generic.plannr.Entities.SchoolEvent;
 import com.generic.plannr.Entities.User;
 
 import java.util.ArrayList;
