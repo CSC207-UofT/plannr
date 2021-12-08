@@ -19,6 +19,12 @@ public class Expense {
 
    }
 
+    /**
+     * Returns the userID of the user this Expense belongs to
+     * @return the userID of the Expense
+     */
+    public int getUserID() {return this.userID; }
+
    /**
     * Getter method for name
     * @return a String that describes the Expense's name
