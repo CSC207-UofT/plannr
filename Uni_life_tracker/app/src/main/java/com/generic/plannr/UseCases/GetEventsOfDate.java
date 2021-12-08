@@ -6,7 +6,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import com.generic.plannr.Entities.Event;
-import com.generic.plannr.Entities.SchoolEvent;
 
 /**
  * Gets the events of the selected date
