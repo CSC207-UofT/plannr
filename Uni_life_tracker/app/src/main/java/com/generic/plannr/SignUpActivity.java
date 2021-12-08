@@ -3,8 +3,12 @@ package com.generic.plannr;
 import android.os.Bundle;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
-import com.generic.plannr.Entities.User;
+
+import com.generic.plannr.Controllers.EmailValidator;
+import com.generic.plannr.Controllers.InputTextValidator;
+import com.generic.plannr.Controllers.PasswordValidator;
 import com.generic.plannr.Gateways.UserGateway;
+import com.generic.plannr.UseCases.UserManager;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
@@ -44,15 +48,18 @@ public class SignUpActivity extends AppCompatActivity {
      * @return whether all the information has been validated
      */
     public boolean signupInput() {
-        // Creates an instance of validator to access the methods
-        Validator input = new Validator();
+        // Creates instances of validators to access the methods
+        InputTextValidator inputTextValidator = new InputTextValidator();
+        EmailValidator emailValidator = new EmailValidator();
+        PasswordValidator passwordValidator = new PasswordValidator();
+
         // Returns whether info is validator and any error messages if it isn't
         // Need to pass in tiEmail and Password each time because cannot be accessed UI elements in Validator class
         // If we pass in the string instead of the TextInputLayout then will not be able to set the error messages
         // Although it is inconvenient to keep passing it in, there are android related errors that are stopping us
-        return input.validateEntry(tiName, ug, tiEmail, tiPassword, true) &
-                input.validateEntry(tiEmail,  ug, tiEmail, tiPassword, true) &
-                input.validateEntry(tiPassword, ug, tiEmail, tiPassword, true);
+        return inputTextValidator.validateEntry(tiName, ug, tiEmail, tiPassword, true) &
+                emailValidator.validateEntry(tiEmail,  ug, tiEmail, tiPassword, true) &
+                passwordValidator.validateEntry(tiPassword, ug, tiEmail, tiPassword, true);
     }
 
     public void clickSignup(View view) {
@@ -63,7 +70,8 @@ public class SignUpActivity extends AppCompatActivity {
             String email = Objects.requireNonNull(tiEmail.getEditText()).getText().toString();
             String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();
 
-            ug.saveToDatabase(new User(name, email, password));
+            UserManager um = new UserManager(name, email, password);
+            ug.saveToDatabase(um.getUser());
 
             openMain();
             ug.updateLoggedInUser(email);

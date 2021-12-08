@@ -14,6 +14,8 @@ import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.generic.plannr.Controllers.InputTextValidator;
 import com.generic.plannr.Entities.Event;
 import com.generic.plannr.Gateways.EventGateway;
 import com.generic.plannr.Gateways.UserGateway;
@@ -119,7 +121,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
      * @return whether the added event includes all its needed attributes
      */
     public boolean addEventInput() {
-        Validator input = new Validator();
+        InputTextValidator validator = new InputTextValidator();
         setDateTime();
 
         boolean endTimeAfter = false;
@@ -136,8 +138,9 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
             }
         }
 
-        return input.validateAddEvent(etEventName) & input.validateAddEvent(tvEndDate)
-                & input.validateAddEvent(tvEndTime) & input.validateAddEvent(etCourse) & endTimeAfter;
+        return validator.validateAddEvent(etEventName) & validator.validateAddEvent(tvEndDate)
+                & validator.validateAddEvent(tvEndTime) & validator.validateAddEvent(etCourse)
+                & endTimeAfter;
     }
 
     /**
