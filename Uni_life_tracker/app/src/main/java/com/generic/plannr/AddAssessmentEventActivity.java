@@ -44,7 +44,7 @@ public class AddAssessmentEventActivity extends AppCompatActivity implements Rad
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_event);
+        setContentView(R.layout.activity_add_assessment_event);
 
         activity = new MainActivity();
         ivBack = findViewById(R.id.iv_back);
