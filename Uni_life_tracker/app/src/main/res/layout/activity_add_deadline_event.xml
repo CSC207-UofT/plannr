@@ -2,11 +2,9 @@
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".AddEventActivity">
+        android:orientation="vertical">
 
     <!--  Action Bar  -->
     <LinearLayout
@@ -110,60 +108,28 @@
                            android:src="@drawable/ic_time"
                            android:contentDescription="@string/select_date"/>
 
-                <!-- Event Start & End Date -->
-                <LinearLayout
+                <!-- Event Date -->
+                <TextView
+                        android:id="@+id/tv_date"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:gravity="center_vertical"
-                        android:layout_marginStart="15dp">
+                        android:hint="@string/select_date"
+                        android:textSize="15sp"
+                        android:layout_marginStart="15dp"
+                        android:onClick="clickStartDate"/>
 
-                    <TextView
-                            android:id="@+id/tv_start_date"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/select_start_date"
-                            android:textSize="15sp"
-                            android:layout_marginBottom="25dp"
-                            android:onClick="clickStartDate"/>
-
-                    <TextView
-                            android:id="@+id/tv_end_date"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/select_end_date"
-                            android:textSize="15sp"
-                            android:onClick="clickEndDate"/>
-                </LinearLayout>
-
-                <!-- Event Start & End Time -->
-                <LinearLayout
+                <!-- Event Date -->
+                <TextView
+                        android:id="@+id/tv_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
+                        android:hint="@string/time"
+                        android:textSize="15sp"
+                        android:textAlignment="textEnd"
                         android:layout_marginEnd="15dp"
-                        android:gravity="end">
+                        android:onClick="clickStartTime"/>
 
-                    <TextView
-                            android:id="@+id/tv_start_time"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/start_time"
-                            android:textSize="15sp"
-                            android:textAlignment="textEnd"
-                            android:layout_marginBottom="25dp"
-                            android:onClick="clickStartTime"/>
-
-                    <TextView
-                            android:id="@+id/tv_end_time"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/end_time"
-                            android:textSize="15sp"
-                            android:textAlignment="textEnd"
-                            android:onClick="clickEndTime"/>
-                </LinearLayout>
             </LinearLayout>
 
             <!-- Add Event Priority -->

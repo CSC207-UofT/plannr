@@ -1,6 +1,6 @@
 /* Plannr by Generic Name
  *
- * This file contains methods for activity_add_event.xml.
+ * This file contains methods for activity_add_deadline_event.xml.
  */
 package com.generic.plannr;
 
@@ -9,11 +9,11 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
 import com.generic.plannr.Entities.Event;
 import com.generic.plannr.Gateways.EventGateway;
 import com.generic.plannr.Gateways.UserGateway;
@@ -26,10 +26,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class AddEventActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
+public class AddDeadlineEventActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener{
     int yr, mth, day, hr, min, priority;
-    String startDate, endDate, startTime, endTime;
-    TextView tvStartDate, tvStartTime, tvEndDate, tvEndTime;
+    String date, time;
+    TextView tvDate, tvTime;
     RadioGroup rgPriorities;
     ImageView ivBack, ivSave;
     EditText etEventName, etCourse;
@@ -37,29 +37,27 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
     DateTimeFormatter DATEFORMAT;
     LocalDateTime start;
     private MainActivity activity;
-    UserGateway ug = new UserGateway(AddEventActivity.this);
-    EventGateway eg = new EventGateway(AddEventActivity.this);
+    UserGateway ug = new UserGateway(AddDeadlineEventActivity.this);
+    EventGateway eg = new EventGateway(AddDeadlineEventActivity.this);
 
     @SuppressLint("NonConstantResourceId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_event);
+        setContentView(R.layout.activity_add_deadline_event);
 
         activity = new MainActivity();
         ivBack = findViewById(R.id.iv_back);
         ivSave = findViewById(R.id.iv_save);
         etEventName = findViewById(R.id.et_event_name);
         etCourse = findViewById(R.id.et_course);
-        tvStartDate = findViewById(R.id.tv_start_date);
-        tvStartTime = findViewById(R.id.tv_start_time);
-        tvEndDate = findViewById(R.id.tv_end_date);
-        tvEndTime = findViewById(R.id.tv_end_time);
+        tvDate = findViewById(R.id.tv_date);
+        tvTime = findViewById(R.id.tv_time);
         rgPriorities = findViewById(R.id.rg_priorities);
 
 //        Event navigation bar
         BottomNavigationView navEvents = findViewById(R.id.nav_events);
-        navEvents.setSelectedItemId(R.id.nav_assessment);
+        navEvents.setSelectedItemId(R.id.nav_deadline);
         navEvents.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.nav_assessment:
@@ -96,11 +94,12 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
 //        Set start date & time to current date & time
         String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
         String time = new SimpleDateFormat("hh:mm aa", Locale.getDefault()).format(new Date());
-        tvStartDate.setText(date);
-        tvStartTime.setText(time);
+        tvDate.setText(date);
+        tvTime.setText(time);
 
         rgPriorities.setOnCheckedChangeListener(this);
     }
+
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) { // Priority selection
@@ -122,22 +121,8 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         Validator input = new Validator();
         setDateTime();
 
-        boolean endTimeAfter = false;
-        if (!endTime.isEmpty()) {
-            LocalDateTime end = LocalDateTime.parse(endDate + " " + endTime, DATEFORMAT);
-            // Checks if end date is after start date with its date time format
-            if (!end.isAfter(start)) {
-                // Warns user that the format is incorrect
-                Toast.makeText(this, "End date should be before start!", Toast.LENGTH_LONG).show();
-                changeTextColor(255);
-            } else {
-                changeTextColor(0);
-                endTimeAfter = true;
-            }
-        }
-
-        return input.validateAddEvent(etEventName) & input.validateAddEvent(tvEndDate)
-                & input.validateAddEvent(tvEndTime) & input.validateAddEvent(etCourse) & endTimeAfter;
+        return input.validateAddEvent(etEventName) & input.validateAddEvent(tvDate)
+                & input.validateAddEvent(tvTime) & input.validateAddEvent(etCourse);
     }
 
     /**
@@ -146,20 +131,18 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
      * @param color an int representing the R-value for the RGB color.
      */
     public void changeTextColor(int color) {
-        tvEndDate.setTextColor(Color.rgb(color, 0, 0));
-        tvEndTime.setTextColor(Color.rgb(color, 0, 0));
+        tvDate.setTextColor(Color.rgb(color, 0, 0));
+        tvTime.setTextColor(Color.rgb(color, 0, 0));
     }
 
     /**
      * Initializes values for start & end date, start & end time, and date format.
      */
     public void setDateTime() {
-        startDate = tvStartDate.getText().toString().trim();
-        endDate = tvEndDate.getText().toString().trim();
-        startTime = tvStartTime.getText().toString().trim();
-        endTime = tvEndTime.getText().toString().trim();
+        date = tvDate.getText().toString().trim();
+        time = tvTime.getText().toString().trim();
         DATEFORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm a");
-        start = LocalDateTime.parse(startDate + " " + startTime, DATEFORMAT);
+        start = LocalDateTime.parse(date + " " + time, DATEFORMAT);
     }
 
     /**
@@ -170,7 +153,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
      */
     public void setDate(TextView textView) {
         DatePickerDialog datePickerDialog = new DatePickerDialog(
-                AddEventActivity.this, (view, year, month, dayOfMonth) -> {
+                AddDeadlineEventActivity.this, (view, year, month, dayOfMonth) -> {
             yr = year;
             mth = month;
             day = dayOfMonth;
@@ -191,7 +174,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
      */
     public void setTime(TextView textView) {
         TimePickerDialog timePickerDialog = new TimePickerDialog(
-                AddEventActivity.this, (view, hourOfDay, minute) -> {
+                AddDeadlineEventActivity.this, (view, hourOfDay, minute) -> {
             hr = hourOfDay;
             min = minute;
 
@@ -221,7 +204,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         if (addEventInput()) {
             String eventName = etEventName.getText().toString();
             setDateTime();
-            LocalDateTime end = LocalDateTime.parse(endDate + " " + endTime, DATEFORMAT);
+            LocalDateTime end = LocalDateTime.parse(date + " " + time, DATEFORMAT);
 
             Event event = new Event(eventName, priority, start, end);
             int userID = ug.getLoggedInUserID();
@@ -238,16 +221,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
      * @param view a View for the device screen.
      */
     public void clickStartDate(View view) {
-        setDate(tvStartDate);
-    }
-
-    /**
-     * Opens dialog for user to select an end date.
-     *
-     * @param view a View for the device screen.
-     */
-    public void clickEndDate(View view) {
-        setDate(tvEndDate);
+        setDate(tvDate);
     }
 
     /**
@@ -256,15 +230,6 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
      * @param view a View for the device screen.
      */
     public void clickStartTime(View view) {
-        setTime(tvStartTime);
-    }
-
-    /**
-     * Opens dialog for user to select an end time.
-     *
-     * @param view a View for the device screen.
-     */
-    public void clickEndTime(View view) {
-        setTime(tvEndTime);
+        setTime(tvTime);
     }
 }

@@ -6,22 +6,28 @@
     <application
             android:allowBackup="true"
             android:fullBackupContent="true"
-            android:label="@string/app_name"
             android:icon="@drawable/ic_plannr_p_black"
+            android:label="@string/app_name"
             android:roundIcon="@drawable/ic_plannr_p_black"
             android:supportsRtl="true"
             android:theme="@style/Theme.Plannr">
-        <activity android:name="com.generic.plannr.SettingsActivity"/>
-        <activity android:name="com.generic.plannr.SignUpActivity"/>
-        <activity android:name="com.generic.plannr.AddEventActivity"/>
-        <activity android:name="com.generic.plannr.AddExpensesActivity"/>
-        <activity android:name="com.generic.plannr.ExpensesActivity"/>
-        <activity android:name="com.generic.plannr.SchoolActivity"/>
-        <activity android:name="com.generic.plannr.LoginActivity"/>
+        <activity android:name="com.generic.plannr.SettingsActivity"> </activity>
+        <activity android:name="com.generic.plannr.SignUpActivity"> </activity>
+        <activity android:name="com.generic.plannr.AddEventActivity"> </activity>
+        <activity android:name="com.generic.plannr.AddExpensesActivity"> </activity>
+        <activity android:name="com.generic.plannr.ExpensesActivity"> </activity>
+        <activity android:name="com.generic.plannr.SchoolActivity"> </activity>
+        <activity android:name="com.generic.plannr.LoginActivity"> </activity>
+        <activity android:name="com.generic.plannr.AddStudySessionEventActivity">
+        </activity>
+        <activity android:name="com.generic.plannr.AddClassEventActivity">
+        </activity>
+        <activity android:name="com.generic.plannr.AddDeadlineEventActivity">
+        </activity>
         <activity
                 android:name="com.generic.plannr.MainActivity"
                 android:label="Main"
-                android:exported="true"/>
+                android:exported="true"> </activity>
         <activity
                 android:name="com.generic.plannr.WelcomeActivity"
                 android:theme="@style/Theme.Plannr"
