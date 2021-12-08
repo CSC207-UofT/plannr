@@ -139,6 +139,83 @@ conventions covered in the website: [Conventional Commits](https://www.conventio
 and made sure to incorporate them into every commit.
 
 ***
+
+## Clean Architecture
+
+### Clean Architecture Discussion
+![alt text](https://github.com/CSC207-UofT/course-project-generic-name-1/blob/design_doc/phase2/images/uml_diagram.png "UML Diagram")
+Our program is consistent with Clean Architecture because, as we can see with the general UML diagram given above,
+we made sure that the Entities were unaware of the Use Cases, the Use Cases are unaware of the
+Controllers/Presenters/Gateways, and the Controllers/Presenters are unaware of the Activities. If we wanted to violate
+Clean Architecture, such as a Use Case class like EventManager saving an entity to a database, we used interfaces
+instead of directly calling the class implementation. For example, EventManager creates an event and wants to save it
+to the database, it would be a violation of clean architecture for EventManager to directly call EventGateway, so
+instead, we made an interface called EventGatewayInterface, which is what the EventManager uses to save to the database
+and pass a EventGateway object to it through the controller. That way EventManager remains unaware of the outer layer,
+such as the Controller and the Gateway. The flow goes from the activities to the controller to the use case, through
+the boundary interfaces, to the entities back to the use cases, then presenter, the activity and finally the UI.
+
+
+### Scenario Walk-Through that shows Clean Architecture
+
+<u>Scenario:</u> The user arrives at the main page, which displays their list of events taking place that day
+and has the option to sort the event list, which can be displayed list by date-time or by priority.
+By default, it is first shown to be sorted by date.
+
+In this scenario, we start at the UI, where the user can see their list of events sorted by date or by priority.
+To start, the MainActivity class tells the MainController, the controller for the main view, that the user wants
+their list of today's events to be displayed and sorted by date. So, the controller then uses the EventInputBoundary
+interface to tell the EventManager use class to retrieve today's events and sort them by date. Afterwards, EventManager
+sends that information over to the MainPresenter. This presenter class formats the list of events to be presentable for
+the UI for the main view through the MainPresenter output boundary interface. The MainPresenter then formats the list
+of event objects into something Android can print and display, which is then sent to MainActivity who just displays
+the result.
+
+### Dependency Rule (w/ an example)
+
+As stated above, each layer of Clean Architecture in our program is unaware of the outer layers. That is, the entities do not depend on nor are aware of the uses cases, which are not aware of the controllers, presenters and gateways, who are not aware of the UI and SQLite database.
+
+For example, the use case class EventManager saves events to the database using not EventGateway, a gateway class, but instead EventGatewayInterface, which is an interface implemented by EventGateway. This prevents a violation of clean architecture from happening since EventManager remains unaware and independent of any gateway classes. Therefore, the dependencies still point inwards when looking at the clean architecture circle.
+
+## Design Patterns
+
+We received several suggestions for implementing design patterns in our project. However, after considering all our options, we felt that some may not be appropriate or add unnecessary complexity to our program. We will address those suggestions here and provide some supporting arguments.
+
+### Strategy
+The Strategy pattern is useful for the user information validation. Upon attempting to sign up or log in, we implemented a few conditionals to ensure a successful sign-up and log-in. For sign-up, we implemented a number of regex patterns that check for valid email and password inputs, as well as conditionals that check whether an email is already registered in the database upon signing up. For log-in, we implemented conditionals that check whether log-in inputs are valid by checking whether they match with one of the signed-up users currently in the database. All in all, utilizing this design pattern should allow the sign-up/log-in process to run smoothly.
+
+### Simple Factory
+We can use this in our controllers to check for errors, or use it to create default instantiations of events, see #4
+in https://refactoring.guru/design-patterns/factory-comparison
+
+### Factory/Builder
+* For creating events (not currently implemented, but may in the future)
+    * We think that neither builder nor factory would be appropriate, at least without adding unnecessary complexity to
+      our program.
+    * For builder, event is not a complex object that includes multiple objects, so implementing it would not be
+      appropriate and could make the program unnecessarily complex
+    * For factory, it is possible to implement but will add unnecessary complexity to our program. We would need an
+      interface as a framework and multiple creators to create different types of events, which is rather unnecessary
+      since each subclass of Event is explicitly instantiated the moment the client needs it, deferring instantiation
+      would mean that we need to create a default instantiation of an Event (or its subclass) and use getter and setter
+      methods to change its attributes -- quite extra and could make it too labour-intensive to use.
+* In sign up user flow (maybe implemented)
+    * Builder could be accomplished if we store a reference to the user's database inside the User class. This way,
+      during sign up flow, we can let a builder to first create a database for the user and then create a `User` object
+      by calling UserManager and then combine them into one by passing in the database
+
+### Singleton
+This may be appropriate to use for `UserManager` , `EventManager` , and `ExpensesManager` since we only need one
+instance of each for our program. This will be implemented near the end because it requires too many breaking changes.
+
+### Façade
+This may be appropriate for `UserGateway`, `EventGateway`, and `ExpenseGateway` since each of these gateways has an
+instance of `DatabaseClient` and utilizes the `getWritableDatabase()` method from the database client in order to open
+the database for storing/retrieving relevant data, i.e., the implementation is moved from  `DatabaseClient` to the
+gateway classes.
+
+***
+
 ## SOLID Principles
 
 ### SRP: Single Responsibility Principle
@@ -207,81 +284,6 @@ responsible for maintaining anything Expense related.
 * <u>Potential Fix:</u>
     * We can fix this by implementing an `Event` interface, and change the existing Event superclass to `GeneralEvent`
     
-## Clean Architecture
-
-### Clean Architecture Discussion
-![alt text](https://github.com/CSC207-UofT/course-project-generic-name-1/blob/design_doc/phase2/images/uml_diagram.png "UML Diagram")
-Our program is consistent with Clean Architecture because, as we can see with the general UML diagram given above, 
-we made sure that the Entities were unaware of the Use Cases, the Use Cases are unaware of the 
-Controllers/Presenters/Gateways, and the Controllers/Presenters are unaware of the Activities. If we wanted to violate 
-Clean Architecture, such as a Use Case class like EventManager saving an entity to a database, we used interfaces 
-instead of directly calling the class implementation. For example, EventManager creates an event and wants to save it 
-to the database, it would be a violation of clean architecture for EventManager to directly call EventGateway, so 
-instead, we made an interface called EventGatewayInterface, which is what the EventManager uses to save to the database 
-and pass a EventGateway object to it through the controller. That way EventManager remains unaware of the outer layer, 
-such as the Controller and the Gateway. The flow goes from the activities to the controller to the use case, through 
-the boundary interfaces, to the entities back to the use cases, then presenter, the activity and finally the UI.
-
-
-### Scenario Walk-Through that shows Clean Architecture
-
-<u>Scenario:</u> The user arrives at the main page, which displays their list of events taking place that day 
-and has the option to sort the event list, which can be displayed list by date-time or by priority. 
-By default, it is first shown to be sorted by date.
-
-In this scenario, we start at the UI, where the user can see their list of events sorted by date or by priority. 
-To start, the MainActivity class tells the MainController, the controller for the main view, that the user wants 
-their list of today's events to be displayed and sorted by date. So, the controller then uses the EventInputBoundary 
-interface to tell the EventManager use class to retrieve today's events and sort them by date. Afterwards, EventManager 
-sends that information over to the MainPresenter. This presenter class formats the list of events to be presentable for 
-the UI for the main view through the MainPresenter output boundary interface. The MainPresenter then formats the list 
-of event objects into something Android can print and display, which is then sent to MainActivity who just displays 
-the result.
-
-### Dependency Rule (w/ an example)
-
-As stated above, each layer of Clean Architecture in our program is unaware of the outer layers. That is, the entities do not depend on nor are aware of the uses cases, which are not aware of the controllers, presenters and gateways, who are not aware of the UI and SQLite database.
-
-For example, the use case class EventManager saves events to the database using not EventGateway, a gateway class, but instead EventGatewayInterface, which is an interface implemented by EventGateway. This prevents a violation of clean architecture from happening since EventManager remains unaware and independent of any gateway classes. Therefore, the dependencies still point inwards when looking at the clean architecture circle.
-
-## Design Patterns
-
-We received several suggestions for implementing design patterns in our project. However, after considering all our options, we felt that some may not be appropriate or add unnecessary complexity to our program. We will address those suggestions here and provide some supporting arguments.
-
-### Strategy
-The Strategy pattern is useful for the user information validation. Upon attempting to sign up or log in, we implemented a few conditionals to ensure a successful sign-up and log-in. For sign-up, we implemented a number of regex patterns that check for valid email and password inputs, as well as conditionals that check whether an email is already registered in the database upon signing up. For log-in, we implemented conditionals that check whether log-in inputs are valid by checking whether they match with one of the signed-up users currently in the database. All in all, utilizing this design pattern should allow the sign-up/log-in process to run smoothly.
-
-### Simple Factory
-We can use this in our controllers to check for errors, or use it to create default instantiations of events, see #4
-in https://refactoring.guru/design-patterns/factory-comparison
-
-### Factory/Builder
-* For creating events (not currently implemented, but may in the future)
-    * We think that neither builder nor factory would be appropriate, at least without adding unnecessary complexity to
-      our program.
-    * For builder, event is not a complex object that includes multiple objects, so implementing it would not be
-      appropriate and could make the program unnecessarily complex
-    * For factory, it is possible to implement but will add unnecessary complexity to our program. We would need an
-      interface as a framework and multiple creators to create different types of events, which is rather unnecessary
-      since each subclass of Event is explicitly instantiated the moment the client needs it, deferring instantiation
-      would mean that we need to create a default instantiation of an Event (or its subclass) and use getter and setter
-      methods to change its attributes -- quite extra and could make it too labour-intensive to use.
-* In sign up user flow (maybe implemented)
-    * Builder could be accomplished if we store a reference to the user's database inside the User class. This way,
-      during sign up flow, we can let a builder to first create a database for the user and then create a `User` object
-      by calling UserManager and then combine them into one by passing in the database
-
-### Singleton
-This may be appropriate to use for `UserManager` , `EventManager` , and `ExpensesManager` since we only need one
-instance of each for our program. This will be implemented near the end because it requires too many breaking changes.
-
-### Façade
-This may be appropriate for `UserGateway`, `EventGateway`, and `ExpenseGateway` since each of these gateways has an
-instance of `DatabaseClient` and utilizes the `getWritableDatabase()` method from the database client in order to open
-the database for storing/retrieving relevant data, i.e., the implementation is moved from  `DatabaseClient` to the
-gateway classes.
-
-
 
 
 
