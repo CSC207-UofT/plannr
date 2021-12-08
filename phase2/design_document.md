@@ -121,12 +121,7 @@ For example, the use case class EventManager saves events to the database using 
 We received several suggestions for implementing design patterns in our project. However, after considering all our options, we felt that some may not be appropriate or add unnecessary complexity to our program. We will address those suggestions here and provide some supporting arguments.
 
 ### Strategy
-The Strategy pattern is useful for the user information validation. Upon attempting to sign up or log in, we
-  implemented a few conditionals to ensure a successful sign-up and log in. For sign up, we implemented a number of
-  regex patterns that check for valid email and password inputs as well as a conditionals that check whether an email is
-  already registered in the database upon signing up. For log in, we implemented conditionals that check whether log in
-  inputs are valid by checking whether they match with one of the signed up users currently in the database. All in all,
-  utilizing this design pattern should allow the sign-up/log in process to run smoothly.
+The Strategy pattern is useful for the user information validation. Upon attempting to sign up or log in, we implemented a few conditionals to ensure a successful sign-up and log-in. For sign-up, we implemented a number of regex patterns that check for valid email and password inputs, as well as conditionals that check whether an email is already registered in the database upon signing up. For log-in, we implemented conditionals that check whether log-in inputs are valid by checking whether they match with one of the signed-up users currently in the database. All in all, utilizing this design pattern should allow the sign-up/log-in process to run smoothly.
 
 ### Simple Factory
 We can use this in our controllers to check for errors, or use it to create default instantiations of events, see #4
