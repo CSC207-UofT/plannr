@@ -21,7 +21,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.generic.plannr.Entities.Event;
+import com.generic.plannr.Entities.SchoolEvent;
 import com.generic.plannr.Gateways.EventGateway;
 import com.generic.plannr.Gateways.UserGateway;
 import com.generic.plannr.UseCases.GetEventsOfDate;
@@ -36,7 +36,7 @@ import java.util.Calendar;
 public class MainActivity extends AppCompatActivity implements  AdapterView.OnItemSelectedListener {
     // initialize variable
     DrawerLayout drawerLayout;
-    private ArrayList<Event> eventsList;
+    private ArrayList<SchoolEvent> eventsList;
     private RecyclerView rvEvents;
     private ListEvents.RecyclerViewClickLister listener;
     UserGateway ug = new UserGateway(MainActivity.this);
@@ -151,7 +151,7 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
 
 
             dialogEventName.setText(eventsList.get(position).getName());
-            //dialogEventCourse.setText(eventsList.get(position).Ass);
+            dialogEventCourse.setText(eventsList.get(position).getCourse());
             dialogEventStartD.setText(startDate);
             dialogEventStartT.setText(startTime);
             dialogEventEndD.setText(endDate);
@@ -272,10 +272,4 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
     public void clickLogOut(View view) {
         logout(this);
     }
-
-//    public void viewEvent(View view) {
-//        dialog.setContentView(R.layout.popup_view_event);
-//        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//        dialog.show();
-//    }
 }

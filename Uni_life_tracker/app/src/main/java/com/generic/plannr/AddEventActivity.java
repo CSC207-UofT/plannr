@@ -13,7 +13,7 @@ import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
-import com.generic.plannr.Entities.Event;
+import com.generic.plannr.Entities.SchoolEvent;
 import com.generic.plannr.Gateways.EventGateway;
 import com.generic.plannr.Gateways.UserGateway;
 
@@ -194,8 +194,9 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
             String eventName = etEventName.getText().toString();
             setDateTime();
             LocalDateTime end = LocalDateTime.parse(endDate + " " + endTime, DATEFORMAT);
+            String course = etCourse.getText().toString();
 
-            Event event = new Event(eventName, priority, start, end);
+            SchoolEvent event = new SchoolEvent("Assessment", eventName, priority, start, end, course);
             int userID = ug.getLoggedInUserID();
 
             eg.saveToDatabase(event, userID);

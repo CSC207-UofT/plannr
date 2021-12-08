@@ -5,20 +5,20 @@
  */
 package com.generic.plannr;
 
-import com.generic.plannr.Entities.Event;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import com.generic.plannr.Entities.SchoolEvent;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class ListEvents extends RecyclerView.Adapter<ListEvents.MyViewHolder>{
-    private ArrayList<Event> eventsList;
+    private ArrayList<SchoolEvent> eventsList;
     private RecyclerViewClickLister listener;
 
     /**
@@ -26,7 +26,7 @@ public class ListEvents extends RecyclerView.Adapter<ListEvents.MyViewHolder>{
      *
      * @param eventsList    An ArrayList of Events to be displayed
      */
-    public ListEvents(ArrayList<Event> eventsList, RecyclerViewClickLister listener){
+    public ListEvents(ArrayList<SchoolEvent> eventsList, RecyclerViewClickLister listener){
         this.eventsList = eventsList;
         this.listener = listener;
     }

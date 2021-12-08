@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.generic.plannr.Entities.Event;
+import com.generic.plannr.Entities.SchoolEvent;
 import com.generic.plannr.Gateways.EventGateway;
 import com.generic.plannr.Gateways.UserGateway;
 import com.generic.plannr.UseCases.GetEventsOfDate;
@@ -26,7 +26,7 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
     private RecyclerView rvCalendar;
     private DrawerLayout drawerLayout;
     private MainActivity activity;
-    private ArrayList<Event> eventsList;
+    private ArrayList<SchoolEvent> eventsList;
     private ListEvents.RecyclerViewClickLister listener;
     private RecyclerView rvEvents;
     UserGateway ug = new UserGateway(SchoolActivity.this);
