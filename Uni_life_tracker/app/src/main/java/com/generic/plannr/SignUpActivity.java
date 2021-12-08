@@ -1,3 +1,7 @@
+/* Plannr by Generic Name
+ *
+ * This file contains methods for activity_sign_up.xml.
+ */
 package com.generic.plannr;
 
 import android.os.Bundle;

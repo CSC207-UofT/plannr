@@ -159,13 +159,6 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
     public void clickSchool(View view) {
     }
 
-//    /**
-//     * Directs activity to the Life activity on life icon click.
-//     *
-//     * @param view  a View for the device screen.
-//     */
-//    public void clickLife(View view) { activity.redirectActivity(this, MainActivity.class); } // redirect activity to life
-
     /**
      * Directs activity to the Expenses activity on expenses icon click.
      *

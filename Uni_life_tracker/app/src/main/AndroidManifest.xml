@@ -18,12 +18,9 @@
         <activity android:name="com.generic.plannr.ExpensesActivity"> </activity>
         <activity android:name="com.generic.plannr.SchoolActivity"> </activity>
         <activity android:name="com.generic.plannr.LoginActivity"> </activity>
-        <activity android:name="com.generic.plannr.AddStudySessionEventActivity">
-        </activity>
-        <activity android:name="com.generic.plannr.AddClassEventActivity">
-        </activity>
-        <activity android:name="com.generic.plannr.AddDeadlineEventActivity">
-        </activity>
+        <activity android:name="com.generic.plannr.AddStudySessionEventActivity"> </activity>
+        <activity android:name="com.generic.plannr.AddClassEventActivity"> </activity>
+        <activity android:name="com.generic.plannr.AddDeadlineEventActivity"> </activity>
         <activity
                 android:name="com.generic.plannr.MainActivity"
                 android:label="Main"

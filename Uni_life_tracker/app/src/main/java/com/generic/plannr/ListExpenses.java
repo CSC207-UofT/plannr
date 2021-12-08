@@ -1,3 +1,8 @@
+/* Plannr by Generic Name
+ *
+ * This file represents a ListExpenses class which displays expenses in a
+ * RecyclerView, for activity_expenses.xml.
+ */
 package com.generic.plannr;
 
 import com.generic.plannr.Entities.Expense;
