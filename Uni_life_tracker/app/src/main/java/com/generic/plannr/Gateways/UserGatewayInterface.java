@@ -2,8 +2,6 @@ package com.generic.plannr.Gateways;
 
 import com.generic.plannr.Entities.User;
 
-import java.util.List;
-
 public interface UserGatewayInterface {
     /**
      * Open the database for reading or writing
