@@ -17,7 +17,7 @@ public class ExpensesManager {
      *
      * @return ExpensesManager object
      */
-    public ExpensesManager getInstance() {
+    public static ExpensesManager getInstance() {
         if (EM_INSTANCE == null) {
             EM_INSTANCE = new ExpensesManager();
         }
