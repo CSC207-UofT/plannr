@@ -316,11 +316,7 @@ app and how run certain features.
 ### Universal Design Principles
 
 #### Principle 1: Equitable Use
-If released on the market, Plannr will be free to include users from different socioeconomic backgrounds. As well, our
-app does not have an additional features that require users to have a more advanced skill level, so it does not create
-segregation among users. It also offers the same password checking and account features for all users ensuring that
-users will have a password-protected account. Finally, Plannr's UI is simple and easy to user, with a nice design
-appealing to all users.
+If released on the market, Plannr will be free to include users from different socioeconomic backgrounds. Our app does not have additional features that require users to have a more advanced skill level, so it does not create segregation among users. It also offers the same password checking and account features for all users, ensuring that users have a password-protected account. Finally, Plannr's UI is simple and easy to use, with a nice design appealing to all users.
 
 #### Principle 2: Flexibility in Use
 The Sort feature in the main page gives users the flexibility and choice of how they would like to sort their events, as
