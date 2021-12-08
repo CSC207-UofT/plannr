@@ -9,9 +9,10 @@
 - [Use of GitHub Features](#use-of-github-features)
 - [Code Style and Documentation](#code-style-and-documentation)
 - [Testing](#testing)
+- [Instructions for Use of Features](#instructions-for-use-of-features)
 - [Refactoring and Code Smells](#refactoring-and-code-smells)
 - [Code Organization](#code-organization)
-- [Design Document](#design-document)
+- [Design Document Statement](#design-document-statement)
 - [Accessibility Report](#accessibility-report)
 - [Progress Report](#progress-report)
 
@@ -298,7 +299,7 @@ conjunction with CLEAN architecture layers.
 * `Database` should be in the `gateways` package (Should be solved after 's PR)
 * Activities need to be properly categorized and moved to the respective packages
 
-## Design Document
+## Design Document Statement
 
 ### Is all the above discussed in an organized way?
 We, the group members of Generic name can confirm that all elements of the design document are present in order and
