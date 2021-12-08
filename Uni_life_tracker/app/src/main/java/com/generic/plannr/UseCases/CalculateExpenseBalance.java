@@ -20,7 +20,7 @@ public class CalculateExpenseBalance {
     }
 
     /**
-     * Returns the total expenses of the current user
+     * Calculates the total expenses of the current user
      * @return the total expenses of the current user
      */
     public double getTotalExpense() {
