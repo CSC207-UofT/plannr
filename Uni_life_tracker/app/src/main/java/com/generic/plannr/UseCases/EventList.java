@@ -20,6 +20,11 @@ public class EventList {
         return eventList;
     }
 
+    /**
+     * Add an event to eventList
+     *
+     * @param e The event to be added
+     */
     public void add (Event e) {
         eventList.add(e);
     }

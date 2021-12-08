@@ -9,6 +9,7 @@ public class Expense {
    * Construct an Expense, giving them the given name,
    * priority, start date, and end date.
    *
+   * @param userID    the userID of the user this Expense belongs to
    * @param name      The Expense's name
    * @param value     The Expense's expenditures
    */
@@ -41,15 +42,15 @@ public class Expense {
 
     /**
      * Setter method for name
-     * @param name the new name of the expense
+     * @param name the new name of the Expense
      */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     * Setter method for value of expense
-     * @param value the new value of the expense
+     * Setter method for value of Expense
+     * @param value the new value of the Expense
      */
     public void setValue(double value) {
         this.value = value;

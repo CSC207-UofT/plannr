@@ -1,6 +1,5 @@
 package com.generic.plannr.Entities;
 
-import java.util.ArrayList;
 
 public class User {
     private String name;
@@ -12,9 +11,9 @@ public class User {
      * Construct a user, giving them the given name, email,
      * password
      *
-     * @param name      The user's name
-     * @param email     The user's email
-     * @param password  The user's password
+     * @param name     The user's name
+     * @param email    The user's email
+     * @param password The user's password
      */
     public User(String name, String email, String password) {
         this.name = name;
@@ -37,44 +36,44 @@ public class User {
      *
      * @return a String that describes the user's email
      */
-    public String getEmail() { return this.email; }
+    public String getEmail() {
+        return this.email;
+    }
 
     /**
      * getter method for password
      *
      * @return a String that describes the user's password
      */
-    public String getPassword() { return this.password; }
-
-    /**
-     * getter method for courses
-     *
-     * @return an ArrayList that describes the user's current course list
-     */
-    public ArrayList<String> getCourses() {
-        return this.courses;
+    public String getPassword() {
+        return this.password;
     }
 
     /**
-     * getter method for eventList
+     * Gets the user's income
      *
-     * @return an ArrayList that describes all the user's events
+     * @return the user's income as a double object
      */
-    public ArrayList<SchoolEvent> getEventList() {
-        return this.eventList;
+    public double getIncome() {
+        return this.income;
     }
 
+    /**
+     * Setter method for user's name
+     *
+     * @param name the new name for the user
+     */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     * Setter method for user's income
+     * Setter method for user's password
      *
-     * @param income the new income for the user
+     * @param password the new password for the user
      */
-    public void setIncome(double income) {
-        this.income = income;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     /**
