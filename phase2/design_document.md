@@ -112,14 +112,9 @@ In this scenario, we start at the UI, where the user can see their list of event
 
 ### Dependency Rule (w/ an example)
 
-As once stated above, each layer of Clean Architecture in our program is unaware of the outer layers. That is, the
-entities do not depend on nor are aware of the uses cases, who are not aware of the controllers, presenters and gateways,
-who are not aware of the UI and SQLite database.
+As stated above, each layer of Clean Architecture in our program is unaware of the outer layers. That is, the entities do not depend on nor are aware of the uses cases, which are not aware of the controllers, presenters and gateways, who are not aware of the UI and SQLite database.
 
-For example, the use case class EventManager saves events to the database using not EventGateway, a gateway class, but
-instead EventGatewayInterface, which is an interface implemented by EventGateway. This prevents a violation of clean
-architecture from happening since EventManager remains unaware and independent of any gateway classes. Therefore, the
-dependencies still point inwards when looking at the clean architecture circle.
+For example, the use case class EventManager saves events to the database using not EventGateway, a gateway class, but instead EventGatewayInterface, which is an interface implemented by EventGateway. This prevents a violation of clean architecture from happening since EventManager remains unaware and independent of any gateway classes. Therefore, the dependencies still point inwards when looking at the clean architecture circle.
 
 ## Design Patterns
 
