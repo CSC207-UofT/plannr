@@ -12,7 +12,13 @@ public class AddSchoolEvent {
     private static EventList eventList;
     private static EventGatewayInterface eg;
 
-    public AddSchoolEvent (EventList events, EventGatewayInterface eventGateway) {
+    /**
+     * Sets up AddSchoolEvent with the current user's list of events
+     *
+     * @param events       the current user's list of events
+     * @param eventGateway the gateway to the event database table
+     */
+    public AddSchoolEvent(EventList events, EventGatewayInterface eventGateway) {
         eventList = events;
         eg = eventGateway;
     }
