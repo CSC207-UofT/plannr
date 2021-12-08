@@ -33,12 +33,11 @@ Plannr, previously titled Uni Life Tracker, started out as a command-line interf
 Please see the linked for the updated [CRC Cards](https://docs.google.com/document/d/1wAnKPMUv0o_FJ9qT4U98Bf2eMEP8u2Y1_nC9lcLH76U/edit).
 
 ## SOLID Principles
-**NOTE:** Some of this is implemented or some is to be implemented by Wednesday's submission.
 
 ### SRP: Single Responsibility Principle
 * <u>Comply:</u>
     * In order to comply with the single responsibility principle, we made sure that each class was responsible for one thing.
-    * Looking at the use cases, we have the `EventManager`, `UserManager`, and `ExpenseManager` which are each only responsible for their respective entity. `EventManager` is only responsible for maintaining anything `Event` related, `UserManager` is only responsible for maintaining anything `User` related, and `ExpenseManager` is only responsible for maintaining anything Expense related. This avoids
+    * Looking at the use cases, we have the `EventManager`, `UserManager`, and `ExpenseManager` which are each only responsible for their respective entity. `EventManager` is only responsible for maintaining anything `Event` related, `UserManager` is only responsible for maintaining anything `User` related, and `ExpenseManager` is only responsible for maintaining anything Expense related. 
     * Similarly, for the gateways, we split the gateways for the three entities so that `EventGateway` is only
       responsible for saving and reading Events from the database, `ExpenseGateway` is responsible for saving and
       reading `Expenses` from the database and `UserGateway` is responsible for saving and reading Users from the
@@ -101,16 +100,9 @@ Please see the linked for the updated [CRC Cards](https://docs.google.com/docume
 
 ### Clean Architecture Discussion
 ![alt text](https://github.com/CSC207-UofT/course-project-generic-name-1/blob/design_doc/phase2/images/uml_diagram.png "UML Diagram")
-Our program is consistent with Clean Architecture because as we can see with the general UML diagram given above, we
-made sure that the Entities were unaware of the Use Cases, the Use Cases are unaware of the
-Controllers/Presenters/Gateways and the Controllers/Presenters are unaware of the Activities. If we wanted to violate
-Clean Architecture, such as a Use Case class like EventManager saving an entity to a database, we used interfaces instead
-of directly calling the class implementation. For example, EventManager creates an event and wants to save it to the
-database, it would be a violation of clean architecture for EventManager to directly call EventGateway so instead, we
-made an interface called EventGatewayInterface which is what the EventManager uses to save to the database and pass a
-EventGateway object to it through the controller. That way EventManager remains unaware of the outer layer such as the
-Controller and the Gateway. The flow goes from the activities to the controller to the use case, through the boundary
-interfaces, to the entities back to the use cases, then presenter, then the activity and finally the UI.
+Our program is consistent with Clean Architecture because, as we can see with the general UML diagram given above, we made sure that the Entities were unaware of the Use Cases, the Use Cases are unaware of the Controllers/Presenters/Gateways, and the Controllers/Presenters are unaware of the Activities. If we wanted to violate Clean Architecture, such as a Use Case class like EventManager saving an entity to a database, we used interfaces instead of directly calling the class implementation. For example, EventManager creates an event and wants to save it to the database, it would be a violation of clean architecture for EventManager to directly call EventGateway, so instead, we made an interface called EventGatewayInterface, which is what the EventManager uses to save to the database and pass a
+EventGateway object to it through the controller. That way EventManager remains unaware of the outer layer, such as the Controller and the Gateway. The flow goes from the activities to the controller to the use case, through the boundary interfaces, to the entities back to the use cases, then presenter, the activity and finally the UI.
+
 
 ### Scenario Walk-Through that shows Clean Architecture
 
