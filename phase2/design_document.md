@@ -65,7 +65,7 @@ and sort them. Other additions include a sign-up, login and income feature, sett
 
 ## CRC Cards
 Please see the linked for the updated [CRC Cards](https://docs.google.com/document/d/1wAnKPMUv0o_FJ9qT4U98Bf2eMEP8u2Y1_nC9lcLH76U/edit).
-
+***
 ## Code Organization
 Our program follows the [Java package naming convention](https://docs.oracle.com/javase/tutorial/java/package/namingpkgs.html), 
 in conjunction with CLEAN architecture layers.
@@ -78,6 +78,15 @@ in conjunction with CLEAN architecture layers.
   class
 * Other subdirectories are named by CLEAN architecture layers
     * e.g. `UseCases` hosts the use cases for our program, `Entities` host the entities of our program.
+
+***
+## Refactoring and Code Smells
+Continuing from phase 1, we kept classes short with good documentation to avoid code smells. As suggested in our
+feedback, we also deleted the old src directory and refactored the directory names. Unfortunately, we could not change
+the Uni_life_tracker folder name to Plannr, as it caused a bunch of errors that at this stage of the project would do
+more harm than good and would take up time for other more valuable improvements
+
+***
 
 
 ## SOLID Principles
@@ -350,11 +359,6 @@ with
 3. Make changes in the respective text fields
 4. To save, click on the tick in the top right corner of the app, and all the changes will be saved
 
-## Refactoring and Code Smells
-Continuing from phase 1, we kept classes short with good documentation to avoid code smells. As suggested in our
-feedback, we also deleted the old src directory and refactored the directory names. Unfortunately, we could not change
-the Uni_life_tracker folder name to Plannr, as it caused a bunch of errors that at this stage of the project would do
-more harm than good and would take up time for other more valuable improvements
 
 
 
