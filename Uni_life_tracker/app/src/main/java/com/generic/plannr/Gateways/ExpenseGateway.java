@@ -62,10 +62,11 @@ public class ExpenseGateway implements ExpenseGatewayInterface {
             return null;
         }
 
+        int userID = cur.getInt(cur.getColumnIndexOrThrow("USER_ID"));
         String name = cur.getString(cur.getColumnIndexOrThrow("NAME"));
         double value = cur.getDouble(cur.getColumnIndexOrThrow("VALUE"));
 
-        return new Expense(name, value);
+        return new Expense(userID, name, value);
 
     }
 
@@ -87,7 +88,7 @@ public class ExpenseGateway implements ExpenseGatewayInterface {
                 do {
                     String name = cur.getString(cur.getColumnIndexOrThrow("NAME"));
                     double value = cur.getDouble(cur.getColumnIndexOrThrow("VALUE"));
-                    Expense expense = new Expense(name, value);
+                    Expense expense = new Expense(userID, name, value);
                     expensesList.add(expense);
 
                 } while (cur.moveToNext());
