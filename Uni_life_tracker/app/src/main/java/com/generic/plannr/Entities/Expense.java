@@ -1,6 +1,7 @@
 package com.generic.plannr.Entities;
 
 public class Expense {
+    private int userID;
     private String name;
     private double value;
 
@@ -11,7 +12,8 @@ public class Expense {
    * @param name      The Expense's name
    * @param value     The Expense's expenditures
    */
-   public Expense(String name, double value) {
+   public Expense(int userID, String name, double value) {
+       this.userID = userID;
        this.name = name;
        this.value = value;
 
