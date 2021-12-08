@@ -66,6 +66,20 @@ and sort them. Other additions include a sign-up, login and income feature, sett
 ## CRC Cards
 Please see the linked for the updated [CRC Cards](https://docs.google.com/document/d/1wAnKPMUv0o_FJ9qT4U98Bf2eMEP8u2Y1_nC9lcLH76U/edit).
 
+## Code Organization
+Our program follows the [Java package naming convention](https://docs.oracle.com/javase/tutorial/java/package/namingpkgs.html), 
+in conjunction with CLEAN architecture layers.
+
+* `com.generic.` is the naming convention of Java package which states that "companies use their reversed Internet
+  domain name to begin their package names." As we wanted to make our skills learnt in this project transferable to the
+  real world, we decided to follow the `com.` naming convention, followed by `generic` which is our team name
+* `plannr` is our app's name
+* `java` subdirectories will host all the java classes for our program, this is inherited from the examples given in
+  class
+* Other subdirectories are named by CLEAN architecture layers
+    * e.g. `UseCases` hosts the use cases for our program, `Entities` host the entities of our program.
+
+
 ## SOLID Principles
 
 ### SRP: Single Responsibility Principle
@@ -342,18 +356,7 @@ feedback, we also deleted the old src directory and refactored the directory nam
 the Uni_life_tracker folder name to Plannr, as it caused a bunch of errors that at this stage of the project would do
 more harm than good and would take up time for other more valuable improvements
 
-## Code Organization
-Our program follows the [Java package naming convention](https://docs.oracle.com/javase/tutorial/java/package/namingpkgs.html), in
-conjunction with CLEAN architecture layers.
 
-* `com.generic.` is the naming convention of Java package which states that "companies use their reversed Internet
-  domain name to begin their package names." As we wanted to make our skills learnt in this project transferable to the
-  real world, we decided to follow the `com.` naming convention, followed by `generic` which is our team name
-* `plannr` is our app's name
-* `java` subdirectories will host all the java classes for our program, this is inherited from the examples given in
-  class
-* Other subdirectories are named by CLEAN architecture layers
-  * e.g. `UseCases` hosts the use cases for our program, `Entities` host the entities of our program.
 
 ### Existing Problems
 * Packages are not all lowercase as specified by Oracle's java naming convention
