@@ -8,9 +8,6 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.generic.plannr.Database.DatabaseClient;
 import com.generic.plannr.Entities.User;
-import com.generic.plannr.UseCases.UserManager;
-
-import java.util.ArrayList;
 
 import static java.sql.Types.NULL;
 
@@ -130,7 +127,7 @@ public class UserGateway implements UserGatewayInterface {
         String email = cur.getString(cur.getColumnIndexOrThrow("EMAIL"));
         String password = cur.getString(cur.getColumnIndexOrThrow("PASSWORD"));
 
-        return um.getUser();
+        return new User(name, email, password);
 
     }
 
