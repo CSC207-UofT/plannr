@@ -32,7 +32,7 @@ public class CalculateExpenseBalance {
     }
 
     /**
-     * Returns the current balance of the current user
+     * Calculates the current balance of the current user
      * @return the current balance of the current user
      */
     public double getBalance() {
