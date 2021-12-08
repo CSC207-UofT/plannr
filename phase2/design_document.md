@@ -380,11 +380,11 @@ such as currency types (such as CAD or USD) display the time (24 hours vs. AM or
 settings page, allowing users to adjust accordingly.
 
 #### Principle 3: Simple and Intuitive Use
-At first launch, Plannr prompts the user to sign up or log-in in a straightforward manner, displaying large buttons with
-clear text. When signing up, Plannr provides feedback for text fields, such as name, email and password. If they are
-left blank or have the incorrect type of input, it suggests change from the user. As well, it also prompts the user to
-enter a strong password that follows certain password requirements which are clearly printed after a failed attempt.
-Finally, the language and vocabulary within Plannr is simple and comprehensive.
+When first launched, Plannr prompts the user to sign up or log in straightforwardly, displaying large buttons with clear 
+text. Plannr provides feedback for text fields, such as name, email, and password, when signing up. If they are left 
+blank or have the incorrect input type, it suggests changes to the user. It also prompts the user to enter a strong 
+password that follows certain password requirements clearly printed underneath the textbox after a failed attempt. 
+Finally, the language and vocabulary within Plannr are simple and comprehensive.
 
 #### Principle 4: Perceptible Information
 Plannr makes use of large bold text for important headings that represent different functions within the app, such as
