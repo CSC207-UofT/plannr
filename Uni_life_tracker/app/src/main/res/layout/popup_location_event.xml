@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="275dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/rounded_edge_background"
+        android:paddingVertical="5dp"
+        android:paddingHorizontal="10dp">
+
+    <!--  Event Name  -->
+    <TextView
+            android:id="@+id/tv_event_name_pop_l"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/event"
+            android:textSize="20sp"
+            android:fontFamily="@font/roboto_mono_bold"
+            android:textStyle="bold"
+            android:padding="10dp"/>
+
+    <!--  Line Divider  -->
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lavender"
+    />
+
+    <!-- Event Date & Time -->
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="10dp">
+
+
+        <ImageView android:layout_width="25dp"
+                   android:layout_height="25dp"
+                   android:src="@drawable/ic_time"
+                   android:contentDescription="@string/select_date"/>
+
+        <!-- Event Start & End Date -->
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="15dp">
+
+            <TextView
+                    android:id="@+id/tv_start_date_l"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/start_date"
+                    android:textSize="15sp"
+                    android:layout_marginBottom="10dp"/>
+
+            <TextView
+                    android:id="@+id/tv_end_date_l"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/end_date"
+                    android:textSize="15sp"/>
+        </LinearLayout>
+
+        <!-- Event Start & End Time -->
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="end">
+
+            <TextView
+                    android:id="@+id/tv_start_time_l"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/start_time"
+                    android:textSize="15sp"
+                    android:textAlignment="textEnd"
+                    android:layout_marginBottom="10dp"/>
+
+            <TextView
+                    android:id="@+id/tv_end_time_l"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/end_time"
+                    android:textSize="15sp"
+                    android:textAlignment="textEnd"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Event Priority -->
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="10dp">
+
+        <ImageView android:layout_width="25dp"
+                   android:layout_height="25dp"
+                   android:src="@drawable/ic_priority"
+                   android:contentDescription="@string/priority"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/priority"
+                android:textSize="15sp"
+                android:layout_marginStart="15dp"/>
+
+        <TextView
+                android:id="@+id/tv_priority_l"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/priority"
+                android:textSize="15sp"
+                android:gravity="end"
+                android:layout_marginStart="15dp"/>
+    </LinearLayout>
+
+    <!-- Select Course -->
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="10dp">
+
+        <ImageView android:layout_width="25dp"
+                   android:layout_height="25dp"
+                   android:src="@drawable/ic_school"
+                   android:contentDescription="@string/course"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/course"
+                android:textSize="15sp"
+                android:layout_marginStart="15dp"/>
+
+        <TextView
+                android:id="@+id/tv_course_l"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/course"
+                android:textSize="15sp"
+                android:gravity="end"
+                android:layout_marginStart="15dp"/>
+    </LinearLayout>
+
+    <!-- Location -->
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="10dp">
+
+        <ImageView android:layout_width="25dp"
+                   android:layout_height="25dp"
+                   android:src="@drawable/ic_location"
+                   android:contentDescription="@string/course"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/location"
+                android:textSize="15sp"
+                android:layout_marginStart="15dp"/>
+
+        <TextView
+                android:id="@+id/tv_location"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/location"
+                android:textSize="15sp"
+                android:gravity="end"
+                android:layout_marginStart="15dp"/>
+    </LinearLayout>
+</LinearLayout>

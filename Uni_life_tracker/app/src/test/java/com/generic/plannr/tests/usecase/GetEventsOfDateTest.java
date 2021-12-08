@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Random;
 
-import com.generic.plannr.Entities.Event;
+import com.generic.plannr.Entities.SchoolEvent;
 
 public class GetEventsOfDateTest {
     Random rand;
@@ -26,12 +26,12 @@ public class GetEventsOfDateTest {
     @Test
     public void TestBasicFunctions() {
         // Empty arraylist to store events for testing
-        ArrayList<Event> events = new ArrayList<>();
+        ArrayList<SchoolEvent> events = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            events.add(new Event("test", 1, defaultDate, defaultDate));
+            events.add(new SchoolEvent("deadline", "test", 1, defaultDate, defaultDate, "CSC207"));
         }
         // Add an event that is 1 day later
-        events.add(new Event("test", 1, defaultDate.plusDays(1), defaultDate));
+        events.add(new SchoolEvent("deadline", "test", 1, defaultDate.plusDays(1), defaultDate, "CSC207"));
 
         // Assert Equals
         assertEquals(10, getEventsOfDate(events, defaultDate.toLocalDate()).size());
@@ -51,7 +51,7 @@ public class GetEventsOfDateTest {
             // Counter to count how many times we added events of the same date
             int counter = 0;
             // Creates a list to store the events
-            ArrayList<Event> events = new ArrayList<>();
+            ArrayList<SchoolEvent> events = new ArrayList<>();
 
             // Add events to the list
             for (int i = 0; i < 15; i++) {
@@ -60,11 +60,13 @@ public class GetEventsOfDateTest {
                 if (startDate.compareTo(target) == 0) {
                     counter += 1;
                 }
-                events.add(new Event(
+                events.add(new SchoolEvent(
+                        "deadline",
                         "test",
                         1,
                         startDate,
-                        defaultDate.plusDays(rand.nextInt(100))
+                        defaultDate.plusDays(rand.nextInt(100)),
+                        "CSC207"
                 ));
             }
 

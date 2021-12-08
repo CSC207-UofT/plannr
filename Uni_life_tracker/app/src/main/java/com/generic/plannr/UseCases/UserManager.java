@@ -1,6 +1,6 @@
 package com.generic.plannr.UseCases;
 
-import com.generic.plannr.Entities.Event;
+import com.generic.plannr.Entities.SchoolEvent;
 import com.generic.plannr.Entities.Expense;
 import com.generic.plannr.Entities.User;
 
@@ -16,21 +16,21 @@ public class UserManager {
     /**
      * Constructs a user manager and creates a new user
      *
-     * @param name      is the user's name
-     * @param email     is the user's email
-     * @param password  is the user's password
+     * @param name     is the user's name
+     * @param email    is the user's email
+     * @param password is the user's password
      */
     public UserManager(String name, String email, String password) {
         u = createUser(name, email, password);
-        this.expManager = new ExpensesManager();
+        this.expManager = ExpensesManager.getInstance();
     }
 
     /**
      * Creates a user
      *
-     * @param name      is the user's name
-     * @param email     is the user's email
-     * @param password  is the user's password
+     * @param name     is the user's name
+     * @param email    is the user's email
+     * @param password is the user's password
      * @return the created user
      */
     public User createUser(String name, String email, String password) {
@@ -42,7 +42,7 @@ public class UserManager {
      *
      * @return the user's list of events
      */
-    public ArrayList<Event> viewEventList() {
+    public ArrayList<SchoolEvent> viewEventList() {
         return u.getEventList();
     }
 
@@ -78,7 +78,7 @@ public class UserManager {
      *
      * @param event is the event to be added to the user's list
      */
-    public void addEventToUsersList(Event event) {
+    public void addEventToUsersList(SchoolEvent event) {
         u.getEventList().add(event);
     }
 

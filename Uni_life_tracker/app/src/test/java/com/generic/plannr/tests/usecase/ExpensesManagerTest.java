@@ -12,7 +12,7 @@ public class ExpensesManagerTest {
 
     @Before
     public void setUp() {
-        expManager = new ExpensesManager();
+        expManager = ExpensesManager.getInstance();
     }
 
     @Test

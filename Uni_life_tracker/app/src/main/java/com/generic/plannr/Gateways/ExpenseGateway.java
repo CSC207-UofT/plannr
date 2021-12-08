@@ -6,16 +6,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.generic.plannr.AddExpensesActivity;
 import com.generic.plannr.Database.DatabaseClient;
-import com.generic.plannr.Entities.Event;
 import com.generic.plannr.Entities.Expense;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.List;
 
 public class ExpenseGateway implements ExpenseGatewayInterface {
 
@@ -56,7 +51,6 @@ public class ExpenseGateway implements ExpenseGatewayInterface {
      * in the database
      *
      * @param expenseID the id of the Expense we want to return
-     *
      * @return the Expense with id expenseID
      */
     public Expense getByID(final int expenseID) {
@@ -82,7 +76,6 @@ public class ExpenseGateway implements ExpenseGatewayInterface {
      * user id userID
      *
      * @param userID the user's id
-     *
      * @return a list of all expenses stored in the database for the user
      */
     public ArrayList<Expense> getAllExpenses(int userID) {

@@ -72,7 +72,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
         </LinearLayout>
-
         <!--  Event List  -->
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_events"

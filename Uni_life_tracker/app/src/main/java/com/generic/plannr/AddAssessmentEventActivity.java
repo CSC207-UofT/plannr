@@ -16,7 +16,7 @@ import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.generic.plannr.Controllers.InputTextValidator;
-import com.generic.plannr.Entities.Event;
+import com.generic.plannr.Entities.SchoolEvent;
 import com.generic.plannr.Gateways.EventGateway;
 import com.generic.plannr.Gateways.UserGateway;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -28,7 +28,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class AddEventActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
+public class AddAssessmentEventActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
     int yr, mth, day, hr, min, priority;
     String startDate, endDate, startTime, endTime;
     TextView tvStartDate, tvStartTime, tvEndDate, tvEndTime;
@@ -39,14 +39,14 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
     DateTimeFormatter DATEFORMAT;
     LocalDateTime start;
     private MainActivity activity;
-    UserGateway ug = new UserGateway(AddEventActivity.this);
-    EventGateway eg = new EventGateway(AddEventActivity.this);
+    UserGateway ug = new UserGateway(AddAssessmentEventActivity.this);
+    EventGateway eg = new EventGateway(AddAssessmentEventActivity.this);
 
     @SuppressLint("NonConstantResourceId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_event);
+        setContentView(R.layout.activity_add_assessment_event);
 
         activity = new MainActivity();
         ivBack = findViewById(R.id.iv_back);
@@ -65,7 +65,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         navEvents.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.nav_assessment:
-                    startActivity(new Intent(getApplicationContext(), AddEventActivity.class));
+                    startActivity(new Intent(getApplicationContext(), AddAssessmentEventActivity.class));
                     overridePendingTransition(0, 0);
                     finish();
                     return true;
@@ -173,7 +173,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
      */
     public void setDate(TextView textView) {
         DatePickerDialog datePickerDialog = new DatePickerDialog(
-                AddEventActivity.this, (view, year, month, dayOfMonth) -> {
+                AddAssessmentEventActivity.this, (view, year, month, dayOfMonth) -> {
             yr = year;
             mth = month;
             day = dayOfMonth;
@@ -194,7 +194,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
      */
     public void setTime(TextView textView) {
         TimePickerDialog timePickerDialog = new TimePickerDialog(
-                AddEventActivity.this, (view, hourOfDay, minute) -> {
+                AddAssessmentEventActivity.this, (view, hourOfDay, minute) -> {
             hr = hourOfDay;
             min = minute;
 
@@ -225,8 +225,9 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
             String eventName = etEventName.getText().toString();
             setDateTime();
             LocalDateTime end = LocalDateTime.parse(endDate + " " + endTime, DATEFORMAT);
+            String course = etCourse.getText().toString();
 
-            Event event = new Event(eventName, priority, start, end);
+            SchoolEvent event = new SchoolEvent("Assessment", eventName, priority, start, end, course);
             int userID = ug.getLoggedInUserID();
 
             eg.saveToDatabase(event, userID);
