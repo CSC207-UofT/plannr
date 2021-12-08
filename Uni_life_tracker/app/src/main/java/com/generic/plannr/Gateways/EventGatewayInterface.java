@@ -24,7 +24,6 @@ public interface EventGatewayInterface {
      * in the database
      *
      * @param eventID the id of the SchoolEvent we want to return
-     *
      * @return the SchoolEvent with id eventID
      */
     SchoolEvent getByID(final int eventID);
@@ -34,7 +33,6 @@ public interface EventGatewayInterface {
      * user id userID
      *
      * @param userID the user's id
-     *
      * @return a list of all events stored in the database for the user
      */
     List<SchoolEvent> getAllEvents(int userID);

@@ -227,8 +227,10 @@ public class AddAssessmentEventActivity extends AppCompatActivity implements Rad
             LocalDateTime end = LocalDateTime.parse(endDate + " " + endTime, DATEFORMAT);
             String course = etCourse.getText().toString();
 
-            SchoolEvent event = new SchoolEvent("Assessment", eventName, priority, start, end, course);
             int userID = ug.getLoggedInUserID();
+
+            SchoolEvent event = new SchoolEvent(userID, "Assessment", eventName, priority, start, end, course);
+
 
             eg.saveToDatabase(event, userID);
 

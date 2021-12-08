@@ -35,4 +35,5 @@ public interface ExpenseGatewayInterface {
      * @return a list of all expenses stored in the database for the user
      */
     List<Expense> getAllExpenses(int userID);
+
 }

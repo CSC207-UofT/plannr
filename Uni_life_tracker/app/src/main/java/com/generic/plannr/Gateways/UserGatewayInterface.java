@@ -22,7 +22,6 @@ public interface UserGatewayInterface {
      * in the database
      *
      * @param userID the id of the User we want to return
-     *
      * @return the User with id userID
      */
     User getByID(final int userID);
@@ -32,16 +31,65 @@ public interface UserGatewayInterface {
      * in the database
      *
      * @param userEmail the email of the User we want to return
-     *
      * @return the User with email userEmail
      */
     User getByEmail(final String userEmail);
 
+
     /**
-     * Get the list of Users currently stored in the database
+     * Get the current logged-in user's name currently stored in the database
      *
-     *
-     * @return a list of all users stored in the database
+     * @return the logged-in user's name in the database
      */
-    List<User> getAllUsers();
+    String getLoggedInName();
+
+    /**
+     * Get the current logged in user's email currently stored in the database
+     *
+     * @return the logged in user's email in the database
+     */
+    String getLoggedInEmail();
+
+    /**
+     * Get the current logged in user's income currently stored in the database
+     *
+     * @return the logged in user's income in the database
+     */
+    String getLoggedInIncome();
+
+    /**
+     * Get the current logged-in user's password currently stored in the database
+     *
+     * @return the logged-in user's password in the database
+     */
+    String getLoggedInPassword();
+
+    /**
+     * Get the password associated with userEmail currently stored in the database
+     *
+     * @param userEmail the user's email
+     * @return the userEmail's password from the database
+     */
+    String getPassword(String userEmail);
+
+    /**
+     * Update the User's name in the database
+     *
+     * @param name The user's name to be inserted
+     */
+    void updateName(String name);
+
+    /**
+     * Update the User's password in the database
+     *
+     * @param password The user's password to be inserted
+     */
+    void updatePassword(String password);
+
+    /**
+     * Update the User's income in the database
+     *
+     * @param income The user's income to be inserted
+     */
+    void updateIncome(Double income);
 }
