@@ -4,7 +4,6 @@
  */
 package com.generic.plannr;
 
-import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -28,15 +27,13 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class ExpensesActivity extends AppCompatActivity {
-
     private ArrayList<Expense> expensesList;
     private RecyclerView rvExpenses;
     private DrawerLayout drawerLayout;
     private MainActivity activity;
-    private TextInputEditText etIncome;
     private TextInputLayout tiIncome;
     private TextView tvTotalExpenses, tvBalance;
-    private double totalExpenses, balance, income;
+    private double totalExpenses, income;
     UserGateway ug = new UserGateway(ExpensesActivity.this);
     ExpenseGateway eg = new ExpenseGateway(ExpensesActivity.this);
 
@@ -47,9 +44,9 @@ public class ExpensesActivity extends AppCompatActivity {
 
         activity = new MainActivity();
         expensesList = new ArrayList<>();
-        rvExpenses = findViewById(R.id.rv_expenses); // expense list
-        drawerLayout = findViewById(R.id.drawer_layout); // nav menu
-        etIncome = findViewById(R.id.et_income);
+        rvExpenses = findViewById(R.id.rv_expenses); // Expense list
+        drawerLayout = findViewById(R.id.drawer_layout); // Nav menu
+        TextInputEditText etIncome = findViewById(R.id.et_income);
         tiIncome = findViewById(R.id.ti_income);
         tvTotalExpenses = findViewById(R.id.tv_total_expenses);
         tvBalance = findViewById(R.id.tv_balance);
@@ -83,7 +80,7 @@ public class ExpensesActivity extends AppCompatActivity {
     }
 
     /**
-     * Sets up the recycler view for expenses list.
+     * Sets adapter to display user's expenses list.
      */
     private void setAdapter() {
         ListExpenses adapter = new ListExpenses(expensesList);
@@ -94,7 +91,8 @@ public class ExpensesActivity extends AppCompatActivity {
     }
 
     /**
-     * Displays target view upon first launch. Target view prompts user to add expense.
+     * Displays target view upon first launch.
+     * Target view prompts user to add expense.
      */
     private void showTargetView() {
         TapTargetView.showFor(this, TapTarget.forView(
@@ -144,7 +142,7 @@ public class ExpensesActivity extends AppCompatActivity {
      * green if greater than, and black if equal.
      */
     public void updateBalance() {
-        balance = income - totalExpenses;
+        double balance = income - totalExpenses;
         if (balance > 0) {
             tvBalance.setTextColor(Color.GREEN);
         } else if (balance < 0) {
@@ -168,7 +166,7 @@ public class ExpensesActivity extends AppCompatActivity {
 
     /**
      * Checks if the income is greater or less than the total
-     * and changes colour of the text accordingly
+     * and changes colour of the text accordingly.
      */
     public void clickSaveIncome(View view) {
         income = Double.parseDouble(Objects.requireNonNull(tiIncome.getEditText()).getText().toString());
@@ -193,7 +191,7 @@ public class ExpensesActivity extends AppCompatActivity {
      */
     public void clickLogo(View view) {
         activity.redirectActivity(this, MainActivity.class);
-    } // redirect activity to main
+    }
 
     /**
      * Directs activity to the School activity on school icon click.
@@ -202,10 +200,7 @@ public class ExpensesActivity extends AppCompatActivity {
      */
     public void clickSchool(View view) {
         activity.redirectActivity(this, SchoolActivity.class);
-    } // redirect activity to school
-
-    // TODO: change this to life later
-//    public void clickLife(View view) { activity.redirectActivity(this, MainActivity.class); } // redirect activity to life
+    }
 
     /**
      * Directs activity to the Expenses activity on expenses icon click.
@@ -213,7 +208,7 @@ public class ExpensesActivity extends AppCompatActivity {
      * @param view a View for the device screen.
      */
     public void clickExpenses(View view) {
-    } // recreate activity
+    }
 
     /**
      * Directs activity to the Settings activity on settings icon click.
@@ -222,7 +217,7 @@ public class ExpensesActivity extends AppCompatActivity {
      */
     public void clickSettings(View view) {
         activity.redirectActivity(this, SettingsActivity.class);
-    } // redirect activity to settings
+    }
 
     /**
      * Prompts log out on a logout icon click.

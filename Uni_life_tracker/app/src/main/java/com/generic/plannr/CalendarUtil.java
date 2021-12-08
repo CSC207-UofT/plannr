@@ -1,3 +1,9 @@
+/* Plannr by Generic Name
+ *
+ * This file represents a CalendarUtil class which gets days in
+ * a month and the month and year to display in a RecyclerView,
+ * for activity_school.xml.
+ */
 package com.generic.plannr;
 
 import java.time.LocalDate;
@@ -8,6 +14,12 @@ import java.util.ArrayList;
 public class CalendarUtil {
     public static LocalDate selectedDate;
 
+    /**
+     * Returns an ArrayList of the days in a month, from the selected date.
+     *
+     * @param date a LocalDate of a selected date.
+     * @return an ArrayList of the days in a month from the selected date.
+     */
     public static ArrayList<LocalDate> daysInMonthArray(LocalDate date) {
         ArrayList<LocalDate> daysInMonthArray = new ArrayList<>();
         YearMonth yearMonth = YearMonth.from(date);
@@ -27,6 +39,12 @@ public class CalendarUtil {
         return daysInMonthArray;
     }
 
+    /**
+     * Returns the month and year of a selected date.
+     *
+     * @param date a LocalDate of a selected date.
+     * @return a String of the month and year from the selected date.
+     */
     public static String monthYearFromDate(LocalDate date) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM yyyy");
         return date.format(formatter);

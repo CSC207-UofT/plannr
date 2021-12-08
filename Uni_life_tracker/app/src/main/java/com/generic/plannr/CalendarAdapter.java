@@ -1,3 +1,8 @@
+/* Plannr by Generic Name
+ *
+ * This file represents a CalendarAdapter class which is used in a
+ * RecyclerView, for activity_school.xml.
+ */
 package com.generic.plannr;
 
 import android.graphics.Color;
@@ -14,6 +19,12 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder> {
     private final ArrayList<LocalDate> days;
     private final OnItemListener onItemListener;
 
+    /**
+     * Constructs a CalendarAdapter, giving it an onItemListener and days.
+     *
+     * @param days           an ArrayList<LocalDate> of days.
+     * @param onItemListener an onItemListener.
+     */
     public CalendarAdapter(ArrayList<LocalDate> days, OnItemListener onItemListener) {
         this.days = days;
         this.onItemListener = onItemListener;

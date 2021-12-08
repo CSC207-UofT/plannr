@@ -13,8 +13,6 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
-
-    // initialize variables
     private TextInputLayout tiEmail;
     private TextInputLayout tiPassword;
     private MainActivity activity;

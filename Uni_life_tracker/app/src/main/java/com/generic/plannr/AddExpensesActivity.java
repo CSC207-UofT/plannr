@@ -34,7 +34,7 @@ public class AddExpensesActivity extends AppCompatActivity {
     /**
      * Validates inputs and displays the different error messages for the user inputs
      *
-     * @param textInput The password that the user types into the textbox
+     * @param textInput The password that the user types into the TextBox
      * @return whether the user input is valid and sets an error message if needed
      */
     private boolean validate(TextInputLayout textInput) {
@@ -55,7 +55,6 @@ public class AddExpensesActivity extends AppCompatActivity {
      * @param view a View for the device screen.
      */
     public void clickBack(View view) {
-        // clicking the arrow back button
         Intent intent = new Intent(this, ExpensesActivity.class);
         startActivity(intent);
     }

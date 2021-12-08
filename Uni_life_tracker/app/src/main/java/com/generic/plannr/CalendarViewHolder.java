@@ -1,3 +1,8 @@
+/* Plannr by Generic Name
+ *
+ * This file represents a CalendarViewHolder class which is used in a
+ * RecyclerView, for activity_school.xml.
+ */
 package com.generic.plannr;
 
 import android.view.View;
@@ -15,6 +20,13 @@ public class CalendarViewHolder extends RecyclerView.ViewHolder implements View.
     public final TextView dayOfMonth;
     private final CalendarAdapter.OnItemListener onItemListener;
 
+    /**
+     * Constructs a CalendarViewHolder, giving it an onItemListener, days, and assigning itemViews.
+     *
+     * @param itemView       a View.
+     * @param onItemListener a CalendarAdapter.onItemListener.
+     * @param days           an ArrayList<LocalDate> of days.
+     */
     public CalendarViewHolder(@NonNull View itemView, CalendarAdapter.OnItemListener onItemListener, ArrayList<LocalDate> days) {
         super(itemView);
         parentView = itemView.findViewById(R.id.parentView);

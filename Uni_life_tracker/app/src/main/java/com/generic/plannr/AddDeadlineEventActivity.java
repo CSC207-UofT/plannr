@@ -26,7 +26,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class AddDeadlineEventActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener{
+public class AddDeadlineEventActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
     int yr, mth, day, hr, min, priority;
     String date, time;
     TextView tvDate, tvTime;
@@ -99,7 +99,6 @@ public class AddDeadlineEventActivity extends AppCompatActivity implements Radio
 
         rgPriorities.setOnCheckedChangeListener(this);
     }
-
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) { // Priority selection

@@ -185,5 +185,4 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
     public void clickLogOut(View view) {
         activity.logout(this);
     }
-
 }

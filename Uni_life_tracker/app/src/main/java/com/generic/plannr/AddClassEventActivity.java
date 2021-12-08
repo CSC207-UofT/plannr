@@ -26,7 +26,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class AddClassEventActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener{
+public class AddClassEventActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
     int yr, mth, day, hr, min, priority;
     String startDate, endDate, startTime, endTime;
     TextView tvStartDate, tvStartTime, tvEndDate, tvEndTime;
@@ -186,7 +186,7 @@ public class AddClassEventActivity extends AppCompatActivity implements RadioGro
     }
 
     /**
-     * Prompts user to select a time, and sets selected time in textView.
+     * Prompts user to select a time, and sets selected time in TextView.
      *
      * @param textView a TextView of the time.
      */
