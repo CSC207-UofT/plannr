@@ -16,7 +16,7 @@ public class ExpenseGateway implements ExpenseGatewayInterface {
 
     public SQLiteDatabase db;
     public DatabaseClient dbclient;
-    public static final DateTimeFormatter DATEFORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+    public final DateTimeFormatter DATEFORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
 
     public ExpenseGateway(Context context) {
         dbclient = new DatabaseClient(context);

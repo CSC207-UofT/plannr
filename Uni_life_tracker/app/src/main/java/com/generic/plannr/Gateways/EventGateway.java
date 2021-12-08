@@ -18,7 +18,7 @@ public class EventGateway implements EventGatewayInterface {
 
     public SQLiteDatabase db;
     public DatabaseClient dbclient;
-    public static final DateTimeFormatter DATEFORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+    public final DateTimeFormatter DATEFORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
 
     public EventGateway(Context context) {
         dbclient = new DatabaseClient(context);
