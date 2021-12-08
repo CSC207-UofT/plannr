@@ -14,7 +14,7 @@ import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import com.generic.plannr.Entities.Event;
+import com.generic.plannr.Entities.SchoolEvent;
 import com.generic.plannr.Gateways.EventGateway;
 import com.generic.plannr.Gateways.UserGateway;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -223,8 +223,10 @@ public class AddClassEventActivity extends AppCompatActivity implements RadioGro
             String eventName = etEventName.getText().toString();
             setDateTime();
             LocalDateTime end = LocalDateTime.parse(endDate + " " + endTime, DATEFORMAT);
+            String course = etCourse.getText().toString();
+            String location = etCourse.getText().toString();
 
-            Event event = new Event(eventName, priority, start, end);
+            SchoolEvent event = new SchoolEvent("Class", eventName, priority, start, end, course, location);
             int userID = ug.getLoggedInUserID();
 
             eg.saveToDatabase(event, userID);

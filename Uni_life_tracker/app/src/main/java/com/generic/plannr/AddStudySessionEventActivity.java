@@ -14,7 +14,7 @@ import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import com.generic.plannr.Entities.Event;
+import com.generic.plannr.Entities.SchoolEvent;
 import com.generic.plannr.Gateways.EventGateway;
 import com.generic.plannr.Gateways.UserGateway;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -137,7 +137,8 @@ public class AddStudySessionEventActivity extends AppCompatActivity implements R
         }
 
         return input.validateAddEvent(etEventName) & input.validateAddEvent(tvEndDate)
-                & input.validateAddEvent(tvEndTime) & input.validateAddEvent(etCourse) & input.validateAddEvent(etLocation) & endTimeAfter;
+                & input.validateAddEvent(tvEndTime) & input.validateAddEvent(etCourse)
+                & input.validateAddEvent(etLocation) & endTimeAfter;
     }
 
     /**
@@ -222,8 +223,11 @@ public class AddStudySessionEventActivity extends AppCompatActivity implements R
             String eventName = etEventName.getText().toString();
             setDateTime();
             LocalDateTime end = LocalDateTime.parse(endDate + " " + endTime, DATEFORMAT);
+            String course = etEventName.getText().toString();
+            String location = etLocation.getText().toString();
 
-            Event event = new Event(eventName, priority, start, end);
+            SchoolEvent event = new SchoolEvent("Study Session",eventName, priority,
+                    start, end, course, location);
             int userID = ug.getLoggedInUserID();
 
             eg.saveToDatabase(event, userID);

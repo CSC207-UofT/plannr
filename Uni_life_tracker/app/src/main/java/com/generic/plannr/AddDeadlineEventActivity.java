@@ -14,7 +14,7 @@ import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import com.generic.plannr.Entities.Event;
+import com.generic.plannr.Entities.SchoolEvent;
 import com.generic.plannr.Gateways.EventGateway;
 import com.generic.plannr.Gateways.UserGateway;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -205,8 +205,9 @@ public class AddDeadlineEventActivity extends AppCompatActivity implements Radio
             String eventName = etEventName.getText().toString();
             setDateTime();
             LocalDateTime end = LocalDateTime.parse(date + " " + time, DATEFORMAT);
+            String course = etCourse.getText().toString();
 
-            Event event = new Event(eventName, priority, start, end);
+            SchoolEvent event = new SchoolEvent("Deadline", eventName, priority, start, end, course);
             int userID = ug.getLoggedInUserID();
 
             eg.saveToDatabase(event, userID);
