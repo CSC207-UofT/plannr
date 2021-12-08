@@ -92,4 +92,9 @@ public interface UserGatewayInterface {
      * @param income The user's income to be inserted
      */
     void updateIncome(Double income);
+
+    /**
+     * Set which account is currently logged in the database
+     */
+    void updateLoggedInUser(String userEmail);
 }
