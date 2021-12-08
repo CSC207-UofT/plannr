@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_assessment"
+        android:icon="@drawable/ic_assessment"
+        android:title="@string/assessment"/>
+
+    <item
+            android:id="@+id/nav_class"
+            android:icon="@drawable/ic_class_time"
+            android:title="@string/class_time"/>
+
+    <item
+            android:id="@+id/nav_deadline"
+            android:icon="@drawable/ic_deadline"
+            android:title="@string/deadline"/>
+
+    <item
+            android:id="@+id/nav_study_session"
+            android:icon="@drawable/ic_study_session"
+            android:title="@string/study_session"/>
+</menu>

@@ -1,6 +1,6 @@
 /* Plannr by Generic Name
  *
- * This file contains methods for activity_add_event.xml.
+ * This file contains methods for activity_add_class_event.xml.
  */
 package com.generic.plannr;
 
@@ -9,12 +9,12 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
-import com.generic.plannr.Entities.SchoolEvent;
+import android.os.Bundle;
+import com.generic.plannr.Entities.Event;
 import com.generic.plannr.Gateways.EventGateway;
 import com.generic.plannr.Gateways.UserGateway;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -26,31 +26,32 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class AddEventActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
+public class AddClassEventActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener{
     int yr, mth, day, hr, min, priority;
     String startDate, endDate, startTime, endTime;
     TextView tvStartDate, tvStartTime, tvEndDate, tvEndTime;
     RadioGroup rgPriorities;
     ImageView ivBack, ivSave;
-    EditText etEventName, etCourse;
+    EditText etEventName, etCourse, etLocation;
     Calendar calendar;
     DateTimeFormatter DATEFORMAT;
     LocalDateTime start;
     private MainActivity activity;
-    UserGateway ug = new UserGateway(AddEventActivity.this);
-    EventGateway eg = new EventGateway(AddEventActivity.this);
+    UserGateway ug = new UserGateway(AddClassEventActivity.this);
+    EventGateway eg = new EventGateway(AddClassEventActivity.this);
 
     @SuppressLint("NonConstantResourceId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_event);
+        setContentView(R.layout.activity_add_class_event);
 
         activity = new MainActivity();
         ivBack = findViewById(R.id.iv_back);
         ivSave = findViewById(R.id.iv_save);
         etEventName = findViewById(R.id.et_event_name);
         etCourse = findViewById(R.id.et_course);
+        etLocation = findViewById(R.id.et_location);
         tvStartDate = findViewById(R.id.tv_start_date);
         tvStartTime = findViewById(R.id.tv_start_time);
         tvEndDate = findViewById(R.id.tv_end_date);
@@ -59,7 +60,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
 
 //        Event navigation bar
         BottomNavigationView navEvents = findViewById(R.id.nav_events);
-        navEvents.setSelectedItemId(R.id.nav_assessment);
+        navEvents.setSelectedItemId(R.id.nav_class);
         navEvents.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.nav_assessment:
@@ -93,7 +94,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         hr = calendar.get(Calendar.HOUR_OF_DAY);
         min = calendar.get(Calendar.MINUTE);
 
-//        Set start date & time to current date & time
+//       Set start date & time to current date & time
         String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
         String time = new SimpleDateFormat("hh:mm aa", Locale.getDefault()).format(new Date());
         tvStartDate.setText(date);
@@ -137,7 +138,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         }
 
         return input.validateAddEvent(etEventName) & input.validateAddEvent(tvEndDate)
-                & input.validateAddEvent(tvEndTime) & input.validateAddEvent(etCourse) & endTimeAfter;
+                & input.validateAddEvent(tvEndTime) & input.validateAddEvent(etCourse) & input.validateAddEvent(etLocation) & endTimeAfter;
     }
 
     /**
@@ -170,7 +171,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
      */
     public void setDate(TextView textView) {
         DatePickerDialog datePickerDialog = new DatePickerDialog(
-                AddEventActivity.this, (view, year, month, dayOfMonth) -> {
+                AddClassEventActivity.this, (view, year, month, dayOfMonth) -> {
             yr = year;
             mth = month;
             day = dayOfMonth;
@@ -191,7 +192,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
      */
     public void setTime(TextView textView) {
         TimePickerDialog timePickerDialog = new TimePickerDialog(
-                AddEventActivity.this, (view, hourOfDay, minute) -> {
+                AddClassEventActivity.this, (view, hourOfDay, minute) -> {
             hr = hourOfDay;
             min = minute;
 
@@ -222,9 +223,8 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
             String eventName = etEventName.getText().toString();
             setDateTime();
             LocalDateTime end = LocalDateTime.parse(endDate + " " + endTime, DATEFORMAT);
-            String course = etCourse.getText().toString();
 
-            SchoolEvent event = new SchoolEvent("Assessment", eventName, priority, start, end, course);
+            Event event = new Event(eventName, priority, start, end);
             int userID = ug.getLoggedInUserID();
 
             eg.saveToDatabase(event, userID);
