@@ -107,6 +107,38 @@ with their use. Additionally, prior to each commit, we also addressed any form o
 resolved. Overall, we leveraged documentation to highlight and explain a more straightforward overview of our work.
 
 ***
+## Use of GitHub Features
+
+### Issues
+For phase 2, we made good use of the issue feature and had a total of 5 issues that were labeled as bugs and linked to
+specific pull requests. We made sure to identify the most important bugs or problems and label them as issues in order to
+bring attention to them. After being solved they were closed.
+
+These issues included:
+* [SignUp Page Password Validator Bug](https://github.com/CSC207-UofT/course-project-generic-name-1/issues/72)
+* [Missing Keywords and Methods in UserManager and User](https://github.com/CSC207-UofT/course-project-generic-name-1/issues/73)
+* [EventDateComparator Returns Wrong Values](https://github.com/CSC207-UofT/course-project-generic-name-1/issues/73)
+* [Database Helper Methods Possibly In the Wrong Place](https://github.com/CSC207-UofT/course-project-generic-name-1/issues/52)
+* [Sort button](https://github.com/CSC207-UofT/course-project-generic-name-1/issues/59)
+
+### Pull Requests
+Throughout phase 2, we consistently used pull requests to merge our branches into main and changed the GitHub settings
+to reject the merge of an unreviewed pull request. Pull requests had to be reviewed by at least two other people before
+they could be merged in. We made use of labels (bug, enhancement, help wanted, etc.)
+and assignees for certain pull requests when needed. We have not made any changes to main directly,
+any and all changes were done on local branches and after being submitted, reviewed and approved were merged into main.
+
+### Project Board
+We moved from using the task board on ClickUp to using the task board on GitHub, and we set up the automatic features
+that would move a card into the correct column based on if it was created, reviewed or done. Every pull request or issue
+or placed into the board, so we could keep track of everyone's tasks and progress.
+
+### More Detailed Commit Messages 
+After receiving phase 1 feedback regarding the level of detail of our Git commit messages, we used the commit 
+conventions covered in the website: [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+and made sure to incorporate them into every commit.
+
+***
 ## SOLID Principles
 
 ### SRP: Single Responsibility Principle
@@ -249,31 +281,7 @@ instance of `DatabaseClient` and utilizes the `getWritableDatabase()` method fro
 the database for storing/retrieving relevant data, i.e., the implementation is moved from  `DatabaseClient` to the
 gateway classes.
 
-## Use of GitHub Features
 
-### Issues
-For phase 2, we made good use of the issue feature and had a total of 5 issues that were labeled as bugs and linked to
-specific pull requests. We made sure to identify the most important bugs or problems and label them as issues in order to
-bring attention to them. After being solved they were closed.
-
-These issues included:
-* [SignUp Page Password Validator Bug](https://github.com/CSC207-UofT/course-project-generic-name-1/issues/72)
-* [Missing Keywords and Methods in UserManager and User](https://github.com/CSC207-UofT/course-project-generic-name-1/issues/73)
-* [EventDateComparator Returns Wrong Values](https://github.com/CSC207-UofT/course-project-generic-name-1/issues/73)
-* [Database Helper Methods Possibly In the Wrong Place](https://github.com/CSC207-UofT/course-project-generic-name-1/issues/52)
-* [Sort button](https://github.com/CSC207-UofT/course-project-generic-name-1/issues/59)
-
-### Pull Requests
-Throughout phase 2, we consistently used pull requests to merge our branches into main and changed the GitHub settings
-to reject the merge of an unreviewed pull request. Pull requests had to be reviewed by at least two other people before
-they could be merged in. We made use of labels (bug, enhancement, help wanted, etc.) 
-and assignees for certain pull requests when needed. We have not made any changes to main directly, 
-any and all changes were done on local branches and after being submitted, reviewed and approved were merged into main.
-
-### Project Board
-We moved from using the task board on ClickUp to using the task board on GitHub, and we set up the automatic features
-that would move a card into the correct column based on if it was created, reviewed or done. Every pull request or issue
-or placed into the board, so we could keep track of everyone's tasks and progress.
 
 
 
