@@ -157,7 +157,7 @@ gateway classes.
 
 ### Issues
 For phase 2, we made good use of the issue feature and had a total of 5 issues that were labeled as bugs and linked to
-specific pull requests. We made sure to identify the most important bugs or problems and label them as issue in order to
+specific pull requests. We made sure to identify the most important bugs or problems and label them as issues in order to
 bring attention to them. After being solved they were closed.
 
 These issues included:
