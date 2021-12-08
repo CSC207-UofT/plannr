@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         rvEvents = findViewById(R.id.rv_events); // Events list
         dialog = new Dialog(this);
 
-
         // sets the Welcome Name message to the user's name
         String welcome = "Welcome " + ug.getLoggedInName() + "!";
         tvWelcome.setText(welcome);
@@ -125,10 +124,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh:mm a");
             AlertDialog.Builder builder = new AlertDialog.Builder(v.getRootView().getContext());
             View dialogView;
+            String startDate = eventsList.get(position).getStartDate().toLocalDate().format(dayFormatter);
+            String startTime = eventsList.get(position).getStartDate().toLocalTime().format(timeFormatter);
+
             switch (eventsList.get(position).getEventType()) {
                 case "Assessment":
                     dialogView = LayoutInflater.from(v.getRootView().getContext()).inflate(R.layout.popup_view_event, null);
-
                     dialogEventName = dialogView.findViewById(R.id.tv_event_name_pop);
                     dialogEventCourse = dialogView.findViewById(R.id.tv_course);
                     dialogEventStartD = dialogView.findViewById(R.id.tv_start_date);
@@ -136,7 +137,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     dialogEventEndD = dialogView.findViewById(R.id.tv_end_date);
                     dialogEventEndT = dialogView.findViewById(R.id.tv_end_time);
                     dialogEventPriority = dialogView.findViewById(R.id.tv_priority);
-
+                    dialogEventStartD.setText(startDate);
+                    dialogEventStartT.setText(startTime);
                     break;
                 case "Deadline":
                     dialogView = LayoutInflater.from(v.getRootView().getContext()).inflate(R.layout.popup_deadline_event, null);
@@ -157,8 +159,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     dialogEventEndT = dialogView.findViewById(R.id.tv_end_time_l);
                     dialogEventPriority = dialogView.findViewById(R.id.tv_priority_l);
                     dialogEventLocation = dialogView.findViewById(R.id.tv_location);
-
-                    break;
+                    dialogEventLocation.setText(eventsList.get(position).getLocation());
+                    dialogEventStartD.setText(startDate);
+                    dialogEventStartT.setText(startTime);
             }
 
             String endDate = eventsList.get(position).getEndDate().toLocalDate().format(dayFormatter);
@@ -177,15 +180,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     break;
             }
 
-
-            String startDate = eventsList.get(position).getStartDate().toLocalDate().format(dayFormatter);
-            String startTime = eventsList.get(position).getStartDate().toLocalTime().format(timeFormatter);
-            dialogEventStartD.setText(startDate);
-            dialogEventStartT.setText(startTime);
-
             dialogEventName.setText(eventsList.get(position).getName());
             dialogEventCourse.setText(eventsList.get(position).getCourse());
-            dialogEventLocation.setText(eventsList.get(position).getLocation());
             dialogEventEndD.setText(endDate);
             dialogEventEndT.setText(endTime);
             dialogEventPriority.setText(priorityS);
