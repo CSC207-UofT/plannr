@@ -9,8 +9,6 @@ public class EventPrioritySorter extends EventSorter {
      * Sets up EventPrioritySorter with its appropriate EventPriorityComparator
      * @param epc the Event date comparator
      */
-    public EventPrioritySorter(EventPriorityComparator epc) {
-        super(epc);
-    }
+    public EventPrioritySorter(EventPriorityComparator epc) { super(epc); }
 
 }
