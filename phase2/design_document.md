@@ -448,7 +448,7 @@ their income they have left after calculating their total expenses. In addition,
 of the login page and used the user's name by creating a welcome message that greets that user with their name in the 
 main page view. Evgenia also added to the design document by writing the specification, the accessibility report, the 
 instructions for how to use features of Plannr, the GitHub feature section, refactoring section, the updated CRC cards 
-and both the overall progress report and her part.
+and both the overall progress report and her part. Finally, edited and reformatted the entire design document. 
 
 ### Kathy
 For phase 2 of the project, Kathy continued with her role as a frontend member of the team.
@@ -476,10 +476,28 @@ such as the use case classes or controllers/presenters. Lastly, she also wrote p
 Architecture section of the design document.
 
 ### Sari
-During his role as a backend member of the team, Sari was mainly tasked during Phase 1 to implement a working database. Despite the difficult task, Sari was able to learn the basics of SQLite, a local database used for Java, and share his learning experience with the frontend team that needed to know how the database worked. Although the required database helpers were successfully implemented, it was difficult for him to implement the database into the app during Phase 1 due to time constraints and some setbacks which included some missing UI features at the time which lead to his under-contribution. Sari became motivated to work harder during Phase 2 and successfully integrated the database whilst also keeping under consideration the features of SOLID and Clean Architecture in general by adding the necessary gateways and their respective interfaces which use the database to send/receive information to the use cases. This is partially demonstrated by the [`database-and-gateways`](https://github.com/CSC207-UofT/course-project-generic-name-1/pull/80) pull request.
-
-In addition, he used his knowledge on the SOLID, Clean Architecture and Design Patterns to help in brainstorming and identifying potential and applicable Design Patterns and different ways to incorporate SOLID in the project as demonstrated in the pull request above as well as the design document.
+During his role as a backend member of the team, Sari was mainly tasked during Phase 1 to implement a working database.
+Despite the difficult task, Sari was able to learn the basics of SQLite, a local database used for Java, and share his 
+learning experience with the frontend team that needed to know how the database worked. Although the required database 
+helpers were successfully implemented, it was difficult for him to implement the database into the app during Phase 1 
+due to time constraints and some setbacks, which included some missing UI features at the time, which led to his 
+under-contribution. Sari became motivated to work harder during Phase 2 and successfully integrated the database while 
+also considering the features of SOLID and Clean Architecture in general by adding the necessary gateways and their 
+respective interfaces, which use the database to send/receive information to the use cases.
+This is partially demonstrated by the [`database-and-gateways`](https://github.com/CSC207-UofT/course-project-generic-name-1/pull/80) 
+pull request. In addition, he used his knowledge of SOLID, Clean Architecture and Design Patterns to help brainstorm and 
+identify potential and applicable Design Patterns and different ways to incorporate SOLID in the project, as demonstrated
+in the pull request above and the design document.
 
 ### Daniel
-For both phase 1 and phase 2, Daniel is on the backend team working on the backbone of the program. For phase 2, Daniel shifted his main focus on testing, while also participating in implementing and discussing design patterns. In the [`Use case tests`](https://github.com/CSC207-UofT/course-project-generic-name-1/pull/76)  pull request, Daniel implemented all tests for the program's use cases and found several errors and discrepancies involving the class `User`, `UserManager`, and `EventDateComparator`. He also found a bug in the regex validator for signing up, which prevented the user to use `.` as a special character. In addition, in the pull request [`Database tests`](https://github.com/CSC207-UofT/course-project-generic-name-1/pull/91), Daniel learnt and implemented Android instrumented tests to test SQLite databases (the gateway classes), and refactored test packages to increase interpretability.
-In terms of design document, Daniel wrote Code Organization and Testing. He made short GIFs detailing system setup and how to run the program, which was a major issue in phase 1 where Evan was having issue launching our program. He also helped wrote the Design Patterns section together with Sari which discusses various different strategies wth backend team brainstormed. As well, he helped to write and the SOLID principle section of the progress report with Bolade, who wrote the majority of the section.
+For both phase 1 and phase 2, Daniel is on the backend team working on the backbone of the program. For phase 2, Daniel 
+shifted his main focus on testing while also participating in implementing and discussing design patterns. 
+In the [`Use case tests`](https://github.com/CSC207-UofT/course-project-generic-name-1/pull/76)  pull request, Daniel 
+implemented all tests for the program's use cases and found several errors and discrepancies involving the 
+class `User`, `UserManager`, and `EventDateComparator`. He also found a bug in the regex validator for signing up, which 
+prevented the user to use `.` as a special character. In addition, in the pull request [`Database tests`](https://github.com/CSC207-UofT/course-project-generic-name-1/pull/91), Daniel learnt and implemented Android instrumented tests to test SQLite databases (the gateway classes), and refactored test packages to increase interpretability.
+In terms of the design document, Daniel wrote Code Organization and Testing. He made short GIFs detailing system setup 
+and how to run the program, which was a major issue in phase 1, where Evan was having problems launching our program.
+He also helped write the Design Patterns section together with Sari, which discusses various strategies with the backend.
+In addition, he contributed to the SOLID principle section of the progress report with Bolade, who wrote the majority of 
+the section.
