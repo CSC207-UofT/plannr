@@ -85,7 +85,6 @@
 
             <!--  Save Button  -->
             <ImageView
-                    android:id="@+id/iv_save_income"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="clickSaveIncome"

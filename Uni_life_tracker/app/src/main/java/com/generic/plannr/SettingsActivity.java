@@ -71,16 +71,16 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void clickSave(View view) {
-        // gets user input from textbox
-        Validator input = new Validator();
+        // Gets user input from TextBox
+        PasswordValidator input = new PasswordValidator();
         if (input.validateEntry(tiPassword, ug, tiName, tiPassword, true)) {
             String name = Objects.requireNonNull(tiName.getEditText()).getText().toString();
             String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();
 
-            // replaces current data in database with user input
+            // Replaces current data in database with user input
             ug.updateName(name);
             ug.updatePassword(password);
-            changeTextEdit(false); // Disables textbox so it becomes read only
+            changeTextEdit(false); // Disables TextBox so it becomes read only
         }
     }
 
