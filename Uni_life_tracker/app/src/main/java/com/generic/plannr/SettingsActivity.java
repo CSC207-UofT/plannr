@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+
+import com.generic.plannr.Controllers.PasswordValidator;
 import com.generic.plannr.Gateways.UserGateway;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -109,13 +111,6 @@ public class SettingsActivity extends AppCompatActivity {
         activity.redirectActivity(this, SchoolActivity.class);
     } // redirect activity to school
 
-//    /**
-//     * Directs activity to the Life activity on life icon click.
-//     *
-//     * @param view  a View for the device screen.
-//     */
-//    public void clickLife(View view) { activity.redirectActivity(this, MainActivity.class); } // redirect activity to life
-
     /**
      * Directs activity to the Expenses activity on expenses icon click.
      *
@@ -140,5 +135,5 @@ public class SettingsActivity extends AppCompatActivity {
      */
     public void clickLogOut(View view) {
         activity.logout(this);
-    } // prompt logout
+    }
 }

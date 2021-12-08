@@ -7,6 +7,9 @@ package com.generic.plannr;
 import android.os.Bundle;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.generic.plannr.Controllers.EmailValidator;
+import com.generic.plannr.Controllers.PasswordValidator;
 import com.generic.plannr.Gateways.UserGateway;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -23,7 +26,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // connecting variables to UI features in activities by their id
         tiEmail = findViewById(R.id.ti_email_login);
         tiPassword = findViewById(R.id.ti_password_login);
 
@@ -41,11 +43,14 @@ public class LoginActivity extends AppCompatActivity {
     /**
      * Returns whether login input is valid.
      */
-    public boolean loginInput() {
-        Validator input = new Validator(); // Creates an instance of validator to be able to access its methods
+    public boolean loginInput () {
+        // Creates instances of validators to be able to access its methods
+        EmailValidator emailValidator = new EmailValidator();
+        PasswordValidator passwordValidator = new PasswordValidator();
 
-        return input.validateEntry(tiEmail, ug, tiEmail, tiPassword, false) &
-                input.validateEntry(tiPassword, ug, tiEmail, tiPassword, false);
+        // Returns whether the login info inputted is valid
+        return emailValidator.validateEntry(tiEmail, ug, tiEmail, tiPassword, false) &
+                passwordValidator.validateEntry(tiPassword, ug, tiEmail, tiPassword, false);
     }
 
     /**

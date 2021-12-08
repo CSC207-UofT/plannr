@@ -12,7 +12,7 @@ public class DatabaseClient extends SQLiteOpenHelper {
 
     private static final String createEventTable = "CREATE TABLE events(ID INTEGER PRIMARY KEY " +
             "AUTOINCREMENT, NAME TEXT, PRIORITY INTEGER, START_DATE TEXT, END_DATE TEXT, " +
-            "USER_ID INTEGER)";
+            "EVENT_TYPE TEXT, COURSE TEXT, LOCATION TEXT, USER_ID INTEGER)";
 
     private static final String createExpenseTable = "CREATE TABLE expenses(ID INTEGER PRIMARY KEY " +
             "AUTOINCREMENT, NAME TEXT, VALUE DOUBLE, USER_ID INTEGER)";

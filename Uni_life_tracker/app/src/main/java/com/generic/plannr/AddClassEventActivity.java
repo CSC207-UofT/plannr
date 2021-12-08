@@ -14,7 +14,8 @@ import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import com.generic.plannr.Entities.Event;
+import com.generic.plannr.Entities.SchoolEvent;
+import com.generic.plannr.Controllers.InputTextValidator;
 import com.generic.plannr.Gateways.EventGateway;
 import com.generic.plannr.Gateways.UserGateway;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -64,7 +65,7 @@ public class AddClassEventActivity extends AppCompatActivity implements RadioGro
         navEvents.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.nav_assessment:
-                    startActivity(new Intent(getApplicationContext(), AddEventActivity.class));
+                    startActivity(new Intent(getApplicationContext(), AddAssessmentEventActivity.class));
                     overridePendingTransition(0, 0);
                     finish();
                     return true;
@@ -120,7 +121,7 @@ public class AddClassEventActivity extends AppCompatActivity implements RadioGro
      * @return whether the added event includes all its needed attributes
      */
     public boolean addEventInput() {
-        Validator input = new Validator();
+        InputTextValidator input = new InputTextValidator();
         setDateTime();
 
         boolean endTimeAfter = false;
@@ -223,8 +224,10 @@ public class AddClassEventActivity extends AppCompatActivity implements RadioGro
             String eventName = etEventName.getText().toString();
             setDateTime();
             LocalDateTime end = LocalDateTime.parse(endDate + " " + endTime, DATEFORMAT);
+            String course = etCourse.getText().toString();
+            String location = etCourse.getText().toString();
 
-            Event event = new Event(eventName, priority, start, end);
+            SchoolEvent event = new SchoolEvent("Class", eventName, priority, start, end, course, location);
             int userID = ug.getLoggedInUserID();
 
             eg.saveToDatabase(event, userID);

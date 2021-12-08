@@ -3,18 +3,16 @@
  * This file represents a Validator class
  * which is used to validate a user's input.
  */
-package com.generic.plannr;
+package com.generic.plannr.Controllers;
 
-import android.graphics.Color;
-import android.util.Patterns;
-import android.widget.TextView;
 import com.generic.plannr.Gateways.UserGateway;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
 import java.util.regex.Pattern;
 
-public class Validator {
+public class PasswordValidator implements Validator {
+
     // At least one number, uppercase letter, lowercase letter and special char. Min of 6 characters
     private static final Pattern PASSWORD_REQ =
             Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–\\[\\]?/\\\\*_$^+=]).{6,}$");
@@ -38,18 +36,9 @@ public class Validator {
         if (input.isEmpty()) {
             userInput.setError("Field cannot be empty");
             return false;
-        } else if (isSignup && userInput == tiEmail && !Patterns.EMAIL_ADDRESS.matcher(input).matches()) {
-            userInput.setError("Please enter a valid email address");
-            return false;
-        } else if (isSignup && userInput == tiEmail && !ug.uniqueEmail(input)) {
-            userInput.setError("This email is already being used");
-            return false;
         } else if (isSignup && userInput == tiPassword && !PASSWORD_REQ.matcher(input).matches()) {
             StringBuilder str = passwordReq(input);
             userInput.setError(str.toString());
-            return false;
-        } else if (!isSignup && userInput == tiEmail && ug.uniqueEmail(email)) {
-            userInput.setError("The email you entered does not belong to any account");
             return false;
         } else if (!isSignup && userInput == tiPassword && !ug.getPassword(email).equals(password)
                 && !ug.uniqueEmail(email)) {
@@ -62,25 +51,10 @@ public class Validator {
     }
 
     /**
-     * Validates inputs of events to make sure input is not empty
+     * Uses Regex to make sure the password inputted is secure
      *
-     * @param userInput the input the user inputs into the textview
-     * @return whether the user input is valid and sets an error message if needed
-     */
-    public boolean validateAddEvent(TextView userInput) {
-        if (userInput.getText().toString().matches("")) {
-            userInput.setHintTextColor(Color.RED);
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    /**
-     * Uses Regex to make sure the password inputted is secure.
-     *
-     * @param input The password that the user types into the TextBox
-     * @return string that includes all the requirements that the password violates, if any.
+     * @param input The password that the user types into the textbox
+     * @return a string that includes all the requirements that the password violates, if any
      */
     public StringBuilder passwordReq(String input) {
         Pattern uppercase = Pattern.compile(".*[A-Z].*");
@@ -103,7 +77,7 @@ public class Validator {
             str.append("- At least 1 number \n");
         }
         if (!specialChar.matcher(input).find()) {
-            str.append("- At least 1 special character !@#&()–[]?/\\*_$^+= \n");
+            str.append("- At least 1 special character !@#$%^&*()-_=+/[]\\ \n");
         }
         return str;
     }

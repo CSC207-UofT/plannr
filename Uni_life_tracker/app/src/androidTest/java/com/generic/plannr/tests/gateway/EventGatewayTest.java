@@ -6,7 +6,7 @@ import android.content.Context;
 
 import androidx.test.platform.app.InstrumentationRegistry;
 
-import com.generic.plannr.Entities.Event;
+import com.generic.plannr.Entities.SchoolEvent;
 import com.generic.plannr.Entities.User;
 import com.generic.plannr.Gateways.EventGateway;
 import com.generic.plannr.Gateways.UserGateway;
@@ -52,11 +52,13 @@ public class EventGatewayTest {
 
     @Test
     public void saveToDatabase() {
-        Event e = new Event(
+        SchoolEvent e = new SchoolEvent(
+                "deadline",
                 "test event 1",
                 0,
                 time,
-                time
+                time,
+                "CSC207"
         );
         eventGateway.saveToDatabase(e, ug.getLoggedInUserID());
         assertEquals(1, eventGateway.getAllEvents(ug.getLoggedInUserID()).size());

@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
 import com.generic.plannr.Database.DatabaseClient;
 import com.generic.plannr.Entities.User;
 import com.generic.plannr.UseCases.UserManager;
@@ -26,6 +27,7 @@ public class UserGateway implements UserGatewayInterface {
      * Open the database for reading or writing
      */
     public void openDatabase() {
+        // Opens the database. (Note: this is an example usage of the Façade Design Pattern)
         db = dbclient.getWritableDatabase();
     }
 
