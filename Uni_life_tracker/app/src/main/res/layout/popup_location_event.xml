@@ -12,7 +12,7 @@
 
     <!--  Event Name  -->
     <TextView
-            android:id="@+id/tv_event_name_pop"
+            android:id="@+id/tv_event_name_pop_l"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/event"
@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/lavender"
-            />
+    />
 
     <!-- Event Date & Time -->
     <LinearLayout
@@ -51,7 +51,7 @@
                 android:paddingHorizontal="15dp">
 
             <TextView
-                    android:id="@+id/tv_start_date"
+                    android:id="@+id/tv_start_date_l"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="@string/start_date"
@@ -59,7 +59,7 @@
                     android:layout_marginBottom="10dp"/>
 
             <TextView
-                    android:id="@+id/tv_end_date"
+                    android:id="@+id/tv_end_date_l"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="@string/end_date"
@@ -74,7 +74,7 @@
                 android:gravity="end">
 
             <TextView
-                    android:id="@+id/tv_start_time"
+                    android:id="@+id/tv_start_time_l"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="@string/start_time"
@@ -83,7 +83,7 @@
                     android:layout_marginBottom="10dp"/>
 
             <TextView
-                    android:id="@+id/tv_end_time"
+                    android:id="@+id/tv_end_time_l"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="@string/end_time"
@@ -112,7 +112,7 @@
                 android:layout_marginStart="15dp"/>
 
         <TextView
-                android:id="@+id/tv_priority"
+                android:id="@+id/tv_priority_l"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -142,7 +142,7 @@
                 android:layout_marginStart="15dp"/>
 
         <TextView
-                android:id="@+id/tv_course"
+                android:id="@+id/tv_course_l"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -176,7 +176,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/course"
+                android:text="@string/location"
                 android:textSize="15sp"
                 android:gravity="end"
                 android:layout_marginStart="15dp"/>

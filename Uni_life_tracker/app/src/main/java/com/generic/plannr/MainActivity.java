@@ -33,15 +33,17 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class MainActivity extends AppCompatActivity implements  AdapterView.OnItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     // initialize variable
     DrawerLayout drawerLayout;
-    private ArrayList<SchoolEvent> eventsList;
-    private RecyclerView rvEvents;
-    private ListEvents.RecyclerViewClickLister listener;
     UserGateway ug = new UserGateway(MainActivity.this);
     EventGateway eg = new EventGateway(MainActivity.this);
     Dialog dialog;
+    private ArrayList<SchoolEvent> eventsList;
+    private RecyclerView rvEvents;
+    private ListEvents.RecyclerViewClickLister listener;
+    private TextView dialogEventName, dialogEventCourse, dialogEventStartD, dialogEventStartT,
+            dialogEventEndD, dialogEventEndT, dialogEventPriority, dialogEventLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,26 +115,50 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
         rvEvents.setItemAnimator(new DefaultItemAnimator());
         rvEvents.setAdapter(adapter);
     }
+
     /**
      * Sets the onclick listener and gets information from position
      */
     private void setOnClickListener() {
         listener = (v, position) -> {
-            AlertDialog.Builder builder= new AlertDialog.Builder(v.getRootView().getContext());
-            View dialogView = LayoutInflater.from(v.getRootView().getContext()).inflate(R.layout.popup_view_event, null);
-
-            TextView dialogEventName = dialogView.findViewById(R.id.tv_event_name_pop);
-            TextView dialogEventCourse = dialogView.findViewById(R.id.tv_course);
-            TextView dialogEventStartD = dialogView.findViewById(R.id.tv_start_date);
-            TextView dialogEventStartT = dialogView.findViewById(R.id.tv_start_time);
-            TextView dialogEventEndD = dialogView.findViewById(R.id.tv_end_date);
-            TextView dialogEventEndT = dialogView.findViewById(R.id.tv_end_time);
-            TextView dialogEventPriority = dialogView.findViewById(R.id.tv_priority);
-
             DateTimeFormatter dayFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh:mm a");
-            String startDate = eventsList.get(position).getStartDate().toLocalDate().format(dayFormatter);
-            String startTime = eventsList.get(position).getStartDate().toLocalTime().format(timeFormatter);
+            AlertDialog.Builder builder = new AlertDialog.Builder(v.getRootView().getContext());
+            View dialogView;
+            switch (eventsList.get(position).getEventType()) {
+                case "Assessment":
+                    dialogView = LayoutInflater.from(v.getRootView().getContext()).inflate(R.layout.popup_view_event, null);
+
+                    dialogEventName = dialogView.findViewById(R.id.tv_event_name_pop);
+                    dialogEventCourse = dialogView.findViewById(R.id.tv_course);
+                    dialogEventStartD = dialogView.findViewById(R.id.tv_start_date);
+                    dialogEventStartT = dialogView.findViewById(R.id.tv_start_time);
+                    dialogEventEndD = dialogView.findViewById(R.id.tv_end_date);
+                    dialogEventEndT = dialogView.findViewById(R.id.tv_end_time);
+                    dialogEventPriority = dialogView.findViewById(R.id.tv_priority);
+
+                    break;
+                case "Deadline":
+                    dialogView = LayoutInflater.from(v.getRootView().getContext()).inflate(R.layout.popup_deadline_event, null);
+                    dialogEventName = dialogView.findViewById(R.id.tv_event_name_pop_d);
+                    dialogEventCourse = dialogView.findViewById(R.id.tv_course_d);
+                    dialogEventEndD = dialogView.findViewById(R.id.tv_end_date_d);
+                    dialogEventEndT = dialogView.findViewById(R.id.tv_end_time_d);
+                    dialogEventPriority = dialogView.findViewById(R.id.tv_priority_d);
+                    break;
+                default:
+                    dialogView = LayoutInflater.from(v.getRootView().getContext()).inflate(R.layout.popup_location_event, null);
+
+                    dialogEventName = dialogView.findViewById(R.id.tv_event_name_pop_l);
+                    dialogEventCourse = dialogView.findViewById(R.id.tv_course_l);
+                    dialogEventStartD = dialogView.findViewById(R.id.tv_start_date_l);
+                    dialogEventStartT = dialogView.findViewById(R.id.tv_start_time_l);
+                    dialogEventEndD = dialogView.findViewById(R.id.tv_end_date_l);
+                    dialogEventEndT = dialogView.findViewById(R.id.tv_end_time_l);
+                    dialogEventPriority = dialogView.findViewById(R.id.tv_priority_l);
+                    dialogEventLocation = dialogView.findViewById(R.id.tv_location);
+            }
+
             String endDate = eventsList.get(position).getEndDate().toLocalDate().format(dayFormatter);
             String endTime = eventsList.get(position).getEndDate().toLocalTime().format(timeFormatter);
             int priority = eventsList.get(position).getPriority();
@@ -150,10 +176,14 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
             }
 
 
-            dialogEventName.setText(eventsList.get(position).getName());
-            dialogEventCourse.setText(eventsList.get(position).getCourse());
+            String startDate = eventsList.get(position).getStartDate().toLocalDate().format(dayFormatter);
+            String startTime = eventsList.get(position).getStartDate().toLocalTime().format(timeFormatter);
             dialogEventStartD.setText(startDate);
             dialogEventStartT.setText(startTime);
+
+            dialogEventName.setText(eventsList.get(position).getName());
+            dialogEventCourse.setText(eventsList.get(position).getCourse());
+            dialogEventLocation.setText(eventsList.get(position).getLocation());
             dialogEventEndD.setText(endDate);
             dialogEventEndT.setText(endTime);
             dialogEventPriority.setText(priorityS);
@@ -176,14 +206,16 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
     /**
      * Opens drawer layout (navigation menu) to view.
      *
-     * @param drawerLayout  A DrawerLayout for the navigation menu.
+     * @param drawerLayout A DrawerLayout for the navigation menu.
      */
-    public void openDrawer(DrawerLayout drawerLayout) { drawerLayout.openDrawer(GravityCompat.START); }
+    public void openDrawer(DrawerLayout drawerLayout) {
+        drawerLayout.openDrawer(GravityCompat.START);
+    }
 
     /**
      * Closes drawer layout (navigation menu) from view, if the drawer is open.
      *
-     * @param drawerLayout  A DrawerLayout for the navigation menu.
+     * @param drawerLayout A DrawerLayout for the navigation menu.
      */
     public void closeDrawer(DrawerLayout drawerLayout) {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -195,11 +227,11 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
      * Directs current activity to a different activity.
      * Generates an intent and starts the activity.
      *
-     * @param activity  A user's current activity.
-     * @param aClass    A Class of the new activity to be started.
+     * @param activity A user's current activity.
+     * @param aClass   A Class of the new activity to be started.
      */
     public void redirectActivity(Activity activity, @SuppressWarnings("rawtypes") Class aClass) {
-        Intent intent = new Intent(activity,aClass); // Initialize intent
+        Intent intent = new Intent(activity, aClass); // Initialize intent
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // Set flag
         activity.startActivity(intent); // Start activity
         finish();
@@ -211,7 +243,7 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
      *
      * @param activity a user's current activity.
      */
-    public void logout (Activity activity) {
+    public void logout(Activity activity) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle("Log Out");
         builder.setMessage("Are you sure you want to log out?");
@@ -223,25 +255,29 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
     /**
      * Opens navigation menu on menu icon click.
      *
-     * @param view  a View for the device screen.
+     * @param view a View for the device screen.
      */
-    public void clickMenu(View view){
+    public void clickMenu(View view) {
         openDrawer(drawerLayout);
     }
 
     /**
      * Directs activity to the Main activity on logo click.
      *
-     * @param view  a View for the device screen.
+     * @param view a View for the device screen.
      */
-    public void clickLogo(View view) { closeDrawer(drawerLayout); }
+    public void clickLogo(View view) {
+        closeDrawer(drawerLayout);
+    }
 
     /**
      * Directs activity to the School activity on school icon click.
      *
-     * @param view  a View for the device screen.
+     * @param view a View for the device screen.
      */
-    public void clickSchool(View view) { redirectActivity(this, SchoolActivity.class); }
+    public void clickSchool(View view) {
+        redirectActivity(this, SchoolActivity.class);
+    }
 
 //    /**
 //     * Directs activity to the Life activity on life icon click.
@@ -253,21 +289,25 @@ public class MainActivity extends AppCompatActivity implements  AdapterView.OnIt
     /**
      * Directs activity to the Expenses activity on expenses icon click.
      *
-     * @param view  a View for the device screen.
+     * @param view a View for the device screen.
      */
-    public void clickExpenses(View view) { redirectActivity(this, ExpensesActivity.class); }
+    public void clickExpenses(View view) {
+        redirectActivity(this, ExpensesActivity.class);
+    }
 
     /**
      * Directs activity to the Settings activity on settings icon click.
      *
-     * @param view  a View for the device screen.
+     * @param view a View for the device screen.
      */
-    public void clickSettings(View view) { redirectActivity(this, SettingsActivity.class); }
+    public void clickSettings(View view) {
+        redirectActivity(this, SettingsActivity.class);
+    }
 
     /**
      * Prompts log out on a logout icon click.
      *
-     * @param view  a View for the device screen.
+     * @param view a View for the device screen.
      */
     public void clickLogOut(View view) {
         logout(this);
