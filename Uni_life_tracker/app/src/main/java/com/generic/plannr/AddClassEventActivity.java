@@ -15,6 +15,7 @@ import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.generic.plannr.Entities.SchoolEvent;
+import com.generic.plannr.Controllers.InputTextValidator;
 import com.generic.plannr.Gateways.EventGateway;
 import com.generic.plannr.Gateways.UserGateway;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -120,7 +121,7 @@ public class AddClassEventActivity extends AppCompatActivity implements RadioGro
      * @return whether the added event includes all its needed attributes
      */
     public boolean addEventInput() {
-        Validator input = new Validator();
+        InputTextValidator input = new InputTextValidator();
         setDateTime();
 
         boolean endTimeAfter = false;

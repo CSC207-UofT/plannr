@@ -27,6 +27,7 @@ public class UserGateway implements UserGatewayInterface {
      * Open the database for reading or writing
      */
     public void openDatabase() {
+        // Opens the database. (Note: this is an example usage of the Façade Design Pattern)
         db = dbclient.getWritableDatabase();
     }
 

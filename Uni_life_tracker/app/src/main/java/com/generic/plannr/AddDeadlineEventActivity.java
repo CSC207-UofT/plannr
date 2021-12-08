@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import com.generic.plannr.Controllers.InputTextValidator;
 import com.generic.plannr.Entities.SchoolEvent;
 import com.generic.plannr.Gateways.EventGateway;
 import com.generic.plannr.Gateways.UserGateway;
@@ -118,7 +119,7 @@ public class AddDeadlineEventActivity extends AppCompatActivity implements Radio
      * @return whether the added event includes all its needed attributes
      */
     public boolean addEventInput() {
-        Validator input = new Validator();
+        InputTextValidator input = new InputTextValidator();
         setDateTime();
 
         return input.validateAddEvent(etEventName) & input.validateAddEvent(tvDate)

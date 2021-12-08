@@ -3,6 +3,9 @@ package com.generic.plannr;
 import android.os.Bundle;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.generic.plannr.Controllers.EmailValidator;
+import com.generic.plannr.Controllers.PasswordValidator;
 import com.generic.plannr.Gateways.UserGateway;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -35,11 +38,13 @@ public class LoginActivity  extends AppCompatActivity {
     }
 
     public boolean LoginInput () {
-        // Creates an instance of validator to be able to access its methods
-        Validator input = new Validator();
+        // Creates instances of validators to be able to access its methods
+        EmailValidator emailValidator = new EmailValidator();
+        PasswordValidator passwordValidator = new PasswordValidator();
+
         // Returns whether the login info inputted is valid
-        return input.validateEntry(tiEmail, ug, tiEmail, tiPassword, false) &
-                input.validateEntry(tiPassword, ug, tiEmail, tiPassword, false);
+        return emailValidator.validateEntry(tiEmail, ug, tiEmail, tiPassword, false) &
+                passwordValidator.validateEntry(tiPassword, ug, tiEmail, tiPassword, false);
     }
 
     public void clickLogin(View view) {
