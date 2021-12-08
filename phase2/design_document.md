@@ -365,18 +365,19 @@ app and how run certain features.
 
 #### Principle 1: Equitable Use
 If released on the market, Plannr will be free to include users from different socioeconomic backgrounds. 
-Our app does not have additional features that require users to have a more advanced skill level, iit does not create 
+Our app does not have additional features that require users to have a more advanced skill level, it does not create 
 segregation among users. It also offers the same password checking and account features for all users, ensuring that 
 users have a password-protected account. Finally, Plannr's UI is simple and easy to use,with a nice design appealing to 
 all users.
 
 
 #### Principle 2: Flexibility in Use
-The Sort feature in the main page gives users the flexibility and choice of how they would like to sort their events, as
-users can sort either by time or priority. In the future, an instructions page offering details on how to use the app
-can be added to Settings. Additionally, in the future, a more detailed setting page can be added to accommodate more
-customizations. Preferences such as currency types (such as CAD or USD), the display of the time (24 hour vs. AM or PM)
-or dark mode are features that can be included in the future.
+The Sort feature on the main page gives users the flexibility and choice of how they would like to sort their events, 
+as users can sort either by time or priority. Plannr also offers a dark mode view to accommodate different visual 
+preferences. In the future, an instructions page showing details on how to use the app can be added to Settings. 
+Additionally, a more detailed setting page can be added to accommodate more customizations in the future. Preferences 
+such as currency types (such as CAD or USD) display the time (24 hours vs. AM or PM) should be included within the 
+settings page, allowing users to adjust accordingly.
 
 #### Principle 3: Simple and Intuitive Use
 At first launch, Plannr prompts the user to sign up or log-in in a straightforward manner, displaying large buttons with
