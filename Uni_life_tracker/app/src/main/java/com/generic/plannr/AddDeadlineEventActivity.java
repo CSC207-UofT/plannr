@@ -28,7 +28,7 @@ import java.util.Locale;
 
 public class AddDeadlineEventActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener{
     int yr, mth, day, hr, min, priority;
-    String date, endDate, time, endTime;
+    String date, time;
     TextView tvDate, tvTime;
     RadioGroup rgPriorities;
     ImageView ivBack, ivSave;
@@ -121,22 +121,8 @@ public class AddDeadlineEventActivity extends AppCompatActivity implements Radio
         Validator input = new Validator();
         setDateTime();
 
-        boolean endTimeAfter = false;
-        if (!endTime.isEmpty()) {
-            LocalDateTime end = LocalDateTime.parse(endDate + " " + endTime, DATEFORMAT);
-            // Checks if end date is after start date with its date time format
-            if (!end.isAfter(start)) {
-                // Warns user that the format is incorrect
-                Toast.makeText(this, "End date should be before start!", Toast.LENGTH_LONG).show();
-                changeTextColor(255);
-            } else {
-                changeTextColor(0);
-                endTimeAfter = true;
-            }
-        }
-
         return input.validateAddEvent(etEventName) & input.validateAddEvent(tvDate)
-                & input.validateAddEvent(tvTime) & input.validateAddEvent(etCourse) & endTimeAfter;
+                & input.validateAddEvent(tvTime) & input.validateAddEvent(etCourse);
     }
 
     /**
@@ -218,7 +204,7 @@ public class AddDeadlineEventActivity extends AppCompatActivity implements Radio
         if (addEventInput()) {
             String eventName = etEventName.getText().toString();
             setDateTime();
-            LocalDateTime end = LocalDateTime.parse(endDate + " " + endTime, DATEFORMAT);
+            LocalDateTime end = LocalDateTime.parse(date + " " + time, DATEFORMAT);
 
             Event event = new Event(eventName, priority, start, end);
             int userID = ug.getLoggedInUserID();
