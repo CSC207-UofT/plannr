@@ -18,7 +18,7 @@ public class EventManager {
      *
      * @return EventManager object
      */
-    public EventManager getInstance() {
+    public static EventManager getInstance() {
         // Check if AM_INSTANCE is instantiated
         if (EM_INSTANCE == null) {
             EM_INSTANCE = new EventManager();
