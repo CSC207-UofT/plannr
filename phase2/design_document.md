@@ -276,7 +276,7 @@ with
 
 ## Refactoring and Code Smells
 Continuing from phase 1, we kept classes short with good documentation to avoid code smells. As suggested in our
-feedback, we also deleted the old src directory and refactored the directory names. Unfortunately we could not change
+feedback, we also deleted the old src directory and refactored the directory names. Unfortunately, we could not change
 the Uni_life_tracker folder name to Plannr, as it caused a bunch of errors that at this stage of the project would do
 more harm than good and would take up time for other more valuable improvements
 
