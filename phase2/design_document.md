@@ -459,6 +459,7 @@ features added in phase 1 using Android Studio. Within the[`Expenses backend con
 pull request, she worked on connecting the add expenses page and the expenses list to the backend and database, 
 ensuring the user's inputted expense information could be stored in the database and then later retrieved for display.
 This pull request was essential for the overall functionality of Plannr as expenses are one of the app's key features.
+In addition, she included a recycler view for expenses list that would be updated with information from the database.
 She also added an income feature to enhance the overall functionality of expenses, allowing a user to see how much of 
 their income they have left after calculating their total expenses. In addition, Evgenia worked on the initial design 
 of the login page and used the user's name by creating a welcome message that greets that user with their name in the 
@@ -477,7 +478,18 @@ some class names, added documentation, and discarded unused files. With regards 
 the Code Style and Documentation portion of the report.
 
 ### Dana
-For phase 2, Dana worked on multiple components of the project. As a Front-End Developer, she worked on creating the UI components of the project. One of the main UI features that she implemented was the calendar on the School event Activity. She used a RecyclerView to create the different dates on the calendar. Then the positions of the dates were used to retrieve the events from that day to the database. On top of that, Dana was the leading developer that connected the Front-end features with the SQLite Database. With her previous knowledge of SQL and new knowledge of Andriod, she connected the project so that the information inputted by the user can be saved to the database. One of her most significant pull request was [`add-event-backend`](https://github.com/CSC207-UofT/course-project-generic-name-1/pull/81). This PR was important because it was what finally made the user be able to add an event to their calendar, which was the whole point of the app. Dana had to work with the queries to save the `SchoolEvents` attributes and insert them into the table to implement this. Next, the attributes needed to be retrieved from the database using the User's ID to display a list of all the user's events of a particular date. This implementation was important because it would also be used to display information in the `MainActivity`.
+For phase 2, Dana worked on multiple components of the project. As a Front-End Developer, she worked on creating the UI 
+components of the project. One of the main UI features that she implemented was the calendar on the School event Activity. 
+She used a RecyclerView to create the different dates on the calendar. Then the positions of the dates were used to 
+retrieve the events from that day to the database. On top of that, Dana was the leading developer that connected the 
+Front-end features with the SQLite Database. With her previous knowledge of SQL and new knowledge of Andriod, 
+she connected the project so that the information inputted by the user can be saved to the database. One of her most 
+significant pull request was [`add-event-backend`](https://github.com/CSC207-UofT/course-project-generic-name-1/pull/81). 
+This PR was important because it was what finally made the user be able to add an event to their calendar, which was 
+the whole point of the app. Dana had to work with the queries to save the `SchoolEvents` attributes and insert them into 
+the table to implement this. Next, the attributes needed to be retrieved from the database using the User's ID to display 
+a list of all the user's events of a particular date. This implementation was important because it would also be used to 
+display information in the `MainActivity`.
 
 ### Bolade
 For phase 2, Bolade continued implementing Use Cases as a backend team member. She also worked on a "clean up" plan to 
