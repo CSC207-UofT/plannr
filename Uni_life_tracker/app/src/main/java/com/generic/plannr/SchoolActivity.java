@@ -4,6 +4,7 @@
  */
 package com.generic.plannr;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;

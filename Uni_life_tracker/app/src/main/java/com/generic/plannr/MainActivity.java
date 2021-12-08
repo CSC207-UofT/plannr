@@ -4,6 +4,7 @@
  */
 package com.generic.plannr;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -120,6 +121,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     /**
      * Sets the onclick listener and gets information from position
      */
+    @SuppressLint("InflateParams")
     private void setOnClickListener() {
         listener = (v, position) -> {
             DateTimeFormatter dayFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
