@@ -424,7 +424,12 @@ the Plannr UI targets a younger population with its playful design and colour sc
 for students looking for an organizational platform that combines both their academic and financial life for easy access.
 
 ### Least Likely Demographic
-People who are not students would not Plannr particularly useful. Specifically, younger students in elementary school or children would be less likely to user Planner. They would have no use for the expense features they are not managing their own finances. In addition, older adults who are retired or who are not students are less likely to use the school work related features. Finally, middle-aged adults will have no use for both the school work and the expenses features. Many employed adults already be using more advanced banking apps which automatically display their expenditures.
+People who are not students would not find Plannr particularly useful. Specifically, younger students in elementary 
+school or children would be less likely to use Planner. They would have no use for the expense features; they do not 
+have a stable source of income or are not managing their own finances. In addition, older adults who are retired or not 
+students are less likely to use the school work-related features. Finally, middle-aged adults will have no use for both 
+the school work and the expenses features. Many employed adults have already graduated from high school or university 
+and are already using more advanced banking apps that automatically display their expenditures.
 
 ***
 
