@@ -19,16 +19,36 @@
 ***
 
 ## Specification
-Plannr is an organizational platform in the form of an Android app that helps university students coordinate their everyday routine, including schoolwork and expenses. Users are first taken to the login page and prompted to log in by entering their email and password. If they do not have an account yet, they can click the sign-up button. They sign up by entering their full name, email, and password. After signing up or logging in, users are taken to the main view, which is a to-do list that allows users to see all school events that they created. The events within the to-do list can be sorted either by time or priority. Users can also create events by means of a calendar that offers a monthly view and an “add event” feature. A user can also view school-specific events in the form of a list underneath the calendar. Our platform currently focuses on two main categories:
+Plannr is an organizational platform in the form of an Android app that helps university students coordinate their 
+everyday routine, including schoolwork and expenses. Users are first taken to the login page and prompted to log in by 
+entering their email and password. If they do not have an account yet, they can click the sign-up button. They sign up 
+by entering their full name, email, and password. After signing up or logging in, users are taken to the main view, 
+which is a to-do list that allows users to see all school events that they created. The events within the to-do list 
+can be sorted either by time or priority. Users can also create events by means of a calendar that offers a monthly 
+view and an “add event” feature. A user can also view school-specific events in the form of a list underneath the 
+calendar. Our platform currently focuses on two main categories:
 
-* **Schoolwork:** As a user, I can add (use case) four school-related events (entity), including assessments, due dates, class times, and study sessions. Once I inputted the school event, I can view it in the list of school events underneath the calendar. To see my event details, I can go to the to-do list and click the school event to see more features, such as course or location, depending on the type of event.
-* **Expenses:**  As a user, I can view my all-time expenses (entity) in the form of a list showing the name of the expense and the amount of money spent. By going to the add expenses page and inputting the name of the expense and the number of dollars, I can add (use case) an expense to the expense list. I can delete an expense from the expenses list page. I can also input my income, and the total displayed at the bottom is a difference between my income and total expenses. The text will be green if the total is less than my income, red if it is greater than my income and black if it is the same amount.
-  Upon app launch, users see the today view and can click between different views such as schoolwork, expenses, and settings using a side menu that pops out when clicked. The settings page allows users to change their name and password at any time.
+* **Schoolwork:** As a user, I can add (use case) four school-related events (entity), including assessments, due dates,
+* class times, and study sessions. Once I inputted the school event, I can view it in the list of school events 
+* underneath the calendar. To see my event details, I can go to the to-do list and click the school event to see more 
+* features, such as course or location, depending on the type of event.
+* **Expenses:**  As a user, I can view my all-time expenses (entity) in the form of a list showing the name of the 
+* expense and the amount of money spent. By going to the add expenses page and inputting the name of the expense and 
+* the number of dollars, I can add (use case) an expense to the expense list. I can delete an expense from the expenses 
+* list page. I can also input my income, and the total displayed at the bottom is a difference between my income and 
+* total expenses. The text will be green if the total is less than my income, red if it is greater than my income and 
+* black if it is the same amount.
 
-Upon app launch, users see the today view and can click between different views such as schoolwork, expenses, and settings using a side menu that pops out when clicked. The settings page allows users to change their name and password at any time
+Upon app launch, users see the today view and can click between different views such as schoolwork, expenses, and 
+settings using a side menu that pops out when clicked. The settings page allows users to change their name and password 
+at any time.
 
 ### Changes from Phase 0 Specification
-Plannr, previously titled Uni Life Tracker, started out as a command-line interface with the goal of the Android app, allowing users to track their events and deadlines to fit their personal needs. It was meant to focus on three categories: **Schoolwork, Life and Expenses**. While in phase 2, Plannr only focuses on school, work and expenses. In addition, the to-do list does not have a checkbox feature, so users cannot check off tasks, but they can still view and sort them. Other additions include a sign-up, login and income feature, settings page, and a dark mode option.
+Plannr, previously titled Uni Life Tracker, started out as a command-line interface with the goal of the Android app, 
+allowing users to track their events and deadlines to fit their personal needs. It was meant to focus on three 
+categories: **Schoolwork, Life and Expenses**. While in phase 2, Plannr only focuses on school, work and expenses. 
+In addition, the to-do list does not have a checkbox feature, so users cannot check off tasks, but they can still view 
+and sort them. Other additions include a sign-up, login and income feature, settings page, and a dark mode option.
 
 ## CRC Cards
 Please see the linked for the updated [CRC Cards](https://docs.google.com/document/d/1wAnKPMUv0o_FJ9qT4U98Bf2eMEP8u2Y1_nC9lcLH76U/edit).
@@ -37,8 +57,12 @@ Please see the linked for the updated [CRC Cards](https://docs.google.com/docume
 
 ### SRP: Single Responsibility Principle
 * <u>Comply:</u>
-    * In order to comply with the single responsibility principle, we made sure that each class was responsible for one thing.
-    * Looking at the use cases, we have the `EventManager`, `UserManager`, and `ExpenseManager` which are each only responsible for their respective entity. `EventManager` is only responsible for maintaining anything `Event` related, `UserManager` is only responsible for maintaining anything `User` related, and `ExpenseManager` is only responsible for maintaining anything Expense related. 
+    * In order to comply with the single responsibility principle, we made sure that each class was responsible 
+  for one thing.
+    * Looking at the use cases, we have the `EventManager`, `UserManager`, and `ExpenseManager` which are each 
+  only responsible for their respective entity. `EventManager` is only responsible for maintaining anything `Event` 
+related, `UserManager` is only responsible for maintaining anything `User` related, and `ExpenseManager` is only 
+responsible for maintaining anything Expense related. 
     * Similarly, for the gateways, we split the gateways for the three entities so that `EventGateway` is only
       responsible for saving and reading Events from the database, `ExpenseGateway` is responsible for saving and
       reading `Expenses` from the database and `UserGateway` is responsible for saving and reading Users from the
@@ -92,8 +116,8 @@ Please see the linked for the updated [CRC Cards](https://docs.google.com/docume
       simply use `Event e` as a parameter, instead of explicitly specifying which type of event we want (i.e. instead
       of `Deadline e` )
 * <u>Violation:</u>
-    * It may be a violation as our `Event` superclass is not an interface, so it doesn't utilize abstraction. However, it
-      does achieve the same goal as DIP.
+    * It may be a violation as our `Event` superclass is not an interface, so it doesn't utilize abstraction. However, 
+  it does achieve the same goal as DIP.
 * <u>Potential Fix:</u>
     * We can fix this by implementing an `Event` interface, and change the existing Event superclass to `GeneralEvent`
     
@@ -101,15 +125,32 @@ Please see the linked for the updated [CRC Cards](https://docs.google.com/docume
 
 ### Clean Architecture Discussion
 ![alt text](https://github.com/CSC207-UofT/course-project-generic-name-1/blob/design_doc/phase2/images/uml_diagram.png "UML Diagram")
-Our program is consistent with Clean Architecture because, as we can see with the general UML diagram given above, we made sure that the Entities were unaware of the Use Cases, the Use Cases are unaware of the Controllers/Presenters/Gateways, and the Controllers/Presenters are unaware of the Activities. If we wanted to violate Clean Architecture, such as a Use Case class like EventManager saving an entity to a database, we used interfaces instead of directly calling the class implementation. For example, EventManager creates an event and wants to save it to the database, it would be a violation of clean architecture for EventManager to directly call EventGateway, so instead, we made an interface called EventGatewayInterface, which is what the EventManager uses to save to the database and pass a
-EventGateway object to it through the controller. That way EventManager remains unaware of the outer layer, such as the Controller and the Gateway. The flow goes from the activities to the controller to the use case, through the boundary interfaces, to the entities back to the use cases, then presenter, the activity and finally the UI.
+Our program is consistent with Clean Architecture because, as we can see with the general UML diagram given above, 
+we made sure that the Entities were unaware of the Use Cases, the Use Cases are unaware of the 
+Controllers/Presenters/Gateways, and the Controllers/Presenters are unaware of the Activities. If we wanted to violate 
+Clean Architecture, such as a Use Case class like EventManager saving an entity to a database, we used interfaces 
+instead of directly calling the class implementation. For example, EventManager creates an event and wants to save it 
+to the database, it would be a violation of clean architecture for EventManager to directly call EventGateway, so 
+instead, we made an interface called EventGatewayInterface, which is what the EventManager uses to save to the database 
+and pass a EventGateway object to it through the controller. That way EventManager remains unaware of the outer layer, 
+such as the Controller and the Gateway. The flow goes from the activities to the controller to the use case, through 
+the boundary interfaces, to the entities back to the use cases, then presenter, the activity and finally the UI.
 
 
 ### Scenario Walk-Through that shows Clean Architecture
 
-<u>Scenario:</u> The user arrives at the main page, which displays their list of events taking place that day and has the option to sort the event list, which can be displayed list by date-time or by priority. By default, it is first shown to be sorted by date.
+<u>Scenario:</u> The user arrives at the main page, which displays their list of events taking place that day 
+and has the option to sort the event list, which can be displayed list by date-time or by priority. 
+By default, it is first shown to be sorted by date.
 
-In this scenario, we start at the UI, where the user can see their list of events sorted by date or by priority. To start, the MainActivity class tells the MainController, the controller for the main view, that the user wants their list of today's events to be displayed and sorted by date. So, the controller then uses the EventInputBoundary interface to tell the EventManager use class to retrieve today's events and sort them by date. Afterwards, EventManager sends that information over to the MainPresenter. This presenter class formats the list of events to be presentable for the UI for the main view through the MainPresenter output boundary interface. The MainPresenter then formats the list of event objects into something Android can print and display, which is then sent to MainActivity who just displays the result.
+In this scenario, we start at the UI, where the user can see their list of events sorted by date or by priority. 
+To start, the MainActivity class tells the MainController, the controller for the main view, that the user wants 
+their list of today's events to be displayed and sorted by date. So, the controller then uses the EventInputBoundary 
+interface to tell the EventManager use class to retrieve today's events and sort them by date. Afterwards, EventManager 
+sends that information over to the MainPresenter. This presenter class formats the list of events to be presentable for 
+the UI for the main view through the MainPresenter output boundary interface. The MainPresenter then formats the list 
+of event objects into something Android can print and display, which is then sent to MainActivity who just displays 
+the result.
 
 ### Dependency Rule (w/ an example)
 
@@ -171,8 +212,9 @@ These issues included:
 ### Pull Requests
 Throughout phase 2, we consistently used pull requests to merge our branches into main and changed the GitHub settings
 to reject the merge of an unreviewed pull request. Pull requests had to be reviewed by at least two other people before
-they could be merged in. We have not made any changes to main directly, any and all changes were done on local
-branches and after being submitted, reviewed and approved were merged into main.
+they could be merged in. We made use of labels (bug, enhancement, help wanted, etc.) 
+and assignees for certain pull requests when needed. We have not made any changes to main directly, 
+any and all changes were done on local branches and after being submitted, reviewed and approved were merged into main.
 
 ### Project Board
 We moved from using the task board on ClickUp to using the task board on GitHub, and we set up the automatic features
@@ -180,8 +222,14 @@ that would move a card into the correct column based on if it was created, revie
 or placed into the board, so we could keep track of everyone's tasks and progress.
 
 ## Code Style and Documentation
-For phase 2, we made sure to add JavaDocs with our work, describing the classes and class attributes. We followed the general guidelines to commenting JavaDocs and applied usage of tags. As well, for other file types, such as our activity layout files (XML), we commented headers describing each element. Previously, our project lacked many JavaDocs. While there were several comments and pieces of documentation in certain files, overall, they were not sufficient to express what the functions and classes do. Additionally, we renamed class and variable names to be more comprehensive. From the
-Previous phase, a number of our class names were quite vague with their functions. Thus we modified these to be clearer with their use. Additionally, prior to each commit, we also addressed any form of warnings from IntelliJ that could be resolved. Overall, we leveraged documentation to highlight and explain a more straightforward overview of our work.
+For phase 2, we made sure to add JavaDocs with our work, describing the classes and class attributes. We followed the 
+general guidelines to commenting JavaDocs and applied usage of tags. As well, for other file types, such as our activity 
+layout files (XML), we commented headers describing each element. Previously, our project lacked many JavaDocs. While 
+there were several comments and pieces of documentation in certain files, overall, they were not sufficient to express 
+what the functions and classes do. Additionally, we renamed class and variable names to be more comprehensive. From the
+Previous phase, a number of our class names were quite vague with their functions. Thus we modified these to be clearer 
+with their use. Additionally, prior to each commit, we also addressed any form of warnings from IntelliJ that could be 
+resolved. Overall, we leveraged documentation to highlight and explain a more straightforward overview of our work.
 
 
 ## Testing
@@ -316,7 +364,12 @@ app and how run certain features.
 ### Universal Design Principles
 
 #### Principle 1: Equitable Use
-If released on the market, Plannr will be free to include users from different socioeconomic backgrounds. Our app does not have additional features that require users to have a more advanced skill level, so it does not create segregation among users. It also offers the same password checking and account features for all users, ensuring that users have a password-protected account. Finally, Plannr's UI is simple and easy to use, with a nice design appealing to all users.
+If released on the market, Plannr will be free to include users from different socioeconomic backgrounds. 
+Our app does not have additional features that require users to have a more advanced skill level, iit does not create 
+segregation among users. It also offers the same password checking and account features for all users, ensuring that 
+users have a password-protected account. Finally, Plannr's UI is simple and easy to use,with a nice design appealing to 
+all users.
+
 
 #### Principle 2: Flexibility in Use
 The Sort feature in the main page gives users the flexibility and choice of how they would like to sort their events, as
