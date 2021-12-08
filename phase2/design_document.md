@@ -13,7 +13,7 @@
 #### - [Clean Architecture](#clean-architecture)
 - [Design Patterns](#design-patterns)
 #### - [SOLID Principles](#solid-principles)
-#### - [Instructions for Use of Features](#instructions-for-use-of-features)
+#### - [Instructions for App Launch, Launching Tests and Use of Features](#instructions-for-app-launch-launching-tests-and-use-of-features)
 #### - [Accessibility Report](#accessibility-report)
 #### - [Progress Report](#progress-report)
 
@@ -284,11 +284,8 @@ responsible for maintaining anything Expense related.
 * <u>Potential Fix:</u>
     * We can fix this by implementing an `Event` interface, and change the existing Event superclass to `GeneralEvent`
     
-
-
-
-
-
+***
+## Instructions for App Launch, Launching Tests and Use of Features
 
 ### System Setup
 * Android SDK version 31
@@ -375,15 +372,6 @@ with
 2. To edit, click on the edit button
 3. Make changes in the respective text fields
 4. To save, click on the tick in the top right corner of the app, and all the changes will be saved
-
-
-
-
-### Existing Problems
-* Packages are not all lowercase as specified by Oracle's java naming convention
-* `Database` should be in the `gateways` package (Should be solved after 's PR)
-* Activities need to be properly categorized and moved to the respective packages
-
 
 ***
 
