@@ -463,7 +463,17 @@ the Code Style and Documentation portion of the report.
 ### Dana
 
 ### Bolade
-For phase 2, Bolade continued with her implementation of Use Cases as a backend team member. She also worked on a "clean up" plan which was to be used to clean up any clean architecture or SOLID principle violations. This is involved making a dependency graph of the classes that were there or were to be implemented along with a sort of UML diagram that contained each class/interface with their variables and/or methods and parameters. This was her most difficult task and took most of her time as this required her to understand clean architecture and SOLID principles well enough as well as come up with any solution to a problem that may have come to be in phase 1 or in phase 2. Prior to working on the clean up plan, she also went through the phase 1 rubric and made a list of questions which her teammates added to that were to be asked to the TA in order figure out what needed to change or improve for phase 2. This helped a lot with the clean up plan. She also aided the frontend team when they needed help understanding a class or method that was implemented in the inner layers such as the use case classes or controllers/presenters. Lastly, she also wrote parts of SOLID and wrote the Clean Architecture section of the design document.
+For phase 2, Bolade continued implementing Use Cases as a backend team member. She also worked on a "clean up" plan to 
+be used to clean up any clean architecture or SOLID principle violations. This is involved making a dependency graph of 
+the classes that were there or were to be implemented along with a sort of UML diagram that contained each 
+class/interface with their variables and/or methods and parameters. This was her most difficult task and took most of 
+her time as this required her to understand clean architecture and SOLID principles well enough and come up with any 
+solution to a problem that may have come to be in phase 1 or in phase 2. Prior to working on the clean-up plan, she also 
+went through the phase 1 rubric and made a list of questions that her teammates added to that were to be asked to the TA 
+in order to figure out what needed to change or improve for phase 2. This helped a lot with the clean-up plan. She also 
+aided the frontend team when they needed help understanding a class or method that was implemented in the inner layers, 
+such as the use case classes or controllers/presenters. Lastly, she also wrote parts of SOLID and wrote the Clean 
+Architecture section of the design document.
 
 ### Sari
 During his role as a backend member of the team, Sari was mainly tasked during Phase 1 to implement a working database. Despite the difficult task, Sari was able to learn the basics of SQLite, a local database used for Java, and share his learning experience with the frontend team that needed to know how the database worked. Although the required database helpers were successfully implemented, it was difficult for him to implement the database into the app during Phase 1 due to time constraints and some setbacks which included some missing UI features at the time which lead to his under-contribution. Sari became motivated to work harder during Phase 2 and successfully integrated the database whilst also keeping under consideration the features of SOLID and Clean Architecture in general by adding the necessary gateways and their respective interfaces which use the database to send/receive information to the use cases. This is partially demonstrated by the [`database-and-gateways`](https://github.com/CSC207-UofT/course-project-generic-name-1/pull/80) pull request.
