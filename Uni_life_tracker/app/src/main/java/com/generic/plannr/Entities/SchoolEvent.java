@@ -28,7 +28,7 @@ public class SchoolEvent {
      * @param endDate This com.generic.plannr.Entities.SchoolEvent's end date
      * @param course This com.generic.plannr.Entities.SchoolEvent's course
      */
-    public SchoolEvent(String eventType, String name, int priority, LocalDateTime startDate,
+    public SchoolEvent(int userID, String eventType, String name, int priority, LocalDateTime startDate,
                        LocalDateTime endDate, String course) {
         this.eventType = eventType;
         this.name = name;
@@ -52,48 +52,10 @@ public class SchoolEvent {
      * @param course This com.generic.plannr.Entities.SchoolEvent's course
      * @param location This com.generic.plannr.Entities.SchoolEvent's location
      */
-    public SchoolEvent(String eventType, String name, int priority, LocalDateTime startDate,
+    public SchoolEvent(int userID, String eventType, String name, int priority, LocalDateTime startDate,
                        LocalDateTime endDate, String course, String location) {
-        this (eventType, name, priority, startDate, endDate, course);
+        this (userID, eventType, name, priority, startDate, endDate, course);
         this.location = location;
-    }
-
-    /**
-     * Gets the event type of SchoolEvent ("assessment", "deadline", "class", "study session")
-     * @return the name of the event type of SchoolEvent
-     */
-    public String getEventType() { return this.eventType; }
-
-    /**
-     * Gets the name of the event
-     * @return the name of the com.generic.plannr.Entities.Event as a String
-     */
-    public String getName() {
-        return this.name;
-    }
-
-    /**
-     * Gets the priority of event
-     * @return the priority of event as an int
-     */
-    public int getPriority() {
-        return this.priority;
-    }
-
-    /**
-     * Gets the start date of event
-     * @return the start date of event as a Date object
-     */
-    public LocalDateTime getStartDate() {
-        return this.startDate;
-    }
-    
-    /**
-     * Gets the end date of event
-     * @return the end date of event as a Date object
-     */
-    public LocalDateTime getEndDate() {
-        return this.endDate;
     }
 
     /**
