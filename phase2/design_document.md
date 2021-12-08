@@ -414,15 +414,14 @@ This principle is not applicable for Plannr as it is a mobile app (software) and
 elements that would need to accommodate a variety of users.
 
 ### Target Market
-The target market for Plannr would be students ranging from high school to university. Plannr offers an option for users
-to input school events such as deadlines which are most commonly associated with student life. Students often have
-difficulties balancing all their academic dates such as deadlines, tests or assignments so seeing all their events in
-the to do list will encourage them to stay on track. In addition, many students are learning how to budget money
-effectively for the fist time and being able to track their spending offers great visual support. When a user sees their
-list of expenses and the total at the bottom, it will encourage them to be more mindful about their spending. Overall,
-The Plannr UI targets a younger population with its playful design and colour scheme. Overall, it would be beneficial
-for students who are looking for an organizational platform that combines both their academic and financial life for
-easy access.
+The target market for Plannr would be students ranging from high school to university. Plannr offers an option for users 
+to input school events such as deadlines which are most commonly associated with student life. Students often have 
+difficulties balancing all their academic dates, such as deadlines, tests, study sessions or assignments, so seeing all 
+their events on a to-do list will encourage them to stay on track. In addition, many students are learning how to budget 
+money effectively for the first time and tracking their spending offers great visual support. When a user sees their 
+list of expenses and the total at the bottom, it will encourage them to be more mindful about their spending. Moreover, 
+the Plannr UI targets a younger population with its playful design and colour scheme. Overall, it would be beneficial 
+for students looking for an organizational platform that combines both their academic and financial life for easy access.
 
 ### Least Likely Demographic
 People who are not students would not Plannr particularly useful. Specifically, younger students in elementary school or children would be less likely to user Planner. They would have no use for the expense features they are not managing their own finances. In addition, older adults who are retired or who are not students are less likely to use the school work related features. Finally, middle-aged adults will have no use for both the school work and the expenses features. Many employed adults already be using more advanced banking apps which automatically display their expenditures.
