@@ -3,11 +3,25 @@ package com.generic.plannr.UseCases;
 import com.generic.plannr.Entities.Expense;
 
 public class ExpensesManager {
+    private static ExpensesManager EM_INSTANCE;
 
     /**
-     * Constructor of ExpensesManager
+     * This is a private constructor, implemented to disallow client to use the new keyword
      */
-    public ExpensesManager() {
+    private ExpensesManager() {
+    }
+
+    /**
+     * Getter for an instance of ExpensesManager, implemented to make sure there is only one instance
+     * of ExpensesManager in our program during runtime
+     *
+     * @return ExpensesManager object
+     */
+    public ExpensesManager getInstance() {
+        if (EM_INSTANCE == null) {
+            EM_INSTANCE = new ExpensesManager();
+        }
+        return EM_INSTANCE;
     }
 
     /**
