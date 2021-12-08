@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class User {
     private String name;
-    private String email;
+    private final String email;
     private String password;
     private double income;
 
@@ -69,21 +69,12 @@ public class User {
     }
 
     /**
-     * Getter method for the user's expenses list
+     * Setter method for user's income
      *
-     * @return ArrayList of Expenses object
+     * @param income the new income for the user
      */
-    public ArrayList<Expense> getExpenseList() {
-        return this.expenseList;
-    }
-
-    /**
-     * Gets the user's income
-     *
-     * @return the user's income as a double object
-     */
-    public double getIncome() {
-        return this.income;
+    public void setIncome(double income) {
+        this.income = income;
     }
 
     /**
