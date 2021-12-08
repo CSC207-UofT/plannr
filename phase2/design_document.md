@@ -379,6 +379,7 @@ Additionally, a more detailed setting page can be added to accommodate more cust
 such as currency types (such as CAD or USD) display the time (24 hours vs. AM or PM) should be included within the 
 settings page, allowing users to adjust accordingly.
 
+
 #### Principle 3: Simple and Intuitive Use
 When first launched, Plannr prompts the user to sign up or log in straightforwardly, displaying large buttons with clear 
 text. Plannr provides feedback for text fields, such as name, email, and password, when signing up. If they are left 
@@ -386,12 +387,14 @@ blank or have the incorrect input type, it suggests changes to the user. It also
 password that follows certain password requirements clearly printed underneath the textbox after a failed attempt. 
 Finally, the language and vocabulary within Plannr are simple and comprehensive.
 
+
 #### Principle 4: Perceptible Information
 Plannr uses large bold text for important headings that represent different functions within the app, such as expenses, 
 to-dos and adding school events. It also has large buttons with legible text that stands out on a white background. 
 Plannr has icons for the different types of school events to avoid cluttering the add event view with text.
 In addition to dark mode, the colour scheme of the entire UI (black, white and purple) ensures there is high contrast, 
 and all features are visible.
+
 
 #### Principle 5: Tolerance for Error
 Plannr has fail-safe features that stop the user from inputting an empty school event, empty expense, income or settings 
@@ -401,9 +404,10 @@ more detailed error checking for text inputs such as whether the user's name is 
 
 
 #### Principle 6: Low Physical Effort
-In the future, Plannr will allow users to add multiple expenses and events at once without being redirected to
-main view or the main expenses view to minimize repetitive action. As a mobile app, Plannr should not require excessive
-physical effort to use and does not have any advance graphic features that would drain battery life.
+In the future, Plannr will allow users to add multiple expenses and events at once without being redirected to the 
+main view, or the main expenses view to minimize repetitive action. As a mobile app, Plannr does not require excessive 
+physical effort to use. It also does not have any advanced graphic features that would drain battery life.
+
 
 #### Principle 7: Size and Space for Approach and Use
 This principle is not applicable for Plannr as it is a mobile app (software) and does not come with additional hardware
