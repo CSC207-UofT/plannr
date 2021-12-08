@@ -1,24 +1,37 @@
 # Design Document
 
 ## Table of Contents
+#### - [Design Document Statement](#design-document-statement)
+#### - [Functionality](#functionality) 
 - [Specification](#specification)
 - [CRC Cards](#crc-cards)
-- [SOLID Principles](#solid-principles)
-- [Clean Architecture](#clean-architecture)
+#### -[Code Organization](#code-organization)
+#### -[Refactoring and Code Smells](#refactoring-and-code-smells)
+#### - [Testing](#testing)
+#### - [Code Style and Documentation](#code-style-and-documentation)
+#### - [Use of GitHub Features](#use-of-github-features)
+#### - [Clean Architecture](#clean-architecture)
 - [Design Patterns](#design-patterns)
-- [Use of GitHub Features](#use-of-github-features)
-- [Code Style and Documentation](#code-style-and-documentation)
-- [Testing](#testing)
-- [Instructions for Use of Features](#instructions-for-use-of-features)
-- [Refactoring and Code Smells](#refactoring-and-code-smells)
-- [Code Organization](#code-organization)
-- [Design Document Statement](#design-document-statement)
-- [Accessibility Report](#accessibility-report)
-- [Progress Report](#progress-report)
+#### - [SOLID Principles](#solid-principles)
+#### - [Instructions for Use of Features](#instructions-for-use-of-features)
+#### - [Accessibility Report](#accessibility-report)
+#### - [Progress Report](#progress-report)
 
 ***
+## Design Document Statement
 
-## Specification
+### Is all the above discussed in an organized way?
+We, the group members of Generic name can confirm that all elements of the design document are present in order and
+completed to the best of our ability.
+
+### Does your design document convince your team that you deserve the grade you are hoping to earn?
+Our design document is detailed and clear while also containing extra features such as instructions on how to set up the
+app and how run certain features.
+
+***
+## Functionality 
+
+### Specification
 Plannr is an organizational platform in the form of an Android app that helps university students coordinate their 
 everyday routine, including schoolwork and expenses. Users are first taken to the login page and prompted to log in by 
 entering their email and password. If they do not have an account yet, they can click the sign-up button. They sign up 
@@ -347,15 +360,6 @@ conjunction with CLEAN architecture layers.
 * `Database` should be in the `gateways` package (Should be solved after 's PR)
 * Activities need to be properly categorized and moved to the respective packages
 
-## Design Document Statement
-
-### Is all the above discussed in an organized way?
-We, the group members of Generic name can confirm that all elements of the design document are present in order and
-completed to the best of our ability.
-
-### Does your design document convince your team that you deserve the grade you are hoping to earn?
-Our design document is detailed and clear while also containing extra features such as instructions on how to set up the
-app and how run certain features.
 
 ***
 
