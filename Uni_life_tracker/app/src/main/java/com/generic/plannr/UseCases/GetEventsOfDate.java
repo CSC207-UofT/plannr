@@ -13,6 +13,10 @@ import com.generic.plannr.Entities.Event;
 public class GetEventsOfDate {
     private static EventList eventList;
 
+    /**
+     * Sets up GetEventsOfDate with the current user's list of events
+     * @param events the current user's list of events
+     */
     public GetEventsOfDate (EventList events) {
         eventList = events;
     }
