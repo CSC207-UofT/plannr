@@ -357,7 +357,7 @@ with
 5. Select the check mark to save the expense
 6. After being redirected to the expense list view, add an income by typing in the textbook
 7. Input the amount as a decimal and click the save income button At the bottom you should see the total number amount
-   appear as either red, green or yellow depending on if your total expenses are less than, greater than or equal to
+   appear as either red, green or black depending on if your total expenses are less than, greater than or equal to
    your income respectfully
 
 #### How to Use School
