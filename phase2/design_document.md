@@ -118,9 +118,7 @@ For example, the use case class EventManager saves events to the database using 
 
 ## Design Patterns
 
-We received several suggestions with implement design patterns in our project. After considering all our options,
-however, we felt that some may not be appropriate or adds unnecessary complexity to our program. We will address those
-suggestions here and provide some supporting arguments.
+We received several suggestions for implementing design patterns in our project. However, after considering all our options, we felt that some may not be appropriate or add unnecessary complexity to our program. We will address those suggestions here and provide some supporting arguments.
 
 ### Strategy
 The Strategy pattern is useful for the user information validation. Upon attempting to sign up or log in, we
