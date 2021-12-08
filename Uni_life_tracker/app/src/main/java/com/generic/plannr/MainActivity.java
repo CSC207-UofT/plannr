@@ -157,6 +157,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     dialogEventEndT = dialogView.findViewById(R.id.tv_end_time_l);
                     dialogEventPriority = dialogView.findViewById(R.id.tv_priority_l);
                     dialogEventLocation = dialogView.findViewById(R.id.tv_location);
+
+                    break;
             }
 
             String endDate = eventsList.get(position).getEndDate().toLocalDate().format(dayFormatter);
