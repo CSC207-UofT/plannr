@@ -6,15 +6,11 @@ public class User {
     private String name;
     private String email;
     private String password;
-    private final ArrayList<String> courses;
-    private final ArrayList<SchoolEvent> eventList;
-    private final ArrayList<Expense> expenseList;
     private double income;
 
     /**
      * Construct a user, giving them the given name, email,
-     * password, courses, and setting an empty
-     * events list.
+     * password
      *
      * @param name      The user's name
      * @param email     The user's email
@@ -24,10 +20,7 @@ public class User {
         this.name = name;
         this.email = email;
         this.password = password;
-        this.courses = new ArrayList<>();
-        this.eventList = new ArrayList<>();
         this.income = 0.0;
-        this.expenseList = new ArrayList<>();
     }
 
     /**
