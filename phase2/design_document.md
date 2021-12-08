@@ -179,15 +179,9 @@ that would move a card into the correct column based on if it was created, revie
 or placed into the board, so we could keep track of everyone's tasks and progress.
 
 ## Code Style and Documentation
-For phase 2, we made sure to add JavaDocs with our work, describing the classes and class attributes. We followed the
-general guidelines to commenting JavaDocs and applied usage of tags. As well, for other file types such as our activity
-layout files (XML), we commented headers describing each element. Previously, our project lacked many JavaDocs. While
-there were several comments and pieces of documentation in certain files, overall they were not sufficient to express
-what the functions and classes do. Additionally, we renamed class and variable names to be more comprehensive. From the
-previous phase, a number of our class names were quite vague with their functions, thus we modified these to be more
-clear with their use. Additionally, prior to each commit, we also addressed any form of warnings from IntelliJ that
-could be resolved. Overall, we leveraged documentation to highlight and explain a more straightforward overview of our
-work.
+For phase 2, we made sure to add JavaDocs with our work, describing the classes and class attributes. We followed the general guidelines to commenting JavaDocs and applied usage of tags. As well, for other file types, such as our activity layout files (XML), we commented headers describing each element. Previously, our project lacked many JavaDocs. While there were several comments and pieces of documentation in certain files, overall, they were not sufficient to express what the functions and classes do. Additionally, we renamed class and variable names to be more comprehensive. From the
+Previous phase, a number of our class names were quite vague with their functions. Thus we modified these to be clearer with their use. Additionally, prior to each commit, we also addressed any form of warnings from IntelliJ that could be resolved. Overall, we leveraged documentation to highlight and explain a more straightforward overview of our work.
+
 
 ## Testing
 
