@@ -21,6 +21,7 @@ public class AddExpense {
         eg = expenseGateway;
     }
 
+
     /**
      * Creates and adds an expense to a user's list of expenses
      *
