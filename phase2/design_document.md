@@ -387,10 +387,11 @@ password that follows certain password requirements clearly printed underneath t
 Finally, the language and vocabulary within Plannr are simple and comprehensive.
 
 #### Principle 4: Perceptible Information
-Plannr makes use of large bold text for important headings that represent different functions within the app, such as
-Expenses, To Do's and adding school events. It also has large button with legible text that stands out. Plannr applies
-icons for the different types of school events to avoid cluttering the add event view with text. The colour scheme for
-the entire UI (black, white and purple) ensures there is high contrast and all features are visible.
+Plannr uses large bold text for important headings that represent different functions within the app, such as expenses, 
+to-dos and adding school events. It also has large buttons with legible text that stands out on a white background. 
+Plannr has icons for the different types of school events to avoid cluttering the add event view with text.
+In addition to dark mode, the colour scheme of the entire UI (black, white and purple) ensures there is high contrast, 
+and all features are visible.
 
 #### Principle 5: Tolerance for Error
 Plannr has fail-safe features that stop the user from inputting an empty school event or any empty expense with error
