@@ -61,7 +61,7 @@ public class AddDeadlineEventActivity extends AppCompatActivity implements Radio
         navEvents.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.nav_assessment:
-                    startActivity(new Intent(getApplicationContext(), AddEventActivity.class));
+                    startActivity(new Intent(getApplicationContext(), AddAssessmentEventActivity.class));
                     overridePendingTransition(0, 0);
                     finish();
                     return true;

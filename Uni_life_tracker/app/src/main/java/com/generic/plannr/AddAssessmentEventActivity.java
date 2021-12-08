@@ -26,7 +26,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class AddEventActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
+public class AddAssessmentEventActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
     int yr, mth, day, hr, min, priority;
     String startDate, endDate, startTime, endTime;
     TextView tvStartDate, tvStartTime, tvEndDate, tvEndTime;
@@ -37,8 +37,8 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
     DateTimeFormatter DATEFORMAT;
     LocalDateTime start;
     private MainActivity activity;
-    UserGateway ug = new UserGateway(AddEventActivity.this);
-    EventGateway eg = new EventGateway(AddEventActivity.this);
+    UserGateway ug = new UserGateway(AddAssessmentEventActivity.this);
+    EventGateway eg = new EventGateway(AddAssessmentEventActivity.this);
 
     @SuppressLint("NonConstantResourceId")
     @Override
@@ -63,7 +63,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
         navEvents.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.nav_assessment:
-                    startActivity(new Intent(getApplicationContext(), AddEventActivity.class));
+                    startActivity(new Intent(getApplicationContext(), AddAssessmentEventActivity.class));
                     overridePendingTransition(0, 0);
                     finish();
                     return true;
@@ -170,7 +170,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
      */
     public void setDate(TextView textView) {
         DatePickerDialog datePickerDialog = new DatePickerDialog(
-                AddEventActivity.this, (view, year, month, dayOfMonth) -> {
+                AddAssessmentEventActivity.this, (view, year, month, dayOfMonth) -> {
             yr = year;
             mth = month;
             day = dayOfMonth;
@@ -191,7 +191,7 @@ public class AddEventActivity extends AppCompatActivity implements RadioGroup.On
      */
     public void setTime(TextView textView) {
         TimePickerDialog timePickerDialog = new TimePickerDialog(
-                AddEventActivity.this, (view, hourOfDay, minute) -> {
+                AddAssessmentEventActivity.this, (view, hourOfDay, minute) -> {
             hr = hourOfDay;
             min = minute;
 

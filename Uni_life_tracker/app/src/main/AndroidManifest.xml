@@ -15,7 +15,7 @@
         </activity>
         <activity android:name=".SignUpActivity">
         </activity>
-        <activity android:name=".AddEventActivity">
+        <activity android:name=".AddAssessmentEventActivity">
         </activity>
         <activity android:name=".AddStudySessionEventActivity">
         </activity>

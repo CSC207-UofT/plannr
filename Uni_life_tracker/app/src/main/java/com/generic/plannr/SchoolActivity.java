@@ -103,7 +103,7 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
     }
 
     public void clickAddEvent(View view) {
-        activity.redirectActivity(this, AddEventActivity.class);
+        activity.redirectActivity(this, AddAssessmentEventActivity.class);
     }
 
     @Override
