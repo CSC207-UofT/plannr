@@ -1,5 +1,16 @@
 package com.generic.plannr.UseCases;
 
-public class EventPrioritySorter {
+/**
+ * Sorts a list of events by priority
+ */
+public class EventPrioritySorter extends EventSorter {
+
+    /**
+     * Sets up EventPrioritySorter with its appropriate EventPriorityComparator
+     * @param epc the Event date comparator
+     */
+    public EventPrioritySorter(EventPriorityComparator epc) {
+        super(epc);
+    }
 
 }
