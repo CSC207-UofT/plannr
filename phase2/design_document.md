@@ -87,7 +87,14 @@ the Uni_life_tracker folder name to Plannr, as it caused a bunch of errors that 
 more harm than good and would take up time for other more valuable improvements
 
 ***
+## Testing
 
+#### Test Coverage
+* Entities are not tested, this is because Use Case tests already use the great majority of the methods of the entities
+  so specific tests for entities would be redundant
+* Use Cases, Gateways are all tested with their respective tests in the program's Test Sources root directory
+
+***
 
 ## SOLID Principles
 
@@ -268,7 +275,7 @@ with their use. Additionally, prior to each commit, we also addressed any form o
 resolved. Overall, we leveraged documentation to highlight and explain a more straightforward overview of our work.
 
 
-## Testing
+
 
 ### System Setup
 * Android SDK version 31
@@ -317,10 +324,7 @@ with
   click run, your emulator will launch, but the app will not actually launch in the emulator. The emulator only provides
   contextual support to the tests, so it is an expected behaviour and is not a bug.
 
-#### Test Coverage
-* Entities are not tested, this is because Use Case tests already use the great majority of the methods of the entities
-  so specific tests for entities would be redundant
-* Use Cases, Gateways are all tested with their respective tests in the program's Test Sources root directory
+
 
 ### Instructions for Use of Features
 
