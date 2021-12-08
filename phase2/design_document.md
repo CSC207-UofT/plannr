@@ -435,12 +435,30 @@ and are already using more advanced banking apps that automatically display thei
 
 ## Progress Report
 
+### Overall Group Progress
+
 ### Evgenia
-Throughout both phase 1 and 2 Evgenia was on the frontend team and focused on continuing to implement and enhance UI features added in phase 1 using Android Studio. Within the [`Expenses backend connection`](https://github.com/CSC207-UofT/course-project-generic-name-1/pull/70) pull request, she worked on connecting the add expenses page and the expenses list to the backend and database, ensuring the the user's inputted expense information could be stored in the database and then later retrieved for display. This pull request was essential for the overall functionality of Plannr as expenses are one of the key features for the app. She also added an income feature to enhance the overall functionality of expenses, allowing a user to see how much of their income they have left after calculating their total expenses. In addition, Evgenia worked on the initial design of the login page and made use of the user's name by creating a welcome message that greets that user with their name in the main page view. Evgenia also added to the design document by writing the specification, the accessibility report, the instructions for how to use features of Plannr, the GitHub feature section, refactoring section, the updated CRC cards and the progress report.
+Throughout both phase 1 and 2, Evgenia was on the frontend team and focused on continuing to implement and enhance UI
+features added in phase 1 using Android Studio. Within the[`Expenses backend connection`](https://github.com/CSC207-UofT/course-project-generic-name-1/pull/70)
+pull request, she worked on connecting the add expenses page and the expenses list to the backend and database, 
+ensuring the user's inputted expense information could be stored in the database and then later retrieved for display.
+This pull request was essential for the overall functionality of Plannr as expenses are one of the app's key features.
+She also added an income feature to enhance the overall functionality of expenses, allowing a user to see how much of 
+their income they have left after calculating their total expenses. In addition, Evgenia worked on the initial design 
+of the login page and used the user's name by creating a welcome message that greets that user with their name in the 
+main page view. Evgenia also added to the design document by writing the specification, the accessibility report, the 
+instructions for how to use features of Plannr, the GitHub feature section, refactoring section, the updated CRC cards 
+and both the overall progress report and her part.
 
 ### Kathy
-For phase 2 of the project, Kathy continued with her role as a frontend member of the team. As mentioned in the previous progress report, she continued to develop the UI, from implementing the logout button, to features for viewing and adding events, and ...
-Throughout the project, she was responsible for ensuring that the overall UI was visually cohesive, and reformatted the activity layouts to reflect this consistency. This was strongly demonstrated with the [`reformat_and_documentation`](https://github.com/CSC207-UofT/course-project-generic-name-1/pull/82) pull request. Additionally in this branch, Kathy worked on code styling and cleanup, where she renamed some class names, added documentation, and discarded unused files. With regards to the design document, Kathy wrote for the Code Style and Documentation portion of the report.
+For phase 2 of the project, Kathy continued with her role as a frontend member of the team.
+As mentioned in the previous progress report, she continued to develop the UI, from implementing the logout button to 
+the feature for viewing and adding events, and ...
+Throughout the project, she was responsible for ensuring that the overall UI was visually cohesive and reformatted the 
+activity layouts to reflect this consistency. This was strongly demonstrated with the[`reformat_and_documentation`](https://github.com/CSC207-UofT/course-project-generic-name-1/pull/82) 
+pull request.pull request. Additionally, in this branch, Kathy worked on code styling and cleanup, where she renamed 
+some class names, added documentation, and discarded unused files. With regards to the design document, Kathy wrote for 
+the Code Style and Documentation portion of the report.
 
 ### Dana
 
