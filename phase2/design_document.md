@@ -394,10 +394,11 @@ In addition to dark mode, the colour scheme of the entire UI (black, white and p
 and all features are visible.
 
 #### Principle 5: Tolerance for Error
-Plannr has fail-safe features that stop the user from inputting an empty school event or any empty expense with error
-messages. Most used elements such as the To Do's list are displayed as the main view while settings and other less use
-features have to be located using the navigation menu. In the future, Plannr should contain more detailed error checking
-for text inputs such as the user's name.
+Plannr has fail-safe features that stop the user from inputting an empty school event, empty expense, income or settings 
+text box with error messages.The most used element, the to-do list, is displayed as the main view, while settings and 
+other less commonly used features have to be located using the navigation menu. In the future, Plannr should contain 
+more detailed error checking for text inputs such as whether the user's name is allowed to have numbers or not.
+
 
 #### Principle 6: Low Physical Effort
 In the future, Plannr will allow users to add multiple expenses and events at once without being redirected to
