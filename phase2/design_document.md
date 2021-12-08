@@ -63,7 +63,7 @@ categories: **Schoolwork, Life and Expenses**. While in phase 2, Plannr only foc
 In addition, the to-do list does not have a checkbox feature, so users cannot check off tasks, but they can still view 
 and sort them. Other additions include a sign-up, login and income feature, settings page, and a dark mode option.
 
-## CRC Cards
+### CRC Cards
 Please see the linked for the updated [CRC Cards](https://docs.google.com/document/d/1wAnKPMUv0o_FJ9qT4U98Bf2eMEP8u2Y1_nC9lcLH76U/edit).
 ***
 ## Code Organization
