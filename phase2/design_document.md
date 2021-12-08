@@ -43,7 +43,7 @@ Upon app launch, users see the today view and can click between different views 
 settings using a side menu that pops out when clicked. The settings page allows users to change their name and password 
 at any time.
 
-### Changes from Phase 0 Specification
+### Changes from Phase 0 and Phase 1 Specification
 Plannr, previously titled Uni Life Tracker, started out as a command-line interface with the goal of the Android app, 
 allowing users to track their events and deadlines to fit their personal needs. It was meant to focus on three 
 categories: **Schoolwork, Life and Expenses**. While in phase 2, Plannr only focuses on school, work and expenses. 
