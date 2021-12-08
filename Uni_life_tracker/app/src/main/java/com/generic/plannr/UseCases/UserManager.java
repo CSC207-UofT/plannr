@@ -22,7 +22,7 @@ public class UserManager {
      */
     public UserManager(String name, String email, String password) {
         u = createUser(name, email, password);
-        this.expManager = new ExpensesManager();
+        this.expManager = ExpensesManager.getInstance();
     }
 
     /**
