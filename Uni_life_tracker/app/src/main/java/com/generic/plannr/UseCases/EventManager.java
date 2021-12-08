@@ -13,6 +13,20 @@ public class EventManager {
     }
 
     /**
+     * Getter for an instance of EventManager, implemented to make sure there is only one instance
+     * of EventManager in our program during runtime
+     *
+     * @return EventManager object
+     */
+    public EventManager getInstance() {
+        // Check if AM_INSTANCE is instantiated
+        if (EM_INSTANCE == null) {
+            EM_INSTANCE = new EventManager();
+        }
+        return EM_INSTANCE;
+    }
+
+    /**
      * Add an com.generic.plannr.Entities.Event
      *
      * @param e    The com.generic.plannr.Entities.Event
