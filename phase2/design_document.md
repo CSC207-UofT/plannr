@@ -106,9 +106,7 @@ EventGateway object to it through the controller. That way EventManager remains 
 
 ### Scenario Walk-Through that shows Clean Architecture
 
-<u>Scenario:</u> The user arrives at the main page which displays their list of events taking place that day and have
-the option of sorting that displayed list by date-time or by priority. By default, it is first shown to be sorted by
-date.
+<u>Scenario:</u> The user arrives at the main page, which displays their list of events taking place that day and has the option to sort the event list, which can be displayed list by date-time or by priority. By default, it is first shown to be sorted by date.
 
 In this scenario, we start at the UI where the user can see their list of events sorted by date or by priority. To
 start, the MainActivity class tells the MainController, the controller for the main view, that the user wants their list
