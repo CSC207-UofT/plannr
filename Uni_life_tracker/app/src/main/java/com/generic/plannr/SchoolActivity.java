@@ -30,15 +30,12 @@ import static com.generic.plannr.CalendarUtil.daysInMonthArray;
 import static com.generic.plannr.CalendarUtil.monthYearFromDate;
 
 public class SchoolActivity extends AppCompatActivity implements CalendarAdapter.OnItemListener {
-    private TextView monthYearText;
-    private RecyclerView rvCalendar;
+    private TextView monthYearText, dialogEventName, dialogEventCourse, dialogEventPriority, dialogEventLocation;
+    private RecyclerView rvCalendar, rvEvents;
     private DrawerLayout drawerLayout;
     private MainActivity activity;
     private ArrayList<SchoolEvent> eventsList;
     private ListEvents.RecyclerViewClickLister listener;
-    private TextView dialogEventName, dialogEventCourse, dialogEventStartD, dialogEventStartT,
-            dialogEventEndD, dialogEventEndT, dialogEventPriority, dialogEventLocation;
-    private RecyclerView rvEvents;
     private String startDate, startTime, endDate, endTime;
     UserGateway ug = new UserGateway(SchoolActivity.this);
     EventGateway eg = new EventGateway(SchoolActivity.this);
@@ -165,14 +162,14 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
         View dialogView = LayoutInflater.from(v.getRootView().getContext()).inflate(popupTypeID, null);
         dialogEventName = dialogView.findViewById(nameID);
         dialogEventCourse = dialogView.findViewById(courseID);
-        dialogEventEndD = dialogView.findViewById(endDateID);
-        dialogEventEndT = dialogView.findViewById(endTimeID);
+        TextView dialogEventEndD = dialogView.findViewById(endDateID);
+        TextView dialogEventEndT = dialogView.findViewById(endTimeID);
         dialogEventPriority = dialogView.findViewById(priorityID);
         dialogEventEndD.setText(endDate);
         dialogEventEndT.setText(endTime);
         if (startDateID != 0) {
-            dialogEventStartD = dialogView.findViewById(startDateID);
-            dialogEventStartT = dialogView.findViewById(startTimeID);
+            TextView dialogEventStartD = dialogView.findViewById(startDateID);
+            TextView dialogEventStartT = dialogView.findViewById(startTimeID);
             dialogEventStartD.setText(startDate);
             dialogEventStartT.setText(startTime);
         }

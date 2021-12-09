@@ -44,8 +44,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private RecyclerView rvEvents;
     private ListEvents.RecyclerViewClickLister listener;
     private String startDate, startTime, endDate, endTime;
-    private TextView dialogEventName, dialogEventCourse, dialogEventStartD, dialogEventStartT,
-            dialogEventEndD, dialogEventEndT, dialogEventPriority, dialogEventLocation;
+    private TextView dialogEventName, dialogEventCourse, dialogEventPriority, dialogEventLocation;
 
     EventList events = new EventList();
     EventLoader el = new EventLoader(eg, events);
@@ -184,14 +183,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         View dialogView = LayoutInflater.from(v.getRootView().getContext()).inflate(popupTypeID, null);
         dialogEventName = dialogView.findViewById(nameID);
         dialogEventCourse = dialogView.findViewById(courseID);
-        dialogEventEndD = dialogView.findViewById(endDateID);
-        dialogEventEndT = dialogView.findViewById(endTimeID);
+        TextView dialogEventEndD = dialogView.findViewById(endDateID);
+        TextView dialogEventEndT = dialogView.findViewById(endTimeID);
         dialogEventPriority = dialogView.findViewById(priorityID);
         dialogEventEndD.setText(endDate);
         dialogEventEndT.setText(endTime);
         if (startDateID != 0) {
-            dialogEventStartD = dialogView.findViewById(startDateID);
-            dialogEventStartT = dialogView.findViewById(startTimeID);
+            TextView dialogEventStartD = dialogView.findViewById(startDateID);
+            TextView dialogEventStartT = dialogView.findViewById(startTimeID);
             dialogEventStartD.setText(startDate);
             dialogEventStartT.setText(startTime);
         }
