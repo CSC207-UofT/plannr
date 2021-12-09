@@ -469,14 +469,7 @@ instructions for how to use features of Plannr, the GitHub feature section, refa
 and both the overall progress report and her part. Finally, edited and reformatted the entire design document. 
 
 ### Kathy
-For phase 2 of the project, Kathy continued with her role as a frontend member of the team.
-As mentioned in the previous progress report, she continued to develop the UI, from implementing the logout button to 
-the feature for viewing and adding events, and ...
-Throughout the project, she was responsible for ensuring that the overall UI was visually cohesive and reformatted the 
-activity layouts to reflect this consistency. This was strongly demonstrated with the[`reformat_and_documentation`](https://github.com/CSC207-UofT/course-project-generic-name-1/pull/82) 
-pull request.pull request. Additionally, in this branch, Kathy worked on code styling and cleanup, where she renamed 
-some class names, added documentation, and discarded unused files. With regards to the design document, Kathy wrote for 
-the Code Style and Documentation portion of the report.
+For phase 2 of the project, Kathy continued with her role as a frontend member of the team. As mentioned in the previous progress report, she continued to develop and improve the overall functionality of UI. Following the phase 1 feedback, Kathy added and implemented a log out button. She also modified the UI layout of adding events, adding a navigation menu to switch between event types and improving the approach to adding user input. As well, she contributed to the implementation of the sort dropdown in the main To Do’s view and display of the event list (under the calendar) in the School view. Additionally, Kathy implemented the dark mode option for Plannr, which would change in place in accordance to the system theme. Throughout the project, she was responsible for ensuring that the overall UI was visually cohesive, and reformatted the activity layouts to reflect this consistency. This was strongly demonstrated with the [`reformat_and_documentation`](https://github.com/CSC207-UofT/course-project-generic-name-1/pull/82) pull request. Additionally in this branch, Kathy worked on code styling and cleanup, where she renamed some class names, added documentation, and discarded unused files. With regards to the design document, Kathy wrote the Code Style and Documentation portion of the report and recorded the app demo tutorials.
 
 ### Dana
 For phase 2, Dana worked on multiple components of the project. As a Front-End Developer, she worked on creating the UI 
