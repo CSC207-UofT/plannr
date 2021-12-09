@@ -1,7 +1,6 @@
 package com.generic.plannr.UseCases;
 
 
-import com.generic.plannr.Entities.Event;
 import com.generic.plannr.Entities.SchoolEvent;
 
 import java.util.ArrayList;

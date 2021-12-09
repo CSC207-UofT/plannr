@@ -13,7 +13,6 @@ import com.generic.plannr.Controllers.InputTextValidator;
 import com.generic.plannr.Controllers.PasswordValidator;
 import com.generic.plannr.Gateways.UserGateway;
 import com.generic.plannr.UseCases.UserCreator;
-import com.generic.plannr.UseCases.UserManager;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;

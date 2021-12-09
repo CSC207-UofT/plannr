@@ -9,7 +9,6 @@ import android.database.sqlite.SQLiteDatabase;
 import com.generic.plannr.Database.DatabaseClient;
 import com.generic.plannr.Entities.SchoolEvent;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
