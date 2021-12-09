@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
      * Returns whether login input is valid.
      */
     public boolean loginInput () {
-        // Creates instances of validators to be able to access its methods
+        // Creates instance of validators to be able to access its methods
         EmailValidator emailValidator = new EmailValidator();
         PasswordValidator passwordValidator = new PasswordValidator();
 

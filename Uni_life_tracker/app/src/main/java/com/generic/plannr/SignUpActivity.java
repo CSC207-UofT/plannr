@@ -49,7 +49,7 @@ public class SignUpActivity extends AppCompatActivity {
      * @return whether all the information has been validated
      */
     public boolean signupInput() {
-        // Creates instances of validators to access the methods
+        // Creates instance of validators to access the methods
         InputTextValidator inputTextValidator = new InputTextValidator();
         EmailValidator emailValidator = new EmailValidator();
         PasswordValidator passwordValidator = new PasswordValidator();

@@ -42,14 +42,14 @@ public interface UserGatewayInterface {
     String getLoggedInName();
 
     /**
-     * Get the current logged in user's email currently stored in the database
+     * Get the current logged-in user's email currently stored in the database
      *
      * @return the logged in user's email in the database
      */
     String getLoggedInEmail();
 
     /**
-     * Get the current logged in user's income currently stored in the database
+     * Get the current logged-in user's income currently stored in the database
      *
      * @return the logged in user's income in the database
      */
