@@ -471,6 +471,12 @@ and are already using more advanced banking apps that automatically display thei
 ## Progress Report
 
 ### Overall Group Progress
+Previously in phase 1, our group was split into the backend and frontend teams.
+For phase 2, we merged together again, and each person had their own main responsibilities.
+The frontend team was responsible for their respective views and related android activities, while the backend 
+team was split into testing, database, and clean architecture. Finally, the teams connected in order to connect the 
+activities to the backend.
+
 
 ### Evgenia
 Throughout both phase 1 and 2, Evgenia was on the frontend team and focused on continuing to implement and enhance UI
