@@ -321,7 +321,7 @@ can now run the app by clicking on the "Run" button at the top right of the wind
 
 ### Verify That You Launched Successfully
 If you see [this](https://imgur.com/a/uoIiAwn) as the landing page and [this](https://imgur.com/a/pJIsR33) as the login
-page, you have launched successfully ([GIF example](https://imgur.com/a/HYjDbsf))
+page, you have launched successfully ([GIF example](https://imgur.com/a/XUPTtWK))
 
 ### How to Run Tests
 
