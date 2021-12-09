@@ -347,8 +347,9 @@ with
    like [this](https://imgur.com/a/UEDegGD)
 
 #### How to Log In
+1. If you've already signed up, then you can simply use your email and password to log in.
 
-1. If you've already signed up, then you can simply use your email and password to login
+[**Video demo:** Signing Up, Logging In, Logging Out](https://github.com/CSC207-UofT/course-project-generic-name-1/blob/main/phase2/videos/plannr_demo_signin_login_logout.mp4)
 
 #### How to Use Expenses
 1. Click the expenses button on the sidebar menu
@@ -360,6 +361,9 @@ with
    appear as either red, green or black depending on if your total expenses are less than, greater than or equal to
    your income respectfully
 
+[**Video demo:** Using Expenses](https://github.com/CSC207-UofT/course-project-generic-name-1/blob/main/phase2/videos/plannr_demo_expenses.mp4)
+
+
 #### How to Use School
 1. Click the school button on the sidebar menu
 2. Enter a school event by selecting the plus sign on the top right of the calendar view
@@ -368,11 +372,25 @@ with
    course name
 5. Click the check mark at the top of the page to save
 
+[**Video demo:** Adding events](https://github.com/CSC207-UofT/course-project-generic-name-1/blob/main/phase2/videos/plannr_demo_add_event.mp4)
+
+[**Video demo:** Viewing & sorting events](https://github.com/CSC207-UofT/course-project-generic-name-1/blob/main/phase2/videos/plannr_demo_view_event.mp4)
+
 #### How to Use Settings
 1. In the settings page, you will see two text fields, one representing name and the other representing university
 2. To edit, click on the edit button
 3. Make changes in the respective text fields
 4. To save, click on the tick in the top right corner of the app, and all the changes will be saved
+
+[Video demo: Changing names on Settings](https://github.com/CSC207-UofT/course-project-generic-name-1/blob/main/phase2/videos/plannr_demo_settings_name.mp4)
+
+[**Video demo:** Changing password on Settings](https://github.com/CSC207-UofT/course-project-generic-name-1/blob/main/phase2/videos/plannr_demo_settings_password.mp4)
+
+#### How to Apply Dark Mode
+1. In the emulator device settings, change the appearance to dark mode.
+2. Run Plannr.
+
+[**Video demo:** Using Dark Mode](https://github.com/CSC207-UofT/course-project-generic-name-1/blob/main/phase2/videos/plannr_demo_dark_mode.mp4)
 
 ***
 
