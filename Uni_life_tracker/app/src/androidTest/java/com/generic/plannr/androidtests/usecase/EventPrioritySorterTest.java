@@ -3,6 +3,7 @@ package com.generic.plannr.androidtests.usecase;
 import static org.junit.Assert.*;
 import static com.generic.plannr.UseCases.UserCreator.signUp;
 import static com.generic.plannr.UseCases.AddSchoolEvent.addSchoolEvent;
+import static com.generic.plannr.UseCases.SortEvents.sortByPriority;
 
 import android.content.Context;
 
@@ -88,9 +89,11 @@ public class EventPrioritySorterTest {
         Collections.sort(expectedList);
 
         ArrayList<SchoolEvent> sortedEventList = EPS.sortEvents(EG.getAllEvents(UG.getLoggedInUserID()));
-
+        ArrayList<SchoolEvent> sortedEventListBySortEvents = sortByPriority(EG.getAllEvents(UG.getLoggedInUserID()));
         for (int i = 0; i < iteration; i++) {
             assertEquals(((int)expectedList.get(i)), sortedEventList.get(i).getPriority());
+            assertEquals(((int)expectedList.get(i)), sortedEventListBySortEvents.get(i).getPriority());
+            assertEquals(sortedEventList.get(i).getPriority(), sortedEventListBySortEvents.get(i).getPriority());
         }
 
     }
