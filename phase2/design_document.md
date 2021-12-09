@@ -21,11 +21,11 @@
 ## Design Document Statement
 
 ### Is all the above discussed in an organized way?
-We, the group members of Generic name can confirm that all elements of the design document are present in order according
-to the rubric order and completed to the best of our ability.
+We, the group members of Generic name can confirm that all elements of the design document are present and in order 
+according to the rubric order and completed to the best of our ability.
 
 ### Does your design document convince your team that you deserve the grade you are hoping to earn?
-We have thoroughly read the Phase 1 + 2 rubric and incorporated all feedback given from our TA into both our project and 
+We have thoroughly read the Phase 1 + 2 rubric and incorporated most feedback given from our TA into both our project and 
 our design document. Our design document is detailed and clear while also containing extra features such as instructions 
 on how to set up the app and how run certain features.
 
@@ -156,6 +156,8 @@ to directly call `EventGateway`, so instead, we made an interface called `EventG
 `AddSchoolEvent` remains unaware of the outer layer, such as the Controller and the Gateway. The flow goes from the 
 activities to the use cases to the entities, and back to the use cases and then activities and finally the UI.
 
+### UML Diagram
+The diagram is shared with our TA's email through oneNote, it is a document that cannot fit into the design document.
 
 ### Scenario Walk-Through that shows Clean Architecture
 
@@ -171,7 +173,7 @@ the `MainActivity` then formats into Android text.
 
 ### Dependency Rule (w/ an example)
 
-As stated above, each layer of Clean Architecture in our program is unaware of the outer layers. 
+As stated above, each layer of Clean Architecture in our program is unaware of the outer layers.
 That is, the entities do not depend on nor are aware of the uses cases, which are not aware of gateways and activities.
 
 For example, the use case class `AddSchoolEvent` saves events to the database using not `EventGateway`, a gateway class, 
@@ -333,21 +335,22 @@ else, change it by clicking on it to invoke [the dropdown](https://imgur.com/a/W
 can now run the app by clicking on the "Run" button at the top right of the window.
 
 ### Verify That You Launched Successfully
-If you see [this](https://imgur.com/a/bySL42L) as the landing page and [this](https://imgur.com/a/ijT3Z0F) as the login
-page, you have launched successfully ([GIF example](https://imgur.com/a/HYjDbsf))
+If you see [this](https://imgur.com/a/uoIiAwn) as the landing page and [this](https://imgur.com/a/pJIsR33) as the login
+page, you have launched successfully ([GIF example](https://imgur.com/a/XUPTtWK))
 
 ### How to Run Tests
 
 Once you have loaded our project into Android Studio, you should be able to see two test packages, all colored green.
 One labeled test, the other labeled AndroidTest. To run the tests, simply right-click on the subdirectory, beginning
 with
-`com.` and choose "Run...". [Here is a quick GIF demonstration](https://imgur.com/a/HYjDbsf)
+`com.` and choose "Run...". [Here is a quick GIF demonstration](https://imgur.com/a/G193a2H)
 
-* The java tests are written using JUnit 4, so the test behaviour would be the expected behaviour of any Java unit tests
-* The tests for `Gateways` are written using Android Instrumented test, so the behaviour is a little different. When you
-  click run, your emulator will launch, but the app will not actually launch in the emulator. The emulator only provides
-  contextual support to the tests, so it is an expected behaviour and is not a bug.
-
+* You will find two test packages, one named `androidtests`, the other named `tests`. The `androidtests` package
+contains all Android Instrumented tests, which utilizes an emulator and run the tests through the emulator. The `tests` 
+package includes all normal JUnit 4 tests.
+* When you run the Android Instrumented tests, you will see your emulator launch, but our app `Plannr` should not launch.
+This is an expected behaviour and not a bug. If you see our app launching, there is probably something wrong with your
+system setup. Check above for details.
 
 
 ### Instructions for Use of Features
