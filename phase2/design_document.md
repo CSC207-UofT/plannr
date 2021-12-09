@@ -145,7 +145,7 @@ and made sure to incorporate them into every commit.
 *NOTE: Presentation for phase 2 is out of date and does not match with the final submission.
 
 ### Clean Architecture Discussion
-![alt text](https://github.com/CSC207-UofT/course-project-generic-name-1/blob/design_doc/phase2/images/uml_diagram.png "UML Diagram")
+
 Our program is consistent with Clean Architecture because, as we can see with the general CRC diagram given above, 
 we made sure that the Entities were unaware of the Use Cases, and the Use Cases are unaware of the Activities. 
 If we wanted to violate Clean Architecture, such as a Use Case class like `AddSchoolEvent` saving a `SchoolEvent` entity 
