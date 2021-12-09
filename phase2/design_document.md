@@ -559,7 +559,7 @@ shifted his main focus on testing while also participating in implementing and d
 In the [`Use case tests`](https://github.com/CSC207-UofT/course-project-generic-name-1/pull/76)  pull request, Daniel 
 implemented all tests for the program's use cases and found several errors and discrepancies involving the 
 class `User`, `UserManager`, and `EventDateComparator`. He also found a bug in the regex validator for signing up, which 
-prevented the user to use `.` as a special character. In addition, in the pull request [`Database tests`](https://github.com/CSC207-UofT/course-project-generic-name-1/pull/91), Daniel learnt and implemented Android instrumented tests to test SQLite databases (the gateway classes), and refactored test packages to increase interpretability.
+prevented the user to use `.` as a special character. In addition, in the pull request [`New Test Suite`](https://github.com/CSC207-UofT/course-project-generic-name-1/pull/101), Daniel learnt and implemented Android instrumented tests to test SQLite database, and refactored test packages to increase interpretability.
 In terms of the design document, Daniel wrote Code Organization and Testing. He made short GIFs detailing system setup 
 and how to run the program, which was a major issue in phase 1, where Evan was having problems launching our program.
 He also helped write the Design Patterns section together with Sari, which discusses various strategies with the backend.
