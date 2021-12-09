@@ -3,6 +3,7 @@ package com.generic.plannr.androidtests.usecase;
 import static org.junit.Assert.*;
 import static com.generic.plannr.UseCases.UserCreator.signUp;
 import static com.generic.plannr.UseCases.AddSchoolEvent.addSchoolEvent;
+import static com.generic.plannr.UseCases.SortEvents.sortByDate;
 
 import android.content.Context;
 
@@ -87,9 +88,12 @@ public class EventDateSorterTest {
         Collections.sort(expectedList);
 
         ArrayList<SchoolEvent> sortedEventList = EDS.sortEvents(EG.getAllEvents(UG.getLoggedInUserID()));
+        ArrayList<SchoolEvent> sortedEventListBySortEvents = sortByDate(EG.getAllEvents(UG.getLoggedInUserID()));
 
         for (int i = 0; i < iteration; i++) {
             assertEquals(expectedList.get(i), sortedEventList.get(i).getStartDate());
+            assertEquals(expectedList.get(i), sortedEventListBySortEvents.get(i).getStartDate());
+            assertEquals(sortedEventList.get(i).getStartDate(), sortedEventListBySortEvents.get(i).getStartDate());
         }
 
     }
