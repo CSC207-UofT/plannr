@@ -27,7 +27,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class AddStudySessionEventActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener{
+public class AddStudySessionEventActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
     int yr, mth, day, hr, min, priority;
     String startDate, endDate, startTime, endTime;
     TextView tvStartDate, tvStartTime, tvEndDate, tvEndTime;
@@ -227,9 +227,10 @@ public class AddStudySessionEventActivity extends AppCompatActivity implements R
             String course = etEventName.getText().toString();
             String location = etLocation.getText().toString();
 
-            SchoolEvent event = new SchoolEvent("Study Session",eventName, priority,
-                    start, end, course, location);
             int userID = ug.getLoggedInUserID();
+            SchoolEvent event = new SchoolEvent(userID, "Study Session", eventName, priority,
+                    start, end, course, location);
+
 
             eg.saveToDatabase(event, userID);
 

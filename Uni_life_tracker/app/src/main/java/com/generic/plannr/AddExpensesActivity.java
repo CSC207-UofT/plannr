@@ -41,7 +41,6 @@ public class AddExpensesActivity extends AppCompatActivity {
      *
      * @param textInput The password that the user types into the textbox
      * @return whether the user input is valid and sets an error message if needed
-     *
      */
     private boolean validate(TextInputLayout textInput) {
         String Input = Objects.requireNonNull(textInput.getEditText()).getText().toString().trim();
@@ -58,26 +57,25 @@ public class AddExpensesActivity extends AppCompatActivity {
     /**
      * Checks whether the information inputted matches the requirements and opens the expense and user info database
      * in order to insert an expense into the database, then opens the expense list view
-     * @param v The current view
      *
+     * @param v The current view
      */
     public void AddExpensesInput(View v) {
         if (validate(textInputName) & validate(textInputAmount)) {
             String name = Objects.requireNonNull(textInputName.getEditText()).getText().toString();
             String amount = Objects.requireNonNull(textInputAmount.getEditText()).getText().toString();
             int userID = ug.getLoggedInUserID();
-
             // Adds all the user's info into the database using the gateway
-            eg.saveToDatabase(new Expense(name, Double.parseDouble(amount)), userID);
+            eg.saveToDatabase(new Expense(userID, name, Double.parseDouble(amount)), userID);
             openAddExpensesView();
 
         }
     }
 
-        public void ClickBack (View view){
+    public void ClickBack(View view) {
         // clicking the arrow back button
-            Intent intent = new Intent(this, ExpensesActivity.class);
-            startActivity(intent);
-        }
+        Intent intent = new Intent(this, ExpensesActivity.class);
+        startActivity(intent);
     }
+}
 

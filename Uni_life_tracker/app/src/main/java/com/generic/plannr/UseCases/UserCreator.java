@@ -10,6 +10,8 @@ public class UserCreator {
 
     /**
      * Creates and signs up a new user
+     *
+     * @param ug the gateway to the user database table
      * @param name the new user's name
      * @param email the new user's email
      * @param password the new user's password

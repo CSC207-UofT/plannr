@@ -27,7 +27,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class AddDeadlineEventActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener{
+public class AddDeadlineEventActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
     int yr, mth, day, hr, min, priority;
     String date, time;
     TextView tvDate, tvTime;
@@ -207,9 +207,9 @@ public class AddDeadlineEventActivity extends AppCompatActivity implements Radio
             setDateTime();
             LocalDateTime end = LocalDateTime.parse(date + " " + time, DATEFORMAT);
             String course = etCourse.getText().toString();
-
-            SchoolEvent event = new SchoolEvent("Deadline", eventName, priority, start, end, course);
             int userID = ug.getLoggedInUserID();
+            SchoolEvent event = new SchoolEvent(userID, "Deadline", eventName, priority, start, end, course);
+
 
             eg.saveToDatabase(event, userID);
 

@@ -47,6 +47,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private TextView dialogEventName, dialogEventCourse, dialogEventStartD, dialogEventStartT,
             dialogEventEndD, dialogEventEndT, dialogEventPriority, dialogEventLocation;
 
+    EventList events = new EventList();
+    EventLoader el = new EventLoader(eg, events);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

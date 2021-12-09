@@ -59,7 +59,7 @@ public class SignUpActivity extends AppCompatActivity {
         // If we pass in the string instead of the TextInputLayout then will not be able to set the error messages
         // Although it is inconvenient to keep passing it in, there are android related errors that are stopping us
         return inputTextValidator.validateEntry(tiName, ug, tiEmail, tiPassword, true) &
-                emailValidator.validateEntry(tiEmail,  ug, tiEmail, tiPassword, true) &
+                emailValidator.validateEntry(tiEmail, ug, tiEmail, tiPassword, true) &
                 passwordValidator.validateEntry(tiPassword, ug, tiEmail, tiPassword, true);
     }
 
