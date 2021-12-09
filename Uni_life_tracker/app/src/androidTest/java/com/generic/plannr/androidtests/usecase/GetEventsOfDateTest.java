@@ -23,6 +23,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Random;
 
+@SuppressWarnings("ALL")
 public class GetEventsOfDateTest {
 
     Context context;

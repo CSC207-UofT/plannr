@@ -29,6 +29,7 @@ import java.util.ArrayList;
 import static com.generic.plannr.CalendarUtil.daysInMonthArray;
 import static com.generic.plannr.CalendarUtil.monthYearFromDate;
 
+@SuppressWarnings("ALL")
 public class SchoolActivity extends AppCompatActivity implements CalendarAdapter.OnItemListener {
     private TextView monthYearText, dialogEventName, dialogEventCourse, dialogEventPriority, dialogEventLocation;
     private RecyclerView rvCalendar, rvEvents;
@@ -74,7 +75,7 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
     }
 
     @Override
-    public void onItemClick(int position, LocalDate date) {
+    public void onItemClick(LocalDate date) {
         eventsList.clear();
 
         if (date != null) {

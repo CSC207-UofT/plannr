@@ -15,6 +15,7 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
 
+@SuppressWarnings("ALL")
 public class LoginActivity extends AppCompatActivity {
     private TextInputLayout tiEmail;
     private TextInputLayout tiPassword;

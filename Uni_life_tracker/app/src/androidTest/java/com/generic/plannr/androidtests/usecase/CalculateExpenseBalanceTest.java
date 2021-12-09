@@ -8,7 +8,6 @@ import android.content.Context;
 
 import androidx.test.platform.app.InstrumentationRegistry;
 
-import com.generic.plannr.Entities.Expense;
 import com.generic.plannr.Gateways.ExpenseGateway;
 import com.generic.plannr.Gateways.UserGateway;
 import com.generic.plannr.UseCases.AddExpense;
@@ -22,6 +21,7 @@ import org.junit.Test;
 
 import java.util.Random;
 
+@SuppressWarnings("ALL")
 public class CalculateExpenseBalanceTest {
     Context context;
     ExpenseList expenseList;

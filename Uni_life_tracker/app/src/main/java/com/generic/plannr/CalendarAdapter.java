@@ -60,7 +60,7 @@ class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder> {
     }
 
     public interface OnItemListener {
-        void onItemClick(int position, LocalDate date);
+        void onItemClick(LocalDate date);
     }
 }
 

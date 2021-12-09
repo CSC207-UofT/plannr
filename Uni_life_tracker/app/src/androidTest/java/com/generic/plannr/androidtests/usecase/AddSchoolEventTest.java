@@ -21,6 +21,7 @@ import org.junit.Test;
 import java.time.LocalDateTime;
 import java.util.Random;
 
+@SuppressWarnings("ALL")
 public class AddSchoolEventTest {
 
     Context context;

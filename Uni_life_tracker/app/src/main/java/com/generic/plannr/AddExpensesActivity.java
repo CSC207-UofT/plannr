@@ -17,6 +17,7 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
 
+@SuppressWarnings("ALL")
 public class AddExpensesActivity extends AppCompatActivity {
 
     private TextInputLayout textInputName, textInputAmount;

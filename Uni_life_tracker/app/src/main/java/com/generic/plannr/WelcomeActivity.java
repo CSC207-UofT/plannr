@@ -9,6 +9,7 @@ import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
+@SuppressWarnings("ALL")
 public class WelcomeActivity extends AppCompatActivity {
     Handler handler = new Handler();
 

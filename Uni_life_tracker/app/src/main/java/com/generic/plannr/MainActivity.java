@@ -35,6 +35,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+@SuppressWarnings("ALL")
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     DrawerLayout drawerLayout;
     UserGateway ug = new UserGateway(MainActivity.this);

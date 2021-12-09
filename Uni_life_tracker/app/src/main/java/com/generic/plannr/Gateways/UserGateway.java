@@ -11,6 +11,7 @@ import com.generic.plannr.Entities.User;
 
 import static java.sql.Types.NULL;
 
+@SuppressWarnings("ALL")
 public class UserGateway implements UserGatewayInterface {
 
     public SQLiteDatabase db;

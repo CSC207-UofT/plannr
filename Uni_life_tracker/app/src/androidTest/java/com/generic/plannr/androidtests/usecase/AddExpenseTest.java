@@ -20,6 +20,7 @@ import org.junit.Test;
 
 import java.util.Random;
 
+@SuppressWarnings("ALL")
 public class AddExpenseTest {
     Context context;
     ExpenseList expenseList;

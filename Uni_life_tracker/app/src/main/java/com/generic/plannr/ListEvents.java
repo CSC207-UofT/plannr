@@ -17,6 +17,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
+@SuppressWarnings("ALL")
 public class ListEvents extends RecyclerView.Adapter<ListEvents.MyViewHolder> {
     private ArrayList<SchoolEvent> eventsList;
     private RecyclerViewClickLister listener;

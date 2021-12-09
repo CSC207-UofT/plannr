@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 
+@SuppressWarnings("ALL")
 public class ListExpenses extends RecyclerView.Adapter<ListExpenses.MyViewHolder> {
     private ArrayList<Expense> expensesArrayList;
 

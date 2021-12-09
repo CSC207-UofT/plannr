@@ -26,6 +26,7 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Objects;
 
+@SuppressWarnings("ALL")
 public class ExpensesActivity extends AppCompatActivity {
     private ArrayList<Expense> expensesList;
     private RecyclerView rvExpenses;

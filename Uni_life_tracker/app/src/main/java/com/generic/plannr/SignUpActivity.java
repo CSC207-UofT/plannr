@@ -17,6 +17,7 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
 
+@SuppressWarnings("ALL")
 public class SignUpActivity extends AppCompatActivity {
     private TextInputLayout tiName;
     private TextInputLayout tiEmail;

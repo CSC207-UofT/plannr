@@ -7,6 +7,7 @@ import com.generic.plannr.Gateways.EventGatewayInterface;
  * Loads the events from the database of the current user
  * To be used when a user logs in
  */
+@SuppressWarnings("ALL")
 public class EventLoader {
     private EventGatewayInterface eg;
     private EventList eventList;

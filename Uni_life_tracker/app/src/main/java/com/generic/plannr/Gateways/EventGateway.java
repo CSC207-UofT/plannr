@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
+@SuppressWarnings("ALL")
 public class EventGateway implements EventGatewayInterface {
 
     public SQLiteDatabase db;

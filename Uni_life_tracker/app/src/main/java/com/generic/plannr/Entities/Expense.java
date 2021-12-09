@@ -1,5 +1,6 @@
 package com.generic.plannr.Entities;
 
+@SuppressWarnings("ALL")
 public class Expense {
     private int userID;
     private String name;
