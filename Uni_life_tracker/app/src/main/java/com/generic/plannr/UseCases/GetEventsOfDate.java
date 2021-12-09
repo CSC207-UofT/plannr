@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import com.generic.plannr.Entities.Event;
+import com.generic.plannr.Entities.SchoolEvent;
 
 /**
  * Gets the events of the selected date
@@ -28,9 +29,9 @@ public class GetEventsOfDate {
      * @return a list of the events taking place during the selected date
      */
     @NonNull
-    public static ArrayList<Event> getEventsOfDate(LocalDate selectedDate) {
-        ArrayList<Event> eventsOfDate = new ArrayList<>();
-        for (Event e : eventList.getEventList()) {
+    public static ArrayList<SchoolEvent> getEventsOfDate(LocalDate selectedDate) {
+        ArrayList<SchoolEvent> eventsOfDate = new ArrayList<>();
+        for (SchoolEvent e : eventList.getEventList()) {
             if (e.getStartDate().toLocalDate().isEqual(selectedDate)) {
                 eventsOfDate.add(e);
             }

@@ -2,21 +2,22 @@ package com.generic.plannr.UseCases;
 
 
 import com.generic.plannr.Entities.Event;
+import com.generic.plannr.Entities.SchoolEvent;
 
 import java.util.ArrayList;
 
 /**
- * A data structure for the current user's list of events
+ * A data structure for the current user's list of school events
  */
 public class EventList {
-    private final ArrayList<Event> eventList = new ArrayList<>();
+    private final ArrayList<SchoolEvent> eventList = new ArrayList<>();
 
     /**
      * Returns a list of the current user's events
      *
      * @return an array list of the user's events
      */
-    public ArrayList<Event> getEventList() {
+    public ArrayList<SchoolEvent> getEventList() {
         return eventList;
     }
 
@@ -25,7 +26,7 @@ public class EventList {
      *
      * @param e The event to be added
      */
-    public void add (Event e) {
+    public void add (SchoolEvent e) {
         eventList.add(e);
     }
 
