@@ -7,15 +7,6 @@ import com.generic.plannr.Gateways.UserGatewayInterface;
  * Creates and signs up a new user
  */
 public class UserCreator {
-    private static UserGatewayInterface ug;
-
-    /**
-     * Sets up UserCreator
-     * @param userGateway the gateway to the user database table
-     */
-    public UserCreator (UserGatewayInterface userGateway) {
-        ug = userGateway;
-    }
 
     /**
      * Creates and signs up a new user
@@ -23,7 +14,7 @@ public class UserCreator {
      * @param email the new user's email
      * @param password the new user's password
      */
-    public static void signUp (String name, String email, String password) {
+    public static void signUp (UserGatewayInterface ug, String name, String email, String password) {
         ug.saveToDatabase(new User(name, email, password));
         ug.updateLoggedInUser(email);
     }
