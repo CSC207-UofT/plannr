@@ -205,8 +205,7 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
      */
     private void setEventInfo() {
         int userID = ug.getLoggedInUserID();
-        el.loadEvents(userID);
-        eventsList.addAll(GetEventsOfDate.getEventsOfDate(events, LocalDate.now()));
+        eventsList.addAll(GetEventsOfDate.getEventsOfDate(el.loadEvents(userID), CalendarUtil.selectedDate));
     }
 
     /**
