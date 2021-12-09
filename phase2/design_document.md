@@ -142,41 +142,49 @@ and made sure to incorporate them into every commit.
 ***
 
 ## Clean Architecture
+*NOTE: Presentation for phase 2 is out of date and does not match with the final submission.
 
 ### Clean Architecture Discussion
 ![alt text](https://github.com/CSC207-UofT/course-project-generic-name-1/blob/design_doc/phase2/images/uml_diagram.png "UML Diagram")
-Our program is consistent with Clean Architecture because, as we can see with the general UML diagram given above,
-we made sure that the Entities were unaware of the Use Cases, the Use Cases are unaware of the
-Controllers/Presenters/Gateways, and the Controllers/Presenters are unaware of the Activities. If we wanted to violate
-Clean Architecture, such as a Use Case class like EventManager saving an entity to a database, we used interfaces
-instead of directly calling the class implementation. For example, EventManager creates an event and wants to save it
-to the database, it would be a violation of clean architecture for EventManager to directly call EventGateway, so
-instead, we made an interface called EventGatewayInterface, which is what the EventManager uses to save to the database
-and pass a EventGateway object to it through the controller. That way EventManager remains unaware of the outer layer,
-such as the Controller and the Gateway. The flow goes from the activities to the controller to the use case, through
-the boundary interfaces, to the entities back to the use cases, then presenter, the activity and finally the UI.
+Our program is consistent with Clean Architecture because, as we can see with the general CRC diagram given above, 
+we made sure that the Entities were unaware of the Use Cases, and the Use Cases are unaware of the Activities. 
+If we wanted to violate Clean Architecture, such as a Use Case class like `AddSchoolEvent` saving a `SchoolEvent` entity 
+to a database, we used interfaces instead of directly calling the class implementation. For example, `AddSchoolEvent` 
+creates an event and wants to save it to the database, it would be a violation of clean architecture for `AddSchoolEvent` 
+to directly call `EventGateway`, so instead, we made an interface called `EventGatewayInterface`, which is what 
+`AddSchoolEvent` uses to save to the database and pass a `EventGateway` object to it through the activity. That way 
+`AddSchoolEvent` remains unaware of the outer layer, such as the Controller and the Gateway. The flow goes from the 
+activities to the use cases to the entities, and back to the use cases and then activities and finally the UI.
 
 
 ### Scenario Walk-Through that shows Clean Architecture
 
-<u>Scenario:</u> The user arrives at the main page, which displays their list of events taking place that day
-and has the option to sort the event list, which can be displayed list by date-time or by priority.
-By default, it is first shown to be sorted by date.
+<u>Scenario:</u> The user arrives at the main page, which displays their list of events taking place that day and has 
+the option to sort the event list, which can be displayed list by date-time or by priority. By default, it is first 
+shown to be sorted by date.
 
-In this scenario, we start at the UI, where the user can see their list of events sorted by date or by priority.
-To start, the MainActivity class tells the MainController, the controller for the main view, that the user wants
-their list of today's events to be displayed and sorted by date. So, the controller then uses the EventInputBoundary
-interface to tell the EventManager use class to retrieve today's events and sort them by date. Afterwards, EventManager
-sends that information over to the MainPresenter. This presenter class formats the list of events to be presentable for
-the UI for the main view through the MainPresenter output boundary interface. The MainPresenter then formats the list
-of event objects into something Android can print and display, which is then sent to MainActivity who just displays
-the result.
+In this scenario, we start at the UI, where the user can see their list of events sorted by date or by priority. 
+To start, the `MainActivity` class calls the `GetEventsOfDate` use case class and then the `SortEvents` use case class 
+based on what whether the user wants to sort by date or by priority. SortEvents then returns the sorted list which 
+the `MainActivity` then formats into Android text.
+
 
 ### Dependency Rule (w/ an example)
 
-As stated above, each layer of Clean Architecture in our program is unaware of the outer layers. That is, the entities do not depend on nor are aware of the uses cases, which are not aware of the controllers, presenters and gateways, who are not aware of the UI and SQLite database.
+As stated above, each layer of Clean Architecture in our program is unaware of the outer layers. 
+That is, the entities do not depend on nor are aware of the uses cases, which are not aware of gateways and activities.
 
-For example, the use case class EventManager saves events to the database using not EventGateway, a gateway class, but instead EventGatewayInterface, which is an interface implemented by EventGateway. This prevents a violation of clean architecture from happening since EventManager remains unaware and independent of any gateway classes. Therefore, the dependencies still point inwards when looking at the clean architecture circle.
+For example, the use case class `AddSchoolEvent` saves events to the database using not `EventGateway`, a gateway class, 
+but instead `EventGatewayInterface`, which is an interface implemented by `EventGateway`. This prevents a violation of 
+clean architecture from happening since `AddSchoolEvent` remains unaware and independent of any gateway classes. 
+Therefore, the dependencies still point inwards when looking at the clean architecture circle.
+
+### What we did not implement
+As mentioned earlier in the SOLID principle section. If we had more time, we would have made it so that each 
+Android Activity would have its own ViewModel, that way the Android activities would only be responsible for sending 
+in user input and printing out user case output for their respective views. At the moment, the activities do the jobs 
+of both the controllers and presenters. We were told to decouple those two things in our phase 1 feedback but were 
+unable to do it. Some classes discussed may have been removed in order to find a working version of our app.
 
 ## Design Patterns
 
@@ -219,72 +227,77 @@ gateway classes.
 
 ## SOLID Principles
 
+*NOTE: Presentation for phase 2 is out of date and does not match with the final submission.
+
 ### SRP: Single Responsibility Principle
 * <u>Comply:</u>
     * In order to comply with the single responsibility principle, we made sure that each class was responsible 
   for one thing.
-    * Looking at the use cases, we have the `EventManager`, `UserManager`, and `ExpenseManager` which are each 
-  only responsible for their respective entity. `EventManager` is only responsible for maintaining anything `Event` 
-related, `UserManager` is only responsible for maintaining anything `User` related, and `ExpenseManager` is only 
-responsible for maintaining anything Expense related. 
-    * Similarly, for the gateways, we split the gateways for the three entities so that `EventGateway` is only
-      responsible for saving and reading Events from the database, `ExpenseGateway` is responsible for saving and
-      reading `Expenses` from the database and `UserGateway` is responsible for saving and reading Users from the
-      database.
-    * Now for the controllers and presenters and activities. Each view in android has its own android activity which
-      also has its own controller and presenter. For example, we have the `MainActivity` which is the activity related
-      to the main view of our app. The `MainActivity` has its own controller for the user's inputs such as wanting
-      their events of the day to be sorted either by time or priority and its own presenter for formatting the outputs
-      of the use cases in order to display in Android the sorted list of events.
+    * Looking at the use cases, for example of those that are related to the ‘SchoolEvent’ entity class, we have 
+  `AddSchoolEvent`, `GetEventsOfDate`, the `EventSorter` classes, `EventLoader`, and the `EventList` data structure 
+  class. Instead of having their implementations all in one class, they were separated into individual classes such 
+  that they would have one responsibility and therefore only reason to change. Changing anything in the `AddSchoolEvent`
+  class for example will not affect any code from `GetEventsOfDate` and avoids any potential conflicts.
+    * For the gateways, we split the gateways for the three entities so that `EventGateway` is only responsible for 
+  saving and reading Events from the database, `ExpenseGateway` is responsible for saving and reading Expenses from the 
+  database and `UserGateway` is responsible for saving and reading Users from the database.
 * <u>Violations:</u>
-    * A possible violation of SRP is that each entity's manager, that is `EventManager`, `ExpenseManager`
-      and `UserManager`, could be thought to have too many responsibilities in the sense that for example, `UserManager`
-      is responsible for anything `User` related but within that responsibility, there are other sub-responsibilities
-      that could be their own class such as creating a user, editing any user information like name, finding that user
-      by either email or ID, etc. These could be separate classes, but it depends on how we divide them up as it can lead
-      to complying to SRP at an extreme. So this situation could be considered a violation, or it could not, depending on
-      the person.
+    * A possible violation of SRP is the Android Activity classes. Each Android activity has multiple responsibilities
+  such as getting the user’s input, formatting it for the use cases to use, calling the appropriate use cases and then 
+  taking the use case outputs and formatting that to Android text. 
 
 ### OCP: Open-Closed Principle
 * <u>Comply:</u>
-  We believe that our program follows the Open-Closed Principle. For example, we have different types of events in our
-  program, each with both unique and common properties. Our implementation of `Event` and its subclasses complies with
-  OCP because common properties of an event is inherited from extending the superclass, any unique properties were added
-  in the subclasses without the need to change the superclass. This makes the `Event` entity open and closed.
+  * We believe that our program follows the Open-Closed Principle. For example, we have the abstract class `Event` 
+  which can be extended to make different types of `Events`. Our implementation of `Event` and its subclasses complies 
+  with OCP because common properties of an event are inherited from extending the `Event` superclass, and any unique 
+  properties were added in the subclasses without the need to change the superclass. This makes the `Event` entity 
+  open for extension and closed for modification. Similarly, the abstract class `EventSorter` can be extended to add 
+  implementation for sorting events another way. In our program, we currently have sorting by date and by priority 
+  but in the future, instead of modifying an existing class with all the sorting implementation, `EventSorter` could 
+  just be extended to add implementation for sorting by event name or other event attributes.
 
 ### LSP: Liskov Substitution Principle
 * <u>Comply:</u>
-    * In order to comply with the LSP, we made sure that the Event superclass could be interchangeable by its
-      subclasses `Deadline`, `Assessment`, `StudySession` and `Class.` For example, a method involving getting
-      information on an Event is usable by all 4 subclasses and these subclasses cna be interchangeable for that method
-      without causing any problems. The basic behavior of an `Event` can be used and be applied to any of the four
-      subclasses. In addition, the use of interfaces* for the gateways is also a good example of LSP being used in our
-      program.
+    * In order to comply with the LSP, we made sure that the EventSorter superclass’ comparator could be interchangeable 
+  by different comparators.
+    * In addition, the use of interfaces for the gateways is also a good example of LSP being used in our program 
+  since we could make a different gateway class for a different database then our database and pass it to the use cases
+  and therefore can be interchangeable.
     * There is the `EventGatewayInterface`, the `ExpenseGatewayInterface`, and the `UserGatewayInterface` which are to
       be implemented by their respective gateway classes.
+* <u>Violation:</u>
+  * Most of our use case implementations that use event entities only mention `SchoolEvent` instead of `Event`. 
+  For example, the event comparators are for `SortEvent` objects instead of Event objects. Therefore, Event subclasses 
+  are cannot be interchangeable for each other.
 
 ### ISP: Interface Segregation Principle
 * <u>Comply:</u>
-    * In order to comply with ISP, we implemented several interfaces in our program. Instead of having one interface for
-      gateway classes, we implemented three different interfaces for each entity that we have: `Event`, `Expense`
-      and `User`. This allows our use cases to use gateway classes related to their entity instead of one general one
-      and to implement methods related to their entity database table. In addition, we also have interfaces for the
-      input boundary between the use cases and the interface layer. Having different input boundary interfaces for each
-      entity allows the use cases `EventManager`, `UserManager` and `ExpenseManager` to implement methods relevant to
-      their responsibilities instead of having to implement all the methods which they might not need.
+    * In order to comply with ISP, we implemented several interfaces in our program. Instead of having one interface 
+  for gateway classes, we implemented three different interfaces for each entity that we have: Event, Expense and User. 
+  This allows our use cases to use gateway classes related to their entity instead of one general one and to implement 
+  methods related to their entity database table. In addition, we made an interface called Validator for which each type
+  of validation.
 
 ### DIP: Dependency Inversion Principle
 * <u>Comply:</u>
-    * Our program mostly complies with DIP. Using the OODesign example given in week 3 lecture, `Worker` is the `Event`
-      and `SuperWorker` is the subclasses of `Event`. When we need to make a reference to a type of event, we can
-      simply use `Event e` as a parameter, instead of explicitly specifying which type of event we want (i.e. instead
-      of `Deadline e` )
+    * Our program mostly complies with DIP. Using the OODesign example given in week 3 lecture, Worker is the `Event` and 
+  SuperWorker is the subclasses of `Event`. When we need to make a reference to a type of event, we can simply use Event e 
+  as a parameter, instead of explicitly specifying which type of event we want.
 * <u>Violation:</u>
-    * It may be a violation as our `Event` superclass is not an interface, so it doesn't utilize abstraction. However, 
-  it does achieve the same goal as DIP.
-* <u>Potential Fix:</u>
-    * We can fix this by implementing an `Event` interface, and change the existing Event superclass to `GeneralEvent`
-    
+    * It may be a violation that our Activities directly call on use cases instead of going through a `ViewModel`.
+
+### What we did not implement
+* Now for the interface layer. We originally planned on implementing Controllers and Presenters but found it would be
+  too difficult to implement with Android activities and then decided to use MVVM. We looked at the MVC, MVP, and MVVM
+  pattern and saw that MVVM would have been a pretty good pattern to use for our program. If we had more time, we would
+  have made it so that each Android Activity would have its own ViewModel, that way the Android activities would only be
+  responsible for sending in user input and printing out user case output for their respective views. For example, the
+  MainActivity is the activity related to the main view of our app. The `MainActivity` would have had its own ViewModel
+  named `MainViewModel` which would handle the user's inputs such as wanting their events of the day to be sorted either
+  by time or priority, call the appropriate use cases such as `GetEventsOfDate` and the `EventSorter` subclasses, and then
+  format and present the outputs of the use cases in order to display the sorted list of events in our Android app.
+  Some classes discussed may have been removed in order to find a working version of our app.
 ***
 ## Instructions for App Launch, Launching Tests and Use of Features
 
