@@ -1,33 +1,25 @@
 package com.generic.plannr.Entities;
 
-import java.util.ArrayList;
 
 public class User {
     private String name;
-    private String email;
+    private final String email;
     private String password;
-    private final ArrayList<String> courses;
-    private final ArrayList<SchoolEvent> eventList;
-    private final ArrayList<Expense> expenseList;
     private double income;
 
     /**
      * Construct a user, giving them the given name, email,
-     * password, courses, and setting an empty
-     * events list.
+     * password
      *
-     * @param name      The user's name
-     * @param email     The user's email
-     * @param password  The user's password
+     * @param name     The user's name
+     * @param email    The user's email
+     * @param password The user's password
      */
     public User(String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.password = password;
-        this.courses = new ArrayList<>();
-        this.eventList = new ArrayList<>();
         this.income = 0.0;
-        this.expenseList = new ArrayList<>();
     }
 
     /**
@@ -44,44 +36,17 @@ public class User {
      *
      * @return a String that describes the user's email
      */
-    public String getEmail() { return this.email; }
+    public String getEmail() {
+        return this.email;
+    }
 
     /**
      * getter method for password
      *
      * @return a String that describes the user's password
      */
-    public String getPassword() { return this.password; }
-
-    /**
-     * getter method for courses
-     *
-     * @return an ArrayList that describes the user's current course list
-     */
-    public ArrayList<String> getCourses() {
-        return this.courses;
-    }
-
-    /**
-     * getter method for eventList
-     *
-     * @return an ArrayList that describes all the user's events
-     */
-    public ArrayList<SchoolEvent> getEventList() {
-        return this.eventList;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * Getter method for the user's expenses list
-     *
-     * @return ArrayList of Expenses object
-     */
-    public ArrayList<Expense> getExpenseList() {
-        return this.expenseList;
+    public String getPassword() {
+        return this.password;
     }
 
     /**
@@ -91,6 +56,24 @@ public class User {
      */
     public double getIncome() {
         return this.income;
+    }
+
+    /**
+     * Setter method for user's name
+     *
+     * @param name the new name for the user
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * Setter method for user's password
+     *
+     * @param password the new password for the user
+     */
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     /**

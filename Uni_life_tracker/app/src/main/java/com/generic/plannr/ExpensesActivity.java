@@ -26,7 +26,7 @@ import java.util.Objects;
 public class ExpensesActivity extends AppCompatActivity {
 
     private ArrayList<Expense> expensesList;
-    private RecyclerView  rvExpenses;
+    private RecyclerView rvExpenses;
     private DrawerLayout drawerLayout;
     private MainActivity activity;
     private TextInputEditText etIncome;
@@ -85,11 +85,11 @@ public class ExpensesActivity extends AppCompatActivity {
      */
     private void showTargetView() {
         TapTargetView.showFor(this, TapTarget.forView(
-            findViewById(R.id.iv_add_expense), "Add an Expense", "Add your expenses here!")
-            .outerCircleColor(R.color.lavender).targetCircleColor(R.color.white)
-            .titleTextColor(R.color.black).descriptionTextColor(R.color.black)
-            .tintTarget(false)
-            .cancelable(true),
+                                findViewById(R.id.iv_add_expense), "Add an Expense", "Add your expenses here!")
+                        .outerCircleColor(R.color.lavender).targetCircleColor(R.color.white)
+                        .titleTextColor(R.color.black).descriptionTextColor(R.color.black)
+                        .tintTarget(false)
+                        .cancelable(true),
                 new TapTargetView.Listener() {
                     @Override
                     public void onTargetClick(TapTargetView view) {
@@ -115,10 +115,10 @@ public class ExpensesActivity extends AppCompatActivity {
     /**
      * Calculates the total expenses using the expense list
      */
-    public void calculateExpense(){
+    public void calculateExpense() {
         totalExpenses = 0.00;
-        for (Expense e: eg.getAllExpenses(ug.getLoggedInUserID()))
-                totalExpenses += e.getValue();
+        for (Expense e : eg.getAllExpenses(ug.getLoggedInUserID()))
+            totalExpenses += e.getValue();
 
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
         tvTotalExpenses.setText(formatter.format(totalExpenses));
@@ -128,7 +128,7 @@ public class ExpensesActivity extends AppCompatActivity {
     /**
      * Prompts the Add Expense Activity on a plus icon click.
      *
-     * @param view  a View for the device screen.
+     * @param view a View for the device screen.
      */
     public void clickAddExpense(View view) {
         // clicking the check in order to add expense
@@ -162,23 +162,29 @@ public class ExpensesActivity extends AppCompatActivity {
     /**
      * Opens navigation menu on menu icon click.
      *
-     * @param view  a View for the device screen.
+     * @param view a View for the device screen.
      */
-    public void clickMenu(View view){ activity.openDrawer(drawerLayout); } // open drawer
+    public void clickMenu(View view) {
+        activity.openDrawer(drawerLayout);
+    } // open drawer
 
     /**
      * Directs activity to the Main activity on logo click.
      *
-     * @param view  a View for the device screen.
+     * @param view a View for the device screen.
      */
-    public void clickLogo(View view) { activity.redirectActivity(this, MainActivity.class);} // redirect activity to main
+    public void clickLogo(View view) {
+        activity.redirectActivity(this, MainActivity.class);
+    } // redirect activity to main
 
     /**
      * Directs activity to the School activity on school icon click.
      *
-     * @param view  a View for the device screen.
+     * @param view a View for the device screen.
      */
-    public void clickSchool(View view) { activity.redirectActivity(this, SchoolActivity.class); } // redirect activity to school
+    public void clickSchool(View view) {
+        activity.redirectActivity(this, SchoolActivity.class);
+    } // redirect activity to school
 
     // TODO: change this to life later
 //    public void clickLife(View view) { activity.redirectActivity(this, MainActivity.class); } // redirect activity to life
@@ -186,21 +192,24 @@ public class ExpensesActivity extends AppCompatActivity {
     /**
      * Directs activity to the Expenses activity on expenses icon click.
      *
-     * @param view  a View for the device screen.
+     * @param view a View for the device screen.
      */
-    public void clickExpenses(View view) {} // recreate activity
+    public void clickExpenses(View view) {
+    } // recreate activity
 
     /**
      * Directs activity to the Settings activity on settings icon click.
      *
-     * @param view  a View for the device screen.
+     * @param view a View for the device screen.
      */
-    public void clickSettings(View view) { activity.redirectActivity(this, SettingsActivity.class); } // redirect activity to settings
+    public void clickSettings(View view) {
+        activity.redirectActivity(this, SettingsActivity.class);
+    } // redirect activity to settings
 
     /**
      * Prompts log out on a logout icon click.
      *
-     * @param view  a View for the device screen.
+     * @param view a View for the device screen.
      */
     public void clickLogOut(View view) {
         activity.logout(this);

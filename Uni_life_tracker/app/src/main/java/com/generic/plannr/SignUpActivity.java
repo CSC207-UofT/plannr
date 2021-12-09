@@ -8,6 +8,7 @@ import com.generic.plannr.Controllers.EmailValidator;
 import com.generic.plannr.Controllers.InputTextValidator;
 import com.generic.plannr.Controllers.PasswordValidator;
 import com.generic.plannr.Gateways.UserGateway;
+import com.generic.plannr.UseCases.UserCreator;
 import com.generic.plannr.UseCases.UserManager;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -58,7 +59,7 @@ public class SignUpActivity extends AppCompatActivity {
         // If we pass in the string instead of the TextInputLayout then will not be able to set the error messages
         // Although it is inconvenient to keep passing it in, there are android related errors that are stopping us
         return inputTextValidator.validateEntry(tiName, ug, tiEmail, tiPassword, true) &
-                emailValidator.validateEntry(tiEmail,  ug, tiEmail, tiPassword, true) &
+                emailValidator.validateEntry(tiEmail, ug, tiEmail, tiPassword, true) &
                 passwordValidator.validateEntry(tiPassword, ug, tiEmail, tiPassword, true);
     }
 
@@ -70,8 +71,7 @@ public class SignUpActivity extends AppCompatActivity {
             String email = Objects.requireNonNull(tiEmail.getEditText()).getText().toString();
             String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();
 
-            UserManager um = new UserManager(name, email, password);
-            ug.saveToDatabase(um.getUser());
+            UserCreator.signUp(ug, name, email, password);
 
             openMain();
             ug.updateLoggedInUser(email);

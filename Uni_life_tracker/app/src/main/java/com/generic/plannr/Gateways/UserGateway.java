@@ -8,9 +8,6 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.generic.plannr.Database.DatabaseClient;
 import com.generic.plannr.Entities.User;
-import com.generic.plannr.UseCases.UserManager;
-
-import java.util.ArrayList;
 
 import static java.sql.Types.NULL;
 
@@ -105,9 +102,7 @@ public class UserGateway implements UserGatewayInterface {
         String email = cur.getString(cur.getColumnIndexOrThrow("EMAIL"));
         String password = cur.getString(cur.getColumnIndexOrThrow("PASSWORD"));
 
-        UserManager um = new UserManager(name, email, password);
-
-        return um.getUser();
+        return new User(name, email, password);
 
     }
 
@@ -132,9 +127,7 @@ public class UserGateway implements UserGatewayInterface {
         String email = cur.getString(cur.getColumnIndexOrThrow("EMAIL"));
         String password = cur.getString(cur.getColumnIndexOrThrow("PASSWORD"));
 
-        UserManager um = new UserManager(name, email, password);
-
-        return um.getUser();
+        return new User(name, email, password);
 
     }
 
@@ -186,6 +179,23 @@ public class UserGateway implements UserGatewayInterface {
 
         if (cur.moveToFirst()) {
             return cur.getString(cur.getColumnIndexOrThrow("EMAIL"));
+        }
+
+        return "";
+    }
+
+    /**
+     * Get the current logged-in user's password currently stored in the database
+     *
+     * @return the logged-in user's password in the database
+     */
+    public String getLoggedInPassword() {
+        openDatabase();
+        @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo WHERE " +
+                        "LOGGED_IN = 1",
+                null);
+        if (cur.moveToFirst()) {
+            return cur.getString(cur.getColumnIndexOrThrow("PASSWORD"));
         }
 
         return "";
@@ -250,35 +260,6 @@ public class UserGateway implements UserGatewayInterface {
                 userEmail + '"', null);
 
         return !cur.moveToFirst();
-    }
-
-    /**
-     * Get the list of Users currently stored in the database
-     *
-     * @return a list of all users stored in the database
-     */
-    public ArrayList<User> getAllUsers() {
-        openDatabase();
-        ArrayList<User> usersList = new ArrayList<>();
-        @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM userinfo",
-                null);
-        if (cur != null) {
-            if (cur.moveToFirst()) {
-                do {
-
-                    String name = cur.getString(cur.getColumnIndexOrThrow("NAME"));
-                    String email = cur.getString(cur.getColumnIndexOrThrow("EMAIL"));
-                    String password = cur.getString(cur.getColumnIndexOrThrow("PASSWORD"));
-                    UserManager um = new UserManager(name, email, password);
-
-                    usersList.add(um.getUser());
-
-                } while (cur.moveToNext());
-            }
-        }
-
-        return usersList;
-
     }
 
 }
