@@ -30,7 +30,6 @@ public class InputTextValidator implements Validator {
 
         } else {
             userInput.setError(null);
-            ug.updateLoggedInUser(email);
             return true;
         }
     }
