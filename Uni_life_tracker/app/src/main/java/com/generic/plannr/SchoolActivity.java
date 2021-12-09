@@ -172,7 +172,12 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
         }
         return dialogView;
     }
-
+    /**
+     * Sets the View Dialog in order to present the correct dialog with the correct information
+     *
+     * @param priority an in that represent a numerical representation of priority
+     * @return a string representation of priority
+     */
     private String setPriority(int priority){
         String priorityType = "";
         switch (priority) {

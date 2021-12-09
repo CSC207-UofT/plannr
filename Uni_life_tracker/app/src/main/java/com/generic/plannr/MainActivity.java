@@ -4,10 +4,6 @@
  */
 package com.generic.plannr;
 
-import android.annotation.SuppressLint;
-import android.app.Dialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -45,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private ArrayList<SchoolEvent> eventsList;
     private RecyclerView rvEvents;
     private ListEvents.RecyclerViewClickLister listener;
+    private String startDate, startTime, endDate, endTime;
     private TextView dialogEventName, dialogEventCourse, dialogEventStartD, dialogEventStartT,
             dialogEventEndD, dialogEventEndT, dialogEventPriority, dialogEventLocation;
 
@@ -117,83 +114,104 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         rvEvents.setItemAnimator(new DefaultItemAnimator());
         rvEvents.setAdapter(adapter);
     }
-
     /**
-     * Sets the onclick listener and gets information from position
+     * Create the dialog once a particular recyler view is choosen
      */
-    @SuppressLint("InflateParams")
     private void setOnClickListener() {
         listener = (v, position) -> {
             DateTimeFormatter dayFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh:mm a");
             AlertDialog.Builder builder = new AlertDialog.Builder(v.getRootView().getContext());
             View dialogView;
-            String startDate = eventsList.get(position).getStartDate().toLocalDate().format(dayFormatter);
-            String startTime = eventsList.get(position).getStartDate().toLocalTime().format(timeFormatter);
 
+            // Gets the information of event based of the event clicked
+            startDate = eventsList.get(position).getStartDate().toLocalDate().format(dayFormatter);
+            startTime = eventsList.get(position).getStartDate().toLocalTime().format(timeFormatter);
+            endDate = eventsList.get(position).getEndDate().toLocalDate().format(dayFormatter);
+            endTime = eventsList.get(position).getEndDate().toLocalTime().format(timeFormatter);
+
+            // Gets all the info for the different types of evetns
             switch (eventsList.get(position).getEventType()) {
                 case "Assessment":
-                    dialogView = LayoutInflater.from(v.getRootView().getContext()).inflate(R.layout.popup_view_event, null);
-                    dialogEventName = dialogView.findViewById(R.id.tv_event_name_pop);
-                    dialogEventCourse = dialogView.findViewById(R.id.tv_course);
-                    dialogEventStartD = dialogView.findViewById(R.id.tv_start_date);
-                    dialogEventStartT = dialogView.findViewById(R.id.tv_start_time);
-                    dialogEventEndD = dialogView.findViewById(R.id.tv_end_date);
-                    dialogEventEndT = dialogView.findViewById(R.id.tv_end_time);
-                    dialogEventPriority = dialogView.findViewById(R.id.tv_priority);
-                    dialogEventStartD.setText(startDate);
-                    dialogEventStartT.setText(startTime);
+                    dialogView = setView(v, R.layout.popup_view_event, R.id.tv_event_name_pop, R.id.tv_course,
+                            R.id.tv_end_date, R.id.tv_end_time, R.id.tv_priority, R.id.tv_start_date,
+                            R.id.tv_start_time);
                     break;
                 case "Deadline":
-                    dialogView = LayoutInflater.from(v.getRootView().getContext()).inflate(R.layout.popup_deadline_event, null);
-                    dialogEventName = dialogView.findViewById(R.id.tv_event_name_pop_d);
-                    dialogEventCourse = dialogView.findViewById(R.id.tv_course_d);
-                    dialogEventEndD = dialogView.findViewById(R.id.tv_end_date_d);
-                    dialogEventEndT = dialogView.findViewById(R.id.tv_end_time_d);
-                    dialogEventPriority = dialogView.findViewById(R.id.tv_priority_d);
+                    dialogView = setView(v, R.layout.popup_deadline_event,  R.id.tv_event_name_pop_d, R.id.tv_course_d,
+                            R.id.tv_end_date_d, R.id.tv_end_time_d, R.id.tv_priority_d, 0, 0);
                     break;
                 default:
-                    dialogView = LayoutInflater.from(v.getRootView().getContext()).inflate(R.layout.popup_location_event, null);
-
-                    dialogEventName = dialogView.findViewById(R.id.tv_event_name_pop_l);
-                    dialogEventCourse = dialogView.findViewById(R.id.tv_course_l);
-                    dialogEventStartD = dialogView.findViewById(R.id.tv_start_date_l);
-                    dialogEventStartT = dialogView.findViewById(R.id.tv_start_time_l);
-                    dialogEventEndD = dialogView.findViewById(R.id.tv_end_date_l);
-                    dialogEventEndT = dialogView.findViewById(R.id.tv_end_time_l);
-                    dialogEventPriority = dialogView.findViewById(R.id.tv_priority_l);
+                    dialogView = setView(v, R.layout.popup_location_event,  R.id.tv_event_name_pop_l, R.id.tv_course_l,
+                            R.id.tv_end_date_l, R.id.tv_end_time_l, R.id.tv_priority_l, R.id.tv_start_date_l,
+                            R.id.tv_start_time_l);
                     dialogEventLocation = dialogView.findViewById(R.id.tv_location);
                     dialogEventLocation.setText(eventsList.get(position).getLocation());
-                    dialogEventStartD.setText(startDate);
-                    dialogEventStartT.setText(startTime);
             }
-
-            String endDate = eventsList.get(position).getEndDate().toLocalDate().format(dayFormatter);
-            String endTime = eventsList.get(position).getEndDate().toLocalTime().format(timeFormatter);
-            int priority = eventsList.get(position).getPriority();
-            String priorityS = "";
-            switch (priority) {
-                case 0:
-                    priorityS = "High";
-                    break;
-                case 1:
-                    priorityS = "Medium";
-                    break;
-                case 2:
-                    priorityS = "Low";
-                    break;
-            }
-
             dialogEventName.setText(eventsList.get(position).getName());
             dialogEventCourse.setText(eventsList.get(position).getCourse());
-            dialogEventEndD.setText(endDate);
-            dialogEventEndT.setText(endTime);
-            dialogEventPriority.setText(priorityS);
+            dialogEventPriority.setText(setPriority(eventsList.get(position).getPriority()));
 
+            // Sets the popup dialog created and displays it
             builder.setView(dialogView);
             builder.setCancelable(true);
             builder.show();
         };
+    }
+
+    /**
+     * Sets the View Dialog in order to present the correct dialog with the correct information
+     *
+     * @param v a View for the device screen.
+     * @param popupTypeID the id for the xml activity
+     * @param nameID the ID for the event name
+     * @param courseID the ID for the course name
+     * @param endDateID the ID for the end date
+     * @param endTimeID the ID for the end date
+     * @param priorityID the ID for the end date
+     * @param startDateID the ID for the end date
+     * @param startTimeID the ID for the end date
+     *
+     * @return the view of the dialog
+     */
+    private View setView(View v, int popupTypeID, int nameID, int courseID, int endDateID, int endTimeID,
+                         int priorityID, int startDateID, int startTimeID) {
+        View dialogView = LayoutInflater.from(v.getRootView().getContext()).inflate(popupTypeID, null);
+        dialogEventName = dialogView.findViewById(nameID);
+        dialogEventCourse = dialogView.findViewById(courseID);
+        dialogEventEndD = dialogView.findViewById(endDateID);
+        dialogEventEndT = dialogView.findViewById(endTimeID);
+        dialogEventPriority = dialogView.findViewById(priorityID);
+        dialogEventEndD.setText(endDate);
+        dialogEventEndT.setText(endTime);
+        if (startDateID != 0) {
+            dialogEventStartD = dialogView.findViewById(startDateID);
+            dialogEventStartT = dialogView.findViewById(startTimeID);
+            dialogEventStartD.setText(startDate);
+            dialogEventStartT.setText(startTime);
+        }
+        return dialogView;
+    }
+    /**
+     * Sets the View Dialog in order to present the correct dialog with the correct information
+     *
+     * @param priority an in that represent a numerical representation of priority
+     * @return a string representation of priority
+     */
+    private String setPriority(int priority){
+        String priorityType = "";
+        switch (priority) {
+            case 0:
+                priorityType = "High";
+                break;
+            case 1:
+                priorityType = "Medium";
+                break;
+            case 2:
+                priorityType = "Low";
+                break;
+        }
+        return priorityType;
     }
 
     /**
