@@ -21,11 +21,11 @@
 ## Design Document Statement
 
 ### Is all the above discussed in an organized way?
-We, the group members of Generic name can confirm that all elements of the design document are present in order according
-to the rubric order and completed to the best of our ability.
+We, the group members of Generic name can confirm that all elements of the design document are present and in order 
+according to the rubric order and completed to the best of our ability.
 
 ### Does your design document convince your team that you deserve the grade you are hoping to earn?
-We have thoroughly read the Phase 1 + 2 rubric and incorporated all feedback given from our TA into both our project and 
+We have thoroughly read the Phase 1 + 2 rubric and incorporated most feedback given from our TA into both our project and 
 our design document. Our design document is detailed and clear while also containing extra features such as instructions 
 on how to set up the app and how run certain features.
 
