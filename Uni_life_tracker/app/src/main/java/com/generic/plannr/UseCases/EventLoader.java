@@ -1,6 +1,5 @@
 package com.generic.plannr.UseCases;
 
-import com.generic.plannr.Entities.Event;
 import com.generic.plannr.Entities.SchoolEvent;
 import com.generic.plannr.Gateways.EventGatewayInterface;
 
@@ -26,9 +25,11 @@ public class EventLoader {
      * Loads the events from the database of the current user
      * @param userID the ID of the current user
      */
-    public void loadEvents(int userID) {
+    public EventList loadEvents(int userID) {
+        eventList.clear();
         for (SchoolEvent e: eg.getAllEvents(userID)) {
             eventList.add(e);
         }
+        return eventList;
     }
 }
