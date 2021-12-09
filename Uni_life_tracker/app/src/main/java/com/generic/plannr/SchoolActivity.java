@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.generic.plannr.Entities.SchoolEvent;
 import com.generic.plannr.Gateways.EventGateway;
 import com.generic.plannr.Gateways.UserGateway;
+import com.generic.plannr.UseCases.EventList;
+import com.generic.plannr.UseCases.EventLoader;
 import com.generic.plannr.UseCases.GetEventsOfDate;
 
 import java.time.LocalDate;
@@ -36,6 +38,9 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
     private RecyclerView rvEvents;
     UserGateway ug = new UserGateway(SchoolActivity.this);
     EventGateway eg = new EventGateway(SchoolActivity.this);
+
+    EventList events = new EventList();
+    EventLoader el = new EventLoader(eg, events);
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -141,7 +146,8 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
 
         int userID = ug.getLoggedInUserID();
 
-        eventsList.addAll(GetEventsOfDate.getEventsOfDate(eg.getAllEvents(userID), CalendarUtil.selectedDate));
+        el.loadEvents(userID);
+        eventsList.addAll(GetEventsOfDate.getEventsOfDate(events, LocalDate.now()));
     }
 
     private void initWidgets()
