@@ -10,7 +10,6 @@
         android:gravity="center"
         tools:context=".WelcomeActivity">
 
-
     <!--  Logo  -->
     <ImageView
             android:layout_width="250dp"

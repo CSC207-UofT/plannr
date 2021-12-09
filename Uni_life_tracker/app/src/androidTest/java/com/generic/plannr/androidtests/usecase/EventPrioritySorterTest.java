@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
+@SuppressWarnings("ALL")
 public class EventPrioritySorterTest {
     Context context;
     EventList eventList;

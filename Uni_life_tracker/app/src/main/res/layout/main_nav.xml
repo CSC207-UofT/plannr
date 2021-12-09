@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
 
-    <!--  Navigation Menu  -->
+    <!--  Logo  -->
     <ImageView
             android:layout_width="match_parent"
             android:layout_height="120dp"
@@ -15,69 +16,78 @@
             android:src="@drawable/ic_plannr_blob"
             android:contentDescription="@string/app_name"/>
 
-    <!--  School  -->
-    <TextView
+    <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/school"
-            android:fontFamily="@font/roboto_mono_bold"
-            android:textStyle="bold"
-            android:textAlignment="center"
-            android:padding="5dp"
-            android:layout_marginVertical="15dp"
-            android:onClick="clickSchool"
-            app:drawableTopCompat="@drawable/ic_school"/>
+            android:layout_height="wrap_content">
 
-    <!--  Life  -->
-<!--    <TextView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/life"-->
-<!--            android:fontFamily="@font/roboto_mono_bold"-->
-<!--            android:textStyle="bold"-->
-<!--            android:textAlignment="center"-->
-<!--            android:padding="5dp"-->
-<!--            android:layout_marginVertical="10dp"-->
-<!--            android:onClick="clickLife"-->
-<!--            app:drawableTopCompat="@drawable/ic_home"/>-->
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-    <!--  Expenses  -->
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/expenses"
-            android:fontFamily="@font/roboto_mono_bold"
-            android:textStyle="bold"
-            android:textAlignment="center"
-            android:padding="5dp"
-            android:layout_marginVertical="15dp"
-            android:onClick="clickExpenses"
-            app:drawableTopCompat="@drawable/ic_expenses"/>
+            <!--  School  -->
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/school"
+                    android:fontFamily="@font/roboto_mono_bold"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:padding="5dp"
+                    android:layout_marginVertical="15dp"
+                    android:onClick="clickSchool"
+                    app:drawableTopCompat="@drawable/ic_school"/>
 
-    <!--  Settings  -->
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/settings"
-            android:fontFamily="@font/roboto_mono_bold"
-            android:textStyle="bold"
-            android:textAlignment="center"
-            android:padding="5dp"
-            android:layout_marginVertical="15dp"
-            android:onClick="clickSettings"
-            app:drawableTopCompat="@drawable/ic_settings"/>
+            <!--  Life  -->
+            <!--    <TextView-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:text="@string/life"-->
+            <!--            android:textStyle="bold"-->
+            <!--            android:textAlignment="center"-->
+            <!--            android:padding="5dp"-->
+            <!--            android:layout_marginVertical="10dp"-->
+            <!--            android:onClick="clickLife"-->
+            <!--            app:drawableTopCompat="@drawable/ic_home"/>-->
 
-    <!--  Log Out  -->
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/log_out"
-            android:fontFamily="@font/roboto_mono_bold"
-            android:textStyle="bold"
-            android:textAlignment="center"
-            android:padding="5dp"
-            android:layout_marginVertical="15dp"
-            android:onClick="clickLogOut"
-            app:drawableTopCompat="@drawable/ic_logout"/>
+            <!--  Expenses  -->
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/expenses"
+                    android:fontFamily="@font/roboto_mono_bold"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:padding="5dp"
+                    android:layout_marginVertical="15dp"
+                    android:onClick="clickExpenses"
+                    app:drawableTopCompat="@drawable/ic_expenses"/>
 
+            <!--  Settings  -->
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings"
+                    android:fontFamily="@font/roboto_mono_bold"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:padding="5dp"
+                    android:layout_marginVertical="15dp"
+                    android:onClick="clickSettings"
+                    app:drawableTopCompat="@drawable/ic_settings"/>
+
+            <!--  Log Out  -->
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/log_out"
+                    android:fontFamily="@font/roboto_mono_bold"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:padding="5dp"
+                    android:layout_marginVertical="15dp"
+                    android:onClick="clickLogOut"
+                    app:drawableTopCompat="@drawable/ic_logout"/>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

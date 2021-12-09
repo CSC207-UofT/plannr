@@ -22,6 +22,7 @@ import org.junit.Test;
 import java.time.LocalDateTime;
 import java.util.Random;
 
+@SuppressWarnings("ALL")
 public class EventPriorityComparatorTest {
     Context context;
     EventList eventList;

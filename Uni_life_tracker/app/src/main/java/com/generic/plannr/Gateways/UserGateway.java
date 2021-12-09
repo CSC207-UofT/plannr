@@ -11,6 +11,7 @@ import com.generic.plannr.Entities.User;
 
 import static java.sql.Types.NULL;
 
+@SuppressWarnings("ALL")
 public class UserGateway implements UserGatewayInterface {
 
     public SQLiteDatabase db;
@@ -134,7 +135,7 @@ public class UserGateway implements UserGatewayInterface {
     /**
      * Get the user id that is currently logged into the app
      *
-     * @return the logged in user id
+     * @return the logged-in user id
      */
     public Integer getLoggedInUserID() {
         openDatabase();
@@ -150,9 +151,9 @@ public class UserGateway implements UserGatewayInterface {
     }
 
     /**
-     * Get the current logged in user's name currently stored in the database
+     * Get the current logged-in user's name currently stored in the database
      *
-     * @return the logged in user's name in the database
+     * @return the logged-in user's name in the database
      */
     public String getLoggedInName() {
         openDatabase();
@@ -167,7 +168,7 @@ public class UserGateway implements UserGatewayInterface {
     }
 
     /**
-     * Get the current logged in user's email currently stored in the database
+     * Get the current logged-in user's email currently stored in the database
      *
      * @return the logged in user's email in the database
      */
@@ -202,7 +203,7 @@ public class UserGateway implements UserGatewayInterface {
     }
 
     /**
-     * Get the current logged in user's income currently stored in the database
+     * Get the current logged-in user's income currently stored in the database
      *
      * @return the logged in user's income in the database
      */

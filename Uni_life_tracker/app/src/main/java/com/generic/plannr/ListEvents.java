@@ -17,29 +17,30 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-public class ListEvents extends RecyclerView.Adapter<ListEvents.MyViewHolder>{
+@SuppressWarnings("ALL")
+public class ListEvents extends RecyclerView.Adapter<ListEvents.MyViewHolder> {
     private ArrayList<SchoolEvent> eventsList;
     private RecyclerViewClickLister listener;
 
     /**
      * Construct a ListEvents, giving it an eventslist.
      *
-     * @param eventsList    An ArrayList of Events to be displayed
+     * @param eventsList An ArrayList of Events to be displayed
      */
-    public ListEvents(ArrayList<SchoolEvent> eventsList, RecyclerViewClickLister listener){
+    public ListEvents(ArrayList<SchoolEvent> eventsList, RecyclerViewClickLister listener) {
         this.eventsList = eventsList;
         this.listener = listener;
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView tvEventName, tvEventTime;
 
         /**
          * Finds and sets TextView to display event details.
          *
-         * @param view  a View for the device screen.
+         * @param view a View for the device screen.
          */
-        public MyViewHolder(final View view){
+        public MyViewHolder(final View view) {
             super(view);
             tvEventName = view.findViewById(R.id.tv_event_name);
             tvEventTime = view.findViewById(R.id.tv_event_time);
@@ -76,8 +77,7 @@ public class ListEvents extends RecyclerView.Adapter<ListEvents.MyViewHolder>{
         return eventsList.size();
     }
 
-    public interface RecyclerViewClickLister{
+    public interface RecyclerViewClickLister {
         void onClick(View v, int position);
-
     }
 }

@@ -9,9 +9,9 @@ import android.database.sqlite.SQLiteDatabase;
 import com.generic.plannr.Database.DatabaseClient;
 import com.generic.plannr.Entities.Expense;
 
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
+@SuppressWarnings("ALL")
 public class ExpenseGateway implements ExpenseGatewayInterface {
 
     public SQLiteDatabase db;

@@ -1,3 +1,8 @@
+/* Plannr by Generic Name
+ *
+ * This file represents a ListExpenses class which displays expenses in a
+ * RecyclerView, for activity_expenses.xml.
+ */
 package com.generic.plannr;
 
 import com.generic.plannr.Entities.Expense;
@@ -12,19 +17,28 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 
-public class ListExpenses extends RecyclerView.Adapter<ListExpenses.MyViewHolder>{
+@SuppressWarnings("ALL")
+public class ListExpenses extends RecyclerView.Adapter<ListExpenses.MyViewHolder> {
     private ArrayList<Expense> expensesArrayList;
 
-    public ListExpenses(ArrayList<Expense> expensesArrayList){
+    /**
+     * Construct a ListExpenses, giving it an expensesArrayList.
+     *
+     * @param expensesArrayList An ArrayList of Expenses to be displayed
+     */
+    public ListExpenses(ArrayList<Expense> expensesArrayList) {
         this.expensesArrayList = expensesArrayList;
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
-       private TextView expenseNameTxt, expenseAmountTxt;
-        //private TextInputLayout expenseNameTxt, expenseAmountTxt;
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        private TextView expenseNameTxt, expenseAmountTxt;
 
-
-        public MyViewHolder(final View view){
+        /**
+         * Finds and sets TextView to display expense details.
+         *
+         * @param view a View for the device screen.
+         */
+        public MyViewHolder(final View view) {
             super(view);
             expenseNameTxt = view.findViewById(R.id.tv_expense_name);
             expenseAmountTxt = view.findViewById(R.id.tv_expense_amount);

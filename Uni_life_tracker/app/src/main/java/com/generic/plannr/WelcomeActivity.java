@@ -9,6 +9,7 @@ import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
+@SuppressWarnings("ALL")
 public class WelcomeActivity extends AppCompatActivity {
     Handler handler = new Handler();
 
@@ -16,7 +17,7 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-        
+
         handler.postDelayed(() -> {
             Intent intent = new Intent(WelcomeActivity.this, LoginActivity.class);
             startActivity(intent);

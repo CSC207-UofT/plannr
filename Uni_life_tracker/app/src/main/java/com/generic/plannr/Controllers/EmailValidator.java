@@ -38,7 +38,6 @@ public class EmailValidator implements Validator {
             return false;
         } else {
             userInput.setError(null);
-            ug.updateLoggedInUser(email);
             return true;
         }
     }

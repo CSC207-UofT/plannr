@@ -16,7 +16,7 @@ public class EventPriorityComparator implements Comparator<SchoolEvent> {
      * @param e1 represents an event
      * @param e2 represents the other event
      * @return -1 if e1 has higher priority, 0 if e1 and e2 have the same priority, and
-     * 1 if if e1 has lower priority.
+     * 1 if e1 has lower priority.
      */
     public int compare(@NonNull SchoolEvent e1, @NonNull SchoolEvent e2) {
         return Integer.compare(e1.getPriority(), e2.getPriority());

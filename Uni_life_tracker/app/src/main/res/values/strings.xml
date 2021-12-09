@@ -2,7 +2,6 @@
     <!--  General  -->
     <string name="app_name">Plannr</string>
     <string name="school">School</string>
-    <string name="life">Life</string>
     <string name="expenses">Expenses</string>
     <string name="settings">Settings</string>
     <string name="back">Back</string>
@@ -40,7 +39,6 @@
     <string name="amount">Amount:</string>
     <string name="income">Income</string>
     <string name="add_income">Add Income</string>
-    <string name="save_income">Save Income</string>
     <string name="total_expenses">Total Expenses</string>
     <string name="balance">Balance</string>
 

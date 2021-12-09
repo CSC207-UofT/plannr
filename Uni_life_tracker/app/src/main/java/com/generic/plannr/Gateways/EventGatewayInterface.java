@@ -2,7 +2,6 @@ package com.generic.plannr.Gateways;
 
 import com.generic.plannr.Entities.SchoolEvent;
 
-import java.time.LocalDate;
 import java.util.List;
 
 public interface EventGatewayInterface {

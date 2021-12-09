@@ -19,7 +19,7 @@
                 android:id="@+id/iv_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="ClickBack"
+                android:onClick="clickBack"
                 android:src="@drawable/ic_back_arrow"
                 android:tint="?attr/colorOnPrimary"
                 android:contentDescription="@string/back"/>
@@ -45,7 +45,7 @@
                 android:src="@drawable/ic_done"
                 android:tint="?attr/colorOnPrimary"
                 android:contentDescription="@string/save"
-                android:onClick="AddExpensesInput"/>
+                android:onClick="clickSaveExpense"/>
 
     </LinearLayout>
 
@@ -71,6 +71,7 @@
                 app:boxBackgroundColor="@color/transparent"
 
                 app:errorEnabled="true">
+
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -101,6 +102,7 @@
                 android:layout_height="wrap_content"
                 app:boxBackgroundColor="@color/transparent"
                 app:errorEnabled="true">
+
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

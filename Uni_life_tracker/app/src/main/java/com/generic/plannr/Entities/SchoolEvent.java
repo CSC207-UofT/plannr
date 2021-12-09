@@ -12,10 +12,10 @@ public class SchoolEvent extends Event {
 
 
     /**
-     * Construct an com.generic.plannr.Entities.SchoolEvent event, giving them the given
+     * Construct a com.generic.plannr.Entities.SchoolEvent event, giving them the given
      * name, priority, start date, end date, course.
      *
-     * @param userID the userID of the user whose events belongs to
+     * @param userID the userID of the user whose events belong to
      * @param eventType This SchoolEvent's event type ("assessment",
      *                  "deadline", "class", "study session")
      * @param name This SchoolEvent's name
@@ -32,7 +32,7 @@ public class SchoolEvent extends Event {
     }
 
     /**
-     * Construct an com.generic.plannr.Entities.SchoolEvent event, giving them the given
+     * Construct a com.generic.plannr.Entities.SchoolEvent event, giving them the given
      * name, priority, start date, end date, course.
      *
      * @param eventType This SchoolEvent's event type ("assessment",

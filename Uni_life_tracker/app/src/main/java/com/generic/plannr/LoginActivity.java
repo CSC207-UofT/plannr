@@ -1,3 +1,7 @@
+/* Plannr by Generic Name
+ *
+ * This file contains methods for activity_login.xml.
+ */
 package com.generic.plannr;
 
 import android.os.Bundle;
@@ -11,9 +15,8 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
 
-public class LoginActivity  extends AppCompatActivity {
-
-    // initialize variables
+@SuppressWarnings("ALL")
+public class LoginActivity extends AppCompatActivity {
     private TextInputLayout tiEmail;
     private TextInputLayout tiPassword;
     private MainActivity activity;
@@ -24,21 +27,25 @@ public class LoginActivity  extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // connecting variables to UI features in activities by their id
         tiEmail = findViewById(R.id.ti_email_login);
         tiPassword = findViewById(R.id.ti_password_login);
 
         activity = new MainActivity();
     }
 
+    /**
+     * Directs activity to the Main activity.
+     */
     private void openMain() {
-        // Moves to the MainActivity
         activity.redirectActivity(this, MainActivity.class);
         finish();
     }
 
-    public boolean LoginInput () {
-        // Creates instances of validators to be able to access its methods
+    /**
+     * Returns whether login input is valid.
+     */
+    public boolean loginInput () {
+        // Creates instance of validators to be able to access its methods
         EmailValidator emailValidator = new EmailValidator();
         PasswordValidator passwordValidator = new PasswordValidator();
 
@@ -47,16 +54,26 @@ public class LoginActivity  extends AppCompatActivity {
                 passwordValidator.validateEntry(tiPassword, ug, tiEmail, tiPassword, false);
     }
 
+    /**
+     * Directs activity to the Main activity on
+     * button click, if login credentials are correct.
+     *
+     * @param view a View for the device screen.
+     */
     public void clickLogin(View view) {
         // If all login credentials are correct, go into the main page
-        if (LoginInput()) {
+        if (loginInput()) {
             openMain();
             ug.updateLoggedInUser(Objects.requireNonNull(tiEmail.getEditText()).getText().toString());
         }
     }
 
+    /**
+     * Directs activity to the Sign-Up activity on button click.
+     *
+     * @param view a View for the device screen.
+     */
     public void clickSignup(View view) {
-        // Moves to the MainActivity
         activity.redirectActivity(this, SignUpActivity.class);
     }
 }

@@ -40,7 +40,7 @@ public class ExpenseTest {
 
     @Test
     public void getUserID() {
-        assertEquals(((int) exp.getUserID()), ((int) UG.getLoggedInUserID()));
+        assertEquals(exp.getUserID(), ((int) UG.getLoggedInUserID()));
     }
 
     @Test

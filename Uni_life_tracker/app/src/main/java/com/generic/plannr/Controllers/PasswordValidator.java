@@ -1,3 +1,8 @@
+/* Plannr by Generic Name
+ *
+ * This file represents a Validator class
+ * which is used to validate a user's input.
+ */
 package com.generic.plannr.Controllers;
 
 import com.generic.plannr.Gateways.UserGateway;
@@ -13,7 +18,7 @@ public class PasswordValidator implements Validator {
             Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–\\[\\]?/\\\\*_$^+=]).{6,}$");
 
     /**
-     * Validates inputs and displays the different error messages for the user inpupts
+     * Validates inputs and displays the different error messages for the user inputs.
      *
      * @param userInput  the input from the main layout that will display the error
      * @param ug         the gateway connecting to the userinfo database
@@ -31,12 +36,10 @@ public class PasswordValidator implements Validator {
         if (input.isEmpty()) {
             userInput.setError("Field cannot be empty");
             return false;
-
         } else if (isSignup && userInput == tiPassword && !PASSWORD_REQ.matcher(input).matches()) {
             StringBuilder str = passwordReq(input);
             userInput.setError(str.toString());
             return false;
-
         } else if (!isSignup && userInput == tiPassword && !ug.getPassword(email).equals(password)
                 && !ug.uniqueEmail(email)) {
             userInput.setError("The password you entered is incorrect");
@@ -48,7 +51,7 @@ public class PasswordValidator implements Validator {
     }
 
     /**
-     * Uses regex to make sure the password inputted is secure
+     * Uses Regex to make sure the password inputted is secure
      *
      * @param input The password that the user types into the textbox
      * @return a string that includes all the requirements that the password violates, if any

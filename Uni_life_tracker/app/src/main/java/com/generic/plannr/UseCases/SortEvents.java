@@ -13,6 +13,7 @@ public class SortEvents {
 
     /**
      * Sorts list of today's events from user by date.
+     *
      * @param events is the list of events to be sorted
      * @return the list of today's events sorted by date in descending order.
      */
@@ -24,6 +25,7 @@ public class SortEvents {
 
     /**
      * Sorts list of today's events from user by priority.
+     *
      * @param events is the list of events to be sorted
      * @return the list of today's events sorted by priority in descending order.
      */
