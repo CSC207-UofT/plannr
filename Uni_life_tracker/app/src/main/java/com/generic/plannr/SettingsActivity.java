@@ -5,6 +5,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.generic.plannr.Controllers.InputTextValidator;
 import com.generic.plannr.Controllers.PasswordValidator;
 import com.generic.plannr.Gateways.UserGateway;
 import com.google.android.material.textfield.TextInputEditText;
@@ -60,7 +61,9 @@ public class SettingsActivity extends AppCompatActivity {
     public void clickSave(View view) {
         // gets user input from textbox
         PasswordValidator passwordValidator = new PasswordValidator();
-        if (passwordValidator.validateEntry(tiPassword, ug, tiName, tiPassword, true))
+        InputTextValidator input = new InputTextValidator();
+        if (passwordValidator.validateEntry(tiPassword, ug, tiName, tiPassword, true) &
+                input.validateEntry(tiName, ug, tiName, tiPassword, true))
         {
             String name = Objects.requireNonNull(tiName.getEditText()).getText().toString();
             String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();

@@ -137,9 +137,9 @@ public class AddClassEventActivity extends AppCompatActivity implements RadioGro
                 endTimeAfter = true;
             }
         }
-
         return input.validateAddEvent(etEventName) & input.validateAddEvent(tvEndDate)
-                & input.validateAddEvent(tvEndTime) & input.validateAddEvent(etCourse) & input.validateAddEvent(etLocation) & endTimeAfter;
+                & input.validateAddEvent(tvEndTime) & input.validateAddEvent(etCourse)
+                & input.validateAddEvent(etLocation) & endTimeAfter;
     }
 
     /**
