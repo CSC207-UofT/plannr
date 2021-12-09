@@ -1,19 +1,22 @@
 package com.generic.plannr;
 
-import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.generic.plannr.Entities.Expense;
 import com.generic.plannr.Gateways.ExpenseGateway;
 import com.generic.plannr.Gateways.UserGateway;
+import com.generic.plannr.UseCases.ExpenseList;
+import com.generic.plannr.UseCases.ExpenseLoader;
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetView;
 import com.google.android.material.textfield.TextInputEditText;
@@ -35,6 +38,9 @@ public class ExpensesActivity extends AppCompatActivity {
     private double totalExpenses, balance, income;
     UserGateway ug = new UserGateway(ExpensesActivity.this);
     ExpenseGateway eg = new ExpenseGateway(ExpensesActivity.this);
+
+    ExpenseList expenses = new ExpenseList();
+    ExpenseLoader el = new ExpenseLoader(eg, expenses);
 
 
     @Override
@@ -109,7 +115,11 @@ public class ExpensesActivity extends AppCompatActivity {
      * and adds all expenses to expense list
      */
     private void setExpenseInfo() {
-        expensesList.addAll(eg.getAllExpenses(ug.getLoggedInUserID()));
+
+        int userID = ug.getLoggedInUserID();
+
+        el.loadExpenses(userID);
+        expensesList.addAll(expenses.getExpensesList());
     }
 
     /**
