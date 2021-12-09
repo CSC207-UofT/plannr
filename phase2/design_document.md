@@ -144,7 +144,7 @@ and made sure to incorporate them into every commit.
 ## Clean Architecture
 
 ### Clean Architecture Discussion
-![alt text](https://github.com/CSC207-UofT/course-project-generic-name-1/blob/design_doc/phase2/images/uml_diagram.png "UML Diagram")
+
 Our program is consistent with Clean Architecture because, as we can see with the general UML diagram given above,
 we made sure that the Entities were unaware of the Use Cases, the Use Cases are unaware of the
 Controllers/Presenters/Gateways, and the Controllers/Presenters are unaware of the Activities. If we wanted to violate
@@ -156,6 +156,8 @@ and pass a EventGateway object to it through the controller. That way EventManag
 such as the Controller and the Gateway. The flow goes from the activities to the controller to the use case, through
 the boundary interfaces, to the entities back to the use cases, then presenter, the activity and finally the UI.
 
+### UML Diagram
+The diagram is shared with our TA's email through oneNote, it is a document that cannot fit into the design document.
 
 ### Scenario Walk-Through that shows Clean Architecture
 
