@@ -72,7 +72,7 @@ public class AddExpensesActivity extends AppCompatActivity {
             int userID = ug.getLoggedInUserID();
 
             // Adds all the user's info into the database using the gateway
-            eg.saveToDatabase(new Expense(name, Double.parseDouble(amount)), userID);
+            eg.saveToDatabase(new Expense(userID, name, Double.parseDouble(amount)), userID);
             Intent intent = new Intent(this, ExpensesActivity.class);
             startActivity(intent);
         }
