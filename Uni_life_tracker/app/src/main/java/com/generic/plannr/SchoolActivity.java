@@ -146,8 +146,7 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
 
         int userID = ug.getLoggedInUserID();
 
-        el.loadEvents(userID);
-        eventsList.addAll(GetEventsOfDate.getEventsOfDate(events, CalendarUtil.selectedDate));
+        eventsList.addAll(GetEventsOfDate.getEventsOfDate(el.loadEvents(userID), CalendarUtil.selectedDate));
     }
 
     private void initWidgets()
@@ -195,7 +194,6 @@ public class SchoolActivity extends AppCompatActivity implements CalendarAdapter
             setAdapter();
             setMonthView();
         }
-
     }
 
     public void clickMenu(View view) { activity.openDrawer(drawerLayout); } // open drawer
