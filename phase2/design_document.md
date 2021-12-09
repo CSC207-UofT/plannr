@@ -320,21 +320,22 @@ else, change it by clicking on it to invoke [the dropdown](https://imgur.com/a/W
 can now run the app by clicking on the "Run" button at the top right of the window.
 
 ### Verify That You Launched Successfully
-If you see [this](https://imgur.com/a/bySL42L) as the landing page and [this](https://imgur.com/a/ijT3Z0F) as the login
-page, you have launched successfully ([GIF example](https://imgur.com/a/HYjDbsf))
+If you see [this](https://imgur.com/a/uoIiAwn) as the landing page and [this](https://imgur.com/a/pJIsR33) as the login
+page, you have launched successfully ([GIF example](https://imgur.com/a/XUPTtWK))
 
 ### How to Run Tests
 
 Once you have loaded our project into Android Studio, you should be able to see two test packages, all colored green.
 One labeled test, the other labeled AndroidTest. To run the tests, simply right-click on the subdirectory, beginning
 with
-`com.` and choose "Run...". [Here is a quick GIF demonstration](https://imgur.com/a/HYjDbsf)
+`com.` and choose "Run...". [Here is a quick GIF demonstration](https://imgur.com/a/G193a2H)
 
-* The java tests are written using JUnit 4, so the test behaviour would be the expected behaviour of any Java unit tests
-* The tests for `Gateways` are written using Android Instrumented test, so the behaviour is a little different. When you
-  click run, your emulator will launch, but the app will not actually launch in the emulator. The emulator only provides
-  contextual support to the tests, so it is an expected behaviour and is not a bug.
-
+* You will find two test packages, one named `androidtests`, the other named `tests`. The `androidtests` package
+contains all Android Instrumented tests, which utilizes an emulator and run the tests through the emulator. The `tests` 
+package includes all normal JUnit 4 tests.
+* When you run the Android Instrumented tests, you will see your emulator launch, but our app `Plannr` should not launch.
+This is an expected behaviour and not a bug. If you see our app launching, there is probably something wrong with your
+system setup. Check above for details.
 
 
 ### Instructions for Use of Features
