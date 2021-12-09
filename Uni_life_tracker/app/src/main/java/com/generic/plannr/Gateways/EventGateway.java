@@ -18,7 +18,7 @@ public class EventGateway implements EventGatewayInterface {
 
     public SQLiteDatabase db;
     public DatabaseClient dbclient;
-    public static final DateTimeFormatter DATEFORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+    public final DateTimeFormatter DATEFORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
 
     public EventGateway(Context context) {
         dbclient = new DatabaseClient(context);
@@ -67,7 +67,6 @@ public class EventGateway implements EventGatewayInterface {
         if (!cur.moveToFirst()) {
             return null;
         }
-
         String eventType = cur.getString(cur.getColumnIndexOrThrow("EVENT_TYPE"));
         String name = cur.getString(cur.getColumnIndexOrThrow("NAME"));
         int priority = cur.getInt(cur.getColumnIndexOrThrow("PRIORITY"));
@@ -75,13 +74,18 @@ public class EventGateway implements EventGatewayInterface {
         LocalDateTime end = LocalDateTime.parse(cur.getString(cur.getColumnIndexOrThrow("END_DATE")), DATEFORMAT);
         String location = cur.getString(cur.getColumnIndexOrThrow("LOCATION"));
         String course = cur.getString(cur.getColumnIndexOrThrow("COURSE"));
+        int userID = cur.getInt(cur.getColumnIndexOrThrow("USER_ID"));
+
 
         if (location.equals("N/A")) {
-            return new SchoolEvent(eventType, name, priority, start, end, course);
+            return new SchoolEvent(userID, eventType, name, priority, start, end, course);
         } else {
-            return new SchoolEvent(eventType, name, priority, start, end, course, location);
+            return new SchoolEvent(userID, eventType, name, priority, start, end, course, location);
         }
+
+
     }
+
 
     /**
      * Get the list of SchoolEvents currently stored in the database for user with
@@ -108,10 +112,10 @@ public class EventGateway implements EventGatewayInterface {
                     String course = cur.getString(cur.getColumnIndexOrThrow("COURSE"));
 
                     if (location.equals("N/A")) {
-                        SchoolEvent event = new SchoolEvent(eventType, name, priority, start, end, course);
+                        SchoolEvent event = new SchoolEvent(userID, eventType, name, priority, start, end, course);
                         eventsList.add(event);
                     } else {
-                        SchoolEvent event = new SchoolEvent(eventType, name, priority, start, end, course, location);
+                        SchoolEvent event = new SchoolEvent(userID, eventType, name, priority, start, end, course, location);
                         eventsList.add(event);
                     }
 
@@ -124,46 +128,4 @@ public class EventGateway implements EventGatewayInterface {
 
     }
 
-    /**
-     * Get the list of SchoolEvents that start at date currently stored in the
-     * database for user with user id userID
-     *
-     * @param userID the user's id
-     * @param date   the start date of the events to be returned
-     * @return a list of all events that start at date stored in the
-     * database for the user
-     */
-    public ArrayList<SchoolEvent> getEventsByDate(LocalDate date, int userID) {
-        openDatabase();
-        ArrayList<SchoolEvent> eventsList = new ArrayList<>();
-        @SuppressLint("Recycle") Cursor cur = db.rawQuery("SELECT * FROM events WHERE " +
-                "USER_ID = " + userID, null);
-        if (cur != null) {
-            if (cur.moveToFirst()) {
-                do {
-                    LocalDateTime start = LocalDateTime.parse(cur.getString(cur.getColumnIndexOrThrow("START_DATE")), DATEFORMAT);
-
-                    if (!(start.toLocalDate().isEqual(date))) {
-                        continue;
-                    }
-
-                    String eventType = cur.getString(cur.getColumnIndexOrThrow("EVENT_TYPE"));
-                    String name = cur.getString(cur.getColumnIndexOrThrow("NAME"));
-                    int priority = cur.getInt(cur.getColumnIndexOrThrow("PRIORITY"));
-                    LocalDateTime end = LocalDateTime.parse(cur.getString(cur.getColumnIndexOrThrow("END_DATE")), DATEFORMAT);
-                    String location = cur.getString(cur.getColumnIndexOrThrow("LOCATION"));
-                    String course = cur.getString(cur.getColumnIndexOrThrow("COURSE"));
-
-                    if (location.equals("N/A")) {
-                        SchoolEvent event = new SchoolEvent(eventType, name, priority, start, end, course);
-                        eventsList.add(event);
-                    } else {
-                        SchoolEvent event = new SchoolEvent(eventType, name, priority, start, end, course, location);
-                        eventsList.add(event);
-                    }
-                } while (cur.moveToNext());
-            }
-        }
-        return eventsList;
-    }
 }

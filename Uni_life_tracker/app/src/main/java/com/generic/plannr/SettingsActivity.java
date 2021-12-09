@@ -9,6 +9,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.generic.plannr.Controllers.InputTextValidator;
 import com.generic.plannr.Controllers.PasswordValidator;
 import com.generic.plannr.Gateways.UserGateway;
 import com.google.android.material.textfield.TextInputEditText;
@@ -72,8 +73,10 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void clickSave(View view) {
         // Gets user input from TextBox
-        PasswordValidator input = new PasswordValidator();
-        if (input.validateEntry(tiPassword, ug, tiName, tiPassword, true)) {
+        PasswordValidator passwordValidator = new PasswordValidator();
+        InputTextValidator input = new InputTextValidator();
+        if (passwordValidator.validateEntry(tiPassword, ug, tiName, tiPassword, true) &
+                input.validateEntry(tiName, ug, tiName, tiPassword, true)) {
             String name = Objects.requireNonNull(tiName.getEditText()).getText().toString();
             String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();
 
@@ -82,6 +85,7 @@ public class SettingsActivity extends AppCompatActivity {
             ug.updatePassword(password);
             changeTextEdit(false); // Disables TextBox so it becomes read only
         }
+
     }
 
     /**

@@ -12,6 +12,7 @@ import com.generic.plannr.Controllers.EmailValidator;
 import com.generic.plannr.Controllers.InputTextValidator;
 import com.generic.plannr.Controllers.PasswordValidator;
 import com.generic.plannr.Gateways.UserGateway;
+import com.generic.plannr.UseCases.UserCreator;
 import com.generic.plannr.UseCases.UserManager;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -73,8 +74,7 @@ public class SignUpActivity extends AppCompatActivity {
             String email = Objects.requireNonNull(tiEmail.getEditText()).getText().toString();
             String password = Objects.requireNonNull(tiPassword.getEditText()).getText().toString();
 
-            UserManager um = new UserManager(name, email, password);
-            ug.saveToDatabase(um.getUser());
+            UserCreator.signUp(ug, name, email, password);
 
             openMain();
             ug.updateLoggedInUser(email);

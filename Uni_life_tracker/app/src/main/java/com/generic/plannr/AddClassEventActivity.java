@@ -137,9 +137,9 @@ public class AddClassEventActivity extends AppCompatActivity implements RadioGro
                 endTimeAfter = true;
             }
         }
-
         return input.validateAddEvent(etEventName) & input.validateAddEvent(tvEndDate)
-                & input.validateAddEvent(tvEndTime) & input.validateAddEvent(etCourse) & input.validateAddEvent(etLocation) & endTimeAfter;
+                & input.validateAddEvent(tvEndTime) & input.validateAddEvent(etCourse)
+                & input.validateAddEvent(etLocation) & endTimeAfter;
     }
 
     /**
@@ -226,9 +226,9 @@ public class AddClassEventActivity extends AppCompatActivity implements RadioGro
             LocalDateTime end = LocalDateTime.parse(endDate + " " + endTime, DATEFORMAT);
             String course = etCourse.getText().toString();
             String location = etCourse.getText().toString();
-
-            SchoolEvent event = new SchoolEvent("Class", eventName, priority, start, end, course, location);
             int userID = ug.getLoggedInUserID();
+            SchoolEvent event = new SchoolEvent(userID, "Class", eventName, priority, start, end, course, location);
+
 
             eg.saveToDatabase(event, userID);
 

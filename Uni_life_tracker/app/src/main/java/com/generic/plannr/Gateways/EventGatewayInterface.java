@@ -37,14 +37,4 @@ public interface EventGatewayInterface {
      */
     List<SchoolEvent> getAllEvents(int userID);
 
-    /**
-     * Get the list of SchoolEvents that start at date currently stored in the
-     * database for user with user id userID
-     *
-     * @param userID the user's id
-     * @param date   the start date of the events to be returned
-     * @return a list of all events that start at date stored in the
-     * database for the user
-     */
-    List<SchoolEvent> getEventsByDate(LocalDate date, int userID);
 }

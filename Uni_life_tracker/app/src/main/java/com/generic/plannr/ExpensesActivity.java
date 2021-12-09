@@ -4,6 +4,7 @@
  */
 package com.generic.plannr;
 
+import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -33,7 +34,7 @@ public class ExpensesActivity extends AppCompatActivity {
     private MainActivity activity;
     private TextInputLayout tiIncome;
     private TextView tvTotalExpenses, tvBalance;
-    private double totalExpenses, income;
+    private double totalExpenses, balance, income;
     UserGateway ug = new UserGateway(ExpensesActivity.this);
     ExpenseGateway eg = new ExpenseGateway(ExpensesActivity.this);
 
@@ -133,7 +134,6 @@ public class ExpensesActivity extends AppCompatActivity {
 
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
         tvTotalExpenses.setText(formatter.format(totalExpenses));
-
     }
 
     /**
@@ -227,5 +227,4 @@ public class ExpensesActivity extends AppCompatActivity {
     public void clickLogOut(View view) {
         activity.logout(this);
     }
-
 }

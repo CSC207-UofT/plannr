@@ -206,9 +206,9 @@ public class AddDeadlineEventActivity extends AppCompatActivity implements Radio
             setDateTime();
             LocalDateTime end = LocalDateTime.parse(date + " " + time, DATEFORMAT);
             String course = etCourse.getText().toString();
-
-            SchoolEvent event = new SchoolEvent("Deadline", eventName, priority, start, end, course);
             int userID = ug.getLoggedInUserID();
+            SchoolEvent event = new SchoolEvent(userID, "Deadline", eventName, priority, start, end, course);
+
 
             eg.saveToDatabase(event, userID);
 
