@@ -1,0 +1,7 @@
+# Scenario Walk-Through
+
+Upon running the program, users are greeted by a welcome message and are prompted to input their name through the UniLifeTracker class (controller and presenter). Next, the user is asked to type the name of their school. Then, the user is prompted to input the course code for each class. Once completed, the input n stops the prompt to add another course. The above information is stored in an instance of the Entities.User class (entity), by the means of a UseCases.UserManager class (use case). 
+
+The user may then select an action, for which they add an event (input 1). After, they are prompted to select the type of event to be created, for which they select deadline (input 2) (Entities.Deadline subclass of Entities.Event). The user must enter the deadline name. Next, the user is asked to input the deadline due date, in the format: dd-mm-yyyy hh:mm (24-hour format). Then, the user is prompted to enter the deadline priority (0 = high, 1 = mid, 2 = low). The course list (previously specified by the user) is displayed, with each course corresponding to a number. The user must enter the number for the course for which the deadline belongs to. The above information is stored in an instance of a Entities.Deadline class (subclass of Entities.Event class), by the means of a UseCases.UserManager class (use case). 
+
+The user's list of current events and deadlines is printed. After this, the user is once again prompted to add an event or exit the program, the program stops once the user selects to exit the program.
