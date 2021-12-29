@@ -14,7 +14,7 @@ Plannr is an organizational platform developed using Java, in the form of an And
   <img src="https://github.com/CSC207-UofT/plannr/blob/main/photos/plannr_screenshot_login.png" alt="Log In" width="235">
   <img src="https://github.com/CSC207-UofT/plannr/blob/main/photos/plannr_screenshot_main.png" alt="Main View" width="235">
   <img src="https://github.com/CSC207-UofT/plannr/blob/main/photos/plannr_screenshot_school.png" alt="School View" width="235">
-  <img src="https://github.com/CSC207-UofT/plannr/blob/main/photos/plannr_screenshot_add_event.png alt="Add Event" width="235">
+  <img src="https://github.com/CSC207-UofT/plannr/blob/main/photos/plannr_screenshot_add_event.png" alt="Add Event" width="235">
   <img src="https://github.com/CSC207-UofT/plannr/blob/main/photos/plannr_screenshot_view_event.png" alt="View Event" width="235">
   <img src="https://github.com/CSC207-UofT/plannr/blob/main/photos/plannr_screenshot_expenses.png" alt="Expenses View" width="235">
   <img src="https://github.com/CSC207-UofT/plannr/blob/main/photos/plannr_screenshot_add_expenses.png" alt="Add Expense" width="235">
