@@ -4,7 +4,7 @@ Plannr is an organizational platform developed using Java, in the form of an And
 Plannr uses 
 
 <p align="center">
-  <img src="https://github.com/CSC207-UofT/course-project-generic-name-1/blob/main/plannr_blob_lavender.png" alt="Plannr" width="300">
+  <img src="https://github.com/CSC207-UofT/plannr/blob/main/photos/plannr_blob_lavender.png" alt="Plannr" width="300">
 </p>
 
 ## Built with
