@@ -1,3 +1,74 @@
 <resources>
-    <string name="app_name">plannr</string>
+    <!--  General  -->
+    <string name="app_name">Plannr</string>
+    <string name="school">School</string>
+    <string name="expenses">Expenses</string>
+    <string name="settings">Settings</string>
+    <string name="back">Back</string>
+    <string name="date">Date</string>
+    <string name="event">Event</string>
+    <string name="time">Time</string>
+    <string name="edit">Edit</string>
+    <string name="name">Name</string>
+
+    <!--  Sign Up & Log In  -->
+    <string name="add_expense">Add Expense</string>
+    <string name="email">Email</string>
+    <string name="full_name">Full Name</string>
+    <string name="password">Password</string>
+    <string name="sign_up">Sign Up!</string>
+    <string name="log_in">Log In</string>
+    <string name="log_out">Log Out</string>
+    <string name="no_account_yet">No account yet?</string>
+    <string name="have_an_existing_account">Have an existing account?</string>
+    <string name="welcome">Welcome</string>
+
+    <!--  Calendar  -->
+    <string name="sunday">SUN</string>
+    <string name="monday">MON</string>
+    <string name="tuesday">TUE</string>
+    <string name="wednesday">WED</string>
+    <string name="thursday">THU</string>
+    <string name="friday">FRI</string>
+    <string name="saturday">SAT</string>
+    <string name="date_placeholder">1</string>
+
+    <!--  Expenses  -->
+    <string name="add_name">Add Name</string>
+    <string name="add_amount">Add Amount</string>
+    <string name="amount">Amount:</string>
+    <string name="income">Income</string>
+    <string name="add_income">Add Income</string>
+    <string name="total_expenses">Total Expenses</string>
+    <string name="balance">Balance</string>
+
+    <!--  Main Page  -->
+    <string name="my_to_dos">My To Do\'s</string>
+    <string name="sort">Sort by&#8230;</string>
+    <string-array name="sort_by">
+        <item>Time</item>
+        <item>Priority</item>
+    </string-array>
+
+    <!--  Add Event  -->
+    <string name="add_school_event">Add School Event</string>
+    <string name="assessment">Assessment</string>
+    <string name="deadline">Deadline</string>
+    <string name="class_time">Class</string>
+    <string name="study_session">Study Session</string>
+    <string name="event_name">Event Name</string>
+    <string name="save">Save Event</string>
+    <string name="select_date">Select a Date</string>
+    <string name="select_start_date">Select a Start Date</string>
+    <string name="select_end_date">Select an End Date</string>
+    <string name="start_time">Start Time</string>
+    <string name="end_time">End Time</string>
+    <string name="priority">Priority</string>
+    <string name="high_priority">High</string>
+    <string name="med_priority">Medium</string>
+    <string name="low_priority">Low</string>
+    <string name="course">Course</string>
+    <string name="start_date">Start Date</string>
+    <string name="end_date">End Date</string>
+    <string name="location">Location</string>
 </resources>
