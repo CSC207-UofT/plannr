@@ -9,6 +9,18 @@ Plannr is an organizational platform developed using Java, in the form of an And
 * [SQLite](https://www.sqlite.org/index.html) - Used to store user data
 * [Android](https://developer.android.com/studio) - Used to create GUI
 
+## Screenshots
+<p float="left">
+  <img src="https://github.com/CSC207-UofT/plannr/blob/main/photos/plannr_screenshot_login.png" alt="Plannr" width="235">
+  <img src="https://github.com/CSC207-UofT/plannr/blob/main/photos/plannr_screenshot_main.png" alt="Plannr" width="235">
+  <img src="https://github.com/CSC207-UofT/plannr/blob/main/photos/plannr_screenshot_school.png" alt="Plannr" width="235">
+  <img src="https://github.com/CSC207-UofT/plannr/blob/main/photos/plannr_screenshot_view_event.png" alt="Plannr" width="235">
+  <img src="https://github.com/CSC207-UofT/plannr/blob/main/photos/plannr_screenshot_expenses.png" alt="Plannr" width="235">
+  <img src="https://github.com/CSC207-UofT/plannr/blob/main/photos/plannr_screenshot_add_expenses.png" alt="Plannr" width="235">
+  <img src="https://github.com/CSC207-UofT/plannr/blob/main/photos/plannr_screenshot_settings.png" alt="Plannr" width="235">
+</p>
+
+## How to Run
 ### System Setup
 * Android SDK version 31
 * Android Gradle Plugin Version 4.2.2
@@ -28,12 +40,12 @@ Plannr is an organizational platform developed using Java, in the form of an And
 
 ### Launch Instructions
 To launch our app, **please open our project in Android Studio, we don't guarantee correct function if launched with
-other IDEs**. Make sure that you open `Uni_Life_Tracker` as project, but not the root directory `course-generic-name-1`
+other IDEs**. Make sure that you open the inner `plannr` directory as project, but not the root directory `plannr`
 as project ([GIF walk-through](https://imgur.com/a/e682DPB)). Ensure that Android SDK 31 is installed with build tools
 31.0.0. If you experience an issue where build tool 31.0.0 is corrupted, change the build tool to version 30.0.2, and you
 should be able to launch our app. Additionally, you can also try to fix the corruption by following
 this [StackOverflow](https://stackoverflow.com/questions/68387270/android-studio-error-installed-build-tools-revision-31-0-0-is-corrupted)
-article or this question on [Piazza](https://piazza.com/class/kt4hlydpsym1bz?cid=10).
+article.
 
 After the system is set up correctly, please make sure that at the top left-hand side of your screen, right next to
 the "Project" pane, you see Android as the selected view option ([example](https://imgur.com/PsrbryV)), if you see something
