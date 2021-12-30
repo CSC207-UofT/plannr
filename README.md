@@ -58,7 +58,7 @@ If you see [this](https://imgur.com/a/uoIiAwn) as the landing page and [this](ht
 page, you have launched successfully ([GIF example](https://imgur.com/a/XUPTtWK))
 
 ## Authors
-* **Dana Al Shekerchi** - *Frontend Developer* - [dalshekerchi](https://github.com/dalshekerchi)
+* **Dana Al Shekerchi** - *Full Stack Developer* - [dalshekerchi](https://github.com/dalshekerchi)
 * **Bolade Amoussou** - *Backend Developer* - [cdw18](https://github.com/cdw18)
 * **Tong (Daniel) Guan** - *Backend Developer* - [OKok-3](https://github.com/OKok-3)
 * **Sari Hammad** - *Backend Developer* - [sarihammad](https://github.com/sarihammad)
